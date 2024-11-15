@@ -1,7 +1,7 @@
 import { Entry } from "contentful"
 import * as contentful from "contentful"
 
-let client = contentful.createClient({
+const client = contentful.createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
 })
@@ -28,7 +28,7 @@ export async function searchEntries(
   query: object,
   select?: string[],
 ) {
-  let queryParams: any = {
+  const queryParams: any = {
     content_type: contentType,
     ...query,
   }
