@@ -1,0 +1,3 @@
+.navLinks {
+  @apply hidden text-gray-800 text-2xl h-6 md:inline-flex cursor-pointer hover:scale-105 transition-all duration-150 ease-out;
+}
