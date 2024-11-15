@@ -2,29 +2,22 @@ import React from "react"
 import Link from "next/link"
 import "@/styles/header/header.css"
 const Links = () => {
+  const links = [
+    { href: "/", label: "Home" },
+    { href: "/courses", label: "Scuba Classes" },
+    { href: "/sites", label: "Dive Packages" },
+    { href: "/trips", label: "Dive Trips" },
+    { href: "/shark-dive-punta-cana", label: "Shark Dive" },
+    { href: "/fishing-punta-cana", label: "Deep Sea Fishing" },
+    { href: "/contact", label: "Contact Us" },
+  ]
   return (
     <>
-      <Link href="/" className="no-underline">
-        <button className="navLinks">Home</button>
-      </Link>
-      <Link href="/courses" className="no-underline">
-        <button className="navLinks">Scuba Classes</button>
-      </Link>
-      <Link href="/sites" className="no-underline">
-        <button className="navLinks">Dive Packages</button>
-      </Link>
-      <Link href="/trips" className="no-underline">
-        <button className="navLinks">Dive Trips</button>
-      </Link>
-      <Link href="/shark-dive-punta-cana" className="no-underline">
-        <button className="navLinks">Shark Dive</button>
-      </Link>
-      <Link href="/fishing-punta-cana" className="no-underline">
-        <button className="navLinks">Deep Sea Fishing</button>
-      </Link>
-      <Link href="/contact" className="no-underline">
-        <button className="navLinks">Contact Us</button>
-      </Link>
+      {links.map(link => (
+        <Link href={link.href} className="no-underline" key={link.href}>
+          <button className="navLinks">{link.label}</button>
+        </Link>
+      ))}
     </>
   )
 }

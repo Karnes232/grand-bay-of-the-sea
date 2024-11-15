@@ -10,6 +10,7 @@ const Logo = async () => {
     },
     ["fields.logo"],
   )
+
   return (
     <div className="flex justify-center items-center">
       <Link href="/" className="no-underline" aria-label="Home">
@@ -17,8 +18,14 @@ const Logo = async () => {
           <Image
             src={`https:${(searchResults.items[0] as any).fields.logo?.fields?.file?.url ?? ""}`}
             alt="Logo"
-            width={100}
-            height={100}
+            width={
+              (searchResults.items[0] as any).fields.logo?.fields?.file.details
+                .image.width
+            }
+            height={
+              (searchResults.items[0] as any).fields.logo?.fields?.file.details
+                .image.height
+            }
           />{" "}
         </div>
       </Link>
