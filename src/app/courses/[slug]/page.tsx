@@ -1,4 +1,4 @@
-import { getAllEntries, searchEntries } from "@/lib/contentful"
+import { getAllEntries } from "@/lib/contentful"
 
 export async function generateStaticParams() {
   const searchResults = await getAllEntries("course")
