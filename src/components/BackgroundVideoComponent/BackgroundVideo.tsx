@@ -21,7 +21,7 @@ const BackgroundVideo = ({
           src={video}
         >
           <source src={video} type="video/mp4" />
-          Your device does not support playing 'video/mp4' videos
+         {`Your device does not support playing 'video/mp4' videos`}
         </video>
       </div>
     </div>
