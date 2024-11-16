@@ -5,6 +5,8 @@ import RichText from "@/components/RichTextComponents/RichText"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
 import DivingOrganizations from "@/components/DivingOrganizations/DivingOrganizations"
+import BackgroundImage from "@/components/BackgroundImageComponent/BackgroundImage"
+import GoogleMaps from "@/components/GoogleMapsComponent/GoogleMaps"
 
 export default async function Home(props: any) {
   const pageLayout = await getAllEntries("pageLayout")
@@ -28,6 +30,11 @@ export default async function Home(props: any) {
         video={(pageLayout[0] as any).fields.videoHero.fields.file.url}
       />
       <DivingOrganizations />
+      <RichText context={pageLayout[0].fields.paragraph3} />
+      <BackgroundImage
+        image={(pageLayout[0] as any).fields.tertiaryHeroImage.fields.file.url}
+      />
+      <GoogleMaps />
     </main>
   )
 }
