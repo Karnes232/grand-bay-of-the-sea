@@ -10,7 +10,7 @@ import GoogleMaps from "@/components/GoogleMapsComponent/GoogleMaps"
 import { Metadata, ResolvingMetadata } from "next"
 
 export async function generateMetadata(
-  {params}: {params: {slug: string}},
+  { params }: { params: { slug: string } },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const seoSearchResults = await searchEntries("seo", {

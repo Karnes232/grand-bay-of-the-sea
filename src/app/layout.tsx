@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import localFont from "next/font/local"
 import "./globals.css"
 import Header from "@/components/layout/HeaderComponents/Header"
+import Footer from "@/components/layout/FooterComponents/Footer"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,11 +42,13 @@ export const metadata: Metadata = {
     capable: true,
   },
   verification: {
-    google: "YOUR_DATA",
-    yandex: ["YOUR_DATA"],
+    google: "QNQfgD0iQIbuHkuZ5fb8hKEYbV6iCN_TvIyRdnAu7yg",
+    // yandex: ["YOUR_DATA"],
     other: {
-      "msvalidate.01": ["YOUR_DATA"],
-      "facebook-domain-verification": ["YOUR_DATA"],
+      "google-site-verification": [
+        "_73Leg9k9ryZXyP10IC8Nb2dxu3mfjpQG_zxN69KQCs",
+      ],
+      // "facebook-domain-verification": ["YOUR_DATA"],
     },
   },
   icons: {
@@ -80,6 +83,7 @@ export default function RootLayout({
         <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
           <Header />
           {children}
+          <Footer />
         </div>
       </body>
     </html>
