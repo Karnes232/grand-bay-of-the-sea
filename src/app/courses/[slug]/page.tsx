@@ -3,20 +3,72 @@ import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVid
 import CourseOverview from "@/components/CourseComponents/CourseOverview"
 import RichText from "@/components/RichTextComponents/RichText"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
+import { Metadata, ResolvingMetadata } from "next"
 
-// export async function generateStaticParams() {
-//   const searchResults = await getAllEntries("course")
-//   console.log(searchResults)
-//   return searchResults.map(course => ({
-//     slug: course.fields.slug,
-//   }))
-// }
+export async function generateMetadata(
+  { params }: { params: { slug: string } },
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const seoSearchResults = await searchEntries(
+    "course",
+    {
+      "fields.slug": params.slug,
+    },
+    [
+      "fields.seoTitle",
+      "fields.seoDescription",
+      "fields.seoKeywords",
+      "fields.seoImage",
+    ],
+  )
+
+  return {
+    title: String(seoSearchResults.items[0].fields.seoTitle),
+    description: String(seoSearchResults.items[0].fields.seoDescription),
+    keywords: seoSearchResults.items[0].fields.seoKeywords as string[],
+    openGraph: {
+      url: `https://www.grandbay-puntacana.com/courses/${params.slug}`,
+      type: "website",
+      title: String(seoSearchResults.items[0].fields.seoTitle),
+      description: String(seoSearchResults.items[0].fields.seoDescription),
+      images: [
+        {
+          url: `https:${(seoSearchResults.items[0] as any).fields.seoImage.fields.file.url}`,
+          width: (seoSearchResults.items[0] as any).fields.seoImage.fields.file
+            .details.image.width,
+          height: (seoSearchResults.items[0] as any).fields.seoImage.fields.file
+            .details.image.height,
+          alt: (seoSearchResults.items[0] as any).fields.seoImage.fields.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: String(seoSearchResults.items[0].fields.seoTitle),
+      description: String(seoSearchResults.items[0].fields.seoDescription),
+      creator: "@grandbay",
+      site: "@grandbay",
+      images: [
+        {
+          url: `https:${(seoSearchResults.items[0] as any).fields.seoImage.fields.file.url}`,
+          width: (seoSearchResults.items[0] as any).fields.seoImage.fields.file
+            .details.image.width,
+          height: (seoSearchResults.items[0] as any).fields.seoImage.fields.file
+            .details.image.height,
+          alt: (seoSearchResults.items[0] as any).fields.seoImage.fields.title,
+        },
+      ],
+    },
+    alternates: {
+      canonical: `https://www.grandbay-puntacana.com/courses/${params.slug}`,
+    },
+  }
+}
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const course = await searchEntries("course", {
     "fields.slug": params.slug,
   })
-  console.log(course.items[0].fields.course)
   return (
     <main>
       <BackgroundVideo
