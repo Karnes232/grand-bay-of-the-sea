@@ -39,8 +39,8 @@ export async function generateMetadata(
       card: "summary_large_image",
       title: String(seoSearchResults.items[0].fields.title),
       description: String(seoSearchResults.items[0].fields.description),
-      creator: "@dminhvu02",
-      site: "@dminhvu02",
+      creator: "@grandbay",
+      site: "@grandbay",
       images: [
         {
           url: `https:${(seoSearchResults.items[0] as any).fields.image.fields.file.url}`,
@@ -78,7 +78,7 @@ export default async function Home(props: any) {
       />
       <RichText context={pageLayout.items[0].fields.paragraph2} />
       <BackgroundVideo
-        className="[clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
+        className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
         video={(pageLayout.items[0] as any).fields.videoHero.fields.file.url}
       />
       <DivingOrganizations />
