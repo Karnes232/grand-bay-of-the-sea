@@ -14,7 +14,7 @@ const SwiperCarousel = ({
   photoList: any
   className: string
 }) => {
-  let photoListEdited = photoList.map((photo: any) => {
+  const photoListEdited = photoList.map((photo: any) => {
     return {
       image: `https:${photo.fields.file.url}`,
       title: photo.fields.title,
