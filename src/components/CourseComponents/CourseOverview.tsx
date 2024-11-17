@@ -5,7 +5,6 @@ import { motion } from "motion/react"
 import Link from "next/link"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
 const CourseOverview = ({ course }: { course: any }) => {
-  console.log(course.fields)
   return (
     <div className="my-5">
       {" "}
