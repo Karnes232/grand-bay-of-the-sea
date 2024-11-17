@@ -10,7 +10,6 @@ const DivingOrganizations = async () => {
     ["fields.ssiLogo", "fields.padiLogo"],
   )
   const layout = await getAllEntries("layout")
-  console.log(searchResults.items[0].fields)
   return (
     <div className="max-w-6xl m-auto">
       <div className="flex flex-col lg:flex-row items-center justify-center mt-8">

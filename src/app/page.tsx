@@ -7,6 +7,57 @@ import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVid
 import DivingOrganizations from "@/components/DivingOrganizations/DivingOrganizations"
 import BackgroundImage from "@/components/BackgroundImageComponent/BackgroundImage"
 import GoogleMaps from "@/components/GoogleMapsComponent/GoogleMaps"
+import { Metadata, ResolvingMetadata } from "next"
+
+export async function generateMetadata(
+  {}: {},
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const seoSearchResults = await searchEntries("seo", {
+    "fields.page": "Index",
+  })
+  return {
+    title: String(seoSearchResults.items[0].fields.title),
+    description: String(seoSearchResults.items[0].fields.description),
+    keywords: seoSearchResults.items[0].fields.keywords as string[],
+    openGraph: {
+      url: "https://www.grandbay-puntacana.com",
+      type: "website",
+      title: String(seoSearchResults.items[0].fields.title),
+      description: String(seoSearchResults.items[0].fields.description),
+      images: [
+        {
+          url: `https:${(seoSearchResults.items[0] as any).fields.image.fields.file.url}`,
+          width: (seoSearchResults.items[0] as any).fields.image.fields.file
+            .details.image.width,
+          height: (seoSearchResults.items[0] as any).fields.image.fields.file
+            .details.image.height,
+          alt: (seoSearchResults.items[0] as any).fields.image.fields.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: String(seoSearchResults.items[0].fields.title),
+      description: String(seoSearchResults.items[0].fields.description),
+      creator: "@dminhvu02",
+      site: "@dminhvu02",
+      images: [
+        {
+          url: `https:${(seoSearchResults.items[0] as any).fields.image.fields.file.url}`,
+          width: (seoSearchResults.items[0] as any).fields.image.fields.file
+            .details.image.width,
+          height: (seoSearchResults.items[0] as any).fields.image.fields.file
+            .details.image.height,
+          alt: (seoSearchResults.items[0] as any).fields.image.fields.title,
+        },
+      ],
+    },
+    alternates: {
+      canonical: "https://www.grandbay-puntacana.com",
+    },
+  }
+}
 
 export default async function Home(props: any) {
   const pageLayout = await getAllEntries("pageLayout")

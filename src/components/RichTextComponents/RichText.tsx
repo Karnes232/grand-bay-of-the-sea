@@ -97,7 +97,6 @@ const RichText = ({ context }) => {
             image = imageData
           }
         })
-        console.log(image)
         return null
         // const imageGatsby = getImage(image.gatsbyImage);
         // return (
