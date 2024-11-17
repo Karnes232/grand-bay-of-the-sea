@@ -1,5 +1,7 @@
 import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
 import CourseCards from "@/components/CourseCardsComponents/CourseCards"
+import PadiBanner from "@/components/DivingOrganizations/PadiBanner"
+import SSIBanner from "@/components/DivingOrganizations/SSIBanner"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import { searchEntries } from "@/lib/contentful"
@@ -8,7 +10,7 @@ export default async function Page() {
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Courses",
   })
-  console.log((pageLayout.items[0] as any).fields.linkImage1.fields)
+
   return (
     <main>
       <HeroComponent
@@ -27,6 +29,9 @@ export default async function Page() {
         image3={(pageLayout.items[0] as any).fields.linkImage3.fields}
         image4={(pageLayout.items[0] as any).fields.linkImage4.fields}
       />
+      <SSIBanner />
+      <RichText context={pageLayout.items[0].fields.paragraph3} />
+      <PadiBanner />
     </main>
   )
 }

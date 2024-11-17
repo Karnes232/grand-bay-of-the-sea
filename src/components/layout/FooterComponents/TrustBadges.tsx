@@ -1,3 +1,4 @@
+import Image from "next/image"
 import React from "react"
 
 const TrustBadges = () => {
@@ -9,11 +10,11 @@ const TrustBadges = () => {
           rel="noreferrer"
           target="_blank"
         >
-          <img
-            width="500"
-            height="200"
+          <Image
             src="https://www.kayak.com/news/badge/kk/tg010.png"
             alt="Kayak Featured Tour"
+            width={500}
+            height={200}
           />
         </a>
       </div>
