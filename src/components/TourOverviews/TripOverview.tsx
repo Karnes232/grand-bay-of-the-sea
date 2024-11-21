@@ -3,33 +3,33 @@ import Link from "next/link"
 import React from "react"
 import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
-const FishingOverview = ({ tour }) => {
-  console.log(tour.depositPrice)
+const TripOverview = ({ tour }) => {
   return (
     <div className="my-5">
       <div className="flex flex-col justify-center items-center mb-2">
         <h4 className="text-xl font-semibold mb-1 xl:text-3xl">
-          <strong>Fishing Overview</strong>
+          <strong>Trip Overview</strong>
         </h4>
         <p className="my-1 text-center text-sm xl:text-base">
-          Shared Fishing Charter
+          Price: ${tour.price} per person
         </p>
-        <p className="my-1 text-center text-sm xl:text-base">
-          ${tour.price} per person
-        </p>
-        <p className="my-1 text-center text-sm xl:text-base">Spectator</p>{" "}
-        <p className="my-1 text-center text-sm xl:text-base">
-          ${tour.spectatorSnorkel} per person
-        </p>
-        <p className="my-1 text-center text-sm xl:text-base">
-          Private Fishing Charter
-        </p>
+        <p className="my-1 text-center text-sm xl:text-base">(2 tank dive)</p>
+        {tour.spectatorSnorkel && (
+          <>
+            <p className="my-1 text-center text-sm xl:text-base">
+              Price: ${tour.spectatorSnorkel} per person
+            </p>
+            <p className="my-1 text-center text-sm xl:text-base">(companion)</p>{" "}
+          </>
+        )}
         <p className="my-1 text-center text-sm xl:text-base">
           Duration: {tour.duration}
         </p>
-        <p className="my-1 text-center text-sm xl:text-base">
-          Price: ${tour.privateCharter}
-        </p>
+        {tour.extras.map((extra: string) => {
+          return (
+            <p className="my-1 text-center text-sm xl:text-base">{extra}</p>
+          )
+        })}
       </div>
       <div className="flex justify-center w-[200px] h-[35px] mx-auto">
         <Link href="/contact" className="no-underline w-[200px] h-[35px]">
@@ -50,7 +50,7 @@ const FishingOverview = ({ tour }) => {
       </div>
       <div className="flex flex-col justify-center items-center mb-4">
         <p className="mb-1 mt-2">
-          <strong>Reserve Shared Charter Now</strong>
+          <strong>Reserve Now</strong>
         </p>
         <p className="mt-1">Only a ${tour.depositPrice} deposit</p>
       </div>
@@ -59,4 +59,4 @@ const FishingOverview = ({ tour }) => {
   )
 }
 
-export default FishingOverview
+export default TripOverview
