@@ -27,6 +27,7 @@ export async function searchEntries(
   contentType: string,
   query: object,
   select?: string[],
+  excludeSlugs?: string[],
 ) {
   const queryParams: any = {
     content_type: contentType,
@@ -35,6 +36,10 @@ export async function searchEntries(
 
   if (select && select.length > 0) {
     queryParams.select = ["sys.id", ...select].join(",")
+  }
+
+  if (excludeSlugs && excludeSlugs.length > 0) {
+    queryParams["fields.slug[nin]"] = excludeSlugs.join(",")
   }
 
   const entries = await client.getEntries(queryParams)

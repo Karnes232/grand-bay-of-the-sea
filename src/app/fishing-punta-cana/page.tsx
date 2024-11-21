@@ -1,6 +1,7 @@
 import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
 import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
 import RichText from "@/components/RichTextComponents/RichText"
+import FishingOverview from "@/components/TourOverviews/FishingOverview"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
@@ -58,7 +59,7 @@ export default async function Home(props: any) {
   const pageLayout = await searchEntries("tours", {
     "fields.page": "Fishing Punta Cana",
   })
-  console.log(pageLayout.items[0].fields)
+
   return (
     <main>
       <BackgroundVideo
@@ -71,7 +72,7 @@ export default async function Home(props: any) {
             <RichText context={pageLayout.items[0].fields.paragraph1} />
           </div>
           <div className="lg:w-[45rem] xl:mx-10 lg:min-h-full lg:flex lg:flex-col md:justify-center">
-            {/* <FishingOverview /> */}
+            <FishingOverview tour={pageLayout.items[0].fields} />
           </div>
           <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:justify-center xl:mt-0">
             <RichText context={pageLayout.items[0].fields.paragraph2} />

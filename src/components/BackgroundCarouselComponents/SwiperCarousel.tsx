@@ -36,8 +36,8 @@ const SwiperCarousel = ({
         modules={[Autoplay, EffectFade]}
         className={`mySwiper mt-3 h-[35vh] md:h-[45vh] lg:h-[55vh] xl:h-[65vh]`}
       >
-        {photoListEdited.map((photo: any) => (
-          <SwiperSlide className="relative" key={photo.title}>
+        {photoListEdited.map((photo: any, index: number) => (
+          <SwiperSlide className="relative" key={index}>
             <Image
               src={photo.image}
               alt={photo.title}
