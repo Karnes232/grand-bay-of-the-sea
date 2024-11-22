@@ -34,18 +34,17 @@ export async function submitForm(formData) {
 
   //   })
   try {
-    const response = await fetch('/.netlify/functions/submission-created', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': 'contact',
-        name: name?.toString() || '',
-        email: email?.toString() || '',
-        hotel: hotel?.toString() || '',
-        message: message?.toString() || ''
-      })
-    });
-    return { success: response.ok }
+    return {
+        success: true,
+        data: {
+          'form-name': 'contact',
+          name: name?.toString() || '',
+          email: email?.toString() || '',
+          hotel: hotel?.toString() || '',
+          message: message?.toString() || ''
+        }
+      }
+
   } catch (error) {
     console.error("Form submission error:", error)
     return { success: false }
