@@ -3,23 +3,34 @@
 import React from "react"
 
 import { useRouter } from "next/navigation"
-import { submitForm } from "@/app/actions"
+// import { submitForm } from "@/app/actions"
 
 const ContactForm = () => {
   const router = useRouter()
 
-  const handleSubmit = async (formData: FormData) => {
-    const result = await submitForm(formData)
-    if (result.success) {
-      router.push("/thankyou")
-    } else {
-      alert("Form submission failed")
-    }
-  }
+ 
+export function FeedbackForm() {
+    const handleFormSubmit = async (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const searchParams = new URLSearchParams();
+      
+      // Convert FormData to URLSearchParams
+      Array.from(formData.entries()).forEach(([key, value]) => {
+        searchParams.append(key, value.toString());
+      });
+
+      await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: searchParams.toString(),
+      });
+      // Success and error handling ...
+    };
   return (
     <>
       <form
-        action={handleSubmit}
+        action={handleFormSubmit}
         name="contact"
         method="POST"
         // data-netlify="true"
