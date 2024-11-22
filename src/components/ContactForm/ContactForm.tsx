@@ -8,25 +8,23 @@ import { useRouter } from "next/navigation"
 const ContactForm = () => {
   const router = useRouter()
 
- 
-export function FeedbackForm() {
-    const handleFormSubmit = async (event) => {
-      event.preventDefault();
-      const formData = new FormData(event.target);
-      const searchParams = new URLSearchParams();
-      
-      // Convert FormData to URLSearchParams
-      Array.from(formData.entries()).forEach(([key, value]) => {
-        searchParams.append(key, value.toString());
-      });
+  const handleFormSubmit = async event => {
+    event.preventDefault()
+    const formData = new FormData(event.target)
+    const searchParams = new URLSearchParams()
 
-      await fetch("/__forms.html", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: searchParams.toString(),
-      });
-      // Success and error handling ...
-    };
+    // Convert FormData to URLSearchParams
+    Array.from(formData.entries()).forEach(([key, value]) => {
+      searchParams.append(key, value.toString())
+    })
+
+    await fetch("/__forms.html", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: searchParams.toString(),
+    })
+    // Success and error handling ...
+  }
   return (
     <>
       <form
