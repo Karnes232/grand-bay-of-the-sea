@@ -2,24 +2,24 @@
 
 import React from "react"
 
-// import { useRouter } from "next/navigation"
-// import { submitForm } from "@/app/actions"
+import { useRouter } from "next/navigation"
+import { submitForm } from "@/app/actions"
 
 const ContactForm = () => {
-  //   const router = useRouter()
+  const router = useRouter()
 
-  //   const handleSubmit = async (formData: FormData) => {
-  //     const result = await submitForm(formData)
-  //     if (result.success) {
-  //       router.push("/thankyou")
-  //     } else {
-  //       // Handle error (show message, etc.)
-  //     }
-  //   }
+  const handleSubmit = async (formData: FormData) => {
+    const result = await submitForm(formData)
+    if (result.success) {
+      router.push("/thankyou")
+    } else {
+      alert("Form submission failed")
+    }
+  }
   return (
     <>
       <form
-        // action={handleSubmit}
+        action={handleSubmit}
         name="contact"
         method="POST"
         data-netlify="true"
@@ -30,7 +30,7 @@ const ContactForm = () => {
         <input type="hidden" name="form-name" value="contact" />
         <div className="relative z-0 mb-6 w-full group">
           <input
-            type="name"
+            type="text"
             name="name"
             id="name"
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
