@@ -4,7 +4,6 @@ import React from "react"
 import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
 const FishingOverview = ({ tour }) => {
-  console.log(tour.depositPrice)
   return (
     <div className="my-5">
       <div className="flex flex-col justify-center items-center mb-2">

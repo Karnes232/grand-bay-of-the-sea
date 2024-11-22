@@ -25,9 +25,11 @@ const TripOverview = ({ tour }) => {
         <p className="my-1 text-center text-sm xl:text-base">
           Duration: {tour.duration}
         </p>
-        {tour.extras.map((extra: string) => {
+        {tour.extras.map((extra: string, index: number) => {
           return (
-            <p className="my-1 text-center text-sm xl:text-base">{extra}</p>
+            <p key={index} className="my-1 text-center text-sm xl:text-base">
+              {extra}
+            </p>
           )
         })}
       </div>
