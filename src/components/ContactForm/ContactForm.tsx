@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation"
 const ContactForm = () => {
   const router = useRouter()
 
-  const handleFormSubmit = async event => {
+  const handleFormSubmit = async (event: any) => {
     event.preventDefault()
     const formData = new FormData(event.target)
     const searchParams = new URLSearchParams()
@@ -24,7 +24,7 @@ const ContactForm = () => {
       body: searchParams.toString(),
     })
     // Success and error handling ...
-    
+
   }
   return (
     <>
