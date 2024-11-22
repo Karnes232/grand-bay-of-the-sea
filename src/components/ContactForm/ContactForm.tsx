@@ -1,12 +1,27 @@
+"use client"
+
 import React from "react"
 
+import { useRouter } from "next/navigation"
+import { submitForm } from "@/app/actions"
+
 const ContactForm = () => {
+  const router = useRouter()
+
+  const handleSubmit = async (formData: FormData) => {
+    const result = await submitForm(formData)
+    if (result.success) {
+      router.push("/thankyou")
+    } else {
+      // Handle error (show message, etc.)
+    }
+  }
   return (
     <>
       <form
+        action={handleSubmit}
         name="contact"
         method="POST"
-        action="/thankyou"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         id="contact"
