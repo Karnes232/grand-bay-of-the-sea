@@ -76,7 +76,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     undefined,
     ["fishing-punta-cana"],
   )
-
+  console.log(tour.items[0])
   return (
     <main>
       <BackgroundVideo

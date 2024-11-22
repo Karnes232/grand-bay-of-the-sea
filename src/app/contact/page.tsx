@@ -69,7 +69,7 @@ export default async function Home(props: any) {
         heroImage={`https:${(searchResults.items[0] as any).fields.heroImage.fields.file.url}`}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <ContactForm />
+      {/* <ContactForm /> */}
     </main>
   )
 }
