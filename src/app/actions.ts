@@ -1,15 +1,15 @@
 "use server"
 
 export async function submitForm(formData) {
-  const name = formData.get('name')
-  const email = formData.get('email')
-  const hotel = formData.get('hotel')
-  const message = formData.get('message')
+  const name = formData.get("name")
+  const email = formData.get("email")
+  const hotel = formData.get("hotel")
+  const message = formData.get("message")
 
   const encode = (data: Record<string, string>) => {
     return Object.keys(data)
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
+      .join("&")
   }
   //   console.log(formData)
   // const name = formData.get("name")
@@ -20,11 +20,11 @@ export async function submitForm(formData) {
   // const newFormData = new FormData(form);
   // const formDataObj = {};
   // newFormData.forEach((value, key) => (formDataObj[key] = value));
-//   const encode = (data: any) => {
-//     return Object.keys(data)
-//       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-//       .join("&")
-//   }
+  //   const encode = (data: any) => {
+  //     return Object.keys(data)
+  //       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+  //       .join("&")
+  //   }
 
   // try {
   //   const response = await fetch("/__forms.html", {
@@ -35,16 +35,15 @@ export async function submitForm(formData) {
   //   })
   try {
     return {
-        success: true,
-        data: {
-          'form-name': 'contact',
-          name: name?.toString() || '',
-          email: email?.toString() || '',
-          hotel: hotel?.toString() || '',
-          message: message?.toString() || ''
-        }
-      }
-
+      success: true,
+      data: {
+        "form-name": "contact",
+        name: name?.toString() || "",
+        email: email?.toString() || "",
+        hotel: hotel?.toString() || "",
+        message: message?.toString() || "",
+      },
+    }
   } catch (error) {
     console.error("Form submission error:", error)
     return { success: false }

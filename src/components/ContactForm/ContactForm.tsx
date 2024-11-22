@@ -1,7 +1,5 @@
 "use client"
 
-
-
 import { submitForm } from "@/app/actions"
 import { useRouter } from "next/navigation"
 import React from "react"
@@ -11,26 +9,26 @@ const ContactForm = () => {
 
   const handleSubmit = async (formData: FormData) => {
     const result = await submitForm(formData)
-   
+    console.log(result)
     if (result.success) {
-        try {
-          const response = await fetch('/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams(result.data).toString(),
-          });
-          
-          if (response.ok) {
-            // Handle success
-          } else {
-            // Handle error
-          }
-        } catch (error) {
-          console.error('Submission error:', error);
+      try {
+        const response = await fetch("/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams(result.data).toString(),
+        })
+        console.log(response)
+        if (response.ok) {
+          // Handle success
+        } else {
+          // Handle error
         }
+      } catch (error) {
+        console.error("Submission error:", error)
       }
+    }
 
     // if (result.success) {
     //   router.push("/thankyou")
