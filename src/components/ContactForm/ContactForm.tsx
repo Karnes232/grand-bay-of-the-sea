@@ -24,6 +24,7 @@ const ContactForm = () => {
       body: searchParams.toString(),
     })
     // Success and error handling ...
+    
   }
   return (
     <>
