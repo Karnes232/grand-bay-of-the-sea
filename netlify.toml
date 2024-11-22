@@ -16,6 +16,3 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-[[forms]]
-  name = "contact"
-  path = "/contact"
