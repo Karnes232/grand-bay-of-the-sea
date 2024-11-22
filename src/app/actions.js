@@ -20,7 +20,7 @@ export async function submitForm(formData) {
     const response = await fetch("/__forms.html", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: urlSearchParams,
+      body: urlSearchParams.toString(),
     //   body: encode({
     //     "form-name": "contact",
     //     name,
