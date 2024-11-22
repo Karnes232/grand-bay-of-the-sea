@@ -11,12 +11,32 @@ const ContactForm = () => {
 
   const handleSubmit = async (formData: FormData) => {
     const result = await submitForm(formData)
-    console.log(result)
+   
     if (result.success) {
-      router.push("/thankyou")
-    } else {
-      alert("Form submission failed")
-    }
+        try {
+          const response = await fetch('/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams(result.data).toString(),
+          });
+          
+          if (response.ok) {
+            // Handle success
+          } else {
+            // Handle error
+          }
+        } catch (error) {
+          console.error('Submission error:', error);
+        }
+      }
+
+    // if (result.success) {
+    //   router.push("/thankyou")
+    // } else {
+    //   alert("Form submission failed")
+    // }
   }
   return (
     <>
