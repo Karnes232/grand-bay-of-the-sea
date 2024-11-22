@@ -2,41 +2,17 @@
 
 import React from "react"
 
-import { useRouter } from "next/navigation"
-// import { submitForm } from "@/app/actions"
-
 const ContactForm = () => {
-  const router = useRouter()
-
-  const handleFormSubmit = async (event: any) => {
-    event.preventDefault()
-    const formData = new FormData(event.target)
-    const searchParams = new URLSearchParams()
-
-    // Convert FormData to URLSearchParams
-    Array.from(formData.entries()).forEach(([key, value]) => {
-      searchParams.append(key, value.toString())
-    })
-
-    await fetch("/__forms.html", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: searchParams.toString(),
-    })
-    // Success and error handling ...
-
-  }
   return (
     <>
       <form
-        action={handleFormSubmit}
         name="contact"
-        method="POST"
-        // data-netlify="true"
-        // data-netlify-honeypot="bot-field"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
         id="contact"
         className="w-64 md:w-full max-w-md flex flex-col justify-center items-center mx-auto my-5"
       >
+        <input type="hidden" name="bot-field" />
         <input type="hidden" name="form-name" value="contact" />
         <div className="relative z-0 mb-6 w-full group">
           <input
