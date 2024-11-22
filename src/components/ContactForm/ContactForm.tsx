@@ -4,19 +4,20 @@ import { useRouter } from "next/navigation"
 import React from "react"
 
 const ContactForm = () => {
-    const router = useRouter()
+  const router = useRouter()
 
-    const handleSubmit = async (formData: FormData) => {
-      const result = await submitForm(formData)
-      if (result.success) {
-        router.push("/thankyou")
-      } else {
-        alert("Form submission failed")
-      }
+  const handleSubmit = async (formData: FormData) => {
+    const result = await submitForm(formData)
+    if (result.success) {
+      router.push("/thankyou")
+    } else {
+      alert("Form submission failed")
     }
+  }
   return (
     <>
       <form
+        action={handleSubmit}
         name="contact"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
