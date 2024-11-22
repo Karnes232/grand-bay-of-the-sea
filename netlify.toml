@@ -13,6 +13,9 @@
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
 
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 [[forms]]
   name = "contact"
   path = "/contact"
