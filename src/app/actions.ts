@@ -34,7 +34,7 @@ export async function submitForm(formData) {
 
   //   })
   try {
-    const response = await fetch('/__forms.html', {
+    const response = await fetch('/.netlify/functions/submission-created', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
