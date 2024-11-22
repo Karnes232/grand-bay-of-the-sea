@@ -21,7 +21,7 @@ const ContactForm = () => {
         })
         console.log(response)
         if (response.ok) {
-          // Handle success
+          router.push("/thankyou")
         } else {
           // Handle error
         }
