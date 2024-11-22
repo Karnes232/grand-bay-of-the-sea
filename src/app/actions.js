@@ -6,10 +6,10 @@ export async function submitForm(formData) {
   const email = formData.get("email")
   const hotel = formData.get("hotel")
   const message = formData.get("message")
-  const form = document.getElementById("contact")
-  const newFormData = new FormData(form);
-  const formDataObj = {};
-  newFormData.forEach((value, key) => (formDataObj[key] = value));
+  const urlSearchParams = new URLSearchParams(formData);
+  // const newFormData = new FormData(form);
+  // const formDataObj = {};
+  // newFormData.forEach((value, key) => (formDataObj[key] = value));
 //   const encode = (data: any) => {
 //     return Object.keys(data)
 //       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -20,7 +20,7 @@ export async function submitForm(formData) {
     const response = await fetch("/__forms.html", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(newFormData).toString(),
+      body: urlSearchParams,
     //   body: encode({
     //     "form-name": "contact",
     //     name,
