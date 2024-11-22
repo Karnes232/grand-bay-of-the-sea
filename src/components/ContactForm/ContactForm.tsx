@@ -1,6 +1,7 @@
 "use client"
 
 
+
 import { submitForm } from "@/app/actions"
 import { useRouter } from "next/navigation"
 import React from "react"
@@ -10,6 +11,7 @@ const ContactForm = () => {
 
   const handleSubmit = async (formData: FormData) => {
     const result = await submitForm(formData)
+    console.log(result)
     if (result.success) {
       router.push("/thankyou")
     } else {
