@@ -53,7 +53,7 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: "https://www.grandbay-puntacana.com/scuba-diving-punta-cana",
+      canonical: "https://www.grandbay-puntacana.com/scuba-diving-punta-cana/",
     },
   }
 }
