@@ -1,6 +1,6 @@
 import React from "react"
 import LinkComponent from "./LinkComponent"
-
+import Image from "next/image"
 const SelectionComponent = ({
   secondaryHeroImage,
   linkImage1,
@@ -20,12 +20,22 @@ const SelectionComponent = ({
       ")",
   }
   return (
-    <div className="w-full h-[95vh] md:h-[50vh] lg:[75vh] my-5">
-      <div
-        style={HeroStyles}
-        className="h-[95vh] md:h-[50vh] lg:[75vh] bg-cover relative [clip-path:polygon(0%_5vh,100%_0%,100%_90vh,0%_100%)] md:[clip-path:polygon(0%_5vh,100%_0%,100%_45vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_70vh,0%_100%)]"
-      >
-        <div className="flex flex-col h-full justify-evenly items-center max-w-6xl mx-5 md:flex-row xl:mx-auto">
+    <div className="w-full h-[95vh] md:h-[50vh] lg:h-[75vh] my-5">
+      <div className="relative h-[95vh] md:h-[50vh] lg:h-[75vh] [clip-path:polygon(0%_5vh,100%_0%,100%_90vh,0%_100%)] md:[clip-path:polygon(0%_5vh,100%_0%,100%_45vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_70vh,0%_100%)]">
+        {/* Background Image */}
+        <Image
+          src={secondaryHeroImage}
+          alt="Background"
+          fill
+          className="object-cover object-[75%_70%] xl:object-[75%_50%]"
+          priority
+          quality={100}
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/50" />
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col h-full justify-evenly items-center max-w-6xl mx-5 md:flex-row xl:mx-auto">
           <LinkComponent
             name="Scuba Courses"
             url="/courses"

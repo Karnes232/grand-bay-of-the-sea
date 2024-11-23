@@ -84,9 +84,7 @@ export default async function Home(props: any) {
       <DivingOrganizations />
       <RichText context={pageLayout.items[0].fields.paragraph3} />
       <BackgroundImage
-        image={
-          (pageLayout.items[0] as any).fields.tertiaryHeroImage.fields.file.url
-        }
+        image={`https:${(pageLayout.items[0] as any).fields.tertiaryHeroImage.fields.file.url}`}
       />
       <GoogleMaps />
     </main>
