@@ -1,13 +1,8 @@
 import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
-import BackgroundImage from "@/components/BackgroundImageComponent/BackgroundImage"
 import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
-import DivingOrganizations from "@/components/DivingOrganizations/DivingOrganizations"
-import GoogleMaps from "@/components/GoogleMapsComponent/GoogleMaps"
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
-import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import TripOverview from "@/components/TourOverviews/TripOverview"
-import { getAllEntries, searchEntries } from "@/lib/contentful"
+import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
 export async function generateMetadata(
