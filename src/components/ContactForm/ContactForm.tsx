@@ -9,7 +9,6 @@ const ContactForm = () => {
 
   const handleSubmit = async (formData: FormData) => {
     const result = await submitForm(formData)
-    console.log(result)
     if (result.success) {
       try {
         const response = await fetch("/__forms.html", {
@@ -19,22 +18,18 @@ const ContactForm = () => {
           },
           body: new URLSearchParams(result.data).toString(),
         })
-        console.log(response)
+
         if (response.ok) {
-          router.push("/thankyou")
+          router.push(`/thankyou/?name=${result.data.name}`)
         } else {
           // Handle error
         }
       } catch (error) {
         console.error("Submission error:", error)
       }
+    } else {
+      console.log("Submission error")
     }
-
-    // if (result.success) {
-    //   router.push("/thankyou")
-    // } else {
-    //   alert("Form submission failed")
-    // }
   }
   return (
     <>

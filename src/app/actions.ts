@@ -6,12 +6,6 @@ export async function submitForm(formData: any) {
   const hotel = formData.get("hotel")
   const message = formData.get("message")
 
-  // const encode = (data: Record<string, string>) => {
-  //   return Object.keys(data)
-  //     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-  //     .join("&")
-  // }
-
   try {
     return {
       success: true,
