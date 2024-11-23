@@ -72,7 +72,7 @@ export default async function Home(props: any) {
             <RichText context={pageLayout.items[0].fields.paragraph1} />
           </div>
           <div className="lg:w-[45rem] xl:mx-10 lg:min-h-full lg:flex lg:flex-col md:justify-center">
-            <FishingOverview tour={pageLayout.items[0].fields} />
+            <FishingOverview tour={pageLayout.items[0].fields as any} />
           </div>
           <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:justify-center xl:mt-0">
             <RichText context={pageLayout.items[0].fields.paragraph2} />
