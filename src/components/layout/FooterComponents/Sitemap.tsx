@@ -40,7 +40,7 @@ const Sitemap = () => {
         </Link>
       </div>
       <div className="mx-8 flex flex-col justify-center md:space-x-8 pb-4 md:pt-4 md:mx-auto md:max-w-2xl md:flex-row">
-        <Link href="/sitemap">
+        <Link href="/sitemap.xml">
           <p className="footerSitemap">Site Map</p>
         </Link>
       </div>
