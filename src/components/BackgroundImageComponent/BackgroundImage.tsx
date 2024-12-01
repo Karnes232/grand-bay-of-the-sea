@@ -10,7 +10,7 @@ const BackgroundImage = ({ image }: { image: string }) => {
           alt="Background"
           fill
           className="object-cover object-[50%_70%]"
-          priority
+          loading="lazy"
           quality={100}
         />
         {/* Gradient overlay */}
