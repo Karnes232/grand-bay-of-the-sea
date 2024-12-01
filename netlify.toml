@@ -15,3 +15,6 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NEXT_SHARP_PATH = "./node_modules/sharp"

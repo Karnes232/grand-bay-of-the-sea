@@ -13,6 +13,8 @@ const nextConfig = {
     reactStrictMode: true,
     images: {
       // unoptimized: true,
+      loader: 'default',
+      domains: ['images.ctfassets.net', 'www.kayak.com'],
       remotePatterns: [
         {
           protocol: 'https',
