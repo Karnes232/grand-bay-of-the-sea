@@ -14,7 +14,7 @@ const nextConfig = {
     images: {
       // unoptimized: true,
       loader: 'default',
-      domains: ['images.ctfassets.net', 'www.kayak.com'],
+      // domains: ['images.ctfassets.net', 'www.kayak.com'],
       remotePatterns: [
         {
           protocol: 'https',
