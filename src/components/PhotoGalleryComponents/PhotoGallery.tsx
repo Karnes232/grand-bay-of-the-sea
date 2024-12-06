@@ -10,7 +10,7 @@ import {
 import "react-photo-album/masonry.css"
 import Lightbox from "yet-another-react-lightbox"
 import NextJsImage from "./NextJsImage"
-import useWindowWidth from "../../hooks/useWindowWidth"
+
 function renderNextImage(
   { alt = "", title, sizes }: RenderImageProps,
   { photo, width, height }: RenderImageContext,
@@ -37,7 +37,7 @@ function renderNextImage(
 
 const PhotoGallery = ({ photos }: { photos: [] }) => {
   const [index, setIndex] = useState(-1)
-  let photoList = []
+  const photoList = []
   photos.forEach((image: any) => {
     const photoObject = {
       src: `https:${image.fields.file.url}`,

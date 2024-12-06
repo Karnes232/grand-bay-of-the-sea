@@ -15,7 +15,7 @@ function isNextJsImage(slide) {
   )
 }
 
-export default function NextJsImage({ slide, window, offset, rect }) {
+export default function NextJsImage({ slide, offset, rect }) {
   const {
     on: { click },
     carousel: { imageFit },
