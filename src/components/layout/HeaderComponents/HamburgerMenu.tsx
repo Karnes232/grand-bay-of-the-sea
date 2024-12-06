@@ -17,6 +17,7 @@ const HamburgerMenu = () => {
     { href: "/shark-dive-punta-cana", label: "Shark Dive" },
     { href: "/fishing-punta-cana", label: "Deep Sea Fishing" },
     { href: "/species", label: "Species Guide" },
+    { href: "/photo-gallery", label: "Photo Gallery" },
     { href: "/contact", label: "Contact Us" },
   ]
 

@@ -34,14 +34,20 @@ const Sitemap = () => {
         <Link href="/species">
           <p className="footerSitemap">Species Guide</p>
         </Link>
+        <Link href="/photo-gallery">
+          <p className="footerSitemap">Photo Gallery</p>
+        </Link>
 
-        <Link href="/contact">
-          <p className="footerSitemap">Contact Us</p>
+        <Link href="/terms-and-conditions">
+          <p className="footerSitemap">Cancellation Policy</p>
         </Link>
       </div>
       <div className="mx-8 flex flex-col justify-center md:space-x-8 pb-4 md:pt-4 md:mx-auto md:max-w-2xl md:flex-row">
         <Link href="/sitemap.xml">
           <p className="footerSitemap">Site Map</p>
+        </Link>
+        <Link href="/contact">
+          <p className="footerSitemap">Contact Us</p>
         </Link>
       </div>
     </div>
