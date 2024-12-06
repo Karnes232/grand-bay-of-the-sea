@@ -5,7 +5,7 @@ import {
   useLightboxProps,
   useLightboxState,
 } from "yet-another-react-lightbox"
-import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/styles.css"
 
 function isNextJsImage(slide) {
   return (
