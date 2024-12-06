@@ -66,7 +66,7 @@ export default async function Page() {
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <RichText context={pageLayout.items[0].fields.title} />
-      <PhotoGallery photos={(pageLayout.items[0] as any).fields.photoList} />
+      <PhotoGallery photos={(pageLayout.items[0] as any).fields.photoList.sort(() => Math.random() - 0.5)} />
     </main>
   )
 }
