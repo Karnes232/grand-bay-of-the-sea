@@ -1,6 +1,6 @@
 "use client"
 
-import { submitForm } from "@/app/actions"
+import { submitForm } from "@/app/(root)/actions"
 import { useRouter } from "next/navigation"
 import React from "react"
 
