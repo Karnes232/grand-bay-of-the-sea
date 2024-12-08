@@ -8,17 +8,15 @@ import {
   Transition,
 } from "@headlessui/react"
 import { Bars3Icon } from "@heroicons/react/24/outline"
-const HamburgerMenu = () => {
+const TuiHamburgerMenu = () => {
   const links = [
-    { href: "/", label: "Home" },
-    { href: "/courses", label: "Scuba Classes" },
-    { href: "/sites", label: "Dive Packages" },
-    { href: "/trips", label: "Dive Trips" },
-    { href: "/shark-dive-punta-cana", label: "Shark Dive" },
-    { href: "/fishing-punta-cana", label: "Deep Sea Fishing" },
-    { href: "/species", label: "Species Guide" },
-    { href: "/photo-gallery", label: "Photo Gallery" },
-    { href: "/contact", label: "Contact Us" },
+    { href: "/tui/discover", label: "Discover Scuba Diving" },
+    { href: "/tui/scubadiver", label: "PADI Scuba Diver" },
+    { href: "/tui/openwater", label: "PADI Open Water Course" },
+    { href: "/tui/advanced", label: "PADI Advanced Open Water" },
+    { href: "/tui/sites", label: "Scuba Diving Sites" },
+    { href: "/tui/catalina", label: "Catalina Island" },
+    { href: "/tui/bayahibe", label: "Bayahibe" },
   ]
 
   return (
@@ -85,4 +83,4 @@ const HamburgerMenu = () => {
   )
 }
 
-export default HamburgerMenu
+export default TuiHamburgerMenu

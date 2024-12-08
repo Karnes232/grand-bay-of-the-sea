@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import "../../../app/globals.css"
-import Header from "@/components/layout/HeaderComponents/Header"
-import Footer from "@/components/layout/FooterComponents/Footer"
+import TuiHeader from "@/components/layout/TuiLayout/TuiHeader"
+import TuiFooter from "@/components/layout/TuiLayout/TuiFooter"
 
 const geistSans = localFont({
   src: "../../(root)/fonts/GeistVF.woff",
@@ -81,9 +81,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
-          {/* <Header /> */}
+          <TuiHeader />
           {children}
-          {/* <Footer /> */}
+          <TuiFooter />
         </div>
       </body>
     </html>
