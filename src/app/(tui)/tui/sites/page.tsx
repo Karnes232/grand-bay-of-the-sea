@@ -2,7 +2,6 @@ import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVid
 import DiveSites from "@/components/DiveSitesComponents/DiveSites"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
-import LocalDivesOverview from "@/components/TourOverviews/LocalDivesOverview"
 import TuiLocalDiveOverview from "@/components/TuiComponents/TuiLocalDiveOverview"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
@@ -52,7 +51,7 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: "https://www.grandbay-pageLayoutpuntacana.com/tui/sites/",
+      canonical: "https://www.grandbay-puntacana.com/tui/sites/",
     },
   }
 }
