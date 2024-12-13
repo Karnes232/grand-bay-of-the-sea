@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
     "max-image-preview": "large",
     "max-snippet": -1,
     "max-video-preview": -1,
-    googleBot: "index, follow",
+    googleBot: "noindex",
   },
   // alternates: {
   //   types: {
@@ -54,13 +54,13 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/favicon.ico",
+        url: "../favicon.ico",
         type: "image/x-icon",
       },
     ],
     shortcut: [
       {
-        url: "/favicon.ico",
+        url: "../favicon.ico",
         type: "image/x-icon",
       },
     ],

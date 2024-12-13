@@ -3,6 +3,7 @@ import DiveSites from "@/components/DiveSitesComponents/DiveSites"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import LocalDivesOverview from "@/components/TourOverviews/LocalDivesOverview"
+import TuiLocalDiveOverview from "@/components/TuiComponents/TuiLocalDiveOverview"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
@@ -60,14 +61,6 @@ export default async function Page() {
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Sites",
   })
-  const overviewInfo = await getAllEntries("localDiveOverview")
-  const sharkDive = await searchEntries(
-    "tours",
-    {
-      "fields.page": "Shark Dive Punta Cana",
-    },
-    ["fields.price"],
-  )
   return (
     <main>
       <HeroComponent
@@ -78,10 +71,7 @@ export default async function Page() {
       <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
         <RichText context={pageLayout.items[0].fields.paragraph1} />
         <div className="lg:w-[45rem]">
-          <LocalDivesOverview
-            info={overviewInfo[0].fields as any}
-            sharkPrice={sharkDive.items[0].fields.price as number}
-          />
+          <TuiLocalDiveOverview />
         </div>
       </div>
       <DiveSites />

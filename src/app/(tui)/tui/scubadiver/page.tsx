@@ -1,8 +1,8 @@
 import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
 import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
-import CourseOverview from "@/components/CourseComponents/CourseOverview"
 import RichText from "@/components/RichTextComponents/RichText"
-import { getAllEntries, searchEntries } from "@/lib/contentful"
+import TuiScubaDiverOverview from "@/components/TuiComponents/TuiScubaDiverOverview"
+import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
 export async function generateMetadata(
@@ -12,7 +12,7 @@ export async function generateMetadata(
   const seoSearchResults = await searchEntries(
     "course",
     {
-      "fields.slug": params.slug,
+      "fields.slug": "scubadiver",
     },
     [
       "fields.seoTitle",
@@ -26,7 +26,7 @@ export async function generateMetadata(
     description: String(seoSearchResults.items[0].fields.seoDescription),
     keywords: seoSearchResults.items[0].fields.seoKeywords as string[],
     openGraph: {
-      url: `https://www.grandbay-puntacana.com/courses/${params.slug}`,
+      url: `https://www.grandbay-puntacana.com/tui/scubadiver`,
       type: "website",
       title: String(seoSearchResults.items[0].fields.seoTitle),
       description: String(seoSearchResults.items[0].fields.seoDescription),
@@ -59,14 +59,14 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: `https://www.grandbay-puntacana.com/courses/${params.slug}`,
+      canonical: `https://www.grandbay-puntacana.com/tui/scubadiver/`,
     },
   }
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const course = await searchEntries("course", {
-    "fields.slug": params.slug,
+    "fields.slug": "scubadiver",
   })
   return (
     <main>
@@ -80,7 +80,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
             <RichText context={course.items[0].fields.paragraph1} />
           </div>
           <div className="lg:w-[45rem] xl:mx-10 lg:min-h-full lg:flex lg:flex-col md:justify-center">
-            <CourseOverview course={course.items[0]} />
+            <TuiScubaDiverOverview />
           </div>
           <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:justify-center xl:mt-0">
             <RichText context={course.items[0].fields.paragraph2} />

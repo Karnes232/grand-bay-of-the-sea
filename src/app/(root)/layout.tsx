@@ -54,13 +54,13 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/favicon.ico",
+        url: "../favicon.ico",
         type: "image/x-icon",
       },
     ],
     shortcut: [
       {
-        url: "/favicon.ico",
+        url: "../favicon.ico",
         type: "image/x-icon",
       },
     ],
