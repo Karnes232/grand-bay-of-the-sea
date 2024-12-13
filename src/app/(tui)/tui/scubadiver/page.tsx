@@ -64,7 +64,11 @@ export async function generateMetadata(
   }
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
   const course = await searchEntries("course", {
     "fields.slug": "scubadiver",
   })
