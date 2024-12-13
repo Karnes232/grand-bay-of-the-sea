@@ -1,6 +1,7 @@
 import React from "react"
 import Link from "next/link"
 import "@/styles/header/header.css"
+import DropDownMenu from "./DropDownMenu"
 const Links = () => {
   const links = [
     { href: "/", label: "Home" },
@@ -13,11 +14,35 @@ const Links = () => {
   ]
   return (
     <>
-      {links.map(link => (
-        <Link href={link.href} className="no-underline" key={link.href}>
-          <button className="navLinks">{link.label}</button>
-        </Link>
-      ))}
+      <Link href="/" className="no-underline">
+        <button className="navLinks">Home</button>
+      </Link>
+      <Link href="/courses" className="no-underline">
+        <button className="navLinks">Scuba Classes</button>
+      </Link>
+      <DropDownMenu
+        name="Dive Packages"
+        subItems={[
+          { name: "Local Dives", url: "/sites" },
+          { name: "Shark Dive", url: "/shark-dive-punta-cana" },
+          { name: "Dive Trips", url: "/trips" },
+        ]}
+        useHover
+      />
+      <Link href="/fishing-punta-cana" className="no-underline">
+        <button className="navLinks">Deep Sea Fishing</button>
+      </Link>
+      <DropDownMenu
+        name="Photo Gallery"
+        subItems={[
+          { name: "Photo Gallery", url: "/photo-gallery" },
+          { name: "Species Guide", url: "/species" },
+        ]}
+        useHover
+      />
+      <Link href="/contact" className="no-underline">
+        <button className="navLinks">Contact Us</button>
+      </Link>
     </>
   )
 }
