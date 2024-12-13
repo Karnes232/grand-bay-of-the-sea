@@ -10,10 +10,11 @@ export async function generateMetadata(
   { params }: { params: { slug: string } },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { slug } = await params
   const seoSearchResults = await searchEntries(
     "tours",
     {
-      "fields.slug": params.slug,
+      "fields.slug": slug,
     },
     [
       "fields.seoTitle",
@@ -29,7 +30,7 @@ export async function generateMetadata(
     description: String(seoSearchResults.items[0].fields.seoDescription),
     keywords: seoSearchResults.items[0].fields.seoKeywords as string[],
     openGraph: {
-      url: `https://www.grandbay-puntacana.com/trips/${params.slug}`,
+      url: `https://www.grandbay-puntacana.com/trips/${slug}`,
       type: "website",
       title: String(seoSearchResults.items[0].fields.seoTitle),
       description: String(seoSearchResults.items[0].fields.seoDescription),
@@ -62,16 +63,17 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: `https://www.grandbay-puntacana.com/trips/${params.slug}/`,
+      canonical: `https://www.grandbay-puntacana.com/trips/${slug}/`,
     },
   }
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
+  const { slug } = await params
   const tour = await searchEntries(
     "tours",
     {
-      "fields.slug": params.slug,
+      "fields.slug": slug,
     },
     undefined,
     ["fishing-punta-cana", "shark-dive-punta-cana"],

@@ -2,8 +2,9 @@ import React from "react"
 import Image from "next/image"
 import { headers } from "next/headers"
 import { isMobile } from "@/utils/isMobile"
-const HeroComponent = ({ heroImage }: { heroImage: string }) => {
-  const userAgent = headers().get("user-agent") || ""
+const HeroComponent = async ({ heroImage }: { heroImage: string }) => {
+  const headersList = await headers()
+  const userAgent = headersList.get("user-agent")
   const mobileCheck = isMobile(userAgent)
 
   return (

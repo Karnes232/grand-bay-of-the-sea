@@ -8,7 +8,7 @@ const CustomPayPal = ({ price }) => {
       <PayPalScriptProvider
         options={{
           clientId:
-            "AWKpOxlq063t4e3-YvGIHBWohFbzZ_o0Y1M2juHc6EaAr5iK_UfOAEKb_YxhdpRvC5uu_Sj444MyUzmZ",
+            "AaPiNuBE-3bjn86CtDSbnbs5nnaeQ-vNhBk48DdMwZ0vsUYGVuE1_38burybKxv_Qn78gXQYUSKf1UG0",
           components: "buttons",
           currency: "USD",
         }}
