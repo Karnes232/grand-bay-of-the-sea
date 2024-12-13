@@ -4,6 +4,7 @@ import "../globals.css"
 import Header from "@/components/layout/HeaderComponents/Header"
 import Footer from "@/components/layout/FooterComponents/Footer"
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google"
+import { generateStructuredData } from "@/components/StructuredData/StructuredData"
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -79,6 +80,12 @@ export default function RootLayout({
       <GoogleAnalytics gaId="G-JDL6KCYRYD" />
       <head>
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateStructuredData()),
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
