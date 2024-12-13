@@ -1,6 +1,5 @@
 import React from "react"
 import Image from "next/image"
-
 const HeroComponent = ({ heroImage }: { heroImage: string }) => {
   return (
     <div className="absolute top-0 w-full h-[55vh] lg:h-[80vh]">
@@ -11,7 +10,7 @@ const HeroComponent = ({ heroImage }: { heroImage: string }) => {
           fill
           className="object-cover object-[40%_50%] z-0"
           priority
-          quality={100}
+          quality={75}
         />
         <div className="absolute inset-0 z-10 bg-[linear-gradient(to_bottom,rgba(245,246,252,0.52),rgba(0,0,0,0.73))]" />
       </div>

@@ -12,24 +12,28 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid"
 
 // Define types for the component props
 interface SubItem {
-  name: string;
-  url: string;
+  name: string
+  url: string
 }
 
 interface DropDownMenuProps {
-  name: string;
-  subItems: SubItem[];
-  useHover?: boolean;
+  name: string
+  subItems: SubItem[]
+  useHover?: boolean
 }
 
-const DropDownMenu: React.FC<DropDownMenuProps> = ({ name, subItems, useHover = false }) => {
+const DropDownMenu: React.FC<DropDownMenuProps> = ({
+  name,
+  subItems,
+  useHover = false,
+}) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const timeoutDuration = 200
   let timeout: NodeJS.Timeout | null = null
 
   const openMenu = () => buttonRef.current?.click()
-  
+
   const closeMenu = () => {
     if (dropdownRef.current) {
       dropdownRef.current.dispatchEvent(
@@ -37,7 +41,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ name, subItems, useHover = 
           key: "Escape",
           bubbles: true,
           cancelable: true,
-        })
+        }),
       )
     }
   }
@@ -101,7 +105,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ name, subItems, useHover = 
                       {({ focus }) => (
                         <Link
                           href={item.url}
-                          className={`font-lato uppercase text-black no-underline mx-3 ${focus ? 'bg-blue-100' : ''}`}
+                          className={`font-lato uppercase text-black no-underline mx-3 ${focus ? "bg-blue-100" : ""}`}
                         >
                           {item.name}
                         </Link>

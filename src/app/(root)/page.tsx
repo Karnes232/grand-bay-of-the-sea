@@ -62,7 +62,6 @@ export default async function Home(props: any) {
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Index",
   })
-
   return (
     <main>
       <HeroComponent
