@@ -9,28 +9,52 @@ import {
 } from "@headlessui/react"
 import Link from "next/link"
 import { ChevronDownIcon } from "@heroicons/react/20/solid"
-const DropDownMenu = ({ name, subItems, useHover }) => {
-  const buttonRef = useRef(null)
-  const dropdownRef = useRef(null)
+
+// Define types for the component props
+interface SubItem {
+  name: string;
+  url: string;
+}
+
+interface DropDownMenuProps {
+  name: string;
+  subItems: SubItem[];
+  useHover?: boolean;
+}
+
+const DropDownMenu: React.FC<DropDownMenuProps> = ({ name, subItems, useHover = false }) => {
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const dropdownRef = useRef<HTMLDivElement>(null)
   const timeoutDuration = 200
-  let timeout
+  let timeout: NodeJS.Timeout | null = null
 
-  const openMenu = () => buttonRef?.current.click()
-  const closeMenu = () =>
-    dropdownRef?.current?.dispatchEvent(
-      new KeyboardEvent("keydown", {
-        key: "Escape",
-        bubbles: true,
-        cancelable: true,
-      }),
-    )
-
-  const onMouseEnter = closed => {
-    clearTimeout(timeout)
-    closed && openMenu()
+  const openMenu = () => buttonRef.current?.click()
+  
+  const closeMenu = () => {
+    if (dropdownRef.current) {
+      dropdownRef.current.dispatchEvent(
+        new KeyboardEvent("keydown", {
+          key: "Escape",
+          bubbles: true,
+          cancelable: true,
+        })
+      )
+    }
   }
-  const onMouseLeave = open => {
-    open && (timeout = setTimeout(() => closeMenu(), timeoutDuration))
+
+  const onMouseEnter = (closed: boolean) => {
+    if (timeout) {
+      clearTimeout(timeout)
+    }
+    if (closed) {
+      openMenu()
+    }
+  }
+
+  const onMouseLeave = (open: boolean) => {
+    if (open) {
+      timeout = setTimeout(() => closeMenu(), timeoutDuration)
+    }
   }
 
   return (
@@ -46,8 +70,6 @@ const DropDownMenu = ({ name, subItems, useHover }) => {
             <MenuButton
               ref={buttonRef}
               className={`navLinks text-black`}
-              //   as={useHover ? "a" : "button"}
-              //   href={useHover ? url : null}
               translate="no"
             >
               {name}
@@ -73,20 +95,20 @@ const DropDownMenu = ({ name, subItems, useHover }) => {
               className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
             >
               <div className="py-2 mt-2">
-                {subItems.map((item, index) => {
-                  return (
-                    <div className="py-2" key={index}>
-                      <MenuItem>
+                {subItems.map((item, index) => (
+                  <div className="py-2" key={index}>
+                    <MenuItem>
+                      {({ focus }) => (
                         <Link
                           href={item.url}
-                          className={`font-lato uppercase text-black no-underline mx-3 data-[focus]:bg-blue-100`}
+                          className={`font-lato uppercase text-black no-underline mx-3 ${focus ? 'bg-blue-100' : ''}`}
                         >
                           {item.name}
                         </Link>
-                      </MenuItem>
-                    </div>
-                  )
-                })}
+                      )}
+                    </MenuItem>
+                  </div>
+                ))}
               </div>
             </MenuItems>
           </Transition>
