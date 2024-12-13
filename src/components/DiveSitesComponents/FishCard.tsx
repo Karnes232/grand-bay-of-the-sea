@@ -21,6 +21,7 @@ const FishCard = ({ fish }) => {
           width={fish.image.fields?.file.details.image.width}
           height={fish.image.fields?.file.details.image.height}
           className="rounded-t-lg h-64 w-80 object-cover object-center"
+          quality={75}
         />
         <div className="p-6">
           <h5 className="text-gray-900 text-xl font-medium mb-2">

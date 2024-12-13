@@ -28,6 +28,7 @@ const SingleCourseCard = ({
           className="w-full h-80 object-cover"
           width={image.file.details.image.width}
           height={image.file.details.image.height}
+          quality={75}
         />
         <div className="px-6 py-4 h-28">
           <div className="font-bold text-xl mb-2">{title}</div>

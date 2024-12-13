@@ -44,6 +44,7 @@ const SwiperCarousel = ({
               width={photo.width}
               height={photo.height}
               className="h-[35vh] md:h-[45vh] lg:h-[55vh] xl:h-[65vh] object-cover w-full brightness-90"
+              quality={75}
             />
           </SwiperSlide>
         ))}

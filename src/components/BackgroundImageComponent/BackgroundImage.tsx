@@ -11,7 +11,7 @@ const BackgroundImage = ({ image }: { image: string }) => {
           fill
           className="object-cover object-[50%_70%]"
           loading="lazy"
-          quality={100}
+          quality={75}
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-black/20" />

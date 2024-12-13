@@ -23,6 +23,7 @@ const PadiBanner = async () => {
           (searchResults.items[0] as any).fields.padiLogo?.fields?.file.details
             .image.height
         }
+        quality={75}
       />
 
       <div className="hidden md:block">

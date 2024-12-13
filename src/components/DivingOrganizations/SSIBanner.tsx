@@ -25,6 +25,7 @@ const SSIBanner = async () => {
           (searchResults.items[0] as any).fields.ssiLogo?.fields?.file.details
             .image.height
         }
+        quality={75}
       />
       <a
         href="//my.divessi.com/extern/recent_certs.php/810013/2/100P/h/4/300/500"

@@ -26,6 +26,7 @@ const Logo = async () => {
               (searchResults.items[0] as any).fields.logo?.fields?.file.details
                 .image.height
             }
+            quality={75}
           />{" "}
         </div>
       </Link>

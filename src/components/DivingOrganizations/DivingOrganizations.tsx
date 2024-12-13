@@ -24,6 +24,7 @@ const DivingOrganizations = async () => {
             (searchResults.items[0] as any).fields.ssiLogo?.fields?.file.details
               .image.height
           }
+          quality={75}
         />
         <Image
           className="w-10/12 md:h-40 lg:w-1/2 mb-8 object-contain"

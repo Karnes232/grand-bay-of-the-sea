@@ -10,6 +10,7 @@ const Signature = () => {
         className="fixed bottom-5 right-10 w-48"
         width={signature.width}
         height={signature.height}
+        quality={75}
       />
     </div>
   )

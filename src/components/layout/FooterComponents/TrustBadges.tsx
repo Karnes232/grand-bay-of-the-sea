@@ -15,6 +15,7 @@ const TrustBadges = () => {
             alt="Kayak Featured Tour"
             width={500}
             height={200}
+            quality={75}
           />
         </a>
       </div>

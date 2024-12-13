@@ -47,6 +47,7 @@ const DiveSiteCard = ({ diveSite }) => {
               width={diveSite.image.fields?.file.details.image.width}
               height={diveSite.image.fields?.file.details.image.height}
               className="rounded-t-lg h-64 w-80 object-cover object-center"
+              quality={75}
             />
           </>
         )}
