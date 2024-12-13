@@ -59,7 +59,7 @@ export default async function Home(props: any) {
     {
       "fields.page": "Courses",
     },
-    ["fields.heroImage", "fields.mobileHeroImage"],
+    ["fields.heroImage"],
   )
   return (
     <main>
