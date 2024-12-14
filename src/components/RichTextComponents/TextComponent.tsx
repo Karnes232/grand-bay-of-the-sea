@@ -27,7 +27,7 @@ const TextComponent = ({
         }}
         className="flex flex-col items-center justify-center text-center max-w-6xl mx-5 md:p-6 lg:p-2 xl:mx-auto"
       >
-        {heading === "h1" || heading === undefined ? (
+        {heading === "h1" ? (
           <h1
             className={`text-2xl font-semibold mb-5 ${className} md:text-4xl`}
           >
