@@ -5,6 +5,7 @@ import Header from "@/components/layout/HeaderComponents/Header"
 import Footer from "@/components/layout/FooterComponents/Footer"
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google"
 import { generateStructuredData } from "@/components/StructuredData/StructuredData"
+import RemoveSW from "@/components/layout/RemoveSW"
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -90,6 +91,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <RemoveSW />
         <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
           <Header />
           {children}

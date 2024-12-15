@@ -3,6 +3,7 @@ import localFont from "next/font/local"
 import "../../../app/globals.css"
 import TuiHeader from "@/components/layout/TuiLayout/TuiHeader"
 import TuiFooter from "@/components/layout/TuiLayout/TuiFooter"
+import RemoveSW from "@/components/layout/RemoveSW"
 
 const geistSans = localFont({
   src: "../../(root)/fonts/GeistVF.woff",
@@ -80,6 +81,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <RemoveSW />
         <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
           <TuiHeader />
           {children}
