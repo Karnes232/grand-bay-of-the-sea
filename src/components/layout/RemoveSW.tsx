@@ -10,6 +10,7 @@ const RemoveSW = () => {
         })
       })
     }
+    location.reload()
   }, [])
   return <></>
 }
