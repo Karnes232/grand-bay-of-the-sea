@@ -7,7 +7,7 @@ export function ServiceWorkerCleanup() {
     const cleanupServiceWorkers = () => {
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then((registrations) => {
-          for (let registration of registrations) {
+          for (const registration of registrations) {
             // Check if the service worker is specifically from the Gatsby site
             if (registration.scope.includes("https://grandbay-2.netlify.app/")) {
               registration.unregister();
