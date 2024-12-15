@@ -11,7 +11,7 @@ const TripCards = ({
   image3: any
 }) => {
   return (
-    <div className="h-[95vh] md:h-[45vh] lg:h-[65vh]">
+    <div className="h-[100vh] md:h-[45vh] lg:h-[65vh]">
       <div className="flex flex-col h-full justify-evenly items-center  max-w-6xl mx-5 md:flex-row xl:mx-auto gap-10">
         <IndividualTrip
           name="Catalina Island"

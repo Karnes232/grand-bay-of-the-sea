@@ -29,9 +29,9 @@ const LinkComponent = ({
         <Image
           src={`https:${image?.url}`}
           alt="Logo"
-          width={image.details.image.width}
-          height={image.details.image.height}
-          className="h-24 w-24 md:h-36 md:w-36 object-cover my-2 rounded-full border-solid border-[1px] border-black"
+          width={125}
+          height={125}
+          className="h-24 w-24 md:h-36 md:w-36 object-cover my-2 rounded-full"
           quality={75}
         />
       </div>
