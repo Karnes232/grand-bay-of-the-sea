@@ -5,7 +5,6 @@ import TuiHeader from "@/components/layout/TuiLayout/TuiHeader"
 import TuiFooter from "@/components/layout/TuiLayout/TuiFooter"
 import { ServiceWorkerCleanup } from "@/components/layout/ServiceWorkerCleanup"
 
-
 const geistSans = localFont({
   src: "../../(root)/fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -82,7 +81,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <ServiceWorkerCleanup />
+        <ServiceWorkerCleanup />
         <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
           <TuiHeader />
           {children}

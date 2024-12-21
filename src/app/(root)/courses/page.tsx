@@ -1,4 +1,5 @@
 import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
+import AdvancedCourseCards from "@/components/CourseCardsComponents/AdvancedCourseCards"
 import CourseCards from "@/components/CourseCardsComponents/CourseCards"
 import PadiBanner from "@/components/DivingOrganizations/PadiBanner"
 import SSIBanner from "@/components/DivingOrganizations/SSIBanner"
@@ -80,8 +81,14 @@ export default async function Page() {
         image3={(pageLayout.items[0] as any).fields.linkImage3.fields}
         image4={(pageLayout.items[0] as any).fields.linkImage4.fields}
       />
-      <SSIBanner />
       <RichText context={pageLayout.items[0].fields.paragraph3} />
+      <AdvancedCourseCards
+        image1={(pageLayout.items[0] as any).fields.linkImage5.fields}
+        image2={(pageLayout.items[0] as any).fields.linkImage6.fields}
+        image3={(pageLayout.items[0] as any).fields.linkImage7.fields}
+        image4={(pageLayout.items[0] as any).fields.linkImage8.fields}
+      />
+      <SSIBanner />
       <PadiBanner />
     </main>
   )

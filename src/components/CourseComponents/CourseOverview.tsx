@@ -12,25 +12,26 @@ const CourseOverview = ({ course }: { course: any }) => {
         <h4 className="text-xl font-semibold mb-1 xl:text-3xl">
           <strong>Course Overview</strong>
         </h4>
-        <p className="my-1 text-sm md:text-base xl:text-lg">
-          Course Level: {course.fields.level}
+        <p className="my-1 text-center text-sm md:text-base xl:text-lg">
+          <b>Course Level:</b> {course.fields.level}
         </p>
         {course.fields.padiPrice && (
           <p className="my-1 text-sm md:text-base xl:text-lg">
-            PADI Price: ${course.fields.padiPrice} per person
+            <b>PADI Price:</b> ${course.fields.padiPrice} per person
           </p>
         )}
         {course.fields.ssiPrice && (
           <p className="my-1 text-sm md:text-base xl:text-lg">
-            SSI Price: ${course.fields.ssiPrice} per person
+            <b>SSI Price:</b> ${course.fields.ssiPrice} per person
           </p>
         )}
 
         <p className="my-1 text-sm md:text-base xl:text-lg">
-          Duration: {course.fields.duration}
+          <b>Duration: </b>
+          {course.fields.duration}
         </p>
         <p className="my-1 text-sm md:text-base xl:text-lg">
-          Includes: Transport
+          <b> Includes: </b>Transport
         </p>
         {course.fields.extraInfo && (
           <p className="my-1 text-sm md:text-base xl:text-lg">
@@ -61,7 +62,9 @@ const CourseOverview = ({ course }: { course: any }) => {
         </p>
         <p className="mt-1">Only a 50% deposit</p>
       </div>
-      <CustomPayPal price={course.fields.ssiPrice / 2} />
+      <CustomPayPal
+        price={course.fields.ssiPrice / 2 || course.fields.padiPrice / 2}
+      />
     </div>
   )
 }
