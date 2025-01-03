@@ -16,11 +16,11 @@ const IndividualTrip = ({
   return (
     <Link
       href={url}
-      className="no-underline flex flex-col justify-between items-center cursor-pointer text-center selection-links lg:h-80 md:justify-start"
+      className="no-underline flex flex-col justify-between items-center cursor-pointer text-center selection-links lg:h-80 md:justify-start "
     >
       <div className="flex flex-col justify-center items-center lg:h-64 lg:justify-around">
         <h2
-          className={`text-lg text-black font-semibold md:text-2xl lg:text-3xl`}
+          className={`text-lg text-black dark:text-white font-semibold md:text-2xl lg:text-3xl`}
         >
           {name}
         </h2>
@@ -34,7 +34,7 @@ const IndividualTrip = ({
         />
       </div>
 
-      <p className={`text-sm text-black mx-16 md:mx-2 md:text-lg`}>
+      <p className={`text-sm text-black dark:text-white mx-16 md:mx-2 md:text-lg`}>
         {description}
       </p>
     </Link>

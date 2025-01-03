@@ -20,8 +20,8 @@ const SingleCourseCard = ({
   hash3: string
 }) => {
   return (
-    <Link href={link} className="no-underline">
-      <div className="max-w-xs w-80 my-4 rounded overflow-hidden shadow-lg">
+    <Link href={link} className="no-underline ">
+      <div className="max-w-xs w-80 my-4 rounded overflow-hidden shadow-lg dark:bg-neutral-900">
         <Image
           src={`https:${image?.file?.url ?? ""}`}
           alt={image.title}
@@ -32,7 +32,7 @@ const SingleCourseCard = ({
         />
         <div className="px-6 py-4 h-40 flex flex-col">
           <div className="font-bold text-xl mb-2">{title}</div>
-          <p className="text-gray-700 text-base flex justify-center items-center flex-grow">
+          <p className="text-gray-700 dark:text-white text-base flex justify-center items-center flex-grow">
             {description}
           </p>
         </div>

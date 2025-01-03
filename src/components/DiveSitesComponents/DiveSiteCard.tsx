@@ -25,7 +25,7 @@ const DiveSiteCard = ({ diveSite }) => {
       }}
       className="flex justify-center m-4 w-80"
     >
-      <div className="rounded-lg shadow-lg bg-white max-w-sm">
+      <div className="rounded-lg shadow-lg bg-white dark:bg-neutral-900 max-w-sm">
         {diveSite.diveSite === "Shark Point" ? (
           <>
             <Link href="/shark-dive-punta-cana" className="no-underline">
@@ -63,15 +63,15 @@ const DiveSiteCard = ({ diveSite }) => {
             </>
           ) : (
             <>
-              <h5 className="text-gray-900 text-xl font-medium mb-2">
+              <h5 className="text-gray-900 dark:text-white text-xl font-medium mb-2">
                 {diveSite.diveSite}
               </h5>
             </>
           )}
-          <p className="text-lg text-gray-700 mb-2">
+          <p className="text-lg text-gray-700 dark:text-white mb-2">
             {diveSite.meters} meters / {diveSite.feet} feet
           </p>
-          <p className="text-gray-700 text-base mb-4">
+          <p className="text-gray-700 dark:text-white text-base mb-4">
             {readMore
               ? diveSite.description
               : `${diveSite.description.substring(0, 150)}...`}
