@@ -1,17 +1,31 @@
 import React from "react"
 import { searchEntries } from "@/lib/contentful"
-import Image from "next/image"
+import Image, { getImageProps } from "next/image"
 const PadiBanner = async () => {
   const searchResults = await searchEntries(
     "layout",
     {
       "fields.companyName": "Grand Bay of the Sea",
     },
-    ["fields.padiLogo"],
+    ["fields.padiLogoDark", "fields.padiLogo"],
   )
+
+  const commonPadi = { alt: "Padi Logo", width: 480, height: 150 }
+  const {
+    props: { srcSet: darkPadi },
+  } = getImageProps({
+    ...commonPadi,
+    src: `https:${(searchResults.items[0] as any).fields.padiLogoDark?.fields?.file?.url ?? ""}`,
+  })
+  const {
+    props: { srcSet: lightPadi, ...restPadi },
+  } = getImageProps({
+    ...commonPadi,
+    src: `https:${(searchResults.items[0] as any).fields.padiLogo?.fields?.file?.url ?? ""}`,
+  })
   return (
     <div className="mt-5 mb-10 mx-5 max-w-6xl md:mx-auto flex flex-col justify-center items-center">
-      <Image
+      {/* <Image
         className="w-10/12 lg:w-1/2 mb-8 object-cover"
         src={`https:${(searchResults.items[0] as any).fields.padiLogo?.fields?.file?.url ?? ""}`}
         alt="PADI Logo"
@@ -24,7 +38,12 @@ const PadiBanner = async () => {
             .image.height
         }
         quality={75}
-      />
+      /> */}
+      <picture className="mb-8 object-cover">
+        <source media="(prefers-color-scheme: dark)" srcSet={darkPadi} />
+        <source media="(prefers-color-scheme: light)" srcSet={lightPadi} />
+        <img {...restPadi} />
+      </picture>
 
       <div className="hidden md:block">
         <iframe

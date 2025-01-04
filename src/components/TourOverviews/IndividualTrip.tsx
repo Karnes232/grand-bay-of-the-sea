@@ -34,7 +34,9 @@ const IndividualTrip = ({
         />
       </div>
 
-      <p className={`text-sm text-black dark:text-white mx-16 md:mx-2 md:text-lg`}>
+      <p
+        className={`text-sm text-black dark:text-white mx-16 md:mx-2 md:text-lg`}
+      >
         {description}
       </p>
     </Link>
