@@ -6,23 +6,25 @@ const AdvancedCourseCards = ({
   image2,
   image3,
   image4,
+  image5,
 }: {
   image1: any
   image2: any
   image3: any
   image4: any
+  image5: any
 }) => {
   return (
     <div className="relative my-5 flex justify-center items-center">
-      <div className="flex flex-col md:flex-row md:flex-wrap md:justify-between lg:justify-around items-center justify-center text-center  max-w-4xl mx-5 md:p-6 xl:mx-auto">
+      <div className="flex flex-col md:flex-row md:flex-wrap md:justify-between lg:justify-around items-center justify-center text-center  max-w-6xl mx-5 md:p-6 xl:mx-auto">
         <SingleCourseCard
-          title="Peak Performance Buoyancy"
-          description="Master buoyancy control for smoother, more efficient and enjoyable dives."
-          image={image1}
-          link="/courses/peak-performance-buoyancy"
-          hash1="BuoyancyControl"
-          hash2="ScubaDiving"
-          hash3="PADI"
+          title="Shark Conservation Diver"
+          description="Experience thrilling shark dives while learning safety, behavior, and conservation skills."
+          image={image5}
+          link="/courses/shark-diver"
+          hash1="SharkDive"
+          hash2="ScubaAdventure"
+          hash3="MarineConservation"
         />
         <SingleCourseCard
           title="Enriched Air Nitrox"
@@ -49,6 +51,15 @@ const AdvancedCourseCards = ({
           link="/courses/deep-diver"
           hash1="ScubaAdventure"
           hash2="DeepDiving"
+          hash3="PADI"
+        />
+        <SingleCourseCard
+          title="Peak Performance Buoyancy"
+          description="Master buoyancy control for smoother, more efficient and enjoyable dives."
+          image={image1}
+          link="/courses/peak-performance-buoyancy"
+          hash1="BuoyancyControl"
+          hash2="ScubaDiving"
           hash3="PADI"
         />
       </div>

@@ -17,12 +17,7 @@ const CourseOverview = ({ course }: { course: any }) => {
         </p>
         {course.fields.padiPrice && (
           <p className="my-1 text-sm md:text-base xl:text-lg">
-            <b>PADI Price:</b> ${course.fields.padiPrice} per person
-          </p>
-        )}
-        {course.fields.ssiPrice && (
-          <p className="my-1 text-sm md:text-base xl:text-lg">
-            <b>SSI Price:</b> ${course.fields.ssiPrice} per person
+            <b>Price:</b> ${course.fields.padiPrice} per person
           </p>
         )}
 
