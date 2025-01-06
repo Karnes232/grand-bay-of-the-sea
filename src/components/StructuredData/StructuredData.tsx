@@ -18,7 +18,7 @@ export function generateStructuredData() {
       "https://twitter.com/GrandBayOfTheS1",
       "https://www.instagram.com/grandbayoftheseard/",
       "https://www.youtube.com/channel/UCpYWOhIwbVVLGYOxL0UAtTw",
-      "https://www.grandbay-puntacana.com/",
+      "https://grandbay-puntacana.com/",
     ],
   }
 }
