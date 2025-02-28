@@ -84,6 +84,7 @@ export default async function Home(props: any) {
         <SwiperCarousel
           photoList={(pageLayout.items[0] as any).fields.photoList}
           className={`mt-5 -mb-6 [clip-path:polygon(0_5vh,100%_0,100%_35vh,0%_100%)] md:[clip-path:polygon(0_5vh,100%_0,100%_45vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_55vh,0%_100%)] xl:[clip-path:polygon(0_5vh,100%_0,100%_65vh,0%_100%)]`}
+          height={`h-[35vh] md:h-[45vh] lg:h-[55vh] xl:h-[65vh]`}
         />
       </div>
     </main>
