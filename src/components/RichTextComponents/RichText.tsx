@@ -2,6 +2,7 @@ import React from "react"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import TextComponent from "./TextComponent"
+import Image from "next/image"
 
 const RichText = ({ context }) => {
   const options = {
@@ -91,23 +92,19 @@ const RichText = ({ context }) => {
         </div>
       ),
       [BLOCKS.EMBEDDED_ASSET]: (node: any, children: any) => {
-        let image = null
-        context.references.forEach((imageData: any) => {
-          if (imageData.contentful_id === node.data.target.sys.id) {
-            image = imageData
-          }
-        })
-        return null
-        // const imageGatsby = getImage(image.gatsbyImage);
-        // return (
-        //   <div className="flex justify-center items-center lg:justify-start">
-        //     <GatsbyImage
-        //       image={imageGatsby}
-        //       alt={image.title}
-        //       className="rounded-lg w-[20rem] mb-4 lg:w-[30rem]"
-        //     />
-        //   </div>
-        // );
+        return (
+          <div className="flex justify-center items-center">
+            <Image
+              src={`https:${node.data.target.fields.file.url}`}
+              alt={node.data.target.fields.title}
+              width={300}
+              height={300}
+              className="object-cover rounded-full h-40 w-40 md:h-60 md:w-60 xl:h-72 xl:w-72"
+              priority
+              quality={75}
+            />
+          </div>
+        )
       },
       [INLINES.HYPERLINK]: (node: any, children: any) => {
         return (

@@ -98,6 +98,7 @@ export default async function Page({
         <SwiperCarousel
           photoList={(tour.items[0] as any).fields.photoList}
           className={`mt-5 [clip-path:polygon(0_5vh,100%_0,100%_30vh,0%_100%)] md:[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_50vh,0%_100%)] xl:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
+          height={`h-[35vh] md:h-[45vh] lg:h-[55vh] xl:h-[65vh]`}
         />
         <div className="flex flex-col lg:flex-row lg:mx-auto max-w-6xl lg:h-[35rem]">
           <div className="lg:flex lg:flex-col lg:justify-start xl:min-h-full xl:justify-center xl:mt-0">

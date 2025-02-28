@@ -10,9 +10,11 @@ import Image from "next/image"
 const SwiperCarousel = ({
   photoList,
   className,
+  height,
 }: {
   photoList: any
   className: string
+  height: string
 }) => {
   const photoListEdited = photoList.map((photo: any) => {
     return {
@@ -23,9 +25,7 @@ const SwiperCarousel = ({
     }
   })
   return (
-    <div
-      className={`${className} relative h-[35vh] md:h-[45vh] lg:h-[55vh] xl:h-[65vh] my-2`}
-    >
+    <div className={`${className} relative  ${height} my-2`}>
       <Swiper
         effect={"fade"}
         loop={true}
@@ -34,7 +34,7 @@ const SwiperCarousel = ({
           disableOnInteraction: false,
         }}
         modules={[Autoplay, EffectFade]}
-        className={`mySwiper mt-3 h-[35vh] md:h-[45vh] lg:h-[55vh] xl:h-[65vh]`}
+        className={`mySwiper mt-3 ${height}`}
       >
         {photoListEdited.map((photo: any, index: number) => (
           <SwiperSlide className="relative" key={index}>
@@ -43,7 +43,7 @@ const SwiperCarousel = ({
               alt={photo.title}
               width={photo.width}
               height={photo.height}
-              className="h-[35vh] md:h-[45vh] lg:h-[55vh] xl:h-[65vh] object-cover w-full brightness-90"
+              className={`${height} object-cover w-full brightness-90`}
               quality={75}
             />
           </SwiperSlide>
