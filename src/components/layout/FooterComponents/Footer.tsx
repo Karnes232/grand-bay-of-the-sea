@@ -2,9 +2,12 @@ import React from "react"
 import SocialMedia from "./SocialMedia"
 import "@/styles/footer/footer.css"
 import Sitemap from "./Sitemap"
-import TrustBadges from "./TrustBadges"
 import Copyright from "./Copyright"
 import Signature from "./Signature"
+import dynamic from "next/dynamic"
+
+const TrustBadges = dynamic(() => import("./TrustBadges"))
+
 const Footer = () => {
   return (
     <footer className="border-b bg-gray-800 shadow-sm w-screen">

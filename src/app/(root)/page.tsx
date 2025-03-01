@@ -1,12 +1,22 @@
 import { getAllEntries, searchEntries } from "@/lib/contentful"
+import dynamic from "next/dynamic"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
-import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
-import DivingOrganizations from "@/components/DivingOrganizations/DivingOrganizations"
-import BackgroundImage from "@/components/BackgroundImageComponent/BackgroundImage"
-import GoogleMaps from "@/components/GoogleMapsComponent/GoogleMaps"
 import { Metadata, ResolvingMetadata } from "next"
+
+const BackgroundVideo = dynamic(
+  () => import("@/components/BackgroundVideoComponent/BackgroundVideo"),
+)
+const DivingOrganizations = dynamic(
+  () => import("@/components/DivingOrganizations/DivingOrganizations"),
+)
+const BackgroundImage = dynamic(
+  () => import("@/components/BackgroundImageComponent/BackgroundImage"),
+)
+const GoogleMaps = dynamic(
+  () => import("@/components/GoogleMapsComponent/GoogleMaps"),
+)
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
