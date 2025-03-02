@@ -81,9 +81,7 @@ export default async function Home(props: any) {
           <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:mt-0">
             <RichText context={pageLayout.items[0].fields.paragraph1} />
           </div>
-          {/* <div className="lg:w-[45rem] xl:mx-10 lg:min-h-full lg:flex lg:flex-col md:justify-start md:mt-2 lg:mt-7 2xl:mt-14">
-            <TripOverview tour={pageLayout.items[0].fields} />
-          </div> */}
+
           <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:mt-0">
             <RichText context={pageLayout.items[0].fields.paragraph2} />
           </div>
