@@ -3,11 +3,11 @@ import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    let options = []
+    const options = []
     const courses = await getAllEntries('course') // Replace 'paymentContent' with your actual content type ID
     courses.forEach((course) => {
-        let deposit = Number(course.fields.padiPrice) / 2
-        let obj = {
+        const deposit = Number(course.fields.padiPrice) / 2
+        const obj = {
             title: `${course.fields.course} - Course`,
             price: course.fields.padiPrice,
             deposit: deposit
@@ -16,7 +16,7 @@ export async function GET() {
     })
     const overviewInfo = await getAllEntries("localDiveOverview")
     overviewInfo.forEach((dive) => {
-        let obj = {
+        const obj = {
             title: `${dive.fields.title} - Dive Package`,
             price: dive.fields.twoTankDive,
             deposit: dive.fields.depositPrice
@@ -26,7 +26,7 @@ export async function GET() {
 
     const tours = await getAllEntriesExcludingSlugs('tours', ['whale-watching-adventure', 'silverbank-expedition']);
     tours.forEach((tour) => {
-        let obj = {
+        const obj = {
             title: `${tour.fields.page} - Dive Trip`,
             price: tour.fields.price,
             deposit: tour.fields.depositPrice
