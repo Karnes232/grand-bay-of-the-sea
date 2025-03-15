@@ -9,6 +9,8 @@ import {
 import DatePickerComponent from "./DatePickerComponent"
 import TourSelect from "./TourSelect"
 import CertificationLevel from "./CertificationLevel"
+import { submitBookingForm } from "@/app/(root)/actions"
+import { useRouter } from "next/navigation"
 
 interface DiveInfo {
   title: string
@@ -18,11 +20,10 @@ interface DiveInfo {
   depositPrice: number
 }
 
-const handleSubmit = async (formData: FormData) => {
-  console.log(formData)
-}
+
 
 const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
+  const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
 
   const [formData, setFormData] = useState({
@@ -34,6 +35,31 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
     tourSelect: "",
     certification: "",
   })
+
+  const handleSubmit = async (formData) => {
+    const result = await submitBookingForm(formData)
+    if (result.success) {
+      try {
+        const response = await fetch("/__forms.html", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams(result.data).toString(),
+        })
+
+        if (response.ok) {
+          router.push(`/thankyou/?name=${result.data.name}`)
+        } else {
+          // Handle error
+        }
+      } catch (error) {
+        console.error("Submission error:", error)
+      }
+    } else {
+      console.log("Submission error")
+    }
+  }
 
   const handleInputChange = e => {
     const { name, value } = e.target
@@ -54,7 +80,7 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
       })
     }
   }
-  console.log(formData)
+
   return (
     <>
       <button
@@ -166,19 +192,6 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
                     </label>
                   </div>
                   <div className="relative z-0 mb-6 w-full group">
-                    {/* <input
-                      type="text"
-                      name="certification"
-                      id="certification"
-                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                      placeholder=" "
-                    />
-                    <label
-                      htmlFor="certification"
-                      className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                    >
-                      Certification Level
-                    </label> */}
                     <CertificationLevel
                       setFormData={setFormData}
                       formData={formData}
@@ -193,6 +206,12 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
                   <div className="relative z-0 mb-6 w-full group">
                     <TourSelect setFormData={setFormData} formData={formData} />
                   </div>
+                  <button
+          type="submit"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Submit
+        </button>
                 </form>
               </div>
             </DialogPanel>
