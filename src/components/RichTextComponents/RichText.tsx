@@ -78,10 +78,14 @@ const RichText = ({ context }) => {
 
         return (
           <li key={children} className="text-sm text-left">
-            {children.map((child: any) => {
+            {children.map((child: any, index: number) => {
               // If the child is a paragraph, render it without text-center and explicitly set text-left
               if (node.nodeType === 'list-item') {
-                return <TextComponent paragraph={child.props.paragraph} pClassName="mb-1 text-left" />;
+                return <TextComponent 
+                  key={index}
+                  paragraph={child.props.paragraph} 
+                  pClassName="mb-1 text-left" 
+                />;
               }
               return child;
             })}
