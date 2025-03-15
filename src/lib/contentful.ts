@@ -45,3 +45,20 @@ export async function searchEntries(
   const entries = await client.getEntries(queryParams)
   return entries
 }
+
+export async function getAllEntriesExcludingSlugs(
+  contentType: string,
+  excludeSlugs: string[] = []
+) {
+  const queryParams: any = {
+    content_type: contentType,
+  }
+  
+  // Add the exclude slugs parameter if there are slugs to exclude
+  if (excludeSlugs && excludeSlugs.length > 0) {
+    queryParams["fields.slug[nin]"] = excludeSlugs.join(",")
+  }
+  
+  const entries = await client.getEntries(queryParams)
+  return entries.items
+}

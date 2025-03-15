@@ -46,7 +46,7 @@ const LocalDivesOverview = ({
           Other packages available upon request
         </p>
       </div>
-      <div className="flex flex-col justify-center w-[200px] h-[35px] mx-auto space-y-2 my-2">
+      <div className="flex flex-col justify-center w-[200px] h-[70px] mx-auto space-y-2 my-2">
         <Link href="/contact" className="no-underline w-[200px] h-[35px]">
           <button className="w-full h-full bg-[#2C2E2F] text-[#FFF] text-sm rounded-3xl px-5">
             <motion.p
@@ -70,7 +70,7 @@ const LocalDivesOverview = ({
         </p>
         <p className="mt-1">Only a ${info.depositPrice} deposit</p>
       </div>
-      <CustomPayPal price={info.depositPrice} />
+      {/* <CustomPayPal price={info.depositPrice} /> */}
     </div>
   )
 }
