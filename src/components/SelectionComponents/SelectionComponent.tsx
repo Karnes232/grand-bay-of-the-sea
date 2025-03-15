@@ -20,8 +20,8 @@ const SelectionComponent = ({
       ")",
   }
   return (
-    <div className="w-full h-[95vh] md:h-[50vh] lg:h-[75vh] my-5">
-      <div className="relative h-[95vh] md:h-[50vh] lg:h-[75vh] [clip-path:polygon(0%_5vh,100%_0%,100%_90vh,0%_100%)] md:[clip-path:polygon(0%_5vh,100%_0%,100%_45vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_70vh,0%_100%)]">
+    <div className="w-full h-[115vh] md:h-[60vh] lg:h-[75vh] my-5">
+      <div className="relative h-[115vh] md:h-[60vh] lg:h-[75vh] [clip-path:polygon(0%_5vh,100%_0%,100%_110vh,0%_100%)] md:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_70vh,0%_100%)]">
         {/* Background Image */}
         <Image
           src={secondaryHeroImage}
@@ -35,25 +35,25 @@ const SelectionComponent = ({
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/50" />
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col h-full justify-evenly items-center max-w-6xl mx-5 md:flex-row xl:mx-auto">
+        <div className="relative z-10 flex flex-col h-full justify-evenly items-center max-w-6xl mx-5 md:flex-row xl:mx-auto xl:space-x-4">
           <LinkComponent
-            name="Scuba Courses"
+            name="Learn to Dive with Experts"
             url="/courses"
-            description="Try diving for the first time, get certified, or upgrade your certification"
+            description="Discover the underwater world with our internationally certified instructors. From beginners to advanced divers, we offer courses for all levels."
             image={linkImage1}
             textColor="text-white"
           />
           <LinkComponent
-            name="Dive Packages"
+            name="Experience Our Best Dive Sites"
             url="/sites"
-            description="Dive for a day or more, and save on multiple dive packages"
+            description="Save with our value-packed dive packages designed for certified divers. Multi-day adventures to Punta Cana's premier dive locations."
             image={linkImage2}
             textColor="text-white"
           />
           <LinkComponent
-            name="Day Trips"
+            name="Caribbean Day Adventures"
             url="/trips"
-            description="Enjoy a day on the caribbean coast of the island, with its white sand and turquoise waters"
+            description="Explore the stunning islands of the Dominican Republic with our full-day excursions. Perfect for everyone, no diving experience required."
             image={linkImage3}
             textColor="text-white"
           />

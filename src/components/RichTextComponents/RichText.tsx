@@ -61,9 +61,10 @@ const RichText = ({ context }) => {
         />
       ),
       [BLOCKS.PARAGRAPH]: (node: any, children: any) => {
-        return(
-        <TextComponent paragraph={children} pClassName="mb-4 text-center" />
-      )},
+        return (
+          <TextComponent paragraph={children} pClassName="mb-4 text-center" />
+        )
+      },
       [BLOCKS.UL_LIST]: (node: any, children: any) => (
         <ul key={children} className="list-disc ml-5">
           {children}
@@ -75,19 +76,20 @@ const RichText = ({ context }) => {
         </ol>
       ),
       [BLOCKS.LIST_ITEM]: (node: any, children: any) => {
-
         return (
           <li key={children} className="text-sm text-left">
             {children.map((child: any, index: number) => {
               // If the child is a paragraph, render it without text-center and explicitly set text-left
-              if (node.nodeType === 'list-item') {
-                return <TextComponent 
-                  key={index}
-                  paragraph={child.props.paragraph} 
-                  pClassName="mb-1 text-left" 
-                />;
+              if (node.nodeType === "list-item") {
+                return (
+                  <TextComponent
+                    key={index}
+                    paragraph={child.props.paragraph}
+                    pClassName="mb-1 text-left"
+                  />
+                )
               }
-              return child;
+              return child
             })}
           </li>
         )

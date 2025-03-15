@@ -18,11 +18,11 @@ const LinkComponent = ({
   return (
     <Link
       href={url}
-      className="no-underline flex flex-col justify-between items-center cursor-pointer text-center selection-links md:h-52 lg:h-80 md:justify-start md:-mt-8"
+      className="no-underline flex flex-col justify-between items-center cursor-pointer text-center selection-links md:h-[26rem] lg:h-80 md:justify-start md:-mt-8"
     >
-      <div className="flex flex-col justify-center items-center lg:h-64 lg:justify-around">
+      <div className="flex flex-col justify-center items-center lg:h-64 lg:justify-between">
         <h2
-          className={`text-lg ${textColor} font-semibold md:text-2xl lg:text-3xl`}
+          className={`text-lg ${textColor} font-semibold md:text-2xl lg:text-3xl xl:w-72`}
         >
           {name}
         </h2>
