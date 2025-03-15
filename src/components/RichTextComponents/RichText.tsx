@@ -13,6 +13,9 @@ const RichText = ({ context }) => {
       [MARKS.ITALIC]: (text: string) => {
         return <span className="italic">{text}</span>
       },
+      [MARKS.UNDERLINE]: (text: string) => {
+        return <span className="underline">{text}</span>
+      },
     },
     renderNode: {
       [BLOCKS.HEADING_1]: (node: any, children: any) => (
@@ -54,12 +57,13 @@ const RichText = ({ context }) => {
         <TextComponent
           title={children}
           heading="h6"
-          className="my-5 2xl:mb-2 2xl:mt-10 text-lg md:text-xl text-center"
+          className="my-5 2xl:mb-2 2xl:mt-10 text-lg md:text-xl"
         />
       ),
-      [BLOCKS.PARAGRAPH]: (node: any, children: any) => (
-        <TextComponent paragraph={children} pClassName="mb-4" />
-      ),
+      [BLOCKS.PARAGRAPH]: (node: any, children: any) => {
+        return(
+        <TextComponent paragraph={children} pClassName="mb-4 text-center" />
+      )},
       [BLOCKS.UL_LIST]: (node: any, children: any) => (
         <ul key={children} className="list-disc ml-5">
           {children}
@@ -71,9 +75,16 @@ const RichText = ({ context }) => {
         </ol>
       ),
       [BLOCKS.LIST_ITEM]: (node: any, children: any) => {
+
         return (
-          <li key={children} className="text-sm ">
-            {children}
+          <li key={children} className="text-sm text-left">
+            {children.map((child: any) => {
+              // If the child is a paragraph, render it without text-center and explicitly set text-left
+              if (node.nodeType === 'list-item') {
+                return <TextComponent paragraph={child.props.paragraph} pClassName="mb-1 text-left" />;
+              }
+              return child;
+            })}
           </li>
         )
       },
@@ -118,7 +129,7 @@ const RichText = ({ context }) => {
   const textDocument = documentToReactComponents(context, options)
   return (
     <>
-      <div className="flex flex-col max-w-5xl mx-5 lg:p-2 xl:mx-auto">
+      <div className="flex flex-col lg:max-w-3xl xl:max-w-4xl mx-5 lg:mx-auto lg:p-2 xl:mx-auto ">
         {textDocument}
       </div>
     </>

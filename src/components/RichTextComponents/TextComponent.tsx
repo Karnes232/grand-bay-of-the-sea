@@ -25,7 +25,7 @@ const TextComponent = ({
           duration: 3,
           delay: 0.3,
         }}
-        className="flex flex-col items-center justify-center text-center max-w-6xl mx-5 md:p-6 lg:p-2 xl:mx-auto"
+        className=""
       >
         {heading === "h1" ? (
           <h1
@@ -75,7 +75,7 @@ const TextComponent = ({
         )}
         {paragraph ? (
           <p
-            className={`md:text-xl lg:mt-5`}
+            className={`md:text-xl lg:mt-5 ${pClassName}`}
             // dangerouslySetInnerHTML={{ __html: paragraph }}
           >
             {paragraph}
