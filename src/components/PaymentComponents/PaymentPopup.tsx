@@ -8,6 +8,7 @@ import {
 } from "@headlessui/react"
 import DatePickerComponent from "./DatePickerComponent"
 import TourSelect from "./TourSelect"
+import CertificationLevel from "./CertificationLevel"
 
 interface DiveInfo {
   title: string
@@ -23,18 +24,16 @@ const handleSubmit = async (formData: FormData) => {
 
 const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
   const [isOpen, setIsOpen] = useState(false)
- 
-  
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     hotel: "",
     guestCount: 1,
     date: "",
-    tourSelect: '',
-    // message: ''
+    tourSelect: "",
+    certification: "",
   })
-
 
   const handleInputChange = e => {
     const { name, value } = e.target
@@ -167,7 +166,7 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
                     </label>
                   </div>
                   <div className="relative z-0 mb-6 w-full group">
-                    <input
+                    {/* <input
                       type="text"
                       name="certification"
                       id="certification"
@@ -179,7 +178,11 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
                       className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
                       Certification Level
-                    </label>
+                    </label> */}
+                    <CertificationLevel
+                      setFormData={setFormData}
+                      formData={formData}
+                    />
                   </div>
                   <div className="relative z-0 mb-6 w-full group">
                     <DatePickerComponent
@@ -188,8 +191,7 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
                     />
                   </div>
                   <div className="relative z-0 mb-6 w-full group">
-                    <TourSelect setFormData={setFormData}
-                    formData={formData} />
+                    <TourSelect setFormData={setFormData} formData={formData} />
                   </div>
                 </form>
               </div>

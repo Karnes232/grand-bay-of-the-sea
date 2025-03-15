@@ -1,51 +1,49 @@
-import React, { useEffect, useState } from 'react'
-import Select from "react-select";
+import React, { useEffect, useState } from "react"
+import Select from "react-select"
 const TourSelect = ({ setFormData, formData }) => {
-    const [contentfulData, setContentfulData] = useState<any[]>([])
-    useEffect(() => {
-        const fetchContentfulData = async () => {
-          try {
-            const response = await fetch('/api/contentful')
-            if (!response.ok) {
-              throw new Error('Failed to fetch content')
-            }
-            const data = await response.json()
-            setContentfulData(data)
-          } catch (error) {
-            console.error('Error fetching Contentful data:', error)
-          } finally {
-          }
+  const [contentfulData, setContentfulData] = useState<any[]>([])
+  useEffect(() => {
+    const fetchContentfulData = async () => {
+      try {
+        const response = await fetch("/api/contentful")
+        if (!response.ok) {
+          throw new Error("Failed to fetch content")
         }
-    
-        fetchContentfulData()
-      }, [])
+        const data = await response.json()
+        setContentfulData(data)
+      } catch (error) {
+        console.error("Error fetching Contentful data:", error)
+      } finally {
+      }
+    }
 
-      const style = {
-        control: (base) => ({
-          ...base,
-          border: 1,
-          // This line disable the blue border
-          boxShadow: "none",
-        }),
-      };
+    fetchContentfulData()
+  }, [])
 
-      const options = []
-      contentfulData.map((tour) =>{
-        const option = {
-          value: tour.title,
-          label: tour.title,
-        }
-        return options.push(option);
-      })
+  const style = {
+    control: base => ({
+      ...base,
+      border: 1,
+      // This line disable the blue border
+      boxShadow: "none",
+    }),
+  }
 
-      console.log(options)
+  const options = []
+  contentfulData.map(tour => {
+    const option = {
+      value: tour.title,
+      label: tour.title,
+    }
+    return options.push(option)
+  })
 
-      const handleChange = e => {
-        setFormData({
-          ...formData,
-          'tourSelect': e.value
-        })
-      } 
+  const handleChange = e => {
+    setFormData({
+      ...formData,
+      tourSelect: e.value,
+    })
+  }
   return (
     <>
       <div className="relative mb-2 w-full group">

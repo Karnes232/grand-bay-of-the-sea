@@ -33,7 +33,7 @@ const DatePickerComponent = ({ setFormData, formData }) => {
         value={value}
         popoverDirection="up"
         onChange={handleValueChange}
-        inputClassName='pl-0'
+        inputClassName="pl-0"
       />
     </div>
   )
