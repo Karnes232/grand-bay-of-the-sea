@@ -29,6 +29,9 @@ const Sitemap = () => {
         <Link href="/fishing-punta-cana">
           <p className="footerSitemap">Deep Sea Fishing</p>
         </Link>
+        <Link href="/liveaboard-dominican-republic">
+          <p className="footerSitemap">Live Aboards</p>
+        </Link>
       </div>
       <div className="mx-8 flex flex-col justify-center md:space-x-8 md:pt-4 md:mx-auto md:max-w-2xl md:flex-row">
         <Link href="/species">
