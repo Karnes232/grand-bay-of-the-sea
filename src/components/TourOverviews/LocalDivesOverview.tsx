@@ -3,6 +3,7 @@ import Link from "next/link"
 import React from "react"
 import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
+import PaymentPopup from "../PaymentComponents/PaymentPopup"
 
 interface DiveInfo {
   title: string
@@ -45,7 +46,7 @@ const LocalDivesOverview = ({
           Other packages available upon request
         </p>
       </div>
-      <div className="flex justify-center w-[200px] h-[35px] mx-auto">
+      <div className="flex flex-col justify-center w-[200px] h-[35px] mx-auto space-y-2 my-2">
         <Link href="/contact" className="no-underline w-[200px] h-[35px]">
           <button className="w-full h-full bg-[#2C2E2F] text-[#FFF] text-sm rounded-3xl px-5">
             <motion.p
@@ -61,6 +62,7 @@ const LocalDivesOverview = ({
             </motion.p>
           </button>
         </Link>
+        <PaymentPopup tour={info} />
       </div>
       <div className="flex flex-col justify-center items-center mb-4">
         <p className="mb-1 mt-2">
