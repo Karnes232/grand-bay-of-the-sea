@@ -29,9 +29,9 @@ const TourSelect = ({ setFormData, formData }) => {
         }),
       };
 
-      let options = []
+      const options = []
       contentfulData.map((tour) =>{
-        let option = {
+        const option = {
           value: tour.title,
           label: tour.title,
         }
