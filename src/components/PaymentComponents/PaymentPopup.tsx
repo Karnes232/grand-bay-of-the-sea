@@ -50,7 +50,6 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
     }
   }, [formData.tourSelect, formData.guestCount])
 
-  console.log(formData)
 
   const handleSubmit = async formData => {
     const result = await submitBookingForm(formData)
