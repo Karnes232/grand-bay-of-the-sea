@@ -35,7 +35,7 @@ const PaymentPopup = ({ tour }: { tour: any }) => {
     deposit: tour.depositPrice,
     price: tour.price,
   })
-  console.log(formData)
+
   useEffect(() => {
     setFormData({
       ...formData,

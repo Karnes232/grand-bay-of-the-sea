@@ -38,7 +38,7 @@ export async function sendConfirmationEmail(bookingData) {
     // }
 
     let mailDetails = {
-      from: `${process.env.SMTP_USER}`,
+      from: `"Grand Bay of the Sea" ${process.env.SMTP_USER}`,
       replyTo: `grandbayofthesea@gmail.com`,
       to: bookingData.customerEmail,
       subject: "Grand Bay of the Sea",
