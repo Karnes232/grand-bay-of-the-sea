@@ -9,7 +9,7 @@ import {
 import DatePickerComponent from "./DatePickerComponent"
 import TourSelect from "./TourSelect"
 import CertificationLevel from "./CertificationLevel"
-import { submitBookingForm } from "@/app/(root)/actions"
+import { submitBookingForm, submitFishingForm } from "@/app/(root)/actions"
 import { useRouter } from "next/navigation"
 import CustomPayPalBookingForm from "../PayPalComponents/CustomPayPalBookingForm"
 
@@ -47,7 +47,7 @@ const PaymentPopupFishing = ({ tour }: { tour: any }) => {
   }, [formData.guestCount, formData.spectator])
 
   const handleSubmit = async formData => {
-    const result = await submitBookingForm(formData)
+    const result = await submitFishingForm(formData)
     if (result.success) {
       try {
         const response = await fetch("/__forms.html", {
