@@ -3,7 +3,7 @@ import Link from "next/link"
 import React from "react"
 import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
-import PaymentPopup from "../PaymentComponents/PaymentPopup"
+import PaymentPopupFishing from "../PaymentComponents/PaymentPopupFishing"
 
 interface Tour {
   price: number
@@ -56,7 +56,7 @@ const FishingOverview = ({ tour }: { tour: Tour }) => {
             </motion.p>
           </button>
         </Link>
-        <PaymentPopup tour={tour} />
+        <PaymentPopupFishing tour={tour} />
       </div>
       <div className="flex flex-col justify-center items-center mb-4">
         <p className="mb-1 mt-2">
