@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react"
 import Select from "react-select"
 const TourSelect = ({ setFormData, formData }) => {
-  const [contentfulData, setContentfulData] = useState<any[]>([])
-  useEffect(() => {
-    const fetchContentfulData = async () => {
-      try {
-        const response = await fetch("/api/contentful")
-        if (!response.ok) {
-          throw new Error("Failed to fetch content")
-        }
-        const data = await response.json()
-        setContentfulData(data)
-      } catch (error) {
-        console.error("Error fetching Contentful data:", error)
-      } finally {
-      }
-    }
+  // const [contentfulData, setContentfulData] = useState<any[]>([])
+  // useEffect(() => {
+  //   const fetchContentfulData = async () => {
+  //     try {
+  //       const response = await fetch("/api/contentful")
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch content")
+  //       }
+  //       const data = await response.json()
+  //       setContentfulData(data)
+  //     } catch (error) {
+  //       console.error("Error fetching Contentful data:", error)
+  //     } finally {
+  //     }
+  //   }
 
-    fetchContentfulData()
-  }, [])
+  //   fetchContentfulData()
+  // }, [])
 
   const style = {
     control: base => ({
@@ -29,14 +29,23 @@ const TourSelect = ({ setFormData, formData }) => {
     }),
   }
 
-  const options = []
-  contentfulData.map(tour => {
-    const option = {
-      value: tour.title,
-      label: tour.title,
-    }
-    return options.push(option)
-  })
+  const options = [
+    {
+      value: "Two Tank Dive",
+      label: "Two Tank Dive",
+    },
+    {
+      value: "Four Tank Package",
+      label: "Four Tank Package",
+    },
+  ]
+  // contentfulData.map(tour => {
+  //   const option = {
+  //     value: tour.title,
+  //     label: tour.title,
+  //   }
+  //   return options.push(option)
+  // })
 
   const handleChange = e => {
     setFormData({

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { IoClose } from "react-icons/io5"
 import {
   Description,
@@ -20,12 +20,9 @@ interface DiveInfo {
   depositPrice: number
 }
 
-
-
 const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,9 +31,28 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
     date: "",
     tourSelect: "",
     certification: "",
+    deposit: tour.depositPrice,
+    price: 0,
   })
 
-  const handleSubmit = async (formData) => {
+  useEffect(() => {
+    if (formData.tourSelect === "Two Tank Dive") {
+      setFormData({
+        ...formData,
+        price: tour.twoTankDive * formData.guestCount,
+      })
+    }
+    if (formData.tourSelect === "Four Tank Package") {
+      setFormData({
+        ...formData,
+        price: tour.fourTankPackage * formData.guestCount,
+      })
+    }
+  }, [formData.tourSelect, formData.guestCount])
+
+  console.log(formData)
+
+  const handleSubmit = async formData => {
     const result = await submitBookingForm(formData)
     if (result.success) {
       try {
@@ -119,6 +135,12 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
                 >
                   <input type="hidden" name="bot-field" />
                   <input type="hidden" name="form-name" value="booking" />
+                  <input
+                    type="hidden"
+                    name="deposit"
+                    value={formData.deposit}
+                  />
+                  <input type="hidden" name="price" value={formData.price} />
                   <div className="relative z-0 mb-6 w-full group">
                     <input
                       type="text"
@@ -207,11 +229,11 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
                     <TourSelect setFormData={setFormData} formData={formData} />
                   </div>
                   <button
-          type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Submit
-        </button>
+                    type="submit"
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Submit
+                  </button>
                 </form>
               </div>
             </DialogPanel>
