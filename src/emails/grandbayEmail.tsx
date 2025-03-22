@@ -20,8 +20,8 @@ export const grandbayEmail = ({
   excursionName = "Two Tank Dive",
   excursionDate = "June 1, 2025",
   guestCount = 2,
-  price = "250.00",
-  deposit = "50.00",
+  price = 250.0,
+  deposit = 50.0,
   certification = "Open Water",
   contactEmail = "grandbayofthesea@gmail.com",
   contactPhone = "+1 (829) 723-9338",
@@ -74,6 +74,10 @@ export const grandbayEmail = ({
 
               <Text className="font-bold text-gray-700">
                 Deposit: ${deposit}
+              </Text>
+
+              <Text className="font-bold text-gray-700">
+                Remaining Balance: ${price - deposit}
               </Text>
 
               <Text className="text-gray-700">

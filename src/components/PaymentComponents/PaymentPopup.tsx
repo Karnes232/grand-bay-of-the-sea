@@ -100,7 +100,7 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="bg-[#2C2E2F] text-[#FFF] text-sm rounded-3xl px-5  w-[200px] h-[35px]"
+        className="bg-[#FFC439] text-[#2C2E2F] font-bold text-sm rounded-3xl px-5  w-[200px] h-[35px]"
       >
         Book Now
       </button>
