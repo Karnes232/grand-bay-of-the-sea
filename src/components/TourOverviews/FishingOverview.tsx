@@ -3,6 +3,7 @@ import Link from "next/link"
 import React from "react"
 import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
+import PaymentPopup from "../PaymentComponents/PaymentPopup"
 
 interface Tour {
   price: number
@@ -39,7 +40,7 @@ const FishingOverview = ({ tour }: { tour: Tour }) => {
           Price: ${tour.privateCharter}
         </p>
       </div>
-      <div className="flex justify-center w-[200px] h-[35px] mx-auto">
+      <div className="flex flex-col justify-center w-[200px] h-[70px] mx-auto space-y-2 my-2">
         <Link href="/contact" className="no-underline w-[200px] h-[35px]">
           <button className=" bg-[#2C2E2F] text-[#FFF] text-sm rounded-3xl w-full h-full px-5">
             <motion.p
@@ -55,6 +56,7 @@ const FishingOverview = ({ tour }: { tour: Tour }) => {
             </motion.p>
           </button>
         </Link>
+        <PaymentPopup tour={tour} />
       </div>
       <div className="flex flex-col justify-center items-center mb-4">
         <p className="mb-1 mt-2">
@@ -62,7 +64,7 @@ const FishingOverview = ({ tour }: { tour: Tour }) => {
         </p>
         <p className="mt-1">Only a ${tour.depositPrice} deposit</p>
       </div>
-      <CustomPayPal price={tour.depositPrice} />
+      {/* <CustomPayPal price={tour.depositPrice} /> */}
     </div>
   )
 }
