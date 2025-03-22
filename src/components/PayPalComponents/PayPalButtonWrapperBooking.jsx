@@ -36,8 +36,9 @@ const PayPalButtonWrapperBooking = ({
       formData.hotel.trim() !== "" &&
       formData.guestCount > 0 &&
       formData.date !== "" &&
-      formData.tourSelect !== "" &&
-      formData.certification !== ""
+      formData.tourSelect !== ""
+      //&&
+      // formData.certification !== ""
     )
   }
 

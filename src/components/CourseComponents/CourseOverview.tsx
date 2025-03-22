@@ -4,6 +4,7 @@ import React from "react"
 import { motion } from "motion/react"
 import Link from "next/link"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
+import PaymentPopupCourses from "../PaymentComponents/PaymentPopupCourses"
 const CourseOverview = ({ course }: { course: any }) => {
   return (
     <div className="my-5">
@@ -34,7 +35,7 @@ const CourseOverview = ({ course }: { course: any }) => {
           </p>
         )}
       </div>
-      <div className="flex justify-center w-[200px] h-[35px] mx-auto">
+      <div className="flex flex-col justify-center w-[200px] h-[70px] mx-auto space-y-2 my-2">
         <Link href="/contact" className="no-underline w-[200px] h-[35px]">
           <button className=" bg-[#2C2E2F] text-[#FFF] text-sm rounded-3xl w-full h-full px-5">
             <motion.p
@@ -50,6 +51,10 @@ const CourseOverview = ({ course }: { course: any }) => {
             </motion.p>
           </button>
         </Link>
+        <PaymentPopupCourses
+          course={course.fields.course}
+          price={course.fields.padiPrice}
+        />
       </div>
       <div className="flex flex-col justify-center items-center mb-4">
         <p className="mb-1 mt-2">
@@ -57,9 +62,9 @@ const CourseOverview = ({ course }: { course: any }) => {
         </p>
         <p className="mt-1">Only a 50% deposit</p>
       </div>
-      <CustomPayPal
+      {/* <CustomPayPal
         price={course.fields.ssiPrice / 2 || course.fields.padiPrice / 2}
-      />
+      /> */}
     </div>
   )
 }
