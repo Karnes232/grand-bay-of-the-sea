@@ -96,7 +96,7 @@ export async function submitFishingForm(formData: any) {
     return {
       success: true,
       data: {
-        "form-name": "booking",
+        "form-name": "fishing",
         name: formData.name?.toString() || "",
         email: formData.email?.toString() || "",
         hotel: formData.hotel?.toString() || "",
