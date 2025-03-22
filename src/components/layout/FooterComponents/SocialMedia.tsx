@@ -1,6 +1,6 @@
 import { searchEntries } from "@/lib/contentful"
 import React from "react"
-import { FaFacebookF, FaInstagram } from "react-icons/fa"
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa"
 import { GrMail } from "react-icons/gr"
 const SocialMedia = async () => {
   const searchResults = await searchEntries(
@@ -35,6 +35,14 @@ const SocialMedia = async () => {
           rel="noreferrer"
         >
           <GrMail className="footerIcons" />
+        </a>
+        <a
+          href={`https://wa.me/18297239338`}
+          target="_blank"
+          aria-label="WhatsApp"
+          rel="noreferrer"
+        >
+          <FaWhatsapp className="footerIcons" />
         </a>
       </div>
     </div>

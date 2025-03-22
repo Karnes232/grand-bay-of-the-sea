@@ -53,7 +53,7 @@ const SelectionComponent = ({
           <LinkComponent
             name="Caribbean Day Adventures"
             url="/trips"
-            description="Explore the stunning islands of the Dominican Republic with our full-day excursions. Perfect for everyone, no diving experience required."
+            description="Explore the stunning islands of the Dominican Republic with our full-day excursions. Perfect for everyone."
             image={linkImage3}
             textColor="text-white"
           />

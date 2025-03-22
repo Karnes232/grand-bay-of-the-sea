@@ -1,5 +1,8 @@
 "use server"
-import { sendConfirmationEmail, sendConfirmationFishingEmail } from "@/app/actions/send-confirmation"
+import {
+  sendConfirmationEmail,
+  sendConfirmationFishingEmail,
+} from "@/app/actions/send-confirmation"
 export async function submitForm(formData: any) {
   const name = formData.get("name")
   const email = formData.get("email")
