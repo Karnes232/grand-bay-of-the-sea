@@ -49,7 +49,7 @@ export const grandbayEmail = ({
             <Section className="px-8 pt-6 pb-2">
               <Text className="text-gray-700">Hello {customerName},</Text>
               <Text className="text-gray-700">
-                Thank you for booking with us! We're excited to confirm your
+                Thank you for booking with us! We&apos;re excited to confirm your
                 upcoming diving excursion. Here are the details of your
                 reservation:
               </Text>
@@ -65,7 +65,6 @@ export const grandbayEmail = ({
               </Text>
 
               <Text className="text-gray-700">
-                myString = myString.replace(/\D/g,"");
                 <strong>Number of participants:</strong> {guestCount}
               </Text>
 
