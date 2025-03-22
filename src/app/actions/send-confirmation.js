@@ -6,8 +6,8 @@ import nodemailer from "nodemailer"
 
 export async function sendConfirmationEmail(bookingData) {
   try {
-    console.log("SMTP User exists:", !!process.env.SMTP_USER)
-    console.log("SMTP Password exists:", !!process.env.SMTP_PASSWORD)
+    // console.log("SMTP User exists:", !!process.env.SMTP_USER)
+    // console.log("SMTP Password exists:", !!process.env.SMTP_PASSWORD)
     // Create email HTML
     const emailComponent = grandbayEmail(bookingData)
     const emailHtml = render(emailComponent)
@@ -29,13 +29,13 @@ export async function sendConfirmationEmail(bookingData) {
       debug: true,
     })
 
-    try {
-      await transporter.verify()
-      console.log("SMTP connection verified successfully")
-    } catch (verifyError) {
-      console.error("SMTP verification failed:", verifyError)
-      throw new Error(`SMTP verification failed: ${verifyError.message}`)
-    }
+    // try {
+    //   await transporter.verify()
+    //   console.log("SMTP connection verified successfully")
+    // } catch (verifyError) {
+    //   console.error("SMTP verification failed:", verifyError)
+    //   throw new Error(`SMTP verification failed: ${verifyError.message}`)
+    // }
 
     let mailDetails = {
       from: `${process.env.SMTP_USER}`,

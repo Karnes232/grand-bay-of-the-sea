@@ -13,15 +13,15 @@ import { submitBookingForm } from "@/app/(root)/actions"
 import { useRouter } from "next/navigation"
 import CustomPayPalBookingForm from "../PayPalComponents/CustomPayPalBookingForm"
 
-// interface DiveInfo {
-//   page: string
-//   twoTankDive: number
-//   duration: string
-//   fourTankPackage: number
-//   depositPrice: number
-// }
+interface DiveInfo {
+  title: string
+  twoTankDive: number
+  duration: string
+  fourTankPackage: number
+  depositPrice: number
+}
 
-const PaymentPopup = ({ tour }: { tour: any }) => {
+const PaymentPopupLocalDives = ({ tour }: { tour: DiveInfo }) => {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const [formData, setFormData] = useState({
@@ -30,18 +30,26 @@ const PaymentPopup = ({ tour }: { tour: any }) => {
     hotel: "",
     guestCount: 1,
     date: "",
-    tourSelect: tour.page,
+    tourSelect: "",
     certification: "",
     deposit: tour.depositPrice,
-    price: tour.price,
+    price: 0,
   })
-  console.log(formData)
+
   useEffect(() => {
-    setFormData({
-      ...formData,
-      price: tour.price * formData.guestCount,
-    })
-  }, [formData.guestCount])
+    if (formData.tourSelect === "Two Tank Dive") {
+      setFormData({
+        ...formData,
+        price: tour.twoTankDive * formData.guestCount,
+      })
+    }
+    if (formData.tourSelect === "Four Tank Package") {
+      setFormData({
+        ...formData,
+        price: tour.fourTankPackage * formData.guestCount,
+      })
+    }
+  }, [formData.tourSelect, formData.guestCount])
 
   const handleSubmit = async formData => {
     const result = await submitBookingForm(formData)
@@ -245,25 +253,8 @@ const PaymentPopup = ({ tour }: { tour: any }) => {
                     />
                   </div>
                   <div className="relative z-0 mb-6 w-full group">
-                    <input
-                      type="text"
-                      name="tourSelect"
-                      id="tourSelect"
-                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                      placeholder=" "
-                      value={formData.tourSelect}
-                      readOnly
-                    />
-                    <label
-                      htmlFor="tourSelect"
-                      className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                    >
-                      Excursion
-                    </label>
-                  </div>
-                  {/* <div className="relative z-0 mb-6 w-full group">
                     <TourSelect setFormData={setFormData} formData={formData} />
-                  </div> */}
+                  </div>
                   {/* <button
                     type="submit"
                     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -285,4 +276,4 @@ const PaymentPopup = ({ tour }: { tour: any }) => {
   )
 }
 
-export default PaymentPopup
+export default PaymentPopupLocalDives

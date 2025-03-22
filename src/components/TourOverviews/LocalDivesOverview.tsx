@@ -3,7 +3,7 @@ import Link from "next/link"
 import React from "react"
 import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
-import PaymentPopup from "../PaymentComponents/PaymentPopup"
+import PaymentPopupLocalDives from "../PaymentComponents/PaymentPopupLocalDives"
 
 interface DiveInfo {
   title: string
@@ -62,7 +62,7 @@ const LocalDivesOverview = ({
             </motion.p>
           </button>
         </Link>
-        <PaymentPopup tour={info} />
+        <PaymentPopupLocalDives tour={info} />
       </div>
       <div className="flex flex-col justify-center items-center mb-4">
         <p className="mb-1 mt-2">
