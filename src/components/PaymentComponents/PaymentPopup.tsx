@@ -11,6 +11,7 @@ import TourSelect from "./TourSelect"
 import CertificationLevel from "./CertificationLevel"
 import { submitBookingForm } from "@/app/(root)/actions"
 import { useRouter } from "next/navigation"
+import CustomPayPalBookingForm from "../PayPalComponents/CustomPayPalBookingForm"
 
 interface DiveInfo {
   title: string
@@ -49,7 +50,6 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
       })
     }
   }, [formData.tourSelect, formData.guestCount])
-
 
   const handleSubmit = async formData => {
     const result = await submitBookingForm(formData)
@@ -203,7 +203,35 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
                       min="1"
                       max="20"
                       value={formData.guestCount}
-                      onChange={handleInputChange}
+                      onChange={e => {
+                        // Handle empty input case
+                        const value = e.target.value
+                        if (value === "") {
+                          setFormData({
+                            ...formData,
+                            guestCount: 0,
+                          })
+                        } else {
+                          // Convert to number and enforce min/max constraints
+                          const numValue = parseInt(value, 10)
+                          if (!isNaN(numValue)) {
+                            const constrainedValue = Math.min(
+                              Math.max(numValue, 1),
+                              20,
+                            )
+                            setFormData({
+                              ...formData,
+                              guestCount: constrainedValue,
+                            })
+                          }
+                        }
+                      }}
+                      // This prevents the browser's default behavior for arrow keys
+                      onKeyDown={e => {
+                        if (e.key === "ArrowDown" && formData.guestCount <= 1) {
+                          e.preventDefault()
+                        }
+                      }}
                     />
                     <label
                       htmlFor="guestCount"
@@ -227,12 +255,17 @@ const PaymentPopup = ({ tour }: { tour: DiveInfo }) => {
                   <div className="relative z-0 mb-6 w-full group">
                     <TourSelect setFormData={setFormData} formData={formData} />
                   </div>
-                  <button
+                  {/* <button
                     type="submit"
                     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Submit
-                  </button>
+                  </button> */}
+                  <CustomPayPalBookingForm
+                    price={formData.deposit}
+                    handleSubmit={handleSubmit}
+                    formData={formData}
+                  />
                 </form>
               </div>
             </DialogPanel>

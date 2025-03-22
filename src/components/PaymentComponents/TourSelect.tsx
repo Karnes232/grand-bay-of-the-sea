@@ -27,6 +27,8 @@ const TourSelect = ({ setFormData, formData }) => {
       // This line disable the blue border
       boxShadow: "none",
     }),
+    menuPortal: provided => ({ ...provided, zIndex: 9999 }),
+    menu: provided => ({ ...provided, zIndex: 9999 }),
   }
 
   const options = [
@@ -66,6 +68,7 @@ const TourSelect = ({ setFormData, formData }) => {
           placeholder="Excursion"
           styles={style}
           required
+          menuPortalTarget={document.body}
         />
       </div>
     </>

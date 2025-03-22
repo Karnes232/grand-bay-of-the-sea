@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/PayPalComponents/PayPalButtonWrapper.jsx",
-    "src/app/(root)/actions.ts"
+    "src/app/(root)/actions.ts",
+    "src/components/PayPalComponents/PayPalButtonWrapperBooking.jsx"
   ],
   "exclude": ["node_modules"]
 }
