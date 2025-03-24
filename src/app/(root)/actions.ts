@@ -2,6 +2,7 @@
 import {
   sendConfirmationEmail,
   sendConfirmationFishingEmail,
+  sendConfirmationTripEmail,
 } from "@/app/actions/send-confirmation"
 export async function submitForm(formData: any) {
   const name = formData.get("name")
@@ -27,16 +28,6 @@ export async function submitForm(formData: any) {
 }
 
 export async function submitBookingForm(formData: any) {
-  // const name = formData.get("name")
-  // const email = formData.get("email")
-  // const hotel = formData.get("hotel")
-  // const guestCount = formData.get("guestCount")
-  // const date = formData.get("date")
-  // const tourSelect = formData.get("tourSelect")
-  // const certification = formData.get("certification")
-  // const deposit = formData.get("deposit")
-  // const price = formData.get("price")
-
   try {
     await sendConfirmationEmail({
       customerName: formData.name,
@@ -72,16 +63,6 @@ export async function submitBookingForm(formData: any) {
 }
 
 export async function submitFishingForm(formData: any) {
-  // const name = formData.get("name")
-  // const email = formData.get("email")
-  // const hotel = formData.get("hotel")
-  // const guestCount = formData.get("guestCount")
-  // const date = formData.get("date")
-  // const tourSelect = formData.get("tourSelect")
-  // const certification = formData.get("certification")
-  // const deposit = formData.get("deposit")
-  // const price = formData.get("price")
-
   try {
     await sendConfirmationFishingEmail({
       customerName: formData.name,
@@ -105,6 +86,43 @@ export async function submitFishingForm(formData: any) {
         hotel: formData.hotel?.toString() || "",
         guestCount: formData.guestCount?.toString() || "",
         spectator: formData.spectator?.toString() || "",
+        date: formData.date?.toString() || "",
+        tourSelect: formData.tourSelect?.toString() || "",
+        certification: formData.certification?.toString() || "",
+        deposit: formData.deposit?.toString() || "",
+        price: formData.price?.toString() || "",
+      },
+    }
+  } catch (error) {
+    console.error("Form submission error:", error)
+    return { success: false }
+  }
+}
+
+export async function submitTripForm(formData: any) {
+  try {
+    await sendConfirmationTripEmail({
+      customerName: formData.name,
+      customerEmail: formData.email,
+      hotel: formData.hotel,
+      excursionName: formData.tourSelect,
+      excursionDate: formData.date,
+      guestCount: formData.guestCount,
+      snorkelers: formData.snorkelers,
+      certification: formData.certification,
+      deposit: formData.deposit,
+      price: formData.price,
+      // Add all other required fields
+    })
+    return {
+      success: true,
+      data: {
+        "form-name": "fishing",
+        name: formData.name?.toString() || "",
+        email: formData.email?.toString() || "",
+        hotel: formData.hotel?.toString() || "",
+        guestCount: formData.guestCount?.toString() || "",
+        snorkelers: formData.snorkelers?.toString() || "",
         date: formData.date?.toString() || "",
         tourSelect: formData.tourSelect?.toString() || "",
         certification: formData.certification?.toString() || "",

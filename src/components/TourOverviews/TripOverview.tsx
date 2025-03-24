@@ -4,6 +4,7 @@ import React from "react"
 import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
 import PaymentPopup from "../PaymentComponents/PaymentPopup"
+import PaymentPopupTrip from "../PaymentComponents/PaymentPopupTrip"
 const TripOverview = ({ tour }) => {
   return (
     <div className="my-5">
@@ -50,7 +51,7 @@ const TripOverview = ({ tour }) => {
             </motion.p>
           </button>
         </Link>
-        <PaymentPopup tour={tour} />
+        <PaymentPopupTrip tour={tour} />
       </div>
       <div className="flex flex-col justify-center items-center mb-4">
         <p className="mb-1 mt-2">
