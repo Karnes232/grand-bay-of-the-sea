@@ -55,7 +55,7 @@ const PayPalButtonWrapperBooking = ({
       <PayPalButtons
         style={style}
         disabled={!formComplete}
-        forceReRender={[amount, currency, style]}
+        forceReRender={[amount, currency, style, formData.date]}
         fundingSource={undefined}
         createOrder={(data, actions) => {
           return actions.order

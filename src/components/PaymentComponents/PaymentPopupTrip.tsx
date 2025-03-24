@@ -16,6 +16,7 @@ import {
 } from "@/app/(root)/actions"
 import { useRouter } from "next/navigation"
 import CustomPayPalBookingForm from "../PayPalComponents/CustomPayPalBookingForm"
+import DatePickerToursComponent from "./DatePickerToursComponent"
 
 // interface DiveInfo {
 //   page: string
@@ -40,7 +41,7 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
     deposit: tour.depositPrice,
     price: tour.price,
   })
-  console.log(tour)
+
   useEffect(() => {
     const diverPrice = tour.price * formData.guestCount
     const snorkelersPrice = tour.spectatorSnorkel * formData.snorkelers
@@ -294,9 +295,10 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
                   </div>
 
                   <div className="relative z-0 mb-6 w-full group">
-                    <DatePickerComponent
+                    <DatePickerToursComponent
                       setFormData={setFormData}
                       formData={formData}
+                      tour={tour.page}
                     />
                   </div>
                   <div className="relative z-0 mb-6 w-full group">
