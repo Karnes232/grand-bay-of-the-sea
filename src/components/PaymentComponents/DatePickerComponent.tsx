@@ -38,6 +38,10 @@ const DatePickerComponent = ({ setFormData, formData }) => {
       // If Sunday is selected, reset the date and show warning
       setIsSundaySelected(true)
       setValue({ startDate: null, endDate: null })
+      setFormData({
+        ...formData,
+        date: "",
+      })
       return
     }
 
