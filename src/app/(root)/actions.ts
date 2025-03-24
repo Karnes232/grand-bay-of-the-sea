@@ -117,7 +117,7 @@ export async function submitTripForm(formData: any) {
     return {
       success: true,
       data: {
-        "form-name": "fishing",
+        "form-name": "trip",
         name: formData.name?.toString() || "",
         email: formData.email?.toString() || "",
         hotel: formData.hotel?.toString() || "",

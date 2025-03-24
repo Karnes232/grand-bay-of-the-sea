@@ -22,7 +22,7 @@ export const grandbayTripEmail = ({
   guestCount = 2,
   price = 250.0,
   deposit = 50.0,
-  spectator = 0,
+  snorkelers = 0,
   certification = "Open Water",
   contactEmail = "grandbayofthesea@gmail.com",
   contactPhone = "+1 (829) 723-9338",
@@ -70,7 +70,7 @@ export const grandbayTripEmail = ({
               </Text>
 
               <Text className="text-gray-700">
-                <strong>Number of Snorkelers:</strong> {spectator}
+                <strong>Number of Snorkelers:</strong> {snorkelers}
               </Text>
 
               <Text className="font-bold text-gray-700">
