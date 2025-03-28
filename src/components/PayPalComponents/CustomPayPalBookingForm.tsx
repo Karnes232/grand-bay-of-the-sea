@@ -5,7 +5,7 @@ import Link from "next/link"
 import PayPalButtonWrapperBooking from "./PayPalButtonWrapperBooking"
 const CustomPayPalBookingForm = ({ price, handleSubmit, formData }) => {
   // const sandBox = "ATyo0QdaaI3Kxm1TaxC-i_RHGTzwdw23bI4dNdjQ-v_bGu0CuKT54AzYFsOYJcXr_ZjO1bvqrHWBhG-c"
-  const liveId =" AaPiNuBE-3bjn86CtDSbnbs5nnaeQ-vNhBk48DdMwZ0vsUYGVuE1_38burybKxv_Qn78gXQYUSKf1UG0"
+  const liveId ="AaPiNuBE-3bjn86CtDSbnbs5nnaeQ-vNhBk48DdMwZ0vsUYGVuE1_38burybKxv_Qn78gXQYUSKf1UG0"
   const currency = "USD"
   return (
     <div className="flex justify-center">
