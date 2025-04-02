@@ -51,7 +51,7 @@ export const grandbayTripEmail = ({
               <Text className="text-gray-700">Hello {customerName},</Text>
               <Text className="text-gray-700">
                 Thank you for booking with us! We&apos;re excited to confirm
-                your upcoming fishing excursion. Here are the details of your
+                your upcoming diving excursion. Here are the details of your
                 reservation:
               </Text>
             </Section>
