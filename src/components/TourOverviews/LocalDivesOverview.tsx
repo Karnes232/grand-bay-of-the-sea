@@ -70,7 +70,40 @@ const LocalDivesOverview = ({
         </p>
         <p className="mt-1">Only a ${info.depositPrice} deposit</p>
       </div>
-      {/* <CustomPayPal price={info.depositPrice} /> */}
+      <div className="flex flex-col justify-center items-center mb-4">
+        <button
+          style={{
+            backgroundColor: "#2c2e2f",
+            borderColor: "#2c2e2f",
+            color: "#FFFFFF",
+            cursor: "pointer",
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "200px",
+            height: "35px",
+            fontSize: ".875rem",
+            borderRadius: "1.5rem",
+            textAlign: "center",
+            lineHeight: "1.25rem",
+            textTransform: "none",
+            fontWeight: "400",
+            fontFamily: "inherit",
+          }}
+          className="padi-booking-button"
+          id="padi-widget-modal"
+          data-aid="27147"
+          data-language="en"
+          data-currency="USD"
+          data-shop-id="75625"
+          data-widget-type="adventure_page"
+          data-adventure-id="149070"
+          data-source="widget_individual_adventure"
+        >
+          Book now Via Padi
+        </button>
+
+        <script src="https://travel.padi.com/widget/padi-widget-button.js"></script>
+      </div>
     </div>
   )
 }
