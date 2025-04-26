@@ -1,31 +1,32 @@
 import { getAllEntries, searchEntries } from "@/lib/contentful"
-import dynamicImport from "next/dynamic"
+import dynamic from "next/dynamic"
+//import dynamicImport from "next/dynamic"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import { Metadata, ResolvingMetadata } from "next"
 
-const BackgroundVideo = dynamicImport(
+const BackgroundVideo = dynamic(
   () => import("@/components/BackgroundVideoComponent/BackgroundVideo"),
 )
-const DivingOrganizations = dynamicImport(
+const DivingOrganizations = dynamic(
   () => import("@/components/DivingOrganizations/DivingOrganizations"),
 )
-const BackgroundImage = dynamicImport(
+const BackgroundImage = dynamic(
   () => import("@/components/BackgroundImageComponent/BackgroundImage"),
 )
-const GoogleMaps = dynamicImport(
+const GoogleMaps = dynamic(
   () => import("@/components/GoogleMapsComponent/GoogleMaps"),
 )
 
-export async function generateStaticParams() {
-  // Define the supported languages
-  return []
-}
+// export async function generateStaticParams() {
+//   // Define the supported languages
+//   return []
+// }
 
-export const dynamic = "force-static"
+// export const dynamic = "force-static"
 
-export const revalidate = false
+// export const revalidate = false
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
