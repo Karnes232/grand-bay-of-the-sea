@@ -6,6 +6,7 @@ import Footer from "@/components/layout/FooterComponents/Footer"
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google"
 import { generateStructuredData } from "@/components/StructuredData/StructuredData"
 import { ServiceWorkerCleanup } from "@/components/layout/ServiceWorkerCleanup"
+import FloatingContactForm from "@/components/FloatingButtonComponents/FloatingContactForm"
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -91,6 +92,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <FloatingContactForm />
         <ServiceWorkerCleanup />
         <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
           <Header />

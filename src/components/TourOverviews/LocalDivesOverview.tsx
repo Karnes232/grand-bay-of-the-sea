@@ -4,7 +4,7 @@ import React from "react"
 import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
 import PaymentPopupLocalDives from "../PaymentComponents/PaymentPopupLocalDives"
-import Script from 'next/script'
+import Script from "next/script"
 interface DiveInfo {
   title: string
   twoTankDive: number
