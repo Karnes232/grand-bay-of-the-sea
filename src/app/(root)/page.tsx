@@ -1,20 +1,20 @@
 import { getAllEntries, searchEntries } from "@/lib/contentful"
-import dynamic from "next/dynamic"
+import dynamicImport from "next/dynamic"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import { Metadata, ResolvingMetadata } from "next"
 
-const BackgroundVideo = dynamic(
+const BackgroundVideo = dynamicImport(
   () => import("@/components/BackgroundVideoComponent/BackgroundVideo"),
 )
-const DivingOrganizations = dynamic(
+const DivingOrganizations = dynamicImport(
   () => import("@/components/DivingOrganizations/DivingOrganizations"),
 )
-const BackgroundImage = dynamic(
+const BackgroundImage = dynamicImport(
   () => import("@/components/BackgroundImageComponent/BackgroundImage"),
 )
-const GoogleMaps = dynamic(
+const GoogleMaps = dynamicImport(
   () => import("@/components/GoogleMapsComponent/GoogleMaps"),
 )
 
@@ -22,7 +22,9 @@ export async function generateStaticParams() {
   // Define the supported languages
   return []
 }
-export const dynamicConfig = "force-static"
+
+export const dynamic = "force-static"
+
 export const revalidate = false
 
 export async function generateMetadata(
