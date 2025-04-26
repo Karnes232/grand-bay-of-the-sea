@@ -1,10 +1,19 @@
 "use client"
 import Link from "next/link"
-import React, { useEffect } from "react"
+import React from "react"
 import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
 import PaymentPopupLocalDives from "../PaymentComponents/PaymentPopupLocalDives"
 
+declare global {
+  interface Window {
+    PADI?: {
+      Widget: {
+        init: () => void
+      }
+    }
+  }
+}
 
 interface DiveInfo {
   title: string
@@ -21,18 +30,8 @@ const LocalDivesOverview = ({
   info: DiveInfo
   sharkPrice: number
 }) => {
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.src = "https://travel.padi.com/widget/padi-widget-button.js"
-    script.async = true
-    document.body.appendChild(script)
-
-    return () => {
-      // Cleanup script when component unmounts
-      document.body.removeChild(script)
-    }
-  }, [])
   return (
+    <> <script src="https://travel.padi.com/widget/padi-widget-button.js" defer></script>
     <div className="my-5">
       {" "}
       <div className="flex flex-col justify-center items-center mb-2">
@@ -112,10 +111,12 @@ const LocalDivesOverview = ({
           data-source="widget_individual_adventure"
         >
           Book now Via Padi
+         
         </button>
 
+        
       </div>
-    </div>
+    </div></>
   )
 }
 
