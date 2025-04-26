@@ -39,7 +39,7 @@ const FloatingContactForm = () => {
                 </button>
               </div>
               <div className="">
-                <ContactForm />
+                <ContactForm onSubmit={() => setIsOpen(false)} />
               </div>
             </DialogPanel>
           </div>

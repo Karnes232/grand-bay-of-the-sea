@@ -4,7 +4,7 @@ import { submitForm } from "@/app/(root)/actions"
 import { useRouter } from "next/navigation"
 import React from "react"
 
-const ContactForm = () => {
+const ContactForm = ({ onSubmit }: { onSubmit?: () => void }) => {
   const router = useRouter()
 
   const handleSubmit = async (formData: FormData) => {
@@ -20,6 +20,7 @@ const ContactForm = () => {
         })
 
         if (response.ok) {
+          onSubmit?.()
           router.push(`/thankyou/?name=${result.data.name}`)
         } else {
           // Handle error

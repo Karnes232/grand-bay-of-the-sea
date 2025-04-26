@@ -66,30 +66,30 @@ const RichText = ({ context }) => {
         )
       },
       [BLOCKS.UL_LIST]: (node: any, children: any) => (
-        <ul key={children} className="list-disc ml-5">
+        <ul className="list-disc ml-5">
           {children}
         </ul>
       ),
       [BLOCKS.OL_LIST]: (node: any, children: any) => (
-        <ol key={children} className="list-decimal ml-5">
+        <ol className="list-decimal ml-5">
           {children}
         </ol>
       ),
       [BLOCKS.LIST_ITEM]: (node: any, children: any) => {
         return (
-          <li key={children} className="text-sm text-left">
+          <li className="text-sm text-left">
             {children.map((child: any, index: number) => {
               // If the child is a paragraph, render it without text-center and explicitly set text-left
               if (node.nodeType === "list-item") {
                 return (
                   <TextComponent
-                    key={index}
+                    key={`list-item-${node.nodeType}-${index}`}
                     paragraph={child.props.paragraph}
                     pClassName="mb-1 text-left"
                   />
                 )
               }
-              return child
+              return React.cloneElement(child, { key: `list-item-${index}` })
             })}
           </li>
         )
