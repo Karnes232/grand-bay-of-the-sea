@@ -1,10 +1,10 @@
 "use client"
 import Link from "next/link"
-import React from "react"
+import React, { useEffect } from "react"
 import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
 import PaymentPopupLocalDives from "../PaymentComponents/PaymentPopupLocalDives"
-import Script from 'next/script'
+
 
 interface DiveInfo {
   title: string
@@ -21,6 +21,17 @@ const LocalDivesOverview = ({
   info: DiveInfo
   sharkPrice: number
 }) => {
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = "https://travel.padi.com/widget/padi-widget-button.js"
+    script.async = true
+    document.body.appendChild(script)
+
+    return () => {
+      // Cleanup script when component unmounts
+      document.body.removeChild(script)
+    }
+  }, [])
   return (
     <div className="my-5">
       {" "}
@@ -103,7 +114,6 @@ const LocalDivesOverview = ({
           Book now Via Padi
         </button>
 
-        <Script src="https://travel.padi.com/widget/padi-widget-button.js" />
       </div>
     </div>
   )
