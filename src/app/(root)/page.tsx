@@ -18,6 +18,13 @@ const GoogleMaps = dynamic(
   () => import("@/components/GoogleMapsComponent/GoogleMaps"),
 )
 
+export async function generateStaticParams() {
+  // Define the supported languages
+  return []
+}
+export const dynamicConfig = "force-static"
+export const revalidate = false
+
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
   parent: ResolvingMetadata,

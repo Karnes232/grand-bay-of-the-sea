@@ -66,14 +66,10 @@ const RichText = ({ context }) => {
         )
       },
       [BLOCKS.UL_LIST]: (node: any, children: any) => (
-        <ul className="list-disc ml-5">
-          {children}
-        </ul>
+        <ul className="list-disc ml-5">{children}</ul>
       ),
       [BLOCKS.OL_LIST]: (node: any, children: any) => (
-        <ol className="list-decimal ml-5">
-          {children}
-        </ol>
+        <ol className="list-decimal ml-5">{children}</ol>
       ),
       [BLOCKS.LIST_ITEM]: (node: any, children: any) => {
         return (
