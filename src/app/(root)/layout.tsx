@@ -82,7 +82,6 @@ export default function RootLayout({
       <GoogleAnalytics gaId="G-JDL6KCYRYD" />
       <head>
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <script src="https://travel.padi.com/widget/padi-widget-button.js"></script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
