@@ -31,7 +31,7 @@ const LocalDivesOverview = ({
   sharkPrice: number
 }) => {
   return (
-    <> <script src="https://travel.padi.com/widget/padi-widget-button.js" defer></script>
+    <> <script src="https://travel.padi.com/widget/padi-widget-button.js" defer={false} async={false}></script>
     <div className="my-5">
       {" "}
       <div className="flex flex-col justify-center items-center mb-2">
