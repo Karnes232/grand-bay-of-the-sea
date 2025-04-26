@@ -102,7 +102,7 @@ const LocalDivesOverview = ({
           Book now Via Padi
         </button>
 
-        <script src="https://travel.padi.com/widget/padi-widget-button.js"></script>
+        <script src="https://travel.padi.com/widget/padi-widget-button.js" async></script>
       </div>
     </div>
   )
