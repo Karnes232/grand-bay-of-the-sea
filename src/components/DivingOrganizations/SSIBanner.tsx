@@ -30,7 +30,7 @@ const SSIBanner = async () => {
       <picture className="mb-8 object-contain">
         <source media="(prefers-color-scheme: dark)" srcSet={darkSSI} />
         <source media="(prefers-color-scheme: light)" srcSet={lightSSI} />
-        <img {...restSSI} />
+        <img {...restSSI} alt={commonSSI.alt} />
       </picture>
       {/* <Image
         className="w-10/12 lg:w-1/2 mb-8 object-contain"

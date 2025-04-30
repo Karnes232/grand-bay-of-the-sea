@@ -42,7 +42,7 @@ const PadiBanner = async () => {
       <picture className="mb-8 object-cover">
         <source media="(prefers-color-scheme: dark)" srcSet={darkPadi} />
         <source media="(prefers-color-scheme: light)" srcSet={lightPadi} />
-        <img {...restPadi} />
+        <img {...restPadi} alt={commonPadi.alt} />
       </picture>
 
       <div className="hidden md:block">
