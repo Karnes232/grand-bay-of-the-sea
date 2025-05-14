@@ -9,6 +9,7 @@ const TOUR_AVAILABLE_DAYS = {
   "Catalina Island": [1, 3, 5], // Monday (1), Wednesday (3), Friday (5)
   Bayahibe: [2, 4], // Tuesday (2), Thursday (4)
   "Saona Island": [2, 4, 6], // Tuesday (2), Thursday (4), Saturday (6)
+  "Shark Dive Punta Cana": [1, 2, 3, 4, 5, 6], // Monday (1), Tuesday (2), Wednesday (3), Thursday (4), Friday (5), Saturday (6)
 }
 
 // Map of day numbers to day names
@@ -28,7 +29,7 @@ const DatePickerToursComponent = ({ setFormData, formData, tour }) => {
     endDate: null,
   })
   const [selectedDate, setSelectedDate] = useState(null)
-
+  console.log(tour)
   // Get available days for the specific tour
   const getAvailableDays = () => {
     if (!tour || !TOUR_AVAILABLE_DAYS[tour]) return []
