@@ -29,7 +29,6 @@ const DatePickerToursComponent = ({ setFormData, formData, tour }) => {
     endDate: null,
   })
   const [selectedDate, setSelectedDate] = useState(null)
-  console.log(tour)
   // Get available days for the specific tour
   const getAvailableDays = () => {
     if (!tour || !TOUR_AVAILABLE_DAYS[tour]) return []
