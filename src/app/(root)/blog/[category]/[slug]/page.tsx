@@ -1,10 +1,7 @@
 import BlogBody from "@/components/BlogComponents/BlogBody"
-import BlogPostList from "@/components/BlogComponents/BlogPostList"
 import HeroImages from "@/components/BlogComponents/HeroImages"
 import Recommendations from "@/components/BlogComponents/Recommendations"
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
-import RichText from "@/components/RichTextComponents/RichText"
-import { getAllEntries, searchEntries } from "@/lib/contentful"
+import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
 export async function generateMetadata(
@@ -24,6 +21,7 @@ export async function generateMetadata(
       "fields.seoImage",
     ],
   )
+
   return {
     title: String(seoSearchResults.items[0].fields.seoTitle),
     description: String(seoSearchResults.items[0].fields.seoDescription),
@@ -78,6 +76,7 @@ export default async function Page({
     "fields.slug": slug,
   })
 
+
   const blogCategory = (blogPost.items[0].fields.blogCategory as any)?.fields
     ?.blogCategory
 
@@ -92,6 +91,7 @@ export default async function Page({
   )
 
   return (
+    <>
     <main>
       <HeroImages
         backgroundImages={blogPost?.items[0]?.fields.backgroundImages as any[]}
@@ -102,5 +102,10 @@ export default async function Page({
         title={"You may also like"}
       />
     </main>
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPost.items[0].fields.schema) }}
+      />
+    </>
   )
 }

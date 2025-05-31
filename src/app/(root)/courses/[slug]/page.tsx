@@ -75,6 +75,7 @@ export default async function Page({
     "fields.slug": slug,
   })
   return (
+    <>
     <main>
       <BackgroundVideo
         video={(course.items[0] as any).fields.backgroundVideo.fields.file.url}
@@ -119,6 +120,16 @@ export default async function Page({
           </div>
         )}
       </div>
+      
     </main>
+
+{course.items[0].fields.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(course.items[0].fields.schema) }}
+        />
+      )}
+
+    </>
   )
 }
