@@ -3,7 +3,14 @@ import Image from "next/image"
 import { headers } from "next/headers"
 import { isMobile } from "@/utils/isMobile"
 import { getPlaiceholder } from "plaiceholder"
-const HeroComponent = async ({ heroImage }: { heroImage: string }) => {
+
+const HeroComponent = async ({
+  heroImage,
+  title,
+}: {
+  heroImage: string
+  title?: string
+}) => {
   const headersList = await headers()
   const userAgent = headersList.get("user-agent")
   const mobileCheck = isMobile(userAgent)
@@ -29,6 +36,13 @@ const HeroComponent = async ({ heroImage }: { heroImage: string }) => {
           loading="eager"
         />
         <div className="absolute inset-0 z-10 bg-[linear-gradient(to_bottom,rgba(245,246,252,0.52),rgba(0,0,0,0.73))]" />
+        {title && (
+          <div className="absolute inset-0 z-20 flex items-center justify-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold text-center px-4 drop-shadow-lg font-crimson">
+              {title}
+            </h1>
+          </div>
+        )}
       </div>
     </div>
   )

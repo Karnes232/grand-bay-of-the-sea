@@ -96,7 +96,7 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
     }
   }
 
-  console.log(tour.page) 
+  console.log(tour.page)
 
   return (
     <>
@@ -248,52 +248,55 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
                       formData={formData}
                     />
                   </div>
-                  {tour.page !== "Shark Dive Punta Cana" &&  (
+                  {tour.page !== "Shark Dive Punta Cana" && (
                     <div className="relative z-0 mb-6 w-full group">
                       <input
                         type="number"
-                      name="snorkelers"
-                      id="snorkelers"
-                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                      placeholder=" "
-                      min="0"
-                      max="20"
-                      value={formData.snorkelers}
-                      onChange={e => {
-                        // Handle empty input case
-                        const value = e.target.value
-                        if (value === "") {
-                          setFormData({
-                            ...formData,
-                            snorkelers: 0,
-                          })
-                        } else {
-                          // Convert to number and enforce min/max constraints
-                          const numValue = parseInt(value, 10)
-                          if (!isNaN(numValue)) {
-                            const constrainedValue = Math.min(
-                              Math.max(numValue, 1),
-                              20,
-                            )
+                        name="snorkelers"
+                        id="snorkelers"
+                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" "
+                        min="0"
+                        max="20"
+                        value={formData.snorkelers}
+                        onChange={e => {
+                          // Handle empty input case
+                          const value = e.target.value
+                          if (value === "") {
                             setFormData({
                               ...formData,
-                              snorkelers: constrainedValue,
+                              snorkelers: 0,
                             })
+                          } else {
+                            // Convert to number and enforce min/max constraints
+                            const numValue = parseInt(value, 10)
+                            if (!isNaN(numValue)) {
+                              const constrainedValue = Math.min(
+                                Math.max(numValue, 1),
+                                20,
+                              )
+                              setFormData({
+                                ...formData,
+                                snorkelers: constrainedValue,
+                              })
+                            }
                           }
-                        }
-                      }}
-                      // This prevents the browser's default behavior for arrow keys
-                      onKeyDown={e => {
-                        if (e.key === "ArrowDown" && formData.snorkelers <= 1) {
-                          e.preventDefault()
-                        }
-                      }}
-                    />
-                    <label
-                      htmlFor="snorkelers"
-                      className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                    >
-                      Number of Snorkelers
+                        }}
+                        // This prevents the browser's default behavior for arrow keys
+                        onKeyDown={e => {
+                          if (
+                            e.key === "ArrowDown" &&
+                            formData.snorkelers <= 1
+                          ) {
+                            e.preventDefault()
+                          }
+                        }}
+                      />
+                      <label
+                        htmlFor="snorkelers"
+                        className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      >
+                        Number of Snorkelers
                       </label>
                     </div>
                   )}

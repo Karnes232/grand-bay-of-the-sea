@@ -7,6 +7,7 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google"
 import { generateStructuredData } from "@/components/StructuredData/StructuredData"
 import { ServiceWorkerCleanup } from "@/components/layout/ServiceWorkerCleanup"
 import FloatingContactForm from "@/components/FloatingButtonComponents/FloatingContactForm"
+import { Crimson_Pro } from "next/font/google"
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -16,6 +17,12 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+})
+
+const crimsonPro = Crimson_Pro({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-crimson-pro",
 })
 
 export const metadata: Metadata = {
@@ -76,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${crimsonPro.variable}`}>
       <GoogleTagManager gtmId="GTM-KGLHKQW" />
       <GoogleAnalytics gaId="G-6MJLJ90SSM" />
       <GoogleAnalytics gaId="G-JDL6KCYRYD" />
