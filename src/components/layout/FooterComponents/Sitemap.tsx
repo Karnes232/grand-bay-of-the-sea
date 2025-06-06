@@ -49,6 +49,9 @@ const Sitemap = () => {
         <Link href="/sitemap.xml">
           <p className="footerSitemap">Site Map</p>
         </Link>
+        <Link href="/blog">
+          <p className="footerSitemap">Blog</p>
+        </Link>
         <Link href="/contact">
           <p className="footerSitemap">Contact Us</p>
         </Link>

@@ -76,7 +76,6 @@ export default async function Page({
     "fields.slug": slug,
   })
 
-
   const blogCategory = (blogPost.items[0].fields.blogCategory as any)?.fields
     ?.blogCategory
 
@@ -92,19 +91,23 @@ export default async function Page({
 
   return (
     <>
-    <main>
-      <HeroImages
-        backgroundImages={blogPost?.items[0]?.fields.backgroundImages as any[]}
-      />
-      <BlogBody context={blogPost?.items[0]?.fields.blogBody as any[]} />
-      <Recommendations
-        relatedPosts={relatedPosts}
-        title={"You may also like"}
-      />
-    </main>
-    <script
+      <main>
+        <HeroImages
+          backgroundImages={
+            blogPost?.items[0]?.fields.backgroundImages as any[]
+          }
+        />
+        <BlogBody context={blogPost?.items[0]?.fields.blogBody as any[]} />
+        <Recommendations
+          relatedPosts={relatedPosts}
+          title={"You may also like"}
+        />
+      </main>
+      <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPost.items[0].fields.schema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogPost.items[0].fields.schema),
+        }}
       />
     </>
   )

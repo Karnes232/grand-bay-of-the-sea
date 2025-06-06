@@ -87,7 +87,7 @@ export default async function Page({
         title={blogCategory.items[0].fields.blogCategory as string}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
+      <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center mx-5 lg:mx-auto">
         <RichText context={blogCategory.items[0].fields.paragraph} />
         <BlogPostList blogPosts={blogPostsByCategory.items} />
       </div>
