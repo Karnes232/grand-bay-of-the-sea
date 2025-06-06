@@ -19,7 +19,7 @@ const BlogCategory = ({ post }: { post: any }) => {
           />
           <h1
             translate="no"
-            className="relative inline-block text-center text-white z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-crimson tracking-widest text-3xl md:text-4xl"
+            className="relative inline-block text-center text-white z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-crimson tracking-widest text-3xl md:text-4xl mx-2 text-balance"
           >
             {post.fields.blogCategory}
           </h1>

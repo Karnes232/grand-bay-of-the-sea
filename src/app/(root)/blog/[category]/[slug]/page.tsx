@@ -3,6 +3,7 @@ import HeroImages from "@/components/BlogComponents/HeroImages"
 import Recommendations from "@/components/BlogComponents/Recommendations"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { notFound } from "next/navigation"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ category: string; slug: string }> },
@@ -21,6 +22,10 @@ export async function generateMetadata(
       "fields.seoImage",
     ],
   )
+
+  if (!seoSearchResults?.items?.[0]) {
+    notFound()
+  }
 
   return {
     title: String(seoSearchResults.items[0].fields.seoTitle),
