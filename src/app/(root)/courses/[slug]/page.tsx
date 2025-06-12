@@ -1,5 +1,6 @@
 import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
 import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
+import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 import CourseOverview from "@/components/CourseComponents/CourseOverview"
 import RichText from "@/components/RichTextComponents/RichText"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
@@ -74,13 +75,12 @@ export default async function Page({
   const course = await searchEntries("course", {
     "fields.slug": slug,
   })
+  console.log(course.items[0].fields.videoId)
   return (
     <>
       <main>
-        <BackgroundVideo
-          video={
-            (course.items[0] as any).fields.backgroundVideo.fields.file.url
-          }
+        <CloudinaryBackgroundVideo
+          videoId={String(course.items[0].fields.videoId)}
           className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}
         />
         <div className="my-5">
