@@ -1,5 +1,5 @@
 import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
-import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
+import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 import RichText from "@/components/RichTextComponents/RichText"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
@@ -72,8 +72,8 @@ export default async function Home(props: any) {
 
   return (
     <main>
-      <BackgroundVideo
-        video={(pageLayout.items[0] as any).fields.videoHero.fields.file.url}
+      <CloudinaryBackgroundVideo
+        videoId={"waw32in2jogikyocpnes"}
         className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}
       />
       <div className="my-5">
@@ -101,10 +101,8 @@ export default async function Home(props: any) {
           </div>
         </div>
       </div>
-      <BackgroundVideo
-        video={
-          (pageLayout.items[0] as any).fields.secondaryVideo.fields.file.url
-        }
+      <CloudinaryBackgroundVideo
+        videoId={"o0hy1gzkfnahyw3eyjl2"}
         className={`[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
       />
     </main>
