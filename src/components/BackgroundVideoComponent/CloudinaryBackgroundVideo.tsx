@@ -10,7 +10,7 @@ const CloudinaryBackgroundVideo = ({
     const cloudName = "di4fbucgh"
 
     const base = `https://res.cloudinary.com/${cloudName}/video/upload`
-  
+
     return (
       <div className={`relative min-h-[40vh] lg:min-h-[60vh] ${className}`}>
         <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-75 overflow-hidden brightness-90">

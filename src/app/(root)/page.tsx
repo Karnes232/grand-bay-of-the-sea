@@ -5,10 +5,12 @@ import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import { Metadata, ResolvingMetadata } from "next"
+//import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 
-const BackgroundVideo = dynamic(
-  () => import("@/components/BackgroundVideoComponent/BackgroundVideo"),
+const CloudinaryBackgroundVideo = dynamic(
+  () => import("@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"),
 )
+
 const DivingOrganizations = dynamic(
   () => import("@/components/DivingOrganizations/DivingOrganizations"),
 )
@@ -96,9 +98,9 @@ export default async function Home(props: any) {
         linkImage3={(pageLayout.items[0] as any).fields.linkImage3.fields.file}
       />
       <RichText context={pageLayout.items[0].fields.paragraph2} />
-      <BackgroundVideo
+      <CloudinaryBackgroundVideo
         className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
-        video={(pageLayout.items[0] as any).fields.videoHero.fields.file.url}
+        videoId={"coral-cut_lyykuw"}
       />
       <DivingOrganizations />
       <RichText context={pageLayout.items[0].fields.paragraph3} />

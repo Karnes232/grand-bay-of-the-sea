@@ -1,4 +1,5 @@
-import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
+
+import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 import DiveSites from "@/components/DiveSitesComponents/DiveSites"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
@@ -86,8 +87,8 @@ export default async function Page() {
       </div>
       <DiveSites />
 
-      <BackgroundVideo
-        video={(pageLayout.items[0] as any).fields.videoHero.fields.file.url}
+      <CloudinaryBackgroundVideo
+        videoId={"greyshark_aowggg"}
         className={`[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
       />
     </main>

@@ -1,6 +1,5 @@
 import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
-import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
-import CourseOverview from "@/components/CourseComponents/CourseOverview"
+import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 import RichText from "@/components/RichTextComponents/RichText"
 import TripOverview from "@/components/TourOverviews/TripOverview"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
@@ -90,8 +89,8 @@ export default async function Page({
 
   return (
     <main>
-      <BackgroundVideo
-        video={(tour.items[0] as any).fields.videoHero.fields.file.url}
+      <CloudinaryBackgroundVideo
+        videoId={String(tour.items[0].fields.videoId)}
         className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}
       />
       <div className="mb-5">

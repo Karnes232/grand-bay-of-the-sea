@@ -1,5 +1,5 @@
 import BackgroundImage from "@/components/BackgroundImageComponent/BackgroundImage"
-import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
+import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 import DivingOrganizations from "@/components/DivingOrganizations/DivingOrganizations"
 import GoogleMaps from "@/components/GoogleMapsComponent/GoogleMaps"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
@@ -77,9 +77,9 @@ export default async function Home(props: any) {
         linkImage3={(pageLayout.items[0] as any).fields.linkImage3.fields.file}
       />
       <RichText context={pageLayout.items[0].fields.paragraph2} />
-      <BackgroundVideo
+      <CloudinaryBackgroundVideo
         className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
-        video={(pageLayout.items[0] as any).fields.videoHero.fields.file.url}
+        videoId={"coral-cut_lyykuw"}
       />
       <DivingOrganizations />
       <RichText context={pageLayout.items[0].fields.paragraph3} />

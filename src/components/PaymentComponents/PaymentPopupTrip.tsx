@@ -96,7 +96,6 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
     }
   }
 
-  console.log(tour.page)
 
   return (
     <>
