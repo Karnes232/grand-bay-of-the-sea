@@ -1,11 +1,15 @@
-
 import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 import DiveSites from "@/components/DiveSitesComponents/DiveSites"
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
+// Change import from HeroComponent to HeroStaticComponent
+import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent" // Assuming HeroStaticComponent is in the same path
 import RichText from "@/components/RichTextComponents/RichText"
 import LocalDivesOverview from "@/components/TourOverviews/LocalDivesOverview"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getPlaiceholder } from "plaiceholder" // Import getPlaiceholder
+
+// Add this line to explicitly force static rendering
+export const dynamic = "force-static"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
@@ -69,10 +73,21 @@ export default async function Page() {
     },
     ["fields.price"],
   )
+
+  // Fetch hero image URL
+  const heroImageUrl = `https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`
+
+  // Generate blurDataURL for the hero image at build time
+  const buffer = await fetch(heroImageUrl).then(async res => {
+    return Buffer.from(await res.arrayBuffer())
+  })
+  const { base64: heroImageBlurDataURL } = await getPlaiceholder(buffer)
+
   return (
     <main>
-      <HeroComponent
-        heroImage={`https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`}
+      <HeroStaticComponent // Use HeroStaticComponent
+        heroImage={heroImageUrl}
+        blurDataURL={heroImageBlurDataURL} // Pass the generated blurDataURL
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
 
