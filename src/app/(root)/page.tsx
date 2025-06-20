@@ -2,10 +2,18 @@ import dynamicImport from "next/dynamic"
 
 import { searchEntries } from "@/lib/contentful"
 //import dynamic from "next/dynamic"
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
+//import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import { Metadata, ResolvingMetadata } from "next"
+// Remove headers from here, it's a dynamic function and will prevent static rendering
+// import { headers } from "next/headers";
+// import { isMobile } from "@/utils/isMobile"; // If you need this, use a build-time check or remove
+
+// For image placeholders
+import { getPlaiceholder } from "plaiceholder";
+import { Buffer } from 'buffer'; // Node.js Buffer for getPlaiceholder
+import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 
 const CloudinaryBackgroundVideo = dynamicImport(
   () => import("@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"),
@@ -21,32 +29,25 @@ const GoogleMaps = dynamicImport(
 )
 
 // OPTION 1: Explicitly force static rendering for this page
-// This will make all data fetches within this page (and its children) static,
-// meaning they will run at build time.
-// If your content updates, you'll need to rebuild or use revalidation.
-export const dynamic = "force-static"; //
+export const dynamic = "force-static";
 
 // OPTION 2: Use revalidate for Incremental Static Regeneration (ISR)
-// This will regenerate the page on the server after 60 seconds if a request comes in.
 // export const revalidate = 60; // Regenerate every 60 seconds if a request comes in.
+
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  // Data for metadata will also be fetched at build time if `dynamic = "force-static"` is used
-  // or if `revalidate` is set at the page level.
   const seoSearchResults = await searchEntries("seo", {
     "fields.page": "Index",
   },
-  // Ensure we fetch all necessary fields for the image for metadata to be complete
   ['fields.title', 'fields.description', 'fields.keywords', 'fields.image']
   );
 
   const seoEntry = seoSearchResults.items[0];
 
   if (!seoEntry) {
-    // Handle case where SEO entry is not found, maybe return default metadata
     return {
       title: "Grand Bay Divers Punta Cana",
       description: "Discover scuba diving in Punta Cana with Grand Bay Divers.",
@@ -98,8 +99,6 @@ export async function generateMetadata(
 }
 
 export default async function Home(props: any) {
-  // Data for the page layout will also be fetched at build time if `dynamic = "force-static"` is used
-  // or if `revalidate` is set at the page level.
   const pageLayoutResult = await searchEntries("pageLayout", {
     "fields.page": "Index",
   });
@@ -107,7 +106,6 @@ export default async function Home(props: any) {
   const pageLayout = pageLayoutResult.items[0];
 
   if (!pageLayout) {
-    // Handle case where page layout is not found
     return (
       <main>
         <p>Content not found for this page. Please check Contentful.</p>
@@ -115,30 +113,43 @@ export default async function Home(props: any) {
     );
   }
 
-  // Helper function to safely get image URL and details
-  const getImageUrl = (field: any) => {
-    return field?.fields?.file?.url ? `https:${field.fields.file.url}` : '';
-  };
-
-  const getFullImageDetails = (field: any) => {
+  const getFullImageDetails = async (field: any) => {
     if (!field?.fields?.file) return {};
+    const url = `https:${field.fields.file.url}`;
+    let base64 = '';
+    try {
+        const buffer = await fetch(url).then(async res => Buffer.from(await res.arrayBuffer()));
+        const { base64: plaiceholderBase64 } = await getPlaiceholder(buffer);
+        base64 = plaiceholderBase64;
+    } catch (e) {
+        console.error("Error generating plaiceholder for image:", url, e);
+    }
+
     return {
-      url: `https:${field.fields.file.url}`,
+      url: url,
       width: field.fields.file.details.image.width,
       height: field.fields.file.details.image.height,
       alt: field.fields.title || '',
+      base64: base64, // Pass base64 to HeroComponent
     };
   };
 
-  const heroImageDetails = getFullImageDetails((pageLayout as any).fields.heroImage);
-  const secondaryHeroImageDetails = getFullImageDetails((pageLayout as any).fields.secondaryHeroImage);
-  const tertiaryHeroImageDetails = getFullImageDetails((pageLayout as any).fields.tertiaryHeroImage);
+  // Fetch Hero Image details and base64 at build time
+  const heroImageDetails = await getFullImageDetails((pageLayout as any).fields.heroImage);
+  const secondaryHeroImageDetails = await getFullImageDetails((pageLayout as any).fields.secondaryHeroImage);
+  const tertiaryHeroImageDetails = await getFullImageDetails((pageLayout as any).fields.tertiaryHeroImage);
 
 
   return (
     <main>
       {heroImageDetails.url && (
-        <HeroComponent heroImage={heroImageDetails.url} />
+        <HeroStaticComponent
+          heroImage={heroImageDetails.url}
+          blurDataURL={heroImageDetails.base64} // Pass base64 to HeroComponent
+          // mobileQuality, desktopQuality could be hardcoded or derived from env at build time
+          // If you *must* have device-specific quality, you might need a client-side solution or accept dynamic rendering.
+          // For static, a single quality (e.g., 80) is often fine.
+        />
       )}
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <RichText context={pageLayout.fields.paragraph1} />
