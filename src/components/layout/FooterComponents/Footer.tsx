@@ -17,7 +17,7 @@ const Footer = () => {
 
         <TrustBadges />
 
-        <div className="flex flex-col justify-between md:flex-row">
+        <div className="flex flex-col w-full justify-between md:flex-row">
           <Copyright />
         </div>
       </div>

@@ -87,7 +87,7 @@ export default async function Page({
   return (
     <main>
       {blogCategory?.items[0]?.fields?.heroImage && (
-      <HeroComponent
+        <HeroComponent
           heroImage={`https:${(blogCategory?.items[0] as any)?.fields?.heroImage?.fields?.file?.url}`}
           title={blogCategory?.items[0]?.fields?.blogCategory as string}
         />

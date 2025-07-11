@@ -9,12 +9,12 @@ import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
 // For image placeholders
-import { getPlaiceholder } from "plaiceholder";
-import { Buffer } from 'buffer'; // Node.js Buffer for getPlaiceholder
+import { getPlaiceholder } from "plaiceholder"
+import { Buffer } from "buffer" // Node.js Buffer for getPlaiceholder
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 
 // OPTION 1: Explicitly force static rendering for this page
-export const dynamic = "force-static";
+export const dynamic = "force-static"
 
 // OPTION 2: Use revalidate for Incremental Static Regeneration (ISR)
 // Uncomment this line instead of 'dynamic = "force-static"' if you want ISR
@@ -27,14 +27,14 @@ export async function generateMetadata(
   const seoSearchResults = await searchEntries("seo", {
     "fields.page": "Courses",
   })
-  const seoEntry = seoSearchResults.items[0];
+  const seoEntry = seoSearchResults.items[0]
 
   if (!seoEntry) {
     // Provide a fallback if SEO entry is not found
     return {
       title: "Courses - Grand Bay Divers Punta Cana",
       description: "Explore our scuba diving courses in Punta Cana.",
-    };
+    }
   }
 
   return {
@@ -50,7 +50,8 @@ export async function generateMetadata(
         {
           url: `https:${(seoEntry as any).fields.image.fields.file.url}`,
           width: (seoEntry as any).fields.image.fields.file.details.image.width,
-          height: (seoEntry as any).fields.image.fields.file.details.image.height,
+          height: (seoEntry as any).fields.image.fields.file.details.image
+            .height,
           alt: (seoEntry as any).fields.image.fields.title,
         },
       ],
@@ -65,7 +66,8 @@ export async function generateMetadata(
         {
           url: `https:${(seoEntry as any).fields.image.fields.file.url}`,
           width: (seoEntry as any).fields.image.fields.file.details.image.width,
-          height: (seoEntry as any).fields.image.fields.file.details.image.height,
+          height: (seoEntry as any).fields.image.fields.file.details.image
+            .height,
           alt: (seoEntry as any).fields.image.fields.title,
         },
       ],
@@ -80,7 +82,7 @@ export default async function Page() {
   const pageLayoutResult = await searchEntries("pageLayout", {
     "fields.page": "Courses",
   })
-  const pageLayout = pageLayoutResult.items[0];
+  const pageLayout = pageLayoutResult.items[0]
 
   if (!pageLayout) {
     // Handle case where page layout is not found for Courses
@@ -88,20 +90,22 @@ export default async function Page() {
       <main>
         <p>Content not found for this Courses page. Please check Contentful.</p>
       </main>
-    );
+    )
   }
 
   // Helper function to safely get image URL and details, including blurDataURL
   const getHeroImageDetails = async (field: any) => {
-    if (!field?.fields?.file) return {};
-    const url = `https:${field.fields.file.url}`;
-    let base64 = '';
+    if (!field?.fields?.file) return {}
+    const url = `https:${field.fields.file.url}`
+    let base64 = ""
     try {
-        const buffer = await fetch(url).then(async res => Buffer.from(await res.arrayBuffer()));
-        const { base64: plaiceholderBase64 } = await getPlaiceholder(buffer);
-        base64 = plaiceholderBase64;
+      const buffer = await fetch(url).then(async res =>
+        Buffer.from(await res.arrayBuffer()),
+      )
+      const { base64: plaiceholderBase64 } = await getPlaiceholder(buffer)
+      base64 = plaiceholderBase64
     } catch (e) {
-        console.error("Error generating plaiceholder for image:", url, e);
+      console.error("Error generating plaiceholder for image:", url, e)
     }
 
     return {
@@ -109,12 +113,13 @@ export default async function Page() {
       // You might also pass width/height if HeroComponent needs them directly.
       // For now, HeroComponent hardcodes them, but it's better to pass them from here.
       base64: base64,
-    };
-  };
+    }
+  }
 
   // Fetch Hero Image details and base64 at build time for the Courses page
-  const heroImageDetails = await getHeroImageDetails((pageLayout as any).fields.heroImage);
-
+  const heroImageDetails = await getHeroImageDetails(
+    (pageLayout as any).fields.heroImage,
+  )
 
   return (
     <main>

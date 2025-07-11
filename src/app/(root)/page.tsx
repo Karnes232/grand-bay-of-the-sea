@@ -11,12 +11,13 @@ import { Metadata, ResolvingMetadata } from "next"
 // import { isMobile } from "@/utils/isMobile"; // If you need this, use a build-time check or remove
 
 // For image placeholders
-import { getPlaiceholder } from "plaiceholder";
-import { Buffer } from 'buffer'; // Node.js Buffer for getPlaiceholder
+import { getPlaiceholder } from "plaiceholder"
+import { Buffer } from "buffer" // Node.js Buffer for getPlaiceholder
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 
 const CloudinaryBackgroundVideo = dynamicImport(
-  () => import("@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"),
+  () =>
+    import("@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"),
 )
 const DivingOrganizations = dynamicImport(
   () => import("@/components/DivingOrganizations/DivingOrganizations"),
@@ -29,35 +30,38 @@ const GoogleMaps = dynamicImport(
 )
 
 // OPTION 1: Explicitly force static rendering for this page
-export const dynamic = "force-static";
+export const dynamic = "force-static"
 
 // OPTION 2: Use revalidate for Incremental Static Regeneration (ISR)
 // export const revalidate = 60; // Regenerate every 60 seconds if a request comes in.
-
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const seoSearchResults = await searchEntries("seo", {
-    "fields.page": "Index",
-  },
-  ['fields.title', 'fields.description', 'fields.keywords', 'fields.image']
-  );
+  const seoSearchResults = await searchEntries(
+    "seo",
+    {
+      "fields.page": "Index",
+    },
+    ["fields.title", "fields.description", "fields.keywords", "fields.image"],
+  )
 
-  const seoEntry = seoSearchResults.items[0];
+  const seoEntry = seoSearchResults.items[0]
 
   if (!seoEntry) {
     return {
       title: "Grand Bay Divers Punta Cana",
       description: "Discover scuba diving in Punta Cana with Grand Bay Divers.",
-    };
+    }
   }
 
-  const imageUrl = `https:${(seoEntry as any).fields.image.fields.file.url}`;
-  const imageWidth = (seoEntry as any).fields.image.fields.file.details.image.width;
-  const imageHeight = (seoEntry as any).fields.image.fields.file.details.image.height;
-  const imageAlt = (seoEntry as any).fields.image.fields.title;
+  const imageUrl = `https:${(seoEntry as any).fields.image.fields.file.url}`
+  const imageWidth = (seoEntry as any).fields.image.fields.file.details.image
+    .width
+  const imageHeight = (seoEntry as any).fields.image.fields.file.details.image
+    .height
+  const imageAlt = (seoEntry as any).fields.image.fields.title
 
   return {
     title: String(seoEntry.fields.title),
@@ -95,50 +99,57 @@ export async function generateMetadata(
     alternates: {
       canonical: "https://www.grandbay-puntacana.com",
     },
-  };
+  }
 }
 
 export default async function Home(props: any) {
   const pageLayoutResult = await searchEntries("pageLayout", {
     "fields.page": "Index",
-  });
+  })
 
-  const pageLayout = pageLayoutResult.items[0];
+  const pageLayout = pageLayoutResult.items[0]
 
   if (!pageLayout) {
     return (
       <main>
         <p>Content not found for this page. Please check Contentful.</p>
       </main>
-    );
+    )
   }
 
   const getFullImageDetails = async (field: any) => {
-    if (!field?.fields?.file) return {};
-    const url = `https:${field.fields.file.url}`;
-    let base64 = '';
+    if (!field?.fields?.file) return {}
+    const url = `https:${field.fields.file.url}`
+    let base64 = ""
     try {
-        const buffer = await fetch(url).then(async res => Buffer.from(await res.arrayBuffer()));
-        const { base64: plaiceholderBase64 } = await getPlaiceholder(buffer);
-        base64 = plaiceholderBase64;
+      const buffer = await fetch(url).then(async res =>
+        Buffer.from(await res.arrayBuffer()),
+      )
+      const { base64: plaiceholderBase64 } = await getPlaiceholder(buffer)
+      base64 = plaiceholderBase64
     } catch (e) {
-        console.error("Error generating plaiceholder for image:", url, e);
+      console.error("Error generating plaiceholder for image:", url, e)
     }
 
     return {
       url: url,
       width: field.fields.file.details.image.width,
       height: field.fields.file.details.image.height,
-      alt: field.fields.title || '',
+      alt: field.fields.title || "",
       base64: base64, // Pass base64 to HeroComponent
-    };
-  };
+    }
+  }
 
   // Fetch Hero Image details and base64 at build time
-  const heroImageDetails = await getFullImageDetails((pageLayout as any).fields.heroImage);
-  const secondaryHeroImageDetails = await getFullImageDetails((pageLayout as any).fields.secondaryHeroImage);
-  const tertiaryHeroImageDetails = await getFullImageDetails((pageLayout as any).fields.tertiaryHeroImage);
-
+  const heroImageDetails = await getFullImageDetails(
+    (pageLayout as any).fields.heroImage,
+  )
+  const secondaryHeroImageDetails = await getFullImageDetails(
+    (pageLayout as any).fields.secondaryHeroImage,
+  )
+  const tertiaryHeroImageDetails = await getFullImageDetails(
+    (pageLayout as any).fields.tertiaryHeroImage,
+  )
 
   return (
     <main>
@@ -154,7 +165,7 @@ export default async function Home(props: any) {
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <RichText context={pageLayout.fields.paragraph1} />
       <SelectionComponent
-        secondaryHeroImage={secondaryHeroImageDetails.url || ''}
+        secondaryHeroImage={secondaryHeroImageDetails.url || ""}
         linkImage1={(pageLayout as any).fields.linkImage1?.fields?.file}
         linkImage2={(pageLayout as any).fields.linkImage2?.fields?.file}
         linkImage3={(pageLayout as any).fields.linkImage3?.fields?.file}
@@ -171,5 +182,5 @@ export default async function Home(props: any) {
       )}
       <GoogleMaps />
     </main>
-  );
+  )
 }
