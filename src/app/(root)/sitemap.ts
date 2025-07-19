@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next"
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://www.grandbay-puntacana.com/",
+      url: "https://www.grandbay-puntacana.com",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://www.grandbay-puntacana.com/courses/",
+      url: "https://www.grandbay-puntacana.com/courses",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
@@ -63,7 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: "https://www.grandbay-puntacana.com/trips/",
+      url: "https://www.grandbay-puntacana.com/trips",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
@@ -87,37 +87,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: "https://www.grandbay-puntacana.com/sites/",
+      url: "https://www.grandbay-puntacana.com/site",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
-      url: "https://www.grandbay-puntacana.com/species/",
+      url: "https://www.grandbay-puntacana.com/species",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
-      url: "https://www.grandbay-puntacana.com/contact/",
+      url: "https://www.grandbay-puntacana.com/contact",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
-      url: "https://www.grandbay-puntacana.com/thankyou/",
+      url: "https://www.grandbay-puntacana.com/thankyou",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
-      url: "https://www.grandbay-puntacana.com/terms-and-conditions/",
+      url: "https://www.grandbay-puntacana.com/terms-and-conditions",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
-      url: "https://www.grandbay-puntacana.com/customPayment/",
+      url: "https://www.grandbay-puntacana.com/customPayment",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
