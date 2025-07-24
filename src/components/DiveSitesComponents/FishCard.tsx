@@ -1,8 +1,9 @@
 "use client"
-import React from "react"
+import React, { useState } from "react"
 import { motion } from "motion/react"
 import Image from "next/image"
-const FishCard = ({ fish }) => {
+import Link from "next/link"
+const FishCard = ({ fish }: { fish: any }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -12,7 +13,8 @@ const FishCard = ({ fish }) => {
         duration: 3,
         delay: 0.3,
       }}
-      className="flex justify-center m-4 w-80"
+      id={fish.name.replace(/\s+/g, '')}
+      className="flex justify-center items-center m-4 w-80"
     >
       <div className="rounded-lg shadow-lg bg-white max-w-sm">
         <Image
@@ -24,9 +26,20 @@ const FishCard = ({ fish }) => {
           quality={75}
         />
         <div className="p-6">
-          <h5 className="text-gray-900 text-xl font-medium mb-2">
-            {fish.name}
-          </h5>
+          {fish.blogReference ? (
+            <Link href={`/blog/marine-life/${fish.blogReference.fields.slug}`}>
+              <h5 className="text-xl font-medium mb-2 cursor-pointer text-blue-600">
+                {fish.name}
+              </h5>
+            </Link>
+          ) : (
+            <h5 className="text-gray-900 text-xl font-medium mb-2">
+              {fish.name}
+            </h5>
+          )}
+          {fish.blogReference && (
+            <DescriptionWithReadMore description={fish.blogReference.fields.description} />
+          )}
         </div>
       </div>
     </motion.div>
@@ -34,3 +47,30 @@ const FishCard = ({ fish }) => {
 }
 
 export default FishCard
+
+const DescriptionWithReadMore = ({ description }: { description: string }) => {
+  const [expanded, setExpanded] = useState(false)
+  const isLong = description.length > 120 // adjust as needed
+  return (
+    <div>
+      <p
+        className={
+          expanded
+            ? "text-gray-700 text-base mb-4"
+            : "text-gray-700 text-base mb-4 line-clamp-2"
+        }
+        style={!expanded ? { display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' } : {}}
+      >
+        {description}
+      </p>
+      {isLong && (
+        <button
+          className="text-blue-500 hover:underline text-sm"
+          onClick={() => setExpanded((v) => !v)}
+        >
+          {expanded ? "Read less" : "Read more"}
+        </button>
+      )}
+    </div>
+  )
+}
