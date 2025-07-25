@@ -19,7 +19,7 @@ const FishCard = ({ fish }: { fish: any }) => {
       <div className="rounded-lg shadow-lg bg-white max-w-sm">
         <Image
           src={`https:${fish.image.fields.file?.url ?? ""}`}
-          alt="Logo"
+          alt={fish.name}
           width={fish.image.fields?.file.details.image.width}
           height={fish.image.fields?.file.details.image.height}
           className="rounded-t-lg h-64 w-80 object-cover object-center"
