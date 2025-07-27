@@ -63,7 +63,7 @@ export default async function Page() {
   })
 
   return (
-    <main>
+    <main className="bg-gradient-to-b from-sky-50 via-slate-100 to-cyan-50">
       <HeroComponent
         heroImage={`https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`}
       />

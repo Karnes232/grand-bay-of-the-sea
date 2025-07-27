@@ -16,7 +16,7 @@ const FishCard = ({ fish }: { fish: any }) => {
       id={fish.name.replace(/\s+/g, '')}
       className="flex justify-center items-center m-4 w-80"
     >
-      <div className="rounded-lg shadow-lg bg-white max-w-sm">
+      <div className="rounded-lg shadow-lg hover:shadow-xl transition-all bg-white max-w-sm">
         <Image
           src={`https:${fish.image.fields.file?.url ?? ""}`}
           alt={fish.name}
