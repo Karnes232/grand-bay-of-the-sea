@@ -21,7 +21,7 @@ const YouMayLikeSwiper = ({ relatedPosts }) => {
   if (windowWidth > 680) {
     slidesPerView = 2
   }
-  if (windowWidth > 1100) {
+  if (windowWidth > 1023) {
     slidesPerView = 3
   }
   return (
@@ -40,7 +40,7 @@ const YouMayLikeSwiper = ({ relatedPosts }) => {
       >
         {relatedPosts.map((blog, index) => {
           return (
-            <SwiperSlide className="relative m-5" key={index}>
+            <SwiperSlide className="flex justify-center items-center" key={index}>
               <BlogPostCard blog={blog} />
             </SwiperSlide>
           )

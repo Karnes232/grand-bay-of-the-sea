@@ -10,10 +10,10 @@ const PhotoGrid = ({ backgroundImages }: { backgroundImages: any[] }) => {
   useEffect(() => {
     const updateLayout = () => {
       if (window.innerWidth >= 1536) {
-        setImageCount(6)
-        setTargetHeight(350) // Larger on 2xl screens
+        setImageCount(4)
+        setTargetHeight(400) // Larger on 2xl screens
       } else if (window.innerWidth >= 1280) {
-        setImageCount(5)
+        setImageCount(4)
         setTargetHeight(320) // Larger on xl screens
       } else if (window.innerWidth >= 1024) {
         setImageCount(4)

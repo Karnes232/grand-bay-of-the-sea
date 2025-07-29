@@ -17,7 +17,7 @@ const HeroImages = ({ backgroundImages }: { backgroundImages: any[] }) => {
           <PhotoGrid backgroundImages={backgroundImages} />
         </div>
       </div>
-      <div className="md:mt-[15vh] lg:mt-[20vh] xl:mt-[25vh]" />
+      <div className="md:mt-[15vh] lg:mt-[20vh] xl:mt-[25vh] 2xl:mt-[250px]" />
     </>
   )
 }

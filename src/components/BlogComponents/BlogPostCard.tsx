@@ -6,7 +6,7 @@ const BlogPostCard = ({ blog }: { blog: any }) => {
   return (
     <Link
       href={`/blog/${blog.fields.blogCategory.fields.slug}/${blog.fields.slug}`}
-      className="no-underline block"
+      className="no-underline flex justify-center items-center my-5"
       aria-label={blog.fields.title}
     >
       <div className="bg-white w-80 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
