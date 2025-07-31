@@ -49,7 +49,7 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: "https://www.grandbay-pageLayoutpuntacana.com/photo-gallery/",
+      canonical: "https://www.grandbay-puntacana.com/photo-gallery/",
     },
   }
 }
