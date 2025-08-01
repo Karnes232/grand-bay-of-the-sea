@@ -1,6 +1,7 @@
 import React from "react"
 import Links from "./Links"
 import HamburgerMenu from "./HamburgerMenu"
+import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
 
 const Nav = () => {
   return (
@@ -10,6 +11,9 @@ const Nav = () => {
       </div>
       <div className="lg:hidden">
         <HamburgerMenu />
+      </div>
+      <div className="hidden lg:block">
+        <LanguageSwitcher color="gray-700" className="" />
       </div>
     </div>
   )

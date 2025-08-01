@@ -13,7 +13,7 @@ const FishCard = ({ fish }: { fish: any }) => {
         duration: 3,
         delay: 0.3,
       }}
-      id={fish.name.replace(/\s+/g, '')}
+      id={fish.name.replace(/\s+/g, "")}
       className="flex justify-center items-center m-4 w-80"
     >
       <div className="rounded-lg shadow-lg hover:shadow-xl transition-all bg-white max-w-sm">
@@ -38,7 +38,9 @@ const FishCard = ({ fish }: { fish: any }) => {
             </h5>
           )}
           {fish.blogReference && (
-            <DescriptionWithReadMore description={fish.blogReference.fields.description} />
+            <DescriptionWithReadMore
+              description={fish.blogReference.fields.description}
+            />
           )}
         </div>
       </div>
@@ -59,14 +61,23 @@ const DescriptionWithReadMore = ({ description }: { description: string }) => {
             ? "text-gray-700 text-base mb-4"
             : "text-gray-700 text-base mb-4 line-clamp-2"
         }
-        style={!expanded ? { display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' } : {}}
+        style={
+          !expanded
+            ? {
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+              }
+            : {}
+        }
       >
         {description}
       </p>
       {isLong && (
         <button
           className="text-blue-500 hover:underline text-sm"
-          onClick={() => setExpanded((v) => !v)}
+          onClick={() => setExpanded(v => !v)}
         >
           {expanded ? "Read less" : "Read more"}
         </button>

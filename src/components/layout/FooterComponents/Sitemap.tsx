@@ -1,3 +1,4 @@
+import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
 import Link from "next/link"
 import React from "react"
 
@@ -55,6 +56,9 @@ const Sitemap = () => {
         <Link href="/contact">
           <p className="footerSitemap">Contact Us</p>
         </Link>
+      </div>
+      <div className="mx-8 flex flex-col justify-center md:space-x-8 pb-4 md:pt-4 md:mx-auto md:max-w-2xl md:flex-row">
+        <LanguageSwitcher />
       </div>
     </div>
   )

@@ -28,6 +28,7 @@ export async function searchEntries(
   query: object,
   select?: string[],
   excludeSlugs?: string[],
+  locale?: string,
 ) {
   const queryParams: any = {
     content_type: contentType,
@@ -40,6 +41,10 @@ export async function searchEntries(
 
   if (excludeSlugs && excludeSlugs.length > 0) {
     queryParams["fields.slug[nin]"] = excludeSlugs.join(",")
+  }
+
+  if (locale) {
+    queryParams["locale"] = locale || "en"
   }
 
   const entries = await client.getEntries(queryParams)

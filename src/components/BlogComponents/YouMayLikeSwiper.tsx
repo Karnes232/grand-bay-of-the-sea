@@ -40,7 +40,10 @@ const YouMayLikeSwiper = ({ relatedPosts }) => {
       >
         {relatedPosts.map((blog, index) => {
           return (
-            <SwiperSlide className="flex justify-center items-center" key={index}>
+            <SwiperSlide
+              className="flex justify-center items-center"
+              key={index}
+            >
               <BlogPostCard blog={blog} />
             </SwiperSlide>
           )

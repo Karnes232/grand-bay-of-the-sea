@@ -1,4 +1,5 @@
-import React, { Fragment } from "react"
+"use client"
+import React, { Fragment, useState } from "react"
 import Link from "next/link"
 import {
   Menu,
@@ -8,7 +9,11 @@ import {
   Transition,
 } from "@headlessui/react"
 import { Bars3Icon } from "@heroicons/react/24/outline"
+import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
+
 const HamburgerMenu = () => {
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
+  
   const links = [
     { href: "/", label: "Home" },
     { href: "/courses", label: "Scuba Classes" },
@@ -61,7 +66,9 @@ const HamburgerMenu = () => {
             <MenuItems
               anchor="bottom"
               static
-              className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none cursor-default z-50"
+              className={`absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none cursor-default z-50 ${
+                isLanguageDropdownOpen ? 'pb-32' : ''
+              }`}
             >
               <>
                 <div className="py-1">
@@ -78,6 +85,13 @@ const HamburgerMenu = () => {
                   ))}
                 </div>
               </>
+              <div className="px-3 flex flex-col justify-center pb-2">
+                <LanguageSwitcher 
+                  color="gray-700" 
+                  className="" 
+                  onDropdownToggle={(isOpen) => setIsLanguageDropdownOpen(isOpen)}
+                />
+              </div>
             </MenuItems>
           </Transition>
         </Menu>

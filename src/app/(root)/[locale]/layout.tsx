@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
-import "../globals.css"
+import "../../globals.css"
 import Header from "@/components/layout/HeaderComponents/Header"
 import Footer from "@/components/layout/FooterComponents/Footer"
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google"
@@ -8,13 +8,16 @@ import { generateStructuredData } from "@/components/StructuredData/StructuredDa
 import { ServiceWorkerCleanup } from "@/components/layout/ServiceWorkerCleanup"
 import FloatingContactForm from "@/components/FloatingButtonComponents/FloatingContactForm"
 import { Crimson_Pro } from "next/font/google"
+import {NextIntlClientProvider, hasLocale} from 'next-intl';
+import {notFound} from 'next/navigation';
+import {routing} from '@/i18n/routing';
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "../fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 })
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "../fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 })
@@ -77,13 +80,19 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params
 }: Readonly<{
   children: React.ReactNode
+  params: Promise<{locale: string}>;
 }>) {
+  const {locale} = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
   return (
-    <html lang="en" className={`${crimsonPro.variable}`}>
+    <html lang={locale} className={`${crimsonPro.variable}`}>
       <GoogleTagManager gtmId="GTM-KGLHKQW" />
       <GoogleAnalytics gaId="G-6MJLJ90SSM" />
       <GoogleAnalytics gaId="G-JDL6KCYRYD" />
@@ -98,14 +107,14 @@ export default function RootLayout({
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      >  <NextIntlClientProvider>
         <FloatingContactForm />
         <ServiceWorkerCleanup />
         <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
           <Header />
           {children}
           <Footer />
-        </div>
+        </div></NextIntlClientProvider>
       </body>
     </html>
   )
