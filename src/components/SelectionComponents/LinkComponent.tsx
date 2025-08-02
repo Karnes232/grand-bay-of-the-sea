@@ -18,11 +18,11 @@ const LinkComponent = ({
   return (
     <Link
       href={url}
-      className="no-underline flex flex-col justify-between items-center cursor-pointer text-center selection-links md:h-[26rem] lg:h-80 md:justify-start md:-mt-8"
+      className="no-underline flex flex-col justify-between items-center cursor-pointer text-center selection-links md:h-[26rem] lg:h-[32rem] md:justify-start lg:justify-center md:-mt-8"
     >
-      <div className="flex flex-col justify-center items-center lg:h-64 lg:justify-between">
+      <div className="flex flex-col justify-center items-center lg:h-72 lg:justify-between">
         <h2
-          className={`text-lg ${textColor} font-semibold md:text-2xl lg:text-3xl xl:w-72`}
+          className={`text-lg ${textColor} font-semibold md:text-2xl lg:text-3xl xl:w-72 md:min-h-[120px]`}
         >
           {name}
         </h2>
@@ -31,7 +31,7 @@ const LinkComponent = ({
           alt="Logo"
           width={125}
           height={125}
-          className="h-24 w-24 md:h-36 md:w-36 object-cover my-2 rounded-full"
+          className="h-24 w-24 md:min-h-36 md:min-w-36 object-cover my-2 rounded-full"
           quality={75}
         />
       </div>

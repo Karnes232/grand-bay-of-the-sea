@@ -134,5 +134,13 @@
   },
   "Footer": {
     "builtBy": "Desarrollado por"
+  },
+  "SelectionComponent": {
+    "learnToDiveWithExperts": "Aprende a Bucear con Expertos",
+    "discoverTheUnderwaterWorld": "Descubre el mundo submarino con nuestros instructores certificados internacionalmente. Desde principiantes hasta buceadores avanzados, ofrecemos cursos para todos los niveles.",
+    "experienceOurBestDiveSites": "Experimenta Nuestros Mejores Sitios de Buceo",
+    "saveWithOurValuePackedDivePackages": "Ahorra con nuestros paquetes de buceo valorados diseñados para buceadores certificados. Aventuras multidía a los principales sitios de buceo de Punta Cana.",
+    "exploreTheStunningIslandsOfTheDominicanRepublic": "Explora las islas impresionantes de la República Dominicana con nuestras excursiones de un día. Perfecto para todos.",
+    "caribbeanDayAdventures": "Adventuras del Día del Caribe"
   }
 }

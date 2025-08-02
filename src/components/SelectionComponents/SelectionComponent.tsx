@@ -1,6 +1,8 @@
+"use client"
 import React from "react"
 import LinkComponent from "./LinkComponent"
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 const SelectionComponent = ({
   secondaryHeroImage,
   linkImage1,
@@ -12,6 +14,7 @@ const SelectionComponent = ({
   linkImage2: string
   linkImage3: string
 }) => {
+  const t = useTranslations("SelectionComponent")
   const HeroStyles = {
     backgroundPosition: "75% 70%",
     backgroundImage:
@@ -37,23 +40,23 @@ const SelectionComponent = ({
         {/* Content */}
         <div className="relative z-10 flex flex-col h-full justify-evenly items-center max-w-6xl mx-5 md:flex-row xl:mx-auto xl:space-x-4">
           <LinkComponent
-            name="Learn to Dive with Experts"
+            name={t("learnToDiveWithExperts")}
             url="/courses"
-            description="Discover the underwater world with our internationally certified instructors. From beginners to advanced divers, we offer courses for all levels."
+            description={t("discoverTheUnderwaterWorld")}
             image={linkImage1}
             textColor="text-white"
           />
           <LinkComponent
-            name="Experience Our Best Dive Sites"
+            name={t("experienceOurBestDiveSites")}
             url="/sites"
-            description="Save with our value-packed dive packages designed for certified divers. Multi-day adventures to Punta Cana's premier dive locations."
+            description={t("saveWithOurValuePackedDivePackages")}
             image={linkImage2}
             textColor="text-white"
           />
           <LinkComponent
-            name="Caribbean Day Adventures"
+            name={t("caribbeanDayAdventures")}
             url="/trips"
-            description="Explore the stunning islands of the Dominican Republic with our full-day excursions. Perfect for everyone."
+            description={t("exploreTheStunningIslandsOfTheDominicanRepublic")}
             image={linkImage3}
             textColor="text-white"
           />

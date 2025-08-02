@@ -134,5 +134,13 @@
   },
   "Footer": {
     "builtBy": "Built by"
+  },
+  "SelectionComponent": {
+    "learnToDiveWithExperts": "Learn to Dive with Experts",
+    "discoverTheUnderwaterWorld": "Discover the underwater world with our internationally certified instructors. From beginners to advanced divers, we offer courses for all levels.",
+    "experienceOurBestDiveSites": "Experience Our Best Dive Sites",
+    "saveWithOurValuePackedDivePackages": "Save with our value-packed dive packages designed for certified divers. Multi-day adventures to Punta Cana's premier dive locations.",
+    "exploreTheStunningIslandsOfTheDominicanRepublic": "Explore the stunning islands of the Dominican Republic with our full-day excursions. Perfect for everyone.",
+    "caribbeanDayAdventures": "Caribbean Day Adventures"
   }
 }

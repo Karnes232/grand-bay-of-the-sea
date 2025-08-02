@@ -73,7 +73,7 @@ const DiveSiteCard = ({ diveSite }) => {
           <p className="text-lg text-gray-700 dark:text-white mb-2">
             {diveSite.meters} {t("meters")} / {diveSite.feet} {t("feet")}
           </p>
-          <p className="text-gray-700 dark:text-white text-base mb-4">
+          <p className="text-gray-700 dark:text-white text-base mb-4 min-h-[160px] flex flex-col items-start justify-between">
             {readMore
               ? diveSite.description
               : `${diveSite.description.substring(0, 150)}...`}
