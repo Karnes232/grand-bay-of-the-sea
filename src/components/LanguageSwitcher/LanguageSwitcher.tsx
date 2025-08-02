@@ -37,7 +37,8 @@ export default function LanguageSwitcher({
   const handleLanguageChange = (newLocale: string) => {
     setIsOpen(false)
     onDropdownToggle?.(false)
-    router.replace(pathname, { locale: newLocale })
+    // Use push instead of replace for better language switching
+    router.push(pathname, { locale: newLocale })
   }
 
   const handleToggle = (newState: boolean) => {

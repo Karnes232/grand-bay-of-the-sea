@@ -29,11 +29,11 @@ const GoogleMaps = dynamicImport(
   () => import("@/components/GoogleMapsComponent/GoogleMaps"),
 )
 
-// OPTION 1: Explicitly force static rendering for this page
-export const dynamic = "force-static"
+// OPTION 1: Remove force-static to allow dynamic rendering for language switching
+// export const dynamic = "force-static"
 
 // OPTION 2: Use revalidate for Incremental Static Regeneration (ISR)
-// export const revalidate = 60; // Regenerate every 60 seconds if a request comes in.
+export const revalidate = 3600; // Regenerate every hour if a request comes in.
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
@@ -106,7 +106,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params
   const pageLayoutResult = await searchEntries("pageLayout", {
     "fields.page": "Index",
-    locale: locale,
+    locale: locale || "en",
   })
 
   const pageLayout = pageLayoutResult.items[0]

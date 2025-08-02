@@ -9,6 +9,12 @@
   status = 200
   force = true
 
+# Handle SPA routing for Next.js
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]

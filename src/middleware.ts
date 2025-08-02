@@ -7,5 +7,14 @@ export const config = {
   // Match all pathnames except for
   // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
   // - … the ones containing a dot (e.g. `favicon.ico`)
-  matcher: "/((?!api|trpc|_next|tui|_vercel|.*\\..*).*)",
+  // - … the ones starting with `/tui` (admin interface)
+  matcher: [
+    // Match all pathnames except for
+    // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
+    // - … the ones containing a dot (e.g. `favicon.ico`)
+    // - … the ones starting with `/tui` (admin interface)
+    "/((?!api|trpc|_next|tui|_vercel|.*\\..*).*)",
+    // Also match pathnames that start with a locale
+    "/(en|es)/:path*"
+  ]
 }
