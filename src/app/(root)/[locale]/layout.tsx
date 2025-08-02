@@ -100,8 +100,15 @@ export default async function RootLayout({
     notFound()
   }
   
-  // Import messages for the current locale using the same pattern as request.ts
-  const messages = (await import(`../../../../messages/${locale}.json`)).default
+  // Import messages for the current locale
+  let messages
+  try {
+    messages = (await import(`../../../../messages/${locale}.json`)).default
+  } catch (error) {
+    console.error(`Failed to load messages for locale: ${locale}`, error)
+    // Fallback to English messages
+    messages = (await import(`../../../../messages/en.json`)).default
+  }
   
   return (
     <html lang={locale} className={`${crimsonPro.variable}`}>

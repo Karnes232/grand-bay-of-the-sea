@@ -33,7 +33,7 @@ const GoogleMaps = dynamicImport(
 // export const dynamic = "force-static"
 
 // OPTION 2: Use revalidate for Incremental Static Regeneration (ISR)
-export const revalidate = 60; // Regenerate every minute for faster language switching
+export const revalidate = 3600; // Regenerate every hour for better Netlify compatibility
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
@@ -104,12 +104,22 @@ export async function generateMetadata(
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const pageLayoutResult = await searchEntries("pageLayout", {
-    "fields.page": "Index",
-    locale: locale || "en",
-  })
-
-  const pageLayout = pageLayoutResult.items[0]
+  
+  let pageLayout
+  try {
+    const pageLayoutResult = await searchEntries("pageLayout", {
+      "fields.page": "Index",
+      locale: locale || "en",
+    })
+    pageLayout = pageLayoutResult.items[0]
+  } catch (error) {
+    console.error("Failed to fetch page layout:", error)
+    return (
+      <main>
+        <p>Unable to load content at this time. Please try again later.</p>
+      </main>
+    )
+  }
 
   if (!pageLayout) {
     return (
@@ -131,6 +141,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       base64 = plaiceholderBase64
     } catch (e) {
       console.error("Error generating plaiceholder for image:", url, e)
+      // Continue without base64 if there's an error
     }
 
     return {
@@ -143,15 +154,24 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   }
 
   // Fetch Hero Image details and base64 at build time
-  const heroImageDetails = await getFullImageDetails(
-    (pageLayout as any).fields.heroImage,
-  )
-  const secondaryHeroImageDetails = await getFullImageDetails(
-    (pageLayout as any).fields.secondaryHeroImage,
-  )
-  const tertiaryHeroImageDetails = await getFullImageDetails(
-    (pageLayout as any).fields.tertiaryHeroImage,
-  )
+  let heroImageDetails: any = {}
+  let secondaryHeroImageDetails: any = {}
+  let tertiaryHeroImageDetails: any = {}
+  
+  try {
+    heroImageDetails = await getFullImageDetails(
+      (pageLayout as any).fields.heroImage,
+    )
+    secondaryHeroImageDetails = await getFullImageDetails(
+      (pageLayout as any).fields.secondaryHeroImage,
+    )
+    tertiaryHeroImageDetails = await getFullImageDetails(
+      (pageLayout as any).fields.tertiaryHeroImage,
+    )
+  } catch (error) {
+    console.error("Error processing images:", error)
+    // Continue with empty image details if there's an error
+  }
 
   return (
     <main>
