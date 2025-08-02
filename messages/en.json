@@ -24,5 +24,12 @@
       "yourMessage": "Your message",
       "leaveAComment": "Leave a comment...",
       "submit": "Submit"
+    },
+    "ThankYou": {
+      "thankYou": "Thank you",
+      "ourTeamWillReachOut": "our team will reach out to you shortly!",
+      "pleaseFeelFreeTo": "Please feel free to",
+      "contactUs": "contact us",
+      "withAnyQuestionsOrConcerns": "with any questions or concerns."
     }
   }

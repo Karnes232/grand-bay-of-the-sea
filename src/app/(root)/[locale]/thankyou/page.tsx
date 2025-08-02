@@ -4,6 +4,7 @@ import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { useTranslations } from "next-intl"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
@@ -70,6 +71,7 @@ export default async function Home(props: any) {
     },
     ["fields.email"],
   )
+  const t = useTranslations("ThankYou")
   return (
     <main>
       <HeroComponent
@@ -80,21 +82,20 @@ export default async function Home(props: any) {
         <div className="mb-10">
           <div className="flex flex-col justify-center items-center text-slate-600 ">
             <div className="text-2xl xl:text-4xl font-serif text-center mt-6">
-              Thank you {props.searchParams.name}, our team will reach out to
-              you shortly!
+              {t("thankYou")} {props.searchParams.name}, {t("ourTeamWillReachOut")}
             </div>
 
             <div className="text-center text-sm xl:text-base mt-2 xl:mt-6">
-              Please feel free to{" "}
+              {t("pleaseFeelFreeTo")}
               <a
                 href={`mailto:${email.items[0].fields.email as string}`}
                 aria-label="Gmail"
                 rel="noreferrer"
                 className="underline"
               >
-                contact us
+                {t("contactUs")}
               </a>{" "}
-              with any questions or concerns.
+              {t("withAnyQuestionsOrConcerns")}
             </div>
           </div>
         </div>
