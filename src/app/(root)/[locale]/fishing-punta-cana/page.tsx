@@ -55,9 +55,15 @@ export async function generateMetadata(
   }
 }
 
-export default async function Home(props: any) {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
   const pageLayout = await searchEntries("tours", {
     "fields.page": "Fishing Punta Cana",
+    locale: locale || "en",
   })
 
   return (

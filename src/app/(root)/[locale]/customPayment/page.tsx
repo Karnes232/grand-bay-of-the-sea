@@ -58,8 +58,12 @@ export async function generateMetadata(
   }
 }
 
-export default async function Page({params}: {params: Promise<{locale: string}>}) {
-  const {locale} = await params;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Custom Payment",
     locale: locale,
@@ -71,8 +75,9 @@ export default async function Page({params}: {params: Promise<{locale: string}>}
       />
       <div className="mt-[45vh] md:mt-[40vh] lg:mt-[65vh]" />
       <div className="py-20 lg:pt-12">
-      <RichText context={pageLayout.items[0].fields.paragraph1} />
-      <CustomPagePayPal /></div>
+        <RichText context={pageLayout.items[0].fields.paragraph1} />
+        <CustomPagePayPal />
+      </div>
     </main>
   )
 }

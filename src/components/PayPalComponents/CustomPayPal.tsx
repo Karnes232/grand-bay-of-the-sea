@@ -24,7 +24,7 @@ const CustomPayPal = ({ price }) => {
           />
         </PayPalScriptProvider>
         <p className="text-xs mt-2 mx-6 text-wrap">
-          {t("byProceedingWithPayment")}{' '}
+          {t("byProceedingWithPayment")}{" "}
           <Link href={"/terms-and-conditions"} className="text-blue-700">
             {t("termsAndConditions")}
           </Link>

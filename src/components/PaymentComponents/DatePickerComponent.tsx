@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl"
 import React, { useState } from "react"
 import Datepicker, { DateRangeType } from "react-tailwindcss-datepicker"
 
@@ -5,6 +6,7 @@ const START_FROM = new Date()
 START_FROM.setMonth(START_FROM.getMonth())
 
 const DatePickerComponent = ({ setFormData, formData }) => {
+  const t = useTranslations("DatePickerComponent")
   const [value, setValue] = useState({
     startDate: null,
     endDate: null,
@@ -70,7 +72,7 @@ const DatePickerComponent = ({ setFormData, formData }) => {
       <div className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
         <input type="hidden" name="date" value={selectedDate || ""} />
         <Datepicker
-          placeholder={"Preferred Date"}
+          placeholder={t("preferredDate")}
           asSingle={true}
           useRange={false}
           minDate={START_FROM}
@@ -83,9 +85,7 @@ const DatePickerComponent = ({ setFormData, formData }) => {
         />
       </div>
       {isSundaySelected && (
-        <p className="text-red-500 text-sm mt-1">
-          Closed on Sundays. Please select another date.
-        </p>
+        <p className="text-red-500 text-sm mt-1">{t("closedOnSundays")}</p>
       )}
     </div>
   )

@@ -1,30 +1,36 @@
-import { useTranslations } from 'next-intl'
-import React from 'react'
+import { useTranslations } from "next-intl"
+import React from "react"
 
-const ThankYou = ({ searchParams, email }: { searchParams: { name: string }, email: string }) => {
+const ThankYou = ({
+  searchParams,
+  email,
+}: {
+  searchParams: { name: string }
+  email: string
+}) => {
   const t = useTranslations("ThankYou")
   return (
     <div className="flex flex-col items-center justify-center max-w-xs xl:max-w-sm mx-auto min-h-[40vh] xl:min-h-[50vh]">
-        <div className="mb-10">
-          <div className="flex flex-col justify-center items-center text-slate-600 ">
-            <div className="text-2xl xl:text-4xl font-serif text-center mt-6">
-              {t("thankYou")} {searchParams.name}, {t("ourTeamWillReachOut")}
-            </div>
+      <div className="mb-10">
+        <div className="flex flex-col justify-center items-center text-slate-600 ">
+          <div className="text-2xl xl:text-4xl font-serif text-center mt-6">
+            {t("thankYou")} {searchParams.name}, {t("ourTeamWillReachOut")}
+          </div>
 
-            <div className="text-center text-sm xl:text-base mt-2 xl:mt-6">
-              {t("pleaseFeelFreeTo")}{" "}
-              <a
-                href={`mailto:${email}`}
-                aria-label="Gmail"
-                rel="noreferrer"
-                className="underline"
-              >
-                {t("contactUs")}
-              </a>{" "}
-              {t("withAnyQuestionsOrConcerns")}
-            </div>
+          <div className="text-center text-sm xl:text-base mt-2 xl:mt-6">
+            {t("pleaseFeelFreeTo")}{" "}
+            <a
+              href={`mailto:${email}`}
+              aria-label="Gmail"
+              rel="noreferrer"
+              className="underline"
+            >
+              {t("contactUs")}
+            </a>{" "}
+            {t("withAnyQuestionsOrConcerns")}
           </div>
         </div>
+      </div>
     </div>
   )
 }

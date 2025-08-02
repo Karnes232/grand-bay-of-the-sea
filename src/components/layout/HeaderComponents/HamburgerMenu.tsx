@@ -13,7 +13,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
 
 const HamburgerMenu = () => {
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
-  
+
   const links = [
     { href: "/", label: "Home" },
     { href: "/courses", label: "Scuba Classes" },
@@ -67,7 +67,7 @@ const HamburgerMenu = () => {
               anchor="bottom"
               static
               className={`absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none cursor-default z-50 ${
-                isLanguageDropdownOpen ? 'pb-32' : ''
+                isLanguageDropdownOpen ? "pb-32" : ""
               }`}
             >
               <>
@@ -86,10 +86,10 @@ const HamburgerMenu = () => {
                 </div>
               </>
               <div className="px-3 flex flex-col justify-center pb-2">
-                <LanguageSwitcher 
-                  color="gray-700" 
-                  className="" 
-                  onDropdownToggle={(isOpen) => setIsLanguageDropdownOpen(isOpen)}
+                <LanguageSwitcher
+                  color="gray-700"
+                  className=""
+                  onDropdownToggle={isOpen => setIsLanguageDropdownOpen(isOpen)}
                 />
               </div>
             </MenuItems>

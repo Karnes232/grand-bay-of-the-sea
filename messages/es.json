@@ -1,44 +1,76 @@
 {
-    "Navbar": {
-      "home": "Inicio",
-      "scubaClasses": "Clases de Buceo",
-      "divePackages": "Paquetes de Buceo",
-      "localDives": "Buceo Local",
-      "sharkDive": "Buceo con Tiburones",
-      "diveTrips": "Viajes de Buceo",
-      "deepSeaFishing": "Pesca en Alta Mar",
-      "photoGallery": "Galería de Fotos",
-      "speciesGuide": "Guía de Especies",
-      "contactUs": "Contacto",
-      "scubaDivingPuntaCana": "Buceo Punta Cana",
-      "sharkDivingPuntaCana": "Buceo con Tiburones Punta Cana",
-      "liveAboards": "Viajes en Barco",
-      "cancellationPolicy": "Política de Cancelación",
-      "siteMap": "Mapa del Sitio",
-      "blog": "Blog"
-    },
-    "ContactForm": {
-      "fullName": "Nombre Completo",
-      "emailAddress": "Correo Electrónico",
-      "hotel": "Hotel",
-      "yourMessage": "Tu mensaje",
-      "leaveAComment": "Deja un comentario...",
-      "submit": "Enviar"
-    },
-    "ThankYou": {
-      "thankYou": "Gracias",
-      "ourTeamWillReachOut": "nuestro equipo se pondrá en contacto contigo pronto!",
-      "pleaseFeelFreeTo": "Por favor, no dude en",
-      "contactUs": "contactar con nosotros",
-      "withAnyQuestionsOrConcerns": "con cualquier pregunta o inquietud."
-    },
-    "CustomPagePayPal": {
-      "depositAmount": "Cantidad de Depósito",
-      "byProceedingWithPayment": "Al continuar con el pago, acepta que has leído y aceptado nuestros",
-      "termsAndConditions": "Términos y Condiciones"
-    },
-    "FishCard": {
-      "readLess": "Leer menos",
-      "readMore": "Leer más"
-    }
+  "Navbar": {
+    "home": "Inicio",
+    "scubaClasses": "Clases de Buceo",
+    "divePackages": "Paquetes de Buceo",
+    "localDives": "Buceo Local",
+    "sharkDive": "Buceo con Tiburones",
+    "diveTrips": "Viajes de Buceo",
+    "deepSeaFishing": "Pesca en Alta Mar",
+    "photoGallery": "Galería de Fotos",
+    "speciesGuide": "Guía de Especies",
+    "contactUs": "Contacto",
+    "scubaDivingPuntaCana": "Buceo Punta Cana",
+    "sharkDivingPuntaCana": "Buceo con Tiburones Punta Cana",
+    "liveAboards": "Viajes en Barco",
+    "cancellationPolicy": "Política de Cancelación",
+    "siteMap": "Mapa del Sitio",
+    "blog": "Blog"
+  },
+  "ContactForm": {
+    "fullName": "Nombre Completo",
+    "emailAddress": "Correo Electrónico",
+    "hotel": "Hotel",
+    "yourMessage": "Tu mensaje",
+    "leaveAComment": "Deja un comentario...",
+    "submit": "Enviar"
+  },
+  "ThankYou": {
+    "thankYou": "Gracias",
+    "ourTeamWillReachOut": "nuestro equipo se pondrá en contacto contigo pronto!",
+    "pleaseFeelFreeTo": "Por favor, no dude en",
+    "contactUs": "contactar con nosotros",
+    "withAnyQuestionsOrConcerns": "con cualquier pregunta o inquietud."
+  },
+  "CustomPagePayPal": {
+    "depositAmount": "Cantidad de Depósito",
+    "byProceedingWithPayment": "Al continuar con el pago, acepta que has leído y aceptado nuestros",
+    "termsAndConditions": "Términos y Condiciones"
+  },
+  "FishCard": {
+    "readLess": "Leer menos",
+    "readMore": "Leer más"
+  },
+  "FishingOverview": {
+    "fishingOverview": "Resumen de Pesca",
+    "sharedFishingCharter": "Pesca Compartida",
+    "perPerson": "por persona",
+    "spectator": "Espectador",
+    "privateFishingCharter": "Pesca Privada",
+    "duration": "Duración",
+    "price": "Precio",
+    "contactUs": "Contacto",
+    "reserveSharedCharterNow": "Reserva Pesca Compartida Ahora",
+    "onlyADeposit": "Solo un depósito de",
+    "deposit": ""
+  },
+  "PaymentPopupFishing": {
+    "bookNow": "Reservar Ahora",
+    "contactInfo": "Información de Contacto",
+    "fullName": "Nombre Completo",
+    "emailAddress": "Correo Electrónico",
+    "hotel": "Hotel",
+    "numberOfFishermen": "Número de Pescadores",
+    "numberOfSpectators": "Número de Espectadores",
+    "excursion": "Excursión"
+  },
+  "PayPalButtonWrapperBooking": {
+    "pleaseCompleteAllRequiredFieldsBeforeProceedingWithPayment": "Por favor, complete todos los campos requeridos antes de proceder con el pago.",
+    "byProceedingWithPayment": "Al continuar con el pago, acepta que has leído y aceptado nuestros",
+    "termsAndConditions": "Términos y Condiciones"
+  },
+  "DatePickerComponent": {
+    "preferredDate": "Fecha Preferida",
+    "closedOnSundays": "Cerrado los domingos. Por favor, seleccione otra fecha."
   }
+}

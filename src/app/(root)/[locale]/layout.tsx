@@ -8,9 +8,9 @@ import { generateStructuredData } from "@/components/StructuredData/StructuredDa
 import { ServiceWorkerCleanup } from "@/components/layout/ServiceWorkerCleanup"
 import FloatingContactForm from "@/components/FloatingButtonComponents/FloatingContactForm"
 import { Crimson_Pro } from "next/font/google"
-import {NextIntlClientProvider, hasLocale} from 'next-intl';
-import {notFound} from 'next/navigation';
-import {routing} from '@/i18n/routing';
+import { NextIntlClientProvider, hasLocale } from "next-intl"
+import { notFound } from "next/navigation"
+import { routing } from "@/i18n/routing"
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -82,14 +82,14 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params
+  params,
 }: Readonly<{
   children: React.ReactNode
-  params: Promise<{locale: string}>;
+  params: Promise<{ locale: string }>
 }>) {
-  const {locale} = await params;
+  const { locale } = await params
   if (!hasLocale(routing.locales, locale)) {
-    notFound();
+    notFound()
   }
   return (
     <html lang={locale} className={`${crimsonPro.variable}`}>
@@ -107,14 +107,17 @@ export default async function RootLayout({
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >  <NextIntlClientProvider>
-        <FloatingContactForm />
-        <ServiceWorkerCleanup />
-        <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
-          <Header />
-          {children}
-          <Footer />
-        </div></NextIntlClientProvider>
+      >
+        {" "}
+        <NextIntlClientProvider>
+          <FloatingContactForm />
+          <ServiceWorkerCleanup />
+          <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
+            <Header />
+            {children}
+            <Footer />
+          </div>
+        </NextIntlClientProvider>
       </body>
     </html>
   )

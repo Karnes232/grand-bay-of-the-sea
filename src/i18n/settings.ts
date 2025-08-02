@@ -1,2 +1,2 @@
-export const languages = ['en', 'es']
-export const fallbackLng = 'en' 
+export const languages = ["en", "es"]
+export const fallbackLng = "en"

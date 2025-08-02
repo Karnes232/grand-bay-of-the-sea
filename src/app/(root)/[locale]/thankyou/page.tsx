@@ -100,7 +100,10 @@ export default async function Home(props: any) {
           </div>
         </div>
       </div> */}
-      <ThankYou searchParams={props.searchParams} email={email.items[0].fields.email as string} />
+      <ThankYou
+        searchParams={props.searchParams}
+        email={email.items[0].fields.email as string}
+      />
     </main>
   )
 }

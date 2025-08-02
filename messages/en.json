@@ -1,44 +1,76 @@
 {
-    "Navbar": {
-      "home": "Home",
-      "scubaClasses": "Scuba Classes",
-      "divePackages": "Dive Packages",
-      "localDives": "Local Dives",
-      "sharkDive": "Shark Dive",
-      "diveTrips": "Dive Trips",
-      "deepSeaFishing": "Deep Sea Fishing",
-      "photoGallery": "Photo Gallery",
-      "speciesGuide": "Species Guide",
-      "contactUs": "Contact Us",
-      "scubaDivingPuntaCana": "Scuba Diving Punta Cana",
-      "sharkDivingPuntaCana": "Shark Diving Punta Cana",
-      "liveAboards": "Live Aboards",
-      "cancellationPolicy": "Cancellation Policy",
-      "siteMap": "Site Map",
-      "blog": "Blog"
-    },
-    "ContactForm": {
-      "fullName": "Full Name",
-      "emailAddress": "Email Address",
-      "hotel": "Hotel",
-      "yourMessage": "Your message",
-      "leaveAComment": "Leave a comment...",
-      "submit": "Submit"
-    },
-    "ThankYou": {
-      "thankYou": "Thank you",
-      "ourTeamWillReachOut": "our team will reach out to you shortly!",
-      "pleaseFeelFreeTo": "Please feel free to",
-      "contactUs": "contact us",
-      "withAnyQuestionsOrConcerns": "with any questions or concerns."
-    },
-    "CustomPagePayPal": {
-      "depositAmount": "Deposit Amount",
-      "byProceedingWithPayment": "By proceeding with payment, you acknowledge that you have read and agree to our",
-      "termsAndConditions": "Terms and Conditions"
-    },
-    "FishCard": {
-      "readLess": "Read less",
-      "readMore": "Read more"
-    }
+  "Navbar": {
+    "home": "Home",
+    "scubaClasses": "Scuba Classes",
+    "divePackages": "Dive Packages",
+    "localDives": "Local Dives",
+    "sharkDive": "Shark Dive",
+    "diveTrips": "Dive Trips",
+    "deepSeaFishing": "Deep Sea Fishing",
+    "photoGallery": "Photo Gallery",
+    "speciesGuide": "Species Guide",
+    "contactUs": "Contact Us",
+    "scubaDivingPuntaCana": "Scuba Diving Punta Cana",
+    "sharkDivingPuntaCana": "Shark Diving Punta Cana",
+    "liveAboards": "Live Aboards",
+    "cancellationPolicy": "Cancellation Policy",
+    "siteMap": "Site Map",
+    "blog": "Blog"
+  },
+  "ContactForm": {
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "hotel": "Hotel",
+    "yourMessage": "Your message",
+    "leaveAComment": "Leave a comment...",
+    "submit": "Submit"
+  },
+  "ThankYou": {
+    "thankYou": "Thank you",
+    "ourTeamWillReachOut": "our team will reach out to you shortly!",
+    "pleaseFeelFreeTo": "Please feel free to",
+    "contactUs": "contact us",
+    "withAnyQuestionsOrConcerns": "with any questions or concerns."
+  },
+  "CustomPagePayPal": {
+    "depositAmount": "Deposit Amount",
+    "byProceedingWithPayment": "By proceeding with payment, you acknowledge that you have read and agree to our",
+    "termsAndConditions": "Terms and Conditions"
+  },
+  "FishCard": {
+    "readLess": "Read less",
+    "readMore": "Read more"
+  },
+  "FishingOverview": {
+    "fishingOverview": "Fishing Overview",
+    "sharedFishingCharter": "Shared Fishing Charter",
+    "perPerson": "per person",
+    "spectator": "Spectator",
+    "privateFishingCharter": "Private Fishing Charter",
+    "duration": "Duration",
+    "price": "Price",
+    "contactUs": "Contact Us",
+    "reserveSharedCharterNow": "Reserve Shared Charter Now",
+    "onlyADeposit": "Only a",
+    "deposit": "deposit"
+  },
+  "PaymentPopupFishing": {
+    "bookNow": "Book Now",
+    "contactInfo": "Contact Info",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "hotel": "Hotel",
+    "numberOfFishermen": "Number of Fishermen",
+    "numberOfSpectators": "Number of Spectators",
+    "excursion": "Excursion"
+  },
+  "PayPalButtonWrapperBooking": {
+    "pleaseCompleteAllRequiredFieldsBeforeProceedingWithPayment": "Please complete all required fields before proceeding with payment.",
+    "byProceedingWithPayment": "By proceeding with payment, you acknowledge that you have read and agree to our",
+    "termsAndConditions": "Terms and Conditions"
+  },
+  "DatePickerComponent": {
+    "preferredDate": "Preferred Date",
+    "closedOnSundays": "Closed on Sundays. Please select another date."
   }
+}

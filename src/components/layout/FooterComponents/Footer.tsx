@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="mx-5 flex max-w-6xl flex-col justify-between xl:mx-auto">
         <SocialMedia />
         <Sitemap />
-      
+
         <TrustBadges />
 
         <div className="flex flex-col w-full justify-between md:flex-row">

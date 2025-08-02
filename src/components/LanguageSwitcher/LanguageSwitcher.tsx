@@ -7,25 +7,27 @@ import { useParams } from "next/navigation"
 import { Globe, ChevronDown } from "lucide-react"
 
 interface LanguageSwitcherProps {
-  color?: string;
-  className?: string;
-  onDropdownToggle?: (isOpen: boolean) => void;
+  color?: string
+  className?: string
+  onDropdownToggle?: (isOpen: boolean) => void
 }
 
 export default function LanguageSwitcher({
   color = "white",
   className = "",
-  onDropdownToggle
+  onDropdownToggle,
 }: LanguageSwitcherProps) {
   const router = useRouter()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
-  
+
   // Use useParams at the top level
   const params = useParams()
   const currentLocale = (params?.locale as string) || fallbackLng
-  const safeLocale = languages.includes(currentLocale) ? currentLocale : fallbackLng
+  const safeLocale = languages.includes(currentLocale)
+    ? currentLocale
+    : fallbackLng
 
   const languageOptions = [
     { code: "en", display: "English", flag: "🇺🇸" },
@@ -62,8 +64,7 @@ export default function LanguageSwitcher({
   }, [onDropdownToggle])
 
   const currentLangOption =
-    languageOptions.find(lang => lang.code === safeLocale) ||
-    languageOptions[0]
+    languageOptions.find(lang => lang.code === safeLocale) || languageOptions[0]
 
   return (
     <div className={`relative ${className}`} ref={dropdownRef}>

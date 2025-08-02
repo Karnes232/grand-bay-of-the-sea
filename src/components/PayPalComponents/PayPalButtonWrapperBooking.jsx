@@ -6,6 +6,7 @@ import {
   PayPalButtonsComponentProps,
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js"
+import { useTranslations } from "next-intl"
 
 const PayPalButtonWrapperBooking = ({
   currency,
@@ -14,6 +15,7 @@ const PayPalButtonWrapperBooking = ({
   handleSubmit,
   formData,
 }) => {
+  const t = useTranslations("PayPalButtonWrapperBooking")
   const style = { layout: "vertical", shape: "pill" }
 
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer()
@@ -49,7 +51,7 @@ const PayPalButtonWrapperBooking = ({
       {showSpinner && isPending && <div className="spinner" />}
       {!formComplete && (
         <div className="text-red-500 mb-2 text-sm">
-          Please complete all required fields before proceeding with payment.
+          {t("pleaseCompleteAllRequiredFieldsBeforeProceedingWithPayment")}
         </div>
       )}
       <PayPalButtons

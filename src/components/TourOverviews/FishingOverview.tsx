@@ -4,6 +4,7 @@ import React from "react"
 import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
 import PaymentPopupFishing from "../PaymentComponents/PaymentPopupFishing"
+import { useTranslations } from "next-intl"
 
 interface Tour {
   price: number
@@ -14,30 +15,33 @@ interface Tour {
 }
 
 const FishingOverview = ({ tour }: { tour: Tour }) => {
+  const t = useTranslations("FishingOverview")
   return (
     <div className="my-5">
       <div className="flex flex-col justify-center items-center mb-2">
         <h4 className="text-xl font-semibold mb-1 xl:text-3xl">
-          <strong>Fishing Overview</strong>
+          <strong>{t("fishingOverview")}</strong>
         </h4>
         <p className="my-1 text-center text-sm xl:text-base">
-          Shared Fishing Charter
+          {t("sharedFishingCharter")}
         </p>
         <p className="my-1 text-center text-sm xl:text-base">
-          ${tour.price} per person
-        </p>
-        <p className="my-1 text-center text-sm xl:text-base">Spectator</p>{" "}
-        <p className="my-1 text-center text-sm xl:text-base">
-          ${tour.spectatorSnorkel} per person
+          ${tour.price} {t("perPerson")}
         </p>
         <p className="my-1 text-center text-sm xl:text-base">
-          Private Fishing Charter
+          {t("spectator")}
+        </p>{" "}
+        <p className="my-1 text-center text-sm xl:text-base">
+          ${tour.spectatorSnorkel} {t("perPerson")}
         </p>
         <p className="my-1 text-center text-sm xl:text-base">
-          Duration: {tour.duration}
+          {t("privateFishingCharter")}
         </p>
         <p className="my-1 text-center text-sm xl:text-base">
-          Price: ${tour.privateCharter}
+          {t("duration")}: {tour.duration}
+        </p>
+        <p className="my-1 text-center text-sm xl:text-base">
+          {t("price")}: ${tour.privateCharter}
         </p>
       </div>
       <div className="flex flex-col justify-center w-[200px] h-[70px] mx-auto space-y-2 my-2">
@@ -52,7 +56,7 @@ const FishingOverview = ({ tour }: { tour: Tour }) => {
                 delay: 0.3,
               }}
             >
-              Contact Us
+              {t("contactUs")}
             </motion.p>
           </button>
         </Link>
@@ -60,9 +64,11 @@ const FishingOverview = ({ tour }: { tour: Tour }) => {
       </div>
       <div className="flex flex-col justify-center items-center mb-4">
         <p className="mb-1 mt-2">
-          <strong>Reserve Shared Charter Now</strong>
+          <strong>{t("reserveSharedCharterNow")}</strong>
         </p>
-        <p className="mt-1">Only a ${tour.depositPrice} deposit</p>
+        <p className="mt-1">
+          {t("onlyADeposit")}: ${tour.depositPrice} {t("deposit")}
+        </p>
       </div>
       {/* <CustomPayPal price={tour.depositPrice} /> */}
     </div>
