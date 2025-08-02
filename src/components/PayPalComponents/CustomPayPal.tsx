@@ -2,8 +2,10 @@ import React from "react"
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 import PayPalButtonWrapper from "./PayPalButtonWrapper"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
 const CustomPayPal = ({ price }) => {
   const currency = "USD"
+  const t = useTranslations("CustomPagePayPal")
   return (
     <div className="flex justify-center">
       <div className="flex flex-col">
@@ -22,10 +24,9 @@ const CustomPayPal = ({ price }) => {
           />
         </PayPalScriptProvider>
         <p className="text-xs mt-2 mx-6 text-wrap">
-          By proceeding with payment, you acknowledge that you have read and
-          agree to our{" "}
+          {t("byProceedingWithPayment")}{' '}
           <Link href={"/terms-and-conditions"} className="text-blue-700">
-            Terms and Conditions
+            {t("termsAndConditions")}
           </Link>
         </p>
       </div>

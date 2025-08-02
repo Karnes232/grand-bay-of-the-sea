@@ -58,9 +58,11 @@ export async function generateMetadata(
   }
 }
 
-export default async function Page() {
+export default async function Page({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Custom Payment",
+    locale: locale,
   })
   return (
     <main>
@@ -68,8 +70,9 @@ export default async function Page() {
         heroImage={`https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`}
       />
       <div className="mt-[45vh] md:mt-[40vh] lg:mt-[65vh]" />
+      <div className="py-20 lg:pt-12">
       <RichText context={pageLayout.items[0].fields.paragraph1} />
-      <CustomPagePayPal />
+      <CustomPagePayPal /></div>
     </main>
   )
 }

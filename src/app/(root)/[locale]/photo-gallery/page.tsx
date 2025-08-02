@@ -56,7 +56,6 @@ export async function generateMetadata(
 
 export default async function Page({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
-  console.log(locale);
   const pageLayout = await searchEntries("photoGallery", {
     "fields.page": "Photo Gallery",
     locale: locale,

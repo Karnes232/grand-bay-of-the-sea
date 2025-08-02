@@ -31,5 +31,10 @@
       "pleaseFeelFreeTo": "Please feel free to",
       "contactUs": "contact us",
       "withAnyQuestionsOrConcerns": "with any questions or concerns."
+    },
+    "CustomPagePayPal": {
+      "depositAmount": "Deposit Amount",
+      "byProceedingWithPayment": "By proceeding with payment, you acknowledge that you have read and agree to our",
+      "termsAndConditions": "Terms and Conditions"
     }
   }
