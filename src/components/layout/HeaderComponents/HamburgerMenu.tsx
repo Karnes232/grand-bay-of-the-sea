@@ -10,21 +10,23 @@ import {
 } from "@headlessui/react"
 import { Bars3Icon } from "@heroicons/react/24/outline"
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
+import { useTranslations } from "next-intl"
 
 const HamburgerMenu = () => {
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
+  const t = useTranslations("Navbar")
 
   const links = [
-    { href: "/", label: "Home" },
-    { href: "/courses", label: "Scuba Classes" },
-    { href: "/sites", label: "Dive Packages" },
-    { href: "/trips", label: "Dive Trips" },
-    { href: "/shark-dive-punta-cana", label: "Shark Dive" },
-    { href: "/fishing-punta-cana", label: "Deep Sea Fishing" },
-    { href: "/liveaboard-dominican-republic", label: "Live Aboards" },
-    { href: "/species", label: "Species Guide" },
-    { href: "/photo-gallery", label: "Photo Gallery" },
-    { href: "/contact", label: "Contact Us" },
+    { href: "/", label: t("home") },
+    { href: "/courses", label: t("scubaClasses") },
+    { href: "/sites", label: t("divePackages") },
+    { href: "/trips", label: t("diveTrips") },
+    { href: "/shark-dive-punta-cana", label: t("sharkDive") },
+    { href: "/fishing-punta-cana", label: t("deepSeaFishing") },
+    { href: "/liveaboard-dominican-republic", label: t("liveAboards") },
+    { href: "/species", label: t("speciesGuide") },
+    { href: "/photo-gallery", label: t("photoGallery") },
+    { href: "/contact", label: t("contactUs") },
   ]
 
   return (

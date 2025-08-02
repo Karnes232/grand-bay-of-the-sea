@@ -131,5 +131,8 @@
     "readMore": "Leer Más",
     "meters": "metros",
     "feet": "pies"
+  },
+  "Footer": {
+    "builtBy": "Desarrollado por"
   }
 }

@@ -1,3 +1,5 @@
+"use client"
+
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
 import { useTranslations } from "next-intl"
 import Link from "next/link"

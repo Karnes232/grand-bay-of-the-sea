@@ -1,6 +1,12 @@
+"use client"
+
 import React from "react"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
+
 const Copyright = () => {
+  const t = useTranslations("Footer")
+  
   return (
     <div className="flex flex-col justify-between py-4 md:flex-row md:items-center md:mx-auto w-full">
       <div className="flex-1"></div>
@@ -10,7 +16,7 @@ const Copyright = () => {
         </p>
       </Link>
       <p className="text-sm text-gray-400 flex items-center gap-2 flex-1 justify-center md:justify-end md:mr-8">
-        Built by
+        {t("builtBy")}
         <a
           href="https://dr-webstudio.com"
           className="flex items-center gap-1 hover:text-orange-500 cursor-pointer"

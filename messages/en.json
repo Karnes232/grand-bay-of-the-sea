@@ -131,5 +131,8 @@
     "readMore": "Read More",
     "meters": "meters",
     "feet": "feet"
+  },
+  "Footer": {
+    "builtBy": "Built by"
   }
 }
