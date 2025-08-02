@@ -73,7 +73,7 @@ export default async function Page() {
           <TuiLocalDiveOverview />
         </div>
       </div>
-      <DiveSites />
+      <DiveSites locale={"en"} />
 
       <BackgroundVideo
         video={(pageLayout.items[0] as any).fields.videoHero.fields.file.url}

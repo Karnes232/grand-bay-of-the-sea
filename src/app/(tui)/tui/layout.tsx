@@ -4,6 +4,9 @@ import "../../../app/globals.css"
 import TuiHeader from "@/components/layout/TuiLayout/TuiHeader"
 import TuiFooter from "@/components/layout/TuiLayout/TuiFooter"
 import { ServiceWorkerCleanup } from "@/components/layout/ServiceWorkerCleanup"
+import { NextIntlClientProvider, hasLocale } from "next-intl"
+import { notFound } from "next/navigation"
+import { routing } from "@/i18n/routing"
 
 const geistSans = localFont({
   src: "../../(root)/fonts/GeistVF.woff",
@@ -68,11 +71,20 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode
+  params: Promise<{ locale: string }>
 }>) {
+  const { locale } = await params
+  // if (!hasLocale(routing.locales, locale)) {
+  //   notFound()
+  // }
+  
+  // Import messages for the current locale using the same pattern as request.ts
+  const messages = (await import(`../../../../messages/en.json`)).default
   return (
     <html lang="en">
       <head>
@@ -80,13 +92,14 @@ export default function RootLayout({
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      ><NextIntlClientProvider locale={locale} messages={messages} key={locale}>
         <ServiceWorkerCleanup />
         <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
           <TuiHeader />
           {children}
           <TuiFooter />
         </div>
+        </NextIntlClientProvider>
       </body>
     </html>
   )
