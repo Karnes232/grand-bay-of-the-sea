@@ -12,7 +12,7 @@ const ThankYou = ({ searchParams, email }: { searchParams: { name: string }, ema
             </div>
 
             <div className="text-center text-sm xl:text-base mt-2 xl:mt-6">
-              {t("pleaseFeelFreeTo")}
+              {t("pleaseFeelFreeTo")}{" "}
               <a
                 href={`mailto:${email}`}
                 aria-label="Gmail"

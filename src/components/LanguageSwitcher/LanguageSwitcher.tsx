@@ -12,15 +12,24 @@ interface LanguageSwitcherProps {
   onDropdownToggle?: (isOpen: boolean) => void;
 }
 
-export default function LanguageSwitcher({ color = "white", className = "", onDropdownToggle }: LanguageSwitcherProps) {
+export default function LanguageSwitcher({
+  color = "white",
+  className = "",
+  onDropdownToggle
+}: LanguageSwitcherProps) {
   const router = useRouter()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  
+  // Use useParams at the top level
+  const params = useParams()
+  const currentLocale = (params?.locale as string) || fallbackLng
+  const safeLocale = languages.includes(currentLocale) ? currentLocale : fallbackLng
 
   const languageOptions = [
     { code: "en", display: "English", flag: "🇺🇸" },
-    { code: "es", display: "Español", flag: "🇩🇴" }, // Dominican Republic flag to match your business
+    { code: "es", display: "Español", flag: "🇩🇴" },
   ]
 
   const handleLanguageChange = (newLocale: string) => {
@@ -32,15 +41,6 @@ export default function LanguageSwitcher({ color = "white", className = "", onDr
   const handleToggle = (newState: boolean) => {
     setIsOpen(newState)
     onDropdownToggle?.(newState)
-  }
-
-  const getCurrentLocale = () => {
-    const params = useParams()
-    const locale = params?.locale as string
-    if (locale && languages.includes(locale)) {
-      return locale
-    }
-    return fallbackLng
   }
 
   // Close dropdown when clicking outside
@@ -62,7 +62,7 @@ export default function LanguageSwitcher({ color = "white", className = "", onDr
   }, [onDropdownToggle])
 
   const currentLangOption =
-    languageOptions.find(lang => lang.code === getCurrentLocale()) ||
+    languageOptions.find(lang => lang.code === safeLocale) ||
     languageOptions[0]
 
   return (
@@ -71,7 +71,7 @@ export default function LanguageSwitcher({ color = "white", className = "", onDr
       <div className="hidden lg:block">
         <button
           onClick={() => handleToggle(!isOpen)}
-          className={`flex items-center space-x-2 text-${color} hover:text-orange-500 transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-orange-50 border border-transparent hover:border-orange-200`}
+          className={`flex items-center space-x-2 text-${color}  transition-colors duration-200 px-3 py-2 rounded-lg  border border-transparent `}
         >
           <Globe className="h-5 w-5 " />
           <span className="text-xl">{currentLangOption.flag}</span>
@@ -84,7 +84,7 @@ export default function LanguageSwitcher({ color = "white", className = "", onDr
         </button>
       </div>
 
-      {/* Mobile Version - Compact */}
+      {/* Mobile Version */}
       <div className="lg:hidden">
         <button
           onClick={() => handleToggle(!isOpen)}
@@ -102,7 +102,7 @@ export default function LanguageSwitcher({ color = "white", className = "", onDr
       {isOpen && (
         <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-2 z-50">
           {languageOptions.map(lng => {
-            const isActive = getCurrentLocale() === lng.code
+            const isActive = safeLocale === lng.code
             return (
               <button
                 key={lng.code}
