@@ -125,5 +125,11 @@
     "twoTankDive": "2 Tanque",
     "fourTankPackage": "4 Tanque",
     "excursion": "Excursión"
+  },
+  "DiveSiteCard": {
+    "showLess": "Mostrar Menos",
+    "readMore": "Leer Más",
+    "meters": "metros",
+    "feet": "pies"
   }
 }

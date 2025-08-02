@@ -125,5 +125,11 @@
     "twoTankDive": "Two Tank Dive",
     "fourTankPackage": "Four Tank Package",
     "excursion": "Excursion"
+  },
+  "DiveSiteCard": {
+    "showLess": "Show Less",
+    "readMore": "Read More",
+    "meters": "meters",
+    "feet": "feet"
   }
 }

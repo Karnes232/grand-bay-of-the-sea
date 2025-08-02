@@ -102,7 +102,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           />
         </div>
       </div>
-      <DiveSites />
+      <DiveSites locale={locale} />
 
       <CloudinaryBackgroundVideo
         videoId={"greyshark_aowggg"}

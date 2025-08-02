@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { motion } from "motion/react"
 import Image from "next/image"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
 
 interface DiveSite {
   diveSite: string
@@ -13,6 +14,7 @@ interface DiveSite {
 }
 
 const DiveSiteCard = ({ diveSite }) => {
+  const t = useTranslations("DiveSiteCard")
   const [readMore, setReadMore] = useState(false)
   return (
     <motion.div
@@ -69,7 +71,7 @@ const DiveSiteCard = ({ diveSite }) => {
             </>
           )}
           <p className="text-lg text-gray-700 dark:text-white mb-2">
-            {diveSite.meters} meters / {diveSite.feet} feet
+            {diveSite.meters} {t("meters")} / {diveSite.feet} {t("feet")}
           </p>
           <p className="text-gray-700 dark:text-white text-base mb-4">
             {readMore
@@ -80,7 +82,7 @@ const DiveSiteCard = ({ diveSite }) => {
               className="text-blue-700"
               onClick={() => setReadMore(!readMore)}
             >
-              {readMore ? "show less" : "read more"}
+              {readMore ? t("showLess") : t("readMore")}
             </button>
           </p>
         </div>

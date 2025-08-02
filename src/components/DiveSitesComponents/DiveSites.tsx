@@ -2,8 +2,8 @@ import { getAllEntries } from "@/lib/contentful"
 import React from "react"
 import DiveSiteCard from "./DiveSiteCard"
 
-const DiveSites = async () => {
-  const diveSites = await getAllEntries("diveSites")
+const DiveSites = async ({ locale }: { locale: string }) => {
+  const diveSites = await getAllEntries("diveSites", locale)
   const newList = diveSites.reverse()
   return (
     <div className="max-w-6xl my-5 xl:my-14 flex flex-col flex-wrap justify-center items-center sm:flex-row mx-5 lg:mx-auto">
