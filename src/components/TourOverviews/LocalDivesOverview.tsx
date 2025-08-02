@@ -4,6 +4,7 @@ import React from "react"
 import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
 import PaymentPopupLocalDives from "../PaymentComponents/PaymentPopupLocalDives"
+import { useTranslations } from "next-intl"
 
 declare global {
   interface Window {
@@ -30,6 +31,7 @@ const LocalDivesOverview = ({
   info: DiveInfo
   sharkPrice: number
 }) => {
+  const t = useTranslations("LocalDivesOverview")
   return (
     <>
       {" "}
@@ -41,26 +43,26 @@ const LocalDivesOverview = ({
       <div className="my-5">
         {" "}
         <div className="flex flex-col justify-center items-center mb-2">
-          <h4 className="text-xl font-semibold mb-1 xl:text-3xl">
+          <h4 className="text-xl font-semibold mb-1 xl:text-3xl text-center">
             <strong>{info.title}</strong>
           </h4>
           <p className="my-1 text-sm md:text-base xl:text-lg">
-            2 Tank Dive: ${info.twoTankDive} per person
+            {t("2tankDive")}: ${info.twoTankDive} {t("perPerson")}
           </p>
           <p className="my-1 text-sm md:text-base xl:text-lg">
-            Duration: {info.duration}
+            {t("duration")}: {info.duration}
           </p>
           <p className="my-1 text-sm md:text-base xl:text-lg">
-            4 Tank Package: ${info.fourTankPackage}
+            {t("4tankPackage")}: ${info.fourTankPackage}
           </p>
           <p className="my-1 text-sm md:text-base xl:text-lg">
             <Link href="/shark-dive-punta-cana" className="no-underline">
-              Shark Dive: ${sharkPrice}
+              {t("sharkDive")}: ${sharkPrice}
             </Link>
           </p>
 
-          <p className="my-1 text-sm md:text-base xl:text-lg">
-            Other packages available upon request
+          <p className="my-1 text-sm md:text-base xl:text-lg text-center">
+            {t("otherPackagesAvailableUponRequest")}
           </p>
         </div>
         <div className="flex flex-col justify-center w-[200px] h-[70px] mx-auto space-y-2 my-2">
@@ -75,7 +77,7 @@ const LocalDivesOverview = ({
                   delay: 0.3,
                 }}
               >
-                Contact Us
+                {t("contactUs")}
               </motion.p>
             </button>
           </Link>
@@ -83,9 +85,9 @@ const LocalDivesOverview = ({
         </div>
         <div className="flex flex-col justify-center items-center mb-4">
           <p className="mb-1 mt-2">
-            <strong>Reserve Now</strong>
+            <strong>{t("reserveNow")}</strong>
           </p>
-          <p className="mt-1">Only a ${info.depositPrice} deposit</p>
+          <p className="mt-1">{t("onlyADeposit")} ${info.depositPrice} {t("deposit")}</p>
         </div>
         <div className="flex flex-col justify-center items-center mb-4">
           <button
@@ -116,7 +118,7 @@ const LocalDivesOverview = ({
             data-adventure-id="149070"
             data-source="widget_individual_adventure"
           >
-            Book now Via Padi
+            {t("bookNowViaPad")}
           </button>
         </div>
       </div>

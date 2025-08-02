@@ -91,6 +91,10 @@ export default async function RootLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound()
   }
+  
+  // Import messages for the current locale using the same pattern as request.ts
+  const messages = (await import(`../../../../messages/${locale}.json`)).default
+  
   return (
     <html lang={locale} className={`${crimsonPro.variable}`}>
       <GoogleTagManager gtmId="GTM-KGLHKQW" />
@@ -109,7 +113,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {" "}
-        <NextIntlClientProvider>
+        <NextIntlClientProvider locale={locale} messages={messages} key={locale}>
           <FloatingContactForm />
           <ServiceWorkerCleanup />
           <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">

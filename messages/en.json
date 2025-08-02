@@ -95,5 +95,35 @@
     "numberOfDivers": "Number of Divers",
     "numberOfSnorkelers": "Number of Snorkelers",
     "excursion": "Excursion"
+  },
+  "LocalDivesOverview": {
+    "2tankDive": "2 Tank Dive",
+    "perPerson": "per person",
+    "duration": "Duration",
+    "4tankPackage": "4 Tank Package",
+    "sharkDive": "Shark Dive",
+    "otherPackagesAvailableUponRequest": "Other packages available upon request",
+    "reserveNow": "Reserve Now",
+    "onlyADeposit": "Only a",
+    "deposit": "deposit",
+    "bookNowViaPad": "Book now Via Padi",
+    "contactUs": "Contact Us"
+  },
+  "PaymentPopupLocalDives": {
+    "bookNow": "Book Now",
+    "contactInfo": "Contact Info",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "hotel": "Hotel",
+    "numberOfGuests": "Number of Guests"
+  },
+  "CertificationLevel": {
+    "certificationLevel": "Certification Level",
+    "notCertified": "Not Certified"
+  },
+  "TourSelect": {
+    "twoTankDive": "Two Tank Dive",
+    "fourTankPackage": "Four Tank Package",
+    "excursion": "Excursion"
   }
 }

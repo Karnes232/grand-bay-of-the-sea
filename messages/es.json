@@ -95,5 +95,35 @@
     "numberOfDivers": "Número de Buceadores",
     "numberOfSnorkelers": "Número de Snorkelers",
     "excursion": "Excursión"
+  },
+  "LocalDivesOverview": {
+    "2tankDive": "2 Tanque",
+    "perPerson": "por persona",
+    "duration": "Duración",
+    "4tankPackage": "4 Tanque",
+    "sharkDive": "Buceo con Tiburones",
+    "otherPackagesAvailableUponRequest": "Otros paquetes disponibles por solicitud",
+    "reserveNow": "Reservar Ahora",
+    "onlyADeposit": "Solo un depósito de",
+    "deposit": "",
+    "bookNowViaPad": "Reservar Ahora Via Padi",
+    "contactUs": "Contacto"
+  },
+  "PaymentPopupLocalDives": {
+    "bookNow": "Reservar Ahora",
+    "contactInfo": "Información de Contacto",
+    "fullName": "Nombre Completo",
+    "emailAddress": "Correo Electrónico",
+    "hotel": "Hotel",
+    "numberOfGuests": "Cantidad de Personas"
+  },
+  "CertificationLevel": {
+    "certificationLevel": "Nivel de Certificación",
+    "notCertified": "No Certificado"
+  },
+  "TourSelect": {
+    "twoTankDive": "2 Tanque",
+    "fourTankPackage": "4 Tanque",
+    "excursion": "Excursión"
   }
 }

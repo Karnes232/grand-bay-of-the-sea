@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import Select from "react-select"
+import { useTranslations } from "next-intl"
 const TourSelect = ({ setFormData, formData }) => {
+  const t = useTranslations("TourSelect")
   // const [contentfulData, setContentfulData] = useState<any[]>([])
   // useEffect(() => {
   //   const fetchContentfulData = async () => {
@@ -34,11 +36,11 @@ const TourSelect = ({ setFormData, formData }) => {
   const options = [
     {
       value: "Two Tank Dive",
-      label: "Two Tank Dive",
+      label: t("twoTankDive"),
     },
     {
       value: "Four Tank Package",
-      label: "Four Tank Package",
+      label: t("fourTankPackage"),
     },
   ]
   // contentfulData.map(tour => {
@@ -65,7 +67,7 @@ const TourSelect = ({ setFormData, formData }) => {
           isSearchable={true}
           name="tourSelect"
           onChange={handleChange}
-          placeholder="Excursion"
+          placeholder={t("excursion")}
           styles={style}
           required
           menuPortalTarget={document.body}

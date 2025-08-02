@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl"
-import { useLocale } from "next-intl"
+import { useParams } from "next/navigation"
 import React, { useState } from "react"
 import Datepicker from "react-tailwindcss-datepicker"
 
@@ -38,7 +38,8 @@ const DAY_NAMES_ES = {
 
 const DatePickerToursComponent = ({ setFormData, formData, tour }) => {
   const t = useTranslations("DatePickerComponent")
-  const locale = useLocale()
+  const params = useParams()
+  const locale = (params?.locale as string) || "en"
   const [value, setValue] = useState({
     startDate: null,
     endDate: null,

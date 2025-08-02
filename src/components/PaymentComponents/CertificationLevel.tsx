@@ -1,6 +1,8 @@
 import React from "react"
 import Select from "react-select"
+import { useTranslations } from "next-intl"
 const CertificationLevel = ({ setFormData, formData }) => {
+  const t = useTranslations("CertificationLevel")
   const style = {
     control: base => ({
       ...base,
@@ -14,7 +16,7 @@ const CertificationLevel = ({ setFormData, formData }) => {
   const options = [
     {
       value: "Not Certifed",
-      label: "Not Certifed",
+      label: t("notCertified"),
     },
     {
       value: "Open Water",
@@ -45,7 +47,7 @@ const CertificationLevel = ({ setFormData, formData }) => {
         isSearchable={true}
         name="certification"
         onChange={handleChange}
-        placeholder="Certification Level"
+        placeholder={t("certificationLevel")}
         menuPortalTarget={document.body}
         styles={style}
         required

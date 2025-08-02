@@ -61,11 +61,13 @@ export async function generateMetadata(
   }
 }
 
-export default async function Page() {
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Sites",
+    locale: locale,
   })
-  const overviewInfo = await getAllEntries("localDiveOverview")
+  const overviewInfo = await getAllEntries("localDiveOverview", locale)
   const sharkDive = await searchEntries(
     "tours",
     {
