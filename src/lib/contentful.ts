@@ -6,9 +6,10 @@ const client = contentful.createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
 })
 
-export async function getAllEntries(contentType: string) {
+export async function getAllEntries(contentType: string, locale?: string) {
   const entries = await client.getEntries({
     content_type: contentType,
+    locale: locale || "en",
   })
   return entries.items
 }

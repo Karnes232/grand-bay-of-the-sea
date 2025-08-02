@@ -36,5 +36,9 @@
       "depositAmount": "Deposit Amount",
       "byProceedingWithPayment": "By proceeding with payment, you acknowledge that you have read and agree to our",
       "termsAndConditions": "Terms and Conditions"
+    },
+    "FishCard": {
+      "readLess": "Read less",
+      "readMore": "Read more"
     }
   }

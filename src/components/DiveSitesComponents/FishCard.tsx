@@ -3,7 +3,9 @@ import React, { useState } from "react"
 import { motion } from "motion/react"
 import Image from "next/image"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
 const FishCard = ({ fish }: { fish: any }) => {
+  
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -16,7 +18,7 @@ const FishCard = ({ fish }: { fish: any }) => {
       id={fish.name.replace(/\s+/g, "")}
       className="flex justify-center items-center m-4 w-80"
     >
-      <div className="rounded-lg shadow-lg hover:shadow-xl transition-all bg-white max-w-sm">
+      <div className="rounded-lg shadow-lg hover:shadow-xl transition-all bg-white max-w-sm overflow-hidden">
         <Image
           src={`https:${fish.image.fields.file?.url ?? ""}`}
           alt={fish.name}
@@ -28,7 +30,7 @@ const FishCard = ({ fish }: { fish: any }) => {
         <div className="p-6">
           {fish.blogReference ? (
             <Link href={`/blog/marine-life/${fish.blogReference.fields.slug}`}>
-              <h5 className="text-xl font-medium mb-2 cursor-pointer text-blue-600">
+              <h5 className="text-xl font-medium mb-2 cursor-pointer text-blue-600 truncate">
                 {fish.name}
               </h5>
             </Link>
@@ -53,6 +55,7 @@ export default FishCard
 const DescriptionWithReadMore = ({ description }: { description: string }) => {
   const [expanded, setExpanded] = useState(false)
   const isLong = description.length > 120 // adjust as needed
+  const t = useTranslations("FishCard")
   return (
     <div>
       <p
@@ -79,7 +82,7 @@ const DescriptionWithReadMore = ({ description }: { description: string }) => {
           className="text-blue-500 hover:underline text-sm"
           onClick={() => setExpanded(v => !v)}
         >
-          {expanded ? "Read less" : "Read more"}
+          {expanded ? t("readLess") : t("readMore")}
         </button>
       )}
     </div>

@@ -57,9 +57,11 @@ export async function generateMetadata(
   }
 }
 
-export default async function Page() {
+export default async function Page({params}: {params: Promise<{locale: string}>}) {
+  const {locale} = await params;
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Species",
+    locale: locale,
   })
 
   return (
@@ -72,7 +74,7 @@ export default async function Page() {
       <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
         <RichText context={pageLayout.items[0].fields.paragraph1} />
       </div>
-      <Fishes />
+      <Fishes locale={locale} />
     </main>
   )
 }

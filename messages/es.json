@@ -36,5 +36,9 @@
       "depositAmount": "Cantidad de Depósito",
       "byProceedingWithPayment": "Al continuar con el pago, acepta que has leído y aceptado nuestros",
       "termsAndConditions": "Términos y Condiciones"
+    },
+    "FishCard": {
+      "readLess": "Leer menos",
+      "readMore": "Leer más"
     }
   }
