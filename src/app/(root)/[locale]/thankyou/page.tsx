@@ -1,10 +1,10 @@
 import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
 import ContactForm from "@/components/ContactForm/ContactForm"
+import ThankYou from "@/components/ContactForm/ThankYou"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
-import { useTranslations } from "next-intl"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
@@ -71,14 +71,14 @@ export default async function Home(props: any) {
     },
     ["fields.email"],
   )
-  const t = useTranslations("ThankYou")
+
   return (
     <main>
       <HeroComponent
         heroImage={`https:${(searchResults.items[0] as any).fields.heroImage.fields.file.url}`}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <div className="flex flex-col items-center justify-center max-w-xs xl:max-w-sm mx-auto min-h-[40vh] xl:min-h-[50vh]">
+      {/* <div className="flex flex-col items-center justify-center max-w-xs xl:max-w-sm mx-auto min-h-[40vh] xl:min-h-[50vh]">
         <div className="mb-10">
           <div className="flex flex-col justify-center items-center text-slate-600 ">
             <div className="text-2xl xl:text-4xl font-serif text-center mt-6">
@@ -99,7 +99,8 @@ export default async function Home(props: any) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <ThankYou searchParams={props.searchParams} email={email.items[0].fields.email as string} />
     </main>
   )
 }
