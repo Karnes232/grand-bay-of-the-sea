@@ -71,6 +71,29 @@
   },
   "DatePickerComponent": {
     "preferredDate": "Fecha Preferida",
-    "closedOnSundays": "Cerrado los domingos. Por favor, seleccione otra fecha."
+    "closedOnSundays": "Cerrado los domingos. Por favor, seleccione otra fecha.",
+    "availableDaysFor": "Días disponibles para"
+  },
+  "TripOverview": {
+    "tripOverview": "Resumen de Viaje",
+    "price": "Precio",
+    "perPerson": "por persona",
+    "2tankDive": "2 tanque",
+    "companion": "acompañante",
+    "duration": "Duración",
+    "reserveNow": "Reservar Ahora",
+    "onlyADeposit": "Solo un depósito de",
+    "deposit": "",
+    "contactUs": "Contacto"
+  },
+  "PaymentPopupTrip": {
+    "bookNow": "Reservar Ahora",
+    "contactInfo": "Información de Contacto",
+    "fullName": "Nombre Completo",
+    "emailAddress": "Correo Electrónico",
+    "hotel": "Hotel",
+    "numberOfDivers": "Número de Buceadores",
+    "numberOfSnorkelers": "Número de Snorkelers",
+    "excursion": "Excursión"
   }
 }

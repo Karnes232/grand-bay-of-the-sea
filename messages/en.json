@@ -71,6 +71,29 @@
   },
   "DatePickerComponent": {
     "preferredDate": "Preferred Date",
-    "closedOnSundays": "Closed on Sundays. Please select another date."
+    "closedOnSundays": "Closed on Sundays. Please select another date.",
+    "availableDaysFor": "Available days for"
+  },
+  "TripOverview": {
+    "tripOverview": "Trip Overview",
+    "price": "Price",
+    "perPerson": "per person",
+    "2tankDive": "2 tank dive",
+    "companion": "companion",
+    "duration": "Duration",
+    "reserveNow": "Reserve Now",
+    "onlyADeposit": "Only a",
+    "deposit": "deposit",
+    "contactUs": "Contact Us"
+  },
+  "PaymentPopupTrip": {
+    "bookNow": "Book Now",
+    "contactInfo": "Contact Info",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "hotel": "Hotel",
+    "numberOfDivers": "Number of Divers",
+    "numberOfSnorkelers": "Number of Snorkelers",
+    "excursion": "Excursion"
   }
 }

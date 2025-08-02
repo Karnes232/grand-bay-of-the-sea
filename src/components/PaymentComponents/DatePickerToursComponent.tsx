@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl"
+import { useLocale } from "next-intl"
 import React, { useState } from "react"
 import Datepicker from "react-tailwindcss-datepicker"
 
@@ -12,8 +14,8 @@ const TOUR_AVAILABLE_DAYS = {
   "Shark Dive Punta Cana": [1, 2, 3, 4, 5, 6], // Monday (1), Tuesday (2), Wednesday (3), Thursday (4), Friday (5), Saturday (6)
 }
 
-// Map of day numbers to day names
-const DAY_NAMES = {
+// Map of day numbers to day names in English
+const DAY_NAMES_EN = {
   0: "Sunday",
   1: "Monday",
   2: "Tuesday",
@@ -23,16 +25,36 @@ const DAY_NAMES = {
   6: "Saturday",
 }
 
+// Map of day numbers to day names in Spanish
+const DAY_NAMES_ES = {
+  0: "Domingo",
+  1: "Lunes",
+  2: "Martes",
+  3: "Miércoles",
+  4: "Jueves",
+  5: "Viernes",
+  6: "Sábado",
+}
+
 const DatePickerToursComponent = ({ setFormData, formData, tour }) => {
+  const t = useTranslations("DatePickerComponent")
+  const locale = useLocale()
   const [value, setValue] = useState({
     startDate: null,
     endDate: null,
   })
   const [selectedDate, setSelectedDate] = useState(null)
+  
+  // Get the appropriate day names based on locale
+  const getDayNames = () => {
+    return locale === "es" ? DAY_NAMES_ES : DAY_NAMES_EN
+  }
+  
   // Get available days for the specific tour
   const getAvailableDays = () => {
     if (!tour || !TOUR_AVAILABLE_DAYS[tour]) return []
-    return TOUR_AVAILABLE_DAYS[tour].map(day => DAY_NAMES[day])
+    const dayNames = getDayNames()
+    return TOUR_AVAILABLE_DAYS[tour].map(day => dayNames[day])
   }
 
   const handleValueChange = (newValue: any) => {
@@ -42,7 +64,7 @@ const DatePickerToursComponent = ({ setFormData, formData, tour }) => {
 
       // Check if the selected date is available for the tour
       if (TOUR_AVAILABLE_DAYS[tour]?.includes(dayOfWeek)) {
-        const weekday = new Intl.DateTimeFormat("en-US", {
+        const weekday = new Intl.DateTimeFormat(locale === "es" ? "es-ES" : "en-US", {
           dateStyle: "full",
         }).format(dateObj)
 
@@ -72,7 +94,7 @@ const DatePickerToursComponent = ({ setFormData, formData, tour }) => {
       <div className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
         <input type="hidden" name="date" value={selectedDate || ""} />
         <Datepicker
-          placeholder={"Preferred Date"}
+          placeholder={t("preferredDate")}
           asSingle={true}
           useRange={false}
           minDate={START_FROM}
@@ -85,7 +107,7 @@ const DatePickerToursComponent = ({ setFormData, formData, tour }) => {
       </div>
       {tour && (
         <p className="text-red-500 text-xs mt-1">
-          Available days for {tour}: {availableDaysText}
+          {t("availableDaysFor")} {tour}: {availableDaysText}
         </p>
       )}
     </div>

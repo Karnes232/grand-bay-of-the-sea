@@ -17,6 +17,7 @@ import {
 import { useRouter } from "next/navigation"
 import CustomPayPalBookingForm from "../PayPalComponents/CustomPayPalBookingForm"
 import DatePickerToursComponent from "./DatePickerToursComponent"
+import { useTranslations } from "next-intl"
 
 // interface DiveInfo {
 //   page: string
@@ -27,6 +28,7 @@ import DatePickerToursComponent from "./DatePickerToursComponent"
 // }
 
 const PaymentPopupTrip = ({ tour }: { tour: any }) => {
+  const t = useTranslations("PaymentPopupTrip")
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const [formData, setFormData] = useState({
@@ -102,7 +104,7 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
         onClick={() => setIsOpen(true)}
         className="bg-[#FFC439] text-[#2C2E2F] font-bold text-sm rounded-3xl px-5  w-[200px] h-[35px]"
       >
-        Book Now
+        {t("bookNow")}
       </button>
       <Dialog
         open={isOpen}
@@ -121,7 +123,7 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
                 </button>
               </div>
               <div className="fixed top-5 right-1/2 translate-x-1/2">
-                Contact Info
+                {t("contactInfo")}
               </div>
               <div className="rounded-lg p-6 h-full flex flex-col">
                 <form
@@ -155,7 +157,7 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
                       htmlFor="name"
                       className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
-                      Full Name
+                      {t("fullName")}
                     </label>
                   </div>
                   <div className="relative z-0 mb-6 w-full group">
@@ -173,7 +175,7 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
                       htmlFor="email"
                       className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
-                      Email Address
+                      {t("emailAddress")}
                     </label>
                   </div>
                   <div className="relative z-0 mb-6 w-full group">
@@ -190,7 +192,7 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
                       htmlFor="hotel"
                       className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
-                      Hotel
+                      {t("hotel")}
                     </label>
                   </div>
                   <div className="relative z-0 mb-6 w-full group">
@@ -237,7 +239,7 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
                       htmlFor="guestCount"
                       className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
-                      Number of Divers
+                      {t("numberOfDivers")}
                     </label>
                   </div>
                   <div className="relative z-0 mb-6 w-full group">
@@ -294,7 +296,7 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
                         htmlFor="snorkelers"
                         className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                       >
-                        Number of Snorkelers
+                        {t("numberOfSnorkelers")}
                       </label>
                     </div>
                   )}
@@ -320,7 +322,7 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
                       htmlFor="tourSelect"
                       className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
-                      Excursion
+                      {t("excursion")}
                     </label>
                   </div>
                   {/* <div className="relative z-0 mb-6 w-full group">
