@@ -2,7 +2,10 @@ import React from "react"
 import Link from "next/link"
 import "@/styles/header/header.css"
 import DropDownMenu from "./DropDownMenu"
+import { useTranslations } from "next-intl"
+
 const Links = () => {
+  const t = useTranslations("Navbar")
   const links = [
     { href: "/", label: "Home" },
     { href: "/courses", label: "Scuba Classes" },
@@ -15,33 +18,33 @@ const Links = () => {
   return (
     <>
       <Link href="/" className="no-underline">
-        <button className="navLinks">Home</button>
+        <button className="navLinks">{t("home")}</button>
       </Link>
       <Link href="/courses" className="no-underline">
-        <button className="navLinks">Scuba Classes</button>
+        <button className="navLinks">{t("scubaClasses")}</button>
       </Link>
       <DropDownMenu
-        name="Dive Packages"
+        name={t("divePackages")}
         subItems={[
-          { name: "Local Dives", url: "/sites" },
-          { name: "Shark Dive", url: "/shark-dive-punta-cana" },
-          { name: "Dive Trips", url: "/trips" },
+          { name: t("localDives"), url: "/sites" },
+          { name: t("sharkDive"), url: "/shark-dive-punta-cana" },
+          { name: t("diveTrips"), url: "/trips" },
         ]}
         useHover
       />
       <Link href="/fishing-punta-cana" className="no-underline">
-        <button className="navLinks">Deep Sea Fishing</button>
+        <button className="navLinks">{t("deepSeaFishing")}</button>
       </Link>
       <DropDownMenu
-        name="Photo Gallery"
+        name={t("photoGallery")}
         subItems={[
-          { name: "Photo Gallery", url: "/photo-gallery" },
-          { name: "Species Guide", url: "/species" },
+          { name: t("photoGallery"), url: "/photo-gallery" },
+          { name: t("speciesGuide"), url: "/species" },
         ]}
         useHover
       />
       <Link href="/contact" className="no-underline">
-        <button className="navLinks">Contact Us</button>
+        <button className="navLinks">{t("contactUs")}</button>
       </Link>
     </>
   )

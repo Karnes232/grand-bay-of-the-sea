@@ -1,6 +1,28 @@
 {
-    "HomePage": {
-      "title": "Hello world!",
-      "about": "Go to the about page"
+    "Navbar": {
+      "home": "Home",
+      "scubaClasses": "Scuba Classes",
+      "divePackages": "Dive Packages",
+      "localDives": "Local Dives",
+      "sharkDive": "Shark Dive",
+      "diveTrips": "Dive Trips",
+      "deepSeaFishing": "Deep Sea Fishing",
+      "photoGallery": "Photo Gallery",
+      "speciesGuide": "Species Guide",
+      "contactUs": "Contact Us",
+      "scubaDivingPuntaCana": "Scuba Diving Punta Cana",
+      "sharkDivingPuntaCana": "Shark Diving Punta Cana",
+      "liveAboards": "Live Aboards",
+      "cancellationPolicy": "Cancellation Policy",
+      "siteMap": "Site Map",
+      "blog": "Blog"
+    },
+    "ContactForm": {
+      "fullName": "Full Name",
+      "emailAddress": "Email Address",
+      "hotel": "Hotel",
+      "yourMessage": "Your message",
+      "leaveAComment": "Leave a comment...",
+      "submit": "Submit"
     }
   }

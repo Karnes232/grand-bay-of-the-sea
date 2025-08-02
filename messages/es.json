@@ -1,6 +1,28 @@
 {
-    "HomePage": {
-      "title": "Hola mundo!",
-      "about": "Ir a la página de about"
+    "Navbar": {
+      "home": "Inicio",
+      "scubaClasses": "Clases de Buceo",
+      "divePackages": "Paquetes de Buceo",
+      "localDives": "Buceo Local",
+      "sharkDive": "Buceo con Tiburones",
+      "diveTrips": "Viajes de Buceo",
+      "deepSeaFishing": "Pesca en Alta Mar",
+      "photoGallery": "Galería de Fotos",
+      "speciesGuide": "Guía de Especies",
+      "contactUs": "Contacto",
+      "scubaDivingPuntaCana": "Buceo Punta Cana",
+      "sharkDivingPuntaCana": "Buceo con Tiburones Punta Cana",
+      "liveAboards": "Viajes en Barco",
+      "cancellationPolicy": "Política de Cancelación",
+      "siteMap": "Mapa del Sitio",
+      "blog": "Blog"
+    },
+    "ContactForm": {
+      "fullName": "Nombre Completo",
+      "emailAddress": "Correo Electrónico",
+      "hotel": "Hotel",
+      "yourMessage": "Tu mensaje",
+      "leaveAComment": "Deja un comentario...",
+      "submit": "Enviar"
     }
   }
