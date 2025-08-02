@@ -4,7 +4,7 @@ import { useRouter, usePathname } from "@/i18n/navigation"
 import { languages, fallbackLng } from "@/i18n/settings"
 import { useState, useRef, useEffect } from "react"
 import { useParams } from "next/navigation"
-import { Globe, ChevronDown } from "lucide-react"
+import { Globe, ChevronDown, Loader2 } from "lucide-react"
 
 interface LanguageSwitcherProps {
   color?: string
@@ -20,6 +20,7 @@ export default function LanguageSwitcher({
   const router = useRouter()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   // Use useParams at the top level
@@ -34,16 +35,32 @@ export default function LanguageSwitcher({
     { code: "es", display: "Español", flag: "🇩🇴" },
   ]
 
-  const handleLanguageChange = (newLocale: string) => {
+  const handleLanguageChange = async (newLocale: string) => {
+    if (newLocale === safeLocale) {
+      setIsOpen(false)
+      onDropdownToggle?.(false)
+      return
+    }
+
+    setIsLoading(true)
     setIsOpen(false)
     onDropdownToggle?.(false)
-    // Use push instead of replace for better language switching
-    router.push(pathname, { locale: newLocale })
+    
+    try {
+      // Use push instead of replace for better language switching
+      await router.push(pathname, { locale: newLocale })
+    } catch (error) {
+      console.error("Language switch error:", error)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleToggle = (newState: boolean) => {
-    setIsOpen(newState)
-    onDropdownToggle?.(newState)
+    if (!isLoading) {
+      setIsOpen(newState)
+      onDropdownToggle?.(newState)
+    }
   }
 
   // Close dropdown when clicking outside
@@ -73,9 +90,16 @@ export default function LanguageSwitcher({
       <div className="hidden lg:block">
         <button
           onClick={() => handleToggle(!isOpen)}
-          className={`flex items-center space-x-2 text-${color}  transition-colors duration-200 px-3 py-2 rounded-lg  border border-transparent `}
+          disabled={isLoading}
+          className={`flex items-center space-x-2 text-${color} transition-colors duration-200 px-3 py-2 rounded-lg border border-transparent ${
+            isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-100"
+          }`}
         >
-          <Globe className="h-5 w-5 " />
+          {isLoading ? (
+            <Loader2 className="h-5 w-5 animate-spin" />
+          ) : (
+            <Globe className="h-5 w-5" />
+          )}
           <span className="text-xl">{currentLangOption.flag}</span>
           <span className="text-lg font-medium">
             {currentLangOption.code.toUpperCase()}
@@ -90,9 +114,16 @@ export default function LanguageSwitcher({
       <div className="lg:hidden">
         <button
           onClick={() => handleToggle(!isOpen)}
-          className={`flex items-center space-x-1 text-${color} hover:text-orange-500 transition-colors duration-200 p-2 rounded-lg hover:bg-orange-50`}
+          disabled={isLoading}
+          className={`flex items-center space-x-1 text-${color} transition-colors duration-200 p-2 rounded-lg ${
+            isLoading ? "opacity-50 cursor-not-allowed" : "hover:text-orange-500 hover:bg-orange-50"
+          }`}
         >
-          <Globe className="h-5 w-5" />
+          {isLoading ? (
+            <Loader2 className="h-5 w-5 animate-spin" />
+          ) : (
+            <Globe className="h-5 w-5" />
+          )}
           <span className="text-lg">{currentLangOption.flag}</span>
           <ChevronDown
             className={`h-3 w-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
@@ -109,8 +140,13 @@ export default function LanguageSwitcher({
               <button
                 key={lng.code}
                 onClick={() => handleLanguageChange(lng.code)}
-                className={`w-full text-left px-4 py-2 flex items-center space-x-3 hover:bg-orange-50 hover:text-orange-600 transition-colors ${
-                  isActive ? "bg-orange-50 text-orange-600" : "text-slate-700"
+                disabled={isLoading}
+                className={`w-full text-left px-4 py-2 flex items-center space-x-3 transition-colors ${
+                  isLoading 
+                    ? "opacity-50 cursor-not-allowed" 
+                    : isActive 
+                      ? "bg-orange-50 text-orange-600" 
+                      : "text-slate-700 hover:bg-orange-50 hover:text-orange-600"
                 }`}
               >
                 <span className="text-lg">{lng.flag}</span>

@@ -80,6 +80,14 @@ export const metadata: Metadata = {
   },
 }
 
+// Add caching headers for better performance
+export async function generateStaticParams() {
+  return [
+    { locale: "en" },
+    { locale: "es" },
+  ]
+}
+
 export default async function RootLayout({
   children,
   params,

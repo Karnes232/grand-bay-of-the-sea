@@ -33,7 +33,7 @@ const GoogleMaps = dynamicImport(
 // export const dynamic = "force-static"
 
 // OPTION 2: Use revalidate for Incremental Static Regeneration (ISR)
-export const revalidate = 3600; // Regenerate every hour if a request comes in.
+export const revalidate = 60; // Regenerate every minute for faster language switching
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
