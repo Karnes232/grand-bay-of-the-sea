@@ -45,7 +45,7 @@ export default function LanguageSwitcher({
     setIsLoading(true)
     setIsOpen(false)
     onDropdownToggle?.(false)
-    
+
     try {
       // Use push instead of replace for better language switching
       await router.push(pathname, { locale: newLocale })
@@ -116,7 +116,9 @@ export default function LanguageSwitcher({
           onClick={() => handleToggle(!isOpen)}
           disabled={isLoading}
           className={`flex items-center space-x-1 text-${color} transition-colors duration-200 p-2 rounded-lg ${
-            isLoading ? "opacity-50 cursor-not-allowed" : "hover:text-orange-500 hover:bg-orange-50"
+            isLoading
+              ? "opacity-50 cursor-not-allowed"
+              : "hover:text-orange-500 hover:bg-orange-50"
           }`}
         >
           {isLoading ? (
@@ -142,10 +144,10 @@ export default function LanguageSwitcher({
                 onClick={() => handleLanguageChange(lng.code)}
                 disabled={isLoading}
                 className={`w-full text-left px-4 py-2 flex items-center space-x-3 transition-colors ${
-                  isLoading 
-                    ? "opacity-50 cursor-not-allowed" 
-                    : isActive 
-                      ? "bg-orange-50 text-orange-600" 
+                  isLoading
+                    ? "opacity-50 cursor-not-allowed"
+                    : isActive
+                      ? "bg-orange-50 text-orange-600"
                       : "text-slate-700 hover:bg-orange-50 hover:text-orange-600"
                 }`}
               >

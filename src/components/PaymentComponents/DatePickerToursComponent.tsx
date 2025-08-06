@@ -45,12 +45,12 @@ const DatePickerToursComponent = ({ setFormData, formData, tour }) => {
     endDate: null,
   })
   const [selectedDate, setSelectedDate] = useState(null)
-  
+
   // Get the appropriate day names based on locale
   const getDayNames = () => {
     return locale === "es" ? DAY_NAMES_ES : DAY_NAMES_EN
   }
-  
+
   // Get available days for the specific tour
   const getAvailableDays = () => {
     if (!tour || !TOUR_AVAILABLE_DAYS[tour]) return []
@@ -65,9 +65,12 @@ const DatePickerToursComponent = ({ setFormData, formData, tour }) => {
 
       // Check if the selected date is available for the tour
       if (TOUR_AVAILABLE_DAYS[tour]?.includes(dayOfWeek)) {
-        const weekday = new Intl.DateTimeFormat(locale === "es" ? "es-ES" : "en-US", {
-          dateStyle: "full",
-        }).format(dateObj)
+        const weekday = new Intl.DateTimeFormat(
+          locale === "es" ? "es-ES" : "en-US",
+          {
+            dateStyle: "full",
+          },
+        ).format(dateObj)
 
         setValue(newValue)
         setSelectedDate(weekday)

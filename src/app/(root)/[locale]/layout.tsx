@@ -82,10 +82,7 @@ export const metadata: Metadata = {
 
 // Add caching headers for better performance
 export async function generateStaticParams() {
-  return [
-    { locale: "en" },
-    { locale: "es" },
-  ]
+  return [{ locale: "en" }, { locale: "es" }]
 }
 
 export default async function RootLayout({
@@ -99,7 +96,7 @@ export default async function RootLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound()
   }
-  
+
   // Import messages for the current locale
   let messages
   try {
@@ -109,7 +106,7 @@ export default async function RootLayout({
     // Fallback to English messages
     messages = (await import(`../../../../messages/en.json`)).default
   }
-  
+
   return (
     <html lang={locale} className={`${crimsonPro.variable}`}>
       <GoogleTagManager gtmId="GTM-KGLHKQW" />
@@ -128,7 +125,11 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {" "}
-        <NextIntlClientProvider locale={locale} messages={messages} key={locale}>
+        <NextIntlClientProvider
+          locale={locale}
+          messages={messages}
+          key={locale}
+        >
           <FloatingContactForm />
           <ServiceWorkerCleanup />
           <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">

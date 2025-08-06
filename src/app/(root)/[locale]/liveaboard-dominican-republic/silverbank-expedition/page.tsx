@@ -11,7 +11,7 @@ export async function generateMetadata(
   const seoSearchResults = await searchEntries(
     "tours",
     {
-      "fields.slug": "whale-watching-adventure",
+      "fields.slug": "silverbank-expedition",
     },
     [
       "fields.seoTitle",
@@ -27,7 +27,7 @@ export async function generateMetadata(
     description: String(seoSearchResults.items[0].fields.description),
     keywords: seoSearchResults.items[0].fields.seoKeywords as string[],
     openGraph: {
-      url: "https://www.grandbay-puntacana.com/whale-watching-adventure",
+      url: "https://www.grandbay-puntacana.com/silverbank-expedition",
       type: "website",
       title: String(seoSearchResults.items[0].fields.seoTitle),
       description: String(seoSearchResults.items[0].fields.seoDescription),
@@ -60,28 +60,36 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: "https://www.grandbay-puntacana.com/whale-watching-adventure/",
+      canonical: "https://www.grandbay-puntacana.com/silverbank-expedition/",
     },
   }
 }
 
-export default async function Home(props: any) {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
   const pageLayout = await searchEntries("tours", {
-    "fields.page": "Whale Watching",
+    "fields.page": "Silverbank",
+    locale: locale,
   })
-
   return (
     <main>
       <CloudinaryBackgroundVideo
-        videoId={"waw32in2jogikyocpnes"}
+        videoId={"coral-cut_lyykuw"}
         className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}
       />
+
       <div className="my-5">
         <div className="flex flex-col lg:flex-row lg:mx-auto max-w-7xl xl:space-x-10">
           <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:mt-0">
             <RichText context={pageLayout.items[0].fields.paragraph1} />
           </div>
-
+          {/* <div className="lg:w-[45rem] xl:mx-10 lg:min-h-full lg:flex lg:flex-col md:justify-start md:mt-2 lg:mt-7 2xl:mt-14">
+            <TripOverview tour={pageLayout.items[0].fields} />
+          </div> */}
           <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:mt-0">
             <RichText context={pageLayout.items[0].fields.paragraph2} />
           </div>
@@ -102,7 +110,7 @@ export default async function Home(props: any) {
         </div>
       </div>
       <CloudinaryBackgroundVideo
-        videoId={"o0hy1gzkfnahyw3eyjl2"}
+        videoId={"scubaHero_wzvqdg"}
         className={`[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
       />
     </main>

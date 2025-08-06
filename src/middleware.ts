@@ -15,6 +15,6 @@ export const config = {
     // - … the ones starting with `/tui` (admin interface)
     "/((?!api|trpc|_next|tui|_vercel|.*\\..*).*)",
     // Also match pathnames that start with a locale
-    "/(en|es)/:path*"
-  ]
+    "/(en|es)/:path*",
+  ],
 }

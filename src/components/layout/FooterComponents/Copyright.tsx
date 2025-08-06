@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl"
 
 const Copyright = () => {
   const t = useTranslations("Footer")
-  
+
   return (
     <div className="flex flex-col justify-between py-4 md:flex-row md:items-center md:mx-auto w-full">
       <div className="flex-1"></div>

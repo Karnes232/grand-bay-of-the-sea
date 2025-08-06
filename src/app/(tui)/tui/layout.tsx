@@ -82,7 +82,7 @@ export default async function RootLayout({
   // if (!hasLocale(routing.locales, locale)) {
   //   notFound()
   // }
-  
+
   // Import messages for the current locale using the same pattern as request.ts
   const messages = (await import(`../../../../messages/en.json`)).default
   return (
@@ -92,13 +92,18 @@ export default async function RootLayout({
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      ><NextIntlClientProvider locale={locale} messages={messages} key={locale}>
-        <ServiceWorkerCleanup />
-        <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
-          <TuiHeader />
-          {children}
-          <TuiFooter />
-        </div>
+      >
+        <NextIntlClientProvider
+          locale={locale}
+          messages={messages}
+          key={locale}
+        >
+          <ServiceWorkerCleanup />
+          <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
+            <TuiHeader />
+            {children}
+            <TuiFooter />
+          </div>
         </NextIntlClientProvider>
       </body>
     </html>

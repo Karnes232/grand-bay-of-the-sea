@@ -33,7 +33,7 @@ const GoogleMaps = dynamicImport(
 // export const dynamic = "force-static"
 
 // OPTION 2: Use revalidate for Incremental Static Regeneration (ISR)
-export const revalidate = 3600; // Regenerate every hour for better Netlify compatibility
+export const revalidate = 3600 // Regenerate every hour for better Netlify compatibility
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
@@ -102,9 +102,13 @@ export async function generateMetadata(
   }
 }
 
-export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
   const { locale } = await params
-  
+
   let pageLayout
   try {
     const pageLayoutResult = await searchEntries("pageLayout", {
@@ -157,7 +161,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   let heroImageDetails: any = {}
   let secondaryHeroImageDetails: any = {}
   let tertiaryHeroImageDetails: any = {}
-  
+
   try {
     heroImageDetails = await getFullImageDetails(
       (pageLayout as any).fields.heroImage,

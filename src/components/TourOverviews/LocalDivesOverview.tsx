@@ -87,7 +87,9 @@ const LocalDivesOverview = ({
           <p className="mb-1 mt-2">
             <strong>{t("reserveNow")}</strong>
           </p>
-          <p className="mt-1">{t("onlyADeposit")} ${info.depositPrice} {t("deposit")}</p>
+          <p className="mt-1">
+            {t("onlyADeposit")} ${info.depositPrice} {t("deposit")}
+          </p>
         </div>
         <div className="flex flex-col justify-center items-center mb-4">
           <button
