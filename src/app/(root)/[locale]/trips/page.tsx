@@ -60,9 +60,15 @@ export async function generateMetadata(
   }
 }
 
-export default async function Page() {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Trips",
+    locale: locale,
   })
 
   // Get the hero image URL from Contentful
@@ -87,6 +93,7 @@ export default async function Page() {
         videoId={"scubaHero_wzvqdg"}
       />
       <TripCards
+        locale={locale}
         image1={(pageLayout.items[0] as any).fields.linkImage1.fields}
         image2={(pageLayout.items[0] as any).fields.linkImage2.fields}
         image3={(pageLayout.items[0] as any).fields.linkImage3.fields}
