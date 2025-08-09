@@ -5,13 +5,15 @@ import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ slug: string; locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { locale } = await params
   const seoSearchResults = await searchEntries(
     "tours",
     {
       "fields.slug": "silverbank-expedition",
+      locale: locale || "en",
     },
     [
       "fields.seoTitle",
@@ -27,7 +29,10 @@ export async function generateMetadata(
     description: String(seoSearchResults.items[0].fields.description),
     keywords: seoSearchResults.items[0].fields.seoKeywords as string[],
     openGraph: {
-      url: "https://www.grandbay-puntacana.com/silverbank-expedition",
+      url:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/silverbank-expedition"
+          : "https://www.grandbay-puntacana.com/silverbank-expedition",
       type: "website",
       title: String(seoSearchResults.items[0].fields.seoTitle),
       description: String(seoSearchResults.items[0].fields.seoDescription),
@@ -60,7 +65,10 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: "https://www.grandbay-puntacana.com/silverbank-expedition/",
+      canonical:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/silverbank-expedition/"
+          : "https://www.grandbay-puntacana.com/silverbank-expedition/",
     },
   }
 }

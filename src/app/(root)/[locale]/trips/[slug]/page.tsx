@@ -6,14 +6,15 @@ import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ slug: string; locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { slug } = await params
+  const { slug, locale } = await params
   const seoSearchResults = await searchEntries(
     "tours",
     {
       "fields.slug": slug,
+      locale: locale || "en",
     },
     [
       "fields.seoTitle",
@@ -29,7 +30,10 @@ export async function generateMetadata(
     description: String(seoSearchResults.items[0].fields.seoDescription),
     keywords: seoSearchResults.items[0].fields.seoKeywords as string[],
     openGraph: {
-      url: `https://www.grandbay-puntacana.com/trips/${slug}`,
+      url:
+        locale === "es"
+          ? `https://www.grandbay-puntacana.com/es/trips/${slug}`
+          : `https://www.grandbay-puntacana.com/trips/${slug}`,
       type: "website",
       title: String(seoSearchResults.items[0].fields.seoTitle),
       description: String(seoSearchResults.items[0].fields.seoDescription),
@@ -62,7 +66,10 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: `https://www.grandbay-puntacana.com/trips/${slug}/`,
+      canonical:
+        locale === "es"
+          ? `https://www.grandbay-puntacana.com/es/trips/${slug}/`
+          : `https://www.grandbay-puntacana.com/trips/${slug}/`,
     },
   }
 }
