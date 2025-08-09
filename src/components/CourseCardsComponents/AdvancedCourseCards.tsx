@@ -1,5 +1,7 @@
+"use client"
 import React from "react"
 import SingleCourseCard from "./SingleCourseCard"
+import { useTranslations } from "next-intl"
 
 const AdvancedCourseCards = ({
   image1,
@@ -14,12 +16,13 @@ const AdvancedCourseCards = ({
   image4: any
   image5: any
 }) => {
+  const t = useTranslations("CourseCards")
   return (
     <div className="relative my-5 flex justify-center items-center">
       <div className="flex flex-col md:flex-row md:flex-wrap md:justify-between lg:justify-around items-center justify-center text-center  max-w-6xl mx-5 md:p-6 xl:mx-auto">
         <SingleCourseCard
           title="Shark Conservation Diver"
-          description="Experience thrilling shark dives while learning safety, behavior, and conservation skills."
+          description={t("sharkConservationDiver")}
           image={image5}
           link="/courses/shark-diver"
           hash1="SharkDive"
@@ -28,7 +31,7 @@ const AdvancedCourseCards = ({
         />
         <SingleCourseCard
           title="Enriched Air Nitrox"
-          description="Extend dive time and reduce surface intervals with enriched air diving"
+          description={t("enrichedAirNitrox")}
           image={image2}
           link="/courses/enriched-air"
           hash1="PADI"
@@ -37,7 +40,7 @@ const AdvancedCourseCards = ({
         />
         <SingleCourseCard
           title="Wreck Diver"
-          description="Explore sunken ships and underwater history with the wreck diver course."
+          description={t("wreckDiver")}
           image={image3}
           link="/courses/wreck"
           hash1="ScubaAdventure"
@@ -46,7 +49,7 @@ const AdvancedCourseCards = ({
         />
         <SingleCourseCard
           title="Deep Diver"
-          description="Explore deeper dive sites safely with the PADI Deep Diver course"
+          description={t("deepDiver")}
           image={image4}
           link="/courses/deep-diver"
           hash1="ScubaAdventure"
@@ -55,7 +58,7 @@ const AdvancedCourseCards = ({
         />
         <SingleCourseCard
           title="Peak Performance Buoyancy"
-          description="Master buoyancy control for smoother, more efficient and enjoyable dives."
+          description={t("peakPerformanceBuoyancy")}
           image={image1}
           link="/courses/peak-performance-buoyancy"
           hash1="BuoyancyControl"

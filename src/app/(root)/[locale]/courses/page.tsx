@@ -143,6 +143,7 @@ export default async function Page({
       />
       <RichText context={pageLayout.fields.paragraph2} />
       <CourseCards
+        locale={locale}
         image1={(pageLayout as any).fields.linkImage1.fields}
         image2={(pageLayout as any).fields.linkImage2.fields}
         image3={(pageLayout as any).fields.linkImage3.fields}

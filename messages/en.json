@@ -163,5 +163,16 @@
     "hotel": "Hotel",
     "numberOfGuests": "Number of Guests",
     "excursion": "Excursion"
+  },
+  "CourseCards": {
+    "discoverScubaDiving": "For those who have never tried scuba diving before!",
+    "scubaDiver": "Dive under the direct supervision of a PADI professional to a maximum depth of 12 meters / 40 feet",
+    "openWaterDiver": "Dive anywhere in the world with a certified buddy!",
+    "advancedOpenWaterDiver": "Take it to the next level!",
+    "sharkConservationDiver": "Experience thrilling shark dives while learning safety, behavior, and conservation skills.",
+    "enrichedAirNitrox": "Extend dive time and reduce surface intervals with enriched air diving",
+    "wreckDiver": "Explore sunken ships and underwater history with the wreck diver course.",
+    "deepDiver": "Explore deeper dive sites safely with the PADI Deep Diver course",
+    "peakPerformanceBuoyancy": "Master buoyancy control for smoother, more efficient and enjoyable dives."
   }
 }

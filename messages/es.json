@@ -163,5 +163,16 @@
     "hotel": "Hotel",
     "numberOfGuests": "Cantidad de Personas",
     "excursion": "Excursión"
+  },
+  "CourseCards": {
+    "discoverScubaDiving": "Para aquellos que nunca han probado el buceo antes!",
+    "scubaDiver": "Bucear bajo la supervisión directa de un profesional PADI hasta una profundidad máxima de 12 metros / 40 pies",
+    "openWaterDiver": "Bucear en cualquier parte del mundo con un compañero certificado!",
+    "advancedOpenWaterDiver": "¡Toma el siguiente nivel!",
+    "sharkConservationDiver": "Experimenta buceos emocionantes con tiburones mientras aprendes habilidades de seguridad, comportamiento y conservación.",
+    "enrichedAirNitrox": "Extiende el tiempo de buceo y reduce los intervalos de superficie con el buceo con aire enriquecido",
+    "wreckDiver": "Explora barcos hundidos y el historial submarino con el curso de buceador de naufragios.",
+    "deepDiver": "Explora sitios de buceo más profundos de forma segura con el curso de buceador profundo PADI",
+    "peakPerformanceBuoyancy": "Máster el control de flotabilidad para buceos más suaves, eficientes y agradables."
   }
 }

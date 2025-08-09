@@ -1,23 +1,28 @@
+"use client"
 import React from "react"
 import SingleCourseCard from "./SingleCourseCard"
+import { useTranslations } from "next-intl"
 
 const CourseCards = ({
+  locale,
   image1,
   image2,
   image3,
   image4,
 }: {
+  locale: string
   image1: any
   image2: any
   image3: any
   image4: any
 }) => {
+  const t = useTranslations("CourseCards")
   return (
     <div className="relative my-5 flex justify-center items-center">
       <div className="flex flex-col md:flex-row md:flex-wrap md:justify-between lg:justify-around items-center justify-center text-center  max-w-4xl mx-5 md:p-6 xl:mx-auto">
         <SingleCourseCard
           title="Discover Scuba Diving"
-          description="For those who have never tried scuba diving before!"
+          description={t("discoverScubaDiving")}
           image={image1}
           link="/courses/discover"
           hash1="experience"
@@ -26,7 +31,7 @@ const CourseCards = ({
         />
         <SingleCourseCard
           title="Scuba Diver"
-          description="Dive under the direct supervision of a PADI professional to a maximum depth of 12 meters / 40 feet"
+          description={t("scubaDiver")}
           image={image2}
           link="/courses/scubadiver"
           hash1="PADI"
@@ -35,7 +40,7 @@ const CourseCards = ({
         />
         <SingleCourseCard
           title="Open Water Diver"
-          description="Dive anywhere in the world with a certified buddy!"
+          description={t("openWaterDiver")}
           image={image3}
           link="/courses/openwater"
           hash1="travel adventure"
@@ -44,7 +49,7 @@ const CourseCards = ({
         />
         <SingleCourseCard
           title="Advanced Open Water Diver"
-          description="Take it to the next level!"
+          description={t("advancedOpenWaterDiver")}
           image={image4}
           link="/courses/advanced"
           hash1="Advanced"

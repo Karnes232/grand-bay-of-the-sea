@@ -7,14 +7,15 @@ import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ locale: string; slug: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { slug } = await params
+  const { slug, locale } = await params
   const seoSearchResults = await searchEntries(
     "course",
     {
       "fields.slug": slug,
+      locale: locale,
     },
     [
       "fields.seoTitle",
@@ -23,6 +24,7 @@ export async function generateMetadata(
       "fields.seoImage",
     ],
   )
+  console.log(seoSearchResults.items[0].fields.seoTitle)
   return {
     title: String(seoSearchResults.items[0].fields.seoTitle),
     description: String(seoSearchResults.items[0].fields.seoDescription),
@@ -104,21 +106,29 @@ export default async function Page({
           {course.items[0].fields.moreCourseInfo1 && (
             <div className="flex flex-col max-w-6xl mx-auto">
               <div className="lg:flex lg:justify-center lg:items-center xl:space-x-4">
+                <div className='flex-1'>
                 <RichText
                   context={(course.items[0] as any).fields.moreCourseInfo1}
                 />
+                </div>
+                <div className='flex-1'>
                 <RichText
-                  context={(course.items[0] as any).fields.moreCourseInfo2}
-                />
+                    context={(course.items[0] as any).fields.moreCourseInfo2}
+                  />
+                </div>
               </div>
               <hr className="mt-5 border-2 border-blue-500 w-52 mx-auto" />
               <div className="lg:flex lg:justify-center lg:items-center xl:space-x-4 flex-grow">
+              <div className='flex-1'>
                 <RichText
                   context={(course.items[0] as any).fields.moreCourseInfo3}
                 />
+                </div>
+                <div className='flex-1'>
                 <RichText
                   context={(course.items[0] as any).fields.moreCourseInfo4}
                 />
+                </div>
               </div>
             </div>
           )}
