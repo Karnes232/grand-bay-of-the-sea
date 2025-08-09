@@ -30,7 +30,7 @@ export async function generateMetadata(
     description: String(seoSearchResults.items[0].fields.seoDescription),
     keywords: seoSearchResults.items[0].fields.seoKeywords as string[],
     openGraph: {
-      url: `https://www.grandbay-puntacana.com/courses/${slug}`,
+      url: locale === "es" ? `https://www.grandbay-puntacana.com/es/courses/${slug}` : `https://www.grandbay-puntacana.com/courses/${slug}`,
       type: "website",
       title: String(seoSearchResults.items[0].fields.seoTitle),
       description: String(seoSearchResults.items[0].fields.seoDescription),
@@ -63,7 +63,10 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: `https://www.grandbay-puntacana.com/courses/${slug}`,
+      canonical:
+        locale === "es"
+          ? `https://www.grandbay-puntacana.com/es/courses/${slug}`
+          : `https://www.grandbay-puntacana.com/courses/${slug}`,
     },
   }
 }
