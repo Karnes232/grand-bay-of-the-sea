@@ -4,18 +4,23 @@ import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ slug: string; locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { locale } = await params
   const seoSearchResults = await searchEntries("seo", {
     "fields.page": "Contact",
+    locale: locale || "en",
   })
   return {
     title: String(seoSearchResults.items[0].fields.title),
     description: String(seoSearchResults.items[0].fields.description),
     keywords: seoSearchResults.items[0].fields.keywords as string[],
     openGraph: {
-      url: "https://www.grandbay-puntacana.com/contact",
+      url:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/contact"
+          : "https://www.grandbay-puntacana.com/contact",
       type: "website",
       title: String(seoSearchResults.items[0].fields.title),
       description: String(seoSearchResults.items[0].fields.description),
@@ -48,7 +53,10 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: "https://www.grandbay-puntacana.com/contact/",
+      canonical:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/contact/"
+          : "https://www.grandbay-puntacana.com/contact/",
     },
   }
 }

@@ -21,11 +21,13 @@ export const dynamic = "force-static"
 // export const revalidate = 60; // Regenerate every 60 seconds if a request comes in.
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ slug: string; locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { locale } = await params
   const seoSearchResults = await searchEntries("seo", {
     "fields.page": "Courses",
+    locale: locale || "en",
   })
   const seoEntry = seoSearchResults.items[0]
 
@@ -42,7 +44,10 @@ export async function generateMetadata(
     description: String(seoEntry.fields.description),
     keywords: seoEntry.fields.keywords as string[],
     openGraph: {
-      url: "https://www.grandbay-puntacana.com/courses",
+      url:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/courses"
+          : "https://www.grandbay-puntacana.com/courses",
       type: "website",
       title: String(seoEntry.fields.title),
       description: String(seoEntry.fields.description),
@@ -73,7 +78,10 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: "https://www.grandbay-puntacana.com/courses/",
+      canonical:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/courses/"
+          : "https://www.grandbay-puntacana.com/courses/",
     },
   }
 }
