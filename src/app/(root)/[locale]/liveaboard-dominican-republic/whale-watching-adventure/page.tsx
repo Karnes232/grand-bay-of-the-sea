@@ -23,7 +23,7 @@ export async function generateMetadata(
     ],
     ["fishing-punta-cana"],
   )
-
+  console.log(seoSearchResults)
   return {
     title: String(seoSearchResults.items[0].fields.seoTitle),
     description: String(seoSearchResults.items[0].fields.description),

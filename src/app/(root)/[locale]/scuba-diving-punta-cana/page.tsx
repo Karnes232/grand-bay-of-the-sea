@@ -9,18 +9,23 @@ import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ slug: string; locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { locale } = await params
   const seoSearchResults = await searchEntries("seo", {
     "fields.page": "Scuba Diving Punta Cana",
+    locale: locale || "en",
   })
   return {
     title: String(seoSearchResults.items[0].fields.title),
     description: String(seoSearchResults.items[0].fields.description),
     keywords: seoSearchResults.items[0].fields.keywords as string[],
     openGraph: {
-      url: "https://www.grandbay-puntacana.com/scuba-diving-punta-cana",
+      url:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/scuba-diving-punta-cana"
+          : "https://www.grandbay-puntacana.com/scuba-diving-punta-cana",
       type: "website",
       title: String(seoSearchResults.items[0].fields.title),
       description: String(seoSearchResults.items[0].fields.description),
@@ -53,7 +58,10 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: "https://www.grandbay-puntacana.com/scuba-diving-punta-cana/",
+      canonical:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/scuba-diving-punta-cana/"
+          : "https://www.grandbay-puntacana.com/scuba-diving-punta-cana/",
     },
   }
 }

@@ -8,18 +8,23 @@ import Image from "next/image"
 import Link from "next/link"
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ slug: string; locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { locale } = await params
   const seoSearchResults = await searchEntries("seo", {
     "fields.page": "Liveaboard",
+    locale: locale || "en",
   })
   return {
     title: String(seoSearchResults.items[0].fields.title),
     description: String(seoSearchResults.items[0].fields.description),
     keywords: seoSearchResults.items[0].fields.keywords as string[],
     openGraph: {
-      url: "https://www.grandbay-puntacana.com/liveaboard-dominican-republic",
+      url:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/liveaboard-dominican-republic"
+          : "https://www.grandbay-puntacana.com/liveaboard-dominican-republic",
       type: "website",
       title: String(seoSearchResults.items[0].fields.title),
       description: String(seoSearchResults.items[0].fields.description),
@@ -53,7 +58,9 @@ export async function generateMetadata(
     },
     alternates: {
       canonical:
-        "https://www.grandbay-puntacana.com/liveaboard-dominican-republic/",
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/liveaboard-dominican-republic/"
+          : "https://www.grandbay-puntacana.com/liveaboard-dominican-republic/",
     },
   }
 }

@@ -6,18 +6,25 @@ import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ slug: string; locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { locale } = await params
+  console.log(locale)
   const seoSearchResults = await searchEntries("seo", {
     "fields.page": "Fishing Punta Cana",
+    locale: locale || "en",
   })
+  console.log(seoSearchResults)
   return {
     title: String(seoSearchResults.items[0].fields.title),
     description: String(seoSearchResults.items[0].fields.description),
     keywords: seoSearchResults.items[0].fields.keywords as string[],
     openGraph: {
-      url: "https://www.grandbay-puntacana.com/fishing-punta-cana",
+      url:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/fishing-punta-cana"
+          : "https://www.grandbay-puntacana.com/fishing-punta-cana",
       type: "website",
       title: String(seoSearchResults.items[0].fields.title),
       description: String(seoSearchResults.items[0].fields.description),
@@ -50,7 +57,10 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: "https://www.grandbay-puntacana.com/fishing-punta-cana/",
+      canonical:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/fishing-punta-cana/"
+          : "https://www.grandbay-puntacana.com/fishing-punta-cana/",
     },
   }
 }
