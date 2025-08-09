@@ -69,13 +69,14 @@ export async function generateMetadata(
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ locale: string; slug: string }>
 }) {
-  const { slug } = await params
+  const { locale, slug } = await params
   const course = await searchEntries("course", {
     "fields.slug": slug,
+    locale: locale,
   })
-  console.log(course.items[0].fields.videoId)
+
   return (
     <>
       <main>
@@ -97,12 +98,12 @@ export default async function Page({
           </div>
           <SwiperCarousel
             photoList={(course.items[0] as any).fields.photoCarousel}
-            className={`mt-5 ${course.items[0].fields.slug === "discover" ? "-mb-6 [clip-path:polygon(0_5vh,100%_0,100%_35vh,0%_100%)] md:[clip-path:polygon(0_5vh,100%_0,100%_45vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_55vh,0%_100%)] xl:[clip-path:polygon(0_5vh,100%_0,100%_65vh,0%_100%)]" : "[clip-path:polygon(0_5vh,100%_0,100%_30vh,0%_100%)] md:[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_50vh,0%_100%)] xl:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]"}`}
+            className={`mt-5 [clip-path:polygon(0_5vh,100%_0,100%_30vh,0%_100%)] md:[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_50vh,0%_100%)] xl:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
             height={`h-[35vh] md:h-[45vh] lg:h-[55vh] xl:h-[65vh]`}
           />
           {course.items[0].fields.moreCourseInfo1 && (
             <div className="flex flex-col max-w-6xl mx-auto">
-              <div className="lg:flex xl:space-x-4">
+              <div className="lg:flex lg:justify-center lg:items-center xl:space-x-4">
                 <RichText
                   context={(course.items[0] as any).fields.moreCourseInfo1}
                 />
@@ -111,7 +112,7 @@ export default async function Page({
                 />
               </div>
               <hr className="mt-5 border-2 border-blue-500 w-52 mx-auto" />
-              <div className="lg:flex xl:space-x-4 flex-grow">
+              <div className="lg:flex lg:justify-center lg:items-center xl:space-x-4 flex-grow">
                 <RichText
                   context={(course.items[0] as any).fields.moreCourseInfo3}
                 />

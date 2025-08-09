@@ -142,5 +142,26 @@
     "saveWithOurValuePackedDivePackages": "Save with our value-packed dive packages designed for certified divers. Multi-day adventures to Punta Cana's premier dive locations.",
     "exploreTheStunningIslandsOfTheDominicanRepublic": "Explore the stunning islands of the Dominican Republic with our full-day excursions. Perfect for everyone.",
     "caribbeanDayAdventures": "Caribbean Day Adventures"
+  },
+  "CourseOverview": {
+    "courseOverview": "Course Overview",
+    "courseLevel": "Course Level",
+    "price": "Price",
+    "perPerson": "per person",
+    "duration": "Duration",
+    "includes": "Includes",
+    "contactUs": "Contact Us",
+    "reserveNow": "Reserve Now",
+    "only50Deposit": "Only a 50% deposit",
+    "transport": "Transport"
+  },
+  "PaymentPopupCourses": {
+    "bookNow": "Book Now",
+    "contactInfo": "Contact Info",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "hotel": "Hotel",
+    "numberOfGuests": "Number of Guests",
+    "excursion": "Excursion"
   }
 }

@@ -142,5 +142,26 @@
     "saveWithOurValuePackedDivePackages": "Ahorra con nuestros paquetes de buceo valorados diseñados para buceadores certificados. Aventuras multidía a los principales sitios de buceo de Punta Cana.",
     "exploreTheStunningIslandsOfTheDominicanRepublic": "Explora las islas impresionantes de la República Dominicana con nuestras excursiones de un día. Perfecto para todos.",
     "caribbeanDayAdventures": "Adventuras del Día del Caribe"
+  },
+  "CourseOverview": {
+    "courseOverview": "Resumen de Clase",
+    "courseLevel": "Nivel de Clase",
+    "price": "Precio",
+    "perPerson": "por persona",
+    "duration": "Duración",
+    "includes": "Incluye",
+    "contactUs": "Contacto",
+    "reserveNow": "Reservar Ahora",
+    "only50Deposit": "Solo un 50% de depósito",
+    "transport": "Transporte"
+  },
+  "PaymentPopupCourses": {
+    "bookNow": "Reservar Ahora",
+    "contactInfo": "Información de Contacto",
+    "fullName": "Nombre Completo",
+    "emailAddress": "Correo Electrónico",
+    "hotel": "Hotel",
+    "numberOfGuests": "Cantidad de Personas",
+    "excursion": "Excursión"
   }
 }

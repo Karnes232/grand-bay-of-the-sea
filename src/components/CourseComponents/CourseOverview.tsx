@@ -5,29 +5,32 @@ import { motion } from "motion/react"
 import Link from "next/link"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
 import PaymentPopupCourses from "../PaymentComponents/PaymentPopupCourses"
+import { useTranslations } from "next-intl"
 const CourseOverview = ({ course }: { course: any }) => {
+  const t = useTranslations("CourseOverview")
   return (
     <div className="my-5">
       {" "}
       <div className="flex flex-col justify-center items-center mb-2">
         <h4 className="text-xl font-semibold mb-1 xl:text-3xl">
-          <strong>Course Overview</strong>
+          <strong>{t("courseOverview")}</strong>
         </h4>
         <p className="my-1 text-center text-sm md:text-base xl:text-lg">
-          <b>Course Level:</b> {course.fields.level}
+          <b>{t("courseLevel")}:</b> {course.fields.level}
         </p>
         {course.fields.padiPrice && (
           <p className="my-1 text-sm md:text-base xl:text-lg">
-            <b>Price:</b> ${course.fields.padiPrice} per person
+            <b>{t("price")}:</b> ${course.fields.padiPrice} {t("perPerson")}
           </p>
         )}
 
         <p className="my-1 text-sm md:text-base xl:text-lg">
-          <b>Duration: </b>
+          <b>{t("duration")}: </b>
           {course.fields.duration}
         </p>
         <p className="my-1 text-sm md:text-base xl:text-lg">
-          <b> Includes: </b>Transport
+          <b> {t("includes")}: </b>
+          {t("transport")}
         </p>
         {course.fields.extraInfo && (
           <p className="my-1 text-sm md:text-base xl:text-lg">
@@ -47,7 +50,7 @@ const CourseOverview = ({ course }: { course: any }) => {
                 delay: 0.3,
               }}
             >
-              Contact Us
+              {t("contactUs")}
             </motion.p>
           </button>
         </Link>
@@ -58,9 +61,9 @@ const CourseOverview = ({ course }: { course: any }) => {
       </div>
       <div className="flex flex-col justify-center items-center mb-4">
         <p className="mb-1 mt-2">
-          <strong>Reserve Now</strong>
+          <strong>{t("reserveNow")}</strong>
         </p>
-        <p className="mt-1">Only a 50% deposit</p>
+        <p className="mt-1">{t("only50Deposit")}</p>
       </div>
       {/* <CustomPayPal
         price={course.fields.ssiPrice / 2 || course.fields.padiPrice / 2}

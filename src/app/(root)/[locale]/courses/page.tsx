@@ -78,9 +78,15 @@ export async function generateMetadata(
   }
 }
 
-export default async function Page() {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
   const pageLayoutResult = await searchEntries("pageLayout", {
     "fields.page": "Courses",
+    locale: locale,
   })
   const pageLayout = pageLayoutResult.items[0]
 
