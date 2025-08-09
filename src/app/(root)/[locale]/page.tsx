@@ -36,13 +36,15 @@ const GoogleMaps = dynamicImport(
 export const revalidate = 3600 // Regenerate every hour for better Netlify compatibility
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { locale } = await params
   const seoSearchResults = await searchEntries(
     "seo",
     {
       "fields.page": "Index",
+      locale: locale || "en",
     },
     ["fields.title", "fields.description", "fields.keywords", "fields.image"],
   )
@@ -68,7 +70,10 @@ export async function generateMetadata(
     description: String(seoEntry.fields.description),
     keywords: seoEntry.fields.keywords as string[],
     openGraph: {
-      url: "https://www.grandbay-puntacana.com",
+      url:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/"
+          : "https://www.grandbay-puntacana.com/",
       type: "website",
       title: String(seoEntry.fields.title),
       description: String(seoEntry.fields.description),
@@ -97,7 +102,10 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: "https://www.grandbay-puntacana.com",
+      canonical:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/"
+          : "https://www.grandbay-puntacana.com/",
     },
   }
 }

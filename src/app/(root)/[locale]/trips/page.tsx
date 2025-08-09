@@ -11,18 +11,23 @@ import { getPlaiceholder } from "plaiceholder" // Import getPlaiceholder
 export const dynamic = "force-static"
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { locale } = await params
   const seoSearchResults = await searchEntries("seo", {
     "fields.page": "Trips",
+    locale: locale || "en",
   })
   return {
     title: String(seoSearchResults.items[0].fields.title),
     description: String(seoSearchResults.items[0].fields.description),
     keywords: seoSearchResults.items[0].fields.keywords as string[],
     openGraph: {
-      url: "https://www.grandbay-puntacana.com/trips",
+      url:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/trips/"
+          : "https://www.grandbay-puntacana.com/trips/",
       type: "website",
       title: String(seoSearchResults.items[0].fields.title),
       description: String(seoSearchResults.items[0].fields.description),
@@ -55,7 +60,10 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: "https://www.grandbay-puntacana.com/trips/",
+      canonical:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/trips/"
+          : "https://www.grandbay-puntacana.com/trips/",
     },
   }
 }
