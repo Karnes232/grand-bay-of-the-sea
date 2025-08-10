@@ -1,4 +1,46 @@
+import { getAllEntries, getAllEntrySlugs, getAllEntrySlugsWithCategory, searchEntries } from "@/lib/contentful"
 import type { MetadataRoute } from "next"
+
+const blogCategories = await getAllEntrySlugs("blogCategory")
+
+const blogPosts = await getAllEntrySlugsWithCategory("blogPost")
+
+const blogPostsEnglish = blogPosts.map(post => {
+  return {
+    url: `https://www.grandbay-puntacana.com/blog/${post.category.fields.slug}/${post.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 1,
+  }
+})
+
+const blogPostsSpanish = blogPosts.map(post => {
+
+  return {
+    url: `https://www.grandbay-puntacana.com/es/blog/${post.category.fields.slug}/${post.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 1,
+  }
+})
+
+const blogCategoriesEnglish = blogCategories.map(page => {
+  return {
+    url: `https://www.grandbay-puntacana.com/blog/${page}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 1,
+  }
+})
+const blogCategoriesSpanish = blogCategories.map(page => {
+  return {
+    url: `https://www.grandbay-puntacana.com/es/blog/${page}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 1,
+  }
+})
+
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -302,6 +344,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.5,
     },
-    
+    ...blogCategoriesEnglish,
+    ...blogCategoriesSpanish,
+    ...blogPostsEnglish,
+    ...blogPostsSpanish,
   ]
 }

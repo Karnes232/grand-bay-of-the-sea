@@ -68,3 +68,24 @@ export async function getAllEntriesExcludingSlugs(
   const entries = await client.getEntries(queryParams)
   return entries.items
 }
+
+export async function getAllEntrySlugs(contentType: string, locale?: string) {
+  const entries = await client.getEntries({
+    content_type: contentType,
+    select: ["fields.slug"],
+    locale: locale || "en",
+  })
+  return entries.items.map((entry: any) => entry.fields.slug)
+}
+
+export async function getAllEntrySlugsWithCategory(contentType: string, locale?: string) {
+  const entries = await client.getEntries({
+    content_type: contentType,
+    select: ["fields.slug", "fields.blogCategory"],
+    locale: locale || "en",
+  })
+  return entries.items.map((entry: any) => ({
+    slug: entry.fields.slug,
+    category: entry.fields.blogCategory,
+  }))
+}
