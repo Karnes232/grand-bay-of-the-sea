@@ -6,13 +6,15 @@ import { useTranslations } from "next-intl"
 const CustomPayPal = ({ price }) => {
   const currency = "USD"
   const t = useTranslations("CustomPagePayPal")
+  const sandBox = "ATyo0QdaaI3Kxm1TaxC-i_RHGTzwdw23bI4dNdjQ-v_bGu0CuKT54AzYFsOYJcXr_ZjO1bvqrHWBhG-c"
+  const liveId =
+    "AaPiNuBE-3bjn86CtDSbnbs5nnaeQ-vNhBk48DdMwZ0vsUYGVuE1_38burybKxv_Qn78gXQYUSKf1UG0"
   return (
     <div className="flex justify-center">
       <div className="flex flex-col">
         <PayPalScriptProvider
           options={{
-            clientId:
-              "AaPiNuBE-3bjn86CtDSbnbs5nnaeQ-vNhBk48DdMwZ0vsUYGVuE1_38burybKxv_Qn78gXQYUSKf1UG0",
+            clientId: sandBox,
             components: "buttons",
             currency: "USD",
           }}

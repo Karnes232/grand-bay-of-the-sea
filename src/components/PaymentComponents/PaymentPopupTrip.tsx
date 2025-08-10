@@ -43,10 +43,13 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
     deposit: tour.depositPrice,
     price: tour.price,
   })
-
+  console.log(tour.spectatorSnorkel)
   useEffect(() => {
     const diverPrice = tour.price * formData.guestCount
-    const snorkelersPrice = tour.spectatorSnorkel * formData.snorkelers
+    let snorkelersPrice = 0
+    if (tour.spectatorSnorkel) {
+      snorkelersPrice = tour.spectatorSnorkel * formData.snorkelers
+    }
     setFormData({
       ...formData,
       price: diverPrice + snorkelersPrice,
