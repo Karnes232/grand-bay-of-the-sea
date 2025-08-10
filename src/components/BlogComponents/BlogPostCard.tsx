@@ -1,8 +1,10 @@
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 
 const BlogPostCard = ({ blog }: { blog: any }) => {
+  const t = useTranslations("Blog")
   return (
     <Link
       href={`/blog/${blog.fields.blogCategory.fields.slug}/${blog.fields.slug}`}
@@ -26,7 +28,7 @@ const BlogPostCard = ({ blog }: { blog: any }) => {
             {blog.fields.description}
           </p>
           <div className="mt-4 text-sm text-blue-600 font-semibold">
-            Read More →
+            {t("readMore")} →
           </div>
         </div>
       </div>

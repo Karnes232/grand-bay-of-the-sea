@@ -5,18 +5,23 @@ import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: Promise<{ slug: string; locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { locale } = await params
   const seoSearchResults = await searchEntries("seo", {
     "fields.page": "Blog",
+    locale: locale || "en",
   })
   return {
     title: String(seoSearchResults.items[0].fields.title),
     description: String(seoSearchResults.items[0].fields.description),
     keywords: seoSearchResults.items[0].fields.keywords as string[],
     openGraph: {
-      url: "https://www.grandbay-puntacana.com/blog",
+      url:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/blog"
+          : "https://www.grandbay-puntacana.com/blog",
       type: "website",
       title: String(seoSearchResults.items[0].fields.title),
       description: String(seoSearchResults.items[0].fields.description),
@@ -49,16 +54,25 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: "https://www.grandbay-puntacana.com/blog/",
+      canonical:
+        locale === "es"
+          ? "https://www.grandbay-puntacana.com/es/blog/"
+          : "https://www.grandbay-puntacana.com/blog/",
     },
   }
 }
 
-export default async function Page() {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Blog",
+    locale: locale || "en",
   })
-  const blogPosts = await getAllEntries("blogCategory")
+  const blogPosts = await getAllEntries("blogCategory", locale)
   return (
     <main>
       <HeroComponent
@@ -68,7 +82,7 @@ export default async function Page() {
       <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
         <RichText context={pageLayout.items[0].fields.paragraph1} />
       </div>
-      <div className="flex flex-col xl:mt-5 md:flex-row md:flex-wrap md:justify-evenly  max-w-5xl xl:max-w-6xl mx-auto md:gap-5">
+      <div className="flex flex-col xl:my-5 md:flex-row md:flex-wrap md:justify-evenly  max-w-5xl xl:max-w-6xl mx-auto md:gap-5">
         {blogPosts.map(post => (
           <BlogCategory key={post.sys.id} post={post} />
         ))}

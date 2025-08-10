@@ -1,19 +1,20 @@
-import BlogBody from "@/components/BlogComponents/BlogBody"
-import HeroImages from "@/components/BlogComponents/HeroImages"
-import Recommendations from "@/components/BlogComponents/Recommendations"
-import { searchEntries } from "@/lib/contentful"
+import BlogPostList from "@/components/BlogComponents/BlogPostList"
+import HeroComponent from "@/components/HeroComponent/HeroComponent"
+import RichText from "@/components/RichTextComponents/RichText"
+import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ category: string; slug: string }> },
+  { params }: { params: Promise<{ category: string; locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { category, slug } = await params
+  const { category, locale } = await params
   const seoSearchResults = await searchEntries(
-    "blogPost",
+    "blogCategory",
     {
-      "fields.slug": slug,
+      "fields.slug": category,
+      locale: locale || "en",
     },
     [
       "fields.seoTitle",
@@ -22,17 +23,18 @@ export async function generateMetadata(
       "fields.seoImage",
     ],
   )
-
   if (!seoSearchResults?.items?.[0]) {
     notFound()
   }
-
   return {
     title: String(seoSearchResults.items[0].fields.seoTitle),
     description: String(seoSearchResults.items[0].fields.seoDescription),
     keywords: seoSearchResults.items[0].fields.seoKeywords as string[],
     openGraph: {
-      url: `https://www.grandbay-puntacana.com/blog/${category}/${slug}`,
+      url:
+        locale === "es"
+          ? `https://www.grandbay-puntacana.com/es/blog/${category}`
+          : `https://www.grandbay-puntacana.com/blog/${category}`,
       type: "website",
       title: String(seoSearchResults.items[0].fields.seoTitle),
       description: String(seoSearchResults.items[0].fields.seoDescription),
@@ -65,7 +67,10 @@ export async function generateMetadata(
       ],
     },
     alternates: {
-      canonical: `https://www.grandbay-puntacana.com/blog/${category}/${slug}`,
+      canonical:
+        locale === "es"
+          ? `https://www.grandbay-puntacana.com/es/blog/${category}`
+          : `https://www.grandbay-puntacana.com/blog/${category}`,
     },
   }
 }
@@ -73,47 +78,34 @@ export async function generateMetadata(
 export default async function Page({
   params,
 }: {
-  params: Promise<{ category: string; slug: string }>
+  params: Promise<{ category: string; locale: string }>
 }) {
-  const { category, slug } = await params
+  const { category, locale } = await params
 
-  const blogPost = await searchEntries("blogPost", {
-    "fields.slug": slug,
+  const blogCategory = await searchEntries("blogCategory", {
+    "fields.slug": category,
+    locale: locale || "en",
   })
-
-  const blogCategory = (blogPost.items[0].fields.blogCategory as any)?.fields
-    ?.blogCategory
+  const blogCategoryId = blogCategory.items[0]?.fields.blogCategory
 
   const blogPostsByCategory = await searchEntries("blogPost", {
     "fields.blogCategory.sys.contentType.sys.id": "blogCategory",
-    "fields.blogCategory.fields.blogCategory": blogCategory,
+    "fields.blogCategory.fields.blogCategory": blogCategoryId,
+    locale: locale || "en",
   })
-
-  // Filter out the current blog post using the slug
-  const relatedPosts = blogPostsByCategory.items.filter(
-    post => post.fields.slug !== slug,
-  )
-
   return (
-    <>
-      <main>
-        <HeroImages
-          backgroundImages={
-            blogPost?.items[0]?.fields.backgroundImages as any[]
-          }
+    <main>
+      {blogCategory?.items[0]?.fields?.heroImage && (
+        <HeroComponent
+          heroImage={`https:${(blogCategory?.items[0] as any)?.fields?.heroImage?.fields?.file?.url}`}
+          title={blogCategory?.items[0]?.fields?.blogCategory as string}
         />
-        <BlogBody context={blogPost?.items[0]?.fields.blogBody as any[]} />
-        <Recommendations
-          relatedPosts={relatedPosts}
-          title={"You may also like"}
-        />
-      </main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(blogPost.items[0].fields.schema),
-        }}
-      />
-    </>
+      )}
+      <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
+      <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center mx-5 lg:mx-auto">
+        <RichText context={blogCategory?.items[0]?.fields?.paragraph} />
+        <BlogPostList blogPosts={blogPostsByCategory?.items} />
+      </div>
+    </main>
   )
 }

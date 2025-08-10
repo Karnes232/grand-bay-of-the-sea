@@ -174,5 +174,9 @@
     "wreckDiver": "Explore sunken ships and underwater history with the wreck diver course.",
     "deepDiver": "Explore deeper dive sites safely with the PADI Deep Diver course",
     "peakPerformanceBuoyancy": "Master buoyancy control for smoother, more efficient and enjoyable dives."
+  },
+  "Blog": {
+    "readMore": "Read More",
+    "youMayAlsoLike": "You may also like"
   }
 }

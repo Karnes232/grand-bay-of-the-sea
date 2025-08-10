@@ -174,5 +174,9 @@
     "wreckDiver": "Explora barcos hundidos y el historial submarino con el curso de buceador de naufragios.",
     "deepDiver": "Explora sitios de buceo más profundos de forma segura con el curso de buceador profundo PADI",
     "peakPerformanceBuoyancy": "Máster el control de flotabilidad para buceos más suaves, eficientes y agradables."
+  },
+  "Blog": {
+    "readMore": "Leer Más",
+    "youMayAlsoLike": "También te puede interesar"
   }
 }
