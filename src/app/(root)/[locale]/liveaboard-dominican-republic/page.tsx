@@ -4,6 +4,7 @@ import RichText from "@/components/RichTextComponents/RichText"
 import TextComponent from "@/components/RichTextComponents/TextComponent"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -56,12 +57,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/liveaboard-dominican-republic/"
-          : "https://www.grandbay-puntacana.com/liveaboard-dominican-republic/",
-    },
+    alternates: getHreflangAlternates("liveaboard-dominican-republic", locale),
   }
 }
 

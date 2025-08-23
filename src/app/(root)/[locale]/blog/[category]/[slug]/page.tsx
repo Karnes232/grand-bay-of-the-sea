@@ -3,6 +3,7 @@ import HeroImages from "@/components/BlogComponents/HeroImages"
 import Recommendations from "@/components/BlogComponents/Recommendations"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 import { getTranslations } from "next-intl/server"
 import { notFound } from "next/navigation"
 
@@ -69,12 +70,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? `https://www.grandbay-puntacana.com/es/blog/${category}/${slug}`
-          : `https://www.grandbay-puntacana.com/blog/${category}/${slug}`,
-    },
+    alternates: getHreflangAlternates(`blog/${category}/${slug}`, locale),
   }
 }
 

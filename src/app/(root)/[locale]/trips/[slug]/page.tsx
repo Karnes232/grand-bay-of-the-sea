@@ -4,6 +4,7 @@ import RichText from "@/components/RichTextComponents/RichText"
 import TripOverview from "@/components/TourOverviews/TripOverview"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -65,12 +66,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? `https://www.grandbay-puntacana.com/es/trips/${slug}/`
-          : `https://www.grandbay-puntacana.com/trips/${slug}/`,
-    },
+    alternates: getHreflangAlternates(`trips/${slug}`, locale),
   }
 }
 

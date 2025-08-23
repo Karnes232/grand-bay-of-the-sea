@@ -6,6 +6,7 @@ import { searchEntries } from "@/lib/contentful"
 import RichText from "@/components/RichTextComponents/RichText"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 // Remove headers from here, it's a dynamic function and will prevent static rendering
 // import { headers } from "next/headers";
 // import { isMobile } from "@/utils/isMobile"; // If you need this, use a build-time check or remove
@@ -101,12 +102,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/"
-          : "https://www.grandbay-puntacana.com/",
-    },
+    alternates: getHreflangAlternates("", locale),
   }
 }
 

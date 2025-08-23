@@ -2,6 +2,7 @@ import ContactForm from "@/components/ContactForm/ContactForm"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -52,12 +53,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/contact/"
-          : "https://www.grandbay-puntacana.com/contact/",
-    },
+    alternates: getHreflangAlternates("contact", locale),
   }
 }
 

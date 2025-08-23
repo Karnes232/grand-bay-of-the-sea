@@ -3,6 +3,7 @@ import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 import { notFound } from "next/navigation"
 
 export async function generateMetadata(
@@ -66,12 +67,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? `https://www.grandbay-puntacana.com/es/blog/${category}`
-          : `https://www.grandbay-puntacana.com/blog/${category}`,
-    },
+    alternates: getHreflangAlternates(`blog/${category}`, locale),
   }
 }
 

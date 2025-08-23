@@ -3,6 +3,7 @@ import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -53,12 +54,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/blog/"
-          : "https://www.grandbay-puntacana.com/blog/",
-    },
+    alternates: getHreflangAlternates("blog", locale),
   }
 }
 

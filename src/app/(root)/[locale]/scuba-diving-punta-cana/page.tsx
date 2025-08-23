@@ -7,6 +7,7 @@ import RichText from "@/components/RichTextComponents/RichText"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -57,12 +58,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/scuba-diving-punta-cana/"
-          : "https://www.grandbay-puntacana.com/scuba-diving-punta-cana/",
-    },
+    alternates: getHreflangAlternates("scuba-diving-punta-cana", locale),
   }
 }
 

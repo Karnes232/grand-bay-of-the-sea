@@ -6,6 +6,7 @@ import RichText from "@/components/RichTextComponents/RichText"
 import LocalDivesOverview from "@/components/TourOverviews/LocalDivesOverview"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPlaiceholder } from "plaiceholder" // Import getPlaiceholder
 
 // Add this line to explicitly force static rendering
@@ -60,12 +61,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/sites/"
-          : "https://www.grandbay-puntacana.com/sites/",
-    },
+    alternates: getHreflangAlternates("sites", locale),
   }
 }
 

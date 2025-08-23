@@ -3,6 +3,7 @@ import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/Clo
 import RichText from "@/components/RichTextComponents/RichText"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -64,12 +65,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/whale-watching-adventure/"
-          : "https://www.grandbay-puntacana.com/whale-watching-adventure/",
-    },
+    alternates: getHreflangAlternates("liveaboard-dominican-republic/whale-watching-adventure", locale),
   }
 }
 

@@ -2,6 +2,7 @@ import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -52,12 +53,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/terms-and-conditions/"
-          : "https://www.grandbay-puntacana.com/terms-and-conditions/",
-    },
+    alternates: getHreflangAlternates("terms-and-conditions", locale),
     robots: {
       index: false,
       follow: false,

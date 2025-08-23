@@ -5,6 +5,7 @@ import RichText from "@/components/RichTextComponents/RichText"
 import TripCards from "@/components/TourOverviews/TripCards"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPlaiceholder } from "plaiceholder" // Import getPlaiceholder
 
 // Add this line to explicitly force static rendering
@@ -59,12 +60,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/trips/"
-          : "https://www.grandbay-puntacana.com/trips/",
-    },
+    alternates: getHreflangAlternates("trips", locale),
   }
 }
 

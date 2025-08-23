@@ -6,6 +6,7 @@ import RichText from "@/components/RichTextComponents/RichText"
 import LocalDivesOverview from "@/components/TourOverviews/LocalDivesOverview"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -56,12 +57,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/species/"
-          : "https://www.grandbay-puntacana.com/species/",
-    },
+    alternates: getHreflangAlternates("species", locale),
   }
 }
 

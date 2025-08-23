@@ -7,6 +7,7 @@ import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 
 // For image placeholders
 import { getPlaiceholder } from "plaiceholder"
@@ -77,12 +78,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/courses/"
-          : "https://www.grandbay-puntacana.com/courses/",
-    },
+    alternates: getHreflangAlternates("courses", locale),
   }
 }
 

@@ -5,6 +5,7 @@ import CourseOverview from "@/components/CourseComponents/CourseOverview"
 import RichText from "@/components/RichTextComponents/RichText"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import { getHreflangAlternates } from "@/utils/hreflang"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string; slug: string }> },
@@ -62,12 +63,7 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: {
-      canonical:
-        locale === "es"
-          ? `https://www.grandbay-puntacana.com/es/courses/${slug}`
-          : `https://www.grandbay-puntacana.com/courses/${slug}`,
-    },
+    alternates: getHreflangAlternates(`courses/${slug}`, locale),
   }
 }
 
