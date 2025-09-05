@@ -2,6 +2,25 @@
   command = "npm run build"
   publish = ".next"
 
+# i18n redirects for proper language handling
+[[redirects]]
+  from = "/"
+  to = "/en"
+  status = 302
+  conditions = {Language = ["en"]}
+
+[[redirects]]
+  from = "/"
+  to = "/es"
+  status = 302
+  conditions = {Language = ["es"]}
+
+[[redirects]]
+  from = "/"
+  to = "/en"
+  status = 302
+
+# Image optimization redirects
 [[redirects]]
   from = '/_next/image/*'
   query = { q = ':quality', url = ':url', w = ':width' }
@@ -9,11 +28,18 @@
   status = 200
   force = true
 
+# Cache headers for better performance
+[[headers]]
+  for = "/messages/*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, s-maxage=86400"
+
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
