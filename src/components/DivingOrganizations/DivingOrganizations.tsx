@@ -60,11 +60,11 @@ const DivingOrganizations = async () => {
           }
           quality={75}
         /> */}
-        <picture className="mb-8 object-contain">
+        {/* <picture className="mb-8 object-contain">
           <source media="(prefers-color-scheme: dark)" srcSet={darkSSI} />
           <source media="(prefers-color-scheme: light)" srcSet={lightSSI} />
           <img {...restSSI} alt={commonSSI.alt} />
-        </picture>
+        </picture> */}
         <picture className="mb-8 object-cover">
           <source media="(prefers-color-scheme: dark)" srcSet={darkPadi} />
           <source media="(prefers-color-scheme: light)" srcSet={lightPadi} />

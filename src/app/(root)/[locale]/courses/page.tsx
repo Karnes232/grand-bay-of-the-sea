@@ -161,7 +161,7 @@ export default async function Page({
         image4={(pageLayout as any).fields.linkImage8.fields}
         image5={(pageLayout as any).fields.linkImage9.fields}
       />
-      <SSIBanner />
+      {/* <SSIBanner /> */}
       <PadiBanner />
     </main>
   )
