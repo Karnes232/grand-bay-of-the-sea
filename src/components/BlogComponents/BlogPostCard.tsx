@@ -18,6 +18,9 @@ const BlogPostCard = ({ blog }: { blog: any }) => {
             alt={blog.fields.backgroundImages[0].fields.title}
             fill
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={75}
+            priority={false}
           />
         </div>
         <div className="p-5">

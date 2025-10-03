@@ -65,10 +65,11 @@ const PhotoGrid = ({ backgroundImages }: { backgroundImages: any[] }) => {
                 fill
                 src={`https:${image.fields.file.url}`}
                 alt={image.fields.title}
-                sizes={`${calculatedWidth}px`}
+                sizes={`${Math.min(calculatedWidth, 600)}px`}
                 quality={75}
                 style={{ objectFit: "cover" }}
                 className="transition-all duration-300 hover:scale-105"
+                // priority={index === 0}
               />
               {/* Gradient overlay: transparent at top, dark at bottom */}
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 pointer-events-none"></div>
