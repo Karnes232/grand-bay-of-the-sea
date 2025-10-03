@@ -213,13 +213,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: "https://www.grandbay-puntacana.com/site",
+      url: "https://www.grandbay-puntacana.com/sites",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
-      url: "https://www.grandbay-puntacana.com/es/site",
+      url: "https://www.grandbay-puntacana.com/es/sites",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
