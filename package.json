@@ -39,6 +39,7 @@
     "react-select": "^5.10.1",
     "react-tailwindcss-datepicker": "^2.0.0",
     "sanity": "^4.15.0",
+    "sanity-plugin-media": "^4.0.0",
     "sharp": "^0.33.5",
     "styled-components": "^6.1.19",
     "swiper": "^11.1.14",

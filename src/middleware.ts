@@ -13,7 +13,7 @@ export const config = {
     // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
     // - … the ones containing a dot (e.g. `favicon.ico`)
     // - … the ones starting with `/tui` (admin interface)
-    "/((?!api|trpc|_next|tui|_vercel|.*\\..*).*)",
+    "/((?!api|trpc|_next|tui|studio|_vercel|.*\\..*).*)",
     // Also match pathnames that start with a locale
     "/(en|es)/:path*",
   ],
