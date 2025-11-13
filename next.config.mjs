@@ -24,6 +24,7 @@ const nextConfig = {
   trailingSlash: false,
   poweredByHeader: false,
   images: {
+    qualities: [75, 80, 85, 90, 95, 100],
     // unoptimized: true,
     loader: 'default',
     // domains: ['images.ctfassets.net', 'www.kayak.com'],
@@ -37,6 +38,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.kayak.com',
         pathname: '**',
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
       },
     ],
   },

@@ -15,6 +15,7 @@ import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPlaiceholder } from "plaiceholder"
 import { Buffer } from "buffer" // Node.js Buffer for getPlaiceholder
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
+import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 
 const CloudinaryBackgroundVideo = dynamicImport(
   () =>
@@ -36,75 +37,123 @@ const GoogleMaps = dynamicImport(
 // OPTION 2: Use revalidate for Incremental Static Regeneration (ISR)
 export const revalidate = 3600 // Regenerate every hour for better Netlify compatibility
 
-export async function generateMetadata(
-  { params }: { params: Promise<{ locale: string }> },
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{
+    locale: "en" | "es"
+  }>
+}) {
   const { locale } = await params
-  const seoSearchResults = await searchEntries(
-    "seo",
-    {
-      "fields.page": "Index",
-      locale: locale || "en",
-    },
-    ["fields.title", "fields.description", "fields.keywords", "fields.image"],
-  )
-
-  const seoEntry = seoSearchResults.items[0]
-
-  if (!seoEntry) {
-    return {
-      title: "Grand Bay Divers Punta Cana",
-      description: "Discover scuba diving in Punta Cana with Grand Bay Divers.",
-    }
+  const pageSeo = await getPageSeo("Index")
+  console.log(pageSeo)
+  if (!pageSeo) {
+    return {}
   }
 
-  const imageUrl = `https:${(seoEntry as any).fields.image.fields.file.url}`
-  const imageWidth = (seoEntry as any).fields.image.fields.file.details.image
-    .width
-  const imageHeight = (seoEntry as any).fields.image.fields.file.details.image
-    .height
-  const imageAlt = (seoEntry as any).fields.image.fields.title
-
+  let canonicalUrl 
+  if (locale === "en") {
+    canonicalUrl = "https://www.grandbay-puntacana.com"
+  } else {
+    canonicalUrl = "https://www.grandbay-puntacana.com/es"
+  }
+  
   return {
-    title: String(seoEntry.fields.title),
-    description: String(seoEntry.fields.description),
-    keywords: seoEntry.fields.keywords as string[],
+    title: pageSeo.seo.meta[locale].title,
+    description: pageSeo.seo.meta[locale].description,
+    keywords: pageSeo.seo.meta[locale].keywords.join(", "),
+    url: canonicalUrl,
     openGraph: {
-      url:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/"
-          : "https://www.grandbay-puntacana.com/",
+      title: pageSeo.seo.openGraph[locale].title,
+      description: pageSeo.seo.openGraph[locale].description,
+      images: pageSeo.seo.openGraph.image.url,
       type: "website",
-      title: String(seoEntry.fields.title),
-      description: String(seoEntry.fields.description),
-      images: [
-        {
-          url: imageUrl,
-          width: imageWidth,
-          height: imageHeight,
-          alt: imageAlt,
-        },
-      ],
+      url: canonicalUrl,
     },
-    twitter: {
-      card: "summary_large_image",
-      title: String(seoEntry.fields.title),
-      description: String(seoEntry.fields.description),
-      creator: "@grandbay",
-      site: "@grandbay",
-      images: [
-        {
-          url: imageUrl,
-          width: imageWidth,
-          height: imageHeight,
-          alt: imageAlt,
-        },
-      ],
+    robots: {
+      index: !pageSeo.seo.noIndex,
+      follow: !pageSeo.seo.noFollow,
     },
+    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: getHreflangAlternates("", locale),
+    // other: {
+    //   "Cache-Control":
+    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
+    // },
   }
 }
+
+// export async function generateMetadata(
+//   { params }: { params: Promise<{ locale: string }> },
+//   parent: ResolvingMetadata,
+// ): Promise<Metadata> {
+//   const { locale } = await params
+//   const pageSeo = await getPageSeo("Index")
+//   console.log(pageSeo)
+//   const seoSearchResults = await searchEntries(
+//     "seo",
+//     {
+//       "fields.page": "Index",
+//       locale: locale || "en",
+//     },
+//     ["fields.title", "fields.description", "fields.keywords", "fields.image"],
+//   )
+
+//   const seoEntry = seoSearchResults.items[0]
+
+//   if (!seoEntry) {
+//     return {
+//       title: "Grand Bay Divers Punta Cana",
+//       description: "Discover scuba diving in Punta Cana with Grand Bay Divers.",
+//     }
+//   }
+
+//   const imageUrl = `https:${(seoEntry as any).fields.image.fields.file.url}`
+//   const imageWidth = (seoEntry as any).fields.image.fields.file.details.image
+//     .width
+//   const imageHeight = (seoEntry as any).fields.image.fields.file.details.image
+//     .height
+//   const imageAlt = (seoEntry as any).fields.image.fields.title
+
+//   return {
+//     title: String(seoEntry.fields.title),
+//     description: String(seoEntry.fields.description),
+//     keywords: seoEntry.fields.keywords as string[],
+//     openGraph: {
+//       url:
+//         locale === "es"
+//           ? "https://www.grandbay-puntacana.com/es/"
+//           : "https://www.grandbay-puntacana.com/",
+//       type: "website",
+//       title: String(seoEntry.fields.title),
+//       description: String(seoEntry.fields.description),
+//       images: [
+//         {
+//           url: imageUrl,
+//           width: imageWidth,
+//           height: imageHeight,
+//           alt: imageAlt,
+//         },
+//       ],
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       title: String(seoEntry.fields.title),
+//       description: String(seoEntry.fields.description),
+//       creator: "@grandbay",
+//       site: "@grandbay",
+//       images: [
+//         {
+//           url: imageUrl,
+//           width: imageWidth,
+//           height: imageHeight,
+//           alt: imageAlt,
+//         },
+//       ],
+//     },
+//     alternates: getHreflangAlternates("", locale),
+//   }
+// }
 
 export default async function Home({
   params,
@@ -112,6 +161,10 @@ export default async function Home({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+
+  const [structuredData] = await Promise.all([
+    getStructuredData("Index"),
+  ])
 
   let pageLayout
   try {
@@ -182,6 +235,15 @@ export default async function Home({
   }
 
   return (
+    <>
+    {structuredData?.seo?.structuredData[locale] && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: structuredData.seo.structuredData[locale],
+          }}
+        />
+      )}
     <main>
       {heroImageDetails.url && (
         <HeroStaticComponent
@@ -212,5 +274,6 @@ export default async function Home({
       )}
       <GoogleMaps />
     </main>
+    </>
   )
 }

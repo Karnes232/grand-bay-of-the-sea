@@ -34,7 +34,6 @@ export default defineType({
               name: "title",
               title: "Meta Title",
               type: "string",
-              initialValue: "Punta Cana Photo Edition Title",
               description:
                 "Title for browser tab and search results (50-60 characters recommended)",
               validation: Rule =>
@@ -47,7 +46,6 @@ export default defineType({
               title: "Meta Description",
               type: "text",
               rows: 3,
-              initialValue: "Punta Cana Photo Edition Description",
               description:
                 "Description for search results (150-160 characters recommended)",
               validation: Rule =>
@@ -59,7 +57,6 @@ export default defineType({
               name: "keywords",
               title: "Keywords",
               type: "array",
-              initialValue: ["Punta Cana Photo Edition Keywords"],
               of: [{ type: "string" }],
               description: "Keywords relevant to this content (optional)",
             }),
@@ -74,7 +71,6 @@ export default defineType({
               name: "title",
               title: "Meta Title",
               type: "string",
-              initialValue: "Punta Cana Photo Edition Title Spanish",
               description:
                 "Título para la pestaña del navegador y resultados de búsqueda (50-60 caracteres recomendados)",
               validation: Rule =>
@@ -87,7 +83,6 @@ export default defineType({
               title: "Meta Description",
               type: "text",
               rows: 3,
-              initialValue: "Punta Cana Photo Edition Description Spanish",
               description:
                 "Descripción para resultados de búsqueda (150-160 caracteres recomendados)",
               validation: Rule =>
@@ -100,7 +95,6 @@ export default defineType({
               title: "Keywords",
               type: "array",
               of: [{ type: "string" }],
-              initialValue: ["Punta Cana Photo Edition Keywords Spanish"],
               description:
                 "Palabras clave relevantes para este contenido (opcional)",
             }),
@@ -123,7 +117,6 @@ export default defineType({
               name: "title",
               title: "OG Title",
               type: "string",
-              initialValue: "Punta Cana Photo Edition OG Title",
               description:
                 "Title for social media sharing (optional, will use Meta Title if not provided)",
             }),
@@ -132,7 +125,6 @@ export default defineType({
               title: "OG Description",
               type: "text",
               rows: 3,
-              initialValue: "Punta Cana Photo Edition OG Description",
               description:
                 "Description for social media sharing (optional, will use Meta Description if not provided)",
             }),
@@ -147,7 +139,6 @@ export default defineType({
               name: "title",
               title: "OG Title",
               type: "string",
-              initialValue: "Punta Cana Photo Edition OG Title Spanish",
               description:
                 "Título para compartir en redes sociales (opcional, usará el Meta Title si no se proporciona)",
             }),
@@ -156,7 +147,6 @@ export default defineType({
               title: "OG Description",
               type: "text",
               rows: 3,
-              initialValue: "Punta Cana Photo Edition OG Description Spanish",
               description:
                 "Descripción para compartir en redes sociales (opcional, usará la Meta Description si no se proporciona)",
             }),
