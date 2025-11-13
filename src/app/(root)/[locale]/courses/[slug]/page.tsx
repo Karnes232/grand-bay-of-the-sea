@@ -25,7 +25,7 @@ export async function generateMetadata(
       "fields.seoImage",
     ],
   )
-  console.log(seoSearchResults.items[0].fields.seoTitle)
+
   return {
     title: String(seoSearchResults.items[0].fields.seoTitle),
     description: String(seoSearchResults.items[0].fields.seoDescription),
