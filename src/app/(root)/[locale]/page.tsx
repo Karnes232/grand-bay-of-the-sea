@@ -46,18 +46,18 @@ export async function generateMetadata({
 }) {
   const { locale } = await params
   const pageSeo = await getPageSeo("Index")
-  console.log(pageSeo)
+
   if (!pageSeo) {
     return {}
   }
 
-  let canonicalUrl 
+  let canonicalUrl
   if (locale === "en") {
     canonicalUrl = "https://www.grandbay-puntacana.com"
   } else {
     canonicalUrl = "https://www.grandbay-puntacana.com/es"
   }
-  
+
   return {
     title: pageSeo.seo.meta[locale].title,
     description: pageSeo.seo.meta[locale].description,
@@ -162,9 +162,7 @@ export default async function Home({
 }) {
   const { locale } = await params
 
-  const [structuredData] = await Promise.all([
-    getStructuredData("Index"),
-  ])
+  const [structuredData] = await Promise.all([getStructuredData("Index")])
 
   let pageLayout
   try {
@@ -236,7 +234,7 @@ export default async function Home({
 
   return (
     <>
-    {structuredData?.seo?.structuredData[locale] && (
+      {structuredData?.seo?.structuredData[locale] && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -244,36 +242,36 @@ export default async function Home({
           }}
         />
       )}
-    <main>
-      {heroImageDetails.url && (
-        <HeroStaticComponent
-          heroImage={heroImageDetails.url}
-          blurDataURL={heroImageDetails.base64} // Pass base64 to HeroComponent
-          // mobileQuality, desktopQuality could be hardcoded or derived from env at build time
-          // If you *must* have device-specific quality, you might need a client-side solution or accept dynamic rendering.
-          // For static, a single quality (e.g., 80) is often fine.
+      <main>
+        {heroImageDetails.url && (
+          <HeroStaticComponent
+            heroImage={heroImageDetails.url}
+            blurDataURL={heroImageDetails.base64} // Pass base64 to HeroComponent
+            // mobileQuality, desktopQuality could be hardcoded or derived from env at build time
+            // If you *must* have device-specific quality, you might need a client-side solution or accept dynamic rendering.
+            // For static, a single quality (e.g., 80) is often fine.
+          />
+        )}
+        <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
+        <RichText context={pageLayout.fields.paragraph1} />
+        <SelectionComponent
+          secondaryHeroImage={secondaryHeroImageDetails.url || ""}
+          linkImage1={(pageLayout as any).fields.linkImage1?.fields?.file}
+          linkImage2={(pageLayout as any).fields.linkImage2?.fields?.file}
+          linkImage3={(pageLayout as any).fields.linkImage3?.fields?.file}
         />
-      )}
-      <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <RichText context={pageLayout.fields.paragraph1} />
-      <SelectionComponent
-        secondaryHeroImage={secondaryHeroImageDetails.url || ""}
-        linkImage1={(pageLayout as any).fields.linkImage1?.fields?.file}
-        linkImage2={(pageLayout as any).fields.linkImage2?.fields?.file}
-        linkImage3={(pageLayout as any).fields.linkImage3?.fields?.file}
-      />
-      <RichText context={pageLayout.fields.paragraph2} />
-      <CloudinaryBackgroundVideo
-        className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
-        videoId={"coral-cut_lyykuw"}
-      />
-      <DivingOrganizations />
-      <RichText context={pageLayout.fields.paragraph3} />
-      {tertiaryHeroImageDetails.url && (
-        <BackgroundImage image={tertiaryHeroImageDetails.url} />
-      )}
-      <GoogleMaps />
-    </main>
+        <RichText context={pageLayout.fields.paragraph2} />
+        <CloudinaryBackgroundVideo
+          className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
+          videoId={"coral-cut_lyykuw"}
+        />
+        <DivingOrganizations />
+        <RichText context={pageLayout.fields.paragraph3} />
+        {tertiaryHeroImageDetails.url && (
+          <BackgroundImage image={tertiaryHeroImageDetails.url} />
+        )}
+        <GoogleMaps />
+      </main>
     </>
   )
 }

@@ -1,16 +1,16 @@
-import type {StructureResolver} from 'sanity/structure'
+import type { StructureResolver } from "sanity/structure"
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
-export const structure: StructureResolver = (S) =>
+export const structure: StructureResolver = S =>
   S.list()
-    .title('Content')
+    .title("Content")
     .items([
       S.listItem()
-      .title("Page SEO")
-      .child(
-        S.documentList()
-          .schemaType("pageSeo")
-          .title("Page SEO")
-          .filter("_type == 'pageSeo'"),
-      ),
+        .title("Page SEO")
+        .child(
+          S.documentList()
+            .schemaType("pageSeo")
+            .title("Page SEO")
+            .filter("_type == 'pageSeo'"),
+        ),
     ])

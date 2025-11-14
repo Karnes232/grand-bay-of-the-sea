@@ -35,49 +35,57 @@ export default function LanguageSwitcher({
   ]
 
   // Memoize the current language option to prevent unnecessary re-renders
-  const currentLangOption = useMemo(() => 
-    languageOptions.find(lang => lang.code === safeLocale) || languageOptions[0],
-    [safeLocale]
+  const currentLangOption = useMemo(
+    () =>
+      languageOptions.find(lang => lang.code === safeLocale) ||
+      languageOptions[0],
+    [safeLocale],
   )
 
-  const handleLanguageChange = useCallback(async (newLocale: string) => {
-    if (newLocale === safeLocale || isLoading) {
+  const handleLanguageChange = useCallback(
+    async (newLocale: string) => {
+      if (newLocale === safeLocale || isLoading) {
+        setIsOpen(false)
+        onDropdownToggle?.(false)
+        return
+      }
+
+      setIsLoading(true)
       setIsOpen(false)
       onDropdownToggle?.(false)
-      return
-    }
 
-    setIsLoading(true)
-    setIsOpen(false)
-    onDropdownToggle?.(false)
+      try {
+        // Preload the language messages for better performance
+        await preloadLanguageMessages(newLocale as any)
 
-    try {
-      // Preload the language messages for better performance
-      await preloadLanguageMessages(newLocale as any)
-      
-      // Use replace instead of push for better performance and to avoid history issues
-      // Also add a small delay to ensure the UI updates properly
-      await new Promise(resolve => setTimeout(resolve, 100))
-      await router.replace(pathname, { locale: newLocale })
-    } catch (error) {
-      console.error("Language switch error:", error)
-      // Fallback: try a full page reload if router fails
-      if (typeof window !== 'undefined') {
-        const currentPath = window.location.pathname
-        const newPath = currentPath.replace(/^\/(en|es)/, `/${newLocale}`)
-        window.location.href = newPath
+        // Use replace instead of push for better performance and to avoid history issues
+        // Also add a small delay to ensure the UI updates properly
+        await new Promise(resolve => setTimeout(resolve, 100))
+        await router.replace(pathname, { locale: newLocale })
+      } catch (error) {
+        console.error("Language switch error:", error)
+        // Fallback: try a full page reload if router fails
+        if (typeof window !== "undefined") {
+          const currentPath = window.location.pathname
+          const newPath = currentPath.replace(/^\/(en|es)/, `/${newLocale}`)
+          window.location.href = newPath
+        }
+      } finally {
+        setIsLoading(false)
       }
-    } finally {
-      setIsLoading(false)
-    }
-  }, [safeLocale, isLoading, router, pathname, onDropdownToggle])
+    },
+    [safeLocale, isLoading, router, pathname, onDropdownToggle],
+  )
 
-  const handleToggle = useCallback((newState: boolean) => {
-    if (!isLoading) {
-      setIsOpen(newState)
-      onDropdownToggle?.(newState)
-    }
-  }, [isLoading, onDropdownToggle])
+  const handleToggle = useCallback(
+    (newState: boolean) => {
+      if (!isLoading) {
+        setIsOpen(newState)
+        onDropdownToggle?.(newState)
+      }
+    },
+    [isLoading, onDropdownToggle],
+  )
 
   // Preload other language messages for better performance
   useEffect(() => {
@@ -85,11 +93,11 @@ export default function LanguageSwitcher({
       const otherLanguages = languageOptions
         .filter(lang => lang.code !== safeLocale)
         .map(lang => preloadLanguageMessages(lang.code as any))
-      
+
       try {
         await Promise.allSettled(otherLanguages)
       } catch (error) {
-        console.warn('Failed to preload some language messages:', error)
+        console.warn("Failed to preload some language messages:", error)
       }
     }
 
@@ -131,8 +139,8 @@ export default function LanguageSwitcher({
           onClick={() => handleToggle(!isOpen)}
           disabled={isLoading}
           className={`flex items-center space-x-2 text-${color} transition-all duration-200 px-3 py-2 rounded-lg border border-transparent ${
-            isLoading 
-              ? "opacity-70 cursor-not-allowed bg-gray-100 scale-95" 
+            isLoading
+              ? "opacity-70 cursor-not-allowed bg-gray-100 scale-95"
               : "hover:bg-gray-100 hover:scale-105"
           }`}
         >
@@ -141,10 +149,14 @@ export default function LanguageSwitcher({
           ) : (
             <Globe className="h-5 w-5" />
           )}
-          <span className={`text-xl transition-opacity duration-200 ${isLoading ? "opacity-50" : ""}`}>
+          <span
+            className={`text-xl transition-opacity duration-200 ${isLoading ? "opacity-50" : ""}`}
+          >
             {currentLangOption.flag}
           </span>
-          <span className={`text-lg font-medium transition-opacity duration-200 ${isLoading ? "opacity-50" : ""}`}>
+          <span
+            className={`text-lg font-medium transition-opacity duration-200 ${isLoading ? "opacity-50" : ""}`}
+          >
             {isLoading ? "..." : currentLangOption.code.toUpperCase()}
           </span>
           <ChevronDown
@@ -171,7 +183,9 @@ export default function LanguageSwitcher({
           ) : (
             <Globe className="h-5 w-5" />
           )}
-          <span className={`text-lg transition-opacity duration-200 ${isLoading ? "opacity-50" : ""}`}>
+          <span
+            className={`text-lg transition-opacity duration-200 ${isLoading ? "opacity-50" : ""}`}
+          >
             {currentLangOption.flag}
           </span>
           <ChevronDown
@@ -203,10 +217,14 @@ export default function LanguageSwitcher({
                       : "text-slate-700 hover:bg-orange-50 hover:text-orange-600"
                 }`}
               >
-                <span className={`text-lg transition-opacity duration-200 ${isChangingToThis ? "opacity-70" : ""}`}>
+                <span
+                  className={`text-lg transition-opacity duration-200 ${isChangingToThis ? "opacity-70" : ""}`}
+                >
                   {lng.flag}
                 </span>
-                <span className={`font-medium transition-opacity duration-200 ${isChangingToThis ? "opacity-70" : ""}`}>
+                <span
+                  className={`font-medium transition-opacity duration-200 ${isChangingToThis ? "opacity-70" : ""}`}
+                >
                   {lng.display}
                 </span>
                 {isChangingToThis ? (

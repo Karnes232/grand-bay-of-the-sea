@@ -8,7 +8,9 @@ import { getTranslations } from "next-intl/server"
 import { notFound } from "next/navigation"
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ category: string; slug: string; locale: string }> },
+  {
+    params,
+  }: { params: Promise<{ category: string; slug: string; locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { category, slug, locale } = await params

@@ -6,7 +6,8 @@ import PayPalButtonWrapperBooking from "./PayPalButtonWrapperBooking"
 import { useTranslations } from "next-intl"
 const CustomPayPalBookingForm = ({ price, handleSubmit, formData }) => {
   const t = useTranslations("PayPalButtonWrapperBooking")
-  const sandBox = "ATyo0QdaaI3Kxm1TaxC-i_RHGTzwdw23bI4dNdjQ-v_bGu0CuKT54AzYFsOYJcXr_ZjO1bvqrHWBhG-c"
+  const sandBox =
+    "ATyo0QdaaI3Kxm1TaxC-i_RHGTzwdw23bI4dNdjQ-v_bGu0CuKT54AzYFsOYJcXr_ZjO1bvqrHWBhG-c"
   const liveId =
     "AaPiNuBE-3bjn86CtDSbnbs5nnaeQ-vNhBk48DdMwZ0vsUYGVuE1_38burybKxv_Qn78gXQYUSKf1UG0"
   const currency = "USD"

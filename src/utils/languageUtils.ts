@@ -2,10 +2,10 @@
  * Utility functions for language switching and i18n performance
  */
 
-export const LANGUAGES = ['en', 'es'] as const
-export type Language = typeof LANGUAGES[number]
+export const LANGUAGES = ["en", "es"] as const
+export type Language = (typeof LANGUAGES)[number]
 
-export const FALLBACK_LANGUAGE = 'en' as const
+export const FALLBACK_LANGUAGE = "en" as const
 
 /**
  * Validates if a locale is supported
@@ -29,16 +29,16 @@ export function getSafeLocale(locale: string | undefined | null): Language {
  */
 export function createLanguageSwitchUrl(
   currentPath: string,
-  newLocale: Language
+  newLocale: Language,
 ): string {
   // Remove existing locale prefix
-  const pathWithoutLocale = currentPath.replace(/^\/(en|es)/, '') || '/'
-  
+  const pathWithoutLocale = currentPath.replace(/^\/(en|es)/, "") || "/"
+
   // Add new locale prefix
   if (newLocale === FALLBACK_LANGUAGE) {
     return pathWithoutLocale
   }
-  
+
   return `/${newLocale}${pathWithoutLocale}`
 }
 
@@ -47,15 +47,15 @@ export function createLanguageSwitchUrl(
  */
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
-  wait: number
+  wait: number,
 ): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout | null = null
-  
+
   return (...args: Parameters<T>) => {
     if (timeout) {
       clearTimeout(timeout)
     }
-    
+
     timeout = setTimeout(() => {
       func(...args)
     }, wait)

@@ -78,7 +78,10 @@ export async function getAllEntrySlugs(contentType: string, locale?: string) {
   return entries.items.map((entry: any) => entry.fields.slug)
 }
 
-export async function getAllEntrySlugsWithCategory(contentType: string, locale?: string) {
+export async function getAllEntrySlugsWithCategory(
+  contentType: string,
+  locale?: string,
+) {
   const entries = await client.getEntries({
     content_type: contentType,
     select: ["fields.slug", "fields.blogCategory"],

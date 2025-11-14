@@ -76,7 +76,7 @@ export default async function Page({
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
-      <RichText context={pageLayout.items[0].fields.paragraph1} />
+        <RichText context={pageLayout.items[0].fields.paragraph1} />
       </div>
       <div className="flex flex-col xl:my-5 md:flex-row md:flex-wrap md:justify-evenly  max-w-5xl xl:max-w-6xl mx-auto md:gap-5">
         {blogPosts.map(post => (

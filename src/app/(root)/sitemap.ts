@@ -1,4 +1,9 @@
-import { getAllEntries, getAllEntrySlugs, getAllEntrySlugsWithCategory, searchEntries } from "@/lib/contentful"
+import {
+  getAllEntries,
+  getAllEntrySlugs,
+  getAllEntrySlugsWithCategory,
+  searchEntries,
+} from "@/lib/contentful"
 import type { MetadataRoute } from "next"
 
 const blogCategories = await getAllEntrySlugs("blogCategory")
@@ -15,7 +20,6 @@ const blogPostsEnglish = blogPosts.map(post => {
 })
 
 const blogPostsSpanish = blogPosts.map(post => {
-
   return {
     url: `https://www.grandbay-puntacana.com/es/blog/${post.category.fields.slug}/${post.slug}`,
     lastModified: new Date(),
@@ -40,7 +44,6 @@ const blogCategoriesSpanish = blogCategories.map(page => {
     priority: 1,
   }
 })
-
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

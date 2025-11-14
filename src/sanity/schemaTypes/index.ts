@@ -1,4 +1,4 @@
-import { type SchemaTypeDefinition } from 'sanity'
+import { type SchemaTypeDefinition } from "sanity"
 
 //Localization
 import {
@@ -12,14 +12,13 @@ import PageSeo from "./SEO/PageSeo"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
-//Localized
-localizedString,
-localizedText,
-localizedBlock,
+    //Localized
+    localizedString,
+    localizedText,
+    localizedBlock,
 
-//SEO
-seo,
-PageSeo,
-
+    //SEO
+    seo,
+    PageSeo,
   ],
 }

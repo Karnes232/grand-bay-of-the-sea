@@ -31,7 +31,10 @@ export async function generateMetadata(
     description: String(seoSearchResults.items[0].fields.seoDescription),
     keywords: seoSearchResults.items[0].fields.seoKeywords as string[],
     openGraph: {
-      url: locale === "es" ? `https://www.grandbay-puntacana.com/es/courses/${slug}` : `https://www.grandbay-puntacana.com/courses/${slug}`,
+      url:
+        locale === "es"
+          ? `https://www.grandbay-puntacana.com/es/courses/${slug}`
+          : `https://www.grandbay-puntacana.com/courses/${slug}`,
       type: "website",
       title: String(seoSearchResults.items[0].fields.seoTitle),
       description: String(seoSearchResults.items[0].fields.seoDescription),
@@ -105,28 +108,28 @@ export default async function Page({
           {course.items[0].fields.moreCourseInfo1 && (
             <div className="flex flex-col max-w-6xl mx-auto">
               <div className="lg:flex lg:justify-center lg:items-center xl:space-x-4">
-                <div className='flex-1'>
-                <RichText
-                  context={(course.items[0] as any).fields.moreCourseInfo1}
-                />
+                <div className="flex-1">
+                  <RichText
+                    context={(course.items[0] as any).fields.moreCourseInfo1}
+                  />
                 </div>
-                <div className='flex-1'>
-                <RichText
+                <div className="flex-1">
+                  <RichText
                     context={(course.items[0] as any).fields.moreCourseInfo2}
                   />
                 </div>
               </div>
               <hr className="mt-5 border-2 border-blue-500 w-52 mx-auto" />
               <div className="lg:flex lg:justify-center lg:items-center xl:space-x-4 flex-grow">
-              <div className='flex-1'>
-                <RichText
-                  context={(course.items[0] as any).fields.moreCourseInfo3}
-                />
+                <div className="flex-1">
+                  <RichText
+                    context={(course.items[0] as any).fields.moreCourseInfo3}
+                  />
                 </div>
-                <div className='flex-1'>
-                <RichText
-                  context={(course.items[0] as any).fields.moreCourseInfo4}
-                />
+                <div className="flex-1">
+                  <RichText
+                    context={(course.items[0] as any).fields.moreCourseInfo4}
+                  />
                 </div>
               </div>
             </div>

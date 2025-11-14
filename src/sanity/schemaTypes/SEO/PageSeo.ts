@@ -15,7 +15,10 @@ export default defineType({
           { title: "Index", value: "Index" },
           { title: "Courses", value: "Courses" },
           { title: "Trips", value: "Trips" },
-          { title: "Scuba Diving Punta Cana", value: "Scuba Diving Punta Cana" },
+          {
+            title: "Scuba Diving Punta Cana",
+            value: "Scuba Diving Punta Cana",
+          },
           { title: "Fishing Punta Cana", value: "Fishing Punta Cana" },
           { title: "Contact", value: "Contact" },
           { title: "Photo Gallery", value: "Photo Gallery" },

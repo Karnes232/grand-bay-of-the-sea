@@ -13,6 +13,7 @@ import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPlaiceholder } from "plaiceholder"
 import { Buffer } from "buffer" // Node.js Buffer for getPlaiceholder
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
+import { getPageSeo } from "@/sanity/queries/SEO/seo"
 
 // OPTION 1: Explicitly force static rendering for this page
 export const dynamic = "force-static"
@@ -21,64 +22,102 @@ export const dynamic = "force-static"
 // Uncomment this line instead of 'dynamic = "force-static"' if you want ISR
 // export const revalidate = 60; // Regenerate every 60 seconds if a request comes in.
 
-export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string; locale: string }> },
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const { locale } = await params
-  const seoSearchResults = await searchEntries("seo", {
-    "fields.page": "Courses",
-    locale: locale || "en",
-  })
-  const seoEntry = seoSearchResults.items[0]
+//export async function generateMetadata(
+//  { params }: { params: Promise<{ slug: string; locale: string }> },
+//  parent: ResolvingMetadata,
+//): Promise<Metadata> {
+//  const { locale } = await params
+//  const seoSearchResults = await searchEntries("seo", {
+//    "fields.page": "Courses",
+//    locale: locale || "en",
+//  })
+//  const seoEntry = seoSearchResults.items[0]
 
-  if (!seoEntry) {
-    // Provide a fallback if SEO entry is not found
-    return {
-      title: "Courses - Grand Bay Divers Punta Cana",
-      description: "Explore our scuba diving courses in Punta Cana.",
-    }
+//  return {
+//    title: String(seoEntry.fields.title),
+//    description: String(seoEntry.fields.description),
+//    keywords: seoEntry.fields.keywords as string[],
+//    openGraph: {
+//      url:
+//        locale === "es"
+//          ? "https://www.grandbay-puntacana.com/es/courses"
+//          : "https://www.grandbay-puntacana.com/courses",
+//      type: "website",
+//      title: String(seoEntry.fields.title),
+//      description: String(seoEntry.fields.description),
+//      images: [
+//        {
+//          url: `https:${(seoEntry as any).fields.image.fields.file.url}`,
+//          width: (seoEntry as any).fields.image.fields.file.details.image.width,
+//          height: (seoEntry as any).fields.image.fields.file.details.image
+//            .height,
+//          alt: (seoEntry as any).fields.image.fields.title,
+//        },
+//      ],
+//    },
+//    twitter: {
+//      card: "summary_large_image",
+//      title: String(seoEntry.fields.title),
+//      description: String(seoEntry.fields.description),
+//      creator: "@grandbay",
+//      site: "@grandbay",
+//      images: [
+//        {
+//          url: `https:${(seoEntry as any).fields.image.fields.file.url}`,
+//          width: (seoEntry as any).fields.image.fields.file.details.image.width,
+//          height: (seoEntry as any).fields.image.fields.file.details.image
+//            .height,
+//          alt: (seoEntry as any).fields.image.fields.title,
+//        },
+//      ],
+//    },
+//    alternates: getHreflangAlternates("courses", locale),
+//  }
+//}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{
+    locale: "en" | "es"
+  }>
+}) {
+  const { locale } = await params
+  const pageSeo = await getPageSeo("Courses")
+
+  if (!pageSeo) {
+    return {}
+  }
+
+  let canonicalUrl
+  if (locale === "en") {
+    canonicalUrl = "https://www.grandbay-puntacana.com/courses"
+  } else {
+    canonicalUrl = "https://www.grandbay-puntacana.com/es/courses"
   }
 
   return {
-    title: String(seoEntry.fields.title),
-    description: String(seoEntry.fields.description),
-    keywords: seoEntry.fields.keywords as string[],
+    title: pageSeo.seo.meta[locale].title,
+    description: pageSeo.seo.meta[locale].description,
+    keywords: pageSeo.seo.meta[locale].keywords.join(", "),
+    url: canonicalUrl,
     openGraph: {
-      url:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/courses"
-          : "https://www.grandbay-puntacana.com/courses",
+      title: pageSeo.seo.openGraph[locale].title,
+      description: pageSeo.seo.openGraph[locale].description,
+      images: pageSeo.seo.openGraph.image.url,
       type: "website",
-      title: String(seoEntry.fields.title),
-      description: String(seoEntry.fields.description),
-      images: [
-        {
-          url: `https:${(seoEntry as any).fields.image.fields.file.url}`,
-          width: (seoEntry as any).fields.image.fields.file.details.image.width,
-          height: (seoEntry as any).fields.image.fields.file.details.image
-            .height,
-          alt: (seoEntry as any).fields.image.fields.title,
-        },
-      ],
+      url: canonicalUrl,
     },
-    twitter: {
-      card: "summary_large_image",
-      title: String(seoEntry.fields.title),
-      description: String(seoEntry.fields.description),
-      creator: "@grandbay",
-      site: "@grandbay",
-      images: [
-        {
-          url: `https:${(seoEntry as any).fields.image.fields.file.url}`,
-          width: (seoEntry as any).fields.image.fields.file.details.image.width,
-          height: (seoEntry as any).fields.image.fields.file.details.image
-            .height,
-          alt: (seoEntry as any).fields.image.fields.title,
-        },
-      ],
+    robots: {
+      index: !pageSeo.seo.noIndex,
+      follow: !pageSeo.seo.noFollow,
     },
-    alternates: getHreflangAlternates("courses", locale),
+    ...(canonicalUrl && { canonical: canonicalUrl }),
+    alternates: getHreflangAlternates("", locale),
+    // other: {
+    //   "Cache-Control":
+    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
+    // },
   }
 }
 

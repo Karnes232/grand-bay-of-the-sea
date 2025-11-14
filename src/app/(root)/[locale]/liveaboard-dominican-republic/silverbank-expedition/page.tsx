@@ -65,7 +65,10 @@ export async function generateMetadata(
         },
       ],
     },
-    alternates: getHreflangAlternates("liveaboard-dominican-republic/silverbank-expedition", locale),
+    alternates: getHreflangAlternates(
+      "liveaboard-dominican-republic/silverbank-expedition",
+      locale,
+    ),
   }
 }
 

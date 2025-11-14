@@ -92,7 +92,7 @@ export default async function Page({
     return Buffer.from(await res.arrayBuffer())
   })
   const { base64: heroImageBlurDataURL } = await getPlaiceholder(buffer)
-  console.log(locale)
+
   return (
     <main>
       <HeroStaticComponent // Use HeroStaticComponent

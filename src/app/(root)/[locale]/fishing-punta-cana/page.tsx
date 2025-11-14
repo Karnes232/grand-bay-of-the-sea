@@ -11,12 +11,12 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale } = await params
-  console.log(locale)
+
   const seoSearchResults = await searchEntries("seo", {
     "fields.page": "Fishing Punta Cana",
     locale: locale || "en",
   })
-  console.log(seoSearchResults)
+
   return {
     title: String(seoSearchResults.items[0].fields.title),
     description: String(seoSearchResults.items[0].fields.description),
