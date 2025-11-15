@@ -7,57 +7,53 @@ import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import Image from "next/image"
 import Link from "next/link"
+import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 
-export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string; locale: string }> },
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{
+    locale: "en" | "es"
+  }>
+}) {
   const { locale } = await params
-  const seoSearchResults = await searchEntries("seo", {
-    "fields.page": "Liveaboard",
-    locale: locale || "en",
-  })
+  const pageSeo = await getPageSeo("Liveaboard")
+
+  if (!pageSeo) {
+    return {}
+  }
+
+  let canonicalUrl
+  if (locale === "en") {
+    canonicalUrl =
+      "https://www.grandbay-puntacana.com/liveaboard-dominican-republic"
+  } else {
+    canonicalUrl =
+      "https://www.grandbay-puntacana.com/es/liveaboard-dominican-republic"
+  }
+
   return {
-    title: String(seoSearchResults.items[0].fields.title),
-    description: String(seoSearchResults.items[0].fields.description),
-    keywords: seoSearchResults.items[0].fields.keywords as string[],
+    title: pageSeo.seo.meta[locale].title,
+    description: pageSeo.seo.meta[locale].description,
+    keywords: pageSeo.seo.meta[locale].keywords.join(", "),
+    url: canonicalUrl,
     openGraph: {
-      url:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/liveaboard-dominican-republic"
-          : "https://www.grandbay-puntacana.com/liveaboard-dominican-republic",
+      title: pageSeo.seo.openGraph[locale].title,
+      description: pageSeo.seo.openGraph[locale].description,
+      images: pageSeo.seo.openGraph.image.url,
       type: "website",
-      title: String(seoSearchResults.items[0].fields.title),
-      description: String(seoSearchResults.items[0].fields.description),
-      images: [
-        {
-          url: `https:${(seoSearchResults.items[0] as any).fields.image.fields.file.url}`,
-          width: (seoSearchResults.items[0] as any).fields.image.fields.file
-            .details.image.width,
-          height: (seoSearchResults.items[0] as any).fields.image.fields.file
-            .details.image.height,
-          alt: (seoSearchResults.items[0] as any).fields.image.fields.title,
-        },
-      ],
+      url: canonicalUrl,
     },
-    twitter: {
-      card: "summary_large_image",
-      title: String(seoSearchResults.items[0].fields.title),
-      description: String(seoSearchResults.items[0].fields.description),
-      creator: "@grandbay",
-      site: "@grandbay",
-      images: [
-        {
-          url: `https:${(seoSearchResults.items[0] as any).fields.image.fields.file.url}`,
-          width: (seoSearchResults.items[0] as any).fields.image.fields.file
-            .details.image.width,
-          height: (seoSearchResults.items[0] as any).fields.image.fields.file
-            .details.image.height,
-          alt: (seoSearchResults.items[0] as any).fields.image.fields.title,
-        },
-      ],
+    robots: {
+      index: !pageSeo.seo.noIndex,
+      follow: !pageSeo.seo.noFollow,
     },
+    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: getHreflangAlternates("liveaboard-dominican-republic", locale),
+    // other: {
+    //   "Cache-Control":
+    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
+    // },
   }
 }
 
@@ -67,6 +63,7 @@ export default async function Page({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+  const [structuredData] = await Promise.all([getStructuredData("Liveaboard")])
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Liveaboard",
     locale: locale,
@@ -74,6 +71,14 @@ export default async function Page({
 
   return (
     <main>
+      {structuredData?.seo?.structuredData[locale] && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: structuredData.seo.structuredData[locale],
+          }}
+        />
+      )}
       <HeroComponent
         heroImage={`https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`}
       />

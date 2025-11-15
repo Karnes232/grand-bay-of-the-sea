@@ -13,67 +13,10 @@ import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPlaiceholder } from "plaiceholder"
 import { Buffer } from "buffer" // Node.js Buffer for getPlaiceholder
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
-import { getPageSeo } from "@/sanity/queries/SEO/seo"
+import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 
 // OPTION 1: Explicitly force static rendering for this page
 export const dynamic = "force-static"
-
-// OPTION 2: Use revalidate for Incremental Static Regeneration (ISR)
-// Uncomment this line instead of 'dynamic = "force-static"' if you want ISR
-// export const revalidate = 60; // Regenerate every 60 seconds if a request comes in.
-
-//export async function generateMetadata(
-//  { params }: { params: Promise<{ slug: string; locale: string }> },
-//  parent: ResolvingMetadata,
-//): Promise<Metadata> {
-//  const { locale } = await params
-//  const seoSearchResults = await searchEntries("seo", {
-//    "fields.page": "Courses",
-//    locale: locale || "en",
-//  })
-//  const seoEntry = seoSearchResults.items[0]
-
-//  return {
-//    title: String(seoEntry.fields.title),
-//    description: String(seoEntry.fields.description),
-//    keywords: seoEntry.fields.keywords as string[],
-//    openGraph: {
-//      url:
-//        locale === "es"
-//          ? "https://www.grandbay-puntacana.com/es/courses"
-//          : "https://www.grandbay-puntacana.com/courses",
-//      type: "website",
-//      title: String(seoEntry.fields.title),
-//      description: String(seoEntry.fields.description),
-//      images: [
-//        {
-//          url: `https:${(seoEntry as any).fields.image.fields.file.url}`,
-//          width: (seoEntry as any).fields.image.fields.file.details.image.width,
-//          height: (seoEntry as any).fields.image.fields.file.details.image
-//            .height,
-//          alt: (seoEntry as any).fields.image.fields.title,
-//        },
-//      ],
-//    },
-//    twitter: {
-//      card: "summary_large_image",
-//      title: String(seoEntry.fields.title),
-//      description: String(seoEntry.fields.description),
-//      creator: "@grandbay",
-//      site: "@grandbay",
-//      images: [
-//        {
-//          url: `https:${(seoEntry as any).fields.image.fields.file.url}`,
-//          width: (seoEntry as any).fields.image.fields.file.details.image.width,
-//          height: (seoEntry as any).fields.image.fields.file.details.image
-//            .height,
-//          alt: (seoEntry as any).fields.image.fields.title,
-//        },
-//      ],
-//    },
-//    alternates: getHreflangAlternates("courses", locale),
-//  }
-//}
 
 export async function generateMetadata({
   params,
@@ -113,7 +56,7 @@ export async function generateMetadata({
       follow: !pageSeo.seo.noFollow,
     },
     ...(canonicalUrl && { canonical: canonicalUrl }),
-    alternates: getHreflangAlternates("", locale),
+    alternates: getHreflangAlternates("courses", locale),
     // other: {
     //   "Cache-Control":
     //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
@@ -127,6 +70,7 @@ export default async function Page({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+  const [structuredData] = await Promise.all([getStructuredData("Courses")])
   const pageLayoutResult = await searchEntries("pageLayout", {
     "fields.page": "Courses",
     locale: locale,
@@ -171,37 +115,47 @@ export default async function Page({
   )
 
   return (
-    <main>
-      {heroImageDetails.url && (
-        <HeroStaticComponent
-          heroImage={heroImageDetails.url}
-          blurDataURL={heroImageDetails.base64} // Pass the generated blurDataURL
+    <>
+      {structuredData?.seo?.structuredData[locale] && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: structuredData.seo.structuredData[locale],
+          }}
         />
       )}
-      <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <RichText context={pageLayout.fields.paragraph1} />
-      <CloudinaryBackgroundVideo
-        className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
-        videoId={"scubaHero_wzvqdg"}
-      />
-      <RichText context={pageLayout.fields.paragraph2} />
-      <CourseCards
-        locale={locale}
-        image1={(pageLayout as any).fields.linkImage1.fields}
-        image2={(pageLayout as any).fields.linkImage2.fields}
-        image3={(pageLayout as any).fields.linkImage3.fields}
-        image4={(pageLayout as any).fields.linkImage4.fields}
-      />
-      <RichText context={pageLayout.fields.paragraph3} />
-      <AdvancedCourseCards
-        image1={(pageLayout as any).fields.linkImage5.fields}
-        image2={(pageLayout as any).fields.linkImage6.fields}
-        image3={(pageLayout as any).fields.linkImage7.fields}
-        image4={(pageLayout as any).fields.linkImage8.fields}
-        image5={(pageLayout as any).fields.linkImage9.fields}
-      />
-      {/* <SSIBanner /> */}
-      <PadiBanner />
-    </main>
+      <main>
+        {heroImageDetails.url && (
+          <HeroStaticComponent
+            heroImage={heroImageDetails.url}
+            blurDataURL={heroImageDetails.base64} // Pass the generated blurDataURL
+          />
+        )}
+        <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
+        <RichText context={pageLayout.fields.paragraph1} />
+        <CloudinaryBackgroundVideo
+          className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
+          videoId={"scubaHero_wzvqdg"}
+        />
+        <RichText context={pageLayout.fields.paragraph2} />
+        <CourseCards
+          locale={locale}
+          image1={(pageLayout as any).fields.linkImage1.fields}
+          image2={(pageLayout as any).fields.linkImage2.fields}
+          image3={(pageLayout as any).fields.linkImage3.fields}
+          image4={(pageLayout as any).fields.linkImage4.fields}
+        />
+        <RichText context={pageLayout.fields.paragraph3} />
+        <AdvancedCourseCards
+          image1={(pageLayout as any).fields.linkImage5.fields}
+          image2={(pageLayout as any).fields.linkImage6.fields}
+          image3={(pageLayout as any).fields.linkImage7.fields}
+          image4={(pageLayout as any).fields.linkImage8.fields}
+          image5={(pageLayout as any).fields.linkImage9.fields}
+        />
+        {/* <SSIBanner /> */}
+        <PadiBanner />
+      </main>
+    </>
   )
 }

@@ -5,59 +5,51 @@ import FishingOverview from "@/components/TourOverviews/FishingOverview"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
+import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 
-export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string; locale: string }> },
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{
+    locale: "en" | "es"
+  }>
+}) {
   const { locale } = await params
+  const pageSeo = await getPageSeo("Fishing Punta Cana")
 
-  const seoSearchResults = await searchEntries("seo", {
-    "fields.page": "Fishing Punta Cana",
-    locale: locale || "en",
-  })
+  if (!pageSeo) {
+    return {}
+  }
+
+  let canonicalUrl
+  if (locale === "en") {
+    canonicalUrl = "https://www.grandbay-puntacana.com/fishing-punta-cana"
+  } else {
+    canonicalUrl = "https://www.grandbay-puntacana.com/es/fishing-punta-cana"
+  }
 
   return {
-    title: String(seoSearchResults.items[0].fields.title),
-    description: String(seoSearchResults.items[0].fields.description),
-    keywords: seoSearchResults.items[0].fields.keywords as string[],
+    title: pageSeo.seo.meta[locale].title,
+    description: pageSeo.seo.meta[locale].description,
+    keywords: pageSeo.seo.meta[locale].keywords.join(", "),
+    url: canonicalUrl,
     openGraph: {
-      url:
-        locale === "es"
-          ? "https://www.grandbay-puntacana.com/es/fishing-punta-cana"
-          : "https://www.grandbay-puntacana.com/fishing-punta-cana",
+      title: pageSeo.seo.openGraph[locale].title,
+      description: pageSeo.seo.openGraph[locale].description,
+      images: pageSeo.seo.openGraph.image.url,
       type: "website",
-      title: String(seoSearchResults.items[0].fields.title),
-      description: String(seoSearchResults.items[0].fields.description),
-      images: [
-        {
-          url: `https:${(seoSearchResults.items[0] as any).fields.image.fields.file.url}`,
-          width: (seoSearchResults.items[0] as any).fields.image.fields.file
-            .details.image.width,
-          height: (seoSearchResults.items[0] as any).fields.image.fields.file
-            .details.image.height,
-          alt: (seoSearchResults.items[0] as any).fields.image.fields.title,
-        },
-      ],
+      url: canonicalUrl,
     },
-    twitter: {
-      card: "summary_large_image",
-      title: String(seoSearchResults.items[0].fields.title),
-      description: String(seoSearchResults.items[0].fields.description),
-      creator: "@grandbay",
-      site: "@grandbay",
-      images: [
-        {
-          url: `https:${(seoSearchResults.items[0] as any).fields.image.fields.file.url}`,
-          width: (seoSearchResults.items[0] as any).fields.image.fields.file
-            .details.image.width,
-          height: (seoSearchResults.items[0] as any).fields.image.fields.file
-            .details.image.height,
-          alt: (seoSearchResults.items[0] as any).fields.image.fields.title,
-        },
-      ],
+    robots: {
+      index: !pageSeo.seo.noIndex,
+      follow: !pageSeo.seo.noFollow,
     },
+    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: getHreflangAlternates("fishing-punta-cana", locale),
+    // other: {
+    //   "Cache-Control":
+    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
+    // },
   }
 }
 
@@ -67,6 +59,9 @@ export default async function Home({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+  const [structuredData] = await Promise.all([
+    getStructuredData("Fishing Punta Cana"),
+  ])
   const pageLayout = await searchEntries("tours", {
     "fields.page": "Fishing Punta Cana",
     locale: locale || "en",
@@ -74,6 +69,14 @@ export default async function Home({
 
   return (
     <main>
+      {structuredData?.seo?.structuredData[locale] && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: structuredData.seo.structuredData[locale],
+          }}
+        />
+      )}
       <CloudinaryBackgroundVideo
         videoId={"fishing_jivxvr"}
         className={`-mt-20 md:-mt-40 xl:h-[80vh] [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)] xl:[clip-path:polygon(0_0,100%_0,100%_70vh,0%_100%)]`}
