@@ -48,7 +48,7 @@ const CertificationLevel = ({ setFormData, formData }) => {
         name="certification"
         onChange={handleChange}
         placeholder={t("certificationLevel")}
-        menuPortalTarget={document.body}
+        menuPortalTarget={typeof window !== 'undefined' ? document.body : undefined}
         styles={style}
         required
       />

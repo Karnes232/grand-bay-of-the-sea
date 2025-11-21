@@ -57,7 +57,9 @@ export default async function Page({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  const [structuredData] = await Promise.all([getStructuredData("Cancellation Policy")])
+  const [structuredData] = await Promise.all([
+    getStructuredData("Cancellation Policy"),
+  ])
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Cancellation Policy",
     locale: locale,

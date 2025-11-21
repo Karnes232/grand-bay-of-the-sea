@@ -56,7 +56,7 @@ export async function generateMetadata({
     //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
     // },
   }
-} 
+}
 
 export default async function Page({
   params,

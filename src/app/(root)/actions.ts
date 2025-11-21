@@ -4,11 +4,27 @@ import {
   sendConfirmationFishingEmail,
   sendConfirmationTripEmail,
 } from "@/app/actions/send-confirmation"
+import { supabaseServer } from "@/lib/supabaseServer"
+
 export async function submitForm(formData: any, certificationData: any) {
   const name = formData.get("name")
   const email = formData.get("email")
   const hotel = formData.get("hotel")
   const message = formData.get("message")
+
+  if (certificationData?.certification !== "Not Certifed") {
+    const { error } = await supabaseServer
+      .from("Grand Bay Certifed Divers")
+      .insert([
+        { name, email, certification_level: certificationData?.certification },
+      ])
+
+    if (error) {
+      console.error("Failed to save client.", error)
+    } else {
+      console.log("Client saved successfully.")
+    }
+  }
 
   try {
     return {

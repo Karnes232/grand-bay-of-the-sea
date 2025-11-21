@@ -28,7 +28,8 @@ export async function generateMetadata({
   if (locale === "en") {
     canonicalUrl = "https://www.grandbay-puntacana.com/scuba-diving-punta-cana"
   } else {
-    canonicalUrl = "https://www.grandbay-puntacana.com/es/scuba-diving-punta-cana"
+    canonicalUrl =
+      "https://www.grandbay-puntacana.com/es/scuba-diving-punta-cana"
   }
 
   return {
@@ -62,7 +63,9 @@ export default async function Home({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  const [structuredData] = await Promise.all([getStructuredData("Scuba Diving Punta Cana")])
+  const [structuredData] = await Promise.all([
+    getStructuredData("Scuba Diving Punta Cana"),
+  ])
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Scuba Diving Punta Cana",
     locale: locale,

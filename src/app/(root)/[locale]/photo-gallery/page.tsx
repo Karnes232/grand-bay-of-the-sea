@@ -57,7 +57,9 @@ export default async function Page({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  const [structuredData] = await Promise.all([getStructuredData("Photo Gallery")])
+  const [structuredData] = await Promise.all([
+    getStructuredData("Photo Gallery"),
+  ])
   const pageLayout = await searchEntries("photoGallery", {
     "fields.page": "Photo Gallery",
     locale: locale,

@@ -3,7 +3,7 @@ import { submitForm } from "@/app/(root)/actions"
 import { useTranslations } from "next-intl"
 import { useRouter } from "next/navigation"
 import React, { useState } from "react"
-import CertificationLevel from "../PaymentComponents/CertificationLevel";
+import CertificationLevel from "../PaymentComponents/CertificationLevel"
 
 const ContactForm = ({ onSubmit }: { onSubmit?: () => void }) => {
   const [certificationData, setCertificationData] = useState({
@@ -11,7 +11,6 @@ const ContactForm = ({ onSubmit }: { onSubmit?: () => void }) => {
   })
   const router = useRouter()
   const t = useTranslations("ContactForm")
-
 
   const handleSubmit = async (formData: FormData) => {
     const result = await submitForm(formData, certificationData)
@@ -98,11 +97,11 @@ const ContactForm = ({ onSubmit }: { onSubmit?: () => void }) => {
           </label>
         </div>
         <div className="relative z-0 mb-6 w-full group">
-                    <CertificationLevel
-                      setFormData={setCertificationData}
-                      formData={certificationData}
-                    />
-                  </div>
+          <CertificationLevel
+            setFormData={setCertificationData}
+            formData={certificationData}
+          />
+        </div>
         <div className="relative z-0 mb-6 w-full group">
           <label
             htmlFor="message"
