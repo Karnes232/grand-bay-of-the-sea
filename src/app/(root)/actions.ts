@@ -9,7 +9,7 @@ export async function submitForm(formData: any, certificationData: any) {
   const email = formData.get("email")
   const hotel = formData.get("hotel")
   const message = formData.get("message")
-  const certification = certificationData.get("certification")
+
   try {
     return {
       success: true,
@@ -19,7 +19,7 @@ export async function submitForm(formData: any, certificationData: any) {
         email: email?.toString() || "",
         hotel: hotel?.toString() || "",
         message: message?.toString() || "",
-        certification: certification?.toString() || "",
+        certification: certificationData?.certification?.toString() || "",
       },
     }
   } catch (error) {
