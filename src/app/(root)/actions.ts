@@ -13,16 +13,29 @@ export async function submitForm(formData: any, certificationData: any) {
   const message = formData.get("message")
 
   if (certificationData?.certification !== "Not Certifed") {
-    const { error } = await supabaseServer
+    // Check if email already exists in the database
+    const { data: existingRecords, error: checkError } = await supabaseServer
       .from("Grand Bay Certifed Divers")
-      .insert([
-        { name, email, certification_level: certificationData?.certification },
-      ])
+      .select("email")
+      .eq("email", email)
 
-    if (error) {
-      console.error("Failed to save client.", error)
+    if (checkError) {
+      console.error("Failed to check for existing client.", checkError)
+    } else if (!existingRecords || existingRecords.length === 0) {
+      // Email doesn't exist, proceed with insert
+      const { error } = await supabaseServer
+        .from("Grand Bay Certifed Divers")
+        .insert([
+          { name, email, certification_level: certificationData?.certification },
+        ])
+
+      if (error) {
+        console.error("Failed to save client.", error)
+      } else {
+        console.log("Client saved successfully.")
+      }
     } else {
-      console.log("Client saved successfully.")
+      console.log("Client with this email already exists, skipping insert.")
     }
   }
 
