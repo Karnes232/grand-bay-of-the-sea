@@ -36,7 +36,7 @@ export async function generateMetadata({
   if (locale === "en") {
     canonicalUrl = "https://www.grandbay-puntacana.com/courses"
   } else {
-    canonicalUrl = "https://www.grandbay-puntacana.com/es/courses "
+    canonicalUrl = "https://www.grandbay-puntacana.com/es/courses"
   }
 
   return {

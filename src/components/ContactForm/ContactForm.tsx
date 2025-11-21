@@ -1,16 +1,22 @@
 "use client"
-
+import { supabase } from "@/lib/supabaseClient";
 import { submitForm } from "@/app/(root)/actions"
 import { useTranslations } from "next-intl"
 import { useRouter } from "next/navigation"
-import React from "react"
+import React, { useState } from "react"
+import CertificationLevel from "../PaymentComponents/CertificationLevel";
 
-const ContactForm = ({ onSubmit }: { onSubmit?: () => void }) => {
+const ContactForm = async ({ onSubmit }: { onSubmit?: () => void }) => {
+  const [certificationData, setCertificationData] = useState({
+    certification: "",
+  })
   const router = useRouter()
   const t = useTranslations("ContactForm")
 
+console.log(supabase);
+
   const handleSubmit = async (formData: FormData) => {
-    const result = await submitForm(formData)
+    const result = await submitForm(formData, certificationData)
     if (result.success) {
       try {
         const response = await fetch("/__forms.html", {
@@ -93,6 +99,12 @@ const ContactForm = ({ onSubmit }: { onSubmit?: () => void }) => {
             {t("hotel")}
           </label>
         </div>
+        <div className="relative z-0 mb-6 w-full group">
+                    <CertificationLevel
+                      setFormData={setCertificationData}
+                      formData={certificationData}
+                    />
+                  </div>
         <div className="relative z-0 mb-6 w-full group">
           <label
             htmlFor="message"

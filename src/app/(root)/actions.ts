@@ -4,12 +4,12 @@ import {
   sendConfirmationFishingEmail,
   sendConfirmationTripEmail,
 } from "@/app/actions/send-confirmation"
-export async function submitForm(formData: any) {
+export async function submitForm(formData: any, certificationData: any) {
   const name = formData.get("name")
   const email = formData.get("email")
   const hotel = formData.get("hotel")
   const message = formData.get("message")
-
+  const certification = certificationData.get("certification")
   try {
     return {
       success: true,
@@ -19,6 +19,7 @@ export async function submitForm(formData: any) {
         email: email?.toString() || "",
         hotel: hotel?.toString() || "",
         message: message?.toString() || "",
+        certification: certification?.toString() || "",
       },
     }
   } catch (error) {
