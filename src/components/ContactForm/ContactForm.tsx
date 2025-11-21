@@ -1,19 +1,17 @@
 "use client"
-import { supabase } from "@/lib/supabaseClient";
 import { submitForm } from "@/app/(root)/actions"
 import { useTranslations } from "next-intl"
 import { useRouter } from "next/navigation"
 import React, { useState } from "react"
 import CertificationLevel from "../PaymentComponents/CertificationLevel";
 
-const ContactForm = async ({ onSubmit }: { onSubmit?: () => void }) => {
+const ContactForm = ({ onSubmit }: { onSubmit?: () => void }) => {
   const [certificationData, setCertificationData] = useState({
     certification: "",
   })
   const router = useRouter()
   const t = useTranslations("ContactForm")
 
-console.log(supabase);
 
   const handleSubmit = async (formData: FormData) => {
     const result = await submitForm(formData, certificationData)
