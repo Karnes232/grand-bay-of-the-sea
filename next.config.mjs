@@ -24,7 +24,7 @@ const nextConfig = {
   trailingSlash: false,
   poweredByHeader: false,
   images: {
-    qualities: [70, 75, 80, 85, 90, 95, 100],
+    qualities: [65, 70, 75, 80, 85, 90, 95, 100],
     // unoptimized: true,
     loader: 'default',
     // domains: ['images.ctfassets.net', 'www.kayak.com'],

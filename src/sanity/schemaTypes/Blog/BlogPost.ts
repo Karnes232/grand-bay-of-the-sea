@@ -81,6 +81,17 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: "blogCategory",
+      title: "Blog Category",
+      type: "reference",
+      to: [{ type: "blogCategory" }],
+      options: {
+        disableNew: true,
+      },
+      group: "basic",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: "seo",
       title: "SEO",
       type: "seo",

@@ -10,6 +10,7 @@ import {
   getIndividualBlogCategorySEO,
 } from "@/sanity/queries/Blog/BlogCategory"
 import BlockContent from "@/components/BlockContent/BlockContent"
+import { getBlogPostsCards } from "@/sanity/queries/Blog/BlogPosts"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ category: string; locale: "en" | "es" }> },
@@ -78,18 +79,19 @@ export default async function Page({
   const { category, locale } = await params
 
   const blogCategory = await getIndividualBlogCategory(category)
+  const blogPostsCards = await getBlogPostsCards(category)
 
-  const blogCategory2 = await searchEntries("blogCategory", {
-    "fields.slug": category,
-    locale: locale || "en",
-  })
-  const blogCategoryId = blogCategory2.items[0]?.fields.blogCategory
+  // const blogCategory2 = await searchEntries("blogCategory", {
+  //   "fields.slug": category,
+  //   locale: locale || "en",
+  // })
+  // const blogCategoryId = blogCategory2.items[0]?.fields.blogCategory
 
-  const blogPostsByCategory = await searchEntries("blogPost", {
-    "fields.blogCategory.sys.contentType.sys.id": "blogCategory",
-    "fields.blogCategory.fields.blogCategory": blogCategoryId,
-    locale: locale || "en",
-  })
+  // const blogPostsByCategory = await searchEntries("blogPost", {
+  //   "fields.blogCategory.sys.contentType.sys.id": "blogCategory",
+  //   "fields.blogCategory.fields.blogCategory": blogCategoryId,
+  //   locale: locale || "en",
+  // })
   return (
     <main>
       {blogCategory.seo.structuredData[locale] && (
@@ -113,7 +115,7 @@ export default async function Page({
           content={blogCategory.description as any}
           locale={locale}
         />
-        <BlogPostList blogPosts={blogPostsByCategory?.items} />
+        <BlogPostList blogPosts={blogPostsCards} locale={locale} />
       </div>
     </main>
   )

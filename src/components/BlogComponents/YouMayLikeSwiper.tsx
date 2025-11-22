@@ -5,7 +5,13 @@ import "swiper/css"
 import "swiper/css/effect-fade"
 import { Autoplay } from "swiper/modules"
 import BlogPostCard from "./BlogPostCard"
-const YouMayLikeSwiper = ({ relatedPosts }) => {
+const YouMayLikeSwiper = ({
+  relatedPosts,
+  locale,
+}: {
+  relatedPosts: any[]
+  locale: string
+}) => {
   const [windowWidth, setWindowWidth] = useState(0)
   const handleResize = () => {
     setWindowWidth(window.innerWidth)
@@ -44,7 +50,7 @@ const YouMayLikeSwiper = ({ relatedPosts }) => {
               className="flex justify-center items-center"
               key={index}
             >
-              <BlogPostCard blog={blog} />
+              <BlogPostCard blog={blog} locale={locale} />
             </SwiperSlide>
           )
         })}

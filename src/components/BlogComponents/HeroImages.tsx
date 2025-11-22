@@ -7,7 +7,7 @@ const HeroImages = ({ backgroundImages }: { backgroundImages: any[] }) => {
     <>
       <div className="md:hidden">
         <HeroComponent
-          heroImage={`https:${backgroundImages[0].fields.file.url}`}
+          heroImage={backgroundImages[0].asset.url}
           // title={blogCategory.items[0].fields.blogCategory as string}
         />
         <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />

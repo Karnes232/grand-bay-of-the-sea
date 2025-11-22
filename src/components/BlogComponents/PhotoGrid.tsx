@@ -45,8 +45,8 @@ const PhotoGrid = ({ backgroundImages }: { backgroundImages: any[] }) => {
       >
         {photos.map((image, index) => {
           // Calculate width based on original aspect ratio and dynamic height
-          const originalWidth = image.fields.file.details.image.width
-          const originalHeight = image.fields.file.details.image.height
+          const originalWidth = image.asset.metadata.dimensions.width
+          const originalHeight = image.asset.metadata.dimensions.height
           const aspectRatio = originalWidth / originalHeight
           const calculatedWidth = targetHeight * aspectRatio // Dynamic height * aspect ratio
 
@@ -63,8 +63,8 @@ const PhotoGrid = ({ backgroundImages }: { backgroundImages: any[] }) => {
             >
               <Image
                 fill
-                src={`https:${image.fields.file.url}`}
-                alt={image.fields.title}
+                src={image.asset.url}
+                alt={image.alt}
                 sizes={`${Math.min(calculatedWidth, 600)}px`}
                 quality={75}
                 style={{ objectFit: "cover" }}
