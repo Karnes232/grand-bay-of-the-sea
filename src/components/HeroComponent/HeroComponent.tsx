@@ -7,9 +7,11 @@ import { getPlaiceholder } from "plaiceholder"
 const HeroComponent = async ({
   heroImage,
   title,
+  alt,
 }: {
   heroImage: string
   title?: string
+  alt?: string
 }) => {
   const headersList = await headers()
   const userAgent = headersList.get("user-agent")
@@ -23,7 +25,7 @@ const HeroComponent = async ({
       <div className="relative h-[55vh] lg:h-[80vh] [clip-path:polygon(0%_0%,100%_0%,100%_50vh,0%_100%)] lg:[clip-path:polygon(0%_0%,100%_0%,100%_75vh,0%_100%)]">
         <Image
           src={heroImage}
-          alt="Hero background"
+          alt={alt || "Hero background"}
           width={1920}
           height={1080}
           className="object-cover object-[40%_50%] z-0 w-full h-full"

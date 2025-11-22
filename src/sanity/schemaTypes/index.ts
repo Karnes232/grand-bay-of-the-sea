@@ -10,6 +10,9 @@ import {
 import seo from "./SEO/seo"
 import PageSeo from "./SEO/PageSeo"
 
+//Species
+import SpeciesPageContent from "./Page-Species/SpeciesPageContent"
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     //Localized
@@ -20,5 +23,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     //SEO
     seo,
     PageSeo,
+
+    //Page-Species
+    SpeciesPageContent,
   ],
 }

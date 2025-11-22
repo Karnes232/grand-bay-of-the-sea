@@ -26,7 +26,11 @@ export async function submitForm(formData: any, certificationData: any) {
       const { error } = await supabaseServer
         .from("Grand Bay Certifed Divers")
         .insert([
-          { name, email, certification_level: certificationData?.certification },
+          {
+            name,
+            email,
+            certification_level: certificationData?.certification,
+          },
         ])
 
       if (error) {

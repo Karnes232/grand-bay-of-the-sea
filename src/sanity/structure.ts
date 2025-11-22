@@ -13,4 +13,20 @@ export const structure: StructureResolver = S =>
             .title("Page SEO")
             .filter("_type == 'pageSeo'"),
         ),
+      S.listItem()
+        .title("Species Page Content")
+        .child(
+          S.list()
+            .title("Species Page")
+            .items([
+              S.listItem()
+                .title("Species Page Content")
+                .child(
+                  S.document()
+                    .schemaType("speciesPageContent")
+                    .title("Species Page Content")
+                    .documentId("speciesPageContent"),
+                ),
+            ]),
+        ),
     ])
