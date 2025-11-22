@@ -12,6 +12,10 @@ import PageSeo from "./SEO/PageSeo"
 
 //Species
 import SpeciesPageContent from "./Page-Species/SpeciesPageContent"
+import Fishes from "./Page-Species/Fishes"
+
+//Blog
+import BlogPost from "./Blog/BlogPost"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -26,5 +30,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     //Page-Species
     SpeciesPageContent,
+    Fishes,
+
+    //Blog
+    BlogPost,
   ],
 }

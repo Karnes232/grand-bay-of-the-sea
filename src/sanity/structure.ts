@@ -14,6 +14,30 @@ export const structure: StructureResolver = S =>
             .filter("_type == 'pageSeo'"),
         ),
       S.listItem()
+        .title("Blog")
+        .child(
+          S.list()
+            .title("Blog")
+            .items([
+              S.listItem()
+                .title("Blog Posts")
+                .child(
+                  S.documentList()
+                    .schemaType("blogPost")
+                    .title("Blog Posts")
+                    .filter("_type == 'blogPost'"),
+                ),
+              // S.listItem()
+              //   .title("Blog Categories")
+              //   .child(
+              //     S.documentList()
+              //       .schemaType("blogCategory")
+              //       .title("Blog Categories")
+              //       .filter("_type == 'blogCategory'"),
+              //   ),
+            ]),
+        ),
+      S.listItem()
         .title("Species Page Content")
         .child(
           S.list()
@@ -26,6 +50,14 @@ export const structure: StructureResolver = S =>
                     .schemaType("speciesPageContent")
                     .title("Species Page Content")
                     .documentId("speciesPageContent"),
+                ),
+              S.listItem()
+                .title("Fishes")
+                .child(
+                  S.documentList()
+                    .schemaType("fishes")
+                    .title("Fishes")
+                    .filter("_type == 'fishes'"),
                 ),
             ]),
         ),
