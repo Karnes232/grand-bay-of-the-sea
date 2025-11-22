@@ -20,6 +20,14 @@ export const structure: StructureResolver = S =>
             .title("Blog")
             .items([
               S.listItem()
+                .title("Blog Page Layout")
+                .child(
+                  S.document()
+                    .schemaType("blogPageLayout")
+                    .title("Blog Page Layout")
+                    .documentId("blogPageLayout"),
+                ),
+              S.listItem()
                 .title("Blog Posts")
                 .child(
                   S.documentList()
@@ -27,14 +35,14 @@ export const structure: StructureResolver = S =>
                     .title("Blog Posts")
                     .filter("_type == 'blogPost'"),
                 ),
-              // S.listItem()
-              //   .title("Blog Categories")
-              //   .child(
-              //     S.documentList()
-              //       .schemaType("blogCategory")
-              //       .title("Blog Categories")
-              //       .filter("_type == 'blogCategory'"),
-              //   ),
+              S.listItem()
+                .title("Blog Categories")
+                .child(
+                  S.documentList()
+                    .schemaType("blogCategory")
+                    .title("Blog Categories")
+                    .filter("_type == 'blogCategory'"),
+                ),
             ]),
         ),
       S.listItem()

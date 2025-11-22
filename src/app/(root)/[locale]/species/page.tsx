@@ -82,7 +82,10 @@ export default async function Page({
           }}
         />
       )}
-      <HeroComponent heroImage={speciesPageContent[0].heroImage.asset.url} alt={speciesPageContent[0].heroImage.alt} />
+      <HeroComponent
+        heroImage={speciesPageContent[0].heroImage.asset.url}
+        alt={speciesPageContent[0].heroImage.alt}
+      />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
 
       <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">

@@ -2,26 +2,20 @@ import { defineField, defineType } from "sanity"
 import { DocumentIcon } from "@sanity/icons"
 
 export default defineType({
-  name: "fishes",
-  title: "Fishes",
+  name: "blogPageLayout",
+  title: "Blog Page Layout",
   type: "document",
   icon: DocumentIcon,
   fields: [
     defineField({
-      name: "name",
-      title: "Name",
+      name: "title",
+      title: "Title",
       type: "localizedString",
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: "description",
-      title: "Description",
-      type: "localizedText",
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: "image",
-      title: "Image",
+      name: "heroImage",
+      title: "Hero Image",
       type: "image",
       options: {
         hotspot: true,
@@ -31,22 +25,21 @@ export default defineType({
           name: "alt",
           title: "Alt",
           type: "string",
-          validation: Rule => Rule.required(),
         }),
       ],
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: "blogReference",
-      title: "Blog Reference",
-      type: "reference",
-      to: [{ type: "blogPost" }],
+      name: "paragraph",
+      title: "Paragraph",
+      type: "localizedBlock",
+      validation: Rule => Rule.required(),
     }),
   ],
   preview: {
     select: {
-      title: "name.en",
-      media: "image",
+      title: "title.en",
+      media: "heroImage",
     },
   },
 })

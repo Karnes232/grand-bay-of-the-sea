@@ -5,6 +5,9 @@ import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
+import { getBlogPageLayout } from "@/sanity/queries/Blog/BlogPageLayout"
+import BlockContent from "@/components/BlockContent/BlockContent"
+import { getBlogCategory } from "@/sanity/queries/Blog/BlogCategory"
 
 export async function generateMetadata({
   params,
@@ -55,15 +58,18 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
   const [structuredData] = await Promise.all([getStructuredData("Blog")])
-  const pageLayout = await searchEntries("pageLayout", {
-    "fields.page": "Blog",
-    locale: locale || "en",
-  })
-  const blogPosts = await getAllEntries("blogCategory", locale)
+  // const pageLayout = await searchEntries("pageLayout", {
+  //   "fields.page": "Blog",
+  //   locale: locale || "en",
+  // })
+  const blogPageLayout = await getBlogPageLayout()
+  const blogCategories = await getBlogCategory()
+
+  // const blogPosts = await getAllEntries("blogCategory", locale)
   return (
     <main>
       {structuredData?.seo?.structuredData[locale] && (
@@ -75,15 +81,20 @@ export default async function Page({
         />
       )}
       <HeroComponent
-        heroImage={`https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`}
+        heroImage={blogPageLayout.heroImage.asset.url}
+        alt={blogPageLayout.heroImage.alt}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
-        <RichText context={pageLayout.items[0].fields.paragraph1} />
+        {/* <RichText context={pageLayout.items[0].fields.paragraph1} /> */}
+        <BlockContent
+          content={blogPageLayout.paragraph as any}
+          locale={locale}
+        />
       </div>
       <div className="flex flex-col xl:my-5 md:flex-row md:flex-wrap md:justify-evenly  max-w-5xl xl:max-w-6xl mx-auto md:gap-5">
-        {blogPosts.map(post => (
-          <BlogCategory key={post.sys.id} post={post} />
+        {blogCategories.map((category, index) => (
+          <BlogCategory key={index} category={category} locale={locale} />
         ))}
       </div>
     </main>

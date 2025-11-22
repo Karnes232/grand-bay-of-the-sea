@@ -16,6 +16,8 @@ import Fishes from "./Page-Species/Fishes"
 
 //Blog
 import BlogPost from "./Blog/BlogPost"
+import BlogCategory from "./Blog/BlogCategory"
+import BlogPageLayout from "./Blog/BlogPageLayout"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -33,6 +35,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     Fishes,
 
     //Blog
+    BlogPageLayout,
+    BlogCategory,
     BlogPost,
   ],
 }
