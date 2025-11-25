@@ -30,7 +30,7 @@ export interface BlogPostsCards {
   }
 }
 
-export const blogPostsCardsQuery = `*[_type == "blogPost" && blogCategory->slug.current == $slug] {
+export const blogPostsCardsQuery = `*[_type == "blogPost" && blogCategory->slug.current == $slug] | order(publishDate desc) {
   title {
     en,
     es
