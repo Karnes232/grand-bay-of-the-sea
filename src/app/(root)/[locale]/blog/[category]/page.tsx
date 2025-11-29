@@ -94,7 +94,7 @@ export default async function Page({
   // })
   return (
     <main>
-      {blogCategory.seo.structuredData[locale] && (
+      {blogCategory?.seo?.structuredData[locale] && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

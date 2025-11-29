@@ -5,7 +5,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 const FishCard = ({ fish, locale }: { fish: any; locale: string }) => {
-  console.log(fish)
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -31,7 +30,7 @@ const FishCard = ({ fish, locale }: { fish: any; locale: string }) => {
         />
         <div className="p-6">
           {fish.blogReference?.slug ? (
-            <Link href={`/blog/marine-life/${fish.blogReference.slug}`}>
+            <Link href={`/blog/marine-life/${fish.blogReference.slug.current}`}>
               <h5 className="text-xl font-medium mb-2 cursor-pointer text-blue-600 truncate">
                 {fish.name[locale as "en" | "es"] || fish.name.en}
               </h5>

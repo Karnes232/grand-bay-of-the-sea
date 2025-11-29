@@ -9,7 +9,6 @@ const BlogCategory = ({
   category: any
   locale: string
 }) => {
-  console.log(category)
   return (
     <Link
       href={`/blog/${category.slug.current}`}

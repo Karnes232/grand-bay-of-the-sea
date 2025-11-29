@@ -72,33 +72,37 @@ const DatePickerComponent = ({ setFormData, formData }) => {
     const updatePopoverTransform = () => {
       // Find divs with the specific popover classes
       // The popover has: "transition-all ease-out duration-300 absolute z-10 mt-[1px] text-sm lg:text-xs 2xl:text-sm block bottom-full mb-2.5 translate-y-0 opacity-1"
-      const popovers = Array.from(document.querySelectorAll('div')).filter(div => {
-        const classList = div.className
-        return classList.includes('bottom-full') && 
-               classList.includes('mb-2.5') && 
-               classList.includes('translate-y')
-      })
-      
-      popovers.forEach((popover) => {
+      const popovers = Array.from(document.querySelectorAll("div")).filter(
+        div => {
+          const classList = div.className
+          return (
+            classList.includes("bottom-full") &&
+            classList.includes("mb-2.5") &&
+            classList.includes("translate-y")
+          )
+        },
+      )
+
+      popovers.forEach(popover => {
         const element = popover as HTMLElement
         // Override translate-y - modify the value here as needed
         // Change 0px to your desired value (e.g., -10px, -20px, etc.)
-        element.style.setProperty('transform', 'translateY(60px)', 'important')
+        element.style.setProperty("transform", "translateY(60px)", "important")
       })
     }
 
     // Initial update
     updatePopoverTransform()
-    
+
     // Watch for DOM changes (popover appears/disappears on click)
     const observer = new MutationObserver(() => {
       setTimeout(updatePopoverTransform, 0)
     })
-    observer.observe(document.body, { 
-      childList: true, 
+    observer.observe(document.body, {
+      childList: true,
       subtree: true,
       attributes: true,
-      attributeFilter: ['class', 'style']
+      attributeFilter: ["class", "style"],
     })
 
     return () => observer.disconnect()
