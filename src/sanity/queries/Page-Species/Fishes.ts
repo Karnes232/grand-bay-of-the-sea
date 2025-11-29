@@ -48,7 +48,7 @@ export const fishesQuery = `*[_type == "fishes"] {
     alt
   },
   blogReference -> {
-    "slug": slug.current
+    slug
   }
 }`
 

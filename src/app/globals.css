@@ -26,3 +26,10 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Datepicker popover translate-y override */
+/* This targets the popover container div from react-tailwindcss-datepicker */
+/* The useEffect in DatePickerComponent also handles this dynamically */
+div[class*="bottom-full"][class*="mb-2.5"][class*="translate-y"] {
+  transform: translateY(60px) !important;
+}
