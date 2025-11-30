@@ -5,7 +5,9 @@ export interface BlogCategory {
     en: string
     es: string
   }
-  slug: string
+  slug: {
+    current: string
+  }
   cardImage: {
     asset: {
       url: string
@@ -25,7 +27,9 @@ export const blogCategoryQuery = `*[_type == "blogCategory"] {
         en,
         es
     },
-    slug,
+    slug {
+        current
+    },
     cardImage {
         asset -> {
             url,

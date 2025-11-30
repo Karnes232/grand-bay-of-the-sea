@@ -4,41 +4,46 @@ import {
   getAllEntrySlugsWithCategory,
   searchEntries,
 } from "@/lib/contentful"
+import { getBlogCategory } from "@/sanity/queries/Blog/BlogCategory"
+import { getBlogPosts } from "@/sanity/queries/Blog/BlogPosts"
 import type { MetadataRoute } from "next"
 
-const blogCategories = await getAllEntrySlugs("blogCategory")
+// const blogCategories = await getAllEntrySlugs("blogCategory")
+const blogCategoriesSanity = await getBlogCategory()
+const blogPostsSanity = await getBlogPosts()
 
-const blogPosts = await getAllEntrySlugsWithCategory("blogPost")
 
-const blogPostsEnglish = blogPosts.map(post => {
+// const blogPosts = await getAllEntrySlugsWithCategory("blogPost")
+
+const blogPostsEnglish = blogPostsSanity.map(post => {
   return {
-    url: `https://www.grandbay-puntacana.com/blog/${post.category.fields.slug}/${post.slug}`,
+    url: `https://www.grandbay-puntacana.com/blog/${post.blogCategory.slug.current}/${post.slug.current}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 1,
   }
 })
 
-const blogPostsSpanish = blogPosts.map(post => {
+const blogPostsSpanish = blogPostsSanity.map(post => {
   return {
-    url: `https://www.grandbay-puntacana.com/es/blog/${post.category.fields.slug}/${post.slug}`,
+    url: `https://www.grandbay-puntacana.com/es/blog/${post.blogCategory.slug.current}/${post.slug.current}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 1,
   }
 })
 
-const blogCategoriesEnglish = blogCategories.map(page => {
+const blogCategoriesEnglish = blogCategoriesSanity.map(page => {
   return {
-    url: `https://www.grandbay-puntacana.com/blog/${page}`,
+    url: `https://www.grandbay-puntacana.com/blog/${page.slug.current}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 1,
   }
 })
-const blogCategoriesSpanish = blogCategories.map(page => {
+const blogCategoriesSpanish = blogCategoriesSanity.map(page => {
   return {
-    url: `https://www.grandbay-puntacana.com/es/blog/${page}`,
+    url: `https://www.grandbay-puntacana.com/es/blog/${page.slug.current}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 1,

@@ -220,3 +220,29 @@ export async function getIndividualBlogPostSEO(
 ): Promise<IndividualBlogPostSEO> {
   return await client.fetch(individualBlogPostSEOQuery, { slug })
 }
+
+export interface BlogPosts {
+  slug: {
+    current: string
+  }
+  blogCategory: {
+    slug: {
+      current: string
+    }
+  }
+}
+
+export const blogPostsQuery = `*[_type == "blogPost"] {
+  slug {
+    current
+  },
+  blogCategory -> {
+    slug {
+      current
+    }
+  }
+}`
+
+export async function getBlogPosts(): Promise<BlogPosts[]> {
+  return await client.fetch(blogPostsQuery)
+}
