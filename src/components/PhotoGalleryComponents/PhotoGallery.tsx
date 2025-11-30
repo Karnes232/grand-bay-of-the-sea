@@ -10,6 +10,7 @@ import {
 import "react-photo-album/masonry.css"
 import Lightbox from "yet-another-react-lightbox"
 import NextJsImage from "./NextJsImage"
+import type { PhotoGallery } from "@/sanity/queries/Photo-Gallery/PhotoGallery"
 
 function renderNextImage(
   { alt = "", title, sizes }: RenderImageProps,
@@ -36,15 +37,16 @@ function renderNextImage(
   )
 }
 
-const PhotoGallery = ({ photos }: { photos: [] }) => {
+const PhotoGallery = ({ photos }: { photos: PhotoGallery['photoList'] }) => {
   const [index, setIndex] = useState(-1)
   const photoList = []
   photos.forEach((image: any) => {
+    console.log(image)
     const photoObject = {
-      src: `https:${image.fields.file.url}`,
-      alt: image.fields.title,
-      width: image.fields.file.details.image.width,
-      height: image.fields.file.details.image.height,
+      src: image.asset.url,
+      alt: image.alt,
+      width: image.asset.metadata.dimensions.width,
+      height: image.asset.metadata.dimensions.height,
     }
     photoList.push(photoObject)
   })

@@ -5,6 +5,8 @@ import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
+import { getPhotoGallery } from "@/sanity/queries/Photo-Gallery/PhotoGallery"
+import TextComponent from "@/components/RichTextComponents/TextComponent"
 
 export async function generateMetadata({
   params,
@@ -65,6 +67,9 @@ export default async function Page({
     locale: locale,
   })
 
+  const photoGallery = await getPhotoGallery()
+  console.log(photoGallery.photoList)
+
   return (
     <main>
       {structuredData?.seo?.structuredData[locale] && (
@@ -76,12 +81,17 @@ export default async function Page({
         />
       )}
       <HeroComponent
-        heroImage={`https:${(pageLayout.items[0] as any).fields.mainImage.fields.file.url}`}
+        heroImage={photoGallery.mainImage.asset.url}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <RichText context={pageLayout.items[0].fields.title} />
+      <TextComponent
+        title={photoGallery.title[locale]}
+        heading="h1"
+        className="text-center font-bold md:my-10 xl:mb-20 xl:text-5xl"
+      />
+      {/* <RichText context={pageLayout.items[0].fields.title} /> */}
       <PhotoGallery
-        photos={(pageLayout.items[0] as any).fields.photoList.sort(
+        photos={photoGallery.photoList.sort(
           () => Math.random() - 0.5,
         )}
       />

@@ -19,6 +19,9 @@ import BlogPost from "./Blog/BlogPost"
 import BlogCategory from "./Blog/BlogCategory"
 import BlogPageLayout from "./Blog/BlogPageLayout"
 
+//Photo-Gallery
+import PhotoGallery from "./Photo-Gallery/PhotoGallery"
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     //Localized
@@ -38,5 +41,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     BlogPageLayout,
     BlogCategory,
     BlogPost,
+
+    PhotoGallery
   ],
 }

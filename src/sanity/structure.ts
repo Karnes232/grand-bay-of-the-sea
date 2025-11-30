@@ -46,6 +46,14 @@ export const structure: StructureResolver = S =>
             ]),
         ),
       S.listItem()
+        .title("Photo Gallery")
+        .child(
+          S.document()
+            .schemaType("photoGallery")
+            .title("Photo Gallery")
+            .documentId("photoGallery"),
+        ),
+      S.listItem()
         .title("Species Page Content")
         .child(
           S.list()
