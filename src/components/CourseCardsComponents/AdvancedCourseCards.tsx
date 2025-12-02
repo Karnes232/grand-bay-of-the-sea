@@ -19,7 +19,7 @@ const AdvancedCourseCards = ({
   const t = useTranslations("CourseCards")
   return (
     <div className="relative my-5 flex justify-center items-center">
-      <div className="flex flex-col md:flex-row md:flex-wrap md:justify-between lg:justify-around items-center justify-center text-center  max-w-6xl mx-5 md:p-6 xl:mx-auto">
+      <div className="flex flex-col md:flex-row md:flex-wrap md:justify-between lg:justify-around items-center justify-center text-center  max-w-4xl mx-5 md:p-6 xl:mx-auto">
         {/* <SingleCourseCard
           title="Shark Conservation Diver"
           description={t("sharkConservationDiver")}
