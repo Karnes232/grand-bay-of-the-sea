@@ -41,7 +41,6 @@ const PhotoGallery = ({ photos }: { photos: PhotoGallery['photoList'] }) => {
   const [index, setIndex] = useState(-1)
   const photoList = []
   photos.forEach((image: any) => {
-    console.log(image)
     const photoObject = {
       src: image.asset.url,
       alt: image.alt,
