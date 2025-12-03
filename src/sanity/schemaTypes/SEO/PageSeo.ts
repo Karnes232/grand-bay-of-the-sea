@@ -28,6 +28,7 @@ export default defineType({
           { title: "Custom Payment", value: "Custom Payment" },
           { title: "Cancellation Policy", value: "Cancellation Policy" },
           { title: "Liveaboard", value: "Liveaboard" },
+          { title: "Shark Dive Punta Cana", value: "Shark Dive Punta Cana" },
         ],
       },
       validation: Rule => Rule.required(),

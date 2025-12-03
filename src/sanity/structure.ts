@@ -133,4 +133,12 @@ export const structure: StructureResolver = S =>
             .title("Fishing")
             .documentId("fishing"),
         ),
+      S.listItem()
+        .title("Shark Dive")
+        .child(
+          S.document()
+            .schemaType("sharkDive")
+            .title("Shark Dive")
+            .documentId("sharkDive"),
+        ),
     ])

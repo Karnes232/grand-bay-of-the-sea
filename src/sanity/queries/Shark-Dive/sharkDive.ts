@@ -1,6 +1,6 @@
 import { client } from "@/sanity/lib/client"
 
-export interface Fishing {
+export interface SharkDive {
   paragraph1: {
     en: any[]
     es: any[]
@@ -10,6 +10,10 @@ export interface Fishing {
     es: any[]
   }
   paragraph3: {
+    en: any[]
+    es: any[]
+  }
+  paragraph4: {
     en: any[]
     es: any[]
   }
@@ -25,14 +29,9 @@ export interface Fishing {
     }
     alt: string
   }[]
-  price: number
-  spectatorPrice: number
-  privateCharter: number
-  duration: string
-  depositPrice: number
 }
 
-export const fishingQuery = `*[_type == "fishing"][0] {
+export const sharkDiveQuery = `*[_type == "sharkDive"][0] {
   paragraph1 {
     en,
     es
@@ -42,6 +41,10 @@ export const fishingQuery = `*[_type == "fishing"][0] {
     es
   },
   paragraph3 {
+    en,
+    es
+  },
+  paragraph4 {
     en,
     es
   },
@@ -56,14 +59,9 @@ export const fishingQuery = `*[_type == "fishing"][0] {
       }
     },
     alt
-  },
-  price,
-  spectatorPrice,
-  privateCharter,
-  duration,
-  depositPrice
+  }
 }`
 
-export async function getFishing(): Promise<Fishing> {
-  return await client.fetch(fishingQuery)
+export const getSharkDive = async (): Promise<SharkDive> => {
+  return await client.fetch(sharkDiveQuery)
 }
