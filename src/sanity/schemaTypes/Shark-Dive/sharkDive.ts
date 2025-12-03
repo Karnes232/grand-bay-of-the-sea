@@ -8,6 +8,12 @@ export default defineType({
   icon: DocumentIcon,
   fields: [
     defineField({
+      name: "page",
+      title: "Page",
+      type: "string",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: "paragraph1",
       title: "Paragraph 1",
       type: "localizedBlock",
@@ -52,6 +58,31 @@ export default defineType({
           validation: Rule => Rule.required(),
         },
       ],
+    }),
+    defineField({
+      name: "price",
+      title: "Price",
+      type: "number",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "depositPrice",
+      title: "Deposit Price",
+      type: "number",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "duration",
+      title: "Duration",
+      type: "localizedString",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "extras",
+      title: "Extras",
+      type: "array",
+      of: [{ type: "localizedString" }],
+      validation: Rule => Rule.required(),
     }),
   ],
   preview: {

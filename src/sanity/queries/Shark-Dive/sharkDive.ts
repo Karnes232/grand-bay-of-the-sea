@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client"
 
 export interface SharkDive {
+  page: string
   paragraph1: {
     en: any[]
     es: any[]
@@ -29,9 +30,20 @@ export interface SharkDive {
     }
     alt: string
   }[]
+  price: number
+  depositPrice: number
+  duration: {
+    en: string
+    es: string
+  }
+  extras: {
+    en: string
+    es: string
+  }[]
 }
 
 export const sharkDiveQuery = `*[_type == "sharkDive"][0] {
+  page,
   paragraph1 {
     en,
     es
@@ -59,6 +71,16 @@ export const sharkDiveQuery = `*[_type == "sharkDive"][0] {
       }
     },
     alt
+  },
+  price,
+  depositPrice,
+  duration {
+    en,
+    es
+  },
+  extras[] {
+    en,
+    es
   }
 }`
 

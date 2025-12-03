@@ -9,6 +9,7 @@ import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSharkDive } from "@/sanity/queries/Shark-Dive/sharkDive"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
+import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -90,7 +91,8 @@ export default async function Home({
             <BlockContent content={sharkDive.paragraph1} locale={locale} />
           </div>
           <div className="lg:w-[45rem] xl:mx-10 lg:min-h-full lg:flex lg:flex-col md:justify-start md:mt-2 lg:mt-7 2xl:mt-14">
-            <TripOverview tour={pageLayout.items[0].fields} />
+            <SanityTripOverview tour={sharkDive} locale={locale} />
+            {/* <TripOverview tour={pageLayout.items[0].fields} /> */}
           </div>
           <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:justify-center xl:mt-0">
             <BlockContent content={sharkDive.paragraph2} locale={locale} />
