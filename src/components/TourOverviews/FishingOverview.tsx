@@ -5,6 +5,7 @@ import { motion } from "motion/react"
 import CustomPayPal from "../PayPalComponents/CustomPayPal"
 import PaymentPopupFishing from "../PaymentComponents/PaymentPopupFishing"
 import { useTranslations } from "next-intl"
+import { Fishing } from "@/sanity/queries/Fishing/fishing"
 
 interface Tour {
   price: number
@@ -14,7 +15,7 @@ interface Tour {
   depositPrice: number
 }
 
-const FishingOverview = ({ tour }: { tour: Tour }) => {
+const FishingOverview = ({ tour }: { tour: Fishing }) => {
   const t = useTranslations("FishingOverview")
   return (
     <div className="my-5">
@@ -32,7 +33,7 @@ const FishingOverview = ({ tour }: { tour: Tour }) => {
           {t("spectator")}
         </p>{" "}
         <p className="my-1 text-center text-sm xl:text-base">
-          ${tour.spectatorSnorkel} {t("perPerson")}
+          ${tour.spectatorPrice} {t("perPerson")}
         </p>
         <p className="my-1 text-center text-sm xl:text-base">
           {t("privateFishingCharter")}

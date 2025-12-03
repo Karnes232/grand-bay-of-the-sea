@@ -125,4 +125,12 @@ export const structure: StructureResolver = S =>
                 ),
             ]),
         ),
+      S.listItem()
+        .title("Fishing")
+        .child(
+          S.document()
+            .schemaType("fishing")
+            .title("Fishing")
+            .documentId("fishing"),
+        ),
     ])

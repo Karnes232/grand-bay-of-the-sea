@@ -35,6 +35,9 @@ import SectionLinks from "./Scuba-Diving-Punta-Cana/SectionLinks"
 //Home Page
 import HomePage from "./HomePage/HomePage"
 
+//Fishing
+import Fishing from "./Fishing/Fishing"
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     //Localized
@@ -70,5 +73,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     //HomePage
     HomePage,
+
+    //Fishing
+    Fishing,
   ],
 }

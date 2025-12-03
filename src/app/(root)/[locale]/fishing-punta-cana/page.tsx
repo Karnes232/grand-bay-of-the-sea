@@ -1,11 +1,12 @@
-import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
 import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
-import RichText from "@/components/RichTextComponents/RichText"
+
 import FishingOverview from "@/components/TourOverviews/FishingOverview"
-import { searchEntries } from "@/lib/contentful"
-import { Metadata, ResolvingMetadata } from "next"
+
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
+import { getFishing } from "@/sanity/queries/Fishing/fishing"
+import BlockContent from "@/components/BlockContent/BlockContent"
+import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
 
 export async function generateMetadata({
   params,
@@ -56,16 +57,13 @@ export async function generateMetadata({
 export default async function Home({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData] = await Promise.all([
+  const [structuredData, fishing] = await Promise.all([
     getStructuredData("Fishing Punta Cana"),
+    getFishing(),
   ])
-  const pageLayout = await searchEntries("tours", {
-    "fields.page": "Fishing Punta Cana",
-    locale: locale || "en",
-  })
 
   return (
     <main>
@@ -84,20 +82,20 @@ export default async function Home({
       <div className="my-5">
         <div className="flex flex-col lg:flex-row lg:mx-auto max-w-6xl xl:h-[35rem]">
           <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:justify-center xl:mt-0">
-            <RichText context={pageLayout.items[0].fields.paragraph1} />
+            <BlockContent content={fishing.paragraph1} locale={locale} />
           </div>
           <div className="lg:w-[45rem] xl:mx-10 lg:min-h-full lg:flex lg:flex-col md:justify-center">
-            <FishingOverview tour={pageLayout.items[0].fields as any} />
+            <FishingOverview tour={fishing} />
           </div>
           <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:justify-center xl:mt-0">
-            <RichText context={pageLayout.items[0].fields.paragraph2} />
+            <BlockContent content={fishing.paragraph2} locale={locale} />
           </div>
         </div>
         <div className="flex flex-col lg:flex-row lg:mx-auto max-w-6xl mb-10">
-          <RichText context={pageLayout.items[0].fields.paragraph3} />
+          <BlockContent content={fishing.paragraph3} locale={locale} />
         </div>
-        <SwiperCarousel
-          photoList={(pageLayout.items[0] as any).fields.photoList}
+        <SanitySwiperCarousel
+          photoList={fishing.photoList}
           className={`mt-5 -mb-6 [clip-path:polygon(0_5vh,100%_0,100%_35vh,0%_100%)] md:[clip-path:polygon(0_5vh,100%_0,100%_45vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_55vh,0%_100%)] xl:[clip-path:polygon(0_5vh,100%_0,100%_65vh,0%_100%)]`}
           height={`h-[35vh] md:h-[45vh] lg:h-[55vh] xl:h-[65vh]`}
         />
