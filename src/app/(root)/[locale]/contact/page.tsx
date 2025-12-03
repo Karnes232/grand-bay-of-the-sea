@@ -4,6 +4,7 @@ import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
+import { getContact } from "@/sanity/queries/Contact/Contact"
 
 export async function generateMetadata({
   params,
@@ -57,14 +58,15 @@ export default async function Home({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  const [structuredData] = await Promise.all([getStructuredData("Contact")])
-  const searchResults = await searchEntries(
+  const [structuredData, contact] = await Promise.all([getStructuredData("Contact"), getContact()])
+  /*const searchResults = await searchEntries(
     "pageLayout",
     {
       "fields.page": "Courses",
     },
     ["fields.heroImage"],
   )
+  */
   return (
     <main>
       {structuredData?.seo?.structuredData[locale] && (
@@ -76,7 +78,8 @@ export default async function Home({
         />
       )}
       <HeroComponent
-        heroImage={`https:${(searchResults.items[0] as any).fields.heroImage.fields.file.url}`}
+        heroImage={contact.heroImage.asset.url}
+        alt={contact.heroImage.alt}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <ContactForm />

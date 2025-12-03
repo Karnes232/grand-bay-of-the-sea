@@ -25,6 +25,9 @@ import PhotoGallery from "./Photo-Gallery/PhotoGallery"
 //Cancellation-Policy
 import CancellationPolicy from "./Cancellation-Policy/CancellationPolicy"
 
+//Contact
+import Contact from "./Contact/contact"
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     //Localized
@@ -50,5 +53,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     //Cancellation-Policy
     CancellationPolicy,
+
+    //Contact
+    Contact,
   ],
 }
