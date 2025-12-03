@@ -11,6 +11,7 @@ import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getScubaDivingPuntaCana } from "@/sanity/queries/Scuba-Diving-Punta-Cana/ScubaDivingPuntaCana"
 import BlockContent from "@/components/BlockContent/BlockContent"
+import { getSectionLinks } from "@/sanity/queries/Scuba-Diving-Punta-Cana/SectionLinks"
 export async function generateMetadata({
   params,
 }: {
@@ -64,16 +65,17 @@ export default async function Home({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData, scubaDivingPuntaCana] = await Promise.all([
+  const [structuredData, scubaDivingPuntaCana, sectionLinks] = await Promise.all([
     getStructuredData("Scuba Diving Punta Cana"),
     getScubaDivingPuntaCana(),
+    getSectionLinks(),
   ])
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Scuba Diving Punta Cana",
     locale: locale,
   })
 
-  console.log(scubaDivingPuntaCana)
+  console.log(sectionLinks)
 
   return (
     <main>

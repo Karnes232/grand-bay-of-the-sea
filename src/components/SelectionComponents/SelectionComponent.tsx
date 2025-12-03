@@ -15,6 +15,7 @@ const SelectionComponent = ({
   linkImage3: string
 }) => {
   const t = useTranslations("SelectionComponent")
+ 
   const HeroStyles = {
     backgroundPosition: "75% 70%",
     backgroundImage:
@@ -28,7 +29,7 @@ const SelectionComponent = ({
         {/* Background Image */}
         <Image
           src={secondaryHeroImage}
-          alt="Background"
+          alt="scuba diving punta cana"
           fill
           className="object-cover object-[75%_70%] xl:object-[75%_50%]"
           priority

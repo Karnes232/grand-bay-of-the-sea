@@ -30,6 +30,7 @@ import Contact from "./Contact/contact"
 
 //Scuba-Diving-Punta-Cana
 import ScubaDivingPuntaCana from "./Scuba-Diving-Punta-Cana/ScubaDivingPuntaCana"
+import SectionLinks from "./Scuba-Diving-Punta-Cana/SectionLinks"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -62,5 +63,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     //Scuba-Diving-Punta-Cana
     ScubaDivingPuntaCana,
+    SectionLinks,
   ],
 }
