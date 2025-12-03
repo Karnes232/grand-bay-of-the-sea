@@ -93,4 +93,12 @@ export const structure: StructureResolver = S =>
                 ),
             ]),
         ),
+      S.listItem()
+        .title("Scuba Diving Punta Cana")
+        .child(
+          S.document()
+            .schemaType("scubaDivingPuntaCana")
+            .title("Scuba Diving Punta Cana")
+            .documentId("scubaDivingPuntaCana"),
+        ),
     ])

@@ -9,7 +9,8 @@ import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
-
+import { getScubaDivingPuntaCana } from "@/sanity/queries/Scuba-Diving-Punta-Cana/ScubaDivingPuntaCana"
+import BlockContent from "@/components/BlockContent/BlockContent"
 export async function generateMetadata({
   params,
 }: {
@@ -60,16 +61,19 @@ export async function generateMetadata({
 export default async function Home({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData] = await Promise.all([
+  const [structuredData, scubaDivingPuntaCana] = await Promise.all([
     getStructuredData("Scuba Diving Punta Cana"),
+    getScubaDivingPuntaCana(),
   ])
   const pageLayout = await searchEntries("pageLayout", {
     "fields.page": "Scuba Diving Punta Cana",
     locale: locale,
   })
+
+  console.log(scubaDivingPuntaCana)
 
   return (
     <main>
@@ -82,25 +86,26 @@ export default async function Home({
         />
       )}
       <HeroComponent
-        heroImage={`https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`}
-      />
+          heroImage={scubaDivingPuntaCana.heroImage.asset.url}
+          alt={scubaDivingPuntaCana.heroImage.alt}
+        />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <RichText context={pageLayout.items[0].fields.paragraph1} />
+      <BlockContent content={scubaDivingPuntaCana.paragraph1} locale={locale} />
       <SelectionComponent
-        secondaryHeroImage={`https:${(pageLayout.items[0] as any).fields.secondaryHeroImage.fields.file.url}`}
+        secondaryHeroImage={scubaDivingPuntaCana.secondaryHeroImage.asset.url}
         linkImage1={(pageLayout.items[0] as any).fields.linkImage1.fields.file}
         linkImage2={(pageLayout.items[0] as any).fields.linkImage2.fields.file}
         linkImage3={(pageLayout.items[0] as any).fields.linkImage3.fields.file}
       />
-      <RichText context={pageLayout.items[0].fields.paragraph2} />
+      <BlockContent content={scubaDivingPuntaCana.paragraph2} locale={locale} />
       <CloudinaryBackgroundVideo
         className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
         videoId={"coral-cut_lyykuw"}
       />
       <DivingOrganizations />
-      <RichText context={pageLayout.items[0].fields.paragraph3} />
+      <BlockContent content={scubaDivingPuntaCana.paragraph3} locale={locale} />
       <BackgroundImage
-        image={`https:${(pageLayout.items[0] as any).fields.tertiaryHeroImage.fields.file.url}`}
+        image={scubaDivingPuntaCana.tertiaryHeroImage.asset.url}
       />
       <GoogleMaps />
     </main>
