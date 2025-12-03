@@ -22,6 +22,9 @@ import BlogPageLayout from "./Blog/BlogPageLayout"
 //Photo-Gallery
 import PhotoGallery from "./Photo-Gallery/PhotoGallery"
 
+//Cancellation-Policy
+import CancellationPolicy from "./Cancellation-Policy/CancellationPolicy"
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     //Localized
@@ -42,6 +45,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     BlogCategory,
     BlogPost,
 
-    PhotoGallery
+    //Photo-Gallery
+    PhotoGallery,
+
+    //Cancellation-Policy
+    CancellationPolicy,
   ],
 }

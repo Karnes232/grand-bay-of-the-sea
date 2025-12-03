@@ -54,6 +54,14 @@ export const structure: StructureResolver = S =>
             .documentId("photoGallery"),
         ),
       S.listItem()
+        .title("Cancellation Policy")
+        .child(
+          S.document()
+            .schemaType("cancellationPolicy")
+            .title("Cancellation Policy")
+            .documentId("cancellationPolicy"),
+        ),
+      S.listItem()
         .title("Species Page Content")
         .child(
           S.list()
