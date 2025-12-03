@@ -4,18 +4,16 @@ import LinkComponent from "./LinkComponent"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
 const SelectionComponent = ({
+  sectionLinks,
+  locale,
   secondaryHeroImage,
-  linkImage1,
-  linkImage2,
-  linkImage3,
 }: {
+  sectionLinks: any
+  locale: string
   secondaryHeroImage: string
-  linkImage1: string
-  linkImage2: string
-  linkImage3: string
 }) => {
   const t = useTranslations("SelectionComponent")
- 
+
   const HeroStyles = {
     backgroundPosition: "75% 70%",
     backgroundImage:
@@ -23,6 +21,8 @@ const SelectionComponent = ({
       secondaryHeroImage +
       ")",
   }
+
+  console.log(sectionLinks)
   return (
     <div className="w-full h-[115vh] md:h-[60vh] lg:h-[75vh] my-5">
       <div className="relative h-[115vh] md:h-[60vh] lg:h-[75vh] [clip-path:polygon(0%_5vh,100%_0%,100%_110vh,0%_100%)] md:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_70vh,0%_100%)]">
@@ -40,7 +40,17 @@ const SelectionComponent = ({
 
         {/* Content */}
         <div className="relative z-10 flex flex-col h-full justify-evenly items-center max-w-6xl mx-5 md:flex-row xl:mx-auto xl:space-x-4">
-          <LinkComponent
+          {sectionLinks.map((link: any, index: number) => (
+            <LinkComponent
+              key={index}
+              name={link.title[locale]}
+              url={link.url}
+              description={link.description[locale]}
+              image={link.image.asset.url}
+              textColor="text-white"
+            />
+          ))}
+          {/* <LinkComponent
             name={t("learnToDiveWithExperts")}
             url="/courses"
             description={t("discoverTheUnderwaterWorld")}
@@ -60,7 +70,7 @@ const SelectionComponent = ({
             description={t("exploreTheStunningIslandsOfTheDominicanRepublic")}
             image={linkImage3}
             textColor="text-white"
-          />
+          /> */}
         </div>
       </div>
     </div>

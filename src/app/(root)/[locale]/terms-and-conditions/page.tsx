@@ -62,7 +62,6 @@ export default async function Page({
     getCancellationPolicy(),
   ])
 
-
   return (
     <main>
       {structuredData?.seo?.structuredData[locale] && (

@@ -58,7 +58,10 @@ export default async function Home({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  const [structuredData, contact] = await Promise.all([getStructuredData("Contact"), getContact()])
+  const [structuredData, contact] = await Promise.all([
+    getStructuredData("Contact"),
+    getContact(),
+  ])
   /*const searchResults = await searchEntries(
     "pageLayout",
     {

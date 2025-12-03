@@ -37,7 +37,7 @@ function renderNextImage(
   )
 }
 
-const PhotoGallery = ({ photos }: { photos: PhotoGallery['photoList'] }) => {
+const PhotoGallery = ({ photos }: { photos: PhotoGallery["photoList"] }) => {
   const [index, setIndex] = useState(-1)
   const photoList = []
   photos.forEach((image: any) => {

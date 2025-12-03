@@ -20,7 +20,7 @@ export default defineType({
     defineField({
       name: "heroImage",
       title: "Hero Image",
-      type: "image",    
+      type: "image",
       group: "images",
       options: {
         hotspot: true,
@@ -68,7 +68,7 @@ export default defineType({
       ],
       validation: Rule => Rule.required(),
     }),
-  defineField({
+    defineField({
       name: "paragraph1",
       title: "Paragraph 1",
       type: "localizedBlock",
@@ -88,7 +88,7 @@ export default defineType({
       type: "localizedBlock",
       group: "content",
       validation: Rule => Rule.required(),
-    })
+    }),
   ],
   preview: {
     select: {

@@ -80,9 +80,7 @@ export default async function Page({
           }}
         />
       )}
-      <HeroComponent
-        heroImage={photoGallery.mainImage.asset.url}
-      />
+      <HeroComponent heroImage={photoGallery.mainImage.asset.url} />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <TextComponent
         title={photoGallery.title[locale]}
@@ -91,9 +89,7 @@ export default async function Page({
       />
       {/* <RichText context={pageLayout.items[0].fields.title} /> */}
       <PhotoGallery
-        photos={photoGallery.photoList.sort(
-          () => Math.random() - 0.5,
-        )}
+        photos={photoGallery.photoList.sort(() => Math.random() - 0.5)}
       />
     </main>
   )

@@ -16,6 +16,7 @@ import { getPlaiceholder } from "plaiceholder"
 import { Buffer } from "buffer" // Node.js Buffer for getPlaiceholder
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
+import { getSectionLinks } from "@/sanity/queries/Scuba-Diving-Punta-Cana/SectionLinks"
 
 const CloudinaryBackgroundVideo = dynamicImport(
   () =>
@@ -90,7 +91,10 @@ export default async function Home({
 }) {
   const { locale } = await params
 
-  const [structuredData] = await Promise.all([getStructuredData("Index")])
+  const [structuredData, sectionLinks] = await Promise.all([
+    getStructuredData("Index"),
+    getSectionLinks(),
+  ])
 
   let pageLayout
   try {
@@ -183,10 +187,9 @@ export default async function Home({
         <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
         <RichText context={pageLayout.fields.paragraph1} />
         <SelectionComponent
+          sectionLinks={sectionLinks}
+          locale={locale}
           secondaryHeroImage={secondaryHeroImageDetails.url || ""}
-          linkImage1={(pageLayout as any).fields.linkImage1?.fields?.file}
-          linkImage2={(pageLayout as any).fields.linkImage2?.fields?.file}
-          linkImage3={(pageLayout as any).fields.linkImage3?.fields?.file}
         />
         <RichText context={pageLayout.fields.paragraph2} />
         <CloudinaryBackgroundVideo

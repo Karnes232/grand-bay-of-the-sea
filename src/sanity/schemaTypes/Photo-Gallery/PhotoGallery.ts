@@ -34,20 +34,23 @@ export default defineType({
       name: "photoList",
       title: "Photo List",
       type: "array",
-      of: [{ type: "image",
-        options: {
-          hotspot: true,
+      of: [
+        {
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            defineField({
+              name: "alt",
+              title: "Alt",
+              type: "string",
+              validation: Rule => Rule.required(),
+            }),
+          ],
+          validation: Rule => Rule.required(),
         },
-        fields: [
-          defineField({
-            name: "alt",
-            title: "Alt",
-            type: "string",
-            validation: Rule => Rule.required(),
-          }),
-        ],
-        validation: Rule => Rule.required(),
-      }],
+      ],
     }),
   ],
   preview: {

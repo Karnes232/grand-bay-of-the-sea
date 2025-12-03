@@ -12,7 +12,6 @@ import type { MetadataRoute } from "next"
 const blogCategoriesSanity = await getBlogCategory()
 const blogPostsSanity = await getBlogPosts()
 
-
 // const blogPosts = await getAllEntrySlugsWithCategory("blogPost")
 
 const blogPostsEnglish = blogPostsSanity.map(post => {

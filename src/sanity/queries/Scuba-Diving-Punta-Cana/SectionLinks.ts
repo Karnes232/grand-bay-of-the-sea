@@ -1,10 +1,10 @@
 import { client } from "@/sanity/lib/client"
 
 export interface SectionLinks {
-    title: {
-        en: string
-        es: string
-    }
+  title: {
+    en: string
+    es: string
+  }
   url: string
   description: {
     en: string
@@ -48,6 +48,6 @@ export const sectionLinksQuery = `*[_type == "sectionLinks"] {
   }
 }`
 
-export const getSectionLinks = async (): Promise<SectionLinks[]> => {   
-    return await client.fetch(sectionLinksQuery)
+export const getSectionLinks = async (): Promise<SectionLinks[]> => {
+  return await client.fetch(sectionLinksQuery)
 }

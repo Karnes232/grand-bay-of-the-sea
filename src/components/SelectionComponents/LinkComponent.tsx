@@ -27,7 +27,7 @@ const LinkComponent = ({
           {name}
         </h2>
         <Image
-          src={`https:${image?.url}`}
+          src={image}
           alt="Logo"
           width={125}
           height={125}

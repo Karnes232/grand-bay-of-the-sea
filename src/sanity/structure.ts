@@ -96,25 +96,25 @@ export const structure: StructureResolver = S =>
       S.listItem()
         .title("Scuba Diving Punta Cana")
         .child(
-        S.list()
-          .title("Scuba Diving Punta Cana")
-          .items([
-            S.listItem()
-              .title("Section Links")
-              .child(
-                S.documentList()
-                  .schemaType("sectionLinks")
-                  .title("Section Links")
-                  .filter("_type == 'sectionLinks'"),
-              ),
-            S.listItem()
-              .title("Scuba Diving Punta Cana")
-              .child(
-                S.document()
-                  .schemaType("scubaDivingPuntaCana")
-                  .title("Scuba Diving Punta Cana")
-                  .documentId("scubaDivingPuntaCana"),
-              ),
-          ]),
+          S.list()
+            .title("Scuba Diving Punta Cana")
+            .items([
+              S.listItem()
+                .title("Section Links")
+                .child(
+                  S.documentList()
+                    .schemaType("sectionLinks")
+                    .title("Section Links")
+                    .filter("_type == 'sectionLinks'"),
+                ),
+              S.listItem()
+                .title("Scuba Diving Punta Cana")
+                .child(
+                  S.document()
+                    .schemaType("scubaDivingPuntaCana")
+                    .title("Scuba Diving Punta Cana")
+                    .documentId("scubaDivingPuntaCana"),
+                ),
+            ]),
         ),
     ])

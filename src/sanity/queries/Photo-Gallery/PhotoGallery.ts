@@ -22,7 +22,7 @@ export interface PhotoGallery {
       url: string
       metadata: {
         dimensions: {
-          width: number 
+          width: number
           height: number
         }
       }

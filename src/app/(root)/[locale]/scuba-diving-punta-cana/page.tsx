@@ -3,10 +3,8 @@ import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/Clo
 import DivingOrganizations from "@/components/DivingOrganizations/DivingOrganizations"
 import GoogleMaps from "@/components/GoogleMapsComponent/GoogleMaps"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
-import RichText from "@/components/RichTextComponents/RichText"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
-import { getAllEntries, searchEntries } from "@/lib/contentful"
-import { Metadata, ResolvingMetadata } from "next"
+
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getScubaDivingPuntaCana } from "@/sanity/queries/Scuba-Diving-Punta-Cana/ScubaDivingPuntaCana"
@@ -65,17 +63,12 @@ export default async function Home({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData, scubaDivingPuntaCana, sectionLinks] = await Promise.all([
-    getStructuredData("Scuba Diving Punta Cana"),
-    getScubaDivingPuntaCana(),
-    getSectionLinks(),
-  ])
-  const pageLayout = await searchEntries("pageLayout", {
-    "fields.page": "Scuba Diving Punta Cana",
-    locale: locale,
-  })
-
-  console.log(sectionLinks)
+  const [structuredData, scubaDivingPuntaCana, sectionLinks] =
+    await Promise.all([
+      getStructuredData("Scuba Diving Punta Cana"),
+      getScubaDivingPuntaCana(),
+      getSectionLinks(),
+    ])
 
   return (
     <main>
@@ -88,16 +81,15 @@ export default async function Home({
         />
       )}
       <HeroComponent
-          heroImage={scubaDivingPuntaCana.heroImage.asset.url}
-          alt={scubaDivingPuntaCana.heroImage.alt}
-        />
+        heroImage={scubaDivingPuntaCana.heroImage.asset.url}
+        alt={scubaDivingPuntaCana.heroImage.alt}
+      />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <BlockContent content={scubaDivingPuntaCana.paragraph1} locale={locale} />
       <SelectionComponent
+        sectionLinks={sectionLinks}
+        locale={locale}
         secondaryHeroImage={scubaDivingPuntaCana.secondaryHeroImage.asset.url}
-        linkImage1={(pageLayout.items[0] as any).fields.linkImage1.fields.file}
-        linkImage2={(pageLayout.items[0] as any).fields.linkImage2.fields.file}
-        linkImage3={(pageLayout.items[0] as any).fields.linkImage3.fields.file}
       />
       <BlockContent content={scubaDivingPuntaCana.paragraph2} locale={locale} />
       <CloudinaryBackgroundVideo

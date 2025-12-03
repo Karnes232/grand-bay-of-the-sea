@@ -102,6 +102,7 @@ export const scubaDivingPuntaCanaQuery = `*[_type == "scubaDivingPuntaCana"][0] 
   }
 }`
 
-export const getScubaDivingPuntaCana = async (): Promise<ScubaDivingPuntaCana> => {
-  return await client.fetch(scubaDivingPuntaCanaQuery)
-}
+export const getScubaDivingPuntaCana =
+  async (): Promise<ScubaDivingPuntaCana> => {
+    return await client.fetch(scubaDivingPuntaCanaQuery)
+  }
