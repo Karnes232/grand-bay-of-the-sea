@@ -1,22 +1,17 @@
 import dynamicImport from "next/dynamic"
 
 import { searchEntries } from "@/lib/contentful"
-//import dynamic from "next/dynamic"
-//import HeroComponent from "@/components/HeroComponent/HeroComponent"
-import RichText from "@/components/RichTextComponents/RichText"
-import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
-import { Metadata, ResolvingMetadata } from "next"
-import { getHreflangAlternates } from "@/utils/hreflang"
-// Remove headers from here, it's a dynamic function and will prevent static rendering
-// import { headers } from "next/headers";
-// import { isMobile } from "@/utils/isMobile"; // If you need this, use a build-time check or remove
 
-// For image placeholders
+import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
+import { getHreflangAlternates } from "@/utils/hreflang"
+
 import { getPlaiceholder } from "plaiceholder"
 import { Buffer } from "buffer" // Node.js Buffer for getPlaiceholder
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSectionLinks } from "@/sanity/queries/Scuba-Diving-Punta-Cana/SectionLinks"
+import { getHomePage } from "@/sanity/queries/HomePage/HomePage"
+import BlockContent from "@/components/BlockContent/BlockContent"
 
 const CloudinaryBackgroundVideo = dynamicImport(
   () =>
@@ -87,32 +82,33 @@ export async function generateMetadata({
 export default async function Home({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
 
-  const [structuredData, sectionLinks] = await Promise.all([
+  const [structuredData, sectionLinks, homePage] = await Promise.all([
     getStructuredData("Index"),
     getSectionLinks(),
+    getHomePage(),
   ])
 
-  let pageLayout
-  try {
-    const pageLayoutResult = await searchEntries("pageLayout", {
-      "fields.page": "Index",
-      locale: locale || "en",
-    })
-    pageLayout = pageLayoutResult.items[0]
-  } catch (error) {
-    console.error("Failed to fetch page layout:", error)
-    return (
-      <main>
-        <p>Unable to load content at this time. Please try again later.</p>
-      </main>
-    )
-  }
+  // let pageLayout
+  // try {
+  //   const pageLayoutResult = await searchEntries("pageLayout", {
+  //     "fields.page": "Index",
+  //     locale: locale || "en",
+  //   })
+  //   pageLayout = pageLayoutResult.items[0]
+  // } catch (error) {
+  //   console.error("Failed to fetch page layout:", error)
+  //   return (
+  //     <main>
+  //       <p>Unable to load content at this time. Please try again later.</p>
+  //     </main>
+  //   )
+  // }
 
-  if (!pageLayout) {
+  if (!homePage) {
     return (
       <main>
         <p>Content not found for this page. Please check Contentful.</p>
@@ -121,8 +117,8 @@ export default async function Home({
   }
 
   const getFullImageDetails = async (field: any) => {
-    if (!field?.fields?.file) return {}
-    const url = `https:${field.fields.file.url}`
+    if (!field?.asset?.url) return {}
+    const url = field.asset.url
     let base64 = ""
     try {
       const buffer = await fetch(url).then(async res =>
@@ -137,9 +133,9 @@ export default async function Home({
 
     return {
       url: url,
-      width: field.fields.file.details.image.width,
-      height: field.fields.file.details.image.height,
-      alt: field.fields.title || "",
+      width: field.asset.metadata.dimensions.width,
+      height: field.asset.metadata.dimensions.height,
+      alt: field.alt || "",
       base64: base64, // Pass base64 to HeroComponent
     }
   }
@@ -150,14 +146,12 @@ export default async function Home({
   let tertiaryHeroImageDetails: any = {}
 
   try {
-    heroImageDetails = await getFullImageDetails(
-      (pageLayout as any).fields.heroImage,
-    )
+    heroImageDetails = await getFullImageDetails(homePage.heroImage)
     secondaryHeroImageDetails = await getFullImageDetails(
-      (pageLayout as any).fields.secondaryHeroImage,
+      homePage.secondaryHeroImage,
     )
     tertiaryHeroImageDetails = await getFullImageDetails(
-      (pageLayout as any).fields.tertiaryHeroImage,
+      homePage.tertiaryHeroImage,
     )
   } catch (error) {
     console.error("Error processing images:", error)
@@ -185,19 +179,20 @@ export default async function Home({
           />
         )}
         <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-        <RichText context={pageLayout.fields.paragraph1} />
+        <BlockContent content={homePage.paragraph1} locale={locale} />
+
         <SelectionComponent
           sectionLinks={sectionLinks}
           locale={locale}
           secondaryHeroImage={secondaryHeroImageDetails.url || ""}
         />
-        <RichText context={pageLayout.fields.paragraph2} />
+        <BlockContent content={homePage.paragraph2} locale={locale} />
         <CloudinaryBackgroundVideo
           className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
           videoId={"coral-cut_lyykuw"}
         />
         <DivingOrganizations />
-        <RichText context={pageLayout.fields.paragraph3} />
+        <BlockContent content={homePage.paragraph3} locale={locale} />
         {tertiaryHeroImageDetails.url && (
           <BackgroundImage image={tertiaryHeroImageDetails.url} />
         )}
