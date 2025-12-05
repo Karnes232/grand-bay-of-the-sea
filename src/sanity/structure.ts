@@ -163,6 +163,14 @@ export const structure: StructureResolver = S =>
                     .title("Silverbank Expedition")
                     .documentId("silverbank-expedition"),
                 ),
+              S.listItem()
+                .title("Whale Watching Adventure")
+                .child(
+                  S.document()
+                    .schemaType("whale-watching-adventure")
+                    .title("Whale Watching Adventure")
+                    .documentId("whale-watching-adventure"),
+                ),
             ]),
         ),
     ])
