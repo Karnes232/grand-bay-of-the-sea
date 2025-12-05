@@ -43,6 +43,7 @@ import SharkDive from "./Shark-Dive/sharkDive"
 
 //Liveaboards
 import Liveaboards from "./Liveaboards/Liveaboards"
+import SilverbankExpedition from "./Liveaboards/silverbank-expedition/silverbank-expedition"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -88,5 +89,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     //Liveaboards
     Liveaboards,
+    SilverbankExpedition,
   ],
 }

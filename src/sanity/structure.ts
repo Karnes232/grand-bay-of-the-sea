@@ -144,9 +144,25 @@ export const structure: StructureResolver = S =>
       S.listItem()
         .title("Liveaboards")
         .child(
-          S.document()
-            .schemaType("liveaboards")
+          S.list()
             .title("Liveaboards")
-            .documentId("liveaboards"),
+            .items([
+              S.listItem()
+                .title("Liveaboards")
+                .child(
+                  S.document()
+                    .schemaType("liveaboards")
+                    .title("Liveaboards")
+                    .documentId("liveaboards"),
+                ),
+              S.listItem()
+                .title("Silverbank Expedition")
+                .child(
+                  S.document()
+                    .schemaType("silverbank-expedition")
+                    .title("Silverbank Expedition")
+                    .documentId("silverbank-expedition"),
+                ),
+            ]),
         ),
     ])

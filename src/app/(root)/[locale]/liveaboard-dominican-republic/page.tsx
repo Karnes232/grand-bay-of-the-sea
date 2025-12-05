@@ -1,4 +1,3 @@
-
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 
 import TextComponent from "@/components/RichTextComponents/TextComponent"
