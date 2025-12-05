@@ -48,6 +48,7 @@ import WhaleWatchingAdventure from "./Liveaboards/whale-watching-adventure/whale
 
 //Sites
 import Sites from "./Sites/sites"
+import DiveSite from "./Sites/DiveSite"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -98,5 +99,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     //Sites
     Sites,
+    DiveSite,
   ],
 }

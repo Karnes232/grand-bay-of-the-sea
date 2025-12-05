@@ -180,12 +180,20 @@ export const structure: StructureResolver = S =>
             .title("Dive Sites Page")
             .items([
               S.listItem()
-                .title("Dive Sites")
+                .title("Dive Sites Page Layout")
                 .child(
                   S.document()
                     .schemaType("sites")
                     .title("Dive Sites")
                     .documentId("sites"),
+                ),
+              S.listItem()
+                .title("Dive Sites")
+                .child(
+                  S.documentList()
+                    .schemaType("diveSite")
+                    .title("Dive Sites")
+                    .filter("_type == 'diveSite'"),
                 ),
             ]),
         ),

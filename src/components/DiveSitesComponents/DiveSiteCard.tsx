@@ -6,14 +6,23 @@ import Link from "next/link"
 import { useTranslations } from "next-intl"
 
 interface DiveSite {
-  diveSite: string
+  name: string
   meters: number
   feet: number
-  description: string
+  description: {
+    en: any[]
+    es: any[]
+  }
   image: any
 }
 
-const DiveSiteCard = ({ diveSite }) => {
+const DiveSiteCard = ({
+  diveSite,
+  locale,
+}: {
+  diveSite: DiveSite
+  locale: string
+}) => {
   const t = useTranslations("DiveSiteCard")
   const [readMore, setReadMore] = useState(false)
   return (
@@ -28,14 +37,14 @@ const DiveSiteCard = ({ diveSite }) => {
       className="flex justify-center m-4 w-80"
     >
       <div className="rounded-lg shadow-lg bg-white dark:bg-neutral-900 max-w-sm">
-        {diveSite.diveSite === "Shark Point" ? (
+        {diveSite.name === "Shark Point" ? (
           <>
             <Link href="/shark-dive-punta-cana" className="no-underline">
               <Image
-                src={`https:${diveSite.image.fields.file?.url ?? ""}`}
-                alt="Logo"
-                width={diveSite.image.fields?.file.details.image.width}
-                height={diveSite.image.fields?.file.details.image.height}
+                src={diveSite.image.asset.url}
+                alt={diveSite.image.alt}
+                width={diveSite.image.asset.metadata.dimensions.width}
+                height={diveSite.image.asset.metadata.dimensions.height}
                 className="rounded-t-lg h-64 w-80 object-cover object-center"
               />
             </Link>
@@ -44,10 +53,10 @@ const DiveSiteCard = ({ diveSite }) => {
           <>
             {" "}
             <Image
-              src={`https:${diveSite.image.fields.file?.url ?? ""}`}
-              alt="Logo"
-              width={diveSite.image.fields?.file.details.image.width}
-              height={diveSite.image.fields?.file.details.image.height}
+              src={diveSite.image.asset.url}
+              alt={diveSite.image.alt}
+              width={diveSite.image.asset.metadata.dimensions.width}
+              height={diveSite.image.asset.metadata.dimensions.height}
               className="rounded-t-lg h-64 w-80 object-cover object-center"
               quality={75}
             />
@@ -55,18 +64,18 @@ const DiveSiteCard = ({ diveSite }) => {
         )}
 
         <div className="p-6">
-          {diveSite.diveSite === "Shark Point" ? (
+          {diveSite.name === "Shark Point" ? (
             <>
               <Link href="/shark-dive-punta-cana" className="no-underline">
                 <h5 className="text-gray-900 text-xl font-medium mb-2">
-                  {diveSite.diveSite}
+                  {diveSite.name}
                 </h5>
               </Link>
             </>
           ) : (
             <>
               <h5 className="text-gray-900 dark:text-white text-xl font-medium mb-2">
-                {diveSite.diveSite}
+                {diveSite.name}
               </h5>
             </>
           )}
@@ -75,8 +84,8 @@ const DiveSiteCard = ({ diveSite }) => {
           </p>
           <p className="text-gray-700 dark:text-white text-base mb-4 min-h-[160px] flex flex-col items-start justify-between">
             {readMore
-              ? diveSite.description
-              : `${diveSite.description.substring(0, 150)}...`}
+              ? diveSite.description[locale]
+              : `${diveSite.description[locale].substring(0, 150)}...`}
             <br />
             <button
               className="text-blue-700"
