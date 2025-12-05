@@ -173,4 +173,20 @@ export const structure: StructureResolver = S =>
                 ),
             ]),
         ),
+      S.listItem()
+        .title("Dive Sites")
+        .child(
+          S.list()
+            .title("Dive Sites Page")
+            .items([
+              S.listItem()
+                .title("Dive Sites")
+                .child(
+                  S.document()
+                    .schemaType("sites")
+                    .title("Dive Sites")
+                    .documentId("sites"),
+                ),
+            ]),
+        ),
     ])

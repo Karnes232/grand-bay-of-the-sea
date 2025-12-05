@@ -15,9 +15,15 @@ import CustomPayPalBookingForm from "../PayPalComponents/CustomPayPalBookingForm
 import { useTranslations } from "next-intl"
 
 interface DiveInfo {
-  title: string
+  packageTitle: {
+    en: string
+    es: string
+  }
   twoTankDive: number
-  duration: string
+  duration: {
+    en: string
+    es: string
+  }
   fourTankPackage: number
   depositPrice: number
 }

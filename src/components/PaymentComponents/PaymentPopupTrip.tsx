@@ -43,7 +43,6 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
     deposit: tour.depositPrice,
     price: tour.price,
   })
-  console.log(tour)
   useEffect(() => {
     const diverPrice = tour.price * formData.guestCount
     let snorkelersPrice = 0

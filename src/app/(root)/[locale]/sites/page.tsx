@@ -9,6 +9,8 @@ import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPlaiceholder } from "plaiceholder" // Import getPlaiceholder
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
+import { getSharkDivePrice, getSites } from "@/sanity/queries/Sites/sites"
+import BlockContent from "@/components/BlockContent/BlockContent"
 
 // Add this line to explicitly force static rendering
 export const dynamic = "force-static"
@@ -62,25 +64,31 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData] = await Promise.all([getStructuredData("Sites")])
-  const pageLayout = await searchEntries("pageLayout", {
-    "fields.page": "Sites",
-    locale: locale,
-  })
-  const overviewInfo = await getAllEntries("localDiveOverview", locale)
-  const sharkDive = await searchEntries(
-    "tours",
-    {
-      "fields.page": "Shark Dive Punta Cana",
-    },
-    ["fields.price"],
-  )
+  const [structuredData, sitesLayout, sharkDivePrice] = await Promise.all([
+    getStructuredData("Sites"),
+    getSites(),
+    getSharkDivePrice(),
+  ])
+
+  // console.log(sharkDivePrice)
+  // const pageLayout = await searchEntries("pageLayout", {
+  //   "fields.page": "Sites",
+  //   locale: locale,
+  // })
+  // const overviewInfo = await getAllEntries("localDiveOverview", locale)
+  // const sharkDive = await searchEntries(
+  //   "tours",
+  //   {
+  //     "fields.page": "Shark Dive Punta Cana",
+  //   },
+  //   ["fields.price"],
+  // )
 
   // Fetch hero image URL
-  const heroImageUrl = `https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`
+  const heroImageUrl = sitesLayout.heroImage.asset.url
 
   // Generate blurDataURL for the hero image at build time
   const buffer = await fetch(heroImageUrl).then(async res => {
@@ -105,11 +113,12 @@ export default async function Page({
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
 
       <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
-        <RichText context={pageLayout.items[0].fields.paragraph1} />
+        <BlockContent content={sitesLayout.paragraph1} locale={locale} />
         <div className="lg:w-[45rem]">
           <LocalDivesOverview
-            info={overviewInfo[0].fields as any}
-            sharkPrice={sharkDive.items[0].fields.price as number}
+            info={sitesLayout}
+            sharkPrice={sharkDivePrice.price as number}
+            locale={locale}
           />
         </div>
       </div>

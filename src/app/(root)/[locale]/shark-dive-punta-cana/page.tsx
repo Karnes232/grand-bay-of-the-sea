@@ -70,7 +70,6 @@ export default async function Home({
     getSharkDive(),
   ])
 
-  console.log(sharkDive)
   return (
     <main>
       {structuredData?.seo?.structuredData[locale] && (

@@ -17,19 +17,27 @@ declare global {
 }
 
 interface DiveInfo {
-  title: string
+  packageTitle: {
+    en: string
+    es: string
+  }
   twoTankDive: number
-  duration: string
   fourTankPackage: number
   depositPrice: number
+  duration: {
+    en: string
+    es: string
+  }
 }
 
 const LocalDivesOverview = ({
   info,
   sharkPrice,
+  locale,
 }: {
   info: DiveInfo
   sharkPrice: number
+  locale: "en" | "es"
 }) => {
   const t = useTranslations("LocalDivesOverview")
   return (
@@ -44,13 +52,13 @@ const LocalDivesOverview = ({
         {" "}
         <div className="flex flex-col justify-center items-center mb-2">
           <h4 className="text-xl font-semibold mb-1 xl:text-3xl text-center">
-            <strong>{info.title}</strong>
+            <strong>{info.packageTitle[locale]}</strong>
           </h4>
           <p className="my-1 text-sm md:text-base xl:text-lg">
             {t("2tankDive")}: ${info.twoTankDive} {t("perPerson")}
           </p>
           <p className="my-1 text-sm md:text-base xl:text-lg">
-            {t("duration")}: {info.duration}
+            {t("duration")}: {info.duration[locale]}
           </p>
           <p className="my-1 text-sm md:text-base xl:text-lg">
             {t("4tankPackage")}: ${info.fourTankPackage}

@@ -46,6 +46,9 @@ import Liveaboards from "./Liveaboards/Liveaboards"
 import SilverbankExpedition from "./Liveaboards/silverbank-expedition/silverbank-expedition"
 import WhaleWatchingAdventure from "./Liveaboards/whale-watching-adventure/whale-watching-adventure"
 
+//Sites
+import Sites from "./Sites/sites"
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     //Localized
@@ -92,5 +95,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     Liveaboards,
     SilverbankExpedition,
     WhaleWatchingAdventure,
+
+    //Sites
+    Sites,
   ],
 }
