@@ -41,6 +41,9 @@ import Fishing from "./Fishing/Fishing"
 //Shark-Dive
 import SharkDive from "./Shark-Dive/sharkDive"
 
+//Liveaboards
+import Liveaboards from "./Liveaboards/Liveaboards"
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     //Localized
@@ -82,5 +85,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     //Shark-Dive
     SharkDive,
+
+    //Liveaboards
+    Liveaboards,
   ],
 }

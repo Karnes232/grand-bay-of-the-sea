@@ -141,4 +141,12 @@ export const structure: StructureResolver = S =>
             .title("Shark Dive")
             .documentId("sharkDive"),
         ),
+      S.listItem()
+        .title("Liveaboards")
+        .child(
+          S.document()
+            .schemaType("liveaboards")
+            .title("Liveaboards")
+            .documentId("liveaboards"),
+        ),
     ])

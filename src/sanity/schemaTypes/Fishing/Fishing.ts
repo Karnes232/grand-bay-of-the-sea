@@ -8,6 +8,12 @@ export default defineType({
   icon: DocumentIcon,
   fields: [
     defineField({
+      name: "page",
+      title: "Page",
+      type: "string",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: "paragraph1",
       title: "Paragraph 1",
       type: "localizedBlock",

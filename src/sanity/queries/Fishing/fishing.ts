@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client"
 
 export interface Fishing {
+  page: string
   paragraph1: {
     en: any[]
     es: any[]
@@ -33,6 +34,7 @@ export interface Fishing {
 }
 
 export const fishingQuery = `*[_type == "fishing"][0] {
+  page,
   paragraph1 {
     en,
     es

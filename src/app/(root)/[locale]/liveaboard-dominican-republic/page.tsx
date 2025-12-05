@@ -1,13 +1,15 @@
-import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
+
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
-import RichText from "@/components/RichTextComponents/RichText"
+
 import TextComponent from "@/components/RichTextComponents/TextComponent"
-import { searchEntries } from "@/lib/contentful"
-import { Metadata, ResolvingMetadata } from "next"
+
 import { getHreflangAlternates } from "@/utils/hreflang"
 import Image from "next/image"
 import Link from "next/link"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
+import { getLiveaboards } from "@/sanity/queries/Liveaboards/Liveaboards"
+import BlockContent from "@/components/BlockContent/BlockContent"
+import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
 
 export async function generateMetadata({
   params,
@@ -60,14 +62,17 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData] = await Promise.all([getStructuredData("Liveaboard")])
-  const pageLayout = await searchEntries("pageLayout", {
-    "fields.page": "Liveaboard",
-    locale: locale,
-  })
+  const [structuredData, liveaboards] = await Promise.all([
+    getStructuredData("Liveaboard"),
+    getLiveaboards(),
+  ])
+  // const pageLayout = await searchEntries("pageLayout", {
+  //   "fields.page": "Liveaboard",
+  //   locale: locale,
+  // })
 
   return (
     <main>
@@ -80,12 +85,14 @@ export default async function Page({
         />
       )}
       <HeroComponent
-        heroImage={`https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`}
+        heroImage={liveaboards.heroImage.asset.url}
+        alt={liveaboards.heroImage.alt}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <RichText context={pageLayout.items[0].fields.paragraph1} />
-      <SwiperCarousel
-        photoList={(pageLayout.items[0] as any).fields.photoList}
+      <BlockContent content={liveaboards.paragraph1} locale={locale} />
+      {/* <RichText context={pageLayout.items[0].fields.paragraph1} /> */}
+      <SanitySwiperCarousel
+        photoList={liveaboards.photoList}
         className={`mt-5 [clip-path:polygon(0_5vh,100%_0,100%_30vh,0%_100%)] md:[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)] xl:[clip-path:polygon(0_5vh,100%_0,100%_70vh,0%_100%)]`}
         height={`h-[35vh] md:h-[45vh] lg:h-[65vh] xl:h-[75vh]`}
       />
@@ -102,10 +109,8 @@ export default async function Page({
             />
             <div className="flex justify-center items-center">
               <Image
-                src={`https:${(pageLayout.items[0] as any).fields.linkImage1.fields.file.url}`}
-                alt={
-                  (pageLayout.items[0] as any).fields.linkImage1.fields.title
-                }
+                src={liveaboards.silverBankExpeditionImage.asset.url}
+                alt={liveaboards.silverBankExpeditionImage.alt}
                 width={300}
                 height={300}
                 className="object-cover rounded-full h-40 w-40 md:h-60 md:w-60 xl:h-72 xl:w-72"
@@ -114,7 +119,10 @@ export default async function Page({
               />
             </div>
           </Link>
-          <RichText context={pageLayout.items[0].fields.paragraph2} />
+          <BlockContent
+            content={liveaboards.silverBankExpeditionParagraph}
+            locale={locale}
+          />
         </div>
         <div className="lg:flex lg:flex-col lg:justify-start xl:min-h-full xl:mt-0">
           <Link
@@ -128,10 +136,8 @@ export default async function Page({
             />
             <div className="flex justify-center items-center">
               <Image
-                src={`https:${(pageLayout.items[0] as any).fields.linkImage2.fields.file.url}`}
-                alt={
-                  (pageLayout.items[0] as any).fields.linkImage2.fields.title
-                }
+                src={liveaboards.whaleWatchingAdventureImage.asset.url}
+                alt={liveaboards.whaleWatchingAdventureImage.alt}
                 width={300}
                 height={300}
                 className="object-cover rounded-full h-40 w-40 md:h-60 md:w-60 xl:h-72 xl:w-72"
@@ -140,7 +146,10 @@ export default async function Page({
               />
             </div>
           </Link>
-          <RichText context={pageLayout.items[0].fields.paragraph3} />
+          <BlockContent
+            content={liveaboards.whaleWatchingAdventureParagraph}
+            locale={locale}
+          />
         </div>
       </div>
       {/* <BackgroundVideo
