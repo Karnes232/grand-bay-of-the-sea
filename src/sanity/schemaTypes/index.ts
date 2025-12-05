@@ -50,6 +50,10 @@ import WhaleWatchingAdventure from "./Liveaboards/whale-watching-adventure/whale
 import Sites from "./Sites/sites"
 import DiveSite from "./Sites/DiveSite"
 
+//Dive-Trips
+import DiveTripsPage from "./DiveTrips/DiveTripsPage"
+import Trips from "./DiveTrips/Trips"
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     //Localized
@@ -100,5 +104,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     //Sites
     Sites,
     DiveSite,
+
+    //Dive-Trips
+    DiveTripsPage,
+    Trips,
   ],
 }

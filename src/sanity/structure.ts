@@ -197,4 +197,28 @@ export const structure: StructureResolver = S =>
                 ),
             ]),
         ),
+      S.listItem()
+        .title("Dive Trips")
+        .child(
+          S.list()
+            .title("Dive Trips Page")
+            .items([
+              S.listItem()
+                .title("Dive Trips Page Layout")
+                .child(
+                  S.document()
+                    .schemaType("diveTripsPage")
+                    .title("Dive Trips Page")
+                    .documentId("diveTripsPage"),
+                ),
+              S.listItem()
+                .title("Dive Trips")
+                .child(
+                  S.documentList()
+                    .schemaType("trips")
+                    .title("Dive Trips")
+                    .filter("_type == 'trips'"),
+                ),
+            ]),
+        ),
     ])
