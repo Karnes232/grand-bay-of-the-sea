@@ -17,12 +17,8 @@ const SanityTripCards = ({
           <SanityIndividualTrip
             key={tripCard.title}
             name={tripCard.cardTitle[locale]}
-            url={tripCard.slug.current}
-            description={
-              locale === "en"
-                ? tripCard.cardDescription.en
-                : tripCard.cardDescription.es
-            }
+            url={`/trips/${tripCard.slug.current}`}
+            description={tripCard.cardDescription[locale]}
             image={tripCard.cardImage}
           />
         ))}
