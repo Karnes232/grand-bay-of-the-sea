@@ -221,4 +221,28 @@ export const structure: StructureResolver = S =>
                 ),
             ]),
         ),
+      S.listItem()
+        .title("Courses")
+        .child(
+          S.list()
+            .title("Courses")
+            .items([
+              S.listItem()
+                .title("Courses Main Page")
+                .child(
+                  S.document()
+                    .schemaType("coursesMainPage")
+                    .title("Courses Main Page")
+                    .documentId("coursesMainPage"),
+                ),
+              S.listItem()
+                .title("Individual Course")
+                .child(
+                  S.documentList()
+                    .schemaType("individualCourse")
+                    .title("Individual Course")
+                    .filter("_type == 'individualCourse'"),
+                ),
+            ]),
+        ),
     ])

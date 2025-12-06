@@ -14,6 +14,8 @@ import { getPlaiceholder } from "plaiceholder"
 import { Buffer } from "buffer" // Node.js Buffer for getPlaiceholder
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
+import { getCoursesMainPage } from "@/sanity/queries/Courses/CoursesMainPage"
+import BlockContent from "@/components/BlockContent/BlockContent"
 
 // OPTION 1: Explicitly force static rendering for this page
 export const dynamic = "force-static"
@@ -67,21 +69,23 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData] = await Promise.all([getStructuredData("Courses")])
+  const [structuredData, coursesMainPage] = await Promise.all([getStructuredData("Courses"), getCoursesMainPage()])
   const pageLayoutResult = await searchEntries("pageLayout", {
     "fields.page": "Courses",
     locale: locale,
   })
+
+  console.log(coursesMainPage)
   const pageLayout = pageLayoutResult.items[0]
 
-  if (!pageLayout) {
+  if (!coursesMainPage) {
     // Handle case where page layout is not found for Courses
     return (
       <main>
-        <p>Content not found for this Courses page. Please check Contentful.</p>
+        <p>Content not found for this Courses page. Please check Sanity.</p>
       </main>
     )
   }
@@ -89,7 +93,7 @@ export default async function Page({
   // Helper function to safely get image URL and details, including blurDataURL
   const getHeroImageDetails = async (field: any) => {
     if (!field?.fields?.file) return {}
-    const url = `https:${field.fields.file.url}`
+    const url = coursesMainPage.heroImage.asset.url
     let base64 = ""
     try {
       const buffer = await fetch(url).then(async res =>
@@ -132,12 +136,12 @@ export default async function Page({
           />
         )}
         <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-        <RichText context={pageLayout.fields.paragraph1} />
+        <BlockContent content={coursesMainPage.paragraph1} locale={locale} />
         <CloudinaryBackgroundVideo
           className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
           videoId={"scubaHero_wzvqdg"}
         />
-        <RichText context={pageLayout.fields.paragraph2} />
+        <BlockContent content={coursesMainPage.paragraph2} locale={locale} />
         <CourseCards
           locale={locale}
           image1={(pageLayout as any).fields.linkImage1.fields}
@@ -145,7 +149,7 @@ export default async function Page({
           image3={(pageLayout as any).fields.linkImage3.fields}
           image4={(pageLayout as any).fields.linkImage4.fields}
         />
-        <RichText context={pageLayout.fields.paragraph3} />
+        <BlockContent content={coursesMainPage.paragraph3} locale={locale} />
         <AdvancedCourseCards
           image1={(pageLayout as any).fields.linkImage5.fields}
           image2={(pageLayout as any).fields.linkImage6.fields}

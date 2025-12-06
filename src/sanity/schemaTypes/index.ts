@@ -54,6 +54,10 @@ import DiveSite from "./Sites/DiveSite"
 import DiveTripsPage from "./DiveTrips/DiveTripsPage"
 import Trips from "./DiveTrips/Trips"
 
+//Courses
+import CoursesMainPage from "./courses/CoursesMainPage"
+import IndividualCourse from "./courses/IndividualCourse"
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     //Localized
@@ -108,5 +112,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     //Dive-Trips
     DiveTripsPage,
     Trips,
+
+    //Courses
+    CoursesMainPage,
+    IndividualCourse,
   ],
 }
