@@ -13,6 +13,7 @@ import {
 } from "@/sanity/queries/Courses/IndividualCourses"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
+import SanityCourseOverview from "@/components/CourseComponents/SanityCourseOverview"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string; slug: string }> },
@@ -97,7 +98,7 @@ export default async function Page({
               />
             </div>
             <div className="lg:w-[45rem] xl:mx-10 lg:min-h-full lg:flex lg:flex-col md:justify-center">
-              <CourseOverview course={course.items[0]} />
+              <SanityCourseOverview course={individualCourse} locale={locale} />
             </div>
             <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:justify-center xl:mt-0">
               <BlockContent

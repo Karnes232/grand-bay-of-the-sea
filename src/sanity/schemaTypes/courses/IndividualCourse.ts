@@ -16,6 +16,10 @@ export default defineType({
       title: "Main Content",
     },
     {
+      name: "overview",
+      title: "Overview",
+    },
+    {
       name: "images",
       title: "Images",
     },
@@ -139,6 +143,32 @@ export default defineType({
       title: "Paragraph 6",
       type: "localizedBlock",
       group: "mainContent",
+    }),
+    defineField({
+      name: "level",
+      title: "Level",
+      type: "localizedString",
+      group: "overview",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "padiPrice",
+      title: "Price",
+      type: "number",
+      group: "overview",
+    }),
+    defineField({
+      name: "duration",
+      title: "Duration",
+      type: "localizedString",
+      group: "overview",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "extraInfo",
+      title: "Extra Info",
+      type: "localizedString",
+      group: "overview",
     }),
     defineField({
       name: "photoList",

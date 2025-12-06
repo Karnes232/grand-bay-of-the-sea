@@ -202,6 +202,19 @@ export interface IndividualCourse {
     }
     alt: string
   }[]
+  level: {
+    en: string
+    es: string
+  }
+  padiPrice: number
+  duration: {
+    en: string
+    es: string
+  }
+  extraInfo?: {
+    en: string
+    es: string
+  }
 }
 
 export const individualCourseQuery = `*[_type == "individualCourse" && slug.current == $slug][0] {
@@ -245,6 +258,19 @@ export const individualCourseQuery = `*[_type == "individualCourse" && slug.curr
       }
     },
     alt
+  },
+  level {
+    en,
+    es
+  },
+  padiPrice,
+  duration {
+    en,
+    es
+  },
+  extraInfo {
+    en,
+    es
   }
 }`
 
