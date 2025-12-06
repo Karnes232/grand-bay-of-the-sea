@@ -6,67 +6,51 @@ import RichText from "@/components/RichTextComponents/RichText"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
+import {
+  getIndividualCourseSEO,
+  getIndividualCourseStructuredData,
+} from "@/sanity/queries/Courses/IndividualCourses"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string; slug: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { slug, locale } = await params
-  const seoSearchResults = await searchEntries(
-    "course",
-    {
-      "fields.slug": slug,
-      locale: locale,
-    },
-    [
-      "fields.seoTitle",
-      "fields.seoDescription",
-      "fields.seoKeywords",
-      "fields.seoImage",
-    ],
-  )
+  const pageSeo = await getIndividualCourseSEO(slug)
+
+  if (!pageSeo) {
+    return {}
+  }
+
+  let canonicalUrl
+  if (locale === "en") {
+    canonicalUrl = `https://www.grandbay-puntacana.com/courses/${slug}`
+  } else {
+    canonicalUrl = `https://www.grandbay-puntacana.com/es/courses/${slug}`
+  }
 
   return {
-    title: String(seoSearchResults.items[0].fields.seoTitle),
-    description: String(seoSearchResults.items[0].fields.seoDescription),
-    keywords: seoSearchResults.items[0].fields.seoKeywords as string[],
+    title: pageSeo.seo.meta[locale].title,
+    description: pageSeo.seo.meta[locale].description,
+    keywords: pageSeo.seo.meta[locale].keywords.join(", "),
+    //url: canonicalUrl,
     openGraph: {
-      url:
-        locale === "es"
-          ? `https://www.grandbay-puntacana.com/es/courses/${slug}`
-          : `https://www.grandbay-puntacana.com/courses/${slug}`,
+      title: pageSeo.seo.openGraph[locale].title,
+      description: pageSeo.seo.openGraph[locale].description,
+      images: pageSeo.seo.openGraph.image.url,
       type: "website",
-      title: String(seoSearchResults.items[0].fields.seoTitle),
-      description: String(seoSearchResults.items[0].fields.seoDescription),
-      images: [
-        {
-          url: `https:${(seoSearchResults.items[0] as any).fields.seoImage.fields.file.url}`,
-          width: (seoSearchResults.items[0] as any).fields.seoImage.fields.file
-            .details.image.width,
-          height: (seoSearchResults.items[0] as any).fields.seoImage.fields.file
-            .details.image.height,
-          alt: (seoSearchResults.items[0] as any).fields.seoImage.fields.title,
-        },
-      ],
+      url: canonicalUrl,
     },
-    twitter: {
-      card: "summary_large_image",
-      title: String(seoSearchResults.items[0].fields.seoTitle),
-      description: String(seoSearchResults.items[0].fields.seoDescription),
-      creator: "@grandbay",
-      site: "@grandbay",
-      images: [
-        {
-          url: `https:${(seoSearchResults.items[0] as any).fields.seoImage.fields.file.url}`,
-          width: (seoSearchResults.items[0] as any).fields.seoImage.fields.file
-            .details.image.width,
-          height: (seoSearchResults.items[0] as any).fields.seoImage.fields.file
-            .details.image.height,
-          alt: (seoSearchResults.items[0] as any).fields.seoImage.fields.title,
-        },
-      ],
+    robots: {
+      index: !pageSeo.seo.noIndex,
+      follow: !pageSeo.seo.noFollow,
     },
+    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: getHreflangAlternates(`courses/${slug}`, locale),
+    // other: {
+    //   "Cache-Control":
+    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
+    // },
   }
 }
 
@@ -76,6 +60,10 @@ export default async function Page({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
+  const [structuredData] = await Promise.all([
+    getIndividualCourseStructuredData(slug),
+  ])
+
   const course = await searchEntries("course", {
     "fields.slug": slug,
     locale: locale,
@@ -84,6 +72,14 @@ export default async function Page({
   return (
     <>
       <main>
+        {structuredData?.seo?.structuredData[locale] && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: structuredData.seo.structuredData[locale],
+            }}
+          />
+        )}
         <CloudinaryBackgroundVideo
           videoId={String(course.items[0].fields.videoId)}
           className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}

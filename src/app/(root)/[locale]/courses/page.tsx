@@ -2,11 +2,7 @@ import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/Clo
 import AdvancedCourseCards from "@/components/CourseCardsComponents/AdvancedCourseCards"
 import CourseCards from "@/components/CourseCardsComponents/CourseCards"
 import PadiBanner from "@/components/DivingOrganizations/PadiBanner"
-import SSIBanner from "@/components/DivingOrganizations/SSIBanner"
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
-import RichText from "@/components/RichTextComponents/RichText"
-import { searchEntries } from "@/lib/contentful"
-import { Metadata, ResolvingMetadata } from "next"
+
 import { getHreflangAlternates } from "@/utils/hreflang"
 
 // For image placeholders
@@ -84,14 +80,6 @@ export default async function Page({
     getIndividualCoursesCards("beginner"),
     getIndividualCoursesCards("advanced"),
   ])
-  const pageLayoutResult = await searchEntries("pageLayout", {
-    "fields.page": "Courses",
-    locale: locale,
-  })
-
-  console.log(individualBeginnerCoursesCards)
-  console.log(individualAdvancedCoursesCards)
-  const pageLayout = pageLayoutResult.items[0]
 
   if (!coursesMainPage) {
     // Handle case where page layout is not found for Courses
@@ -103,8 +91,7 @@ export default async function Page({
   }
 
   // Helper function to safely get image URL and details, including blurDataURL
-  const getHeroImageDetails = async (field: any) => {
-    if (!field?.fields?.file) return {}
+  const getHeroImageDetails = async () => {
     const url = coursesMainPage.heroImage.asset.url
     let base64 = ""
     try {
@@ -126,9 +113,7 @@ export default async function Page({
   }
 
   // Fetch Hero Image details and base64 at build time for the Courses page
-  const heroImageDetails = await getHeroImageDetails(
-    (pageLayout as any).fields.heroImage,
-  )
+  const heroImageDetails = await getHeroImageDetails()
 
   return (
     <>
