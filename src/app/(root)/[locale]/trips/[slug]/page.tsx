@@ -5,7 +5,11 @@ import TripOverview from "@/components/TourOverviews/TripOverview"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
-import { getIndividualTrip } from "@/sanity/queries/DiveTrips/Trips"
+import {
+  getIndividualTrip,
+  getTripSeo,
+  getTripStructuredData,
+} from "@/sanity/queries/DiveTrips/Trips"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
 
@@ -14,62 +18,41 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { slug, locale } = await params
-  const seoSearchResults = await searchEntries(
-    "tours",
-    {
-      "fields.slug": slug,
-      locale: locale || "en",
-    },
-    [
-      "fields.seoTitle",
-      "fields.seoDescription",
-      "fields.seoKeywords",
-      "fields.seoImage",
-    ],
-    ["fishing-punta-cana", "shark-dive-punta-cana"],
-  )
+  const pageSeo = await getTripSeo(slug)
+
+  if (!pageSeo) {
+    return {}
+  }
+
+  let canonicalUrl
+  if (locale === "en") {
+    canonicalUrl = `https://www.grandbay-puntacana.com/trips/${slug}`
+  } else {
+    canonicalUrl = `https://www.grandbay-puntacana.com/es/trips/${slug}`
+  }
 
   return {
-    title: String(seoSearchResults.items[0].fields.seoTitle),
-    description: String(seoSearchResults.items[0].fields.seoDescription),
-    keywords: seoSearchResults.items[0].fields.seoKeywords as string[],
+    title: pageSeo.seo.meta[locale].title,
+    description: pageSeo.seo.meta[locale].description,
+    keywords: pageSeo.seo.meta[locale].keywords.join(", "),
+    // url: canonicalUrl,
     openGraph: {
-      url:
-        locale === "es"
-          ? `https://www.grandbay-puntacana.com/es/trips/${slug}`
-          : `https://www.grandbay-puntacana.com/trips/${slug}`,
+      title: pageSeo.seo.openGraph[locale].title,
+      description: pageSeo.seo.openGraph[locale].description,
+      images: pageSeo.seo.openGraph.image.url,
       type: "website",
-      title: String(seoSearchResults.items[0].fields.seoTitle),
-      description: String(seoSearchResults.items[0].fields.seoDescription),
-      images: [
-        {
-          url: `https:${(seoSearchResults.items[0] as any).fields.seoImage.fields.file.url}`,
-          width: (seoSearchResults.items[0] as any).fields.seoImage.fields.file
-            .details.image.width,
-          height: (seoSearchResults.items[0] as any).fields.seoImage.fields.file
-            .details.image.height,
-          alt: (seoSearchResults.items[0] as any).fields.seoImage.fields.title,
-        },
-      ],
+      url: canonicalUrl,
     },
-    twitter: {
-      card: "summary_large_image",
-      title: String(seoSearchResults.items[0].fields.seoTitle),
-      description: String(seoSearchResults.items[0].fields.seoDescription),
-      creator: "@grandbay",
-      site: "@grandbay",
-      images: [
-        {
-          url: `https:${(seoSearchResults.items[0] as any).fields.seoImage.fields.file.url}`,
-          width: (seoSearchResults.items[0] as any).fields.seoImage.fields.file
-            .details.image.width,
-          height: (seoSearchResults.items[0] as any).fields.seoImage.fields.file
-            .details.image.height,
-          alt: (seoSearchResults.items[0] as any).fields.seoImage.fields.title,
-        },
-      ],
+    robots: {
+      index: !pageSeo.seo.noIndex,
+      follow: !pageSeo.seo.noFollow,
     },
+    ...(canonicalUrl && { canonical: canonicalUrl }),
     alternates: getHreflangAlternates(`trips/${slug}`, locale),
+    // other: {
+    //   "Cache-Control":
+    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
+    // },
   }
 }
 
@@ -80,8 +63,9 @@ export default async function Page({
 }) {
   const { slug, locale } = await params
 
-  const [trip] = await Promise.all([
+  const [trip, structuredData] = await Promise.all([
     getIndividualTrip(slug),
+    getTripStructuredData(slug),
   ])
 
   const tour = await searchEntries(
@@ -99,10 +83,18 @@ export default async function Page({
     ],
   )
 
-console.log(trip);
-  
+  console.log(structuredData)
+
   return (
     <main>
+      {structuredData?.seo?.structuredData[locale] && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: structuredData.seo.structuredData[locale],
+          }}
+        />
+      )}
       <CloudinaryBackgroundVideo
         videoId={trip.videoId}
         className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}

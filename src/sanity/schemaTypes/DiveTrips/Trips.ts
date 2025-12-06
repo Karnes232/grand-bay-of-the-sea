@@ -15,6 +15,10 @@ export default defineType({
       name: "mainContent",
       title: "Main Content",
     },
+    {
+      name: "seo",
+      title: "SEO",
+    },
   ],
   fields: [
     defineField({
@@ -109,9 +113,16 @@ export default defineType({
             }),
           ],
         },
-        ],
-        group: "mainContent",
-        validation: Rule => Rule.required(),
+      ],
+      group: "mainContent",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "seo",
+      title: "SEO",
+      type: "seo",
+      group: "seo",
+      validation: Rule => Rule.required(),
     }),
   ],
   preview: {
