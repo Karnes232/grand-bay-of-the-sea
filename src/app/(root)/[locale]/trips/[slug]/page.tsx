@@ -1,8 +1,5 @@
-import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
 import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
-import RichText from "@/components/RichTextComponents/RichText"
-import TripOverview from "@/components/TourOverviews/TripOverview"
-import { getAllEntries, searchEntries } from "@/lib/contentful"
+
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import {
@@ -12,6 +9,7 @@ import {
 } from "@/sanity/queries/DiveTrips/Trips"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
+import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -68,23 +66,6 @@ export default async function Page({
     getTripStructuredData(slug),
   ])
 
-  const tour = await searchEntries(
-    "tours",
-    {
-      "fields.slug": slug,
-      locale: locale,
-    },
-    undefined,
-    [
-      "fishing-punta-cana",
-      "shark-dive-punta-cana",
-      "silverbank-expedition",
-      "whale-watching-adventure",
-    ],
-  )
-
-  console.log(structuredData)
-
   return (
     <main>
       {structuredData?.seo?.structuredData[locale] && (
@@ -115,7 +96,8 @@ export default async function Page({
             <BlockContent content={trip.paragraph2} locale={locale} />
           </div>
           <div className="lg:w-[45rem] xl:mx-10 lg:min-h-full lg:flex lg:flex-col lg:justify-center">
-            <TripOverview tour={tour.items[0].fields} />
+            <SanityTripOverview tour={trip} locale={locale} />
+            {/* <TripOverview tour={tour.items[0].fields} /> */}
           </div>
           <div className="lg:flex lg:flex-col lg:justify-start xl:min-h-full xl:justify-center xl:mt-0">
             <BlockContent content={trip.paragraph3} locale={locale} />

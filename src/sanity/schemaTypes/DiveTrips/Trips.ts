@@ -22,8 +22,8 @@ export default defineType({
   ],
   fields: [
     defineField({
-      name: "title",
-      title: "Title",
+      name: "page",
+      title: "Page",
       type: "string",
       validation: Rule => Rule.required(),
     }),
@@ -118,6 +118,42 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: "price",
+      title: "Price",
+      type: "number",
+      group: "mainContent",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "spectatorSnorkel",
+      title: "Spectator Price",
+      type: "number",
+      group: "mainContent",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "duration",
+      title: "Duration",
+      type: "string",
+      group: "mainContent",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "depositPrice",
+      title: "Deposit Price",
+      type: "number",
+      group: "mainContent",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "extras",
+      title: "Extras",
+      type: "array",
+      of: [{ type: "localizedString" }],
+      group: "mainContent",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: "seo",
       title: "SEO",
       type: "seo",
@@ -127,7 +163,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: "title",
+      title: "page",
       media: "cardImage",
     },
   },

@@ -1,7 +1,7 @@
 import { client } from "@/sanity/lib/client"
 
 export interface TripCards {
-  title: string
+  page: string
   slug: {
     current: string
   }
@@ -28,7 +28,7 @@ export interface TripCards {
 }
 
 export const tripsQuery = `*[_type == "trips"] {
-  title,
+  page,
   slug,
   cardTitle {
     en,
@@ -58,7 +58,7 @@ export const getTripCards = async (): Promise<TripCards[]> => {
 }
 
 export interface Trip {
-  title: string
+  page: string
   slug: {
     current: string
   }
@@ -87,10 +87,18 @@ export interface Trip {
     }
     alt: string
   }[]
+  price: number
+  spectatorSnorkel: number
+  duration: string
+  extras: {
+    en: string
+    es: string
+  }[]
+  depositPrice: number
 }
 
 export const individualTripQuery = `*[_type == "trips" && slug.current == $slug][0] {
-  title,
+  page,
   slug,
   videoId,
   paragraph1 {
@@ -116,7 +124,15 @@ export const individualTripQuery = `*[_type == "trips" && slug.current == $slug]
       }
     },
     alt
-  }
+  },
+  price,
+  spectatorSnorkel,
+  duration,
+  extras[] {
+    en,
+    es
+  },
+  depositPrice
 }`
 
 export const getIndividualTrip = async (slug: string): Promise<Trip> => {

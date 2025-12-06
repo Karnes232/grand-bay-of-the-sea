@@ -15,7 +15,7 @@ const SanityTripCards = ({
       <div className="flex flex-col h-full justify-evenly items-center  max-w-6xl mx-5 md:flex-row xl:mx-auto gap-10">
         {tripCards.map(tripCard => (
           <SanityIndividualTrip
-            key={tripCard.title}
+            key={tripCard.page}
             name={tripCard.cardTitle[locale]}
             url={`/trips/${tripCard.slug.current}`}
             description={tripCard.cardDescription[locale]}
