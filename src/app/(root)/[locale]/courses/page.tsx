@@ -16,6 +16,7 @@ import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getCoursesMainPage } from "@/sanity/queries/Courses/CoursesMainPage"
 import BlockContent from "@/components/BlockContent/BlockContent"
+import { getIndividualCoursesCards } from "@/sanity/queries/Courses/IndividualCourses"
 
 // OPTION 1: Explicitly force static rendering for this page
 export const dynamic = "force-static"
@@ -72,13 +73,24 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData, coursesMainPage] = await Promise.all([getStructuredData("Courses"), getCoursesMainPage()])
+  const [
+    structuredData,
+    coursesMainPage,
+    individualBeginnerCoursesCards,
+    individualAdvancedCoursesCards,
+  ] = await Promise.all([
+    getStructuredData("Courses"),
+    getCoursesMainPage(),
+    getIndividualCoursesCards("beginner"),
+    getIndividualCoursesCards("advanced"),
+  ])
   const pageLayoutResult = await searchEntries("pageLayout", {
     "fields.page": "Courses",
     locale: locale,
   })
 
-  console.log(coursesMainPage)
+  console.log(individualBeginnerCoursesCards)
+  console.log(individualAdvancedCoursesCards)
   const pageLayout = pageLayoutResult.items[0]
 
   if (!coursesMainPage) {
@@ -144,18 +156,12 @@ export default async function Page({
         <BlockContent content={coursesMainPage.paragraph2} locale={locale} />
         <CourseCards
           locale={locale}
-          image1={(pageLayout as any).fields.linkImage1.fields}
-          image2={(pageLayout as any).fields.linkImage2.fields}
-          image3={(pageLayout as any).fields.linkImage3.fields}
-          image4={(pageLayout as any).fields.linkImage4.fields}
+          individualBeginnerCoursesCards={individualBeginnerCoursesCards}
         />
         <BlockContent content={coursesMainPage.paragraph3} locale={locale} />
         <AdvancedCourseCards
-          image1={(pageLayout as any).fields.linkImage5.fields}
-          image2={(pageLayout as any).fields.linkImage6.fields}
-          image3={(pageLayout as any).fields.linkImage7.fields}
-          image4={(pageLayout as any).fields.linkImage8.fields}
-          image5={(pageLayout as any).fields.linkImage9.fields}
+          individualAdvancedCoursesCards={individualAdvancedCoursesCards}
+          locale={locale}
         />
         {/* <SSIBanner /> */}
         <PadiBanner />

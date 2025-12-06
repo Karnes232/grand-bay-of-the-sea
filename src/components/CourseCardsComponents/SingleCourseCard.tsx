@@ -23,11 +23,11 @@ const SingleCourseCard = ({
     <Link href={link} className="no-underline ">
       <div className="max-w-xs w-80 my-4 rounded overflow-hidden shadow-lg dark:bg-neutral-900">
         <Image
-          src={`https:${image?.file?.url ?? ""}`}
-          alt={image.title}
+          src={image.asset.url}
+          alt={title}
           className="w-full h-80 object-cover"
-          width={image.file.details.image.width}
-          height={image.file.details.image.height}
+          width={image.asset.metadata.dimensions.width}
+          height={image.asset.metadata.dimensions.height}
           quality={70}
         />
         <div className="px-6 py-4 h-40 flex flex-col">
