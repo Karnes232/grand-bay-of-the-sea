@@ -26,10 +26,10 @@ const FishesClient = ({
   }, [fishesData, searchQuery, locale])
 
   return (
-    <div className="w-full max-w-6xl mx-5 lg:mx-auto my-5 xl:my-14">
+    <div className="w-full max-w-6xl lg:mx-auto my-5 xl:my-14">
       {/* Search Bar */}
-      <div className="mb-6 flex justify-center">
-        <div className="relative w-full max-w-md">
+      <div className="mb-6 flex justify-center ">
+        <div className="relative w-full mx-5 md:mx-10 lg:max-w-2xl xl:max-w-3xl xl:mx-0">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
               className="w-5 h-5 text-gray-500"
