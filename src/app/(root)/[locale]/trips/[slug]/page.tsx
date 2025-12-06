@@ -65,7 +65,7 @@ export default async function Page({
     getIndividualTrip(slug),
     getTripStructuredData(slug),
   ])
-
+ console.log(trip)
   return (
     <main>
       {structuredData?.seo?.structuredData[locale] && (
@@ -103,6 +103,11 @@ export default async function Page({
             <BlockContent content={trip.paragraph3} locale={locale} />
           </div>
         </div>
+        {trip.paragraph4 && (
+          <div className="flex flex-col lg:flex-row lg:mx-auto max-w-6xl">
+            <BlockContent content={trip.paragraph4} locale={locale} />
+          </div>
+        )}
       </div>
     </main>
   )

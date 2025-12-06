@@ -95,6 +95,12 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: "paragraph4",
+      title: "Paragraph 4",
+      type: "localizedBlock",
+      group: "mainContent",
+    }),
+    defineField({
       name: "photoList",
       title: "Photo List",
       type: "array",
@@ -134,7 +140,7 @@ export default defineType({
     defineField({
       name: "duration",
       title: "Duration",
-      type: "string",
+      type: "localizedString",
       group: "mainContent",
       validation: Rule => Rule.required(),
     }),

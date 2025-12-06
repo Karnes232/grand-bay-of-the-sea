@@ -14,6 +14,7 @@ const SanityTripOverview = ({
   locale: string
 }) => {
   const t = useTranslations("TripOverview")
+  
   return (
     <div className="my-5">
       <div className="flex flex-col justify-center items-center mb-2">

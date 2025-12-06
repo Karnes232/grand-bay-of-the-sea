@@ -75,6 +75,10 @@ export interface Trip {
     en: any[]
     es: any[]
   }
+  paragraph4?: {
+    en: any[]
+    es: any[]
+  }
   photoList: {
     asset: {
       url: string
@@ -110,6 +114,10 @@ export const individualTripQuery = `*[_type == "trips" && slug.current == $slug]
     es
   },
   paragraph3 {
+    en,
+    es
+  },
+  paragraph4 {
     en,
     es
   },
