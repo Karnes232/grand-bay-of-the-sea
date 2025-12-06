@@ -159,3 +159,97 @@ export const getIndividualCourseSEO = async (
 ): Promise<IndividualCourseSEO> => {
   return await client.fetch(individualCourseSEOQuery, { slug })
 }
+
+export interface IndividualCourse {
+  course: string
+  slug: {
+    current: string
+  }
+  videoId: string
+  paragraph1: {
+    en: any[]
+    es: any[]
+  }
+  paragraph2: {
+    en: any[]
+    es: any[]
+  }
+  paragraph3?: {
+    en: any[]
+    es: any[]
+  }
+  paragraph4?: {
+    en: any[]
+    es: any[]
+  }
+  paragraph5?: {
+    en: any[]
+    es: any[]
+  }
+  paragraph6?: {
+    en: any[]
+    es: any[]
+  }
+  photoList: {
+    asset: {
+      url: string
+      metadata: {
+        dimensions: {
+          width: number
+          height: number
+        }
+      }
+    }
+    alt: string
+  }[]
+}
+
+export const individualCourseQuery = `*[_type == "individualCourse" && slug.current == $slug][0] {
+  course,
+  slug {
+    current
+  },
+  videoId,
+  paragraph1 {
+    en,
+    es
+  },
+  paragraph2 {
+    en,
+    es
+  },
+  paragraph3 {
+    en,
+    es
+  },
+  paragraph4 {
+    en,
+    es
+  },
+  paragraph5 {
+    en,
+    es
+  },
+  paragraph6 {
+    en,
+    es
+  },
+  photoList[] {
+    asset -> {
+      url,
+      metadata {
+        dimensions {
+          width,
+          height
+        }
+      }
+    },
+    alt
+  }
+}`
+
+export const getIndividualCourse = async (
+  slug: string,
+): Promise<IndividualCourse> => {
+  return await client.fetch(individualCourseQuery, { slug })
+}

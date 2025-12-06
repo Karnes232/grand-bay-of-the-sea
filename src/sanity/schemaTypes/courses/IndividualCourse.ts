@@ -16,6 +16,10 @@ export default defineType({
       title: "Main Content",
     },
     {
+      name: "images",
+      title: "Images",
+    },
+    {
       name: "seo",
       title: "SEO",
     },
@@ -88,6 +92,74 @@ export default defineType({
       title: "Order",
       type: "number",
       group: "cardInfo",
+      validation: Rule => Rule.required(),
+    }),
+
+    defineField({
+      name: "videoId",
+      title: "Video ID",
+      type: "string",
+      group: "mainContent",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "paragraph1",
+      title: "Paragraph 1",
+      type: "localizedBlock",
+      group: "mainContent",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "paragraph2",
+      title: "Paragraph 2",
+      type: "localizedBlock",
+      group: "mainContent",
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "paragraph3",
+      title: "Paragraph 3",
+      type: "localizedBlock",
+      group: "mainContent",
+    }),
+    defineField({
+      name: "paragraph4",
+      title: "Paragraph 4",
+      type: "localizedBlock",
+      group: "mainContent",
+    }),
+    defineField({
+      name: "paragraph5",
+      title: "Paragraph 5",
+      type: "localizedBlock",
+      group: "mainContent",
+    }),
+    defineField({
+      name: "paragraph6",
+      title: "Paragraph 6",
+      type: "localizedBlock",
+      group: "mainContent",
+    }),
+    defineField({
+      name: "photoList",
+      title: "Photo List",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            defineField({
+              name: "alt",
+              title: "Alt",
+              type: "string",
+            }),
+          ],
+        },
+      ],
+      group: "images",
       validation: Rule => Rule.required(),
     }),
 

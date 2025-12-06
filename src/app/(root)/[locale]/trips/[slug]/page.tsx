@@ -65,7 +65,7 @@ export default async function Page({
     getIndividualTrip(slug),
     getTripStructuredData(slug),
   ])
- console.log(trip)
+
   return (
     <main>
       {structuredData?.seo?.structuredData[locale] && (
