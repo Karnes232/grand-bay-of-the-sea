@@ -1,9 +1,6 @@
-import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
-import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
+
 import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
-import CourseOverview from "@/components/CourseComponents/CourseOverview"
-import RichText from "@/components/RichTextComponents/RichText"
-import { getAllEntries, searchEntries } from "@/lib/contentful"
+
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import {
@@ -68,11 +65,7 @@ export default async function Page({
     getIndividualCourseStructuredData(slug),
     getIndividualCourse(slug),
   ])
-  console.log(individualCourse)
-  const course = await searchEntries("course", {
-    "fields.slug": slug,
-    locale: locale,
-  })
+
 
   return (
     <>

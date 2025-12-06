@@ -3,7 +3,6 @@
 import React from "react"
 import { motion } from "motion/react"
 import Link from "next/link"
-import CustomPayPal from "../PayPalComponents/CustomPayPal"
 import PaymentPopupCourses from "../PaymentComponents/PaymentPopupCourses"
 import { useTranslations } from "next-intl"
 import { IndividualCourse } from "@/sanity/queries/Courses/IndividualCourses"

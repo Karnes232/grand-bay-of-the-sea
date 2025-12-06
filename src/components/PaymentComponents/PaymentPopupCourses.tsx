@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from "react"
 import { IoClose } from "react-icons/io5"
 import {
-  Description,
   Dialog,
   DialogPanel,
-  DialogTitle,
 } from "@headlessui/react"
 import DatePickerComponent from "./DatePickerComponent"
-import TourSelect from "./TourSelect"
-import CertificationLevel from "./CertificationLevel"
+
 import { submitBookingForm } from "@/app/(root)/actions"
 import { useRouter } from "next/navigation"
 import CustomPayPalBookingForm from "../PayPalComponents/CustomPayPalBookingForm"
 import { useTranslations } from "next-intl"
 
-// interface DiveInfo {
-//   page: string
-//   twoTankDive: number
-//   duration: string
-//   fourTankPackage: number
-//   depositPrice: number
-// }
+
 
 const PaymentPopupCourses = ({
   course,

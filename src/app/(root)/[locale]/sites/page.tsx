@@ -2,10 +2,9 @@ import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/Clo
 import DiveSites from "@/components/DiveSitesComponents/DiveSites"
 // Change import from HeroComponent to HeroStaticComponent
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent" // Assuming HeroStaticComponent is in the same path
-import RichText from "@/components/RichTextComponents/RichText"
+
 import LocalDivesOverview from "@/components/TourOverviews/LocalDivesOverview"
-import { getAllEntries, searchEntries } from "@/lib/contentful"
-import { Metadata, ResolvingMetadata } from "next"
+
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPlaiceholder } from "plaiceholder" // Import getPlaiceholder
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
@@ -73,19 +72,7 @@ export default async function Page({
     getSharkDivePrice(),
   ])
 
-  // console.log(sharkDivePrice)
-  // const pageLayout = await searchEntries("pageLayout", {
-  //   "fields.page": "Sites",
-  //   locale: locale,
-  // })
-  // const overviewInfo = await getAllEntries("localDiveOverview", locale)
-  // const sharkDive = await searchEntries(
-  //   "tours",
-  //   {
-  //     "fields.page": "Shark Dive Punta Cana",
-  //   },
-  //   ["fields.price"],
-  // )
+
 
   // Fetch hero image URL
   const heroImageUrl = sitesLayout.heroImage.asset.url
