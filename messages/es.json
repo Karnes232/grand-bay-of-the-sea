@@ -177,6 +177,16 @@
   },
   "Blog": {
     "readMore": "Leer Más",
-    "youMayAlsoLike": "También te puede interesar"
+    "youMayAlsoLike": "También te puede interesar",
+    "searchPlaceholder": "Buscar Publicaciones de Blog...",
+    "noBlogPostsFound": "No se encontraron publicaciones",
+    "blogPostsFound": "publicación encontrada",
+    "blogPostsFoundPlural": "publicaciones encontradas",
+    "noMatch": "No hay publicaciones que coincidan con tu búsqueda.",
+    "showing": "Mostrando",
+    "of": "de",
+    "previousPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "goToPage": "Ir a la página"
   }
 }

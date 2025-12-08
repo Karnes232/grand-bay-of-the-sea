@@ -177,6 +177,16 @@
   },
   "Blog": {
     "readMore": "Read More",
-    "youMayAlsoLike": "You may also like"
+    "youMayAlsoLike": "You may also like",
+    "searchPlaceholder": "Search Blog Posts...",
+    "noBlogPostsFound": "No blog posts found",
+    "blogPostsFound": "blog post found",
+    "blogPostsFoundPlural": "blog posts found",
+    "noMatch": "No blog posts match your search.",
+    "showing": "Showing",
+    "of": "of",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "goToPage": "Go to page"
   }
 }
