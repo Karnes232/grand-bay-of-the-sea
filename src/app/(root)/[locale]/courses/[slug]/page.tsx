@@ -1,4 +1,3 @@
-
 import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 
 import { Metadata, ResolvingMetadata } from "next"
@@ -65,7 +64,6 @@ export default async function Page({
     getIndividualCourseStructuredData(slug),
     getIndividualCourse(slug),
   ])
-
 
   return (
     <>

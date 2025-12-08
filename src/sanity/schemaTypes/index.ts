@@ -58,6 +58,9 @@ import Trips from "./DiveTrips/Trips"
 import CoursesMainPage from "./courses/CoursesMainPage"
 import IndividualCourse from "./courses/IndividualCourse"
 
+//Custom Payment
+import CustomPayment from "./CustomPayment/CustomPayment"
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     //Localized
@@ -116,5 +119,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     //Courses
     CoursesMainPage,
     IndividualCourse,
+
+    //Custom Payment
+    CustomPayment,
   ],
 }

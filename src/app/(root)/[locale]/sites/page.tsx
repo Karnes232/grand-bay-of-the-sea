@@ -72,8 +72,6 @@ export default async function Page({
     getSharkDivePrice(),
   ])
 
-
-
   // Fetch hero image URL
   const heroImageUrl = sitesLayout.heroImage.asset.url
 

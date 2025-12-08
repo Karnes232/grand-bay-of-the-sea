@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { IoClose } from "react-icons/io5"
-import {
-  Dialog,
-  DialogPanel,
-} from "@headlessui/react"
+import { Dialog, DialogPanel } from "@headlessui/react"
 import DatePickerComponent from "./DatePickerComponent"
 
 import { submitBookingForm } from "@/app/(root)/actions"
 import { useRouter } from "next/navigation"
 import CustomPayPalBookingForm from "../PayPalComponents/CustomPayPalBookingForm"
 import { useTranslations } from "next-intl"
-
-
 
 const PaymentPopupCourses = ({
   course,

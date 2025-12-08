@@ -245,4 +245,12 @@ export const structure: StructureResolver = S =>
                 ),
             ]),
         ),
+      S.listItem()
+        .title("Custom Payment")
+        .child(
+          S.document()
+            .schemaType("customPayment")
+            .title("Custom Payment")
+            .documentId("customPayment"),
+        ),
     ])

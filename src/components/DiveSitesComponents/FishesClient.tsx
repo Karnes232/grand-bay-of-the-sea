@@ -4,12 +4,12 @@ import React, { useState, useMemo } from "react"
 import FishCard2 from "./FishCard2"
 import { Fishes as FishesType } from "@/sanity/queries/Page-Species/Fishes"
 
-const FishesClient = ({ 
-  fishesData, 
-  locale 
-}: { 
+const FishesClient = ({
+  fishesData,
+  locale,
+}: {
   fishesData: FishesType[]
-  locale: string 
+  locale: string
 }) => {
   const [searchQuery, setSearchQuery] = useState("")
 
@@ -19,7 +19,7 @@ const FishesClient = ({
     }
 
     const query = searchQuery.toLowerCase().trim()
-    return fishesData.filter((fish) => {
+    return fishesData.filter(fish => {
       const fishName = fish.name[locale as "en" | "es"] || fish.name.en
       return fishName.toLowerCase().includes(query)
     })
@@ -49,7 +49,7 @@ const FishesClient = ({
           <input
             type="text"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={e => setSearchQuery(e.target.value)}
             placeholder={locale === "es" ? "Buscar peces..." : "Search fish..."}
             className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all"
           />
@@ -65,8 +65,8 @@ const FishesClient = ({
         ) : (
           <div className="w-full text-center py-12">
             <p className="text-gray-600 text-lg">
-              {locale === "es" 
-                ? "No se encontraron peces con ese nombre." 
+              {locale === "es"
+                ? "No se encontraron peces con ese nombre."
                 : "No fish found with that name."}
             </p>
           </div>
@@ -77,4 +77,3 @@ const FishesClient = ({
 }
 
 export default FishesClient
-

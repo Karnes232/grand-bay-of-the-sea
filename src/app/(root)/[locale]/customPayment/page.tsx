@@ -1,10 +1,10 @@
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import CustomPagePayPal from "@/components/PayPalComponents/CustomPagePayPal"
-import RichText from "@/components/RichTextComponents/RichText"
-import { searchEntries } from "@/lib/contentful"
-import { Metadata, ResolvingMetadata } from "next"
+
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
+import { getCustomPayment } from "@/sanity/queries/CustomPayment/CustomPayment"
+import BlockContent from "@/components/BlockContent/BlockContent"
 
 export async function generateMetadata({
   params,
@@ -55,16 +55,14 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData] = await Promise.all([
+  const [structuredData, customPayment] = await Promise.all([
     getStructuredData("Custom Payment"),
+    getCustomPayment(),
   ])
-  const pageLayout = await searchEntries("pageLayout", {
-    "fields.page": "Custom Payment",
-    locale: locale,
-  })
+
   return (
     <main>
       {structuredData?.seo?.structuredData[locale] && (
@@ -76,11 +74,12 @@ export default async function Page({
         />
       )}
       <HeroComponent
-        heroImage={`https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`}
+        heroImage={customPayment.heroImage.asset.url}
+        alt={customPayment.heroImage.alt}
       />
       <div className="mt-[45vh] md:mt-[40vh] lg:mt-[65vh]" />
       <div className="py-20 lg:pt-12">
-        <RichText context={pageLayout.items[0].fields.paragraph1} />
+        <BlockContent content={customPayment.paragraph1} locale={locale} />
         <CustomPagePayPal />
       </div>
     </main>
