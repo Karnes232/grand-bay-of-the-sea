@@ -51,13 +51,13 @@ export async function generateMetadata(
   // }
 
   return {
-    title: pageSeo.seo.meta[locale].title,
-    description: pageSeo.seo.meta[locale].description,
-    keywords: pageSeo.seo.meta[locale].keywords.join(", "),
+    title: pageSeo.seo.meta[locale].title || "",
+    description: pageSeo.seo.meta[locale].description || "",
+    keywords: pageSeo.seo.meta[locale].keywords.join(", ") || "",
     openGraph: {
-      title: pageSeo.seo.openGraph[locale].title,
-      description: pageSeo.seo.openGraph[locale].description,
-      images: pageSeo.seo.openGraph.image.url,
+      title: pageSeo.seo.openGraph[locale].title || "",
+      description: pageSeo.seo.openGraph[locale].description || "",
+      images: pageSeo.seo.openGraph.image.url || "",
       type: "website",
       url: canonicalUrl,
     },
