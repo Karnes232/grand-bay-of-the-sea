@@ -10,6 +10,7 @@ import { Resend } from "resend"
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function sendConfirmationEmail(bookingData) {
+  console.log(bookingData)
   try {
     // console.log("SMTP User exists:", !!process.env.SMTP_USER)
     // console.log("SMTP Password exists:", !!process.env.SMTP_PASSWORD)
@@ -69,6 +70,7 @@ export async function sendConfirmationEmail(bookingData) {
       subject: "Grand Bay of the Sea",
       html: finalHtml,
     })
+    console.log(result)
     // Return success response instead of using res.status()
     return { success: true, message: "Email sent successfully", data: result }
   } catch (error) {
