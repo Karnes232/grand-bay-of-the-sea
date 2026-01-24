@@ -7,7 +7,7 @@ export function generateHreflangUrls(path: string, locale: string) {
   // Generate URLs for each locale
   const urls = {
     en: `${baseUrl}/${cleanPath}`,
-    es: `${baseUrl}/es/${cleanPath}`,
+    es: cleanPath ? `${baseUrl}/es/${cleanPath}` : `${baseUrl}/es`,
     "x-default": `${baseUrl}/${cleanPath}`,
   }
 

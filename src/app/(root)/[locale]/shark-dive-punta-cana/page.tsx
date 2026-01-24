@@ -46,7 +46,7 @@ export async function generateMetadata(
       follow: !pageSeo.seo.noFollow,
     },
     ...(canonicalUrl && { canonical: canonicalUrl }),
-    alternates: getHreflangAlternates("photo-gallery", locale),
+    alternates: getHreflangAlternates("shark-dive-punta-cana", locale),
     // other: {
     //   "Cache-Control":
     //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
