@@ -114,6 +114,7 @@ export default async function RootLayout({
       <GoogleAnalytics gaId="G-JDL6KCYRYD" />
       <head>
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="lz4+RbNFN0cfKi0THRMTNw" async></script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
