@@ -23,8 +23,8 @@ const SelectionComponent = ({
   }
 
   return (
-    <div className="w-full h-[115vh] md:h-[60vh] lg:h-[75vh] my-5">
-      <div className="relative h-[115vh] md:h-[60vh] lg:h-[75vh] [clip-path:polygon(0%_5vh,100%_0%,100%_110vh,0%_100%)] md:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_70vh,0%_100%)]">
+    <div className="w-full h-[150vh] md:h-[75vh] lg:h-[85vh] xl:h-[75vh] my-5">
+      <div className="relative h-[150vh] md:h-[75vh] lg:h-[85vh] xl:h-[75vh] [clip-path:polygon(0%_5vh,100%_0%,100%_145vh,0%_100%)] md:[clip-path:polygon(0%_5vh,100%_0%,100%_70vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_80vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_70vh,0%_100%)]">
         {/* Background Image */}
         <Image
           src={secondaryHeroImage}
