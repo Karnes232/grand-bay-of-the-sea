@@ -12,6 +12,8 @@ import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSectionLinks } from "@/sanity/queries/Scuba-Diving-Punta-Cana/SectionLinks"
 import { getHomePage } from "@/sanity/queries/HomePage/HomePage"
 import BlockContent from "@/components/BlockContent/BlockContent"
+import { getFaqs } from "@/sanity/queries/Faqs/Faqs"
+import Faqs from "@/components/FaqsComponent/Faqs"
 
 const CloudinaryBackgroundVideo = dynamicImport(
   () =>
@@ -86,10 +88,11 @@ export default async function Home({
 }) {
   const { locale } = await params
 
-  const [structuredData, sectionLinks, homePage] = await Promise.all([
+  const [structuredData, sectionLinks, homePage, faqs] = await Promise.all([
     getStructuredData("Index"),
     getSectionLinks(),
     getHomePage(),
+    getFaqs("Home"),
   ])
 
   // let pageLayout
@@ -193,6 +196,11 @@ export default async function Home({
         />
         <DivingOrganizations />
         <BlockContent content={homePage.paragraph3} locale={locale} />
+        <Faqs
+          faqs={faqs.faqs}
+          structuredData={faqs.structuredData}
+          locale={locale}
+        />
         {tertiaryHeroImageDetails.url && (
           <BackgroundImage image={tertiaryHeroImageDetails.url} />
         )}

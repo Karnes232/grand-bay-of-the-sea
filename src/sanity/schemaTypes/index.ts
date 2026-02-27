@@ -61,6 +61,10 @@ import IndividualCourse from "./courses/IndividualCourse"
 //Custom Payment
 import CustomPayment from "./CustomPayment/CustomPayment"
 
+//FAQs
+import Faqs from "./Faqs/Faqs"
+import FaqItem from "./Faqs/FaqItem"
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     //Localized
@@ -122,5 +126,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     //Custom Payment
     CustomPayment,
+
+    //FAQs
+    Faqs,
+    FaqItem,
   ],
 }

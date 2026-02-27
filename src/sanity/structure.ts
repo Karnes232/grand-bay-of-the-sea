@@ -253,4 +253,18 @@ export const structure: StructureResolver = S =>
             .title("Custom Payment")
             .documentId("customPayment"),
         ),
+      S.listItem().title("FAQs").child(
+        S.documentList()
+          .schemaType("faqs")
+          .title("FAQs")
+          .filter("_type == 'faqs'"),
+        // S.listItem()
+        //   .title("FAQ Items")
+        //   .child(
+        //     S.document()
+        //       .schemaType("faqItem")
+        //       .title("FAQ Items")
+        //       .filter("_type == 'faqItem'"),
+        //   ),
+      ),
     ])
