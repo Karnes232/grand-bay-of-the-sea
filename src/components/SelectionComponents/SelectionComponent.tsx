@@ -32,7 +32,7 @@ const SelectionComponent = ({
           fill
           className="object-cover object-[75%_70%] xl:object-[75%_50%]"
           priority
-          quality={75}
+          quality={75} 
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/50" />
