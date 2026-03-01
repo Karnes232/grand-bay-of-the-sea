@@ -20,12 +20,11 @@ const TextComponentHeading = ({
   return (
     <div className="relative">
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 1 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{
-          duration: 3,
-          delay: 0.3,
+          duration: 0.3,
         }}
         className=""
       >
@@ -67,7 +66,9 @@ const TextComponentHeading = ({
         {headingNumber === "h6" && (
           <h6
             className={`text-lg font-semibold mb-5 ${HeadingClassName} md:text-xl`}
-          ></h6>
+          >
+            {heading}
+          </h6>
         )}
       </motion.div>
     </div>

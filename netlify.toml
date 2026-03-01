@@ -28,6 +28,17 @@
   status = 200
   force = true
 
+# Force correct MIME types for Next.js static assets (fixes CSS/JS served as text/plain)
+[[headers]]
+  for = "/_next/static/css/*"
+  [headers.values]
+    Content-Type = "text/css"
+
+[[headers]]
+  for = "/_next/static/chunks/*"
+  [headers.values]
+    Content-Type = "application/javascript"
+
 # Cache headers for better performance
 [[headers]]
   for = "/messages/*.json"
