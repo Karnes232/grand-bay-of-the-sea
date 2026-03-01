@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  # Publish directory is set by @netlify/plugin-nextjs; do not override
+  publish = ".next"
 
 # i18n redirects for proper language handling
 [[redirects]]
