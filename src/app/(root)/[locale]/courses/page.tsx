@@ -15,8 +15,8 @@ import BlockContent from "@/components/BlockContent/BlockContent"
 import { getIndividualCoursesCards } from "@/sanity/queries/Courses/IndividualCourses"
 
 // OPTION 1: Explicitly force static rendering for this page
-export const dynamic = "force-static"
-
+// export const dynamic = "force-static"
+export const dynamic = "force-dynamic";
 export async function generateMetadata({
   params,
 }: {
