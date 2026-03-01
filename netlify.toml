@@ -1,8 +1,14 @@
 [build]
   command = "npm run build"
-  publish = ".next"
 
-# i18n redirects for proper language handling
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NEXT_SHARP_PATH = "./node_modules/sharp"
+
+# i18n redirects
 [[redirects]]
   from = "/"
   to = "/en"
@@ -19,41 +25,3 @@
   from = "/"
   to = "/en"
   status = 302
-
-# Image optimization redirects
-[[redirects]]
-  from = '/_next/image/*'
-  query = { q = ':quality', url = ':url', w = ':width' }
-  to = '/.netlify/images?url=:url&w=:width&q=:quality'
-  status = 200
-  force = true
-
-# Force correct MIME types for Next.js static assets (fixes CSS/JS served as text/plain)
-[[headers]]
-  for = "/_next/static/css/*"
-  [headers.values]
-    Content-Type = "text/css"
-
-[[headers]]
-  for = "/_next/static/chunks/*"
-  [headers.values]
-    Content-Type = "application/javascript"
-
-# Cache headers for better performance
-[[headers]]
-  for = "/messages/*.json"
-  [headers.values]
-    Cache-Control = "public, max-age=3600, s-maxage=86400"
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
-[build.environment]
-  NEXT_SHARP_PATH = "./node_modules/sharp"

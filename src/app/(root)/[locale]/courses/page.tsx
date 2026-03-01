@@ -133,17 +133,17 @@ export default async function Page({
           />
         )}
         <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-        {/* <BlockContent content={coursesMainPage.paragraph1} locale={locale} /> */}
+        <BlockContent content={coursesMainPage.paragraph1} locale={locale} />
         <CloudinaryBackgroundVideo
           className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
           videoId={"scubaHero_wzvqdg"}
         />
-        {/* <BlockContent content={coursesMainPage.paragraph2} locale={locale} /> */}
+        <BlockContent content={coursesMainPage.paragraph2} locale={locale} />
         <CourseCards
           locale={locale}
           individualBeginnerCoursesCards={individualBeginnerCoursesCards}
         />
-        {/* <BlockContent content={coursesMainPage.paragraph3} locale={locale} /> */}
+        <BlockContent content={coursesMainPage.paragraph3} locale={locale} />
         <AdvancedCourseCards
           individualAdvancedCoursesCards={individualAdvancedCoursesCards}
           locale={locale}
