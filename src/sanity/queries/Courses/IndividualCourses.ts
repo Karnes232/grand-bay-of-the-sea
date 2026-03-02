@@ -215,21 +215,7 @@ export interface IndividualCourse {
     en: string
     es: string
   }
-  faqs?: {
-    _key: string
-    question: {
-      en: string
-      es: string
-    }
-    answer: {
-      en: any[]
-      es: any[]
-    }
-  }[]
-  structuredData?: {
-    en: string
-    es: string
-  }
+
 }
 
 export const individualCourseQuery = `*[_type == "individualCourse" && slug.current == $slug][0] {
@@ -287,21 +273,6 @@ export const individualCourseQuery = `*[_type == "individualCourse" && slug.curr
     en,
     es
   },
-  faqs {
-    _key,
-    question {
-      en,
-      es
-    },
-    answer {
-      en,
-      es
-    }
-  }[],
-  structuredData {
-    en,
-    es
-  }
 }`
 
 export const getIndividualCourse = async (
