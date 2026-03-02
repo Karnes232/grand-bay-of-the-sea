@@ -13,10 +13,11 @@ import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getCoursesMainPage } from "@/sanity/queries/Courses/CoursesMainPage"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import { getIndividualCoursesCards } from "@/sanity/queries/Courses/IndividualCourses"
-
+import { getFaqs } from "@/sanity/queries/Faqs/Faqs"
+import Faqs from "@/components/FaqsComponent/Faqs"
 // OPTION 1: Explicitly force static rendering for this page
 // export const dynamic = "force-static"
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"
 export async function generateMetadata({
   params,
 }: {
@@ -74,11 +75,13 @@ export default async function Page({
     coursesMainPage,
     individualBeginnerCoursesCards,
     individualAdvancedCoursesCards,
+    faqs,
   ] = await Promise.all([
     getStructuredData("Courses"),
     getCoursesMainPage(),
     getIndividualCoursesCards("beginner"),
     getIndividualCoursesCards("advanced"),
+    getFaqs("Courses"),
   ])
 
   if (!coursesMainPage) {
@@ -89,6 +92,8 @@ export default async function Page({
       </main>
     )
   }
+
+  console.log(faqs)
 
   // Helper function to safely get image URL and details, including blurDataURL
   const getHeroImageDetails = async () => {
@@ -149,6 +154,7 @@ export default async function Page({
           locale={locale}
         />
         {/* <SSIBanner /> */}
+        <Faqs faqs={faqs.faqs} structuredData={faqs.structuredData} locale={locale} />
         <PadiBanner />
       </main>
     </>

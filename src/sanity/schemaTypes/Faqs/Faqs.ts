@@ -12,7 +12,10 @@ export default defineType({
       title: "Page",
       type: "string",
       options: {
-        list: [{ title: "Home", value: "Home" }],
+        list: [
+          { title: "Home", value: "Home" },
+          { title: "Courses", value: "Courses"},
+        ],
       },
       validation: Rule => Rule.required(),
     }),
