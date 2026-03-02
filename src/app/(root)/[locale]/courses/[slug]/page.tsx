@@ -144,14 +144,13 @@ export default async function Page({
               </div>
             </div>
           )}
-   {/*       {individualCourse.faqs && individualCourse.structuredData && (
+          {individualCourse.faqs?.length ? (
             <Faqs
               faqs={individualCourse.faqs}
-              structuredData={individualCourse.structuredData}
+              structuredData={individualCourse.structuredData ?? { en: "", es: "" }}
               locale={locale}
             />
-          )}
-          */}
+          ) : null}
         </div>
       </main>
     </>
