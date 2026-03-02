@@ -10,6 +10,7 @@ import {
 import BlockContent from "@/components/BlockContent/BlockContent"
 import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
 import SanityCourseOverview from "@/components/CourseComponents/SanityCourseOverview"
+import Faqs from "@/components/FaqsComponent/Faqs"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string; slug: string }> },
@@ -64,7 +65,6 @@ export default async function Page({
     getIndividualCourseStructuredData(slug),
     getIndividualCourse(slug),
   ])
-
   return (
     <>
       <main>
@@ -143,6 +143,13 @@ export default async function Page({
                 )}
               </div>
             </div>
+          )}
+          {individualCourse.faqs && individualCourse.structuredData && (
+            <Faqs
+              faqs={individualCourse.faqs}
+              structuredData={individualCourse.structuredData}
+              locale={locale}
+            />
           )}
         </div>
       </main>

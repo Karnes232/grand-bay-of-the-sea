@@ -154,7 +154,11 @@ export default async function Page({
           locale={locale}
         />
         {/* <SSIBanner /> */}
-        <Faqs faqs={faqs.faqs} structuredData={faqs.structuredData} locale={locale} />
+        <Faqs
+          faqs={faqs.faqs}
+          structuredData={faqs.structuredData}
+          locale={locale}
+        />
         <PadiBanner />
       </main>
     </>
