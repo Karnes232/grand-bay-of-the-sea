@@ -10,6 +10,7 @@ import { getPlaiceholder } from "plaiceholder" // Import getPlaiceholder
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSharkDivePrice, getSites } from "@/sanity/queries/Sites/sites"
 import BlockContent from "@/components/BlockContent/BlockContent"
+import Faqs from "@/components/FaqsComponent/Faqs"
 
 // Add this line to explicitly force static rendering
 export const dynamic = "force-static"
@@ -80,7 +81,7 @@ export default async function Page({
     return Buffer.from(await res.arrayBuffer())
   })
   const { base64: heroImageBlurDataURL } = await getPlaiceholder(buffer)
-
+  console.log(sitesLayout)
   return (
     <main>
       {structuredData?.seo?.structuredData[locale] && (
@@ -108,7 +109,15 @@ export default async function Page({
         </div>
       </div>
       <DiveSites locale={locale} />
-
+      {sitesLayout.faqs?.length ? (
+        <div className="mb-10">
+          <Faqs
+            faqs={sitesLayout.faqs}
+            structuredData={sitesLayout.structuredData ?? { en: "", es: "" }}
+            locale={locale}
+          />
+        </div>
+      ) : null}
       <CloudinaryBackgroundVideo
         videoId={"greyshark_aowggg"}
         className={`[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}

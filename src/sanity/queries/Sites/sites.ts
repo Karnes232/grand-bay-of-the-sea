@@ -28,6 +28,15 @@ export interface Sites {
     en: string
     es: string
   }
+  faqs?: {
+    _key: string
+    question: { en: string; es: string }
+    answer: { en: any[]; es: any[] }
+  }[]
+  structuredData?: {
+    en: string
+    es: string
+  }
 }
 
 export const sitesQuery = `*[_type == "sites"][0] {
@@ -55,6 +64,21 @@ export const sitesQuery = `*[_type == "sites"][0] {
   fourTankPackage,
   depositPrice,
   duration {
+    en,
+    es
+  },
+  faqs[] {
+    _key,
+    question {
+      en,
+      es
+    },
+    answer {
+      en,
+      es
+    }
+  },
+  structuredData {
     en,
     es
   }

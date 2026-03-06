@@ -145,11 +145,15 @@ export default async function Page({
             </div>
           )}
           {individualCourse.faqs?.length ? (
-            <Faqs
-              faqs={individualCourse.faqs}
-              structuredData={individualCourse.structuredData ?? { en: "", es: "" }}
-              locale={locale}
-            />
+            <div className="mb-10">
+              <Faqs
+                faqs={individualCourse.faqs}
+                structuredData={
+                  individualCourse.structuredData ?? { en: "", es: "" }
+                }
+                locale={locale}
+              />
+            </div>
           ) : null}
         </div>
       </main>
