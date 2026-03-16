@@ -3,11 +3,11 @@
 import React from "react"
 import Link from "next/link"
 import { useLocale, useTranslations } from "next-intl"
-import Script from "next/script";
-import Image from "next/image";
+import Script from "next/script"
+import Image from "next/image"
 const Copyright = () => {
   const t = useTranslations("Footer")
-  const locale = useLocale();
+  const locale = useLocale()
   const jsonLd =
     locale === "es"
       ? {
@@ -33,7 +33,7 @@ const Copyright = () => {
             name: "DR Web Studio",
             url: "https://www.dr-webstudio.com/en",
           },
-        };
+        }
   return (
     <div className="flex flex-col justify-between py-4 md:items-center md:mx-auto w-full">
       <div className="flex-1"></div>
@@ -60,6 +60,7 @@ const Copyright = () => {
         <span className="hidden sm:inline"> —</span> {t("developedBy")}.
       </p>
       <Script
+        id="dr-webstudio-builtby-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd),
