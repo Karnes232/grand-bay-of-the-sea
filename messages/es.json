@@ -133,7 +133,8 @@
     "feet": "pies"
   },
   "Footer": {
-    "builtBy": "Desarrollado por"
+    "builtBy": "Desarrollado por",
+     "developedBy": "Desarrollo Web en República Dominicana"
   },
   "SelectionComponent": {
     "learnToDiveWithExperts": "Aprende a Bucear con Expertos",

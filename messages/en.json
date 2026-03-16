@@ -133,7 +133,8 @@
     "feet": "feet"
   },
   "Footer": {
-    "builtBy": "Built by"
+    "builtBy": "Built by",
+    "developedBy": "Web Development in the Dominican Republic"
   },
   "SelectionComponent": {
     "learnToDiveWithExperts": "Learn to Dive with Experts",
