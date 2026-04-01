@@ -32,31 +32,24 @@ export async function generateMetadata({
     return {}
   }
 
-  let canonicalUrl
-  if (locale === "en") {
-    canonicalUrl = "https://www.grandbay-puntacana.com/courses"
-  } else {
-    canonicalUrl = "https://www.grandbay-puntacana.com/es/courses"
-  }
+  const alternates = getHreflangAlternates("courses", locale)
 
   return {
     title: pageSeo.seo.meta[locale].title,
     description: pageSeo.seo.meta[locale].description,
     keywords: pageSeo.seo.meta[locale].keywords.join(", "),
-    url: canonicalUrl,
     openGraph: {
       title: pageSeo.seo.openGraph[locale].title,
       description: pageSeo.seo.openGraph[locale].description,
       images: pageSeo.seo.openGraph.image.url,
       type: "website",
-      url: canonicalUrl,
+      url: alternates.canonical,
     },
     robots: {
       index: !pageSeo.seo.noIndex,
       follow: !pageSeo.seo.noFollow,
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
-    alternates: getHreflangAlternates("courses", locale),
+    alternates,
     // other: {
     //   "Cache-Control":
     //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",

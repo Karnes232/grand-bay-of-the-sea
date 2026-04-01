@@ -25,12 +25,13 @@ export async function generateMetadata(
     return {}
   }
 
-  let canonicalUrl
-  if (locale === "en") {
-    canonicalUrl = `https://www.grandbay-puntacana.com/blog/${category}/${slug}`
-  } else {
-    canonicalUrl = `https://www.grandbay-puntacana.com/es/blog/${category}/${slug}`
-  }
+  const alternates = getHreflangAlternates(`blog/${category}/${slug}`, locale)
+  const publishedTime = pageSeo.publishDate
+    ? new Date(pageSeo.publishDate).toISOString()
+    : undefined
+  const modifiedTime = pageSeo._updatedAt
+    ? new Date(pageSeo._updatedAt).toISOString()
+    : undefined
 
   // const seoSearchResults = await searchEntries(
   //   "blogPost",
@@ -50,6 +51,8 @@ export async function generateMetadata(
   //   notFound()
   // }
 
+  const ogImage = pageSeo.seo.openGraph.image.url || ""
+
   return {
     title: pageSeo.seo.meta[locale].title || "",
     description: pageSeo.seo.meta[locale].description || "",
@@ -57,16 +60,25 @@ export async function generateMetadata(
     openGraph: {
       title: pageSeo.seo.openGraph[locale].title || "",
       description: pageSeo.seo.openGraph[locale].description || "",
-      images: pageSeo.seo.openGraph.image.url || "",
-      type: "website",
-      url: canonicalUrl,
+      images: ogImage,
+      type: "article",
+      url: alternates.canonical,
+      ...(publishedTime ? { publishedTime } : {}),
+      ...(modifiedTime ? { modifiedTime } : {}),
     },
     robots: {
       index: !pageSeo.seo.noIndex,
       follow: !pageSeo.seo.noFollow,
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
-    alternates: getHreflangAlternates(`blog/${category}/${slug}`, locale),
+    twitter: {
+      card: "summary_large_image",
+      site: "@GrandBayOfTheS1",
+      creator: "@GrandBayOfTheS1",
+      title: pageSeo.seo.openGraph[locale].title || "",
+      description: pageSeo.seo.openGraph[locale].description || "",
+      ...(ogImage ? { images: [ogImage] } : {}),
+    },
+    alternates,
     // other: {
     //   "Cache-Control":
     //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",

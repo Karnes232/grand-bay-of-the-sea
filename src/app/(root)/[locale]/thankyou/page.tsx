@@ -4,7 +4,6 @@ import ThankYou from "@/components/ContactForm/ThankYou"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import { searchEntries } from "@/lib/contentful"
-import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo } from "@/sanity/queries/SEO/seo"
 
@@ -16,37 +15,30 @@ export async function generateMetadata({
   }>
 }) {
   const { locale } = await params
-  const pageSeo = await getPageSeo("Contact")
+  const pageSeo = await getPageSeo("Thank You")
 
   if (!pageSeo) {
     return {}
   }
 
-  let canonicalUrl
-  if (locale === "en") {
-    canonicalUrl = "https://www.grandbay-puntacana.com/thankyou"
-  } else {
-    canonicalUrl = "https://www.grandbay-puntacana.com/es/thankyou"
-  }
+  const alternates = getHreflangAlternates("thankyou", locale)
 
   return {
     title: pageSeo.seo.meta[locale].title,
     description: pageSeo.seo.meta[locale].description,
     keywords: pageSeo.seo.meta[locale].keywords.join(", "),
-    url: canonicalUrl,
     openGraph: {
       title: pageSeo.seo.openGraph[locale].title,
       description: pageSeo.seo.openGraph[locale].description,
       images: pageSeo.seo.openGraph.image.url,
       type: "website",
-      url: canonicalUrl,
+      url: alternates.canonical,
     },
     robots: {
       index: !pageSeo.seo.noIndex,
       follow: !pageSeo.seo.noFollow,
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
-    alternates: getHreflangAlternates("thankyou", locale),
+    alternates,
     // other: {
     //   "Cache-Control":
     //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",

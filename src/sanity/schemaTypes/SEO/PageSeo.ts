@@ -21,6 +21,7 @@ export default defineType({
           },
           { title: "Fishing Punta Cana", value: "Fishing Punta Cana" },
           { title: "Contact", value: "Contact" },
+          { title: "Thank You", value: "Thank You" },
           { title: "Photo Gallery", value: "Photo Gallery" },
           { title: "Blog", value: "Blog" },
           { title: "Sites", value: "Sites" },

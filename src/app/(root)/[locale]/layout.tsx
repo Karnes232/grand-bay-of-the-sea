@@ -35,6 +35,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@GrandBayOfTheS1",
+    creator: "@GrandBayOfTheS1",
+  },
   robots: {
     index: true,
     follow: true,
@@ -56,13 +61,6 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "QNQfgD0iQIbuHkuZ5fb8hKEYbV6iCN_TvIyRdnAu7yg",
-    // yandex: ["YOUR_DATA"],
-    other: {
-      "google-site-verification": [
-        "_73Leg9k9ryZXyP10IC8Nb2dxu3mfjpQG_zxN69KQCs",
-      ],
-      // "facebook-domain-verification": ["YOUR_DATA"],
-    },
   },
   icons: {
     icon: [

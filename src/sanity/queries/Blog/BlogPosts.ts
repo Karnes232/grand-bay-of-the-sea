@@ -144,6 +144,8 @@ export async function getIndividualBlogPost(slug: string): Promise<BlogPost> {
 }
 
 export interface IndividualBlogPostSEO {
+  publishDate?: string
+  _updatedAt?: string
   seo: {
     meta: {
       en: {
@@ -179,7 +181,9 @@ export interface IndividualBlogPostSEO {
 }
 
 export const individualBlogPostSEOQuery = `*[_type == "blogPost" && slug.current == $slug][0] {
- seo {
+  publishDate,
+  _updatedAt,
+  seo {
         meta {
     en {
       title,

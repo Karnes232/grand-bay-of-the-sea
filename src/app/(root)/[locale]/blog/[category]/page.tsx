@@ -23,12 +23,7 @@ export async function generateMetadata(
     return {}
   }
 
-  let canonicalUrl
-  if (locale === "en") {
-    canonicalUrl = `https://www.grandbay-puntacana.com/blog/${category}`
-  } else {
-    canonicalUrl = `https://www.grandbay-puntacana.com/es/blog/${category}`
-  }
+  const alternates = getHreflangAlternates(`blog/${category}`, locale)
 
   // const seoSearchResults = await searchEntries(
   //   "blogCategory",
@@ -56,14 +51,13 @@ export async function generateMetadata(
       description: pageSeo.seo.openGraph[locale].description,
       images: pageSeo.seo.openGraph.image.url,
       type: "website",
-      url: canonicalUrl,
+      url: alternates.canonical,
     },
     robots: {
       index: !pageSeo.seo.noIndex,
       follow: !pageSeo.seo.noFollow,
     },
-    ...(canonicalUrl && { canonical: canonicalUrl }),
-    alternates: getHreflangAlternates(`blog/${category}`, locale),
+    alternates,
     // other: {
     //   "Cache-Control":
     //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",

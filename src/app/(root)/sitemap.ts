@@ -244,18 +244,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: "https://www.grandbay-puntacana.com/photo-gallery",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/es/photo-gallery",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
       url: "https://www.grandbay-puntacana.com/liveaboard-dominican-republic",
       lastModified: new Date(),
       changeFrequency: "weekly",
@@ -299,18 +287,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: "https://www.grandbay-puntacana.com/es/contact",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.5,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/thankyou",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.5,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/es/thankyou",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.5,
