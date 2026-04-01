@@ -47,7 +47,12 @@ const nextConfig = {
   },
   // Optimize bundle for better performance
   experimental: {
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: [
+      'lucide-react',
+      '@headlessui/react',
+      '@heroicons/react',
+      'react-icons',
+    ],
   },
 };
 

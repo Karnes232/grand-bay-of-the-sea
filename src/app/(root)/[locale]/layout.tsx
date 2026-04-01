@@ -3,29 +3,31 @@ import localFont from "next/font/local"
 import "../../globals.css"
 import Header from "@/components/layout/HeaderComponents/Header"
 import Footer from "@/components/layout/FooterComponents/Footer"
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google"
+import Script from "next/script"
+import { LazyGoogleTagManager } from "@/components/analytics/LazyGoogleTagManager"
+import { DeferredClientWidgets } from "@/components/layout/DeferredClientWidgets"
 import { generateStructuredData } from "@/components/StructuredData/StructuredData"
-import { ServiceWorkerCleanup } from "@/components/layout/ServiceWorkerCleanup"
-import FloatingContactForm from "@/components/FloatingButtonComponents/FloatingContactForm"
 import { Crimson_Pro } from "next/font/google"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
+
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
   variable: "--font-geist-sans",
-  weight: "100 900",
+  weight: "400 700",
 })
 const geistMono = localFont({
   src: "../fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
-  weight: "100 900",
+  weight: "400 700",
 })
 
 const crimsonPro = Crimson_Pro({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-crimson-pro",
+  weight: ["400", "600", "700"],
 })
 
 export const metadata: Metadata = {
@@ -107,16 +109,14 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={`${crimsonPro.variable}`}>
-      <GoogleTagManager gtmId="GTM-KGLHKQW" />
-      <GoogleAnalytics gaId="G-6MJLJ90SSM" />
-      <GoogleAnalytics gaId="G-JDL6KCYRYD" />
       <head>
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="lz4+RbNFN0cfKi0THRMTNw"
-          async
-        ></script>
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link
+          rel="preconnect"
+          href="https://cdn.sanity.io"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -127,14 +127,19 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <LazyGoogleTagManager />
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="lz4+RbNFN0cfKi0THRMTNw"
+          strategy="lazyOnload"
+        />
         {" "}
         <NextIntlClientProvider
           locale={locale}
           messages={messages}
           key={locale}
         >
-          <FloatingContactForm />
-          <ServiceWorkerCleanup />
+          <DeferredClientWidgets />
           <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
             <Header />
             {children}

@@ -1,5 +1,6 @@
 import Image from "next/image"
 import React from "react"
+import LazyIframeWhenVisible from "@/components/performance/LazyIframeWhenVisible"
 
 const TrustBadges = () => {
   return (
@@ -19,13 +20,14 @@ const TrustBadges = () => {
           />
         </a>
       </div>
-      <iframe
+      <LazyIframeWhenVisible
         src="https://widgets.sociablekit.com/google-reviews/iframe/167263"
-        className="border-0"
+        className="h-[420px] w-full border-0"
         width="100%"
-        height="420"
-        title="google reviews"
-      ></iframe>
+        height={420}
+        title="Google reviews"
+        rootMargin="200px"
+      />
     </div>
   )
 }

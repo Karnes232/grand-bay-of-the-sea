@@ -1,6 +1,7 @@
 import React from "react"
 import Logo from "./Logo"
 import Nav from "./Nav"
+import "@/styles/header/header.css"
 
 const Header = () => {
   return (
