@@ -112,6 +112,12 @@ export default async function RootLayout({
       <head>
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://images.ctfassets.net" />
+        <link
+          rel="preconnect"
+          href="https://images.ctfassets.net"
+          crossOrigin="anonymous"
+        />
         <link
           rel="preconnect"
           href="https://cdn.sanity.io"

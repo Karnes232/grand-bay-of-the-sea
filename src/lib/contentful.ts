@@ -1,5 +1,6 @@
 import { Entry } from "contentful"
 import * as contentful from "contentful"
+import { unstable_cache } from "next/cache"
 
 const client = contentful.createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
@@ -92,3 +93,38 @@ export async function getAllEntrySlugsWithCategory(
     category: entry.fields.blogCategory,
   }))
 }
+
+export type CachedLayoutLogo = {
+  src: string
+  intrinsicWidth: number
+  intrinsicHeight: number
+} | null
+
+/** Cached so the header does not block streaming on every request. */
+export async function getCachedGrandBayLogoLayout(): Promise<CachedLayoutLogo> {
+  return getGrandBayLogoLayoutCached()
+}
+
+const getGrandBayLogoLayoutCached = unstable_cache(
+  async (): Promise<CachedLayoutLogo> => {
+    const searchResults = await searchEntries(
+      "layout",
+      {
+        "fields.companyName": "Grand Bay of the Sea",
+      },
+      ["fields.logo"],
+    )
+
+    const file = (searchResults.items[0] as any)?.fields?.logo?.fields?.file
+    if (!file?.url) return null
+
+    const rawUrl = file.url as string
+    const src = rawUrl.startsWith("http") ? rawUrl : `https:${rawUrl}`
+    const intrinsicWidth = file.details?.image?.width ?? 493
+    const intrinsicHeight = file.details?.image?.height ?? 427
+
+    return { src, intrinsicWidth, intrinsicHeight }
+  },
+  ["contentful-layout-logo-grand-bay-of-the-sea"],
+  { revalidate: 3600 },
+)
