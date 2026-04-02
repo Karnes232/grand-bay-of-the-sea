@@ -1,7 +1,5 @@
 import dynamicImport from "next/dynamic"
 
-import { searchEntries } from "@/lib/contentful"
-
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import { getHreflangAlternates } from "@/utils/hreflang"
 
@@ -112,46 +110,59 @@ export default async function Home({
     )
   }
 
-  const getFullImageDetails = async (field: any) => {
+  /** Tiny Sanity image for blur generation — avoids downloading full-res before LCP. */
+  const plaiceholderFetchUrl = (url: string) => {
+    if (!url.includes("cdn.sanity.io")) return url
+    const sep = url.includes("?") ? "&" : "?"
+    return `${url}${sep}w=64&h=64&fit=max&auto=format`
+  }
+
+  /** Only the LCP hero needs a blur hash; fetching + decoding other assets blocks first paint. */
+  const getFullImageDetails = async (
+    field: any,
+    options?: { includePlaiceholder?: boolean },
+  ) => {
     if (!field?.asset?.url) return {}
     const url = field.asset.url
     let base64 = ""
-    try {
-      const buffer = await fetch(url).then(async res =>
-        Buffer.from(await res.arrayBuffer()),
-      )
-      const { base64: plaiceholderBase64 } = await getPlaiceholder(buffer)
-      base64 = plaiceholderBase64
-    } catch (e) {
-      console.error("Error generating plaiceholder for image:", url, e)
-      // Continue without base64 if there's an error
+    if (options?.includePlaiceholder) {
+      try {
+        const buffer = await fetch(plaiceholderFetchUrl(url)).then(async res =>
+          Buffer.from(await res.arrayBuffer()),
+        )
+        const { base64: plaiceholderBase64 } = await getPlaiceholder(buffer)
+        base64 = plaiceholderBase64
+      } catch (e) {
+        console.error("Error generating plaiceholder for image:", url, e)
+      }
     }
 
     return {
-      url: url,
+      url,
       width: field.asset.metadata.dimensions.width,
       height: field.asset.metadata.dimensions.height,
       alt: field.alt || "",
-      base64: base64, // Pass base64 to HeroComponent
+      base64,
     }
   }
 
-  // Fetch Hero Image details and base64 at build time
   let heroImageDetails: any = {}
   let secondaryHeroImageDetails: any = {}
   let tertiaryHeroImageDetails: any = {}
 
   try {
-    heroImageDetails = await getFullImageDetails(homePage.heroImage)
-    secondaryHeroImageDetails = await getFullImageDetails(
-      homePage.secondaryHeroImage,
-    )
-    tertiaryHeroImageDetails = await getFullImageDetails(
-      homePage.tertiaryHeroImage,
-    )
+    ;[heroImageDetails, secondaryHeroImageDetails, tertiaryHeroImageDetails] =
+      await Promise.all([
+        getFullImageDetails(homePage.heroImage, { includePlaiceholder: true }),
+        getFullImageDetails(homePage.secondaryHeroImage, {
+          includePlaiceholder: false,
+        }),
+        getFullImageDetails(homePage.tertiaryHeroImage, {
+          includePlaiceholder: false,
+        }),
+      ])
   } catch (error) {
     console.error("Error processing images:", error)
-    // Continue with empty image details if there's an error
   }
 
   return (
