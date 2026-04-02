@@ -45,12 +45,13 @@
   [headers.values]
     Cache-Control = "public, max-age=3600, s-maxage=86400"
 
+# Do not set Cache-Control on "/*" — it overrides Next.js / Netlify ISR headers and
+# forces every HTML request to miss the edge cache (slow TTFB, bad LCP in lab tests).
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
-    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
