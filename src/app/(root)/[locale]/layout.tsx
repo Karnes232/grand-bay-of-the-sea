@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import localFont from "next/font/local"
+import { GeistMono } from "geist/font/mono"
+import { GeistSans } from "geist/font/sans"
 import "../../globals.css"
 import Header from "@/components/layout/HeaderComponents/Header"
 import Footer from "@/components/layout/FooterComponents/Footer"
@@ -12,22 +13,12 @@ import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
 
-const geistSans = localFont({
-  src: "../fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "400 700",
-})
-const geistMono = localFont({
-  src: "../fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "400 700",
-})
-
 const crimsonPro = Crimson_Pro({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-crimson-pro",
-  weight: ["400", "600", "700"],
+  // Only font-crimson usages: hero H1 font-bold (700), blog category default (400).
+  weight: ["400", "700"],
 })
 
 export const metadata: Metadata = {
@@ -131,7 +122,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
       >
         <LazyGoogleTagManager />
         <Script

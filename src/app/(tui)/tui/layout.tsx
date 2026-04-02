@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import localFont from "next/font/local"
+import { GeistMono } from "geist/font/mono"
+import { GeistSans } from "geist/font/sans"
 import "../../../app/globals.css"
 import TuiHeader from "@/components/layout/TuiLayout/TuiHeader"
 import TuiFooter from "@/components/layout/TuiLayout/TuiFooter"
@@ -7,17 +8,6 @@ import { ServiceWorkerCleanup } from "@/components/layout/ServiceWorkerCleanup"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
-
-const geistSans = localFont({
-  src: "../../(root)/fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-})
-const geistMono = localFont({
-  src: "../../(root)/fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.grandbay-puntacana.com"),
@@ -91,7 +81,7 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
       >
         <NextIntlClientProvider
           locale={locale}

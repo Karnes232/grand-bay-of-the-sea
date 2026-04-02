@@ -35,7 +35,7 @@ const HeroStaticComponent = ({
           className="object-cover object-[40%_50%] z-0 w-full h-full"
           priority={true}
           // Use a fixed quality, or derive from build env. Mobile/desktop check cannot be done statically.
-          quality={80}
+          quality={75}
           placeholder={blurDataURL ? "blur" : "empty"} // Use blurDataURL if provided, else empty
           blurDataURL={blurDataURL}
           sizes="100vw"
