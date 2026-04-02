@@ -1,0 +1,4 @@
+/* Popover position for react-tailwindcss-datepicker — loaded only with payment datepickers */
+div[class*="bottom-full"][class*="mb-2.5"][class*="translate-y"] {
+  transform: translateY(60px) !important;
+}

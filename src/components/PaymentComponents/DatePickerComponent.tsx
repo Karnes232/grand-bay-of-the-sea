@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl"
 import React, { useState, useEffect } from "react"
 import Datepicker, { DateRangeType } from "react-tailwindcss-datepicker"
+import "@/styles/datepicker-popover.css"
 
 const START_FROM = new Date()
 START_FROM.setMonth(START_FROM.getMonth())

@@ -2,7 +2,6 @@ import React, { Suspense } from "react"
 import Logo from "./Logo"
 import LogoSkeleton from "./LogoSkeleton"
 import Nav from "./Nav"
-import "@/styles/header/header.css"
 
 const Header = () => {
   return (

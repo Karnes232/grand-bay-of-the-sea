@@ -2,7 +2,6 @@
 
 import React from "react"
 import Link from "next/link"
-import "@/styles/header/header.css"
 import DropDownMenu from "./DropDownMenu"
 import { useTranslations } from "next-intl"
 
