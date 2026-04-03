@@ -29,46 +29,22 @@ const TextComponentHeading = ({
         className=""
       >
         {headingNumber === "h1" && (
-          <h1
-            className={`text-2xl font-semibold mb-5 ${HeadingClassName} md:text-4xl`}
-          >
-            {heading}
-          </h1>
+          <h1 className={`font-semibold ${HeadingClassName}`}>{heading}</h1>
         )}
         {headingNumber === "h2" && (
-          <h2
-            className={`text-2xl font-semibold mb-5 ${HeadingClassName} md:text-3xl`}
-          >
-            {heading}
-          </h2>
+          <h2 className={`font-semibold ${HeadingClassName}`}>{heading}</h2>
         )}
         {headingNumber === "h3" && (
-          <h3
-            className={`text-xl font-semibold mb-5 ${HeadingClassName} md:text-2xl`}
-          >
-            {heading}
-          </h3>
+          <h3 className={`font-semibold ${HeadingClassName}`}>{heading}</h3>
         )}
         {headingNumber === "h4" && (
-          <h4
-            className={`text-lg font-semibold mb-5 ${HeadingClassName} md:text-xl`}
-          >
-            {heading}
-          </h4>
+          <h4 className={`font-semibold ${HeadingClassName}`}>{heading}</h4>
         )}
         {headingNumber === "h5" && (
-          <h5
-            className={`text-lg font-semibold mb-5 ${HeadingClassName} md:text-xl`}
-          >
-            {heading}
-          </h5>
+          <h5 className={`font-semibold ${HeadingClassName}`}>{heading}</h5>
         )}
         {headingNumber === "h6" && (
-          <h6
-            className={`text-lg font-semibold mb-5 ${HeadingClassName} md:text-xl`}
-          >
-            {heading}
-          </h6>
+          <h6 className={`font-semibold ${HeadingClassName}`}>{heading}</h6>
         )}
       </motion.div>
     </div>
