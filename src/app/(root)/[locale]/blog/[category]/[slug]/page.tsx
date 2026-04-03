@@ -12,6 +12,7 @@ import {
   getIndividualBlogPostSEO,
 } from "@/sanity/queries/Blog/BlogPosts"
 import SanityBlogBody from "@/components/BlogComponents/SanityBlogBody"
+import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
 
 export async function generateMetadata(
   {
@@ -51,7 +52,15 @@ export async function generateMetadata(
   //   notFound()
   // }
 
-  const ogImage = pageSeo.seo.openGraph.image.url || ""
+  const rawOg = pageSeo.seo.openGraph.image.url || ""
+  const ogImage = rawOg
+    ? sanityCdnUrlWithParams(rawOg, {
+        w: 1200,
+        h: 630,
+        fit: "crop",
+        q: 80,
+      })
+    : ""
 
   return {
     title: pageSeo.seo.meta[locale].title || "",
@@ -60,7 +69,18 @@ export async function generateMetadata(
     openGraph: {
       title: pageSeo.seo.openGraph[locale].title || "",
       description: pageSeo.seo.openGraph[locale].description || "",
-      images: ogImage,
+      ...(ogImage
+        ? {
+            images: [
+              {
+                url: ogImage,
+                width: 1200,
+                height: 630,
+                alt: pageSeo.seo.openGraph.image.alt,
+              },
+            ],
+          }
+        : {}),
       type: "article",
       url: alternates.canonical,
       ...(publishedTime ? { publishedTime } : {}),

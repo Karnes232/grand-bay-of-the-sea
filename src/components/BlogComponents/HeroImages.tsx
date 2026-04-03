@@ -1,13 +1,18 @@
 import React from "react"
 import HeroComponent from "../HeroComponent/HeroComponent"
 import PhotoGrid from "./PhotoGrid"
+import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
 
 const HeroImages = ({ backgroundImages }: { backgroundImages: any[] }) => {
+  const heroUrl = sanityCdnUrlWithParams(backgroundImages[0].asset.url, {
+    w: 1920,
+    q: 80,
+  })
   return (
     <>
       <div className="md:hidden">
         <HeroComponent
-          heroImage={backgroundImages[0].asset.url}
+          heroImage={heroUrl}
           // title={blogCategory.items[0].fields.blogCategory as string}
         />
         <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />

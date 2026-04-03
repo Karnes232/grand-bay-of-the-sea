@@ -2,6 +2,7 @@ import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
+import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
 
 const BlogPostCard = ({ blog, locale }: { blog: any; locale: string }) => {
   const t = useTranslations("Blog")
@@ -14,7 +15,10 @@ const BlogPostCard = ({ blog, locale }: { blog: any; locale: string }) => {
       <div className="bg-white w-80 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
         <div className="relative h-48">
           <Image
-            src={blog.backgroundImages.asset.url}
+            src={sanityCdnUrlWithParams(blog.backgroundImages.asset.url, {
+              w: 640,
+              q: 75,
+            })}
             alt={blog.backgroundImages.alt}
             fill
             className="object-cover"

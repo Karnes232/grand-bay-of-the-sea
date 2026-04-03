@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
+import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
 
 const PhotoGrid = ({ backgroundImages }: { backgroundImages: any[] }) => {
   const [imageCount, setImageCount] = useState(3)
@@ -49,6 +50,7 @@ const PhotoGrid = ({ backgroundImages }: { backgroundImages: any[] }) => {
           const originalHeight = image.asset.metadata.dimensions.height
           const aspectRatio = originalWidth / originalHeight
           const calculatedWidth = targetHeight * aspectRatio // Dynamic height * aspect ratio
+          const srcW = Math.min(Math.ceil(calculatedWidth * 2), 1200)
 
           return (
             <div
@@ -63,7 +65,10 @@ const PhotoGrid = ({ backgroundImages }: { backgroundImages: any[] }) => {
             >
               <Image
                 fill
-                src={image.asset.url}
+                src={sanityCdnUrlWithParams(image.asset.url, {
+                  w: srcW,
+                  q: 75,
+                })}
                 alt={image.alt}
                 sizes={`${Math.min(calculatedWidth, 600)}px`}
                 quality={75}

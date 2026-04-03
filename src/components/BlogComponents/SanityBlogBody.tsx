@@ -1,8 +1,7 @@
-import { client } from "@/sanity/lib/client"
 import { PortableText } from "@portabletext/react"
-import imageUrlBuilder from "@sanity/image-url"
 
 import Image from "next/image"
+import { urlFor } from "@/sanity/lib/image"
 import TextComponentParagraph from "../BlockContent/TextComponentParagraph"
 import TextComponentHeading from "../BlockContent/TextComponentHeading"
 import TextComponentList from "../BlockContent/TextComponentList"
@@ -17,13 +16,10 @@ interface Props {
   content: LocaleBlockContent
   locale?: "en" | "es"
 }
-const builder = imageUrlBuilder(client)
 const components = {
   types: {
     image: ({ value }: any) => {
-      const imageUrl = builder.image(value).url()
-
-      // Sanity images usually need to be accessed via .asset.url
+      const imageUrl = urlFor(value).width(1200).quality(75).auto("format").url()
 
       return (
         <figure className="my-8">
@@ -32,6 +28,7 @@ const components = {
             alt={value.alt || ""}
             width={1000}
             height={1000}
+            sizes="(max-width: 1280px) 100vw, 896px"
             className="w-full rounded-lg"
           />
           {/* <img

@@ -3,6 +3,7 @@ import Image from "next/image"
 import { headers } from "next/headers"
 import { isMobile } from "@/utils/isMobile"
 import { getPlaiceholder } from "plaiceholder"
+import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
 
 const HeroComponent = async ({
   heroImage,
@@ -16,7 +17,11 @@ const HeroComponent = async ({
   const headersList = await headers()
   const userAgent = headersList.get("user-agent")
   const mobileCheck = isMobile(userAgent)
-  const buffer = await fetch(heroImage).then(async res => {
+  const placeholderFetchUrl = sanityCdnUrlWithParams(heroImage, {
+    w: 48,
+    q: 55,
+  })
+  const buffer = await fetch(placeholderFetchUrl).then(async res => {
     return Buffer.from(await res.arrayBuffer())
   })
   const { base64 } = await getPlaiceholder(buffer)
