@@ -28,7 +28,7 @@ const HeroStaticComponent = ({
       <div className="relative h-[55vh] lg:h-[80vh] [clip-path:polygon(0%_0%,100%_0%,100%_50vh,0%_100%)] lg:[clip-path:polygon(0%_0%,100%_0%,100%_75vh,0%_100%)]">
         <Image
           src={heroImage}
-          alt="Hero background"
+          alt="Scuba diving punta cana"
           // Ensure these match your Contentful image dimensions or are appropriately responsive
           width={1920}
           height={1080}
