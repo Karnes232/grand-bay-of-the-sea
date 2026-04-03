@@ -87,7 +87,7 @@ export default async function Page({
   //   locale: locale || "en",
   // })
   return (
-    <main>
+    <main id="main">
       {blogCategory?.seo?.structuredData[locale] && (
         <script
           type="application/ld+json"

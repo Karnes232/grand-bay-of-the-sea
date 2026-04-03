@@ -56,7 +56,7 @@ export default async function Page({
   ])
 
   return (
-    <main>
+    <main id="main">
       {structuredData?.seo?.structuredData[locale] && (
         <script
           type="application/ld+json"

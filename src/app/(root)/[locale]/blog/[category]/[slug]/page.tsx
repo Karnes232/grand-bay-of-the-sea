@@ -120,7 +120,7 @@ export default async function Page({
 
   return (
     <>
-      <main>
+      <main id="main">
         {individualBlogPost.seo.structuredData[locale] && (
           <script
             type="application/ld+json"

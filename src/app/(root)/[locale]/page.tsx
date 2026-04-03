@@ -96,7 +96,7 @@ export default async function Home({
   // } catch (error) {
   //   console.error("Failed to fetch page layout:", error)
   //   return (
-  //     <main>
+  //     <main id="main">
   //       <p>Unable to load content at this time. Please try again later.</p>
   //     </main>
   //   )
@@ -104,7 +104,7 @@ export default async function Home({
 
   if (!homePage) {
     return (
-      <main>
+      <main id="main">
         <p>Content not found for this page. Please check Contentful.</p>
       </main>
     )
@@ -175,7 +175,7 @@ export default async function Home({
           }}
         />
       )}
-      <main>
+      <main id="main">
         {heroImageDetails.url && (
           <HeroStaticComponent
             heroImage={heroImageDetails.url}

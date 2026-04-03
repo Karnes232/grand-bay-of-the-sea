@@ -81,7 +81,7 @@ export default async function Page({
   )
 
   return (
-    <main>
+    <main id="main">
       <BackgroundVideo
         video={(tour.items[0] as any).fields.videoHero.fields.file.url}
         className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}

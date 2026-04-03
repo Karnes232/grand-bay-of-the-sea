@@ -73,7 +73,7 @@ export default async function Page({
     "fields.slug": "discover",
   })
   return (
-    <main>
+    <main id="main">
       <BackgroundVideo
         video={(course.items[0] as any).fields.backgroundVideo.fields.file.url}
         className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}

@@ -63,7 +63,7 @@ export default async function Home(props: any) {
   )
 
   return (
-    <main>
+    <main id="main">
       <HeroComponent
         heroImage={`https:${(searchResults.items[0] as any).fields.heroImage.fields.file.url}`}
       />

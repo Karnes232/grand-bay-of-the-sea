@@ -61,7 +61,7 @@ export default async function Page() {
     "fields.page": "Sites",
   })
   return (
-    <main>
+    <main id="main">
       <HeroComponent
         heroImage={`https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`}
       />

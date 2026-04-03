@@ -77,7 +77,7 @@ export default async function Page({
   const { base64: heroImageBlurDataURL } = await getPlaiceholder(buffer)
 
   return (
-    <main>
+    <main id="main">
       {structuredData?.seo?.structuredData[locale] && (
         <script
           type="application/ld+json"

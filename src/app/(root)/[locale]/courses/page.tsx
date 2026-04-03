@@ -80,7 +80,7 @@ export default async function Page({
   if (!coursesMainPage) {
     // Handle case where page layout is not found for Courses
     return (
-      <main>
+      <main id="main">
         <p>Content not found for this Courses page. Please check Sanity.</p>
       </main>
     )
@@ -123,7 +123,7 @@ export default async function Page({
           }}
         />
       )}
-      <main>
+      <main id="main">
         {heroImageDetails.url && (
           <HeroStaticComponent
             heroImage={heroImageDetails.url}
