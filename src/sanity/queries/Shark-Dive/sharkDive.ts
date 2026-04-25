@@ -40,6 +40,17 @@ export interface SharkDive {
     en: string
     es: string
   }[]
+  faqs: {
+    _key: string
+    question: {
+      en: string
+      es: string
+    }
+    answer: {
+      en: any[]
+      es: any[]
+    }
+  }[]
 }
 
 export const sharkDiveQuery = `*[_type == "sharkDive"][0] {
@@ -81,6 +92,17 @@ export const sharkDiveQuery = `*[_type == "sharkDive"][0] {
   extras[] {
     en,
     es
+  },
+  faqs[] {
+    _key,
+    question {
+      en,
+      es
+    },
+    answer {
+      en,
+      es
+    }
   }
 }`
 

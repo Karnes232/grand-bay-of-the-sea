@@ -84,6 +84,12 @@ export default defineType({
       of: [{ type: "localizedString" }],
       validation: Rule => Rule.required(),
     }),
+    defineField({
+      name: "faqs",
+      title: "FAQs",
+      type: "array",
+      of: [{ type: "faqItem" }],
+    }),
   ],
   preview: {
     select: {

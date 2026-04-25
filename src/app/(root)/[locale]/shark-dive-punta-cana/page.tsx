@@ -1,8 +1,4 @@
-import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
 import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
-import RichText from "@/components/RichTextComponents/RichText"
-import TripOverview from "@/components/TourOverviews/TripOverview"
-import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
@@ -10,6 +6,7 @@ import { getSharkDive } from "@/sanity/queries/Shark-Dive/sharkDive"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
 import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
+import Faqs from "@/components/FaqsComponent/Faqs"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -53,10 +50,10 @@ export default async function Home({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const pageLayout = await searchEntries("tours", {
-    "fields.page": "Shark Dive Punta Cana",
-    locale: locale || "en",
-  })
+  // const pageLayout = await searchEntries("tours", {
+  //   "fields.page": "Shark Dive Punta Cana",
+  //   locale: locale || "en",
+  // })
 
   const [structuredData, sharkDive] = await Promise.all([
     getStructuredData("Shark Dive Punta Cana"),
@@ -105,10 +102,20 @@ export default async function Home({
           </div>
         </div>
       </div>
+      {sharkDive.faqs?.length > 0 && (
+        <div className="mb-10">
+        <Faqs
+          faqs={sharkDive.faqs}
+          structuredData={{ en: "", es: "" }}
+          locale={locale}
+        />
+        </div>
+      )}
       <CloudinaryBackgroundVideo
         videoId={"shark_hzrsvc"}
         className={`[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
       />
+     
     </main>
   )
 }
