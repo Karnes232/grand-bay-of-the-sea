@@ -66,7 +66,10 @@ export default async function Page({
   // })
 
   return (
-    <main id="main" className="bg-gradient-to-b from-sky-50 via-slate-100 to-cyan-50">
+    <main
+      id="main"
+      className="bg-gradient-to-b from-sky-50 via-slate-100 to-cyan-50"
+    >
       {structuredData?.seo?.structuredData[locale] && (
         <script
           type="application/ld+json"

@@ -47,10 +47,10 @@ The app uses two Next.js route groups:
 
 The project has **two active CMS backends** (migration from Contentful to Sanity is in progress):
 
-| Source | Used for |
-|--------|----------|
-| **Sanity** | Courses, Trips, Blog posts, Home page, SEO, Sites, Species, Fishing, Liveaboards, Photo Gallery, FAQs | 
-| **Contentful** | Blog (legacy — some pages still call `searchEntries`), logo from layout entry |
+| Source         | Used for                                                                                              |
+| -------------- | ----------------------------------------------------------------------------------------------------- |
+| **Sanity**     | Courses, Trips, Blog posts, Home page, SEO, Sites, Species, Fishing, Liveaboards, Photo Gallery, FAQs |
+| **Contentful** | Blog (legacy — some pages still call `searchEntries`), logo from layout entry                         |
 
 Sanity client is at `src/sanity/lib/client.ts`. All GROQ queries live in `src/sanity/queries/` and are organised by feature, mirroring the schema structure in `src/sanity/schemaTypes/`.
 
@@ -59,12 +59,14 @@ Contentful helpers are in `src/lib/contentful.ts`. The logo is still fetched fro
 ### Sanity Image Utilities (`src/sanity/lib/image.ts`)
 
 Two helpers:
+
 - `urlFor(source)` — takes a Sanity image reference object and returns an image URL builder (use `.url()` to resolve).
 - `sanityCdnUrlWithParams(url, options)` — appends CDN transform params (`w`, `h`, `q`, `fit`, `auto=format`) to an already-resolved `cdn.sanity.io` URL. Use this when you have the raw URL from a GROQ projection (e.g. `image.asset->url`).
 
 ### SEO Pattern
 
 Every page:
+
 1. Exports `generateMetadata` that fetches from Sanity (`getPageSeo`, `getTripSeo`, etc.) and returns locale-aware `title`, `description`, `keywords`, OG, and hreflang `alternates`.
 2. Optionally injects a `<script type="application/ld+json">` block from Sanity's `structuredData.en` / `structuredData.es` string fields.
 3. Calls `getHreflangAlternates(path, locale)` from `src/utils/hreflang.ts` for canonical + alternate links.

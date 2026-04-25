@@ -4,6 +4,7 @@ import DivingOrganizations from "@/components/DivingOrganizations/DivingOrganiza
 import GoogleMaps from "@/components/GoogleMapsComponent/GoogleMaps"
 import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
+import Faqs from "@/components/FaqsComponent/Faqs"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
@@ -90,9 +91,19 @@ export default async function Home({
       />
       <DivingOrganizations />
       <BlockContent content={scubaDivingPuntaCana.paragraph3} locale={locale} />
+      {scubaDivingPuntaCana.faqs?.length > 0 && (
+        <div className="mb-10">
+          <Faqs
+            faqs={scubaDivingPuntaCana.faqs}
+            structuredData={{ en: "", es: "" }}
+            locale={locale}
+          />
+        </div>
+      )}
       <BackgroundImage
         image={scubaDivingPuntaCana.tertiaryHeroImage.asset.url}
       />
+
       <GoogleMaps />
     </main>
   )

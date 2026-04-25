@@ -24,7 +24,11 @@ const listClasses =
 const components = {
   types: {
     image: ({ value }: any) => {
-      const imageUrl = urlFor(value).width(1200).quality(75).auto("format").url()
+      const imageUrl = urlFor(value)
+        .width(1200)
+        .quality(75)
+        .auto("format")
+        .url()
 
       return (
         <figure className="my-10 md:my-12">
@@ -65,7 +69,9 @@ const components = {
       </strong>
     ),
     em: ({ children }: any) => (
-      <em className="italic text-neutral-900 dark:text-neutral-100">{children}</em>
+      <em className="italic text-neutral-900 dark:text-neutral-100">
+        {children}
+      </em>
     ),
   },
   block: {

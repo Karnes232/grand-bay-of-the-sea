@@ -104,18 +104,17 @@ export default async function Home({
       </div>
       {sharkDive.faqs?.length > 0 && (
         <div className="mb-10">
-        <Faqs
-          faqs={sharkDive.faqs}
-          structuredData={{ en: "", es: "" }}
-          locale={locale}
-        />
+          <Faqs
+            faqs={sharkDive.faqs}
+            structuredData={{ en: "", es: "" }}
+            locale={locale}
+          />
         </div>
       )}
       <CloudinaryBackgroundVideo
         videoId={"shark_hzrsvc"}
         className={`[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
       />
-     
     </main>
   )
 }

@@ -129,8 +129,7 @@ export default async function RootLayout({
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="lz4+RbNFN0cfKi0THRMTNw"
           strategy="lazyOnload"
-        />
-        {" "}
+        />{" "}
         <NextIntlClientProvider
           locale={locale}
           messages={messages}

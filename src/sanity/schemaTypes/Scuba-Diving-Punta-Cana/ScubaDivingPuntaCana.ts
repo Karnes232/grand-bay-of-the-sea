@@ -89,6 +89,13 @@ export default defineType({
       group: "content",
       validation: Rule => Rule.required(),
     }),
+    defineField({
+      name: "faqs",
+      title: "FAQs",
+      type: "array",
+      group: "content",
+      of: [{ type: "faqItem" }],
+    }),
   ],
   preview: {
     select: {

@@ -24,8 +24,10 @@ export function sanityCdnUrlWithParams(
   if (!url.includes("cdn.sanity.io")) return url
   try {
     const u = new URL(url)
-    if (options.w != null) u.searchParams.set("w", String(Math.round(options.w)))
-    if (options.h != null) u.searchParams.set("h", String(Math.round(options.h)))
+    if (options.w != null)
+      u.searchParams.set("w", String(Math.round(options.w)))
+    if (options.h != null)
+      u.searchParams.set("h", String(Math.round(options.h)))
     if (options.q != null) u.searchParams.set("q", String(options.q))
     if (options.fit != null) u.searchParams.set("fit", options.fit)
     u.searchParams.set("auto", "format")
