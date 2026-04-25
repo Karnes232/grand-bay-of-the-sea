@@ -49,6 +49,15 @@ export async function generateMetadata({
 
   const alternates = getHreflangAlternates("", locale)
 
+  // Override canonical to point to the scuba diving landing page
+  // This tells Google that /scuba-diving-punta-cana is the authoritative
+  // page for the "scuba diving punta cana" keyword cluster
+  const canonicalPath = "scuba-diving-punta-cana"
+  const seoCanonical =
+    locale === "es"
+      ? `https://www.grandbay-puntacana.com/es/${canonicalPath}`
+      : `https://www.grandbay-puntacana.com/${canonicalPath}`
+
   return {
     title: pageSeo.seo.meta[locale].title,
     description: pageSeo.seo.meta[locale].description,
@@ -64,11 +73,10 @@ export async function generateMetadata({
       index: !pageSeo.seo.noIndex,
       follow: !pageSeo.seo.noFollow,
     },
-    alternates,
-    // other: {
-    //   "Cache-Control":
-    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
-    // },
+    alternates: {
+      ...alternates,
+      canonical: seoCanonical, // Override only the canonical
+    },
   }
 }
 
