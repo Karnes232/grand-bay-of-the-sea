@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
-import { GeistMono } from "geist/font/mono"
-import { GeistSans } from "geist/font/sans"
+// import { GeistMono } from "geist/font/mono"
+// import { GeistSans } from "geist/font/sans"
 import "../../globals.css"
 import Header from "@/components/layout/HeaderComponents/Header"
 import Footer from "@/components/layout/FooterComponents/Footer"
@@ -122,7 +122,8 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
+       // className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
+        className={`antialiased`}
       >
         <LazyGoogleTagManager />
         <Script
