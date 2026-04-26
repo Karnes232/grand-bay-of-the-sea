@@ -99,6 +99,17 @@ export interface Trip {
     es: string
   }[]
   depositPrice: number
+  faqs?: {
+    _key: string
+    question: {
+      en: string
+      es: string
+    }
+    answer: {
+      en: any[]
+      es: any[]
+    }
+  }[]
 }
 
 export const individualTripQuery = `*[_type == "trips" && slug.current == $slug][0] {
@@ -140,7 +151,18 @@ export const individualTripQuery = `*[_type == "trips" && slug.current == $slug]
     en,
     es
   },
-  depositPrice
+  depositPrice,
+  faqs[] {
+    _key,
+    question {
+      en,
+      es
+    },
+    answer {
+      en,
+      es
+    }
+  }
 }`
 
 export const getIndividualTrip = async (slug: string): Promise<Trip> => {

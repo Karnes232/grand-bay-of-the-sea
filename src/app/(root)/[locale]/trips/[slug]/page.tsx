@@ -10,6 +10,7 @@ import {
 import BlockContent from "@/components/BlockContent/BlockContent"
 import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
 import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
+import Faqs from "@/components/FaqsComponent/Faqs"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -102,6 +103,15 @@ export default async function Page({
           </div>
         )}
       </div>
+      {trip.faqs && trip.faqs.length > 0 && (
+        <div className="mb-10">
+          <Faqs
+            faqs={trip.faqs}
+            structuredData={{ en: "", es: "" }}
+            locale={locale}
+          />
+        </div>
+      )}
     </main>
   )
 }

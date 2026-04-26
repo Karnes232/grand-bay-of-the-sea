@@ -160,6 +160,13 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: "faqs",
+      title: "FAQs",
+      type: "array",
+      of: [{ type: "faqItem" }],
+      group: "mainContent",
+    }),
+    defineField({
       name: "seo",
       title: "SEO",
       type: "seo",
