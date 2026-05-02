@@ -23,7 +23,8 @@
     "hotel": "Hotel",
     "yourMessage": "Tu mensaje",
     "leaveAComment": "Deja un comentario...",
-    "submit": "Enviar"
+    "submit": "Enviar",
+    "submitting": "Enviando..."
   },
   "ThankYou": {
     "thankYou": "Gracias",
