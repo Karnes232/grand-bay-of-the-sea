@@ -49,7 +49,7 @@ export async function generateMetadata(
     openGraph: {
       title: pageSeo.seo.openGraph[locale].title,
       description: pageSeo.seo.openGraph[locale].description,
-      images: pageSeo.seo.openGraph.image.url,
+      images: pageSeo.seo.openGraph.image?.url ?? undefined,
       type: "website",
       url: alternates.canonical,
     },
@@ -96,7 +96,7 @@ export default async function Page({
           }}
         />
       )}
-      {blogCategory.heroImage.asset.url && (
+      {blogCategory.heroImage?.asset?.url && (
         <HeroComponent
           heroImage={blogCategory.heroImage.asset.url}
           title={blogCategory.blogCategory[locale]}

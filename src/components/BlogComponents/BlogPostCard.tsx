@@ -6,6 +6,7 @@ import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
 
 const BlogPostCard = ({ blog, locale }: { blog: any; locale: string }) => {
   const t = useTranslations("Blog")
+  const bgUrl = blog.backgroundImages?.asset?.url
   return (
     <Link
       href={`/blog/${blog.blogCategory.slug.current}/${blog.slug.current}`}
@@ -13,19 +14,21 @@ const BlogPostCard = ({ blog, locale }: { blog: any; locale: string }) => {
       aria-label={blog.title[locale]}
     >
       <div className="bg-white w-80 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-        <div className="relative h-48">
-          <Image
-            src={sanityCdnUrlWithParams(blog.backgroundImages.asset.url, {
-              w: 640,
-              q: 75,
-            })}
-            alt={blog.backgroundImages.alt}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            quality={75}
-            priority={false}
-          />
+        <div className="relative h-48 bg-gray-200">
+          {bgUrl && (
+            <Image
+              src={sanityCdnUrlWithParams(bgUrl, {
+                w: 640,
+                q: 75,
+              })}
+              alt={blog.backgroundImages.alt ?? blog.title[locale]}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              quality={75}
+              priority={false}
+            />
+          )}
         </div>
         <div className="p-5">
           <h3 className="font-bold text-lg mb-2 text-gray-800 line-clamp-1">

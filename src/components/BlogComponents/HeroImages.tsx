@@ -4,6 +4,7 @@ import PhotoGrid from "./PhotoGrid"
 import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
 
 const HeroImages = ({ backgroundImages }: { backgroundImages: any[] }) => {
+  if (!backgroundImages?.length || !backgroundImages[0]?.asset?.url) return null
   const heroUrl = sanityCdnUrlWithParams(backgroundImages[0].asset.url, {
     w: 1920,
     q: 80,

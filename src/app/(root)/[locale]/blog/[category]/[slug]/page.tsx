@@ -52,7 +52,7 @@ export async function generateMetadata(
   //   notFound()
   // }
 
-  const rawOg = pageSeo.seo.openGraph.image.url || ""
+  const rawOg = pageSeo.seo.openGraph.image?.url || ""
   const ogImage = rawOg
     ? sanityCdnUrlWithParams(rawOg, {
         w: 1200,
@@ -76,7 +76,7 @@ export async function generateMetadata(
                 url: ogImage,
                 width: 1200,
                 height: 630,
-                alt: pageSeo.seo.openGraph.image.alt,
+                alt: pageSeo.seo.openGraph.image?.alt ?? "",
               },
             ],
           }
@@ -149,7 +149,9 @@ export default async function Page({
             }}
           />
         )}
-        <HeroImages backgroundImages={individualBlogPost.backgroundImages} />
+        {individualBlogPost.backgroundImages?.length > 0 && (
+          <HeroImages backgroundImages={individualBlogPost.backgroundImages} />
+        )}
         <SanityBlogBody content={individualBlogPost.blogBody} locale={locale} />
         <Recommendations
           relatedPosts={relatedPosts}
