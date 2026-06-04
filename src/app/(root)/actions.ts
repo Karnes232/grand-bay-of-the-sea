@@ -6,6 +6,31 @@ import {
 } from "@/app/actions/send-confirmation"
 import { supabaseServer } from "@/lib/supabaseServer"
 
+async function saveBookingToSupabase(formData: any, formType: string) {
+  const { error } = await supabaseServer.from("Grand Bay Bookings").insert([
+    {
+      name: formData.name?.toString() || "",
+      email: formData.email?.toString() || "",
+      hotel: formData.hotel?.toString() || "",
+      tour_name: formData.tourSelect?.toString() || "",
+      excursion_date: formData.date?.toString() || "",
+      guest_count: formData.guestCount?.toString() || "",
+      snorkelers: formData.snorkelers?.toString() || "",
+      spectators: formData.spectator?.toString() || "",
+      certification_level: formData.certification?.toString() || "",
+      deposit: formData.deposit?.toString() || "",
+      price: formData.price?.toString() || "",
+      form_type: formType,
+    },
+  ])
+
+  if (error) {
+    console.error("Failed to save booking.", error)
+  } else {
+    console.log("Booking saved successfully.")
+  }
+}
+
 export async function submitForm(formData: any, certificationData: any) {
   const name = formData.get("name")
   const email = formData.get("email")
@@ -62,6 +87,8 @@ export async function submitForm(formData: any, certificationData: any) {
 }
 
 export async function submitBookingForm(formData: any) {
+  await saveBookingToSupabase(formData, "booking")
+
   try {
     await sendConfirmationEmail({
       customerName: formData.name,
@@ -97,6 +124,8 @@ export async function submitBookingForm(formData: any) {
 }
 
 export async function submitFishingForm(formData: any) {
+  await saveBookingToSupabase(formData, "fishing")
+
   try {
     await sendConfirmationFishingEmail({
       customerName: formData.name,
@@ -134,6 +163,8 @@ export async function submitFishingForm(formData: any) {
 }
 
 export async function submitTripForm(formData: any) {
+  await saveBookingToSupabase(formData, "trip")
+
   try {
     await sendConfirmationTripEmail({
       customerName: formData.name,

@@ -8,7 +8,7 @@
     "start": "next start",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
     "lint": "next lint",
-    "seed:blog": "tsx --env-file=.env.local scripts/seed-blog-posts.ts"
+    "seed:blog": "tsx --env-file=.env.local scripts/1.ts"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.0.0",
