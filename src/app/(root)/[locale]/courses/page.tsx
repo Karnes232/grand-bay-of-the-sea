@@ -8,6 +8,7 @@ import { getHreflangAlternates } from "@/utils/hreflang"
 // For image placeholders
 import { getPlaiceholder } from "plaiceholder"
 import { Buffer } from "buffer" // Node.js Buffer for getPlaiceholder
+import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getCoursesMainPage } from "@/sanity/queries/Courses/CoursesMainPage"
@@ -93,9 +94,11 @@ export default async function Page({
     const url = coursesMainPage.heroImage.asset.url
     let base64 = ""
     try {
-      const buffer = await fetch(url).then(async res =>
-        Buffer.from(await res.arrayBuffer()),
-      )
+      // Fetch a tiny CDN proxy for blur generation — the full-res image blows
+      // the call stack while piping the response ("failed to pipe response").
+      const buffer = await fetch(
+        sanityCdnUrlWithParams(url, { w: 64, h: 64, fit: "max" }),
+      ).then(async res => Buffer.from(await res.arrayBuffer()))
       const { base64: plaiceholderBase64 } = await getPlaiceholder(buffer)
       base64 = plaiceholderBase64
     } catch (e) {

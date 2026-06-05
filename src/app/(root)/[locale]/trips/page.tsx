@@ -7,6 +7,7 @@ import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPlaiceholder } from "plaiceholder" // Import getPlaiceholder
+import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getDiveTripsPage } from "@/sanity/queries/DiveTrips/DiveTripsPage"
 import BlockContent from "@/components/BlockContent/BlockContent"
@@ -70,11 +71,17 @@ export default async function Page({
   // Get the hero image URL from Contentful
   const heroImageUrl = diveTripsPage.heroImage.asset.url
 
-  // Generate blurDataURL for the hero image at build time
-  const buffer = await fetch(heroImageUrl).then(async res => {
-    return Buffer.from(await res.arrayBuffer())
-  })
-  const { base64: heroImageBlurDataURL } = await getPlaiceholder(buffer)
+  // Generate blurDataURL from a tiny CDN proxy — fetching the full-res image
+  // here blows the call stack while piping the response ("failed to pipe response").
+  let heroImageBlurDataURL: string | undefined
+  try {
+    const buffer = await fetch(
+      sanityCdnUrlWithParams(heroImageUrl, { w: 64, h: 64, fit: "max" }),
+    ).then(async res => Buffer.from(await res.arrayBuffer()))
+    heroImageBlurDataURL = (await getPlaiceholder(buffer)).base64
+  } catch (e) {
+    console.error("Error generating plaiceholder for image:", heroImageUrl, e)
+  }
 
   return (
     <main id="main">
