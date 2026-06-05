@@ -35,21 +35,21 @@ const DatePickerComponent = ({ setFormData, formData }) => {
   const handleValueChange = (newValue: any) => {
     // Check if the selected date is a Sunday
     const selectedDate = new Date(newValue.startDate)
-    const isSunday = selectedDate.getDay() === 0
+    // const isSunday = selectedDate.getDay() === 0
 
-    if (isSunday) {
-      // If Sunday is selected, reset the date and show warning
-      setIsSundaySelected(true)
-      setValue({ startDate: null, endDate: null })
-      setFormData({
-        ...formData,
-        date: "",
-      })
-      return
-    }
+    // if (isSunday) {
+    //   // If Sunday is selected, reset the date and show warning
+    //   setIsSundaySelected(true)
+    //   setValue({ startDate: null, endDate: null })
+    //   setFormData({
+    //     ...formData,
+    //     date: "",
+    //   })
+    //   return
+    // }
 
-    // Clear Sunday warning if a non-Sunday is selected
-    setIsSundaySelected(false)
+    // // Clear Sunday warning if a non-Sunday is selected
+    // setIsSundaySelected(false)
 
     const weekday = new Intl.DateTimeFormat("en-US", {
       dateStyle: "full",
@@ -123,7 +123,7 @@ const DatePickerComponent = ({ setFormData, formData }) => {
           popoverDirection="up"
           onChange={handleValueChange}
           inputClassName="pl-0"
-          disabledDates={generateDisabledSundays()}
+          // disabledDates={generateDisabledSundays()}
         />
       </div>
       {isSundaySelected && (
