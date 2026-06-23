@@ -20,6 +20,7 @@ export interface BlogCategory {
     }
     alt: string
   }
+  _updatedAt?: string
 }
 
 export const blogCategoryQuery = `*[_type == "blogCategory"] {
@@ -30,6 +31,7 @@ export const blogCategoryQuery = `*[_type == "blogCategory"] {
     slug {
         current
     },
+    _updatedAt,
     cardImage {
         asset -> {
             url,

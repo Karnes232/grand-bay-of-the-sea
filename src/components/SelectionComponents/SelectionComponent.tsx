@@ -31,7 +31,7 @@ const SelectionComponent = ({
           alt="scuba diving punta cana"
           fill
           className="object-cover object-[75%_70%] xl:object-[75%_50%]"
-          priority
+          sizes="100vw"
           quality={75}
         />
         {/* Gradient overlay */}

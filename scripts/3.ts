@@ -33,26 +33,26 @@ const posts = [
 
     title: {
       _type: "localizedString",
-      en: "🤢 How to Avoid Seasickness While Scuba Diving: A Diver's Guide",
-      es: "🤢 Cómo Evitar el Mareo al Bucear: Guía para Buzos",
+      en: "🌐 Meet DR Web Studio: The Local Punta Cana Team That Built Our Website",
+      es: "🌐 Conoce a DR Web Studio: El Equipo Local de Punta Cana Que Construyó Nuestra Web",
     },
 
     slug: {
       _type: "slug",
-      current: "how-to-avoid-seasickness-scuba-diving",
+      current: "dr-web-studio-punta-cana-website-design",
     },
 
-    publishDate: "2026-05-29",
+    publishDate: "2026-06-14",
 
     description: {
       _type: "localizedText",
-      en: "Dread the boat ride more than the dive? Here's what causes seasickness, the medications that work (and the ones to avoid as a diver), natural remedies, and what to do if it hits you mid-trip.",
-      es: "¿Te da más miedo el bote que la inmersión? Aquí qué causa el mareo, los medicamentos que funcionan (y los que evitar como buzo), remedios naturales y qué hacer si te ataca en pleno viaje.",
+      en: "The studio that built our website is a small Punta Cana web design and development team that has quietly become the go-to choice for local tourism, event, and small business websites. Here's what DR Web Studio offers, what it costs, and why other Punta Cana businesses are switching.",
+      es: "El estudio que construyó nuestra web es un pequeño equipo local de diseño y desarrollo web en Punta Cana que se ha convertido silenciosamente en la opción preferida para sitios de turismo, eventos y pequeños negocios. Aquí lo que ofrece DR Web Studio, cuánto cuesta y por qué otros negocios de Punta Cana se están cambiando.",
     },
 
     blogCategory: {
       _type: "reference",
-      _ref: CATEGORIES.divingTips,
+      _ref: CATEGORIES.localBusinesses,
     },
 
     backgroundImages: [],
@@ -64,14 +64,13 @@ const posts = [
           _type: "block",
           _key: "en-b1",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b1-l1", href: "https://dr-webstudio.com/" },
+          ],
           children: [
-            {
-              _type: "span",
-              _key: "en-b1-s1",
-              text: "Seasickness keeps more divers off the water than any other physical issue except ear problems. The frustrating part is that it has nothing to do with diving itself — once you're submerged, the symptoms usually disappear within minutes. It's the boat ride that does the damage. The good news is that seasickness is highly manageable with the right combination of preparation, medication, and on-board habits. This guide walks through what causes seasickness, the medications worth using (and the ones divers should be cautious about), natural remedies that actually help, behavioral tactics on the boat, and what to do if you start feeling sick mid-trip.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b1-s1", text: "Every few weeks someone asks us who built our website. Usually it's another Punta Cana business owner who's noticed the booking experience works smoothly, the pages load fast on hotel WiFi, and the whole site behaves the same in English and Spanish. The answer is ", marks: [] },
+            { _type: "span", _key: "en-b1-s2", text: "DR Web Studio", marks: ["en-b1-l1"] },
+            { _type: "span", _key: "en-b1-s3", text: " — a small Punta Cana web design and development studio that has quietly become the go-to choice for local tourism, event, and small business websites. Since the question comes up often enough that we keep typing the same answer into WhatsApp, we figured it was time to write the longer version down.", marks: [] },
           ],
         },
         {
@@ -80,20 +79,16 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b2-s1", text: "What Actually Causes Seasickness", marks: [] },
+            { _type: "span", _key: "en-b2-s1", text: "How We Ended Up Working With the Studio", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b3",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b3-l1", href: "https://dan.org/safety-prevention/diver-safety/divers-blog/seasickness-prevention-and-treatment/" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b3-s1", text: "Despite the name, water isn't the cause — motion is. ", marks: [] },
-            { _type: "span", _key: "en-b3-s2", text: "Divers Alert Network explains the mechanism", marks: ["en-b3-l1"] },
-            { _type: "span", _key: "en-b3-s3", text: " as a sensory mismatch. Your inner ear's vestibular system senses the boat's motion — pitch, roll, yaw — while your eyes, fixed on a stable boat interior or horizon, often don't see the same motion. Your brain receives conflicting information about whether you're moving or not, decides something is wrong (in primitive terms, possibly poisoned), and triggers nausea as a defensive response. The same mechanism causes carsickness, airsickness, and the simulator sickness people get from VR headsets. It's why focusing on the horizon helps — it gives your eyes a stable reference that matches what your ears are sensing.", marks: [] },
+            { _type: "span", _key: "en-b3-s1", text: "Worth disclosing the working relationship upfront. James, one of our dive instructors here at Grand Bay, also runs DR Web Studio independently. When our old website needed a rebuild a few years ago we hired the studio to do it, and that work kept growing — the studio now handles most of our online operations, including SEO and client communication, alongside the day-to-day of the dive center. So while we recommend DR Web Studio openly to other Punta Cana businesses, the recommendation is based on direct working knowledge: same team behind both, every day.", marks: [] },
           ],
         },
         {
@@ -102,12 +97,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b4-s1",
-              text: "This also explains why seasickness vanishes underwater. Once you're below the surface, the boat's motion is gone, the water around you is calm, and your vestibular and visual systems agree again. Many divers who feel awful on the boat report being completely fine the moment they descend. The trick is getting through the boat ride.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b4-s1", text: "We mention this upfront because it's the kind of thing that's better explained than discovered. The reason we keep telling other Punta Cana businesses about DR Web Studio isn't that we're owed referrals — it's that we've watched the studio's work pay off in our own operation, and we know that most local businesses around us would benefit from the same kind of website. What follows is a closer look at what DR Web Studio actually does, what it costs, and where its services do and don't make sense.", marks: [] },
           ],
         },
         {
@@ -116,21 +106,20 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b5-s1", text: "Medications That Work", marks: [] },
+            { _type: "span", _key: "en-b5-s1", text: "What DR Web Studio Actually Does", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b6",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b6-l1", href: "https://www.dr-webstudio.com/en/our-services" },
+          ],
           children: [
-            {
-              _type: "span",
-              _key: "en-b6-s1",
-              text: "Several over-the-counter and prescription medications effectively prevent seasickness. The key question for divers is which ones are safe to use underwater — some have side effects (especially drowsiness) that compromise diving safety.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b6-s1", text: "The ", marks: [] },
+            { _type: "span", _key: "en-b6-s2", text: "studio's service list", marks: ["en-b6-l1"] },
+            { _type: "span", _key: "en-b6-s3", text: " covers most of what a Dominican small business needs to operate online: custom business websites, landing pages and one-page sites for campaigns, full e-commerce builds with payment integration, multilingual setups (English and Spanish are the default, more languages are possible), website migrations from outdated platforms, headless CMS implementation so non-technical owners can manage their own content, API integrations for booking systems and inventory tools, and ongoing maintenance and support after launch. DR Web Studio handles design, development, deployment, and post-launch support as one team rather than handing off between specialists who don't know your project.", marks: [] },
           ],
         },
         {
@@ -139,18 +128,16 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b7-s1", text: "Bonine (meclizine): ", marks: ["strong"] },
-            { _type: "span", _key: "en-b7-s2", text: "Often the first choice for divers. It's effective, available over the counter in most countries, and causes significantly less drowsiness than other options. Take one tablet the evening before or at least one to two hours before boarding. The non-drowsy variant is widely available and is the better choice if you're going diving the same day.", marks: [] },
+            { _type: "span", _key: "en-b7-s1", text: "The technical stack is modern. Sites are built on Next.js (the same framework used by Netflix, TikTok, and many of the most performance-sensitive websites in the world), with Sanity as the content management system, Tailwind for styling, and standard integrations for payments, email, and analytics. This matters less for what the site looks like than for how it performs — DR Web Studio builds typically load in under two seconds, which is fast enough that mobile travelers checking a dive shop's availability from a hotel pool aren't waiting around. Most Punta Cana tourism sites are still on WordPress or template builders that take five to ten seconds to load on the same connection.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b8",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b8-s1", text: "Dramamine (dimenhydrinate): ", marks: ["strong"] },
-            { _type: "span", _key: "en-b8-s2", text: "Works well but the original formula causes meaningful drowsiness, which is a real problem for diving. The \"non-drowsy\" Dramamine formula actually contains meclizine — the same active ingredient as Bonine. If you pick Dramamine, get the non-drowsy version specifically.", marks: [] },
+            { _type: "span", _key: "en-b8-s1", text: "Why It Matters for Local Businesses", marks: [] },
           ],
         },
         {
@@ -159,45 +146,38 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b9-s1", text: "Stugeron (cinnarizine): ", marks: ["strong"] },
-            { _type: "span", _key: "en-b9-s2", text: "Available over the counter in most countries outside the US, popular with European divers. Many divers report it works better than Bonine with similar low drowsiness. Worth picking up if you can find it.", marks: [] },
+            { _type: "span", _key: "en-b9-s1", text: "The honest state of Punta Cana small business websites: most of them are either nonexistent, built on free Wix or Squarespace templates that look almost identical to every other tourism site in the area, or trapped on outdated WordPress installations that nobody has updated in years. The result is that the businesses with the best service often have the weakest digital presence, while the ones that paid for a real website (or never had one and rely on Instagram) lose bookings every week to competitors with a smoother online experience.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b10",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b10-l1", href: "https://blog.padi.com/simple-tips-for-preventing-seasickness-divers-alert-network/" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b10-s1", text: "Scopolamine patches (Transderm Scop): ", marks: ["strong"] },
-            { _type: "span", _key: "en-b10-s2", text: "Prescription-only. The patch goes behind the ear and releases medication slowly over up to three days, which is convenient for multi-day liveaboards or back-to-back boat days. But several things to know first. Side effects include dry mouth, blurred vision, drowsiness, and occasionally confusion or hallucinations. More importantly for divers, ", marks: [] },
-            { _type: "span", _key: "en-b10-s3", text: "DAN and PADI flag", marks: ["en-b10-l1"] },
-            { _type: "span", _key: "en-b10-s4", text: " that wearing the patch for more than three days can cause withdrawal symptoms that mimic decompression sickness — dizziness, nausea, vomiting after the patch is removed — which could complicate diagnosis if something genuinely goes wrong on a dive. Talk to your doctor specifically about diving before getting a prescription, and never try a patch for the first time on a dive day.", marks: [] },
+            { _type: "span", _key: "en-b10-s1", text: "A travel-decision moment usually goes like this: someone in a hotel room searches \"scuba diving Punta Cana\" or \"private boat trip Bávaro,\" gets a list of options, taps the first three, and books with whichever site loaded fastest, had clearer pricing, and supported the language they read. If your site takes seven seconds to load, has no Spanish version, hides prices behind a contact form, and looks like the same template as five other operators, you're losing that booking before the customer even reads about your service. That's the problem a properly built website actually solves — not winning awards for design, but converting search traffic into actual booked customers. DR Web Studio's whole approach is built around that conversion-first framing.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b11",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b11-s1",
-              text: "The universal rule with any of these medications: test them on a non-diving day first. Drowsiness affects different people differently, and you don't want to discover you're a heavy responder while you're at 18 metres in low visibility. Take a normal dose at home, see how it makes you feel, then decide whether it's safe for diving.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b11-s1", text: "Transparent Pricing (Yes, Really)", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b12",
-          style: "h2",
-          markDefs: [],
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "en-b12-l1", href: "https://www.dr-webstudio.com/en/pricing" },
+          ],
           children: [
-            { _type: "span", _key: "en-b12-s1", text: "Natural Remedies", marks: [] },
+            { _type: "span", _key: "en-b12-s1", text: "Most web design quotes in this industry are deliberately vague until you've spent an hour on a discovery call. DR Web Studio publishes the actual numbers on ", marks: [] },
+            { _type: "span", _key: "en-b12-s2", text: "the pricing page", marks: ["en-b12-l1"] },
+            { _type: "span", _key: "en-b12-s3", text: ", which is unusual enough in the local market that it's worth pointing out. The three standard packages are Starter ($400) for one to three pages with basic SEO and a contact form, Business ($800) for four to eight pages with a custom design, branding, CMS integration, and advanced SEO setup, and E-commerce ($900) for full online stores with product catalogs, secure checkout, and order confirmation. Custom builds and integrations go up from there based on scope.", marks: [] },
           ],
         },
         {
@@ -206,47 +186,47 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b13-s1", text: "Ginger: ", marks: ["strong"] },
-            { _type: "span", _key: "en-b13-s2", text: "Ginger candies, ginger tea, ginger ale (real ginger, not artificially flavored), and crystallized ginger all work for many divers. Research suggests ginger reduces stomach contractions, which helps relieve nausea. The advantage over medication is no drowsiness and no side effects. Effectiveness varies by person — some divers swear by it, others find it mild — but there's no downside to trying.", marks: [] },
+            { _type: "span", _key: "en-b13-s1", text: "Context for those numbers: comparable freelance work in the US or Western Europe typically runs $1,500 to $8,000 for a small business site, and agency work starts at $4,000 and goes up well past $15,000. The Dominican pricing isn't lower because the work is worse — it's lower because the cost of living, overhead, and operating expenses in Punta Cana are a fraction of what they are in Miami, New York, or London. A custom Next.js site that would cost $5,000 to $8,000 from a US freelancer can be built for under $1,000 by DR Web Studio, and the technical output is the same. This is the same dynamic that makes the Dominican Republic competitive for tourism — local pricing structures meet international quality, and the gap is the savings.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b14",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b14-s1", text: "Sea-Band acupressure wristbands: ", marks: ["strong"] },
-            { _type: "span", _key: "en-b14-s2", text: "Elastic wristbands with a small bead that presses on the P6 acupressure point on the inside of each wrist. The scientific evidence is mixed but they help many people in practice and they have zero side effects, so they're worth keeping in your dive bag. Put them on before boarding, not after symptoms start.", marks: [] },
+            { _type: "span", _key: "en-b14-s1", text: "Who Else Works With Them", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b15",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b15-l1", href: "https://www.dr-webstudio.com/en/portfolio" },
+          ],
           children: [
-            { _type: "span", _key: "en-b15-s1", text: "Peppermint: ", marks: ["strong"] },
-            { _type: "span", _key: "en-b15-s2", text: "Peppermint tea or peppermint candies help with mild nausea for some people. Less reliable than ginger, but a low-cost option to stack with other approaches.", marks: [] },
+            { _type: "span", _key: "en-b15-s1", text: "We're far from the only Punta Cana business that has used DR Web Studio. ", marks: [] },
+            { _type: "span", _key: "en-b15-s2", text: "The portfolio", marks: ["en-b15-l1"] },
+            { _type: "span", _key: "en-b15-s3", text: " covers a fair cross-section of the local market: Sertuin Events for event production, Punta Cana Tour Store for excursion booking, Punta Cana Proposal Packages for luxury proposal planning, Punta Cana Venue Collection for wedding venues, Esencias by Nancy for boutique fragrance, Punta Cana Photo Edition for photography services, and Punta Cana Wedding Packages for full-service wedding planning. Beyond the tourism stack, there's also Fuerza del Pueblo Verón-Punta Cana, a political/civic site with a custom CMS solution. The common thread is that all of them are local Dominican operations that wanted something better than a generic template and didn't want to pay agency rates for it.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b16",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b16-s1", text: "Hydration and food: ", marks: ["strong"] },
-            { _type: "span", _key: "en-b16-s2", text: "Dehydration makes nausea worse. Drink water steadily before and during the boat ride — small sips, not big gulps. Eat a light breakfast at least an hour before boarding (not heavy, greasy, or acidic; toast, banana, plain crackers, or oatmeal are good choices). Don't go out on an empty stomach; an empty stomach actually makes seasickness more likely, not less. And no alcohol the night before.", marks: [] },
+            { _type: "span", _key: "en-b16-s1", text: "What Our Own Site Needed", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b17",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b17-s1", text: "On the Boat: Behavioral Tactics That Help", marks: [] },
+            { _type: "span", _key: "en-b17-s1", text: "Since this is a Grand Bay blog post, it's fair to use our own website as the working example. Our requirements were specific: a full bilingual English/Spanish version because our customers split roughly evenly between English-speaking travelers and Spanish-speaking residents and visitors; a course catalog with PADI certifications, prices, and clear next steps; dive site profiles with photos and dive plan descriptions; trip pages for Catalina and Bayahibe excursions with day-of logistics laid out; a blog system that supports the kind of long-form SEO content you're reading right now; integration with our communication channels (WhatsApp, email); and a content management system that lets non-developers update prices, schedules, and posts without filing a ticket every time.", marks: [] },
           ],
         },
         {
@@ -255,18 +235,16 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b18-s1", text: "Stay outside, not below. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b18-s2", text: "Sitting inside a cabin or below deck is the worst possible spot for seasickness — enclosed space, no horizon visible, often combined with strong smells (fuel, food, sunscreen). Stay on the open deck where you can see the horizon, feel the wind, and breathe fresh air.", marks: [] },
+            { _type: "span", _key: "en-b18-s1", text: "The build came in under what most agencies would have quoted for a static brochure site, and the practical result is that travelers booking dives with us can find what they need, see actual prices, and reach the team on WhatsApp inside about thirty seconds. The site doesn't try to win design awards. It tries to win bookings. That's the right framework for almost every local tourism business making this decision, and it's the philosophy DR Web Studio brings to every project.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b19",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b19-s1", text: "Watch the horizon. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b19-s2", text: "This is the single most effective free remedy. Pick a stable point on the horizon — land if visible, otherwise just the line where sea meets sky — and look at it. It gives your eyes a visual reference that matches what your inner ear is sensing, resolving the mismatch that triggers nausea.", marks: [] },
+            { _type: "span", _key: "en-b19-s1", text: "What Makes the Studio Different to Work With", marks: [] },
           ],
         },
         {
@@ -275,8 +253,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b20-s1", text: "Don't read, scroll, or stare at gauges. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b20-s2", text: "Looking at anything close to your face — phone screen, book, dive computer manual, gear bag — disconnects your eyes from the horizon and accelerates the onset of seasickness. The most common mistake new divers make is checking their phone on the boat ride out, then wondering why they feel awful by the time they're suiting up.", marks: [] },
+            { _type: "span", _key: "en-b20-s1", text: "A few practical things that come up when local business owners describe what working with DR Web Studio is like. Communication is direct — no account managers, no project coordinators, no creative directors between the client and the person actually building the site. You talk to the developer directly, the work gets done, you review it together. Decisions happen at the speed of the conversation rather than the speed of a Monday status meeting.", marks: [] },
           ],
         },
         {
@@ -285,8 +262,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b21-s1", text: "Position yourself amidships. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b21-s2", text: "The middle of the boat — between the bow and the stern — moves the least. The bow rises and falls most aggressively in swell; the stern can pitch and yaw. The middle is the calmest spot. On dive boats, this usually means the middle bench seats, not the front or back rails.", marks: [] },
+            { _type: "span", _key: "en-b21-s1", text: "The studio also doesn't try to sell features clients don't need. Punta Cana tourism businesses are pitched on chatbots, AI integrations, complex booking systems, membership platforms, and dozens of other add-ons by agencies that bill by the feature. The DR Web Studio approach is closer to the opposite: figure out the smallest, simplest site that actually does what the business needs, ship it fast, see what's working, and add things only when the data says they'll matter. That's not a complicated philosophy, but it's rare in this industry.", marks: [] },
           ],
         },
         {
@@ -295,137 +271,128 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b22-s1", text: "Avoid strong smells. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b22-s2", text: "Diesel fumes, fuel from the engine compartment, suntan oil, cigarette smoke, and even other people's breakfasts can trigger or worsen nausea. Sit upwind of the engine if possible, and avoid the kitchen or galley area on bigger boats.", marks: [] },
+            { _type: "span", _key: "en-b22-s1", text: "The other practical difference is that DR Web Studio is based in Punta Cana itself, which means it understands the realities of the market it's selling to. The team knows what international tourists expect when they land here, what local customers expect when they search in Spanish, what the typical Punta Cana hotel WiFi looks like at 9pm during peak season (it's not great, which is why fast-loading sites matter so much), and how booking conversion patterns actually look in this region. An overseas freelancer building the same site can write good code but doesn't see any of that context.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b23",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b23-s1", text: "Get in the water early. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b23-s2", text: "If you start feeling sick on the boat, tell your guide and ask if you can be one of the first in the water. As soon as you're submerged, the symptoms usually fade within a few minutes. Most reputable dive operators are happy to send seasick divers in early — it solves the problem for both sides.", marks: [] },
+            { _type: "span", _key: "en-b23-s1", text: "If You're a Punta Cana Business Reading This", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b24",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b24-s1", text: "If You Start Feeling Sick", marks: [] },
+            { _type: "span", _key: "en-b24-s1", text: "A simple test for whether your current website is doing its job: open it on your phone using mobile data, not hotel WiFi. Time how long it takes to load. Try to find your prices. Try to switch to Spanish (or English, if you're a Spanish-first site). Try to send a WhatsApp message to your business through the site. If any of those steps took more than a few seconds, that's a friction point that's costing you bookings — and it's the kind of thing DR Web Studio fixes routinely.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b25",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b25-l1", href: "https://www.dr-webstudio.com/en/our-services/website-migrations-or-rebuilds" },
+            { _type: "link", _key: "en-b25-l2", href: "https://www.dr-webstudio.com/en/our-services/landing-pages" },
+            { _type: "link", _key: "en-b25-l3", href: "https://www.dr-webstudio.com/en/our-services/e-commerce" },
+          ],
           children: [
-            {
-              _type: "span",
-              _key: "en-b25-s1",
-              text: "Once seasickness has started, prevention is no longer an option — you're in management mode. Move to fresh air immediately if you're not already outside. Sit, don't stand. Find a horizon point and lock your eyes on it. Sip water slowly. Tell your guide so they know what's happening and can plan accordingly. If you have ginger candy, eat one. Don't take medication after symptoms have started — it won't work fast enough and most options are designed to prevent rather than treat.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b25-s1", text: "Most local businesses contacting the studio fall into one of three buckets. They have an old site that needs ", marks: [] },
+            { _type: "span", _key: "en-b25-s2", text: "a full rebuild on a modern platform", marks: ["en-b25-l1"] },
+            { _type: "span", _key: "en-b25-s3", text: "; they have no site at all and need ", marks: [] },
+            { _type: "span", _key: "en-b25-s4", text: "a focused landing page", marks: ["en-b25-l2"] },
+            { _type: "span", _key: "en-b25-s5", text: " to start with; or they're ready to sell products and services online and need ", marks: [] },
+            { _type: "span", _key: "en-b25-s6", text: "a real e-commerce setup", marks: ["en-b25-l3"] },
+            { _type: "span", _key: "en-b25-s7", text: " with payments, checkout, and inventory. Each path has its own scope and price, and the studio's questionnaire process narrows down which one fits before any quote gets written.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b26",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b26-s1",
-              text: "If you do throw up, lean over the leeward (downwind) side of the boat — important for everyone else on board. Don't try to make it to a bathroom; you almost certainly won't, and the bathroom is the worst place to be when seasick. After vomiting, you'll usually feel dramatically better. Rinse your mouth, take small sips of water, and let your guide know whether you still want to dive. Many divers do their best dive immediately after a rough boat ride — once underwater, the symptoms are gone.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b26-s1", text: "The Bilingual Question Specifically", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b27",
-          style: "h2",
-          markDefs: [],
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "en-b27-l1", href: "https://www.dr-webstudio.com/en/our-services/multilingual-and-international-websites" },
+          ],
           children: [
-            { _type: "span", _key: "en-b27-s1", text: "Vomiting Through Your Regulator", marks: [] },
+            { _type: "span", _key: "en-b27-s1", text: "Anyone running a tourism business in Punta Cana eventually faces the multilingual question. The default \"solution\" most operators use is to copy their content into Google Translate and paste the result into the site, which produces Spanish that obviously wasn't written by a human and chases off Spanish-speaking customers. The proper alternative is ", marks: [] },
+            { _type: "span", _key: "en-b27-s2", text: "a real multilingual setup", marks: ["en-b27-l1"] },
+            { _type: "span", _key: "en-b27-s3", text: " where every piece of content has separate, native-quality versions in each language, with proper URL structures, hreflang tags for search engines, and language switching that actually works. This is what we have, and it's a significant part of why our Spanish-language search traffic converts at all. DR Web Studio builds this routinely for tourism clients because it's basically required if you want both halves of the customer base.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b28",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b28-s1",
-              text: "It's worth knowing, because it does happen. If nausea strikes underwater, the universal advice from every diving safety organization is: keep the regulator in your mouth and vomit through it. The regulator is designed for this — it has a one-way exhaust valve that pushes everything out into the water — and your gear handles it without issue. Removing the regulator to vomit is dangerous because you may inhale during or immediately after, drawing water into your lungs. Keep it in, exhale strongly, and the system clears itself. Rinse your mouth with seawater afterward, take a few normal breaths, and signal your buddy that you're okay (or that you need to ascend if you're not). It's not glamorous but it's safe and routine, and your guide has seen it before.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b28-s1", text: "What the Process Looks Like", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b29",
-          style: "h2",
-          markDefs: [],
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "en-b29-l1", href: "https://www.dr-webstudio.com/en/project-planner" },
+          ],
           children: [
-            { _type: "span", _key: "en-b29-s1", text: "Picking the Right Boat Trip If You're Prone", marks: [] },
+            { _type: "span", _key: "en-b29-s1", text: "The starting point is ", marks: [] },
+            { _type: "span", _key: "en-b29-s2", text: "a short questionnaire on the project planner page", marks: ["en-b29-l1"] },
+            { _type: "span", _key: "en-b29-s3", text: " — basic questions about what kind of business you run, what you currently have online, what you'd want a new site to do, and a rough timeline. From there DR Web Studio reviews the answers and either sends a fixed quote (for projects that match one of the standard packages) or schedules a short call to scope a custom build. There's no high-pressure sales meeting; the questionnaire-first approach exists so both sides can decide quickly whether the project is a fit before anyone spends time on a long conversation.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b30",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b30-l1", href: "https://www.grandbay-puntacana.com/sites" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b30-s1", text: "If you know you're prone to seasickness, choose dive trips with shorter boat rides and calmer water. ", marks: [] },
-            { _type: "span", _key: "en-b30-s2", text: "Local Punta Cana dive sites", marks: ["en-b30-l1"] },
-            { _type: "span", _key: "en-b30-s3", text: " are typically 15 to 25 minutes from the dock, which is short enough that most people can manage without major issues. Catalina Island is a longer ride — about 90 minutes each way, generally on a larger and more stable catamaran with smoother motion. Bayahibe is typically the longest dive day at around two hours of road and boat combined, but the boat portion itself is similar in length to Catalina.", marks: [] },
+            { _type: "span", _key: "en-b30-s1", text: "Once a project is agreed, the typical timeline is two to four weeks for a Starter or Business package, four to eight weeks for E-commerce or custom builds, and longer for projects with complex integrations or large content migrations. Payments are usually split between an upfront deposit and a launch-day balance, with payment plans available for larger custom projects.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b31",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b31-s1",
-              text: "Larger boats with deeper hulls handle rough water better than small open boats. Catamarans (two parallel hulls) ride more stably than monohulls and tend to be the most comfortable option for sensitive passengers. If the day's forecast is for high winds and big swell, ask whether the operator is running a smaller or larger boat that day, and consider postponing if you have flexibility.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b31-s1", text: "What Happens After Launch", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b32",
-          style: "h2",
-          markDefs: [],
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "en-b32-l1", href: "https://www.dr-webstudio.com/en/our-services/ongoing-website-maintenance-and-support" },
+          ],
           children: [
-            { _type: "span", _key: "en-b32-s1", text: "Building Your Personal Anti-Seasickness Plan", marks: [] },
+            { _type: "span", _key: "en-b32-s1", text: "Standard packages include 30 to 60 days of post-launch support, which covers fixing any bugs that surface in early traffic, small content adjustments, and answering questions from the team learning to use the CMS. After that window, ", marks: [] },
+            { _type: "span", _key: "en-b32-s2", text: "ongoing maintenance and support", marks: ["en-b32-l1"] },
+            { _type: "span", _key: "en-b32-s3", text: " is available as a flat monthly fee for businesses that don't want to think about updates, backups, or security patches themselves. This is also when content additions (new blog posts, new dive sites, new courses, new product pages) typically get scheduled. The maintenance arrangement is optional — plenty of clients run their own sites after launch using the CMS — but it's there for businesses that don't have anyone in-house who wants to manage that work.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b33",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b33-s1",
-              text: "Most divers who get seasick stack multiple approaches rather than relying on any single thing. A typical effective plan for someone with moderate susceptibility might look like: light dinner the night before with no alcohol; take Bonine (non-drowsy) the night before and another tablet an hour before boarding; light breakfast 60 to 90 minutes before the boat (toast and banana); put Sea-Bands on before boarding; chew ginger candy on the way to the dock; on the boat, stay outside, sit amidships, watch the horizon, sip water steadily, and avoid looking at your phone. If you start feeling iffy, ask to be one of the first in the water.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b33-s1", text: "When DR Web Studio Isn't the Right Fit", marks: [] },
           ],
         },
         {
@@ -434,123 +401,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b34-s1",
-              text: "For people with severe susceptibility — anyone who has been hospitalized from seasickness, or who's miserable on every boat ride regardless of conditions — talk to your doctor about a scopolamine prescription specifically for diving, and choose your dive locations and trip lengths carefully. A liveaboard trip is probably not your best entry into diving; build experience on day boats with short rides first.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx1",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-bx1-s1", text: "Special Considerations: Pregnancy, Children, and Older Adults", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx2",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "en-bx2-s1",
-              text: "Different life stages bring different constraints on what's safe and effective. Pregnant travelers shouldn't dive at all (a separate medical consensus regardless of seasickness), but for non-diving boat days, ginger and Sea-Bands are the standard recommendations because they avoid medication entirely; most over-the-counter motion sickness medications are not recommended during pregnancy, and scopolamine patches are contraindicated. Always check with your obstetrician before traveling.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx3",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "en-bx3-s1",
-              text: "For children, meclizine (Bonine) is generally not recommended for kids under 12 without pediatric guidance, and dimenhydrinate (the original Dramamine) makes most kids extremely drowsy, which is unsafe around water. Ginger chews, Sea-Bands, and behavioral strategies (eyes on the horizon, no screen time, light snacks) are the safer first line. Pediatric formulations exist but should be chosen with a pediatrician rather than off the shelf.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx4",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "en-bx4-s1",
-              text: "Older adults often have an easier time with motion sickness than they did as kids (susceptibility commonly declines with age) but face other complications. Many seasickness medications interact with blood pressure medications, sedatives, sleeping aids, and antidepressants. Scopolamine in particular can cause confusion, blurred vision, and urinary retention in older patients — generally not the first choice. Bring an updated medication list to your doctor before any trip and ask specifically about interactions; the over-the-counter options are not always benign in combination with prescription medications.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx5",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-bx5-s1", text: "Building Tolerance Over Multiple Dive Days", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx6",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "en-bx6-s1",
-              text: "If you're diving for several consecutive days, your body genuinely adapts. The phenomenon is well-known to sailors and is sometimes called \"sea legs.\" The vestibular system recalibrates to the motion pattern of being at sea, and what felt unbearable on day one often becomes manageable by day three. This doesn't mean pushing through severe sickness on day one — that just primes a stronger aversion. The strategy is to medicate effectively early in the trip so you have positive boat experiences, then taper as your tolerance builds. Many divers on multi-day trips report needing nothing by the second week.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx7",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "en-bx7-s1",
-              text: "Worth knowing: this adaptation can reverse on return to land. Some divers experience mal de débarquement — a persistent sensation of motion for a few days after returning from a boat-heavy trip. It's harmless, usually resolves on its own within a week, and the fact that it exists is actually evidence that your vestibular system was successfully adapting to the boat motion.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx8",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-bx8-s1", text: "Picking Boat Trips That Minimize Rough Water", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx9",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "en-bx9-s1",
-              text: "Beyond medication, the trip you book matters more than people realize. Larger boats roll less in chop than small ones — a 12-metre dive boat is a different ride than a 6-metre RIB. Catamarans are dramatically more stable than monohulls in moderate swell because the two hulls resist roll. Closer dive sites mean shorter time on the water, which compounds: a 15-minute crossing is rarely a problem; a 90-minute crossing in chop is. Morning trips usually have calmer water than afternoon trips because the trade winds and thermal effects build through the day in most Caribbean locations. Asking your dive shop directly about typical conditions for the specific sites that day — and being willing to skip a rough day for a calmer one — is a more powerful tool than any medication.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b34-s1", text: "A recommendation should mention the cases where it isn't the right call, otherwise the recommendation is incomplete. If your business needs a fifteen-person enterprise team with 24/7 phone support, a dedicated account manager, and a multi-year retainer with SLAs, you want a larger agency, not a focused boutique. If you have a very rare or highly specialized technology need (industry-specific compliance work, regulated medical or financial integrations, native mobile app development from scratch), confirm fit on the discovery call before signing — sometimes the right answer is a referral elsewhere. And if your budget is genuinely zero and you just need something live next week, an honest answer is that Wix or Squarespace will get you online faster, and DR Web Studio's value shows up later when you're ready to invest in something that converts visitors into customers. The studio is most useful for the long middle — businesses past the survival-mode phase, not yet at the enterprise-procurement phase, who need their website to actually earn money rather than just exist.", marks: [] },
           ],
         },
         {
@@ -559,7 +410,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b35-s1", text: "Diving in Punta Cana If You Get Seasick", marks: [] },
+            { _type: "span", _key: "en-b35-s1", text: "How to Get In Touch", marks: [] },
           ],
         },
         {
@@ -567,15 +418,21 @@ const posts = [
           _key: "en-b36",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "en-b36-l1", href: "https://www.grandbay-puntacana.com/contact" },
-            { _type: "link", _key: "en-b36-l2", href: "https://wa.me/18297239338" },
+            { _type: "link", _key: "en-b36-l1", href: "https://dr-webstudio.com/" },
+            { _type: "link", _key: "en-b36-l2", href: "https://www.dr-webstudio.com/en/contact" },
+            { _type: "link", _key: "en-b36-l3", href: "https://www.dr-webstudio.com/en/portfolio" },
+            { _type: "link", _key: "en-b36-l4", href: "https://wa.me/18297239338" },
           ],
           children: [
-            { _type: "span", _key: "en-b36-s1", text: "The Caribbean side of the Dominican Republic generally has calmer water than the Atlantic side, and Punta Cana sits on that calmer Caribbean coast. Local dive sites are reached by short boat rides on protected water for most of the year. If you're nervous about seasickness, start with local dives before tackling Catalina or Bayahibe — once you've completed two or three short-ride days without issue, you'll have a better sense of how your body handles the longer trips. If you tell your guide on the boat that you're prone to seasickness, they can position you in the calmest spot, get you in the water first, and keep an eye on you during surface intervals. Reach out via our ", marks: [] },
-            { _type: "span", _key: "en-b36-s2", text: "contact page", marks: ["en-b36-l1"] },
-            { _type: "span", _key: "en-b36-s3", text: " or on ", marks: [] },
-            { _type: "span", _key: "en-b36-s4", text: "WhatsApp", marks: ["en-b36-l2"] },
-            { _type: "span", _key: "en-b36-s5", text: " before your trip if you want help picking a schedule that minimizes rough-water exposure.", marks: [] },
+            { _type: "span", _key: "en-b36-s1", text: "The full studio site is at ", marks: [] },
+            { _type: "span", _key: "en-b36-s2", text: "dr-webstudio.com", marks: ["en-b36-l1"] },
+            { _type: "span", _key: "en-b36-s3", text: " with detailed service pages, the public portfolio, and the questionnaire that starts most projects. For direct contact, ", marks: [] },
+            { _type: "span", _key: "en-b36-s4", text: "the contact page", marks: ["en-b36-l2"] },
+            { _type: "span", _key: "en-b36-s5", text: " has email and the standard quote form. If you'd rather see the work first, ", marks: [] },
+            { _type: "span", _key: "en-b36-s6", text: "the portfolio", marks: ["en-b36-l3"] },
+            { _type: "span", _key: "en-b36-s7", text: " walks through several recent Punta Cana builds with a bit of context on what each project needed. And if you'd rather just ask us about our own experience working with DR Web Studio, the fastest channel is ", marks: [] },
+            { _type: "span", _key: "en-b36-s8", text: "WhatsApp", marks: ["en-b36-l4"] },
+            { _type: "span", _key: "en-b36-s9", text: " — we're happy to share specifics on what the build cost, how long it took, and what we'd do differently if we started over today.", marks: [] },
           ],
         },
       ],
@@ -584,14 +441,13 @@ const posts = [
           _type: "block",
           _key: "es-b1",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b1-l1", href: "https://dr-webstudio.com/" },
+          ],
           children: [
-            {
-              _type: "span",
-              _key: "es-b1-s1",
-              text: "El mareo deja a más buzos fuera del agua que cualquier otro problema físico excepto los problemas de oído. Lo frustrante es que no tiene nada que ver con el buceo en sí — una vez sumergido, los síntomas suelen desaparecer en minutos. Es el trayecto en bote el que hace el daño. La buena noticia es que el mareo es muy manejable con la combinación correcta de preparación, medicación y hábitos a bordo. Esta guía recorre qué causa el mareo, los medicamentos que vale la pena usar (y aquellos con los que los buzos deben tener cuidado), remedios naturales que sí ayudan, tácticas de comportamiento en el bote y qué hacer si empiezas a sentirte mal en medio del viaje.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b1-s1", text: "Cada pocas semanas alguien nos pregunta quién construyó nuestra página web. Usualmente es otro propietario de negocio en Punta Cana que ha notado que la experiencia de reserva funciona suave, que las páginas cargan rápido en el WiFi del hotel y que todo el sitio se comporta igual en inglés y español. La respuesta es ", marks: [] },
+            { _type: "span", _key: "es-b1-s2", text: "DR Web Studio", marks: ["es-b1-l1"] },
+            { _type: "span", _key: "es-b1-s3", text: " — un pequeño estudio de diseño y desarrollo web en Punta Cana que se ha convertido silenciosamente en la opción preferida para sitios web de turismo, eventos y pequeños negocios locales. Como la pregunta sale lo bastante seguido como para que sigamos tecleando la misma respuesta por WhatsApp, decidimos que ya era momento de escribir la versión larga.", marks: [] },
           ],
         },
         {
@@ -600,20 +456,16 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b2-s1", text: "Qué Causa Realmente el Mareo", marks: [] },
+            { _type: "span", _key: "es-b2-s1", text: "Cómo Terminamos Trabajando con el Estudio", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b3",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b3-l1", href: "https://dan.org/safety-prevention/diver-safety/divers-blog/seasickness-prevention-and-treatment/" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b3-s1", text: "A pesar del nombre, el agua no es la causa — lo es el movimiento. ", marks: [] },
-            { _type: "span", _key: "es-b3-s2", text: "Divers Alert Network explica el mecanismo", marks: ["es-b3-l1"] },
-            { _type: "span", _key: "es-b3-s3", text: " como un desajuste sensorial. El sistema vestibular de tu oído interno detecta el movimiento del bote — cabeceo, balanceo, guiñada — mientras tus ojos, fijos en un interior estable o el horizonte, a menudo no ven el mismo movimiento. Tu cerebro recibe información contradictoria sobre si te estás moviendo o no, decide que algo anda mal (en términos primitivos, posiblemente envenenado) y dispara la náusea como respuesta defensiva. El mismo mecanismo causa el mareo en carro, en avión y el mareo de simulador con cascos de realidad virtual. Por eso fijar la vista en el horizonte ayuda — le da a los ojos una referencia visual estable que coincide con lo que sienten los oídos.", marks: [] },
+            { _type: "span", _key: "es-b3-s1", text: "Vale la pena divulgar la relación de trabajo por adelantado. James, uno de nuestros instructores de buceo aquí en Grand Bay, también dirige DR Web Studio de forma independiente. Cuando nuestra web anterior necesitaba una reconstrucción hace unos años, contratamos al estudio para hacerla, y ese trabajo fue creciendo — el estudio ahora maneja la mayor parte de nuestras operaciones en línea, incluyendo SEO y comunicación con clientes, junto con el día a día del centro de buceo. Así que aunque recomendamos DR Web Studio abiertamente a otros negocios de Punta Cana, la recomendación se basa en conocimiento directo de trabajo: el mismo equipo detrás de ambos, todos los días.", marks: [] },
           ],
         },
         {
@@ -622,12 +474,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b4-s1",
-              text: "Esto también explica por qué el mareo desaparece bajo el agua. Una vez que estás bajo la superficie, el movimiento del bote ya no se siente, el agua que te rodea está en calma y tu sistema vestibular y visual coinciden de nuevo. Muchos buzos que se sienten fatal en el bote reportan estar perfectamente bien en cuanto descienden. El truco es pasar el trayecto del bote.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b4-s1", text: "Mencionamos esto por adelantado porque es el tipo de cosa que es mejor explicada que descubierta. La razón por la que les seguimos hablando a otros negocios de Punta Cana sobre DR Web Studio no es que se nos deban referencias — es que hemos visto el trabajo del estudio rendir en nuestra propia operación, y sabemos que la mayoría de los negocios locales a nuestro alrededor se beneficiarían del mismo tipo de página web. Lo que sigue es una mirada más cercana a qué hace DR Web Studio, cuánto cuesta y dónde sus servicios sí y no tienen sentido.", marks: [] },
           ],
         },
         {
@@ -636,21 +483,20 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b5-s1", text: "Medicamentos que Funcionan", marks: [] },
+            { _type: "span", _key: "es-b5-s1", text: "Qué Hace Realmente DR Web Studio", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b6",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b6-l1", href: "https://www.dr-webstudio.com/es/our-services" },
+          ],
           children: [
-            {
-              _type: "span",
-              _key: "es-b6-s1",
-              text: "Varios medicamentos de venta libre y con receta previenen el mareo de forma efectiva. La pregunta clave para los buzos es cuáles son seguros de usar antes de bucear — algunos tienen efectos secundarios (especialmente somnolencia) que comprometen la seguridad bajo el agua.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b6-s1", text: "La ", marks: [] },
+            { _type: "span", _key: "es-b6-s2", text: "lista de servicios del estudio", marks: ["es-b6-l1"] },
+            { _type: "span", _key: "es-b6-s3", text: " cubre la mayor parte de lo que un pequeño negocio dominicano necesita para operar en línea: sitios web a medida para negocios, landing pages y sitios de una sola página para campañas, e-commerce completo con integración de pagos, configuraciones multilingües (inglés y español por defecto, con la opción de más idiomas), migraciones de plataformas anticuadas, implementación de CMS headless para que dueños no técnicos puedan gestionar su propio contenido, integraciones de API para sistemas de reservas e inventario, y mantenimiento continuo y soporte después del lanzamiento. DR Web Studio maneja diseño, desarrollo, despliegue y soporte como un solo equipo en lugar de pasar el proyecto entre especialistas que no conocen tu proyecto.", marks: [] },
           ],
         },
         {
@@ -659,18 +505,16 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b7-s1", text: "Bonine (meclizina): ", marks: ["strong"] },
-            { _type: "span", _key: "es-b7-s2", text: "Suele ser la primera opción para buzos. Es efectivo, está disponible sin receta en la mayoría de los países y produce mucha menos somnolencia que otras opciones. Toma una tableta la noche anterior o al menos una a dos horas antes de embarcar. La variante non-drowsy (sin somnolencia) está ampliamente disponible y es mejor opción si vas a bucear el mismo día.", marks: [] },
+            { _type: "span", _key: "es-b7-s1", text: "El stack técnico es moderno. Los sitios se construyen en Next.js (el mismo framework que usan Netflix, TikTok y muchas de las webs más exigentes en rendimiento del mundo), con Sanity como sistema de gestión de contenido, Tailwind para estilos e integraciones estándar para pagos, correo y analítica. Esto importa menos por cómo se ve el sitio y más por cómo rinde — las construcciones de DR Web Studio normalmente cargan en menos de dos segundos, lo bastante rápido para que un viajero móvil que revisa la disponibilidad de un centro de buceo desde la piscina del hotel no se quede esperando. La mayoría de los sitios turísticos de Punta Cana siguen en WordPress o constructores tipo plantilla que tardan de cinco a diez segundos en cargar en la misma conexión.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b8",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b8-s1", text: "Dramamine (dimenhidrinato): ", marks: ["strong"] },
-            { _type: "span", _key: "es-b8-s2", text: "Funciona bien pero la fórmula original produce somnolencia importante, lo cual es un problema real para bucear. La fórmula non-drowsy de Dramamine en realidad contiene meclizina — el mismo principio activo que Bonine. Si eliges Dramamine, busca específicamente la versión non-drowsy.", marks: [] },
+            { _type: "span", _key: "es-b8-s1", text: "Por Qué Importa para los Negocios Locales", marks: [] },
           ],
         },
         {
@@ -679,45 +523,38 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b9-s1", text: "Stugeron (cinarizina): ", marks: ["strong"] },
-            { _type: "span", _key: "es-b9-s2", text: "Disponible sin receta en la mayoría de los países fuera de EE. UU. y popular entre buzos europeos. Muchos buzos reportan que funciona mejor que Bonine con una somnolencia igual de baja. Vale la pena conseguirlo si lo encuentras.", marks: [] },
+            { _type: "span", _key: "es-b9-s1", text: "El estado real de los sitios web de pequeños negocios en Punta Cana: la mayoría son inexistentes, están en plantillas gratuitas de Wix o Squarespace que se ven casi idénticas a cualquier otro sitio turístico de la zona, o están atrapados en instalaciones viejas de WordPress que nadie ha actualizado en años. El resultado es que los negocios con el mejor servicio a menudo tienen la presencia digital más débil, mientras que los que pagaron por una web real (o que nunca tuvieron una y dependen de Instagram) pierden reservas cada semana frente a competidores con una experiencia en línea más fluida.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b10",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b10-l1", href: "https://blog.padi.com/simple-tips-for-preventing-seasickness-divers-alert-network/" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b10-s1", text: "Parches de escopolamina (Transderm Scop): ", marks: ["strong"] },
-            { _type: "span", _key: "es-b10-s2", text: "Solo con receta. El parche va detrás de la oreja y libera medicamento lentamente durante hasta tres días, lo cual es cómodo para liveaboards o días seguidos de bote. Pero conviene saber varias cosas primero. Los efectos secundarios incluyen boca seca, visión borrosa, somnolencia y, ocasionalmente, confusión o alucinaciones. Y más importante aún para los buzos, ", marks: [] },
-            { _type: "span", _key: "es-b10-s3", text: "DAN y PADI advierten", marks: ["es-b10-l1"] },
-            { _type: "span", _key: "es-b10-s4", text: " que llevar el parche más de tres días puede causar síntomas de abstinencia que imitan los de la enfermedad por descompresión — mareo, náusea, vómito tras retirar el parche — lo que podría complicar el diagnóstico si algo de verdad sale mal en una inmersión. Habla con tu médico específicamente sobre buceo antes de obtener una receta, y nunca pruebes un parche por primera vez en un día de buceo.", marks: [] },
+            { _type: "span", _key: "es-b10-s1", text: "Un momento típico de decisión de viaje funciona así: alguien en la habitación de un hotel busca \"buceo Punta Cana\" o \"paseo privado en bote Bávaro\", obtiene una lista de opciones, abre las primeras tres y reserva con aquella cuyo sitio cargó más rápido, mostró precios claros y soportaba el idioma en el que lee. Si tu sitio tarda siete segundos en cargar, no tiene versión en español, esconde los precios detrás de un formulario de contacto y se ve como la misma plantilla que otros cinco operadores, pierdes esa reserva antes de que el cliente siquiera lea sobre tu servicio. Ese es el problema que una web bien hecha realmente resuelve — no ganar premios de diseño, sino convertir el tráfico de búsqueda en clientes reales que reservan. Todo el enfoque de DR Web Studio está construido alrededor de ese marco de conversión-primero.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b11",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b11-s1",
-              text: "La regla universal con cualquiera de estos medicamentos: pruébalos primero en un día sin buceo. La somnolencia afecta a cada persona distinto y no quieres descubrir que reaccionas fuerte cuando estás a 18 metros con visibilidad baja. Toma una dosis normal en casa, observa cómo te hace sentir y luego decide si es seguro para bucear.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b11-s1", text: "Precios Transparentes (En Serio)", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b12",
-          style: "h2",
-          markDefs: [],
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "es-b12-l1", href: "https://www.dr-webstudio.com/es/pricing" },
+          ],
           children: [
-            { _type: "span", _key: "es-b12-s1", text: "Remedios Naturales", marks: [] },
+            { _type: "span", _key: "es-b12-s1", text: "La mayoría de las cotizaciones de diseño web en esta industria son deliberadamente vagas hasta que has pasado una hora en una llamada de descubrimiento. DR Web Studio publica los números reales en ", marks: [] },
+            { _type: "span", _key: "es-b12-s2", text: "la página de precios", marks: ["es-b12-l1"] },
+            { _type: "span", _key: "es-b12-s3", text: ", lo cual es lo bastante inusual en el mercado local como para que valga la pena señalarlo. Los tres paquetes estándar son Starter ($400) para una a tres páginas con SEO básico y formulario de contacto, Business ($800) para cuatro a ocho páginas con diseño a medida, branding, integración de CMS y SEO avanzado, y E-commerce ($900) para tiendas online completas con catálogo de productos, checkout seguro y confirmaciones de pedido. Los proyectos a medida e integraciones suben desde ahí según el alcance.", marks: [] },
           ],
         },
         {
@@ -726,47 +563,47 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b13-s1", text: "Jengibre: ", marks: ["strong"] },
-            { _type: "span", _key: "es-b13-s2", text: "Caramelos de jengibre, té de jengibre, ginger ale (jengibre real, no saborizado artificial) y jengibre cristalizado funcionan para muchos buzos. La investigación sugiere que el jengibre reduce las contracciones estomacales, lo que ayuda a aliviar la náusea. La ventaja frente al medicamento es cero somnolencia y cero efectos secundarios. La efectividad varía por persona — algunos buzos lo defienden, otros lo encuentran suave — pero no hay nada que perder al probarlo.", marks: [] },
+            { _type: "span", _key: "es-b13-s1", text: "Contexto para esos números: el trabajo freelance equivalente en Estados Unidos o Europa Occidental cuesta típicamente entre $1.500 y $8.000 por un sitio de pequeño negocio, y el trabajo de agencia parte de $4.000 y supera fácilmente los $15.000. El precio dominicano no es más bajo porque el trabajo sea peor — es más bajo porque el costo de vida, la sobrecarga y los gastos operativos en Punta Cana son una fracción de lo que son en Miami, Nueva York o Londres. Un sitio en Next.js a medida que costaría entre $5.000 y $8.000 con un freelance estadounidense, DR Web Studio lo puede construir por menos de $1.000, y el resultado técnico es el mismo. Es la misma dinámica que hace competitiva a la República Dominicana para el turismo — estructura de precios local con calidad internacional, y la diferencia es el ahorro.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b14",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b14-s1", text: "Pulseras de acupresión Sea-Band: ", marks: ["strong"] },
-            { _type: "span", _key: "es-b14-s2", text: "Pulseras elásticas con una pequeña bolita que presiona el punto de acupresión P6 en el interior de cada muñeca. La evidencia científica es mixta pero a muchas personas les ayudan en la práctica y no tienen efectos secundarios, así que vale la pena tenerlas en tu bolso de buceo. Ponlas antes de embarcar, no después de que aparezcan los síntomas.", marks: [] },
+            { _type: "span", _key: "es-b14-s1", text: "Quién Más Trabaja Con Ellos", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b15",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b15-l1", href: "https://www.dr-webstudio.com/es/portfolio" },
+          ],
           children: [
-            { _type: "span", _key: "es-b15-s1", text: "Menta: ", marks: ["strong"] },
-            { _type: "span", _key: "es-b15-s2", text: "El té de menta o los caramelos de menta ayudan con la náusea leve para algunas personas. Menos fiable que el jengibre, pero una opción de bajo costo para combinar con otros enfoques.", marks: [] },
+            { _type: "span", _key: "es-b15-s1", text: "Estamos lejos de ser el único negocio de Punta Cana que ha trabajado con DR Web Studio. ", marks: [] },
+            { _type: "span", _key: "es-b15-s2", text: "El portafolio", marks: ["es-b15-l1"] },
+            { _type: "span", _key: "es-b15-s3", text: " cubre una buena muestra del mercado local: Sertuin Events para producción de eventos, Punta Cana Tour Store para reservas de excursiones, Punta Cana Proposal Packages para propuestas matrimoniales de lujo, Punta Cana Venue Collection para venues de boda, Esencias by Nancy para fragancias boutique, Punta Cana Photo Edition para servicios de fotografía y Punta Cana Wedding Packages para planificación integral de bodas. Más allá del stack turístico también está Fuerza del Pueblo Verón-Punta Cana, un sitio político/cívico con solución CMS a medida. El hilo común es que todos son operaciones dominicanas locales que querían algo mejor que una plantilla genérica y que no querían pagar tarifas de agencia.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b16",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b16-s1", text: "Hidratación y comida: ", marks: ["strong"] },
-            { _type: "span", _key: "es-b16-s2", text: "La deshidratación empeora la náusea. Toma agua de manera constante antes y durante el trayecto en bote — sorbos pequeños, no tragos grandes. Desayuna ligero al menos una hora antes de embarcar (nada pesado, grasoso ni ácido; tostadas, plátano, galletas sencillas o avena son buenas opciones). No salgas con el estómago vacío; un estómago vacío en realidad hace más probable el mareo, no menos. Y nada de alcohol la noche anterior.", marks: [] },
+            { _type: "span", _key: "es-b16-s1", text: "Lo Que Nuestro Sitio Necesitaba", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b17",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b17-s1", text: "En el Bote: Tácticas de Comportamiento que Ayudan", marks: [] },
+            { _type: "span", _key: "es-b17-s1", text: "Ya que esta es una publicación del blog de Grand Bay, es justo usar nuestro propio sitio como ejemplo de trabajo. Nuestros requisitos eran específicos: una versión completamente bilingüe en inglés/español porque nuestros clientes se dividen casi por igual entre viajeros angloparlantes y residentes y visitantes hispanohablantes; un catálogo de cursos con certificaciones PADI, precios y siguientes pasos claros; perfiles de sitios de buceo con fotos y descripciones del plan de inmersión; páginas de excursiones a Catalina y Bayahibe con la logística del día explicada; un sistema de blog que soporte el tipo de contenido SEO de formato largo como el que estás leyendo; integración con nuestros canales de comunicación (WhatsApp, correo); y un sistema de gestión de contenido que permita a personas no desarrolladoras actualizar precios, horarios y publicaciones sin tener que abrir un ticket cada vez.", marks: [] },
           ],
         },
         {
@@ -775,18 +612,16 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b18-s1", text: "Quédate fuera, no abajo. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b18-s2", text: "Sentarte dentro de una cabina o bajo cubierta es el peor lugar posible para el mareo — espacio cerrado, sin horizonte visible, a menudo combinado con olores fuertes (combustible, comida, protector solar). Quédate en la cubierta abierta donde puedes ver el horizonte, sentir el viento y respirar aire fresco.", marks: [] },
+            { _type: "span", _key: "es-b18-s1", text: "El proyecto se completó por debajo de lo que la mayoría de las agencias habrían cotizado por un sitio estático tipo folleto, y el resultado práctico es que los viajeros que reservan inmersiones con nosotros pueden encontrar lo que necesitan, ver precios reales y comunicarse con el equipo por WhatsApp en unos treinta segundos. El sitio no busca ganar premios de diseño. Busca ganar reservas. Ese es el marco correcto para casi todo negocio local de turismo que toma esta decisión, y es la filosofía que DR Web Studio trae a cada proyecto.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b19",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b19-s1", text: "Mira el horizonte. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b19-s2", text: "Es el remedio gratuito más efectivo. Elige un punto estable en el horizonte — tierra si se ve, si no la línea donde se juntan el mar y el cielo — y míralo. Le da a tus ojos una referencia visual que coincide con lo que detecta tu oído interno, resolviendo el desajuste que dispara la náusea.", marks: [] },
+            { _type: "span", _key: "es-b19-s1", text: "Qué Hace Distinto al Estudio para Trabajar Con Él", marks: [] },
           ],
         },
         {
@@ -795,8 +630,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b20-s1", text: "No leas, no uses el celular, no mires los manómetros de cerca. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b20-s2", text: "Mirar cualquier cosa cerca de la cara — pantalla del celular, libro, manual de la computadora de buceo, bolsa de equipo — desconecta tus ojos del horizonte y acelera la aparición del mareo. El error más común que cometen los buzos nuevos es revisar el teléfono en el trayecto al sitio, y después se preguntan por qué se sienten fatal al ponerse el equipo.", marks: [] },
+            { _type: "span", _key: "es-b20-s1", text: "Algunas cosas prácticas que salen cuando los dueños de negocios locales describen cómo es trabajar con DR Web Studio. La comunicación es directa — sin account managers, sin coordinadores de proyecto, sin directores creativos entre el cliente y la persona que realmente construye el sitio. Hablas directo con el desarrollador, el trabajo se hace, lo revisan juntos. Las decisiones ocurren a la velocidad de la conversación, no a la velocidad de una reunión de estatus de los lunes.", marks: [] },
           ],
         },
         {
@@ -805,8 +639,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b21-s1", text: "Ponte en el centro del bote. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b21-s2", text: "La parte media del bote — entre la proa y la popa — es la que menos se mueve. La proa sube y baja más agresivamente con el oleaje; la popa puede cabecear y guiñar. La parte media es el punto más tranquilo. En botes de buceo, esto suele ser los bancos del medio, no la baranda delantera ni la trasera.", marks: [] },
+            { _type: "span", _key: "es-b21-s1", text: "El estudio tampoco intenta venderle al cliente funcionalidades que no necesita. A los negocios turísticos de Punta Cana les ofrecen chatbots, integraciones de IA, sistemas complejos de reservas, plataformas de membresía y docenas de extras más por parte de agencias que facturan por funcionalidad. El enfoque de DR Web Studio es más bien lo opuesto: descubrir el sitio más pequeño y simple que realmente haga lo que el negocio necesita, lanzarlo rápido, ver qué funciona y agregar cosas solo cuando los datos digan que importarán. No es una filosofía complicada, pero es rara en esta industria.", marks: [] },
           ],
         },
         {
@@ -815,137 +648,128 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b22-s1", text: "Evita olores fuertes. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b22-s2", text: "Los humos de diésel, el combustible del compartimiento del motor, el aceite bronceador, el humo de cigarrillo y hasta el desayuno de otras personas pueden disparar o empeorar la náusea. Siéntate a barlovento del motor si es posible y evita la zona de cocina o galera en los botes más grandes.", marks: [] },
+            { _type: "span", _key: "es-b22-s1", text: "La otra diferencia práctica es que DR Web Studio está basado en Punta Cana mismo, lo que significa que entiende las realidades del mercado al que le vende. El equipo sabe qué esperan los turistas internacionales cuando aterrizan aquí, qué esperan los clientes locales cuando buscan en español, cómo se ve el WiFi típico de un hotel de Punta Cana a las 9pm en temporada alta (no muy bien, por eso importan tanto los sitios que cargan rápido) y cómo lucen realmente los patrones de conversión de reservas en esta región. Un freelancer en el extranjero construyendo el mismo sitio puede escribir buen código pero no ve nada de ese contexto.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b23",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b23-s1", text: "Métete al agua temprano. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b23-s2", text: "Si empiezas a sentirte mal en el bote, dile a tu guía y pregunta si puedes ser de los primeros en entrar al agua. En cuanto te sumerges, los síntomas suelen desaparecer en unos minutos. La mayoría de los operadores serios mandan con gusto a los buzos mareados primero — resuelve el problema para ambos lados.", marks: [] },
+            { _type: "span", _key: "es-b23-s1", text: "Si Eres un Negocio de Punta Cana Leyendo Esto", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b24",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b24-s1", text: "Si Empiezas a Sentirte Mal", marks: [] },
+            { _type: "span", _key: "es-b24-s1", text: "Una prueba simple para saber si tu sitio actual está haciendo su trabajo: ábrelo en tu celular usando datos móviles, no WiFi de hotel. Cronometra cuánto tarda en cargar. Intenta encontrar tus precios. Intenta cambiar a español (o a inglés, si tu sitio es español-primero). Intenta enviar un mensaje de WhatsApp a tu negocio a través del sitio. Si cualquiera de esos pasos tomó más de unos segundos, ese es un punto de fricción que te está costando reservas — y es exactamente el tipo de cosa que DR Web Studio arregla de forma rutinaria.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b25",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b25-l1", href: "https://www.dr-webstudio.com/es/our-services/website-migrations-or-rebuilds" },
+            { _type: "link", _key: "es-b25-l2", href: "https://www.dr-webstudio.com/es/our-services/landing-pages" },
+            { _type: "link", _key: "es-b25-l3", href: "https://www.dr-webstudio.com/es/our-services/e-commerce" },
+          ],
           children: [
-            {
-              _type: "span",
-              _key: "es-b25-s1",
-              text: "Una vez que ha empezado el mareo, la prevención ya no es opción — estás en modo manejo. Sal a tomar aire fresco de inmediato si no estás ya afuera. Siéntate, no estés parado. Encuentra un punto del horizonte y fija la vista en él. Sorbe agua lentamente. Avísale a tu guía para que sepa qué está pasando y pueda planear en consecuencia. Si tienes un caramelo de jengibre, cómete uno. No tomes medicación una vez aparecidos los síntomas — no actuará lo bastante rápido y la mayoría de las opciones está pensada para prevenir, no para tratar.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b25-s1", text: "La mayoría de los negocios locales que contactan al estudio caen en uno de tres grupos. Tienen un sitio viejo que necesita ", marks: [] },
+            { _type: "span", _key: "es-b25-s2", text: "una reconstrucción completa en una plataforma moderna", marks: ["es-b25-l1"] },
+            { _type: "span", _key: "es-b25-s3", text: "; no tienen sitio en absoluto y necesitan ", marks: [] },
+            { _type: "span", _key: "es-b25-s4", text: "una landing page enfocada", marks: ["es-b25-l2"] },
+            { _type: "span", _key: "es-b25-s5", text: " para empezar; o están listos para vender productos y servicios en línea y necesitan ", marks: [] },
+            { _type: "span", _key: "es-b25-s6", text: "una configuración de e-commerce real", marks: ["es-b25-l3"] },
+            { _type: "span", _key: "es-b25-s7", text: " con pagos, checkout e inventario. Cada ruta tiene su propio alcance y precio, y el cuestionario del estudio acota cuál encaja antes de que se escriba cualquier cotización.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b26",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b26-s1",
-              text: "Si vomitas, inclínate hacia la banda de sotavento (a favor del viento) del bote — importante para los demás a bordo. No intentes llegar al baño; casi seguro no lo lograrás y el baño es el peor lugar donde estar mareado. Después de vomitar, normalmente te sentirás mucho mejor. Enjuágate la boca, toma pequeños sorbos de agua y dile al guía si todavía quieres bucear. Muchos buzos hacen su mejor inmersión justo después de un trayecto en bote movido — una vez bajo el agua, los síntomas se han ido.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b26-s1", text: "El Tema Bilingüe Específicamente", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b27",
-          style: "h2",
-          markDefs: [],
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "es-b27-l1", href: "https://www.dr-webstudio.com/es/our-services/multilingual-and-international-websites" },
+          ],
           children: [
-            { _type: "span", _key: "es-b27-s1", text: "Vomitar a Través del Regulador", marks: [] },
+            { _type: "span", _key: "es-b27-s1", text: "Cualquiera que opere un negocio turístico en Punta Cana eventualmente enfrenta la cuestión multilingüe. La \"solución\" por defecto que usan la mayoría de los operadores es copiar su contenido en Google Translate y pegar el resultado en el sitio, lo que produce un español que evidentemente no fue escrito por un humano y espanta a los clientes hispanohablantes. La alternativa correcta es ", marks: [] },
+            { _type: "span", _key: "es-b27-s2", text: "una configuración multilingüe real", marks: ["es-b27-l1"] },
+            { _type: "span", _key: "es-b27-s3", text: " donde cada pieza de contenido tiene versiones separadas, de calidad nativa en cada idioma, con estructuras de URL apropiadas, etiquetas hreflang para los motores de búsqueda y un cambio de idioma que realmente funciona. Esto es lo que tenemos, y es parte significativa de por qué nuestro tráfico de búsqueda en español convierte. DR Web Studio construye esto rutinariamente para clientes turísticos porque básicamente es requisito si quieres ambas mitades de la base de clientes.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b28",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b28-s1",
-              text: "Vale la pena saberlo, porque sí ocurre. Si la náusea aparece bajo el agua, el consejo universal de cada organización de seguridad de buceo es: mantén el regulador en la boca y vomita a través de él. El regulador está diseñado para esto — tiene una válvula de escape unidireccional que empuja todo al agua — y tu equipo lo maneja sin problemas. Quitarse el regulador para vomitar es peligroso porque puedes inhalar durante o justo después, metiendo agua a los pulmones. Mantenlo, exhala fuerte y el sistema se limpia solo. Enjuágate la boca con agua de mar después, toma unas respiraciones normales y señaliza a tu compañero que estás bien (o que necesitas ascender si no lo estás). No es elegante pero es seguro y rutinario, y tu guía ya lo ha visto antes.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b28-s1", text: "Cómo es el Proceso", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b29",
-          style: "h2",
-          markDefs: [],
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "es-b29-l1", href: "https://www.dr-webstudio.com/es/project-planner" },
+          ],
           children: [
-            { _type: "span", _key: "es-b29-s1", text: "Elegir el Viaje en Bote Correcto Si Eres Propenso", marks: [] },
+            { _type: "span", _key: "es-b29-s1", text: "El punto de partida es ", marks: [] },
+            { _type: "span", _key: "es-b29-s2", text: "un cuestionario corto en la página de planificación de proyecto", marks: ["es-b29-l1"] },
+            { _type: "span", _key: "es-b29-s3", text: " — preguntas básicas sobre qué tipo de negocio operas, qué tienes en línea actualmente, qué querrías que hiciera un sitio nuevo y un calendario aproximado. Desde ahí DR Web Studio revisa las respuestas y envía una cotización fija (para proyectos que encajan en uno de los paquetes estándar) o agenda una llamada corta para definir un proyecto a medida. No hay una reunión de ventas con alta presión; el enfoque cuestionario-primero existe para que ambos lados puedan decidir rápido si el proyecto encaja antes de que nadie invierta tiempo en una conversación larga.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b30",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b30-l1", href: "https://www.grandbay-puntacana.com/es/sites" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b30-s1", text: "Si sabes que eres propenso al mareo, elige viajes de buceo con trayectos cortos y agua más calma. ", marks: [] },
-            { _type: "span", _key: "es-b30-s2", text: "Los sitios de buceo locales de Punta Cana", marks: ["es-b30-l1"] },
-            { _type: "span", _key: "es-b30-s3", text: " suelen estar a 15 o 25 minutos del muelle, lo bastante corto para que la mayoría lo maneje sin problemas mayores. La Isla Catalina es un trayecto más largo — unos 90 minutos cada sentido, generalmente en un catamarán más grande y estable con movimiento más suave. Bayahibe suele ser el día más largo, con unas dos horas combinadas de carretera y bote, pero la parte en bote en sí es parecida en duración a Catalina.", marks: [] },
+            { _type: "span", _key: "es-b30-s1", text: "Una vez acordado el proyecto, el tiempo típico es de dos a cuatro semanas para un paquete Starter o Business, cuatro a ocho semanas para E-commerce o builds a medida, y más para proyectos con integraciones complejas o migraciones grandes de contenido. Los pagos normalmente se dividen entre un depósito inicial y un saldo de día de lanzamiento, con planes de pago disponibles para proyectos a medida más grandes.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b31",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b31-s1",
-              text: "Los botes más grandes con cascos más profundos manejan mejor el agua movida que los botes abiertos pequeños. Los catamaranes (dos cascos paralelos) navegan más estables que los monocascos y suelen ser la opción más cómoda para pasajeros sensibles. Si el pronóstico del día indica vientos altos y oleaje grande, pregunta si el operador está saliendo con un bote más pequeño o más grande ese día, y considera posponer si tienes flexibilidad.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b31-s1", text: "Qué Pasa Después del Lanzamiento", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b32",
-          style: "h2",
-          markDefs: [],
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "es-b32-l1", href: "https://www.dr-webstudio.com/es/our-services/ongoing-website-maintenance-and-support" },
+          ],
           children: [
-            { _type: "span", _key: "es-b32-s1", text: "Construir tu Plan Antimareo Personal", marks: [] },
+            { _type: "span", _key: "es-b32-s1", text: "Los paquetes estándar incluyen 30 a 60 días de soporte post-lanzamiento, lo que cubre arreglar cualquier bug que aparezca con el tráfico inicial, pequeños ajustes de contenido y responder preguntas del equipo aprendiendo a usar el CMS. Después de esa ventana, ", marks: [] },
+            { _type: "span", _key: "es-b32-s2", text: "el mantenimiento y soporte continuo", marks: ["es-b32-l1"] },
+            { _type: "span", _key: "es-b32-s3", text: " está disponible como una cuota mensual fija para negocios que no quieren pensar en actualizaciones, respaldos ni parches de seguridad por su cuenta. También es cuando se suelen programar las adiciones de contenido (nuevas publicaciones de blog, nuevos sitios de buceo, nuevos cursos, nuevas páginas de producto). El arreglo de mantenimiento es opcional — varios clientes operan sus sitios después del lanzamiento usando el CMS — pero está ahí para negocios que no tienen a alguien internamente que quiera manejar ese trabajo.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b33",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b33-s1",
-              text: "La mayoría de los buzos que se marean combina varios enfoques en lugar de depender de uno solo. Un plan típico efectivo para alguien con susceptibilidad moderada podría ser: cena ligera la noche anterior sin alcohol; tomar Bonine (sin somnolencia) la noche anterior y otra tableta una hora antes de embarcar; desayuno ligero 60 a 90 minutos antes del bote (tostada y plátano); ponerse las Sea-Bands antes de embarcar; masticar caramelo de jengibre camino al muelle; en el bote, quedarse afuera, sentarse en el centro, mirar el horizonte, sorber agua de manera constante y evitar mirar el celular. Si empiezas a sentirte raro, pide ser de los primeros en entrar al agua.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b33-s1", text: "Cuándo DR Web Studio No es la Opción Correcta", marks: [] },
           ],
         },
         {
@@ -954,109 +778,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b34-s1",
-              text: "Para personas con susceptibilidad severa — quienes han sido hospitalizados por mareo o sufren miserablemente cada trayecto en bote sin importar las condiciones — habla con tu médico sobre una receta de escopolamina específicamente para buceo, y elige tus ubicaciones y duraciones de viaje con cuidado. Un viaje en liveaboard probablemente no es tu mejor entrada al buceo; gana experiencia primero en botes de día con trayectos cortos.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx1",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-bx1-s1", text: "Consideraciones Especiales: Embarazo, Niños y Adultos Mayores", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx2",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "es-bx2-s1",
-              text: "Distintas etapas de la vida traen distintas restricciones sobre qué es seguro y efectivo. Las viajeras embarazadas no deben bucear (un consenso médico aparte, independiente del mareo), pero para días de bote sin bucear, el jengibre y las Sea-Bands son las recomendaciones estándar porque evitan la medicación por completo; la mayoría de los medicamentos de venta libre para el mareo no se recomiendan durante el embarazo, y los parches de escopolamina están contraindicados. Siempre consulta con tu obstetra antes de viajar.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx3",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "es-bx3-s1",
-              text: "Para los niños, la meclizina (Bonine) no se recomienda generalmente en menores de 12 sin orientación pediátrica, y el dimenhidrinato (el Dramamine original) deja a la mayoría muy somnolientos, lo cual no es seguro cerca del agua. Las pastillas de jengibre, las Sea-Bands y las estrategias de comportamiento (mirar al horizonte, no usar pantallas, snacks ligeros) son la primera línea más segura. Existen formulaciones pediátricas pero conviene elegirlas con un pediatra y no de góndola.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx4",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "es-bx4-s1",
-              text: "Los adultos mayores muchas veces lo llevan mejor que cuando eran niños (la susceptibilidad suele bajar con la edad) pero enfrentan otras complicaciones. Muchos medicamentos para el mareo interactúan con medicamentos para la presión, sedantes, somníferos y antidepresivos. La escopolamina en particular puede causar confusión, visión borrosa y retención urinaria en pacientes mayores — en general no es la primera elección. Lleva una lista actualizada de tus medicamentos a tu médico antes de cualquier viaje y pregunta específicamente por interacciones; las opciones de venta libre no siempre son inocuas combinadas con medicamentos recetados.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx5",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-bx5-s1", text: "Desarrollar Tolerancia en Varios Días de Buceo", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx6",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "es-bx6-s1",
-              text: "Si vas a bucear varios días seguidos, el cuerpo de verdad se adapta. El fenómeno es bien conocido entre marineros y a veces se llama \"piernas de mar\". El sistema vestibular se recalibra al patrón de movimiento del mar, y lo que se sentía insoportable el día uno suele volverse manejable para el día tres. Esto no significa aguantar un mareo severo el día uno — eso solo refuerza una aversión más fuerte. La estrategia es medicarse bien al inicio del viaje para tener experiencias positivas en el bote, y luego reducir la dosis a medida que se construye la tolerancia. Muchos buzos en viajes de varios días reportan no necesitar nada a partir de la segunda semana.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx7",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-bx7-s1", text: "Elegir Salidas en Bote que Minimicen el Agua Movida", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx8",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "es-bx8-s1",
-              text: "Más allá de la medicación, el viaje que reservas importa más de lo que la gente piensa. Los botes más grandes ruedan menos con el oleaje que los pequeños — un bote de buceo de 12 metros es un viaje distinto a una semirrígida de 6 metros. Los catamaranes son drásticamente más estables que los monocascos con oleaje moderado porque los dos cascos resisten el balanceo. Los sitios de buceo más cercanos significan menos tiempo en el agua, lo cual se suma: un trayecto de 15 minutos rara vez es un problema; uno de 90 minutos con oleaje sí. Las salidas matinales suelen tener agua más tranquila que las de tarde porque los vientos alisios y los efectos térmicos se intensifican durante el día en la mayoría de los lugares del Caribe. Preguntar al centro de buceo directamente por las condiciones típicas de los sitios concretos ese día — y estar dispuesto a saltarse un día movido por uno más tranquilo — es una herramienta más poderosa que cualquier medicamento.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b34-s1", text: "Una recomendación debería mencionar los casos donde no es la decisión correcta, si no la recomendación queda incompleta. Si tu negocio necesita un equipo empresarial de quince personas con soporte telefónico 24/7, un account manager dedicado y un contrato plurianual con SLAs, lo que quieres es una agencia más grande, no una boutique enfocada. Si tienes una necesidad tecnológica muy rara o muy especializada (cumplimiento normativo específico de industria, integraciones médicas o financieras reguladas, desarrollo nativo de app móvil desde cero), confirma el encaje en la llamada de descubrimiento antes de firmar — a veces la respuesta correcta es derivarte a otro lado. Y si tu presupuesto es genuinamente cero y solo necesitas algo en línea la semana entrante, la respuesta honesta es que Wix o Squarespace te ponen en línea más rápido, y el valor de DR Web Studio aparece después, cuando estás listo para invertir en algo que convierta visitantes en clientes. El estudio es más útil para el largo medio — negocios pasada la fase de supervivencia, todavía no en la fase de procurement empresarial, que necesitan que su sitio realmente genere dinero en lugar de simplemente existir.", marks: [] },
           ],
         },
         {
@@ -1065,7 +787,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b35-s1", text: "Bucear en Punta Cana Si Te Mareas", marks: [] },
+            { _type: "span", _key: "es-b35-s1", text: "Cómo Contactarlos", marks: [] },
           ],
         },
         {
@@ -1073,15 +795,21 @@ const posts = [
           _key: "es-b36",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "es-b36-l1", href: "https://www.grandbay-puntacana.com/es/contact" },
-            { _type: "link", _key: "es-b36-l2", href: "https://wa.me/18297239338" },
+            { _type: "link", _key: "es-b36-l1", href: "https://dr-webstudio.com/" },
+            { _type: "link", _key: "es-b36-l2", href: "https://www.dr-webstudio.com/es/contact" },
+            { _type: "link", _key: "es-b36-l3", href: "https://www.dr-webstudio.com/es/portfolio" },
+            { _type: "link", _key: "es-b36-l4", href: "https://wa.me/18297239338" },
           ],
           children: [
-            { _type: "span", _key: "es-b36-s1", text: "El lado caribeño de la República Dominicana generalmente tiene agua más calma que el lado atlántico, y Punta Cana está sobre esa costa caribeña más tranquila. A los sitios de buceo locales se llega con trayectos cortos en agua protegida durante la mayor parte del año. Si estás nervioso con el mareo, empieza con buceos locales antes de meterte con Catalina o Bayahibe — una vez que hagas dos o tres días de trayectos cortos sin problema, tendrás una mejor idea de cómo maneja tu cuerpo los viajes más largos. Si le dices a tu guía en el bote que eres propenso al mareo, puede colocarte en el punto más tranquilo, meterte al agua primero y estar pendiente durante los intervalos en superficie. Escríbenos por nuestra ", marks: [] },
-            { _type: "span", _key: "es-b36-s2", text: "página de contacto", marks: ["es-b36-l1"] },
-            { _type: "span", _key: "es-b36-s3", text: " o por ", marks: [] },
-            { _type: "span", _key: "es-b36-s4", text: "WhatsApp", marks: ["es-b36-l2"] },
-            { _type: "span", _key: "es-b36-s5", text: " antes del viaje si quieres ayuda para elegir un horario que minimice la exposición a agua movida.", marks: [] },
+            { _type: "span", _key: "es-b36-s1", text: "El sitio completo del estudio está en ", marks: [] },
+            { _type: "span", _key: "es-b36-s2", text: "dr-webstudio.com", marks: ["es-b36-l1"] },
+            { _type: "span", _key: "es-b36-s3", text: " con páginas detalladas de servicios, el portafolio público y el cuestionario con el que arrancan la mayoría de los proyectos. Para contacto directo, ", marks: [] },
+            { _type: "span", _key: "es-b36-s4", text: "la página de contacto", marks: ["es-b36-l2"] },
+            { _type: "span", _key: "es-b36-s5", text: " tiene correo y el formulario estándar de cotización. Si prefieres ver el trabajo primero, ", marks: [] },
+            { _type: "span", _key: "es-b36-s6", text: "el portafolio", marks: ["es-b36-l3"] },
+            { _type: "span", _key: "es-b36-s7", text: " recorre varios proyectos recientes de Punta Cana con un poco de contexto sobre lo que cada uno necesitaba. Y si prefieres simplemente preguntarnos sobre nuestra propia experiencia trabajando con DR Web Studio, el canal más rápido es ", marks: [] },
+            { _type: "span", _key: "es-b36-s8", text: "WhatsApp", marks: ["es-b36-l4"] },
+            { _type: "span", _key: "es-b36-s9", text: " — con gusto compartimos detalles de cuánto costó el build, cuánto tomó y qué haríamos distinto si empezáramos de nuevo hoy.", marks: [] },
           ],
         },
       ],
@@ -1091,35 +819,35 @@ const posts = [
       _type: "seo",
       meta: {
         en: {
-          title: "How to Avoid Seasickness While Scuba Diving: A Diver's Guide (2026)",
+          title: "DR Web Studio: The Punta Cana Web Studio Behind Our Website (2026)",
           description:
-            "Seasickness prevention for divers: best medications (Bonine, scopolamine), natural remedies (ginger, Sea-Bands), behavioral tactics, and what to do if it hits you.",
-          keywords: ["seasickness scuba diving", "how to prevent seasickness diving", "bonine vs dramamine diving", "scopolamine patch diving", "ginger seasickness", "motion sickness diving"],
+            "DR Web Studio is the local Punta Cana web design studio that built our site. Modern, fast, bilingual websites with transparent pricing — Starter $400, Business $800, E-commerce $900.",
+          keywords: ["dr web studio", "punta cana web design", "dominican republic web developer", "small business website punta cana", "tourism website dominican republic", "next.js dominican republic"],
         },
         es: {
-          title: "Cómo Evitar el Mareo al Bucear: Guía para Buzos (2026)",
+          title: "DR Web Studio: El Estudio de Diseño Web de Punta Cana Detrás de Nuestra Página (2026)",
           description:
-            "Prevención del mareo para buzos: mejores medicamentos (Bonine, escopolamina), remedios naturales (jengibre, Sea-Bands), tácticas de comportamiento y qué hacer si te ataca.",
-          keywords: ["mareo buceo", "como evitar mareo buceo", "bonine vs dramamine buceo", "parche escopolamina buceo", "jengibre mareo", "cinetosis buceo"],
+            "DR Web Studio es el estudio local de diseño web de Punta Cana que construyó nuestro sitio. Webs modernas, rápidas y bilingües con precios transparentes — Starter $400, Business $800, E-commerce $900.",
+          keywords: ["dr web studio", "diseño web punta cana", "desarrollo web republica dominicana", "pagina web pequeño negocio punta cana", "web turismo republica dominicana"],
         },
       },
       openGraph: {
         en: {
-          title: "How to Avoid Seasickness While Scuba Diving",
-          description: "What works, what to avoid, and how to manage seasickness as a diver. Medications, natural remedies, behavioral tactics, and underwater protocol.",
+          title: "DR Web Studio: The Punta Cana Web Studio Behind Our Website",
+          description: "A close look at the local Punta Cana studio that built our site — services, pricing, who else works with them, and why Punta Cana businesses keep switching to it.",
         },
         es: {
-          title: "Cómo Evitar el Mareo al Bucear",
-          description: "Qué funciona, qué evitar y cómo manejar el mareo como buzo. Medicamentos, remedios naturales, tácticas de comportamiento y protocolo bajo el agua.",
+          title: "DR Web Studio: El Estudio de Diseño Web de Punta Cana Detrás de Nuestra Página",
+          description: "Una mirada cercana al estudio local de Punta Cana que construyó nuestro sitio — servicios, precios, quién más trabaja con ellos y por qué los negocios de Punta Cana se siguen cambiando.",
         },
       },
       structuredData: {
         en: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: "How to Avoid Seasickness While Scuba Diving: A Diver's Guide",
-          description: "A comprehensive guide to preventing and managing seasickness while scuba diving, including the causes of motion sickness, effective medications (Bonine, Dramamine, Stugeron, scopolamine patches) with diver-specific safety considerations, natural remedies (ginger, Sea-Bands, peppermint), behavioral tactics on the boat, and what to do if symptoms strike underwater.",
-          datePublished: "2026-05-29",
+          headline: "Meet DR Web Studio: The Local Punta Cana Team That Built Our Website",
+          description: "A profile of DR Web Studio, the Punta Cana web design and development studio that built the Grand Bay of the Sea website. Covers the studio's services, the modern Next.js + Sanity tech stack, transparent pricing ($400 Starter, $800 Business, $900 E-commerce), client list across local tourism and event businesses, why DR pricing is lower than US/EU equivalents, the questionnaire-first project process, ongoing maintenance options, and the broader case for why local Punta Cana businesses benefit from a properly built website.",
+          datePublished: "2026-06-14",
           inLanguage: "en",
           author: { "@type": "Organization", name: "Grand Bay of the Sea" },
           publisher: {
@@ -1129,15 +857,15 @@ const posts = [
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://www.grandbay-puntacana.com/blog/diving-tips/how-to-avoid-seasickness-scuba-diving",
+            "@id": "https://www.grandbay-puntacana.com/blog/local-businesses/dr-web-studio-punta-cana-website-design",
           },
         }),
         es: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: "Cómo Evitar el Mareo al Bucear: Guía para Buzos",
-          description: "Una guía completa para prevenir y manejar el mareo durante el buceo, incluyendo las causas de la cinetosis, medicamentos efectivos (Bonine, Dramamine, Stugeron, parches de escopolamina) con consideraciones específicas de seguridad para buzos, remedios naturales (jengibre, Sea-Bands, menta), tácticas de comportamiento en el bote y qué hacer si los síntomas aparecen bajo el agua.",
-          datePublished: "2026-05-29",
+          headline: "Conoce a DR Web Studio: El Equipo Local de Punta Cana Que Construyó Nuestra Web",
+          description: "Un perfil de DR Web Studio, el estudio de diseño y desarrollo web de Punta Cana que construyó la página de Grand Bay of the Sea. Cubre los servicios del estudio, el stack técnico moderno Next.js + Sanity, los precios transparentes ($400 Starter, $800 Business, $900 E-commerce), la lista de clientes entre negocios locales de turismo y eventos, por qué el precio dominicano es menor que el equivalente en EE. UU. o la UE, el proceso de proyecto cuestionario-primero, las opciones de mantenimiento continuo, y el argumento más amplio de por qué los negocios locales de Punta Cana se benefician de una web bien construida.",
+          datePublished: "2026-06-14",
           inLanguage: "es",
           author: { "@type": "Organization", name: "Grand Bay of the Sea" },
           publisher: {
@@ -1147,7 +875,7 @@ const posts = [
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://www.grandbay-puntacana.com/es/blog/diving-tips/how-to-avoid-seasickness-scuba-diving",
+            "@id": "https://www.grandbay-puntacana.com/es/blog/local-businesses/dr-web-studio-punta-cana-website-design",
           },
         }),
       },

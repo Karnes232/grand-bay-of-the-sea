@@ -14,10 +14,19 @@ const blogPostsSanity = await getBlogPosts()
 
 // const blogPosts = await getAllEntrySlugsWithCategory("blogPost")
 
+/**
+ * Stable lastmod for static/service routes that aren't threaded to a Sanity
+ * `_updatedAt`. Using a fixed date (rather than `new Date()` at build) avoids
+ * falsely signalling that every page changed on each rebuild. Bump on releases
+ * that materially change these pages. Blog posts/categories use their real
+ * per-document `_updatedAt` below.
+ */
+const SITE_LASTMOD = new Date("2026-06-23")
+
 const blogPostsEnglish = blogPostsSanity.map(post => {
   return {
     url: `https://www.grandbay-puntacana.com/blog/${post.blogCategory.slug.current}/${post.slug.current}`,
-    lastModified: new Date(),
+    lastModified: post._updatedAt ? new Date(post._updatedAt) : SITE_LASTMOD,
     changeFrequency: "monthly" as const,
     priority: 1,
   }
@@ -26,7 +35,7 @@ const blogPostsEnglish = blogPostsSanity.map(post => {
 const blogPostsSpanish = blogPostsSanity.map(post => {
   return {
     url: `https://www.grandbay-puntacana.com/es/blog/${post.blogCategory.slug.current}/${post.slug.current}`,
-    lastModified: new Date(),
+    lastModified: post._updatedAt ? new Date(post._updatedAt) : SITE_LASTMOD,
     changeFrequency: "monthly" as const,
     priority: 1,
   }
@@ -35,7 +44,7 @@ const blogPostsSpanish = blogPostsSanity.map(post => {
 const blogCategoriesEnglish = blogCategoriesSanity.map(page => {
   return {
     url: `https://www.grandbay-puntacana.com/blog/${page.slug.current}`,
-    lastModified: new Date(),
+    lastModified: page._updatedAt ? new Date(page._updatedAt) : SITE_LASTMOD,
     changeFrequency: "monthly" as const,
     priority: 1,
   }
@@ -43,7 +52,7 @@ const blogCategoriesEnglish = blogCategoriesSanity.map(page => {
 const blogCategoriesSpanish = blogCategoriesSanity.map(page => {
   return {
     url: `https://www.grandbay-puntacana.com/es/blog/${page.slug.current}`,
-    lastModified: new Date(),
+    lastModified: page._updatedAt ? new Date(page._updatedAt) : SITE_LASTMOD,
     changeFrequency: "monthly" as const,
     priority: 1,
   }
@@ -53,277 +62,277 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: "https://www.grandbay-puntacana.com",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: "https://www.grandbay-puntacana.com/es",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: "https://www.grandbay-puntacana.com/shark-dive-punta-cana",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/shark-dive-punta-cana",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: "https://www.grandbay-puntacana.com/scuba-diving-punta-cana",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/scuba-diving-punta-cana",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: "https://www.grandbay-puntacana.com/fishing-punta-cana",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/fishing-punta-cana",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: "https://www.grandbay-puntacana.com/photo-gallery",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/photo-gallery",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: "https://www.grandbay-puntacana.com/courses",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/courses",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/courses/discover",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/courses/discover",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/courses/scubadiver",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/courses/scubadiver",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/courses/openwater",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/courses/openwater",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/courses/advanced",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/courses/advanced",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/trips",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/trips",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/trips/catalina",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/trips/catalina",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/trips/saona",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/trips/saona",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/trips/bayahibe",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/trips/bayahibe",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/sites",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/sites",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/species",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/species",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/liveaboard-dominican-republic",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/liveaboard-dominican-republic",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/liveaboard-dominican-republic/silverbank-expedition",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/liveaboard-dominican-republic/silverbank-expedition",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/liveaboard-dominican-republic/whale-watching-adventure",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/liveaboard-dominican-republic/whale-watching-adventure",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
       url: "https://www.grandbay-puntacana.com/contact",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/contact",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: "https://www.grandbay-puntacana.com/terms-and-conditions",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/terms-and-conditions",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: "https://www.grandbay-puntacana.com/customPayment",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/customPayment",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: "https://www.grandbay-puntacana.com/blog",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: "https://www.grandbay-puntacana.com/es/blog",
-      lastModified: new Date(),
+      lastModified: SITE_LASTMOD,
       changeFrequency: "yearly",
       priority: 0.5,
     },

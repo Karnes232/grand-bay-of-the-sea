@@ -236,6 +236,7 @@ export interface BlogPosts {
       current: string
     }
   }
+  _updatedAt?: string
 }
 
 export const blogPostsQuery = `*[_type == "blogPost"] {
@@ -246,7 +247,8 @@ export const blogPostsQuery = `*[_type == "blogPost"] {
     slug {
       current
     }
-  }
+  },
+  _updatedAt
 }`
 
 export async function getBlogPosts(): Promise<BlogPosts[]> {

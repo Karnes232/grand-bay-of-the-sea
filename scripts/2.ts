@@ -33,26 +33,26 @@ const posts = [
 
     title: {
       _type: "localizedString",
-      en: "🌬️ How to Stop Your Scuba Mask from Fogging: Complete Guide",
-      es: "🌬️ Cómo Evitar que se Empañe tu Máscara de Buceo: Guía Completa",
+      en: "🌴 Meet Punta Cana Excursions by Grand Bay: The Curated Tour Marketplace We Built",
+      es: "🌴 Conoce Punta Cana Excursions by Grand Bay: El Marketplace Curado de Tours que Construimos",
     },
 
     slug: {
       _type: "slug",
-      current: "how-to-stop-scuba-mask-fogging",
+      current: "punta-cana-excursions-by-grand-bay",
     },
 
-    publishDate: "2026-05-29",
+    publishDate: "2026-06-14",
 
     description: {
       _type: "localizedText",
-      en: "Foggy mask ruining your dives? Here's why it happens, the one-time prep that fixes new masks, the defog routine for every dive, and how to clear fog underwater.",
-      es: "¿Una máscara empañada te arruina las inmersiones? Aquí está por qué pasa, la preparación única para máscaras nuevas, la rutina de antiempañante por inmersión y cómo despejar bajo el agua.",
+      en: "Divers kept asking us about Saona, catamarans, and zipline tours. So we built a curated excursion marketplace. Here's the story of Punta Cana Excursions by Grand Bay, what's on it, and why we vet every operator.",
+      es: "Los buzos nos seguían preguntando por Saona, catamaranes y tirolinas. Así que construimos un marketplace curado de excursiones. Aquí la historia de Punta Cana Excursions by Grand Bay, qué incluye y por qué evaluamos a cada operador.",
     },
 
     blogCategory: {
       _type: "reference",
-      _ref: CATEGORIES.divingTips,
+      _ref: CATEGORIES.localBusinesses,
     },
 
     backgroundImages: [],
@@ -66,12 +66,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b1-s1",
-              text: "A foggy mask is the most common annoyance in scuba diving. New divers experience it on almost every first dive, and even experienced divers run into it when something goes wrong with their gear or routine. The good news is that mask fogging is almost completely preventable once you understand what causes it and follow a simple two-part routine. This guide walks through why masks fog, the one-time treatment that fixes brand-new masks for life, the defog routine you should do before every single dive, what to do when your mask still fogs underwater, and how to diagnose persistent fogging that won't go away.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b1-s1", text: "Most divers who book with us at Grand Bay don't dive every day of their trip. After a morning of two-tank diving, they want to know what to do with the rest of their week. Saona Island? Worth it? Which catamaran company is the good one? Are the zipline tours actually safe? Is there a cocoa plantation that isn't a tourist trap? After about the thousandth time we typed out the same answers on WhatsApp, we built a website to do the work for us. That's how Punta Cana Excursions by Grand Bay started — not as a separate business plan, but as the natural extension of years of giving the same advice over and over. This post explains what's on the site, how it works, why we vet every tour ourselves, and where it does and doesn't make sense to use it.", marks: [] },
           ],
         },
         {
@@ -80,21 +75,20 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b2-s1", text: "Why Scuba Masks Fog in the First Place", marks: [] },
+            { _type: "span", _key: "en-b2-s1", text: "How This Started", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b3",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b3-l1", href: "https://puntacana-excursions.com/about" },
+          ],
           children: [
-            {
-              _type: "span",
-              _key: "en-b3-s1",
-              text: "Fogging happens when warm, humid air inside your mask meets the cooler glass of the lens. Water vapor in that humid air condenses into tiny droplets on the glass — the same process that fogs a bathroom mirror when you shower, or your car windshield on a cold morning. Two things drive it underwater: the temperature difference between your face and the water, and any contaminants on the inside of the lens that give the water droplets something to cling to. Even tiny amounts of skin oils, fingerprints, sunscreen residue, or factory-applied silicone film increase fogging dramatically.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b3-s1", text: "The dive operation came first. Grand Bay of the Sea was a PADI-certified dive center in Cabeza de Toro long before any of this started, and after a decade of guiding travelers around the reefs off Punta Cana, Bávaro, and Cap Cana, we knew the local tourism economy from the inside. We knew which catamaran captains actually showed up on time, which Saona Island routes avoided the cruise-ship herds, which zipline parks had real safety standards, and which adventure tour operators treated their customers like cattle. That ", marks: [] },
+            { _type: "span", _key: "en-b3-s2", text: "behind-the-scenes knowledge", marks: ["en-b3-l1"] },
+            { _type: "span", _key: "en-b3-s3", text: " was what divers wanted, but no website was giving it to them.", marks: [] },
           ],
         },
         {
@@ -103,12 +97,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b4-s1",
-              text: "Brand-new masks have a particularly stubborn fogging problem because of how they're manufactured. During production, masks pick up a thin invisible layer of silicone from the moulds and from being stacked together with other masks in shipping. That silicone film is hydrophobic — it actively repels water — which sounds like it should help but actually makes things worse, because water droplets bead up tightly on it instead of spreading into a thin invisible film. Until that silicone layer is removed, no amount of pre-dive defog spray will keep a new mask clear.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b4-s1", text: "So we built one. The idea was simple: take the recommendations we'd been giving to dive customers verbally for years, put them on a website with clear pricing and easy booking, and only include tours we'd actually take ourselves. That's what \"curated\" means in our context — not a marketing word, but a hard filter. If we wouldn't send our own family on it, it doesn't make the catalog.", marks: [] },
           ],
         },
         {
@@ -117,7 +106,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b5-s1", text: "The One-Time New Mask Treatment", marks: [] },
+            { _type: "span", _key: "en-b5-s1", text: "What You Can Book", marks: [] },
           ],
         },
         {
@@ -125,49 +114,49 @@ const posts = [
           _key: "en-b6",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "en-b6-l1", href: "https://blog.padi.com/ear-equalization-and-ear-care-for-scuba-divers/" },
+            { _type: "link", _key: "en-b6-l1", href: "https://puntacana-excursions.com/excursions" },
           ],
           children: [
-            { _type: "span", _key: "en-b6-s1", text: "Before you take a new mask diving, you need to remove the factory silicone film. The standard method recommended by ", marks: [] },
-            { _type: "span", _key: "en-b6-s2", text: "PADI and most dive professionals", marks: ["en-b6-l1"] },
-            { _type: "span", _key: "en-b6-s3", text: " is the toothpaste treatment. It's cheap, safe, and works permanently. Use a plain, non-gel, non-whitening white toothpaste — the gritty texture of regular paste is what scrubs the silicone off. Do not use whitening toothpaste (the abrasives are too harsh and will scratch the lens), and do not use gel toothpaste (it's too smooth and won't work). Any plain mint Colgate, Crest, or generic equivalent does the job.", marks: [] },
+            { _type: "span", _key: "en-b6-s1", text: "The current ", marks: [] },
+            { _type: "span", _key: "en-b6-s2", text: "excursion catalog", marks: ["en-b6-l1"] },
+            { _type: "span", _key: "en-b6-s3", text: " is organized into six categories that cover most of what travelers actually want out of a Punta Cana week. Island tours include the classic Saona Island full-day trip with a beach lunch and a swim at the natural pool, plus shorter Catalina Island visits when conditions favor that destination. Catamaran cruises range from half-day snorkeling sails to sunset-and-open-bar evening trips, and they're the most popular category for divers looking for an easier, more social day on the water.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b7",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b7-l1", href: "https://puntacana-excursions.com/excursions?category=adventure" },
+            { _type: "link", _key: "en-b7-l2", href: "https://puntacana-excursions.com/excursions?category=culture-nature" },
+            { _type: "link", _key: "en-b7-l3", href: "https://puntacana-excursions.com/excursions?category=family-tours" },
+          ],
           children: [
-            {
-              _type: "span",
-              _key: "en-b7-s1",
-              text: "The method itself is simple. Squeeze a small amount of toothpaste — roughly the size of a pea — onto the inside of each lens. Using your finger, rub the toothpaste over the entire inside surface in small circles. Pay special attention to the edges where the lens meets the silicone skirt, since that's where the film tends to be heaviest. Rub for at least three to five minutes per lens. Then leave the toothpaste sitting on the lenses overnight if possible — twelve hours of contact gives the cleaning agents time to fully break down the silicone film.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b7-s1", text: "Beyond the water, the catalog covers ", marks: [] },
+            { _type: "span", _key: "en-b7-s2", text: "adventure tours", marks: ["en-b7-l1"] },
+            { _type: "span", _key: "en-b7-s3", text: " — ATVs, dune buggies, ziplines, and off-road jungle trails for travelers who want adrenaline on land — plus ", marks: [] },
+            { _type: "span", _key: "en-b7-s4", text: "culture and nature experiences", marks: ["en-b7-l2"] },
+            { _type: "span", _key: "en-b7-s5", text: " like cocoa plantations, rum distillery tours, and the cave systems that dot the interior of the country. ", marks: [] },
+            { _type: "span", _key: "en-b7-s6", text: "Family tours", marks: ["en-b7-l3"] },
+            { _type: "span", _key: "en-b7-s7", text: " are filtered for activities that work for kids — dolphin encounters, animal parks, and gentle boat rides where age restrictions and pace are explicitly travel-friendly. And scuba diving is still there, of course, mostly running through Grand Bay's own dive operation.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b8",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b8-s1",
-              text: "The next morning, rinse the mask thoroughly with fresh water. Get into the corners and grooves between the lens and skirt — any leftover toothpaste residue will irritate your eyes underwater. Repeat the entire process two or three times for best results. A single round usually helps, but most masks need two or three full cycles to be completely fog-free. If you skip this step entirely and just hope your defog routine will work, you're in for a frustrating first few dives.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b8-s1", text: "Why \"By Grand Bay\" Matters", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b9",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b9-s1", text: "About the Burning Method", marks: [] },
+            { _type: "span", _key: "en-b9-s1", text: "Most excursion sites in Punta Cana are aggregators with no skin in the game. They list everything, take a commission on bookings, and have no opinion on whether any given tour is good. The customer ends up choosing based on photos and star ratings — which is roughly the worst possible way to pick an excursion in a destination this saturated with operators of wildly different quality. Five-star ratings on tourism sites are basically meaningless because every operator games them, and the photos are all professionally shot regardless of whether the real experience matches.", marks: [] },
           ],
         },
         {
@@ -176,12 +165,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b10-s1",
-              text: "You may see videos online showing divers using a lighter or torch flame to burn the silicone off the inside of a new lens. It works — the silicone is destroyed instantly — and many old-school divers swear by it. But most modern dive shops and instructors recommend against it for two reasons. First, it only works on glass lenses; if your mask has plastic or polycarbonate lenses (most masks do these days), the flame will melt or warp them and ruin the mask. Second, even on glass, holding flame near the silicone skirt risks damaging or burning the skirt itself, which compromises the seal. The toothpaste method is safer, cheaper, and works on every mask. If you're committed to burning, only do it if you can confirm your lens is tempered glass and you can keep the flame entirely on the glass surface — but really, just use the toothpaste.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b10-s1", text: "Our model is different because we live here. We've personally taken every tour on the site. We know the captain by name on most of the boats. We know which guides genuinely speak fluent English and which ones learned three phrases for the brochure. We know which Saona Island routes have changed in the last year because some operator started cutting corners on the route timing to squeeze in more customers. None of that information shows up on a star rating. It shows up in a curated catalog where we actively remove operators when they slip, and add new ones when something legitimately good comes along.", marks: [] },
           ],
         },
         {
@@ -190,21 +174,20 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b11-s1", text: "The Pre-Dive Defog Routine", marks: [] },
+            { _type: "span", _key: "en-b11-s1", text: "How the Booking Process Works", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b12",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b12-l1", href: "https://puntacana-excursions.com/how-it-works" },
+          ],
           children: [
-            {
-              _type: "span",
-              _key: "en-b12-s1",
-              text: "Even after you've treated your mask, you still need to apply a defog before every single dive. The defog doesn't replace the toothpaste treatment — it's a thin film that prevents water droplets from forming on the lens during the dive. There are three options that all work well: commercial defog spray, diluted baby shampoo, or your own saliva.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b12-s1", text: "The ", marks: [] },
+            { _type: "span", _key: "en-b12-s2", text: "booking flow", marks: ["en-b12-l1"] },
+            { _type: "span", _key: "en-b12-s3", text: " is intentionally simple. Browse the catalog, pick what you want, send a small deposit through PayPal to reserve your spot (usually between $15 and $30 per person depending on the excursion), and you get an email confirmation within minutes. The balance is paid on the day of the tour, either in cash (USD or Dominican pesos both work) or by card depending on the specific operator. Hotel pickup is included from any major resort in Punta Cana, Bávaro, Cap Cana, or Uvero Alto, and pickup times get confirmed by email the night before.", marks: [] },
           ],
         },
         {
@@ -213,87 +196,78 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b13-s1", text: "Commercial defog: ", marks: ["strong"] },
-            { _type: "span", _key: "en-b13-s2", text: "Brands like Sea Gold, McNett Sea Drops, and Stream2Sea Mask Defog are sold at dive shops and online. Apply two or three drops to each dry lens, rub it around the entire inside surface, then rinse very briefly with seawater just before donning the mask. Don't rinse so thoroughly that you remove all the film — a thin residue is what does the work.", marks: [] },
+            { _type: "span", _key: "en-b13-s1", text: "The deposit-plus-balance structure is deliberate. It protects both sides — we know you're actually coming, you know we're holding your spot — without forcing you to pay the full tour cost on a website before you've even arrived in the country. If weather makes an excursion unsafe and we can't reschedule within your stay, the deposit is fully refunded. If you cancel at least 48 hours in advance, same thing. The friction-light cancellation policy exists because we'd rather have a customer come back next year happy than capture a small no-show fee from a stressed traveler whose flight got delayed.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b14",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b14-s1", text: "Baby shampoo: ", marks: ["strong"] },
-            { _type: "span", _key: "en-b14-s2", text: "Mix one part baby shampoo with about ten parts water in a small spray bottle. The mild surfactant in baby shampoo prevents droplet formation, and it doesn't sting if it gets in your eyes. Spray into the dry mask, rub it around, give a quick seawater rinse, and dive. Inexpensive and very effective.", marks: [] },
+            { _type: "span", _key: "en-b14-s1", text: "What Bilingual Support Actually Means", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b15",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b15-l1", href: "https://puntacana-excursions.com/contact" },
+          ],
           children: [
-            { _type: "span", _key: "en-b15-s1", text: "Saliva: ", marks: ["strong"] },
-            { _type: "span", _key: "en-b15-s2", text: "The classic free method. Spit into the dry mask, rub the saliva over the entire inside surface, give a brief seawater rinse, and dive. Saliva works because of its surfactant proteins, the same way commercial defog works. It does feel awkward the first few times but it's free, always available, and your dive guide spits in their own mask every dive. The key is that the mask must be dry when you apply the saliva and you only rinse briefly afterward.", marks: [] },
+            { _type: "span", _key: "en-b15-s1", text: "Every excursion site claims bilingual support. In practice, most of them mean \"we have a Spanish version of the homepage and an offshore call center that mostly speaks English.\" Our version of bilingual means that ", marks: [] },
+            { _type: "span", _key: "en-b15-s2", text: "every message", marks: ["en-b15-l1"] },
+            { _type: "span", _key: "en-b15-s3", text: " — booking inquiries, day-of WhatsApp questions, weather rescheduling — is handled in either English or Spanish by someone physically based in Punta Cana, not a generic call center in another country. Spanish-speaking domestic travelers and English-speaking international travelers get the same response time and the same quality of information. The handoff from inquiry to actual tour day doesn't lose anything in translation because the same team is on both ends.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b16",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b16-s1",
-              text: "Whichever method you use, three principles apply universally. Apply to a dry mask, not a wet one — water dilutes whatever surfactant you're using and reduces effectiveness. Apply fresh before each dive, not the night before — defog films are temporary and degrade between dives. And rinse only briefly with seawater, not freshwater — fresh rinsing washes too much of the film off. Many divers ruin their defog routine by rinsing their mask too vigorously right before getting in the water.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b16-s1", text: "Pricing: Skipping the Resort Markup", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b17",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b17-s1", text: "What to Do When Your Mask Fogs Underwater", marks: [] },
+            { _type: "span", _key: "en-b17-s1", text: "The biggest single thing travelers don't realize about Punta Cana excursions is how much the resort concierge desk marks up the price. The same Saona Island tour that costs roughly $90 to $110 booked direct can run $150 to $200 through your all-inclusive resort, with the difference going entirely to the resort's commission structure. Catamaran tours show even bigger gaps — $50 to $70 direct versus $120 or more through a concierge.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b18",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b18-l1", href: "https://www.grandbay-puntacana.com/courses/openwater" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b18-s1", text: "Sometimes fog happens despite a good routine. The fix underwater is simple — let a small amount of seawater into the mask, swirl it across the lens, then exhale through your nose to clear the water back out. This is one of the standard skills you learn during your ", marks: [] },
-            { _type: "span", _key: "en-b18-s2", text: "Open Water certification", marks: ["en-b18-l1"] },
-            { _type: "span", _key: "en-b18-s3", text: " and most divers can do it without breaking buoyancy or stopping the dive.", marks: [] },
+            { _type: "span", _key: "en-b18-s1", text: "Booking direct (or through us as a curated intermediary) cuts that markup out. The tour is the same, the operator is the same, the experience is the same — you just pay closer to what the tour actually costs to run, rather than what the resort can extract on top. For a family of four doing two excursions during a week-long stay, the savings often pay for a third excursion outright.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b19",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b19-s1",
-              text: "The technique: tilt your head back slightly so the bottom edge of the mask sits lower than the top. Press the top of the mask frame gently against your forehead with one finger, breaking the seal there. Let a small amount of water in through the bottom — just enough to slosh across the lens, not enough to flood completely. Quickly tilt your head forward, press the top of the mask back into place, and exhale through your nose slowly. The water drains out the bottom and you can see clearly again. The whole process takes about five seconds with practice.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b19-s1", text: "First-Timer Recommendations", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b20",
-          style: "h2",
-          markDefs: [],
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "en-b20-l1", href: "https://puntacana-excursions.com/excursions?category=island-tours" },
+          ],
           children: [
-            { _type: "span", _key: "en-b20-s1", text: "Diagnosing Persistent Fogging", marks: [] },
+            { _type: "span", _key: "en-b20-s1", text: "For a traveler visiting Punta Cana for the first time and trying to pick excursions from the catalog, the usual recommendation is three: ", marks: [] },
+            { _type: "span", _key: "en-b20-s2", text: "a full-day Saona Island tour", marks: ["en-b20-l1"] },
+            { _type: "span", _key: "en-b20-s3", text: " for the postcard Caribbean island experience, a half-day catamaran cruise with snorkeling for the ocean lovers, and a zipline or buggy adventure for the day you want to see the Dominican interior instead of the coast. Spread across a five to seven day trip, that's three different sides of the country, with enough downtime in between for pool days and resort recovery.", marks: [] },
           ],
         },
         {
@@ -302,22 +276,16 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b21-s1",
-              text: "If your mask still fogs after the new-mask treatment and a good defog routine, something else is going on. Run through this checklist.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b21-s1", text: "If diving is also on the agenda, the typical itinerary that works well is: dive on day one or two, catamaran or Saona on day three, dive again on day four or five, adventure tour on day six, and a flexible final day for whatever the group voted into. Surface intervals between dive days are useful (more on that in our dedicated post on non-dive days), and mixing in different types of activities prevents anyone from getting saturated on any single experience.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b22",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b22-s1", text: "You're breathing through your nose. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b22-s2", text: "This is the most common cause of persistent fogging. The mask should only have air going in from your face on the skin side, not from your nose. Every time you exhale through your nose, you push warm humid air directly into the mask. Practice breathing in and out only through your regulator, not through your nose.", marks: [] },
+            { _type: "span", _key: "en-b22-s1", text: "Who Already Books Through Us", marks: [] },
           ],
         },
         {
@@ -326,18 +294,16 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b23-s1", text: "Your mask doesn't fit properly. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b23-s2", text: "A mask that's too loose or too tight allows tiny air gaps that introduce warm air. Test fit by holding the mask to your face without the strap and gently inhaling through your nose — if it seals against your face from suction alone for several seconds, the fit is good. If it falls off or has visible gaps, try a different mask shape.", marks: [] },
+            { _type: "span", _key: "en-b23-s1", text: "The customer base started as Grand Bay's diving customers — people who'd booked dives with us and asked about Saona or catamarans on the side. That's still a significant share of bookings, since it's a natural cross-sell. The rest comes from travelers who find the site directly through search, repeat customers from previous years, and referrals from friends or extended family who'd had a good week here before. The reviews on the site (which we don't filter) skew heavily toward repeat-booking comments and \"better than the cruise-ship Saona day we did three years ago\" comparisons — that's the customer base we keep optimizing for.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b24",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b24-s1", text: "Sunscreen, makeup, or skin oils on the lens. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b24-s2", text: "Anything oily transfers from your face or fingers to the inside of the lens and ruins the defog film. Wash your hands before applying defog, and try not to handle the inside of the lens after applying. Reef-safe mineral sunscreen is particularly prone to leaving residue on lenses — wipe your forehead area before putting the mask on.", marks: [] },
+            { _type: "span", _key: "en-b24-s1", text: "When PCE Isn't the Right Fit", marks: [] },
           ],
         },
         {
@@ -346,41 +312,34 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b25-s1", text: "The mask is too old. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b25-s2", text: "Older masks accumulate a film of skin oils, body proteins, and other residue that's harder to remove. If your mask is several years old and your defog routine isn't working anymore, try the toothpaste treatment again — it often refreshes an older mask. If even that doesn't work, the silicone skirt may be hardening and developing micro-cracks that introduce air. Replace it.", marks: [] },
+            { _type: "span", _key: "en-b25-s1", text: "A curated catalog has trade-offs worth mentioning. If you want the absolute cheapest deal regardless of operator quality, a generic aggregator will sometimes undercut us by a few dollars per person — we don't list bottom-of-market operators even when they're cheaper, so our floor price is a little higher than the rock-bottom options. If you want a niche, ultra-specialized excursion that we haven't vetted (deep-sea fishing for marlin, advanced kitesurfing lessons, multi-day expedition trips into the central mountains), it's not in the catalog because we don't have firsthand experience to vouch for the operators. And if you genuinely don't care about quality consistency and just want to book the first thing your resort concierge recommends because it's easier, that's still a valid choice — we're for travelers who care enough to look one layer deeper.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b26",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b26-s1", text: "Water temperature is unusually cold for the air. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b26-s2", text: "A mask that performs perfectly in warm Caribbean water may fog more in colder destinations. The bigger the temperature difference between your face and the water, the more aggressive the fogging. This isn't a problem you encounter much in Punta Cana with water temperatures around 26 to 29 degrees Celsius year-round.", marks: [] },
+            { _type: "span", _key: "en-b26-s1", text: "Booking Windows and Peak Season Timing", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b27",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b27-s1", text: "Mask Care Between Dives and Trips", marks: [] },
+            { _type: "span", _key: "en-b27-s1", text: "Practical advice on timing. Regular season (May through November) bookings can usually be made 3 to 5 days in advance without availability problems. Peak season (December through April) tightens up — Saona Island, sunset catamarans, and a few of the more popular ATV operations regularly sell out a week or more ahead. The week between Christmas and New Year's is the absolute peak; book those days two to three weeks ahead if there's a specific tour you don't want to miss. Last-minute bookings (same-day or next-day) are sometimes possible — message us through the site and we'll check the actual operator availability rather than guessing.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b28",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b28-s1",
-              text: "Between dives in the same trip, rinse your mask in fresh water if available and let it air-dry inside a mesh gear bag. Don't leave it sitting in the sun on a hot dive deck — UV exposure and heat degrade the silicone skirt over time. Don't leave it pressed face-down on a hard surface — even brief pressure can deform the skirt's seal. And don't store it in the same bag as your wetsuit when both are still wet, because that traps moisture and can encourage mold growth on the silicone.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b28-s1", text: "Weather and Rescheduling", marks: [] },
           ],
         },
         {
@@ -389,12 +348,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-b29-s1",
-              text: "Between trips, rinse the mask thoroughly with fresh water, dry it completely, and store it in its hard case or in a mesh bag in a cool dry place out of direct sunlight. A few drops of silicone preservative on the skirt every few months extends the life. Inspect the silicone skirt periodically — if it shows cracks, hardening, or yellowing, replace it. A mask with a degraded skirt will leak constantly no matter how well you defog it.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-b29-s1", text: "Punta Cana's weather is mostly cooperative — there's a reason this is one of the most reliable beach destinations in the Caribbean. But the late summer and early fall months occasionally produce rough water that makes catamarans, island trips, or smaller boats unsafe. When that happens, we reschedule for another day within your stay at no charge. If rescheduling isn't possible (you're leaving the day after, every alternate day is also rough), we refund the deposit in full. We monitor weather conditions starting 48 hours before each excursion and reach out proactively if a change looks likely — you'll hear from us before you have to ask.", marks: [] },
           ],
         },
         {
@@ -403,7 +357,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b30-s1", text: "Rental Masks: A Special Case", marks: [] },
+            { _type: "span", _key: "en-b30-s1", text: "The Diving Tie-In", marks: [] },
           ],
         },
         {
@@ -411,44 +365,15 @@ const posts = [
           _key: "en-b31",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "en-b31-l1", href: "https://www.grandbay-puntacana.com/courses/discover" },
+            { _type: "link", _key: "en-b31-l1", href: "https://puntacana-excursions.com/scuba-diving" },
+            { _type: "link", _key: "en-b31-l2", href: "https://www.grandbay-puntacana.com/courses" },
           ],
           children: [
-            { _type: "span", _key: "en-b31-s1", text: "If you're renting gear — common on a ", marks: [] },
-            { _type: "span", _key: "en-b31-s2", text: "Discover Scuba dive", marks: ["en-b31-l1"] },
-            { _type: "span", _key: "en-b31-s3", text: " or for travelers who don't own gear — the mask has usually been pre-treated by the operator and used by many divers before you, so the silicone film is long gone. Rental masks are usually less prone to fogging than brand-new owned masks for exactly that reason. Apply defog (the operator's defog or your own), rinse briefly, and dive. If the mask doesn't fit your face well, ask the operator for a different size or shape — fit matters more than brand. Don't be shy about trying two or three masks before settling on one.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b32",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b32-s1", text: "Quick Reference: The Complete Anti-Fog System", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b33",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "en-b33-s1",
-              text: "For a new owned mask: scrub inside lenses with plain white toothpaste for 3–5 minutes per lens, leave overnight, rinse thoroughly, repeat the cycle 2–3 times before first dive. For every subsequent dive: apply defog (commercial spray, baby shampoo solution, or saliva) to dry lenses, rub it around, brief seawater rinse, then put the mask on without touching the inside. Underwater if fog develops: tilt head back, crack the top seal, let a little water in, exhale through the nose, water drains out the bottom. Between dives: fresh-water rinse if available, air-dry, store out of sunlight. If fog keeps happening despite all this, you're probably breathing through your nose during the dive — most common cause by far.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b34",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b34-s1", text: "When Fog Is Not Actually the Problem", marks: [] },
+            { _type: "span", _key: "en-b31-s1", text: "The scuba diving side of the catalog still runs through our Grand Bay dive operation — same boat, same instructors, same equipment. The only difference is that bookings can come in through either site. ", marks: [] },
+            { _type: "span", _key: "en-b31-s2", text: "If you arrive on the excursions site looking for diving", marks: ["en-b31-l1"] },
+            { _type: "span", _key: "en-b31-s3", text: ", you'll see a redirect to ", marks: [] },
+            { _type: "span", _key: "en-b31-s4", text: "the actual course pages on Grand Bay's site", marks: ["en-b31-l2"] },
+            { _type: "span", _key: "en-b31-s5", text: " because that's where the detailed PADI course information lives. The two sites are integrated on the backend even though they're separate publicly — your booking ends up with the same team regardless of which entry point you used.", marks: [] },
           ],
         },
         {
@@ -457,7 +382,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-bx1-s1", text: "Prescription Masks and Specialty Lenses", marks: [] },
+            { _type: "span", _key: "en-bx1-s1", text: "How We Compare to Viator, GetYourGuide, and the Big Aggregators", marks: [] },
           ],
         },
         {
@@ -466,65 +391,87 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-bx2-s1",
-              text: "If you wear glasses or contacts, fogging affects you a little differently. Contacts work fine for diving but evaporate faster in the air pocket of a mask, so dry-eye discomfort can be mistaken for fogging — keep your eyes closed during clears and rinses rather than blinking through them. Prescription dive masks have ground or bonded corrective lenses installed in standard mask housings; the lens itself is glass and accepts the same toothpaste treatment and pre-dive defog routine described above. Bonded stick-on diopter lenses work too but the adhesive layer is occasionally sensitive to alcohol-based defog sprays — stick with a gentle gel or baby shampoo solution on those. Bifocal dive masks (with a small reader segment at the bottom of each lens for reading gauges) follow the same prep rules as standard masks.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-bx2-s1", text: "Two questions come up regularly. First: why not just use Viator or GetYourGuide for Punta Cana excursions? The honest answer is that those platforms are scale-first marketplaces — they list everything in every destination, take commission on transactions, and rely on user reviews to do the quality filtering. That model works fine when the underlying market is well-policed (like accommodation through Airbnb), but it falls apart in destinations like Punta Cana where operator quality varies wildly and reviews are aggressively gamed. You can find every Saona Island tour on Viator, but you can't easily find which one is actually good versus which one looks identical in the photos but cuts corners on the route.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-bx3",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-bx3-s1", text: "Single Lens vs. Twin Lens — Does It Matter?", marks: [] },
+            { _type: "span", _key: "en-bx3-s1", text: "The second question is whether using a local curated marketplace means giving up the safety of a big international platform. Practically speaking, no — your payment is still processed through PayPal (the same payment processor major platforms use), you still get email confirmations and clear cancellation terms, and disputes can still be resolved through standard channels. What you give up is access to the absolute longest list of options, in exchange for an actual opinion about which ones are worth your time. For travelers who value efficiency and quality, that trade is usually positive.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-bx4",
+          style: "h2",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "en-bx4-s1", text: "Tipping Norms and Hidden Costs", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "en-bx5",
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "en-bx4-s1",
-              text: "Both styles fog the same way and require the same treatment, but they differ slightly in how the fogging shows up. Single-lens masks (one large window across both eyes) tend to fog more uniformly; twin-lens masks (separate left and right windows) sometimes fog asymmetrically when one lens runs warmer than the other, particularly if you breathe through your nose on one side. Twin-lens designs are usually easier to fit faces with narrow noses or strong cheekbones because the housing has more flex. Neither style is meaningfully easier to defog — pick based on field of view, fit, and personal preference, not on fog resistance.",
-              marks: [],
-            },
+            { _type: "span", _key: "en-bx5-s1", text: "One thing the listed excursion price never includes is tipping, and most travelers underestimate the cumulative effect. Reasonable Dominican tipping norms: $3 to $5 per person for the driver who handles your hotel pickup, $5 to $10 per person for the tour guide on a full-day excursion, $1 to $2 per drink for the bartender on a catamaran cruise, and $2 to $3 per person for boat crew when they handle gear and snorkel setup. Across a Saona Island day for a family of four, that's roughly $40 to $60 in cash tips beyond what's on the booking. We mention this upfront so it's not a surprise — tipping is genuine income for guides and crew here, not optional like in some destinations.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "en-b32",
+          style: "h2",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "en-b32-s1", text: "How to Get In Touch", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "en-b33",
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "en-b33-l1", href: "https://puntacana-excursions.com/" },
+            { _type: "link", _key: "en-b33-l2", href: "https://puntacana-excursions.com/faq" },
+            { _type: "link", _key: "en-b33-l3", href: "https://puntacana-excursions.com/contact" },
+          ],
+          children: [
+            { _type: "span", _key: "en-b33-s1", text: "The full catalog is at ", marks: [] },
+            { _type: "span", _key: "en-b33-s2", text: "puntacana-excursions.com", marks: ["en-b33-l1"] },
+            { _type: "span", _key: "en-b33-s3", text: " with category browsing, filtering, and detailed pages for each tour. For practical questions (what's included, who it's for, what to bring), ", marks: [] },
+            { _type: "span", _key: "en-b33-s4", text: "the FAQ page", marks: ["en-b33-l2"] },
+            { _type: "span", _key: "en-b33-s5", text: " covers most of what people ask before booking. For specific itinerary advice or anything not covered, ", marks: [] },
+            { _type: "span", _key: "en-b33-s6", text: "the contact form", marks: ["en-b33-l3"] },
+            { _type: "span", _key: "en-b33-s7", text: " goes straight to our team — usually a few hours' response time during business hours.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "en-b34",
+          style: "h2",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "en-b34-s1", text: "Why This Site Exists Separately", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b35",
           style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "en-b35-s1",
-              text: "One last thing worth mentioning. Many divers describe their mask as fogging when what's actually happening is leaking. A small but steady inflow of water from a poor seal collects in the bottom of the mask and looks like condensation on the lens. The two problems look similar but require completely different fixes. If you're regularly clearing water from a mask that shouldn't be fogging, check the seal: try the inhale test, look for hair caught in the skirt (the most common culprit, especially around the temples), check the strap tension, and make sure the mask sits flat against your face without pressing too hard. A leaking mask will keep producing what looks like fog no matter how perfectly you defog it.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b36",
-          style: "normal",
           markDefs: [
-            { _type: "link", _key: "en-b36-l1", href: "https://www.grandbay-puntacana.com/contact" },
-            { _type: "link", _key: "en-b36-l2", href: "https://wa.me/18297239338" },
+            { _type: "link", _key: "en-b35-l1", href: "https://www.grandbay-puntacana.com/sites" },
+            { _type: "link", _key: "en-b35-l2", href: "https://wa.me/18297239338" },
           ],
           children: [
-            { _type: "span", _key: "en-b36-s1", text: "If you're diving with us in Punta Cana and still struggling with a foggy mask after a dive or two, talk to your guide on the boat — small fixes like adjusting the strap, tucking in stray hairs, or swapping the rental mask take a minute and make a huge difference to the rest of the day. You can also reach out before the trip through our ", marks: [] },
-            { _type: "span", _key: "en-b36-s2", text: "contact page", marks: ["en-b36-l1"] },
-            { _type: "span", _key: "en-b36-s3", text: " or on ", marks: [] },
-            { _type: "span", _key: "en-b36-s4", text: "WhatsApp", marks: ["en-b36-l2"] },
-            { _type: "span", _key: "en-b36-s5", text: " if you have questions about your own gear or want tips specific to the diving conditions here.", marks: [] },
+            { _type: "span", _key: "en-b35-s1", text: "A reasonable question: why not just put excursions on Grand Bay's site instead of building a separate one? The answer is audience and intent. Someone searching for \"scuba diving Punta Cana\" arrives at ", marks: [] },
+            { _type: "span", _key: "en-b35-s2", text: "the Grand Bay dive site", marks: ["en-b35-l1"] },
+            { _type: "span", _key: "en-b35-s3", text: " and finds dive courses, dive sites, and PADI-certified instruction — exactly what they were looking for. Burying a catamaran catalog underneath would dilute that. Someone searching for \"things to do in Punta Cana\" arrives at the excursions site and finds a curated catalog without diving-shop overhead. Same team, same standards, different doors for different visitors. If you're not sure which is more relevant for your trip, ", marks: [] },
+            { _type: "span", _key: "en-b35-s4", text: "WhatsApp", marks: ["en-b35-l2"] },
+            { _type: "span", _key: "en-b35-s5", text: " us — either site's contact goes to the same group of people, and we'll point you at the right starting page.", marks: [] },
           ],
         },
       ],
@@ -535,12 +482,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b1-s1",
-              text: "Una máscara empañada es la molestia más común del buceo. Los buzos nuevos la sufren en casi cada primera inmersión, y hasta los buzos experimentados se topan con ella cuando algo falla en su equipo o rutina. La buena noticia es que el empañamiento es casi totalmente prevenible una vez que entiendes qué lo causa y sigues una sencilla rutina de dos partes. Esta guía recorre por qué se empañan las máscaras, el tratamiento único que arregla las máscaras nuevas para siempre, la rutina de antiempañante que debes hacer antes de cada inmersión, qué hacer si tu máscara se empaña bajo el agua y cómo diagnosticar el empañamiento persistente que no quiere irse.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b1-s1", text: "La mayoría de los buzos que reservan con nosotros en Grand Bay no bucean todos los días de su viaje. Después de una mañana de dos inmersiones, quieren saber qué hacer con el resto de su semana. ¿La Isla Saona? ¿Vale la pena? ¿Cuál es la empresa de catamaranes buena? ¿Las tirolinas son realmente seguras? ¿Hay alguna plantación de cacao que no sea una trampa turística? Después de cerca de la milésima vez que respondíamos lo mismo por WhatsApp, construimos un sitio web para que hiciera el trabajo por nosotros. Así nació Punta Cana Excursions by Grand Bay — no como un plan de negocio aparte, sino como la extensión natural de años dando los mismos consejos una y otra vez. Esta publicación explica qué hay en el sitio, cómo funciona, por qué evaluamos cada tour nosotros mismos y cuándo tiene y no tiene sentido usarlo.", marks: [] },
           ],
         },
         {
@@ -549,21 +491,20 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b2-s1", text: "Por Qué se Empañan las Máscaras de Buceo", marks: [] },
+            { _type: "span", _key: "es-b2-s1", text: "Cómo Empezó Esto", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b3",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b3-l1", href: "https://puntacana-excursions.com/es/about" },
+          ],
           children: [
-            {
-              _type: "span",
-              _key: "es-b3-s1",
-              text: "El empañamiento ocurre cuando el aire cálido y húmedo dentro de tu máscara se encuentra con el vidrio más frío del lente. El vapor de agua en ese aire húmedo se condensa en pequeñas gotitas sobre el vidrio — el mismo proceso que empaña el espejo del baño cuando te duchas, o el parabrisas del carro en una mañana fría. Dos cosas lo impulsan bajo el agua: la diferencia de temperatura entre tu cara y el agua, y cualquier contaminante en el interior del lente que dé a las gotitas de agua algo a lo que aferrarse. Hasta cantidades minúsculas de grasa de la piel, huellas, residuo de protector solar o el film de silicona aplicado de fábrica aumentan el empañamiento de forma dramática.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b3-s1", text: "La operación de buceo vino primero. Grand Bay of the Sea era un centro de buceo certificado PADI en Cabeza de Toro mucho antes de que nada de esto empezara, y tras una década guiando viajeros por los arrecifes de Punta Cana, Bávaro y Cap Cana, conocíamos la economía turística local desde adentro. Sabíamos qué capitanes de catamarán realmente llegaban a tiempo, qué rutas a la Isla Saona evitaban las manadas de cruceristas, qué parques de tirolina tenían estándares de seguridad reales y qué operadores de tours de aventura trataban a sus clientes como ganado. Ese ", marks: [] },
+            { _type: "span", _key: "es-b3-s2", text: "conocimiento de tras bastidores", marks: ["es-b3-l1"] },
+            { _type: "span", _key: "es-b3-s3", text: " era lo que querían los buzos, pero ningún sitio web se lo estaba dando.", marks: [] },
           ],
         },
         {
@@ -572,12 +513,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b4-s1",
-              text: "Las máscaras nuevas tienen un problema de empañamiento particularmente terco por cómo se fabrican. Durante la producción, las máscaras agarran una fina capa invisible de silicona de los moldes y de estar apiladas con otras máscaras en el envío. Ese film de silicona es hidrofóbico — repele el agua de forma activa — lo cual suena como que debería ayudar pero en realidad empeora las cosas, porque las gotitas de agua se agrupan muy compactas sobre él en lugar de extenderse en una película fina e invisible. Hasta que se elimine esa capa de silicona, ningún spray antiempañante mantendrá despejada una máscara nueva.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b4-s1", text: "Así que construimos uno. La idea era simple: tomar las recomendaciones que llevábamos años dando verbalmente a clientes de buceo, ponerlas en un sitio web con precios claros y reservas fáciles, e incluir solo tours que nosotros mismos haríamos. Eso es lo que significa \"curado\" en nuestro contexto — no una palabra de marketing, sino un filtro duro. Si no enviaríamos a nuestra propia familia en él, no entra al catálogo.", marks: [] },
           ],
         },
         {
@@ -586,7 +522,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b5-s1", text: "El Tratamiento Único para Máscaras Nuevas", marks: [] },
+            { _type: "span", _key: "es-b5-s1", text: "Qué Puedes Reservar", marks: [] },
           ],
         },
         {
@@ -594,49 +530,49 @@ const posts = [
           _key: "es-b6",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "es-b6-l1", href: "https://blog.padi.com/ear-equalization-and-ear-care-for-scuba-divers/" },
+            { _type: "link", _key: "es-b6-l1", href: "https://puntacana-excursions.com/es/excursions" },
           ],
           children: [
-            { _type: "span", _key: "es-b6-s1", text: "Antes de llevar una máscara nueva a bucear, tienes que eliminar el film de silicona de fábrica. El método estándar recomendado por ", marks: [] },
-            { _type: "span", _key: "es-b6-s2", text: "PADI y la mayoría de los profesionales del buceo", marks: ["es-b6-l1"] },
-            { _type: "span", _key: "es-b6-s3", text: " es el tratamiento con pasta dental. Es económico, seguro y funciona permanentemente. Usa una pasta dental blanca, sencilla, sin gel y sin blanqueador — la textura ligeramente granulosa de la pasta común es lo que arranca la silicona. No uses pasta blanqueadora (sus abrasivos son demasiado duros y rayarán el lente), y no uses pasta en gel (es muy lisa y no funcionará). Cualquier Colgate o Crest común de menta, o un genérico equivalente, hace el trabajo.", marks: [] },
+            { _type: "span", _key: "es-b6-s1", text: "El ", marks: [] },
+            { _type: "span", _key: "es-b6-s2", text: "catálogo actual de excursiones", marks: ["es-b6-l1"] },
+            { _type: "span", _key: "es-b6-s3", text: " está organizado en seis categorías que cubren la mayor parte de lo que los viajeros realmente quieren de una semana en Punta Cana. Las excursiones a islas incluyen el clásico tour de día completo a la Isla Saona con almuerzo en la playa y baño en la piscina natural, además de visitas más cortas a la Isla Catalina cuando las condiciones favorecen ese destino. Los catamaranes van desde paseos de medio día con snorkel hasta cruceros de atardecer con bar abierto, y son la categoría más popular para buzos buscando un día en el agua más social y relajado.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b7",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b7-l1", href: "https://puntacana-excursions.com/es/excursions?category=adventure" },
+            { _type: "link", _key: "es-b7-l2", href: "https://puntacana-excursions.com/es/excursions?category=culture-nature" },
+            { _type: "link", _key: "es-b7-l3", href: "https://puntacana-excursions.com/es/excursions?category=family-tours" },
+          ],
           children: [
-            {
-              _type: "span",
-              _key: "es-b7-s1",
-              text: "El método en sí es sencillo. Pon una pequeña cantidad de pasta dental — del tamaño de un guisante — en el interior de cada lente. Con el dedo, frota la pasta sobre toda la superficie interna en pequeños círculos. Presta especial atención a los bordes donde el lente se une al faldón de silicona, porque ahí es donde el film tiende a ser más grueso. Frota al menos de tres a cinco minutos por lente. Luego deja la pasta sobre los lentes toda la noche si es posible — doce horas de contacto le dan a los agentes limpiadores el tiempo de descomponer del todo el film de silicona.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b7-s1", text: "Más allá del agua, el catálogo cubre ", marks: [] },
+            { _type: "span", _key: "es-b7-s2", text: "tours de aventura", marks: ["es-b7-l1"] },
+            { _type: "span", _key: "es-b7-s3", text: " — ATVs, buggies, tirolinas y rutas off-road por la selva para viajeros que quieren adrenalina en tierra — además de ", marks: [] },
+            { _type: "span", _key: "es-b7-s4", text: "experiencias de cultura y naturaleza", marks: ["es-b7-l2"] },
+            { _type: "span", _key: "es-b7-s5", text: " como plantaciones de cacao, tours de destilería de ron y los sistemas de cuevas del interior del país. Los ", marks: [] },
+            { _type: "span", _key: "es-b7-s6", text: "tours familiares", marks: ["es-b7-l3"] },
+            { _type: "span", _key: "es-b7-s7", text: " están filtrados para actividades que funcionan con niños — encuentros con delfines, parques de animales y paseos suaves en bote donde las restricciones de edad y el ritmo son explícitamente amigables con familias. Y el buceo sigue ahí, claro, operando principalmente a través del centro de buceo Grand Bay.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b8",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b8-s1",
-              text: "A la mañana siguiente, enjuaga la máscara a fondo con agua dulce. Mete los dedos en las esquinas y ranuras entre el lente y el faldón — cualquier residuo de pasta que quede te irritará los ojos bajo el agua. Repite todo el proceso dos o tres veces para obtener mejores resultados. Una sola ronda suele ayudar, pero la mayoría de las máscaras necesita dos o tres ciclos completos para quedar totalmente libre de empañamiento. Si te saltas este paso por completo y solo esperas que tu rutina de antiempañante funcione, te esperan unas primeras inmersiones frustrantes.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b8-s1", text: "Por Qué Importa el \"By Grand Bay\"", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b9",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b9-s1", text: "Sobre el Método de Quemar", marks: [] },
+            { _type: "span", _key: "es-b9-s1", text: "La mayoría de los sitios de excursiones en Punta Cana son agregadores sin nada en juego. Listan todo, toman una comisión sobre las reservas y no tienen opinión sobre si un tour es bueno o no. El cliente termina eligiendo basado en fotos y estrellas — que es básicamente la peor forma posible de elegir una excursión en un destino tan saturado de operadores de calidad tan dispar. Las reseñas de cinco estrellas en sitios turísticos son prácticamente irrelevantes porque cada operador las manipula, y las fotos son todas profesionales sin importar si la experiencia real coincide.", marks: [] },
           ],
         },
         {
@@ -645,12 +581,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b10-s1",
-              text: "Quizá veas videos en línea de buzos usando un encendedor o una llama para quemar la silicona en el interior de un lente nuevo. Funciona — la silicona se destruye al instante — y muchos buzos a la antigua lo defienden. Pero la mayoría de las tiendas de buceo y los instructores modernos lo desaconsejan por dos razones. Primero, solo funciona en lentes de vidrio; si tu máscara tiene lentes plásticos o de policarbonato (la mayoría hoy en día), la llama los derretirá o deformará y arruinará la máscara. Segundo, incluso en vidrio, mantener la llama cerca del faldón de silicona arriesga dañarlo o quemarlo, lo que compromete el sellado. El método de la pasta dental es más seguro, más económico y funciona en todas las máscaras. Si insistes en quemar, hazlo solo si confirmas que tu lente es de vidrio templado y puedes mantener la llama completamente sobre la superficie de vidrio — pero en serio, mejor usa la pasta.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b10-s1", text: "Nuestro modelo es distinto porque vivimos aquí. Hemos tomado personalmente cada tour del sitio. Conocemos al capitán por nombre en la mayoría de los botes. Sabemos qué guías hablan inglés realmente fluido y cuáles aprendieron tres frases para el folleto. Sabemos qué rutas de Saona cambiaron en el último año porque algún operador empezó a recortar tiempos para meter más clientes. Nada de eso aparece en una calificación de estrellas. Aparece en un catálogo curado donde activamente quitamos operadores cuando se aflojan, y sumamos nuevos cuando aparece algo legítimamente bueno.", marks: [] },
           ],
         },
         {
@@ -659,21 +590,20 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b11-s1", text: "La Rutina de Antiempañante Antes de Bucear", marks: [] },
+            { _type: "span", _key: "es-b11-s1", text: "Cómo Funciona el Proceso de Reserva", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b12",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b12-l1", href: "https://puntacana-excursions.com/es/how-it-works" },
+          ],
           children: [
-            {
-              _type: "span",
-              _key: "es-b12-s1",
-              text: "Incluso después de tratar tu máscara, sigues teniendo que aplicar un antiempañante antes de cada inmersión. El antiempañante no sustituye al tratamiento de pasta dental — es una película fina que evita que se formen gotitas de agua sobre el lente durante la inmersión. Hay tres opciones que funcionan bien: spray antiempañante comercial, shampoo de bebé diluido o tu propia saliva.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b12-s1", text: "El ", marks: [] },
+            { _type: "span", _key: "es-b12-s2", text: "flujo de reserva", marks: ["es-b12-l1"] },
+            { _type: "span", _key: "es-b12-s3", text: " es intencionalmente simple. Navega el catálogo, elige lo que quieras, envía un pequeño depósito por PayPal para reservar tu lugar (normalmente entre $15 y $30 por persona según la excursión) y recibes confirmación por correo en minutos. El saldo se paga el día del tour, ya sea en efectivo (USD o pesos dominicanos, ambos sirven) o con tarjeta según el operador específico. La recogida en el hotel está incluida desde cualquier resort grande de Punta Cana, Bávaro, Cap Cana o Uvero Alto, y los horarios se confirman por correo la noche anterior.", marks: [] },
           ],
         },
         {
@@ -682,87 +612,78 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b13-s1", text: "Antiempañante comercial: ", marks: ["strong"] },
-            { _type: "span", _key: "es-b13-s2", text: "Marcas como Sea Gold, McNett Sea Drops y Stream2Sea Mask Defog se venden en tiendas de buceo y en línea. Aplica dos o tres gotas a cada lente seco, frótalo por toda la superficie interna y enjuaga muy brevemente con agua de mar justo antes de colocarte la máscara. No enjuagues tanto que quites toda la película — un residuo fino es lo que hace el trabajo.", marks: [] },
+            { _type: "span", _key: "es-b13-s1", text: "La estructura de depósito-más-saldo es deliberada. Protege a ambas partes — sabemos que de verdad vas a venir, tú sabes que estamos guardando tu lugar — sin obligarte a pagar el tour completo en un sitio web antes de haber siquiera llegado al país. Si el clima hace que una excursión no sea segura y no podemos reprogramarla dentro de tu estancia, el depósito se devuelve completo. Si cancelas con al menos 48 horas de antelación, lo mismo. La política de cancelación de baja fricción existe porque preferimos que un cliente vuelva el próximo año feliz a capturar una pequeña tarifa de no-show de un viajero estresado cuyo vuelo se retrasó.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b14",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b14-s1", text: "Shampoo de bebé: ", marks: ["strong"] },
-            { _type: "span", _key: "es-b14-s2", text: "Mezcla una parte de shampoo de bebé con unas diez partes de agua en una botellita con atomizador. El surfactante suave del shampoo de bebé evita la formación de gotas y no escuece si entra a los ojos. Rocía dentro de la máscara seca, frótalo, da un breve enjuague con agua de mar y bucea. Económico y muy efectivo.", marks: [] },
+            { _type: "span", _key: "es-b14-s1", text: "Qué Significa Realmente el Soporte Bilingüe", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b15",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b15-l1", href: "https://puntacana-excursions.com/es/contact" },
+          ],
           children: [
-            { _type: "span", _key: "es-b15-s1", text: "Saliva: ", marks: ["strong"] },
-            { _type: "span", _key: "es-b15-s2", text: "El método clásico y gratis. Escupe en la máscara seca, frota la saliva por toda la superficie interna, da un breve enjuague con agua de mar y bucea. La saliva funciona por sus proteínas surfactantes, igual que el antiempañante comercial. Sí se siente raro las primeras veces, pero es gratis, siempre está disponible, y tu guía de buceo escupe en su propia máscara cada inmersión. La clave es que la máscara debe estar seca cuando apliques la saliva y solo enjuagas brevemente después.", marks: [] },
+            { _type: "span", _key: "es-b15-s1", text: "Cada sitio de excursiones afirma tener soporte bilingüe. En la práctica, la mayoría quiere decir \"tenemos una versión en español de la página principal y un call center extranjero que mayormente habla inglés\". Nuestra versión de bilingüe significa que ", marks: [] },
+            { _type: "span", _key: "es-b15-s2", text: "cada mensaje", marks: ["es-b15-l1"] },
+            { _type: "span", _key: "es-b15-s3", text: " — consultas de reserva, preguntas por WhatsApp el día de, reprogramaciones por clima — se maneja en inglés o español por alguien físicamente basado en Punta Cana, no un call center genérico en otro país. Los viajeros nacionales hispanohablantes y los viajeros internacionales angloparlantes reciben el mismo tiempo de respuesta y la misma calidad de información. El traspaso de consulta a día del tour no pierde nada en la traducción porque es el mismo equipo en ambos lados.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b16",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b16-s1",
-              text: "Cualquiera que sea el método que uses, tres principios aplican universalmente. Aplícalo en una máscara seca, no en una mojada — el agua diluye el surfactante que uses y reduce su efectividad. Aplica recién antes de cada inmersión, no la noche anterior — las películas antiempañantes son temporales y se degradan entre inmersiones. Y enjuaga solo brevemente con agua de mar, no con agua dulce — el enjuague con dulce arrastra demasiado film. Muchos buzos arruinan su rutina enjuagando la máscara con demasiada fuerza justo antes de meterse al agua.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b16-s1", text: "Precios: Saltarse el Recargo del Resort", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b17",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b17-s1", text: "Qué Hacer Cuando se te Empaña la Máscara Bajo el Agua", marks: [] },
+            { _type: "span", _key: "es-b17-s1", text: "Lo más grande que los viajeros no se dan cuenta sobre las excursiones en Punta Cana es cuánto recarga el precio el concierge del resort. El mismo tour a la Isla Saona que cuesta entre $90 y $110 reservado directo puede salir entre $150 y $200 a través del all-inclusive, con la diferencia yendo entera a la estructura de comisiones del resort. Los catamaranes muestran brechas aún mayores — $50 a $70 directo contra $120 o más a través del concierge.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b18",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b18-l1", href: "https://www.grandbay-puntacana.com/es/courses/openwater" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b18-s1", text: "A veces el empañamiento ocurre a pesar de una buena rutina. El arreglo bajo el agua es simple — deja entrar una pequeña cantidad de agua de mar a la máscara, agítala por el lente y exhala por la nariz para sacar el agua. Es una de las habilidades estándar que aprendes durante tu ", marks: [] },
-            { _type: "span", _key: "es-b18-s2", text: "certificación Open Water", marks: ["es-b18-l1"] },
-            { _type: "span", _key: "es-b18-s3", text: " y la mayoría de los buzos la hace sin romper la flotabilidad ni detener la inmersión.", marks: [] },
+            { _type: "span", _key: "es-b18-s1", text: "Reservar directo (o a través de nosotros como intermediario curado) elimina ese recargo. El tour es el mismo, el operador es el mismo, la experiencia es la misma — solo pagas más cerca de lo que el tour realmente cuesta operar, en lugar de lo que el resort puede extraer encima. Para una familia de cuatro haciendo dos excursiones en una estancia de una semana, el ahorro a menudo paga por una tercera excursión completa.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b19",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b19-s1",
-              text: "La técnica: inclina la cabeza un poco hacia atrás para que el borde inferior de la máscara quede más bajo que el superior. Presiona suavemente el marco superior contra la frente con un dedo, rompiendo el sellado ahí. Deja entrar un poco de agua por abajo — solo lo justo para que se mueva por el lente, no para inundar del todo. Rápidamente inclina la cabeza hacia adelante, vuelve a presionar la parte superior en su sitio y exhala despacio por la nariz. El agua sale por abajo y vuelves a ver con claridad. Todo el proceso toma unos cinco segundos con práctica.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b19-s1", text: "Recomendaciones para Primerizos", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b20",
-          style: "h2",
-          markDefs: [],
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "es-b20-l1", href: "https://puntacana-excursions.com/es/excursions?category=island-tours" },
+          ],
           children: [
-            { _type: "span", _key: "es-b20-s1", text: "Diagnosticar el Empañamiento Persistente", marks: [] },
+            { _type: "span", _key: "es-b20-s1", text: "Para un viajero visitando Punta Cana por primera vez e intentando elegir excursiones del catálogo, la recomendación habitual son tres: ", marks: [] },
+            { _type: "span", _key: "es-b20-s2", text: "un tour de día completo a la Isla Saona", marks: ["es-b20-l1"] },
+            { _type: "span", _key: "es-b20-s3", text: " para la experiencia caribeña de postal, un catamarán de medio día con snorkel para los amantes del mar, y una tirolina o aventura en buggy para el día en que quieras ver el interior dominicano en lugar de la costa. Repartido en un viaje de cinco a siete días, son tres caras distintas del país, con suficiente tiempo de descanso entre medias para días de piscina y recuperación en el resort.", marks: [] },
           ],
         },
         {
@@ -771,22 +692,16 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b21-s1",
-              text: "Si tu máscara sigue empañándose después del tratamiento de máscara nueva y de una buena rutina de antiempañante, algo más está pasando. Revisa esta lista.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b21-s1", text: "Si el buceo también está en la agenda, el itinerario que típicamente funciona bien es: bucear el día uno o dos, catamarán o Saona el día tres, bucear de nuevo el día cuatro o cinco, tour de aventura el día seis y un último día flexible para lo que el grupo vote. Los intervalos de superficie entre días de buceo son útiles (más sobre eso en nuestra publicación dedicada a días sin buceo), y mezclar distintos tipos de actividad evita que alguien se sature en una sola experiencia.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b22",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b22-s1", text: "Estás respirando por la nariz. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b22-s2", text: "Es la causa más común del empañamiento persistente. En la máscara solo debe entrar aire desde tu cara por el lado de la piel, no por la nariz. Cada vez que exhalas por la nariz, metes aire cálido y húmedo directamente en la máscara. Practica inhalar y exhalar solo por el regulador, no por la nariz.", marks: [] },
+            { _type: "span", _key: "es-b22-s1", text: "Quién Ya Reserva con Nosotros", marks: [] },
           ],
         },
         {
@@ -795,18 +710,16 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b23-s1", text: "Tu máscara no te queda bien. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b23-s2", text: "Una máscara demasiado floja o demasiado apretada deja pequeñas brechas de aire que meten aire cálido. Prueba el ajuste sosteniendo la máscara contra la cara sin la correa e inhalando suavemente por la nariz — si se sostiene contra tu cara solo por la succión durante varios segundos, el ajuste es bueno. Si se cae o tiene huecos visibles, prueba otra forma de máscara.", marks: [] },
+            { _type: "span", _key: "es-b23-s1", text: "La base de clientes empezó como los clientes de buceo de Grand Bay — gente que había reservado inmersiones con nosotros y preguntó por Saona o catamaranes en paralelo. Eso sigue siendo una parte significativa de las reservas, ya que es una venta cruzada natural. El resto viene de viajeros que encuentran el sitio directo por búsqueda, clientes que repiten de años anteriores, y referencias de amigos o familia extendida que pasaron una buena semana aquí antes. Las reseñas del sitio (que no filtramos) se inclinan fuertemente hacia comentarios de reserva repetida y comparaciones tipo \"mejor que el día de Saona con crucero que hicimos hace tres años\" — esa es la base de clientes para la que seguimos optimizando.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b24",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b24-s1", text: "Protector solar, maquillaje o grasa de la piel en el lente. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b24-s2", text: "Cualquier cosa grasa se transfiere de tu cara o tus dedos al interior del lente y arruina la película antiempañante. Lávate las manos antes de aplicar el antiempañante e intenta no tocar el interior del lente después. El protector solar mineral reef-safe es particularmente propenso a dejar residuo en los lentes — limpia tu zona de la frente antes de ponerte la máscara.", marks: [] },
+            { _type: "span", _key: "es-b24-s1", text: "Cuándo PCE No es la Opción Correcta", marks: [] },
           ],
         },
         {
@@ -815,41 +728,34 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b25-s1", text: "La máscara está demasiado vieja. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b25-s2", text: "Las máscaras viejas acumulan una capa de grasa de la piel, proteínas corporales y otros residuos más difíciles de quitar. Si tu máscara tiene varios años y tu rutina de antiempañante ya no funciona, prueba el tratamiento con pasta dental de nuevo — a menudo refresca una máscara vieja. Si ni eso funciona, el faldón de silicona puede estar endureciéndose y desarrollando micro-fisuras que meten aire. Reemplázala.", marks: [] },
+            { _type: "span", _key: "es-b25-s1", text: "Un catálogo curado tiene compensaciones que vale la pena mencionar. Si quieres el precio absolutamente más bajo sin importar la calidad del operador, un agregador genérico a veces nos puede bajar por unos dólares por persona — no listamos operadores del último escalón aunque sean más baratos, así que nuestro piso de precio es un poco más alto que las opciones más ras del suelo. Si quieres una excursión muy nicho y ultra-especializada que no hemos evaluado (pesca de marlin en mar abierto, lecciones avanzadas de kitesurf, expediciones multi-día al interior montañoso), no está en el catálogo porque no tenemos experiencia directa para responder por los operadores. Y si genuinamente no te importa la consistencia de calidad y solo quieres reservar lo primero que el concierge del resort te recomiende porque es más fácil, sigue siendo una elección válida — somos para viajeros que se preocupan lo suficiente como para mirar una capa más profundo.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b26",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b26-s1", text: "La temperatura del agua es inusualmente fría para el aire. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b26-s2", text: "Una máscara que funciona perfecto en agua caribeña tibia puede empañarse más en destinos más fríos. Cuanto mayor es la diferencia de temperatura entre tu cara y el agua, más agresivo es el empañamiento. No es un problema que encuentres mucho en Punta Cana con temperaturas del agua entre 26 y 29 grados todo el año.", marks: [] },
+            { _type: "span", _key: "es-b26-s1", text: "Ventanas de Reserva y Tiempos de Temporada Alta", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b27",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b27-s1", text: "Cuidado de la Máscara entre Inmersiones y Viajes", marks: [] },
+            { _type: "span", _key: "es-b27-s1", text: "Consejo práctico sobre tiempos. En temporada regular (mayo a noviembre) las reservas se suelen hacer con 3 a 5 días de anticipación sin problemas de disponibilidad. La temporada alta (diciembre a abril) se aprieta — la Isla Saona, los catamaranes al atardecer y algunas de las operaciones de ATV más populares se llenan regularmente con una semana o más de anticipación. La semana entre Navidad y Año Nuevo es el pico absoluto; reserva esos días con dos o tres semanas de antelación si hay un tour específico que no quieres perderte. Las reservas de último minuto (mismo día o día siguiente) a veces son posibles — escríbenos por el sitio y revisamos la disponibilidad real del operador en lugar de adivinar.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b28",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b28-s1",
-              text: "Entre inmersiones del mismo viaje, enjuaga tu máscara con agua dulce si está disponible y déjala secar al aire dentro de una bolsa de malla. No la dejes al sol sobre una cubierta caliente — la exposición a UV y el calor degradan el faldón de silicona con el tiempo. No la dejes apoyada boca abajo sobre una superficie dura — incluso una presión breve puede deformar el sellado del faldón. Y no la guardes en la misma bolsa que tu traje de neopreno si ambos están mojados, porque eso atrapa humedad y puede favorecer moho en la silicona.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b28-s1", text: "Clima y Reprogramaciones", marks: [] },
           ],
         },
         {
@@ -858,12 +764,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-b29-s1",
-              text: "Entre viajes, enjuaga la máscara a fondo con agua dulce, sécala por completo y guárdala en su estuche rígido o en una bolsa de malla en un lugar fresco y seco, lejos del sol directo. Unas gotas de conservante para silicona en el faldón cada pocos meses alargan su vida. Inspecciona el faldón de silicona de vez en cuando — si muestra fisuras, endurecimiento o amarillamiento, reemplázalo. Una máscara con faldón degradado va a filtrar agua constantemente por mejor que apliques el antiempañante.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-b29-s1", text: "El clima de Punta Cana es mayormente cooperativo — hay una razón por la que este es uno de los destinos de playa más confiables del Caribe. Pero los meses de fin de verano y principios de otoño producen ocasionalmente mar pesado que hace inseguros catamaranes, viajes a islas o botes más pequeños. Cuando eso ocurre, reprogramamos para otro día dentro de tu estancia sin costo. Si reprogramar no es posible (te vas al día siguiente, todos los días alternos también están pesados), reembolsamos el depósito completo. Monitoreamos las condiciones del clima desde 48 horas antes de cada excursión y te contactamos proactivamente si parece probable un cambio — te enteras antes de que tengas que preguntar.", marks: [] },
           ],
         },
         {
@@ -872,7 +773,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b30-s1", text: "Máscaras de Alquiler: Un Caso Especial", marks: [] },
+            { _type: "span", _key: "es-b30-s1", text: "La Conexión con el Buceo", marks: [] },
           ],
         },
         {
@@ -880,44 +781,15 @@ const posts = [
           _key: "es-b31",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "es-b31-l1", href: "https://www.grandbay-puntacana.com/es/courses/discover" },
+            { _type: "link", _key: "es-b31-l1", href: "https://puntacana-excursions.com/es/scuba-diving" },
+            { _type: "link", _key: "es-b31-l2", href: "https://www.grandbay-puntacana.com/es/courses" },
           ],
           children: [
-            { _type: "span", _key: "es-b31-s1", text: "Si estás alquilando equipo — algo común en una ", marks: [] },
-            { _type: "span", _key: "es-b31-s2", text: "inmersión Discover Scuba", marks: ["es-b31-l1"] },
-            { _type: "span", _key: "es-b31-s3", text: " o para viajeros que no tienen equipo propio — la máscara normalmente ya fue pretratada por el operador y usada por muchos buzos antes que tú, así que la silicona de fábrica desapareció hace tiempo. Las máscaras de alquiler suelen ser menos propensas al empañamiento que las nuevas propias precisamente por esa razón. Aplica antiempañante (el del operador o el tuyo), enjuaga brevemente y bucea. Si la máscara no te queda bien, pide al operador otra talla o forma — el ajuste importa más que la marca. No te dé vergüenza probar dos o tres máscaras antes de quedarte con una.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b32",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b32-s1", text: "Referencia Rápida: El Sistema Completo Antiempañamiento", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b33",
-          style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "es-b33-s1",
-              text: "Para una máscara nueva propia: frota el interior de los lentes con pasta dental blanca común durante 3 a 5 minutos por lente, déjala toda la noche, enjuaga a fondo, repite el ciclo 2 o 3 veces antes de la primera inmersión. Para cada inmersión posterior: aplica antiempañante (spray comercial, solución de shampoo de bebé o saliva) a los lentes secos, frótalo, breve enjuague con agua de mar, y ponte la máscara sin tocar el interior. Bajo el agua, si aparece empañamiento: inclina la cabeza hacia atrás, rompe el sellado superior, deja entrar un poco de agua, exhala por la nariz y el agua sale por abajo. Entre inmersiones: enjuague con agua dulce si está disponible, secar al aire, guardar fuera del sol. Si el empañamiento sigue ocurriendo a pesar de todo esto, lo más probable es que estés respirando por la nariz durante la inmersión — es la causa más común de lejos.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b34",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b34-s1", text: "Cuando el Empañamiento No es el Problema Real", marks: [] },
+            { _type: "span", _key: "es-b31-s1", text: "El lado de buceo del catálogo sigue corriendo por nuestra operación Grand Bay — mismo bote, mismos instructores, mismo equipo. La única diferencia es que las reservas pueden entrar por cualquiera de los dos sitios. ", marks: [] },
+            { _type: "span", _key: "es-b31-s2", text: "Si llegas al sitio de excursiones buscando buceo", marks: ["es-b31-l1"] },
+            { _type: "span", _key: "es-b31-s3", text: ", verás una redirección a ", marks: [] },
+            { _type: "span", _key: "es-b31-s4", text: "las páginas de cursos en el sitio de Grand Bay", marks: ["es-b31-l2"] },
+            { _type: "span", _key: "es-b31-s5", text: " porque ahí vive la información detallada de los cursos PADI. Los dos sitios están integrados en el backend aunque sean separados públicamente — tu reserva termina con el mismo equipo sin importar por qué puerta entraste.", marks: [] },
           ],
         },
         {
@@ -926,7 +798,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-bx1-s1", text: "Máscaras Graduadas y Lentes Especiales", marks: [] },
+            { _type: "span", _key: "es-bx1-s1", text: "Cómo Nos Comparamos con Viator, GetYourGuide y los Grandes Agregadores", marks: [] },
           ],
         },
         {
@@ -935,65 +807,87 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-bx2-s1",
-              text: "Si usas anteojos o lentes de contacto, el empañamiento te afecta de manera un poco distinta. Los lentes de contacto funcionan bien para bucear pero se secan más rápido en la cámara de aire de una máscara, así que la molestia de ojo seco puede confundirse con empañamiento — mantén los ojos cerrados durante los vaciados y enjuagues en lugar de parpadear. Las máscaras de buceo graduadas tienen lentes correctivos pulidos o adheridos en cuerpos de máscara estándar; el lente en sí es de vidrio y acepta el mismo tratamiento con pasta de dientes y la misma rutina de antiempañante descritos arriba. Las lentes diópter adhesivas también funcionan, pero la capa de pegamento es ocasionalmente sensible a los antiempañantes con alcohol — quédate con un gel suave o solución de champú de bebé en esos. Las máscaras bifocales (con un pequeño segmento de lectura en la parte baja de cada lente para leer manómetros) siguen las mismas reglas de preparación que las máscaras estándar.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-bx2-s1", text: "Dos preguntas salen seguido. Primera: ¿por qué no usar Viator o GetYourGuide para excursiones en Punta Cana? La respuesta honesta es que esas plataformas son marketplaces que priorizan escala — listan todo en cada destino, toman comisión en las transacciones y dependen de las reseñas de usuarios para filtrar calidad. Ese modelo funciona bien cuando el mercado de fondo está bien regulado (como el alojamiento por Airbnb), pero se cae en destinos como Punta Cana donde la calidad de operadores varía muchísimo y las reseñas se manipulan agresivamente. Puedes encontrar cada tour a Saona en Viator, pero no puedes encontrar fácilmente cuál es realmente bueno versus cuál se ve idéntico en las fotos pero recorta esquinas en la ruta.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-bx3",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-bx3-s1", text: "Lente Único vs. Doble Lente — ¿Importa?", marks: [] },
+            { _type: "span", _key: "es-bx3-s1", text: "La segunda pregunta es si usar un marketplace local curado significa renunciar a la seguridad de una plataforma internacional grande. En la práctica, no — tu pago sigue procesándose por PayPal (el mismo procesador que usan las plataformas grandes), sigues recibiendo confirmaciones por correo y términos claros de cancelación, y las disputas se pueden resolver por los canales estándar. Lo que sacrificas es el acceso a la lista absolutamente más larga de opciones, a cambio de una opinión real sobre cuáles valen tu tiempo. Para viajeros que valoran la eficiencia y la calidad, ese intercambio suele ser positivo.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-bx4",
+          style: "h2",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "es-bx4-s1", text: "Normas de Propina y Costos Ocultos", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "es-bx5",
           style: "normal",
           markDefs: [],
           children: [
-            {
-              _type: "span",
-              _key: "es-bx4-s1",
-              text: "Ambos estilos se empañan igual y requieren el mismo tratamiento, pero se diferencian un poco en cómo se manifiesta el empañamiento. Las máscaras de lente único (una ventana grande para ambos ojos) tienden a empañarse de manera más uniforme; las máscaras de doble lente (ventanas izquierda y derecha separadas) a veces se empañan de forma asimétrica cuando un lente corre más caliente que el otro, sobre todo si respiras por la nariz hacia un lado. Los diseños de doble lente suelen ser más fáciles de ajustar a caras con nariz angosta o pómulos marcados porque el cuerpo tiene más flexibilidad. Ningún estilo es significativamente más fácil de desempañar — elige por el campo visual, el ajuste y la preferencia personal, no por resistencia al empañamiento.",
-              marks: [],
-            },
+            { _type: "span", _key: "es-bx5-s1", text: "Una cosa que el precio listado nunca incluye son las propinas, y la mayoría de los viajeros subestima el efecto acumulado. Normas razonables de propina en RD: $3 a $5 por persona para el chofer que maneja la recogida del hotel, $5 a $10 por persona para el guía en una excursión de día completo, $1 a $2 por trago para el bartender en un catamarán, y $2 a $3 por persona para la tripulación del bote cuando manejan equipo y setup de snorkel. En un día de Saona para una familia de cuatro, eso es aproximadamente $40 a $60 en efectivo de propinas más allá de lo que está en la reserva. Lo mencionamos por adelantado para que no sea sorpresa — la propina es ingreso genuino para guías y tripulación aquí, no opcional como en algunos destinos.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "es-b32",
+          style: "h2",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "es-b32-s1", text: "Cómo Contactarnos", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "es-b33",
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "es-b33-l1", href: "https://puntacana-excursions.com/" },
+            { _type: "link", _key: "es-b33-l2", href: "https://puntacana-excursions.com/es/faq" },
+            { _type: "link", _key: "es-b33-l3", href: "https://puntacana-excursions.com/es/contact" },
+          ],
+          children: [
+            { _type: "span", _key: "es-b33-s1", text: "El catálogo completo está en ", marks: [] },
+            { _type: "span", _key: "es-b33-s2", text: "puntacana-excursions.com", marks: ["es-b33-l1"] },
+            { _type: "span", _key: "es-b33-s3", text: " con navegación por categoría, filtros y páginas detalladas de cada tour. Para preguntas prácticas (qué incluye, para quién es, qué llevar), ", marks: [] },
+            { _type: "span", _key: "es-b33-s4", text: "la página de FAQ", marks: ["es-b33-l2"] },
+            { _type: "span", _key: "es-b33-s5", text: " cubre la mayoría de lo que la gente pregunta antes de reservar. Para consejos específicos de itinerario o cualquier cosa no cubierta, ", marks: [] },
+            { _type: "span", _key: "es-b33-s6", text: "el formulario de contacto", marks: ["es-b33-l3"] },
+            { _type: "span", _key: "es-b33-s7", text: " va directo a nuestro equipo — normalmente unas horas de tiempo de respuesta durante el horario laboral.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "es-b34",
+          style: "h2",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "es-b34-s1", text: "Por Qué Este Sitio Existe Aparte", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b35",
           style: "normal",
-          markDefs: [],
-          children: [
-            {
-              _type: "span",
-              _key: "es-b35-s1",
-              text: "Una última cosa que vale la pena mencionar. Muchos buzos describen su máscara como empañada cuando lo que realmente ocurre es que está filtrando. Una entrada pequeña pero constante de agua por un mal sellado se acumula en el fondo de la máscara y parece condensación sobre el lente. Los dos problemas se ven parecidos pero requieren soluciones totalmente distintas. Si estás vaciando agua de una máscara que no debería empañarse, revisa el sellado: prueba el test de inhalación, busca pelos atrapados en el faldón (el culpable más común, sobre todo en las sienes), revisa la tensión de la correa y asegúrate de que la máscara se apoye plana contra tu cara sin apretar de más. Una máscara que filtra seguirá produciendo lo que parece empañamiento por mejor que apliques el antiempañante.",
-              marks: [],
-            },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b36",
-          style: "normal",
           markDefs: [
-            { _type: "link", _key: "es-b36-l1", href: "https://www.grandbay-puntacana.com/es/contact" },
-            { _type: "link", _key: "es-b36-l2", href: "https://wa.me/18297239338" },
+            { _type: "link", _key: "es-b35-l1", href: "https://www.grandbay-puntacana.com/es/sites" },
+            { _type: "link", _key: "es-b35-l2", href: "https://wa.me/18297239338" },
           ],
           children: [
-            { _type: "span", _key: "es-b36-s1", text: "Si estás buceando con nosotros en Punta Cana y sigues luchando con una máscara empañada después de una o dos inmersiones, habla con tu guía en el bote — ajustes pequeños como apretar la correa, meter algún pelo suelto o cambiar la máscara de alquiler toman un minuto y hacen una gran diferencia el resto del día. También puedes contactarnos antes del viaje a través de nuestra ", marks: [] },
-            { _type: "span", _key: "es-b36-s2", text: "página de contacto", marks: ["es-b36-l1"] },
-            { _type: "span", _key: "es-b36-s3", text: " o por ", marks: [] },
-            { _type: "span", _key: "es-b36-s4", text: "WhatsApp", marks: ["es-b36-l2"] },
-            { _type: "span", _key: "es-b36-s5", text: " si tienes preguntas sobre tu propio equipo o quieres consejos específicos para las condiciones de buceo de aquí.", marks: [] },
+            { _type: "span", _key: "es-b35-s1", text: "Una pregunta razonable: ¿por qué no poner las excursiones en el sitio de Grand Bay en lugar de construir uno separado? La respuesta es audiencia e intención. Alguien buscando \"buceo Punta Cana\" llega al ", marks: [] },
+            { _type: "span", _key: "es-b35-s2", text: "sitio de buceo Grand Bay", marks: ["es-b35-l1"] },
+            { _type: "span", _key: "es-b35-s3", text: " y encuentra cursos de buceo, sitios de buceo e instrucción certificada PADI — exactamente lo que estaba buscando. Enterrar un catálogo de catamaranes debajo lo diluiría. Alguien buscando \"qué hacer en Punta Cana\" llega al sitio de excursiones y encuentra un catálogo curado sin la sobrecarga de centro de buceo. Mismo equipo, mismos estándares, distintas puertas para distintos visitantes. Si no estás seguro cuál es más relevante para tu viaje, ", marks: [] },
+            { _type: "span", _key: "es-b35-s4", text: "WhatsApp", marks: ["es-b35-l2"] },
+            { _type: "span", _key: "es-b35-s5", text: " — cualquiera de los dos sitios va al mismo grupo de personas, y te apuntamos a la página de inicio correcta.", marks: [] },
           ],
         },
       ],
@@ -1003,35 +897,35 @@ const posts = [
       _type: "seo",
       meta: {
         en: {
-          title: "How to Stop Your Scuba Mask from Fogging: Complete Guide (2026)",
+          title: "Punta Cana Excursions by Grand Bay: Our Curated Tour Marketplace (2026)",
           description:
-            "Foggy scuba mask? The one-time toothpaste prep for new masks, defog routine before every dive, how to clear fog underwater, and how to fix persistent fogging.",
-          keywords: ["scuba mask fogging", "how to stop mask fogging", "new mask toothpaste", "defog scuba mask", "mask fogging underwater", "scuba mask care"],
+            "Punta Cana Excursions by Grand Bay is our curated tour marketplace — Saona Island, catamarans, ATV adventures, and family tours we've personally vetted. Easy deposit, no resort markup.",
+          keywords: ["punta cana excursions", "punta cana tours", "saona island booking", "catamaran punta cana", "curated tours punta cana", "punta cana excursions by grand bay"],
         },
         es: {
-          title: "Cómo Evitar que se Empañe tu Máscara de Buceo: Guía Completa (2026)",
+          title: "Punta Cana Excursions by Grand Bay: Marketplace Curado de Tours (2026)",
           description:
-            "¿Máscara empañada? Tratamiento único con pasta dental para máscaras nuevas, rutina antiempañante antes de cada inmersión, cómo despejar bajo el agua y cómo arreglar el empañamiento persistente.",
-          keywords: ["empañamiento mascara buceo", "como evitar empañamiento mascara", "pasta dental mascara nueva", "antiempañante mascara buceo", "mascara empañada buceo"],
+            "Punta Cana Excursions by Grand Bay es nuestro marketplace curado — Isla Saona, catamaranes, ATV y tours familiares que hemos evaluado personalmente. Depósito simple, sin recargo de resort.",
+          keywords: ["excursiones punta cana", "tours punta cana", "isla saona reserva", "catamaran punta cana", "tours curados punta cana"],
         },
       },
       openGraph: {
         en: {
-          title: "How to Stop Your Scuba Mask from Fogging",
-          description: "The complete fog-prevention system: toothpaste prep, defog routine, underwater clearing, and how to diagnose persistent fogging.",
+          title: "Punta Cana Excursions by Grand Bay: Our Curated Tour Marketplace",
+          description: "How we built a curated excursion marketplace from our dive operation. What's in the catalog, how booking works, and why we vet every operator.",
         },
         es: {
-          title: "Cómo Evitar que se Empañe tu Máscara de Buceo",
-          description: "El sistema completo de prevención: pasta dental, rutina antiempañante, despejar bajo el agua y cómo diagnosticar empañamiento persistente.",
+          title: "Punta Cana Excursions by Grand Bay: Nuestro Marketplace Curado",
+          description: "Cómo construimos un marketplace curado de excursiones desde nuestra operación de buceo. Qué hay en el catálogo, cómo funciona la reserva y por qué evaluamos a cada operador.",
         },
       },
       structuredData: {
         en: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: "How to Stop Your Scuba Mask from Fogging: Complete Guide",
-          description: "A complete guide to preventing scuba mask fogging, including why masks fog, the one-time toothpaste treatment for new masks, the pre-dive defog routine, how to clear fog underwater, troubleshooting persistent fogging, and mask care between dives.",
-          datePublished: "2026-05-29",
+          headline: "Meet Punta Cana Excursions by Grand Bay: The Curated Tour Marketplace We Built",
+          description: "A founder-perspective explainer on Punta Cana Excursions by Grand Bay, the curated tour marketplace built as an extension of the Grand Bay dive operation. Covers how the business started, the six excursion categories (island tours, catamarans, adventure, culture and nature, family tours, scuba diving), the curation principle and operator vetting, the deposit-plus-balance booking process, bilingual support, the resort-markup pricing reality, first-timer recommendations, weather rescheduling policy, and how the excursions site fits alongside the Grand Bay dive site.",
+          datePublished: "2026-06-14",
           inLanguage: "en",
           author: { "@type": "Organization", name: "Grand Bay of the Sea" },
           publisher: {
@@ -1041,15 +935,15 @@ const posts = [
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://www.grandbay-puntacana.com/blog/diving-tips/how-to-stop-scuba-mask-fogging",
+            "@id": "https://www.grandbay-puntacana.com/blog/local-businesses/punta-cana-excursions-by-grand-bay",
           },
         }),
         es: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: "Cómo Evitar que se Empañe tu Máscara de Buceo: Guía Completa",
-          description: "Una guía completa para prevenir el empañamiento de la máscara de buceo, incluido por qué se empañan, el tratamiento único con pasta dental para máscaras nuevas, la rutina antiempañante antes de bucear, cómo despejar bajo el agua, solución de problemas persistentes y cuidado de la máscara entre inmersiones.",
-          datePublished: "2026-05-29",
+          headline: "Conoce Punta Cana Excursions by Grand Bay: El Marketplace Curado de Tours que Construimos",
+          description: "Un explicador desde la perspectiva del fundador sobre Punta Cana Excursions by Grand Bay, el marketplace curado de tours construido como extensión de la operación de buceo Grand Bay. Cubre cómo empezó el negocio, las seis categorías de excursiones (tours a islas, catamaranes, aventura, cultura y naturaleza, tours familiares, buceo), el principio de curación y la evaluación de operadores, el proceso de reserva con depósito más saldo, el soporte bilingüe, la realidad del recargo del resort, recomendaciones para primerizos, la política de reprogramación por clima y cómo el sitio de excursiones encaja junto al sitio de buceo Grand Bay.",
+          datePublished: "2026-06-14",
           inLanguage: "es",
           author: { "@type": "Organization", name: "Grand Bay of the Sea" },
           publisher: {
@@ -1059,7 +953,7 @@ const posts = [
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://www.grandbay-puntacana.com/es/blog/diving-tips/how-to-stop-scuba-mask-fogging",
+            "@id": "https://www.grandbay-puntacana.com/es/blog/local-businesses/punta-cana-excursions-by-grand-bay",
           },
         }),
       },

@@ -9,6 +9,24 @@ const nextConfig = {
         source: '/:path*',
         headers: [
           { key: 'Access-Control-Allow-Origin', value: '*' },
+          // Security headers (applied to the Next SSR responses; netlify.toml
+          // [[headers]] don't reliably reach the SSR function output).
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+          // Clickjacking protection only. A full content CSP is intentionally
+          // omitted — the site loads many third parties (GTM/GA, Ahrefs, PayPal,
+          // Cloudinary, Sanity, Contentful, PADI + SociableKit iframes, Maps)
+          // and would need a report-only rollout first.
+          { key: 'Content-Security-Policy', value: "frame-ancestors 'self'" },
         ],
       },
       {
