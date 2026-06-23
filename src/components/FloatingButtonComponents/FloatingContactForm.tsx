@@ -17,10 +17,13 @@ const FloatingContactForm = () => {
     <>
       {" "}
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Close contact form" : "Open contact form"}
+        aria-expanded={isOpen}
         className="fixed z-[500] flex px-2 justify-center items-center bottom-6 right-6 xl:right-10 rounded-full h-14 w-14 bg-black/75 text-[#007FFF]"
       >
-        <FaRegMessage size={24} />
+        <FaRegMessage size={24} aria-hidden />
       </button>
       <Dialog
         open={isOpen}
@@ -32,10 +35,12 @@ const FloatingContactForm = () => {
             <DialogPanel className="mb-20 mr-6 xl:mr-10 w-full max-w-md rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
               <div className="absolute top-5 right-5">
                 <button
+                  type="button"
+                  aria-label="Close contact form"
                   className="p-2 text-2xl text-gray-500"
                   onClick={() => setIsOpen(false)}
                 >
-                  <IoClose />
+                  <IoClose aria-hidden />
                 </button>
               </div>
               <div className="">
