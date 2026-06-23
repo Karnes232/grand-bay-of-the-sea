@@ -83,6 +83,28 @@ export default async function Home({
           ),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            name: "El buceo de dientes (con tiburones), una experiencia turística en auge en RD",
+            description:
+              "Listín Diario news feature on shark diving as a booming tourism experience in the Dominican Republic, featuring Grand Bay of the Sea's shark dive at Shark Point, Punta Cana.",
+            thumbnailUrl: "https://i.ytimg.com/vi/KT_fnLkw_bc/hqdefault.jpg",
+            uploadDate: "2026-01-06",
+            contentUrl: "https://www.youtube.com/watch?v=KT_fnLkw_bc",
+            embedUrl: "https://www.youtube.com/embed/KT_fnLkw_bc",
+            publisher: {
+              "@type": "Organization",
+              name: "Listín Diario",
+              url: "https://listindiario.com/",
+            },
+            about: { "@id": "https://www.grandbay-puntacana.com/#business" },
+          }),
+        }}
+      />
       <CloudinaryBackgroundVideo
         videoId={"greyshark_aowggg"}
         className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}
@@ -114,6 +136,18 @@ export default async function Home({
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex justify-center my-6 px-5">
+        <a
+          href="https://www.youtube.com/watch?v=KT_fnLkw_bc"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-gray-500 hover:text-gray-800 underline underline-offset-2 text-center"
+        >
+          {locale === "es"
+            ? "Destacado en Listín Diario"
+            : "As featured in Listín Diario"}
+        </a>
       </div>
       {sharkDive.faqs?.length > 0 && (
         <div className="mb-10">
