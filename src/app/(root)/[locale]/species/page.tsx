@@ -7,6 +7,7 @@ import LocalDivesOverview from "@/components/TourOverviews/LocalDivesOverview"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSpeciesPageContent } from "@/sanity/queries/Page-Species/SpeciesPageContent"
 import BlockContent from "@/components/BlockContent/BlockContent"
@@ -78,6 +79,18 @@ export default async function Page({
           }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd(
+            [
+              { name: "Home", path: "" },
+              { name: "Species", path: "/species" },
+            ],
+            locale,
+          ),
+        }}
+      />
       <HeroComponent
         heroImage={speciesPageContent[0].heroImage.asset.url}
         alt={speciesPageContent[0].heroImage.alt}

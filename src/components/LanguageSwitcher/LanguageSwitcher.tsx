@@ -138,6 +138,9 @@ export default function LanguageSwitcher({
         <button
           onClick={() => handleToggle(!isOpen)}
           disabled={isLoading}
+          aria-label="Change language"
+          aria-haspopup="menu"
+          aria-expanded={isOpen}
           className={`flex items-center space-x-2 text-${color} transition-all duration-200 px-3 py-2 rounded-lg border border-transparent ${
             isLoading
               ? "opacity-70 cursor-not-allowed bg-gray-100 scale-95"
@@ -172,6 +175,9 @@ export default function LanguageSwitcher({
         <button
           onClick={() => handleToggle(!isOpen)}
           disabled={isLoading}
+          aria-label="Change language"
+          aria-haspopup="menu"
+          aria-expanded={isOpen}
           className={`flex items-center space-x-1 text-${color} transition-all duration-200 p-2 rounded-lg ${
             isLoading
               ? "opacity-70 cursor-not-allowed bg-orange-50 scale-95"

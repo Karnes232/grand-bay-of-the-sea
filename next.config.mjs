@@ -27,6 +27,11 @@ const nextConfig = {
           // Cloudinary, Sanity, Contentful, PADI + SociableKit iframes, Maps)
           // and would need a report-only rollout first.
           { key: 'Content-Security-Policy', value: "frame-ancestors 'self'" },
+          // Explicitly welcome AI search/training/retrieval (contentsignals.org).
+          {
+            key: 'Content-Signal',
+            value: 'search=yes, ai-train=yes, ai-retrieval=yes',
+          },
         ],
       },
       {

@@ -37,15 +37,17 @@ const HamburgerMenu = () => {
             <span className="rounded-md shadow-sm">
               <MenuButton
                 className="inline-flex justify-center w-10 px-4 py-2 font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-transparent border border-gray-800 rounded-md hover:text-gray-500 focus:outline-none focus:border-gray-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
-                aria-label="menu"
+                aria-label="Open navigation menu"
+                aria-haspopup="menu"
               >
                 <span>
-                  <Bars3Icon className="h-6 text-gray-800" />
+                  <Bars3Icon className="h-6 text-gray-800" aria-hidden="true" />
                 </span>
                 <svg
                   className="w-5 h-5"
                   viewBox="0 0 20 20"
                   fill="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     fillRule="evenodd"

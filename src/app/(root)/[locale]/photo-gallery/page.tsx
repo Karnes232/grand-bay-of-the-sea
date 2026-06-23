@@ -7,6 +7,7 @@ import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getPhotoGallery } from "@/sanity/queries/Photo-Gallery/PhotoGallery"
 import TextComponent from "@/components/RichTextComponents/TextComponent"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 
 export async function generateMetadata({
   params,
@@ -67,6 +68,40 @@ export default async function Page({
           }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd(
+            [
+              { name: "Home", path: "" },
+              { name: photoGallery.title[locale], path: "/photo-gallery" },
+            ],
+            locale,
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ImageGallery",
+            name: photoGallery.title[locale],
+            url: `https://www.grandbay-puntacana.com${locale === "es" ? "/es" : ""}/photo-gallery`,
+            inLanguage: locale,
+            publisher: { "@id": "https://www.grandbay-puntacana.com/#business" },
+            image: photoGallery.photoList.map(p => ({
+              "@type": "ImageObject",
+              contentUrl: p.asset.url,
+              width: p.asset.metadata?.dimensions?.width,
+              height: p.asset.metadata?.dimensions?.height,
+              caption: p.alt || photoGallery.title[locale],
+              creditText: "Grand Bay of the Sea",
+              creator: { "@id": "https://www.grandbay-puntacana.com/#business" },
+            })),
+          }),
+        }}
+      />
       <HeroComponent heroImage={photoGallery.mainImage.asset.url} />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <TextComponent

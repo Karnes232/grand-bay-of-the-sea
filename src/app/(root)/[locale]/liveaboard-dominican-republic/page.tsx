@@ -3,6 +3,7 @@ import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import TextComponent from "@/components/RichTextComponents/TextComponent"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import Image from "next/image"
 import Link from "next/link"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
@@ -77,6 +78,18 @@ export default async function Page({
           }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd(
+            [
+              { name: "Home", path: "" },
+              { name: "Liveaboard", path: "/liveaboard-dominican-republic" },
+            ],
+            locale,
+          ),
+        }}
+      />
       <HeroComponent
         heroImage={liveaboards.heroImage.asset.url}
         alt={liveaboards.heroImage.alt}

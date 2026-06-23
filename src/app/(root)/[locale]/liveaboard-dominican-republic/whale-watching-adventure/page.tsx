@@ -1,6 +1,7 @@
 import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import {
   getWhaleWatchingAdventure,
   getWhaleWatchingAdventureSEO,
@@ -75,6 +76,22 @@ export default async function Home({
           }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd(
+            [
+              { name: "Home", path: "" },
+              { name: "Liveaboard", path: "/liveaboard-dominican-republic" },
+              {
+                name: "Whale Watching Adventure",
+                path: "/liveaboard-dominican-republic/whale-watching-adventure",
+              },
+            ],
+            locale,
+          ),
+        }}
+      />
       <CloudinaryBackgroundVideo
         videoId={"waw32in2jogikyocpnes"}
         className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}

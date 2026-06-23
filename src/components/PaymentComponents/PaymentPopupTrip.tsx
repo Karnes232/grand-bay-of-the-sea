@@ -118,10 +118,12 @@ const PaymentPopupTrip = ({ tour }: { tour: any }) => {
             <DialogPanel className="w-full max-w-3xl rounded-xl bg-white lg:p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
               <div className="fixed top-5 right-5">
                 <button
+                  type="button"
+                  aria-label="Close booking dialog"
                   className="p-2 text-2xl text-gray-500"
                   onClick={() => setIsOpen(false)}
                 >
-                  <IoClose />
+                  <IoClose aria-hidden />
                 </button>
               </div>
               <div className="fixed top-5 right-1/2 translate-x-1/2">

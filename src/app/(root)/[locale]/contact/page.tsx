@@ -3,6 +3,7 @@ import HeroComponent from "@/components/HeroComponent/HeroComponent"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getContact } from "@/sanity/queries/Contact/Contact"
 
@@ -73,6 +74,18 @@ export default async function Home({
           }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd(
+            [
+              { name: "Home", path: "" },
+              { name: "Contact", path: "/contact" },
+            ],
+            locale,
+          ),
+        }}
+      />
       <HeroComponent
         heroImage={contact.heroImage.asset.url}
         alt={contact.heroImage.alt}

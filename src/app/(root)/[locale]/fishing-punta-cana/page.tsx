@@ -3,6 +3,7 @@ import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/Clo
 import FishingOverview from "@/components/TourOverviews/FishingOverview"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getFishing } from "@/sanity/queries/Fishing/fishing"
 import BlockContent from "@/components/BlockContent/BlockContent"
@@ -68,6 +69,18 @@ export default async function Home({
           }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd(
+            [
+              { name: "Home", path: "" },
+              { name: "Fishing Punta Cana", path: "/fishing-punta-cana" },
+            ],
+            locale,
+          ),
+        }}
+      />
       <CloudinaryBackgroundVideo
         videoId={"fishing_jivxvr"}
         className={`-mt-20 md:-mt-40 xl:h-[80vh] [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)] xl:[clip-path:polygon(0_0,100%_0,100%_70vh,0%_100%)]`}
