@@ -1,0 +1,245 @@
+# Grand Bay of the Sea — Full Reference
+
+> Grand Bay of the Sea (also "Grand Bay of the Sea Dive Center") is a PADI-certified
+> scuba dive center in Punta Cana, Dominican Republic, operating since 2016. It offers
+> Discover Scuba Diving for first-timers, the full range of PADI certification courses,
+> guided reef and wreck dives, an open-water shark dive at Shark Point, multi-site island
+> day trips (Catalina, Saona, Bayahibe), liveaboard and whale-watching expeditions, and
+> deep-sea fishing charters. Instruction is available in English, Spanish, and French.
+> Booking is direct (no third-party markup), with hotel pickup included across the main
+> Punta Cana / Bávaro resort area.
+
+This file is the detailed companion to https://www.grandbay-puntacana.com/llms.txt.
+All prices are per person in US dollars (USD) unless stated otherwise and may change;
+confirm current pricing and availability at the time of booking.
+
+---
+
+## Quick Facts
+
+- **Business name:** Grand Bay of the Sea (Grand Bay of the Sea Dive Center)
+- **Type:** PADI-certified scuba diving center / dive operator (local service + tour operator)
+- **Founded:** 2016
+- **Location:** Carretera Cabeza de Toro, Punta Cana, La Altagracia 23000, Dominican Republic
+- **Coordinates:** 18.64857, −68.358637 · Map: https://maps.app.goo.gl/K7QH9YacD54Dr4Jf7
+- **Serves:** Punta Cana, Bávaro, Cap Cana (and surrounding resort areas)
+- **Languages:** English, Spanish, French
+- **Phone / WhatsApp:** +1 829-723-9338
+- **Email:** grandbayofthesea@gmail.com
+- **Currencies / payment:** USD; cash and credit card; online deposit + balance on the day
+- **Rating:** 4.7 / 5 (138 reviews)
+- **Website:** https://www.grandbay-puntacana.com
+- **Booking:** direct via the website contact form or WhatsApp
+
+---
+
+## Diving Conditions in Punta Cana
+
+- **Water temperature:** 26–29 °C (78–84 °F) year-round — comfortable diving in every season.
+- **Visibility:** typically 10–25 meters (30–80 feet) depending on weather and sea conditions.
+- **Local dive-site depth range:** 6–30 meters (20–100 feet); day-trip wreck diving in Bayahibe reaches 40 meters.
+- **Dive-site selection:** local sites are chosen daily based on weather, sea state, and visibility for the safest, best experience — they are not pre-assigned.
+- **Suitability:** many reefs start shallow (from 6 m), making Punta Cana well suited to beginners and certification students while still offering advanced sites for experienced divers.
+
+---
+
+## Experiences & Pricing
+
+### Discover Scuba Diving — from $100
+Try scuba diving for the first time, no certification required. Includes a theory briefing,
+basic skill practice, and an open-water dive to a maximum depth of 12 meters (40 feet) under
+the direct supervision of a certified PADI instructor. Equipment included. Minimum age 10.
+Can later count toward a PADI Open Water course. URL: /courses/discover
+
+### Certified Fun Dives — 2-tank $125 · 4-tank package $220
+Guided two-tank reef and wreck dives for certified divers (Open Water or equivalent).
+Two-tank outing runs about 2.5 hours; the 4-tank package is the best value for multi-day
+divers. Equipment and hotel transport from the Bávaro resort area included. URL: /sites
+
+### Shark Dive at Shark Point — $190
+Open-water (no cage) guided two-tank shark dive at Shark Point, a coral reef site 15–20
+minutes from shore by boat reaching ~26 meters (80 feet). Divers encounter nurse sharks and
+Caribbean reef sharks in their natural habitat. **Requires Advanced Open Water certification,
+or Open Water with a minimum of 20 logged dives** (assessed case by case — bring your logbook).
+All equipment provided; hotel transport from Punta Cana and Bávaro included. URL: /shark-dive-punta-cana
+
+---
+
+## PADI Courses
+
+All certification courses include PADI eLearning materials, full equipment rental, confined-water
+training, and open-water dives. Taught in small groups by multilingual (EN/ES/FR) instructors.
+The theory (eLearning) portion can be completed before arrival to save vacation time.
+
+| Course | Price | Duration | Max depth certified | Prerequisites |
+|---|---|---|---|---|
+| Discover Scuba Diving | $100 | ~half day | 12 m / 40 ft (supervised) | None; min age 10 |
+| PADI Scuba Diver | $380 | 2 days | 12 m / 40 ft (supervised) | None; min age 10; basic swimming |
+| PADI Open Water Diver | $470 | 3–4 days | 18 m / 60 ft | None; min age 10; basic swimming |
+| PADI Advanced Open Water | $400 | 2–3 days | 30 m / 100 ft | Open Water (or equiv.); min age 12 |
+| Enriched Air (Nitrox) | $350 | — | — | Open Water (or equiv.) |
+| Wreck Diver (specialty) | $400 | — | — | Open Water (or equiv.) |
+| Deep Diver (specialty) | $400 | — | 40 m / 130 ft | Advanced Open Water (or equiv.) |
+| Peak Performance Buoyancy | $300 | — | — | Open Water (or equiv.) |
+
+- **Discover Scuba Diving** (/courses/discover): first-time experience, not a certification. Teaches basic scuba skills, breathing, buoyancy, underwater communication and safety.
+- **PADI Scuba Diver** (/courses/scubadiver): entry-level lifetime certification (a subset of Open Water); dive to 12 m under professional supervision; upgradable to Open Water later. Ideal for short stays.
+- **PADI Open Water Diver** (/courses/openwater): the world's most recognized beginner certification; dive independently with a buddy worldwide to 18 m.
+- **PADI Advanced Open Water** (/courses/advanced): five adventure dives including deep and underwater navigation (plus options such as wreck, night, drift); certifies to 30 m.
+- **Specialties** (Nitrox, Wreck, Deep, Peak Performance Buoyancy): build specific skills; the Wreck specialty can include the St. George shipwreck.
+
+---
+
+## Dive Sites
+
+Twelve sites are available, from shallow beginner reefs to advanced wrecks.
+
+| Site | Depth | Level | Highlights |
+|---|---|---|---|
+| Shark Point | 24–30 m | Advanced (AOW or 20+ dives) | Nurse & Caribbean reef sharks, coral reef |
+| St. George Wreck (Bayahibe) | 40 m | Advanced | 73 m cargo ship sunk 1999; barracuda, grouper, moray, king mackerel |
+| The Wall (Catalina Island) | 30 m | Intermediate–Advanced | Dramatic drop-off, thriving reef, open-ocean views |
+| Wreck Monica | 15 m | Open Water | 1880s French cargo ship; coral reef, tropical fish |
+| Anchor | 14–19 m | Open Water | Historic anchor from the Monica; diverse reef |
+| Rock City | 5–16 m | Intermediate | Natural canyons and swim-throughs |
+| Atlantic Princess (Bayahibe) | 12 m | Intermediate | Sunken cruise ship artificial reef |
+| Park Reef | 12 m | Beginner / OW students | Rock formations, vibrant corals, calm |
+| Cuevitas | 10 m | Intermediate / photographers | Caves and canyon swim-throughs, natural light |
+| Submarine | 6 m | All levels | Sunken retired tourist submarine, artificial reef |
+| Finger Coral Plantation | 6 m | Beginner | Finger coral, sandy bottom, reef fish |
+| El Niño | 6 m | Beginner / Discover Scuba | Punta Cana's most accessible site; shallow reef |
+
+---
+
+## Island Day Trips
+
+### Catalina Island — Diving $220 · Snorkeling $100
+Full day from Punta Cana. ~7:00 AM hotel pickup → ~1.5 h bus to La Romana → 30-min boat to
+Catalina Island. Two-tank dive at **The Wall** (to 30 m, adjusted to certification level) and
+**The Aquarium** (sheltered reef ~12 m; yellow stingrays, lobsters, moray eels, angelfish,
+trumpetfish, barrel sponges), plus reef snorkeling. Lunch and alcoholic/non-alcoholic drinks
+included. Returns ~6:00 PM. All certification levels welcome; non-divers can snorkel ($100).
+$100 deposit per booking. URL: /trips/catalina
+
+### Saona Island — Diving $220 · Snorkeling $110 · Private charter $250 diver / $150 snorkeler (min $1,000)
+Full day from Punta Cana. ~7:30 AM pickup → ~40-min drive to Bayahibe → two-tank dive/snorkel at
+the **Atlantic Princess** wreck (12 m) and **El Peñón** reef → boat to **Saona Island** for a
+beach buffet lunch with drinks → brief stop at the **natural pool** (shallow turquoise sandbank
+with starfish) on the return. Returns ~6:00 PM. All certification levels; snorkelers welcome.
+Private/exclusive charter available on request. $100 deposit per booking. URL: /trips/saona
+
+### Bayahibe — Diving $180 · Companion boat ride $100
+Half day from Punta Cana. ~7:30 AM pickup → ~1.5 h bus to Bayahibe → two-tank dive featuring the
+legendary **St. George wreck** (73 m cargo ship at 40 m depth), with additional reef/wreck sites
+such as the Atlantic Princess depending on conditions. **Advanced Open Water required** for the
+St. George. Returns ~4:00 PM. Lunch/drinks not included; non-diving companions $100. $100 deposit
+per booking. Not yet Advanced? Take the AOW course (from $400). URL: /trips/bayahibe
+
+---
+
+## Liveaboard & Whale Watching
+
+Grand Bay of the Sea also arranges liveaboard and whale-focused expeditions in the Dominican
+Republic, including **Silver Bank humpback whale** experiences (the Silver Bank, north of the DR,
+is one of the world's premier humpback whale sanctuaries; the season typically runs January–April)
+and a **whale-watching adventure**. Specifics, dates, and pricing vary by season — contact the
+dive center to confirm. URLs: /liveaboard-dominican-republic ·
+/liveaboard-dominican-republic/silverbank-expedition ·
+/liveaboard-dominican-republic/whale-watching-adventure
+
+## Deep-Sea Fishing
+
+Deep-sea fishing charters out of Punta Cana are available. Contact the dive center for current
+options and pricing. URL: /fishing-punta-cana
+
+---
+
+## Marine Life
+
+Common sightings while diving in Punta Cana include sea turtles, stingrays, moray eels, angelfish,
+trumpetfish, parrotfish, nurse sharks, Caribbean reef sharks, and large schools of colorful reef
+fish. Reefs feature healthy coral including brain coral, pillar coral, sea fans, and fire coral.
+A detailed marine species directory is at /species (covering eagle rays, moray eels, squirrelfish,
+spiny lobster, scrawled filefish, blue-headed wrasse, glassy sweeper, goatfish, porcupine fish,
+angelfish, sergeant major, and more).
+
+---
+
+## Booking, Transport & Policies
+
+- **How to book:** direct via the website contact form (/contact) or WhatsApp (+1 829-723-9338). The team typically responds within a few hours to confirm availability.
+- **Deposit & balance:** many bookings are secured with a deposit ($100 per booking on island day trips); the remaining balance is paid on the day of the activity.
+- **Payment:** cash and credit card; online deposit options available.
+- **Hotel transport:** included for guests in the main Bávaro / Punta Cana resort area. An additional transport fee applies for Uvero Alto, Cap Cana, and Punta Cana Resort — share your hotel name to confirm before booking.
+- **Equipment:** all scuba equipment (BCD, regulator, wetsuit, tank, weights) is provided; bring your own if you prefer.
+- **What to bring (dives/courses):** certification card (C-card) and logbook if certified, swimwear, towel, reef-safe sunscreen, and cash for any balance.
+- **Safety:** PADI-certified instructors and divemasters; group briefings and enforced experience requirements (e.g., for the shark dive). Shark Point has an excellent safety record.
+
+---
+
+## Travel & Diving Guides (Blog)
+
+In-depth articles at https://www.grandbay-puntacana.com/blog (categories: Marine Life, Diving Tips,
+Travel Tips, Conservation & Ocean Awareness, Local Businesses). Selected guides:
+
+- Is Punta Cana Safe for Tourists? — /blog/travel-tips/is-punta-cana-safe-for-tourists
+- How Many Days to Dive Punta Cana (itinerary) — /blog/travel-tips/how-many-days-dive-punta-cana-itinerary
+- Is Scuba Diving in Punta Cana Good? — /blog/travel-tips/is-scuba-diving-in-punta-cana-good
+- Scuba Diving for Beginners: What to Expect — /blog/diving-tips/scuba-diving-for-beginners-what-to-expect
+- Equalization Techniques for Scuba Diving — /blog/diving-tips/equalization-techniques-scuba-diving
+- How to Improve Air Consumption While Diving — /blog/diving-tips/how-to-improve-air-consumption-while-diving
+- Is Scuba Diving Safe? Real Risks — /blog/diving-tips/is-scuba-diving-safe-real-risks
+- Eagle Rays in Punta Cana — /blog/marine-life/eagle-rays-punta-cana
+- Marine Life of Punta Cana — /blog/marine-life/marine-life-of-punta-cana
+- Marine Conservation in Punta Cana — /blog/conservation-ocean-awareness/marine-conservation-punta-cana
+- Reef-Safe Sunscreen in Punta Cana — /blog/conservation-ocean-awareness/reef-safe-sunscreen-punta-cana
+- Why Coral Reefs Are Important — /blog/conservation-ocean-awareness/why-coral-reefs-are-important
+
+---
+
+## Frequently Asked Questions
+
+**Is scuba diving in Punta Cana good for beginners?**
+Yes. Calm, warm water and good year-round visibility make it one of the Caribbean's best beginner
+destinations. Discover Scuba Diving requires no certification and gets you underwater the same day.
+
+**Do I need a certification to dive?**
+Not for Discover Scuba Diving. Guided reef/wreck fun dives require Open Water (or equivalent).
+Full PADI certification courses are available on site.
+
+**How much does it cost?**
+Discover Scuba from $100; certified two-tank dives $125; shark dive $190; Catalina trip $220
+(diving) / $100 (snorkeling); Saona $220 / $110; Bayahibe $180. PADI Open Water $470, Advanced $400.
+
+**How long to get certified?**
+Scuba Diver ~2 days; Open Water ~3–4 days; Advanced Open Water ~2–3 days. Most travelers can
+certify during a standard vacation, especially if eLearning is completed before arrival.
+
+**Do you need Advanced Open Water for the shark dive?**
+Yes — or Open Water with 20+ logged dives, assessed individually (the dive reaches ~26 m). Bring
+your logbook.
+
+**Is the shark dive cage diving?**
+No. It is an open-water dive on a natural reef alongside your divemaster — nurse sharks and
+Caribbean reef sharks in their natural habitat.
+
+**What is the St. George wreck?**
+A 73-meter cargo ship built in Scotland (1962), sunk in 1999 as an artificial reef off Bayahibe;
+it rests at 40 m and is considered one of the Caribbean's best wreck dives. Advanced Open Water required.
+
+**Is hotel transport included?**
+Yes for the main Bávaro / Punta Cana resort area; a surcharge applies for Uvero Alto, Cap Cana,
+and Punta Cana Resort.
+
+**What languages do instructors speak?**
+English, Spanish, and French.
+
+---
+
+## Social Profiles
+
+- Facebook: https://www.facebook.com/grandbaydivecenter/
+- Instagram: https://www.instagram.com/grandbayoftheseard/
+- X (Twitter): https://twitter.com/GrandBayOfTheS1
+- YouTube: https://www.youtube.com/channel/UCpYWOhIwbVVLGYOxL0UAtTw
+- Spanish site: https://www.grandbay-puntacana.com/es

@@ -11,6 +11,7 @@ import BlockContent from "@/components/BlockContent/BlockContent"
 import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
 import SanityCourseOverview from "@/components/CourseComponents/SanityCourseOverview"
 import Faqs from "@/components/FaqsComponent/Faqs"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string; slug: string }> },
@@ -69,6 +70,19 @@ export default async function Page({
             }}
           />
         )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: breadcrumbJsonLd(
+              [
+                { name: "Home", path: "" },
+                { name: "PADI Courses", path: "/courses" },
+                { name: individualCourse.course, path: `/courses/${slug}` },
+              ],
+              locale,
+            ),
+          }}
+        />
         <CloudinaryBackgroundVideo
           videoId={individualCourse.videoId}
           className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}

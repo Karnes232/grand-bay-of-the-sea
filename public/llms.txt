@@ -1,0 +1,31 @@
+# Grand Bay of the Sea
+
+> PADI-certified scuba dive center in Punta Cana, Dominican Republic. Offers PADI courses (Discover Scuba to Advanced Open Water), reef & wreck diving, shark diving at Shark Point, Catalina/Saona/Bayahibe island trips, and deep-sea fishing. Bilingual (English/Spanish). Direct booking.
+
+## Core Services
+- [Scuba Diving Punta Cana](https://www.grandbay-puntacana.com/scuba-diving-punta-cana): Reef & wreck diving, conditions, marine life
+- [Shark Diving at Shark Point](https://www.grandbay-puntacana.com/shark-dive-punta-cana): Two-tank dive, ~26m, requires Advanced Open Water or 20+ logged dives
+- [PADI Courses](https://www.grandbay-puntacana.com/courses): Discover Scuba, Scuba Diver, Open Water, Advanced Open Water
+- [Dive Sites](https://www.grandbay-puntacana.com/sites): Reef and wreck sites incl. the Monica shipwreck
+- [Dive Trips](https://www.grandbay-puntacana.com/trips): Catalina, Saona, and Bayahibe island dive trips
+- [Liveaboard](https://www.grandbay-puntacana.com/liveaboard-dominican-republic): Silver Bank humpback whale expeditions
+- [Deep Sea Fishing](https://www.grandbay-puntacana.com/fishing-punta-cana): Charters out of Punta Cana
+
+## Travel & Diving Guides
+- [Is Punta Cana Safe for Tourists?](https://www.grandbay-puntacana.com/blog/travel-tips/is-punta-cana-safe-for-tourists)
+- [Scuba Diving for Beginners: What to Expect](https://www.grandbay-puntacana.com/blog/diving-tips/scuba-diving-for-beginners-what-to-expect)
+- [Blog index](https://www.grandbay-puntacana.com/blog)
+- [Marine Species Directory](https://www.grandbay-puntacana.com/species)
+
+## About & Contact
+- Location: Carretera Cabeza de Toro, Punta Cana, Dominican Republic
+- WhatsApp: +1 829-723-9338 · Email: grandbayofthesea@gmail.com
+- [Contact](https://www.grandbay-puntacana.com/contact)
+
+## Full Reference
+- [llms-full.txt](https://www.grandbay-puntacana.com/llms-full.txt): Complete details — all experiences and pricing, PADI courses, 12 dive sites, island day-trip itineraries, conditions, marine life, booking & transport policies, and FAQs.
+
+## Optional
+- [Spanish site](https://www.grandbay-puntacana.com/es)
+- [Photo gallery](https://www.grandbay-puntacana.com/photo-gallery)
+- [Terms and Conditions](https://www.grandbay-puntacana.com/terms-and-conditions)

@@ -36,3 +36,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# GEO audit deliverables (kept local, not part of the app)
+GEO-AUDIT-REPORT.md
+GEO-REPORT.pdf
+GEO-REPORT.html

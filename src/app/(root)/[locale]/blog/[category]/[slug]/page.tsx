@@ -12,7 +12,9 @@ import {
   getIndividualBlogPostSEO,
 } from "@/sanity/queries/Blog/BlogPosts"
 import SanityBlogBody from "@/components/BlogComponents/SanityBlogBody"
+import BlogMeta from "@/components/BlogComponents/BlogMeta"
 import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
+import { breadcrumbJsonLd, humanizeSlug } from "@/utils/breadcrumb"
 
 export async function generateMetadata(
   {
@@ -149,9 +151,37 @@ export default async function Page({
             }}
           />
         )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: breadcrumbJsonLd(
+              [
+                { name: "Home", path: "" },
+                { name: "Blog", path: "/blog" },
+                { name: humanizeSlug(category), path: `/blog/${category}` },
+                {
+                  name: individualBlogPost.title[locale],
+                  path: `/blog/${category}/${slug}`,
+                },
+              ],
+              locale,
+            ),
+          }}
+        />
         {individualBlogPost.backgroundImages?.length > 0 && (
           <HeroImages backgroundImages={individualBlogPost.backgroundImages} />
         )}
+        <BlogMeta
+          author={t("author")}
+          publishDate={individualBlogPost.publishDate}
+          updatedAt={individualBlogPost._updatedAt}
+          locale={locale}
+          labels={{
+            by: t("by"),
+            published: t("published"),
+            updated: t("updated"),
+          }}
+        />
         <SanityBlogBody content={individualBlogPost.blogBody} locale={locale} />
         <Recommendations
           relatedPosts={relatedPosts}

@@ -7,6 +7,7 @@ import BlockContent from "@/components/BlockContent/BlockContent"
 import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
 import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
 import Faqs from "@/components/FaqsComponent/Faqs"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -70,6 +71,18 @@ export default async function Home({
           }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd(
+            [
+              { name: "Home", path: "" },
+              { name: "Shark Diving Punta Cana", path: "/shark-dive-punta-cana" },
+            ],
+            locale,
+          ),
+        }}
+      />
       <CloudinaryBackgroundVideo
         videoId={"greyshark_aowggg"}
         className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}

@@ -74,6 +74,7 @@ export interface BlogPost {
     es: string
   }
   publishDate: string
+  _updatedAt?: string
   backgroundImages: {
     asset: {
       url: string
@@ -112,6 +113,7 @@ export const individualBlogPostQuery = `*[_type == "blogPost" && slug.current ==
     es
   },
   publishDate,
+  _updatedAt,
   backgroundImages[] {
     asset -> {
       url,

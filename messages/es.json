@@ -180,6 +180,10 @@
   "Blog": {
     "readMore": "Leer Más",
     "youMayAlsoLike": "También te puede interesar",
+    "by": "Por",
+    "author": "Grand Bay Dive Team",
+    "published": "Publicado",
+    "updated": "Actualizado",
     "searchPlaceholder": "Buscar Publicaciones de Blog...",
     "noBlogPostsFound": "No se encontraron publicaciones",
     "blogPostsFound": "publicación encontrada",

@@ -19,6 +19,14 @@ const TrustBadges = () => {
             quality={75}
           />
         </a>
+        <a
+          href="https://travel.padi.com/dive-center/dominican-republic/grand-bay-of-the-sea/"
+          rel="noopener noreferrer"
+          target="_blank"
+          className="mt-4 text-sm text-gray-300 hover:text-white underline underline-offset-2"
+        >
+          Verified PADI Dive Center — Store #27147
+        </a>
       </div>
       <LazyIframeWhenVisible
         src="https://widgets.sociablekit.com/google-reviews/iframe/167263"
