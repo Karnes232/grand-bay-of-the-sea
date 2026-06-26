@@ -3,7 +3,6 @@ import dynamicImport from "next/dynamic"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import { getHreflangAlternates } from "@/utils/hreflang"
 
-import { getTranslations } from "next-intl/server"
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import JsonLd from "@/components/StructuredData/JsonLd"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
@@ -74,7 +73,6 @@ export default async function Home({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const t = await getTranslations("HomeHero")
 
   const [structuredData, sectionLinks, homePage, faqs] = await Promise.all([
     getStructuredData("Index"),
@@ -141,9 +139,16 @@ export default async function Home({
             heroImage={heroImageDetails.url}
             blurDataURL={heroImageDetails.base64}
             alt={heroImageDetails.alt || "Scuba diving in Punta Cana"}
-            title={t("title")}
-            subtitle={t("subtitle")}
-            cta={{ label: t("ctaLabel"), href: "/courses" }}
+            title={homePage.heroTitle?.[locale]}
+            subtitle={homePage.heroSubtitle?.[locale]}
+            cta={
+              homePage.heroCta?.label?.[locale] && homePage.heroCta?.link
+                ? {
+                    label: homePage.heroCta.label[locale],
+                    href: homePage.heroCta.link,
+                  }
+                : undefined
+            }
           />
         )}
         <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />

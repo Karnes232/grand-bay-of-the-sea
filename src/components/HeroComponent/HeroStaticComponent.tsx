@@ -37,25 +37,29 @@ const HeroStaticComponent = ({
         />
         <div className="absolute inset-0 z-10 bg-[linear-gradient(to_bottom,rgba(245,246,252,0.52),rgba(0,0,0,0.73))]" />
         {(title || subtitle || cta) && (
-          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 px-4 text-center">
-            {title && (
-              <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold drop-shadow-lg font-crimson">
-                {title}
-              </h1>
-            )}
-            {subtitle && (
-              <p className="max-w-2xl text-base md:text-lg lg:text-xl text-white/95 drop-shadow-md">
-                {subtitle}
-              </p>
-            )}
-            {cta && (
-              <Link
-                href={cta.href}
-                className="mt-2 inline-flex items-center justify-center rounded-full bg-sky-600 px-7 py-3 text-base font-semibold text-white shadow-lg transition-colors hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                {cta.label}
-              </Link>
-            )}
+          <div className="absolute inset-0 z-20 flex items-center justify-center px-4">
+            {/* Contained dark scrim keeps the white text legible (WCAG AA)
+                regardless of how bright the underlying hero image is. */}
+            <div className="flex max-w-3xl flex-col items-center gap-4 rounded-2xl bg-black/45 px-6 py-8 text-center shadow-xl backdrop-blur-[2px] sm:px-10">
+              {title && (
+                <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] font-crimson">
+                  {title}
+                </h1>
+              )}
+              {subtitle && (
+                <p className="max-w-2xl text-base md:text-lg lg:text-xl text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.65)]">
+                  {subtitle}
+                </p>
+              )}
+              {cta && (
+                <Link
+                  href={cta.href}
+                  className="mt-2 inline-flex items-center justify-center rounded-full bg-sky-700 px-7 py-3 text-base font-semibold text-white shadow-lg transition-colors hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  {cta.label}
+                </Link>
+              )}
+            </div>
           </div>
         )}
       </div>

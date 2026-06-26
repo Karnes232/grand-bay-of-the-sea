@@ -38,6 +38,21 @@ export interface HomePage {
     }
     alt: string
   }
+  heroTitle?: {
+    en: string
+    es: string
+  }
+  heroSubtitle?: {
+    en: string
+    es: string
+  }
+  heroCta?: {
+    label?: {
+      en: string
+      es: string
+    }
+    link?: string
+  }
   paragraph1: {
     en: any[]
     es: any[]
@@ -89,6 +104,21 @@ export const homePageQuery = `*[_type == "homePage"][0] {
       }
     },
     alt
+  },
+  heroTitle {
+    en,
+    es
+  },
+  heroSubtitle {
+    en,
+    es
+  },
+  heroCta {
+    label {
+      en,
+      es
+    },
+    link
   },
   paragraph1 {
     en,
