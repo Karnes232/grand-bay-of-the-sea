@@ -98,11 +98,30 @@ export default async function Page({
         {heroImageDetails.url && (
           <HeroStaticComponent
             heroImage={heroImageDetails.url}
-            blurDataURL={heroImageDetails.base64} // Pass the generated blurDataURL
+            blurDataURL={heroImageDetails.base64}
+            alt={
+              coursesMainPage.heroImage.asset.alt ||
+              "PADI diving courses in Punta Cana"
+            }
+            title={coursesMainPage.heroTitle?.[locale]}
+            subtitle={coursesMainPage.heroSubtitle?.[locale]}
+            cta={
+              coursesMainPage.heroCta?.label?.[locale] &&
+              coursesMainPage.heroCta?.link
+                ? {
+                    label: coursesMainPage.heroCta.label[locale],
+                    href: coursesMainPage.heroCta.link,
+                  }
+                : undefined
+            }
           />
         )}
         <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-        <BlockContent content={coursesMainPage.paragraph1} locale={locale} />
+        <BlockContent
+          content={coursesMainPage.paragraph1}
+          locale={locale}
+          demoteH1
+        />
         <CloudinaryBackgroundVideo
           className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
           videoId={"scubaHero_wzvqdg"}

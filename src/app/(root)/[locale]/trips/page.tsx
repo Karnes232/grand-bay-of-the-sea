@@ -89,10 +89,25 @@ export default async function Page({
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <HeroStaticComponent // Use HeroStaticComponent
         heroImage={heroImageUrl}
-        blurDataURL={heroImageBlurDataURL} // Pass the generated blurDataURL
+        blurDataURL={heroImageBlurDataURL}
+        alt={diveTripsPage.heroImage.alt || "Dive trips from Punta Cana"}
+        title={diveTripsPage.heroTitle?.[locale]}
+        subtitle={diveTripsPage.heroSubtitle?.[locale]}
+        cta={
+          diveTripsPage.heroCta?.label?.[locale] && diveTripsPage.heroCta?.link
+            ? {
+                label: diveTripsPage.heroCta.label[locale],
+                href: diveTripsPage.heroCta.link,
+              }
+            : undefined
+        }
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <BlockContent content={diveTripsPage.paragraph1} locale={locale} />
+      <BlockContent
+        content={diveTripsPage.paragraph1}
+        locale={locale}
+        demoteH1
+      />
       <CloudinaryBackgroundVideo
         className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
         videoId={"scubaHero_wzvqdg"}

@@ -1,6 +1,21 @@
 import { client } from "@/sanity/lib/client"
 
 export interface Sites {
+  heroTitle?: {
+    en: string
+    es: string
+  }
+  heroSubtitle?: {
+    en: string
+    es: string
+  }
+  heroCta?: {
+    label?: {
+      en: string
+      es: string
+    }
+    link?: string
+  }
   heroImage: {
     asset: {
       url: string
@@ -40,6 +55,21 @@ export interface Sites {
 }
 
 export const sitesQuery = `*[_type == "sites"][0] {
+  heroTitle {
+    en,
+    es
+  },
+  heroSubtitle {
+    en,
+    es
+  },
+  heroCta {
+    label {
+      en,
+      es
+    },
+    link
+  },
   heroImage {
     asset -> {
       url,

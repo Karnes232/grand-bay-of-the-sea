@@ -2,6 +2,21 @@ import { client } from "@/sanity/lib/client"
 
 export interface DiveTripsPage {
   page: string
+  heroTitle?: {
+    en: string
+    es: string
+  }
+  heroSubtitle?: {
+    en: string
+    es: string
+  }
+  heroCta?: {
+    label?: {
+      en: string
+      es: string
+    }
+    link?: string
+  }
   paragraph1: {
     en: any[]
     es: any[]
@@ -22,6 +37,21 @@ export interface DiveTripsPage {
 
 export const diveTripsPageQuery = `*[_type == "diveTripsPage"][0] {
   page,
+  heroTitle {
+    en,
+    es
+  },
+  heroSubtitle {
+    en,
+    es
+  },
+  heroCta {
+    label {
+      en,
+      es
+    },
+    link
+  },
   paragraph1 {
     en,
     es

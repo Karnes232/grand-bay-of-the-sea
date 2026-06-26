@@ -88,12 +88,29 @@ export default async function Page({
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <HeroStaticComponent // Use HeroStaticComponent
         heroImage={heroImageUrl}
-        blurDataURL={heroImageBlurDataURL} // Pass the generated blurDataURL
+        blurDataURL={heroImageBlurDataURL}
+        alt={
+          sitesLayout.heroImage.alt || "Dive sites and packages in Punta Cana"
+        }
+        title={sitesLayout.heroTitle?.[locale]}
+        subtitle={sitesLayout.heroSubtitle?.[locale]}
+        cta={
+          sitesLayout.heroCta?.label?.[locale] && sitesLayout.heroCta?.link
+            ? {
+                label: sitesLayout.heroCta.label[locale],
+                href: sitesLayout.heroCta.link,
+              }
+            : undefined
+        }
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
 
       <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
-        <BlockContent content={sitesLayout.paragraph1} locale={locale} />
+        <BlockContent
+          content={sitesLayout.paragraph1}
+          locale={locale}
+          demoteH1
+        />
         <div className="lg:w-[45rem]">
           <LocalDivesOverview
             info={sitesLayout}

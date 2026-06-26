@@ -2,6 +2,21 @@ import { client } from "@/sanity/lib/client"
 
 export interface CoursesMainPage {
   title: string
+  heroTitle?: {
+    en: string
+    es: string
+  }
+  heroSubtitle?: {
+    en: string
+    es: string
+  }
+  heroCta?: {
+    label?: {
+      en: string
+      es: string
+    }
+    link?: string
+  }
   heroImage: {
     asset: {
       url: string
@@ -31,6 +46,21 @@ export interface CoursesMainPage {
 
 export const coursesMainPageQuery = `*[_type == "coursesMainPage"][0] {
   title,
+  heroTitle {
+    en,
+    es
+  },
+  heroSubtitle {
+    en,
+    es
+  },
+  heroCta {
+    label {
+      en,
+      es
+    },
+    link
+  },
   heroImage {
     asset -> {
       url,
