@@ -1,5 +1,6 @@
 import ContactForm from "@/components/ContactForm/ContactForm"
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
+import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
+import JsonLd from "@/components/StructuredData/JsonLd"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
@@ -66,14 +67,7 @@ export default async function Home({
   */
   return (
     <main id="main">
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -86,9 +80,10 @@ export default async function Home({
           ),
         }}
       />
-      <HeroComponent
+      <HeroStaticComponent
         heroImage={contact.heroImage.asset.url}
         alt={contact.heroImage.alt}
+        blurDataURL={contact.heroImage.asset.metadata.lqip}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <ContactForm />

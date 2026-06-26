@@ -8,6 +8,7 @@ import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getFishing } from "@/sanity/queries/Fishing/fishing"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
+import JsonLd from "@/components/StructuredData/JsonLd"
 
 export async function generateMetadata({
   params,
@@ -61,14 +62,7 @@ export default async function Home({
 
   return (
     <main id="main">
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -9,6 +9,7 @@ export interface PhotoGallery {
     asset: {
       url: string
       metadata: {
+        lqip: string
         dimensions: {
           width: number
           height: number
@@ -40,6 +41,7 @@ export const photoGalleryQuery = `*[_type == "photoGallery"][0] {
     asset -> {
       url,
       metadata {
+        lqip,
         dimensions {
           width,
           height

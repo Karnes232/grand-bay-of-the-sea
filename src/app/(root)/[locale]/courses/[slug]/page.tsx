@@ -12,6 +12,7 @@ import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/Sani
 import SanityCourseOverview from "@/components/CourseComponents/SanityCourseOverview"
 import Faqs from "@/components/FaqsComponent/Faqs"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
+import JsonLd from "@/components/StructuredData/JsonLd"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string; slug: string }> },
@@ -62,14 +63,7 @@ export default async function Page({
   return (
     <>
       <main id="main">
-        {structuredData?.seo?.structuredData[locale] && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: structuredData.seo.structuredData[locale],
-            }}
-          />
-        )}
+        <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

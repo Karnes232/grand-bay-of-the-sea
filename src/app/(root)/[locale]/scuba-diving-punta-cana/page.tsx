@@ -2,9 +2,10 @@ import BackgroundImage from "@/components/BackgroundImageComponent/BackgroundIma
 import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 import DivingOrganizations from "@/components/DivingOrganizations/DivingOrganizations"
 import GoogleMaps from "@/components/GoogleMapsComponent/GoogleMaps"
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
+import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import Faqs from "@/components/FaqsComponent/Faqs"
+import JsonLd from "@/components/StructuredData/JsonLd"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
@@ -65,17 +66,11 @@ export default async function Home({
 
   return (
     <main id="main">
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
-      <HeroComponent
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
+      <HeroStaticComponent
         heroImage={scubaDivingPuntaCana.heroImage.asset.url}
         alt={scubaDivingPuntaCana.heroImage.alt}
+        blurDataURL={scubaDivingPuntaCana.heroImage.asset.metadata.lqip}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <BlockContent content={scubaDivingPuntaCana.paragraph1} locale={locale} />

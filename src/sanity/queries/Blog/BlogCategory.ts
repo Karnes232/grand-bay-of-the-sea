@@ -59,6 +59,9 @@ export interface individualBlogCategory {
   heroImage: {
     asset: {
       url: string
+      metadata: {
+        lqip: string
+      }
     }
     alt: string
   }
@@ -84,9 +87,10 @@ export const individualBlogCategoryQuery = `*[_type == "blogCategory" && slug.cu
         asset -> {
             url,
             metadata {
+                lqip,
                 dimensions {
                     width,
-                    height  
+                    height
                 }
             }
         },

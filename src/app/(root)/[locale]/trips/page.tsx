@@ -13,6 +13,7 @@ import { getDiveTripsPage } from "@/sanity/queries/DiveTrips/DiveTripsPage"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import { getTripCards } from "@/sanity/queries/DiveTrips/Trips"
 import SanityTripCards from "@/components/TourOverviews/SanityTripCards"
+import JsonLd from "@/components/StructuredData/JsonLd"
 
 // Add this line to explicitly force static rendering
 export const dynamic = "force-static"
@@ -85,14 +86,7 @@ export default async function Page({
 
   return (
     <main id="main">
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <HeroStaticComponent // Use HeroStaticComponent
         heroImage={heroImageUrl}
         blurDataURL={heroImageBlurDataURL} // Pass the generated blurDataURL

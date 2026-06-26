@@ -1,5 +1,6 @@
 import BlogPostList from "@/components/BlogComponents/BlogPostList"
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
+import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
+import JsonLd from "@/components/StructuredData/JsonLd"
 import RichText from "@/components/RichTextComponents/RichText"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
@@ -88,19 +89,13 @@ export default async function Page({
   // })
   return (
     <main id="main">
-      {blogCategory?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: blogCategory.seo.structuredData[locale],
-          }}
-        />
-      )}
+      <JsonLd raw={blogCategory?.seo?.structuredData[locale]} />
       {blogCategory.heroImage?.asset?.url && (
-        <HeroComponent
+        <HeroStaticComponent
           heroImage={blogCategory.heroImage.asset.url}
           title={blogCategory.blogCategory[locale]}
           alt={blogCategory.heroImage.alt}
+          blurDataURL={blogCategory.heroImage.asset.metadata.lqip}
         />
       )}
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />

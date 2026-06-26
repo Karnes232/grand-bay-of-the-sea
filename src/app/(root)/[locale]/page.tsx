@@ -3,9 +3,9 @@ import dynamicImport from "next/dynamic"
 import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import { getHreflangAlternates } from "@/utils/hreflang"
 
-import { getPlaiceholder } from "plaiceholder"
-import { Buffer } from "buffer" // Node.js Buffer for getPlaiceholder
+import { getTranslations } from "next-intl/server"
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
+import JsonLd from "@/components/StructuredData/JsonLd"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSectionLinks } from "@/sanity/queries/Scuba-Diving-Punta-Cana/SectionLinks"
 import { getHomePage } from "@/sanity/queries/HomePage/HomePage"
@@ -74,6 +74,7 @@ export default async function Home({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  const t = await getTranslations("HomeHero")
 
   const [structuredData, sectionLinks, homePage, faqs] = await Promise.all([
     getStructuredData("Index"),
@@ -106,83 +107,47 @@ export default async function Home({
     )
   }
 
-  /** Tiny Sanity image for blur generation — avoids downloading full-res before LCP. */
-  const plaiceholderFetchUrl = (url: string) => {
-    if (!url.includes("cdn.sanity.io")) return url
-    const sep = url.includes("?") ? "&" : "?"
-    return `${url}${sep}w=64&h=64&fit=max&auto=format`
-  }
-
-  /** Only the LCP hero needs a blur hash; fetching + decoding other assets blocks first paint. */
-  const getFullImageDetails = async (
-    field: any,
-    options?: { includePlaiceholder?: boolean },
-  ) => {
-    if (!field?.asset?.url) return {}
-    const url = field.asset.url
-    let base64 = ""
-    if (options?.includePlaiceholder) {
-      try {
-        const buffer = await fetch(plaiceholderFetchUrl(url)).then(async res =>
-          Buffer.from(await res.arrayBuffer()),
-        )
-        const { base64: plaiceholderBase64 } = await getPlaiceholder(buffer)
-        base64 = plaiceholderBase64
-      } catch (e) {
-        console.error("Error generating plaiceholder for image:", url, e)
-      }
-    }
-
+  /**
+   * Synchronous: no network fetch. The blur placeholder comes from Sanity's
+   * built-in `metadata.lqip` (projected in the GROQ query for the hero image),
+   * which keeps the route statically renderable / ISR-cacheable. A bare
+   * `fetch()` here would opt the whole page into dynamic `no-store` rendering.
+   */
+  const getFullImageDetails = (field: any) => {
+    if (!field?.asset?.url) return {} as any
     return {
-      url,
-      width: field.asset.metadata.dimensions.width,
-      height: field.asset.metadata.dimensions.height,
+      url: field.asset.url,
+      width: field.asset.metadata?.dimensions?.width,
+      height: field.asset.metadata?.dimensions?.height,
       alt: field.alt || "",
-      base64,
+      base64: field.asset.metadata?.lqip || "",
     }
   }
 
-  let heroImageDetails: any = {}
-  let secondaryHeroImageDetails: any = {}
-  let tertiaryHeroImageDetails: any = {}
-
-  try {
-    ;[heroImageDetails, secondaryHeroImageDetails, tertiaryHeroImageDetails] =
-      await Promise.all([
-        getFullImageDetails(homePage.heroImage, { includePlaiceholder: true }),
-        getFullImageDetails(homePage.secondaryHeroImage, {
-          includePlaiceholder: false,
-        }),
-        getFullImageDetails(homePage.tertiaryHeroImage, {
-          includePlaiceholder: false,
-        }),
-      ])
-  } catch (error) {
-    console.error("Error processing images:", error)
-  }
+  const heroImageDetails = getFullImageDetails(homePage.heroImage)
+  const secondaryHeroImageDetails = getFullImageDetails(
+    homePage.secondaryHeroImage,
+  )
+  const tertiaryHeroImageDetails = getFullImageDetails(
+    homePage.tertiaryHeroImage,
+  )
 
   return (
     <>
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <main id="main">
         {heroImageDetails.url && (
           <HeroStaticComponent
             heroImage={heroImageDetails.url}
-            blurDataURL={heroImageDetails.base64} // Pass base64 to HeroComponent
-            // mobileQuality, desktopQuality could be hardcoded or derived from env at build time
-            // If you *must* have device-specific quality, you might need a client-side solution or accept dynamic rendering.
-            // For static, a single quality (e.g., 80) is often fine.
+            blurDataURL={heroImageDetails.base64}
+            alt={heroImageDetails.alt || "Scuba diving in Punta Cana"}
+            title={t("title")}
+            subtitle={t("subtitle")}
+            cta={{ label: t("ctaLabel"), href: "/courses" }}
           />
         )}
         <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-        <BlockContent content={homePage.paragraph1} locale={locale} />
+        <BlockContent content={homePage.paragraph1} locale={locale} demoteH1 />
 
         <SelectionComponent
           sectionLinks={sectionLinks}

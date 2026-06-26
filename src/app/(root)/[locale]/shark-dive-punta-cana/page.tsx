@@ -8,6 +8,7 @@ import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/Sani
 import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
 import Faqs from "@/components/FaqsComponent/Faqs"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
+import JsonLd from "@/components/StructuredData/JsonLd"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -63,21 +64,17 @@ export default async function Home({
 
   return (
     <main id="main">
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: breadcrumbJsonLd(
             [
               { name: "Home", path: "" },
-              { name: "Shark Diving Punta Cana", path: "/shark-dive-punta-cana" },
+              {
+                name: "Shark Diving Punta Cana",
+                path: "/shark-dive-punta-cana",
+              },
             ],
             locale,
           ),

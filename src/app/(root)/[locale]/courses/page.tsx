@@ -5,20 +5,16 @@ import PadiBanner from "@/components/DivingOrganizations/PadiBanner"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
 
-// For image placeholders
-import { getPlaiceholder } from "plaiceholder"
-import { Buffer } from "buffer" // Node.js Buffer for getPlaiceholder
-import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
+import { setRequestLocale } from "next-intl/server"
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
+import JsonLd from "@/components/StructuredData/JsonLd"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getCoursesMainPage } from "@/sanity/queries/Courses/CoursesMainPage"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import { getIndividualCoursesCards } from "@/sanity/queries/Courses/IndividualCourses"
 import { getFaqs } from "@/sanity/queries/Faqs/Faqs"
 import Faqs from "@/components/FaqsComponent/Faqs"
-// OPTION 1: Explicitly force static rendering for this page
-// export const dynamic = "force-static"
-export const dynamic = "force-dynamic"
+export const revalidate = 3600 // ISR — regenerate hourly (Netlify-compatible)
 export async function generateMetadata({
   params,
 }: {
@@ -64,6 +60,7 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [
     structuredData,
     coursesMainPage,
@@ -87,45 +84,16 @@ export default async function Page({
     )
   }
 
-  console.log(faqs)
-
-  // Helper function to safely get image URL and details, including blurDataURL
-  const getHeroImageDetails = async () => {
-    const url = coursesMainPage.heroImage.asset.url
-    let base64 = ""
-    try {
-      // Fetch a tiny CDN proxy for blur generation — the full-res image blows
-      // the call stack while piping the response ("failed to pipe response").
-      const buffer = await fetch(
-        sanityCdnUrlWithParams(url, { w: 64, h: 64, fit: "max" }),
-      ).then(async res => Buffer.from(await res.arrayBuffer()))
-      const { base64: plaiceholderBase64 } = await getPlaiceholder(buffer)
-      base64 = plaiceholderBase64
-    } catch (e) {
-      console.error("Error generating plaiceholder for image:", url, e)
-    }
-
-    return {
-      url: url,
-      // You might also pass width/height if HeroComponent needs them directly.
-      // For now, HeroComponent hardcodes them, but it's better to pass them from here.
-      base64: base64,
-    }
+  // Blur placeholder from Sanity's built-in `lqip` (no network fetch → page
+  // stays ISR-cacheable). A bare fetch() here would force dynamic `no-store`.
+  const heroImageDetails = {
+    url: coursesMainPage.heroImage.asset.url,
+    base64: coursesMainPage.heroImage.asset.metadata?.lqip || "",
   }
-
-  // Fetch Hero Image details and base64 at build time for the Courses page
-  const heroImageDetails = await getHeroImageDetails()
 
   return (
     <>
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <main id="main">
         {heroImageDetails.url && (
           <HeroStaticComponent

@@ -1,6 +1,6 @@
 import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
 import DiveSites from "@/components/DiveSitesComponents/DiveSites"
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
+import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import TuiLocalDiveOverview from "@/components/TuiComponents/TuiLocalDiveOverview"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
@@ -62,7 +62,7 @@ export default async function Page() {
   })
   return (
     <main id="main">
-      <HeroComponent
+      <HeroStaticComponent
         heroImage={`https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />

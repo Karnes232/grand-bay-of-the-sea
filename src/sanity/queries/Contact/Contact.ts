@@ -5,6 +5,7 @@ export interface Contact {
     asset: {
       url: string
       metadata: {
+        lqip: string
         dimensions: {
           width: number
           height: number
@@ -20,6 +21,7 @@ export const contactQuery = `*[_type == "contact"][0] {
     asset -> {
       url,
       metadata {
+        lqip,
         dimensions {
           width,
           height

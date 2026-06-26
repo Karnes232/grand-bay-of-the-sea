@@ -5,6 +5,7 @@ export interface CustomPayment {
     asset: {
       url: string
       metadata: {
+        lqip: string
         dimensions: {
           width: number
           height: number
@@ -24,6 +25,7 @@ export const customPaymentQuery = `*[_type == "customPayment"][0] {
     asset -> {
       url,
       metadata {
+        lqip,
         dimensions {
           width,
           height

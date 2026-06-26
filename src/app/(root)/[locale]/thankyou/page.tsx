@@ -1,7 +1,7 @@
 import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
 import ContactForm from "@/components/ContactForm/ContactForm"
 import ThankYou from "@/components/ContactForm/ThankYou"
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
+import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import RichText from "@/components/RichTextComponents/RichText"
 import { searchEntries } from "@/lib/contentful"
 import { getHreflangAlternates } from "@/utils/hreflang"
@@ -64,7 +64,7 @@ export default async function Home(props: any) {
 
   return (
     <main id="main">
-      <HeroComponent
+      <HeroStaticComponent
         heroImage={`https:${(searchResults.items[0] as any).fields.heroImage.fields.file.url}`}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />

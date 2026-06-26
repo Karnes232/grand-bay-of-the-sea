@@ -1,5 +1,5 @@
 import React from "react"
-import HeroComponent from "../HeroComponent/HeroComponent"
+import HeroStaticComponent from "../HeroComponent/HeroStaticComponent"
 import PhotoGrid from "./PhotoGrid"
 import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
 
@@ -12,10 +12,7 @@ const HeroImages = ({ backgroundImages }: { backgroundImages: any[] }) => {
   return (
     <>
       <div className="md:hidden">
-        <HeroComponent
-          heroImage={heroUrl}
-          // title={blogCategory.items[0].fields.blogCategory as string}
-        />
+        <HeroStaticComponent heroImage={heroUrl} />
         <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       </div>
       <div className="absolute top-0 w-full md:h-[30vh]">

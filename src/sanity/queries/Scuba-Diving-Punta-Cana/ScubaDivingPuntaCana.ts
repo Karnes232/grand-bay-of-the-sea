@@ -5,6 +5,7 @@ export interface ScubaDivingPuntaCana {
     asset: {
       url: string
       metadata: {
+        lqip: string
         dimensions: {
           width: number
           height: number
@@ -67,6 +68,7 @@ export const scubaDivingPuntaCanaQuery = `*[_type == "scubaDivingPuntaCana"][0] 
     asset -> {
       url,
       metadata {
+        lqip,
         dimensions {
           width,
           height

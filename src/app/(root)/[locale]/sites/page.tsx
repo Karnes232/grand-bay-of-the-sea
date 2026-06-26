@@ -12,6 +12,7 @@ import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSharkDivePrice, getSites } from "@/sanity/queries/Sites/sites"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import Faqs from "@/components/FaqsComponent/Faqs"
+import JsonLd from "@/components/StructuredData/JsonLd"
 
 // Add this line to explicitly force static rendering
 export const dynamic = "force-static"
@@ -84,14 +85,7 @@ export default async function Page({
 
   return (
     <main id="main">
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <HeroStaticComponent // Use HeroStaticComponent
         heroImage={heroImageUrl}
         blurDataURL={heroImageBlurDataURL} // Pass the generated blurDataURL

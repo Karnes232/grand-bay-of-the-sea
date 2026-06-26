@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import BlockContent from "@/components/BlockContent/BlockContent"
+import JsonLd from "@/components/StructuredData/JsonLd"
 import type { Faqs as FaqsType } from "@/sanity/queries/Faqs/Faqs"
 
 const SECTION_TITLE = {
@@ -29,14 +30,7 @@ const Faqs = ({ faqs, structuredData, locale }: FaqsProps) => {
   return (
     <>
       {/* FAQ structured data (JSON-LD) for SEO */}
-      {structuredDataString && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredDataString,
-          }}
-        />
-      )}
+      <JsonLd raw={structuredDataString} />
 
       <section
         className="flex flex-col lg:max-w-3xl xl:max-w-4xl mx-5 lg:mx-auto lg:p-2 xl:mx-auto py-10 md:py-14"

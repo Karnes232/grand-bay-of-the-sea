@@ -10,6 +10,7 @@ export interface Liveaboards {
     asset: {
       url: string
       metadata: {
+        lqip: string
         dimensions: {
           width: number
           height: number
@@ -74,6 +75,7 @@ export const liveaboardsQuery = `*[_type == "liveaboards"][0] {
     asset -> {
       url,
       metadata {
+        lqip,
         dimensions {
           width,
           height

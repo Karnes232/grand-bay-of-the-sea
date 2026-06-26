@@ -9,6 +9,7 @@ export interface BlogPageLayout {
     asset: {
       url: string
       metadata: {
+        lqip: string
         dimensions: {
           width: number
           height: number
@@ -32,9 +33,10 @@ export const blogPageLayoutQuery = `*[_type == "blogPageLayout"][0] {
         asset -> {
             url,
             metadata {
+                lqip,
                 dimensions {
                     width,
-                    height  
+                    height
                 }
             }
         },

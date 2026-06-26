@@ -15,6 +15,7 @@ import SanityBlogBody from "@/components/BlogComponents/SanityBlogBody"
 import BlogMeta from "@/components/BlogComponents/BlogMeta"
 import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
 import { breadcrumbJsonLd, humanizeSlug } from "@/utils/breadcrumb"
+import JsonLd from "@/components/StructuredData/JsonLd"
 
 export async function generateMetadata(
   {
@@ -143,14 +144,7 @@ export default async function Page({
   return (
     <>
       <main id="main">
-        {individualBlogPost.seo.structuredData[locale] && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: individualBlogPost.seo.structuredData[locale],
-            }}
-          />
-        )}
+        <JsonLd raw={individualBlogPost?.seo?.structuredData[locale]} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

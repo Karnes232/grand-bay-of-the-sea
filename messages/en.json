@@ -194,5 +194,10 @@
     "previousPage": "Previous page",
     "nextPage": "Next page",
     "goToPage": "Go to page"
+  },
+  "HomeHero": {
+    "title": "Scuba Diving in Punta Cana",
+    "subtitle": "PADI-certified dives, courses, and shark encounters on the reefs and wrecks of the Dominican Republic.",
+    "ctaLabel": "Explore Dive Courses"
   }
 }

@@ -1,4 +1,5 @@
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
+import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
+import JsonLd from "@/components/StructuredData/JsonLd"
 import PhotoGallery from "@/components/PhotoGalleryComponents/PhotoGallery"
 import RichText from "@/components/RichTextComponents/RichText"
 import { searchEntries } from "@/lib/contentful"
@@ -60,14 +61,7 @@ export default async function Page({
 
   return (
     <main id="main">
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -89,7 +83,9 @@ export default async function Page({
             name: photoGallery.title[locale],
             url: `https://www.grandbay-puntacana.com${locale === "es" ? "/es" : ""}/photo-gallery`,
             inLanguage: locale,
-            publisher: { "@id": "https://www.grandbay-puntacana.com/#business" },
+            publisher: {
+              "@id": "https://www.grandbay-puntacana.com/#business",
+            },
             image: photoGallery.photoList.map(p => ({
               "@type": "ImageObject",
               contentUrl: p.asset.url,
@@ -97,12 +93,17 @@ export default async function Page({
               height: p.asset.metadata?.dimensions?.height,
               caption: p.alt || photoGallery.title[locale],
               creditText: "Grand Bay of the Sea",
-              creator: { "@id": "https://www.grandbay-puntacana.com/#business" },
+              creator: {
+                "@id": "https://www.grandbay-puntacana.com/#business",
+              },
             })),
           }),
         }}
       />
-      <HeroComponent heroImage={photoGallery.mainImage.asset.url} />
+      <HeroStaticComponent
+        heroImage={photoGallery.mainImage.asset.url}
+        blurDataURL={photoGallery.mainImage.asset.metadata.lqip}
+      />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <TextComponent
         title={photoGallery.title[locale]}

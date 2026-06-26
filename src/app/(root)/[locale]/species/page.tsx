@@ -1,7 +1,8 @@
 import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
 import DiveSites from "@/components/DiveSitesComponents/DiveSites"
 import Fishes from "@/components/DiveSitesComponents/Fishes"
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
+import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
+import JsonLd from "@/components/StructuredData/JsonLd"
 import RichText from "@/components/RichTextComponents/RichText"
 import LocalDivesOverview from "@/components/TourOverviews/LocalDivesOverview"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
@@ -71,14 +72,7 @@ export default async function Page({
       id="main"
       className="bg-gradient-to-b from-sky-50 via-slate-100 to-cyan-50"
     >
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -91,9 +85,10 @@ export default async function Page({
           ),
         }}
       />
-      <HeroComponent
+      <HeroStaticComponent
         heroImage={speciesPageContent[0].heroImage.asset.url}
         alt={speciesPageContent[0].heroImage.alt}
+        blurDataURL={speciesPageContent[0].heroImage.asset.metadata.lqip}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
 

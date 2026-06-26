@@ -16,6 +16,9 @@ interface LocaleBlockContent {
 interface Props {
   content: LocaleBlockContent
   locale?: "en" | "es"
+  /** When true, render `h1` Portable Text blocks as `h2`. Use on pages that
+   *  already render an `h1` elsewhere (e.g. the hero) to keep a single H1. */
+  demoteH1?: boolean
 }
 const builder = imageUrlBuilder(client)
 const components = {
@@ -135,15 +138,22 @@ const components = {
   },
 }
 
-const BlockContent: React.FC<Props> = ({ content, locale = "en" }) => {
+const BlockContent: React.FC<Props> = ({
+  content,
+  locale = "en",
+  demoteH1 = false,
+}) => {
   if (!content || !content[locale]) {
     return null
   }
   const blockContent = content[locale]
+  const activeComponents = demoteH1
+    ? { ...components, block: { ...components.block, h1: components.block.h2 } }
+    : components
   return (
     <>
       <div className="flex flex-col lg:max-w-3xl xl:max-w-4xl mx-5 lg:mx-auto lg:p-2 xl:mx-auto">
-        <PortableText value={blockContent} components={components} />
+        <PortableText value={blockContent} components={activeComponents} />
       </div>
     </>
   )

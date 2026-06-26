@@ -1,4 +1,5 @@
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
+import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
+import JsonLd from "@/components/StructuredData/JsonLd"
 import CustomPagePayPal from "@/components/PayPalComponents/CustomPagePayPal"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
@@ -58,17 +59,11 @@ export default async function Page({
 
   return (
     <main id="main">
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
-      <HeroComponent
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
+      <HeroStaticComponent
         heroImage={customPayment.heroImage.asset.url}
         alt={customPayment.heroImage.alt}
+        blurDataURL={customPayment.heroImage.asset.metadata.lqip}
       />
       <div className="mt-[45vh] md:mt-[40vh] lg:mt-[65vh]" />
       <div className="py-20 lg:pt-12">

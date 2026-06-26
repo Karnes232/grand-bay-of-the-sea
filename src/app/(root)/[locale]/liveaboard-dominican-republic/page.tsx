@@ -1,4 +1,5 @@
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
+import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
+import JsonLd from "@/components/StructuredData/JsonLd"
 
 import TextComponent from "@/components/RichTextComponents/TextComponent"
 
@@ -70,14 +71,7 @@ export default async function Page({
 
   return (
     <main id="main">
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -90,9 +84,10 @@ export default async function Page({
           ),
         }}
       />
-      <HeroComponent
+      <HeroStaticComponent
         heroImage={liveaboards.heroImage.asset.url}
         alt={liveaboards.heroImage.alt}
+        blurDataURL={liveaboards.heroImage.asset.metadata.lqip}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <BlockContent content={liveaboards.paragraph1} locale={locale} />

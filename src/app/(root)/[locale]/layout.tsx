@@ -10,6 +10,7 @@ import { DeferredClientWidgets } from "@/components/layout/DeferredClientWidgets
 import { generateStructuredData } from "@/components/StructuredData/StructuredData"
 import { Crimson_Pro } from "next/font/google"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
+import { setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
 
@@ -71,7 +72,15 @@ export const metadata: Metadata = {
   },
 }
 
-// Add caching headers for better performance
+// ISR for all public localized pages. `fetchCache: "force-cache"` makes Sanity
+// (and other) data fetches cacheable so these routes render statically instead
+// of opting into dynamic `no-store`. Next 15 defaults an un-annotated `fetch()`
+// to `no-store`, which marked every page dynamic and bypassed Netlify's edge
+// cache (`cache-control: no-store`, `fwd=bypass`), hurting TTFB/LCP. The (tui)
+// route group has its own layout and is unaffected by this config.
+export const revalidate = 3600
+export const fetchCache = "force-cache"
+
 export async function generateStaticParams() {
   return [{ locale: "en" }, { locale: "es" }]
 }
@@ -87,6 +96,9 @@ export default async function RootLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound()
   }
+  // Enable next-intl static rendering — without this, locale is read from the
+  // request at render time, forcing every page dynamic (no-store).
+  setRequestLocale(locale)
 
   // Import messages for the current locale
   let messages
@@ -122,7 +134,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-       // className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
+        // className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
         className={`antialiased`}
       >
         <LazyGoogleTagManager />

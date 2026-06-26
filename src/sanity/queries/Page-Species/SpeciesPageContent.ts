@@ -13,6 +13,7 @@ export interface SpeciesPageContent {
     asset: {
       url: string
       metadata: {
+        lqip: string
         dimensions: {
           width: number
           height: number
@@ -36,6 +37,7 @@ export const speciesPageContentQuery = `*[_type == "speciesPageContent"] {
         asset -> {
             url,
             metadata {
+                lqip,
                 dimensions {
                     width,
                     height

@@ -1,5 +1,6 @@
 import BlogCategory from "@/components/BlogComponents/BlogCategory"
-import HeroComponent from "@/components/HeroComponent/HeroComponent"
+import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
+import JsonLd from "@/components/StructuredData/JsonLd"
 import RichText from "@/components/RichTextComponents/RichText"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
@@ -65,17 +66,11 @@ export default async function Page({
   // const blogPosts = await getAllEntries("blogCategory", locale)
   return (
     <main id="main">
-      {structuredData?.seo?.structuredData[locale] && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: structuredData.seo.structuredData[locale],
-          }}
-        />
-      )}
-      <HeroComponent
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
+      <HeroStaticComponent
         heroImage={blogPageLayout.heroImage.asset.url}
         alt={blogPageLayout.heroImage.alt}
+        blurDataURL={blogPageLayout.heroImage.asset.metadata.lqip}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
