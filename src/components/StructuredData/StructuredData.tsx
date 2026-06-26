@@ -55,6 +55,22 @@ export function generateStructuredData(locale: string = "en") {
       addressCountry: "DO",
     },
     ...(geo ? { geo } : {}),
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "08:30",
+        closes: "17:00",
+      },
+    ],
     hasMap: "https://maps.app.goo.gl/tAB86MjFxiF7Hefj7",
     areaServed: [
       { "@type": "City", name: "Punta Cana" },
@@ -71,10 +87,10 @@ export function generateStructuredData(locale: string = "en") {
     ],
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.7",
-      reviewCount: "138",
-      bestRating: "5",
-      worstRating: "1",
+      ratingValue: 4.7,
+      reviewCount: 138,
+      bestRating: 5,
+      worstRating: 1,
     },
     identifier: {
       "@type": "PropertyValue",

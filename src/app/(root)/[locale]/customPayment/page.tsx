@@ -34,9 +34,10 @@ export async function generateMetadata({
       type: "website",
       url: alternates.canonical,
     },
+    // PayPal utility page with no organic search value — always noindex.
     robots: {
-      index: !pageSeo.seo.noIndex,
-      follow: !pageSeo.seo.noFollow,
+      index: false,
+      follow: false,
     },
     alternates,
     // other: {

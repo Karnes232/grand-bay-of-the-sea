@@ -6,8 +6,7 @@ import TripCards from "@/components/TourOverviews/TripCards"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
-import { getPlaiceholder } from "plaiceholder" // Import getPlaiceholder
-import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getDiveTripsPage } from "@/sanity/queries/DiveTrips/DiveTripsPage"
 import BlockContent from "@/components/BlockContent/BlockContent"
@@ -15,8 +14,7 @@ import { getTripCards } from "@/sanity/queries/DiveTrips/Trips"
 import SanityTripCards from "@/components/TourOverviews/SanityTripCards"
 import JsonLd from "@/components/StructuredData/JsonLd"
 
-// Add this line to explicitly force static rendering
-export const dynamic = "force-static"
+export const revalidate = 3600 // ISR — regenerate hourly (Netlify-compatible)
 
 export async function generateMetadata({
   params,
@@ -69,24 +67,26 @@ export default async function Page({
     getTripCards(),
   ])
 
-  // Get the hero image URL from Contentful
   const heroImageUrl = diveTripsPage.heroImage.asset.url
-
-  // Generate blurDataURL from a tiny CDN proxy — fetching the full-res image
-  // here blows the call stack while piping the response ("failed to pipe response").
-  let heroImageBlurDataURL: string | undefined
-  try {
-    const buffer = await fetch(
-      sanityCdnUrlWithParams(heroImageUrl, { w: 64, h: 64, fit: "max" }),
-    ).then(async res => Buffer.from(await res.arrayBuffer()))
-    heroImageBlurDataURL = (await getPlaiceholder(buffer)).base64
-  } catch (e) {
-    console.error("Error generating plaiceholder for image:", heroImageUrl, e)
-  }
+  // Blur placeholder from Sanity's built-in `lqip` (no network fetch → page
+  // stays ISR-cacheable). A bare fetch() here would force dynamic `no-store`.
+  const heroImageBlurDataURL = diveTripsPage.heroImage.asset.metadata.lqip
 
   return (
     <main id="main">
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd(
+            [
+              { name: "Home", path: "" },
+              { name: "Dive Trips", path: "/trips" },
+            ],
+            locale,
+          ),
+        }}
+      />
       <HeroStaticComponent // Use HeroStaticComponent
         heroImage={heroImageUrl}
         blurDataURL={heroImageBlurDataURL}

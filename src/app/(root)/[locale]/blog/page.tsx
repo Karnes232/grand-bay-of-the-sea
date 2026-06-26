@@ -5,6 +5,7 @@ import RichText from "@/components/RichTextComponents/RichText"
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getBlogPageLayout } from "@/sanity/queries/Blog/BlogPageLayout"
 import BlockContent from "@/components/BlockContent/BlockContent"
@@ -67,6 +68,18 @@ export default async function Page({
   return (
     <main id="main">
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd(
+            [
+              { name: "Home", path: "" },
+              { name: "Blog", path: "/blog" },
+            ],
+            locale,
+          ),
+        }}
+      />
       <HeroStaticComponent
         heroImage={blogPageLayout.heroImage.asset.url}
         alt={blogPageLayout.heroImage.alt}

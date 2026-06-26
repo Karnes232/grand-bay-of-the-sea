@@ -20,6 +20,7 @@ export interface Sites {
     asset: {
       url: string
       metadata: {
+        lqip: string
         dimensions: {
           width: number
           height: number
@@ -74,6 +75,7 @@ export const sitesQuery = `*[_type == "sites"][0] {
     asset -> {
       url,
       metadata {
+        lqip,
         dimensions {
           width,
           height
