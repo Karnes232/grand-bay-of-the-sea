@@ -13,7 +13,7 @@ const Nav = () => {
         <HamburgerMenu />
       </div>
       <div className="hidden lg:block">
-        <LanguageSwitcher color="gray-700" className="" />
+        <LanguageSwitcher color="white" className="" />
       </div>
     </div>
   )

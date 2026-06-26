@@ -144,7 +144,7 @@ export default function LanguageSwitcher({
           className={`flex items-center space-x-2 text-${color} transition-all duration-200 px-3 py-2 rounded-lg border border-transparent ${
             isLoading
               ? "opacity-70 cursor-not-allowed bg-gray-100 scale-95"
-              : "hover:bg-gray-100 hover:scale-105"
+              : "hover:bg-white/10 hover:scale-105"
           }`}
         >
           {isLoading ? (

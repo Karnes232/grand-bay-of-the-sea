@@ -73,13 +73,13 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
           >
             <MenuButton
               ref={buttonRef}
-              className={`navLinks text-black`}
+              className={`navLinks text-white`}
               translate="no"
             >
               {name}
               <ChevronDownIcon
                 aria-hidden="true"
-                className={`ml-1 h-5 w-5 navLinks text-black`}
+                className={`ml-1 h-5 w-5 navLinks text-white`}
               />
             </MenuButton>
           </div>
