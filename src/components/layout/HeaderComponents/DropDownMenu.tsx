@@ -7,7 +7,7 @@ import {
   MenuItems,
   Transition,
 } from "@headlessui/react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { ChevronDownIcon } from "@heroicons/react/20/solid"
 
 // Define types for the component props

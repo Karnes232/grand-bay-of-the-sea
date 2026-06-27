@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { useLocale, useTranslations } from "next-intl"
 import Script from "next/script"
 import Image from "next/image"

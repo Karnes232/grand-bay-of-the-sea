@@ -1,7 +1,7 @@
 import React from "react"
 import { getCachedGrandBayLogoLayout } from "@/lib/contentful"
 import Image from "next/image"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 
 const Logo = async () => {
   const data = await getCachedGrandBayLogoLayout()

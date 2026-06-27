@@ -2,7 +2,7 @@
 
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
 import { useTranslations } from "next-intl"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import React from "react"
 
 const Sitemap = () => {
@@ -51,9 +51,11 @@ const Sitemap = () => {
         </Link>
       </div>
       <div className="mx-8 flex flex-col justify-center md:space-x-8 pb-4 md:pt-4 md:mx-auto md:max-w-2xl md:flex-row">
-        <Link href="/sitemap.xml">
+        {/* Static file, not a locale route — keep a plain anchor so it isn't
+            prefixed to /es/sitemap.xml (which would 404). */}
+        <a href="/sitemap.xml">
           <p className="footerSitemap">{t("siteMap")}</p>
-        </Link>
+        </a>
         <Link href="/blog">
           <p className="footerSitemap">{t("blog")}</p>
         </Link>

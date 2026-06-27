@@ -1,7 +1,7 @@
 import React from "react"
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import PayPalButtonWrapperBooking from "./PayPalButtonWrapperBooking"
 import { useTranslations } from "next-intl"
 const CustomPayPalBookingForm = ({ price, handleSubmit, formData }) => {

@@ -1,7 +1,7 @@
 import React from "react"
 import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 import PayPalButtonWrapper from "./PayPalButtonWrapper"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { useTranslations } from "next-intl"
 const CustomPayPal = ({ price }) => {
   const currency = "USD"

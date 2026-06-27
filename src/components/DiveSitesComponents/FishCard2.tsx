@@ -2,7 +2,7 @@
 import React, { useState } from "react"
 import { motion } from "motion/react"
 import Image from "next/image"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { useTranslations } from "next-intl"
 const FishCard = ({ fish, locale }: { fish: any; locale: string }) => {
   return (
