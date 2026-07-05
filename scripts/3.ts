@@ -33,26 +33,26 @@ const posts = [
 
     title: {
       _type: "localizedString",
-      en: "🌐 Meet DR Web Studio: The Local Punta Cana Team That Built Our Website",
-      es: "🌐 Conoce a DR Web Studio: El Equipo Local de Punta Cana Que Construyó Nuestra Web",
+      en: "⏱️ How Long Does a Typical Scuba Dive Last in Punta Cana?",
+      es: "⏱️ ¿Cuánto Dura una Inmersión Típica en Punta Cana?",
     },
 
     slug: {
       _type: "slug",
-      current: "dr-web-studio-punta-cana-website-design",
+      current: "how-long-scuba-dive-lasts-punta-cana",
     },
 
-    publishDate: "2026-06-14",
+    publishDate: "2026-07-04",
 
     description: {
       _type: "localizedText",
-      en: "The studio that built our website is a small Punta Cana web design and development team that has quietly become the go-to choice for local tourism, event, and small business websites. Here's what DR Web Studio offers, what it costs, and why other Punta Cana businesses are switching.",
-      es: "El estudio que construyó nuestra web es un pequeño equipo local de diseño y desarrollo web en Punta Cana que se ha convertido silenciosamente en la opción preferida para sitios de turismo, eventos y pequeños negocios. Aquí lo que ofrece DR Web Studio, cuánto cuesta y por qué otros negocios de Punta Cana se están cambiando.",
+      en: "Certified 2-tank dives in Punta Cana typically run around 45 minutes each. Here's what determines dive length — depth, air consumption, water temperature — and how DSD, courses, and Shark Point compare.",
+      es: "Las inmersiones de dos tanques para buzos certificados en Punta Cana suelen durar unos 45 minutos cada una. Aquí lo que determina la duración — profundidad, consumo de aire, temperatura del agua — y cómo se comparan DSD, cursos y Shark Point.",
     },
 
     blogCategory: {
       _type: "reference",
-      _ref: CATEGORIES.localBusinesses,
+      _ref: CATEGORIES.divingTips,
     },
 
     backgroundImages: [],
@@ -64,13 +64,9 @@ const posts = [
           _type: "block",
           _key: "en-b1",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b1-l1", href: "https://dr-webstudio.com/" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b1-s1", text: "Every few weeks someone asks us who built our website. Usually it's another Punta Cana business owner who's noticed the booking experience works smoothly, the pages load fast on hotel WiFi, and the whole site behaves the same in English and Spanish. The answer is ", marks: [] },
-            { _type: "span", _key: "en-b1-s2", text: "DR Web Studio", marks: ["en-b1-l1"] },
-            { _type: "span", _key: "en-b1-s3", text: " — a small Punta Cana web design and development studio that has quietly become the go-to choice for local tourism, event, and small business websites. Since the question comes up often enough that we keep typing the same answer into WhatsApp, we figured it was time to write the longer version down.", marks: [] },
+            { _type: "span", _key: "en-b1-s1", text: "Short answer: a typical certified dive in Punta Cana runs around 45 minutes underwater. That's the number that comes up most often when we tell divers what to expect from our standard two-tank guided trips — sometimes a bit longer at shallower depths, sometimes a bit shorter at deeper sites. A Discover Scuba Diving experience, which is a shorter format for first-timers, is usually 30 minutes or so of actual underwater time. But \"how long does a dive last\" has more to it than a single number, because the actual time depends on your depth, your air consumption rate, the water temperature, and how hard you're working. This post walks through the factors, the different dive formats, and how the timing looks in practice on our boat.", marks: [] },
           ],
         },
         {
@@ -79,16 +75,20 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b2-s1", text: "How We Ended Up Working With the Studio", marks: [] },
+            { _type: "span", _key: "en-b2-s1", text: "Standard 2-Tank Dives: About 45 Minutes Each", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b3",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b3-l1", href: "https://www.grandbay-puntacana.com/sites" },
+          ],
           children: [
-            { _type: "span", _key: "en-b3-s1", text: "Worth disclosing the working relationship upfront. James, one of our dive instructors here at Grand Bay, also runs DR Web Studio independently. When our old website needed a rebuild a few years ago we hired the studio to do it, and that work kept growing — the studio now handles most of our online operations, including SEO and client communication, alongside the day-to-day of the dive center. So while we recommend DR Web Studio openly to other Punta Cana businesses, the recommendation is based on direct working knowledge: same team behind both, every day.", marks: [] },
+            { _type: "span", _key: "en-b3-s1", text: "For ", marks: [] },
+            { _type: "span", _key: "en-b3-s2", text: "our standard guided dives on Punta Cana reefs", marks: ["en-b3-l1"] },
+            { _type: "span", _key: "en-b3-s3", text: ", the typical bottom time on each dive is about 45 minutes. A two-tank morning trip usually looks like this: leave the shop around 8:30 AM, arrive at the first dive site 20 to 30 minutes later, do a 45-minute dive at a depth in the 12 to 18 meter range, come up for a 45 to 60 minute surface interval on the boat, drop back down for the second 45-minute dive at a nearby site, and be back on land by early afternoon. That's the shape of most days.", marks: [] },
           ],
         },
         {
@@ -97,7 +97,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b4-s1", text: "We mention this upfront because it's the kind of thing that's better explained than discovered. The reason we keep telling other Punta Cana businesses about DR Web Studio isn't that we're owed referrals — it's that we've watched the studio's work pay off in our own operation, and we know that most local businesses around us would benefit from the same kind of website. What follows is a closer look at what DR Web Studio actually does, what it costs, and where its services do and don't make sense.", marks: [] },
+            { _type: "span", _key: "en-b4-s1", text: "The 45-minute figure isn't a rule; it's a strong average for the depth range we typically dive. Divers with better air efficiency come up with plenty of air after 50 minutes; new divers or divers still working on their breathing sometimes reach the reserve pressure closer to the 35 to 40 minute mark. Nobody's checking a stopwatch and forcing everyone up at exactly 45 — the actual dive ends when either the dive's no-decompression limit is approached, or when someone in the group is getting low on air, whichever comes first.", marks: [] },
           ],
         },
         {
@@ -106,29 +106,29 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b5-s1", text: "What DR Web Studio Actually Does", marks: [] },
+            { _type: "span", _key: "en-b5-s1", text: "What Actually Determines How Long a Dive Lasts", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b6",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b6-l1", href: "https://www.dr-webstudio.com/en/our-services" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b6-s1", text: "The ", marks: [] },
-            { _type: "span", _key: "en-b6-s2", text: "studio's service list", marks: ["en-b6-l1"] },
-            { _type: "span", _key: "en-b6-s3", text: " covers most of what a Dominican small business needs to operate online: custom business websites, landing pages and one-page sites for campaigns, full e-commerce builds with payment integration, multilingual setups (English and Spanish are the default, more languages are possible), website migrations from outdated platforms, headless CMS implementation so non-technical owners can manage their own content, API integrations for booking systems and inventory tools, and ongoing maintenance and support after launch. DR Web Studio handles design, development, deployment, and post-launch support as one team rather than handing off between specialists who don't know your project.", marks: [] },
+            { _type: "span", _key: "en-b6-s1", text: "Four main factors set the length of any dive: depth, air consumption, water temperature, and exertion level. Depth is the biggest one — the deeper you go, the faster you use air and the sooner you approach the no-decompression limit. This is why a shallow reef dive at 10 meters can last 60+ minutes while a 30-meter deep dive maxes out at around 25 minutes. Punta Cana's popular reef sites at 12 to 18 meters are in the sweet spot where 45-minute bottom times are natural.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b7",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b7-l1", href: "https://dan.org/" },
+          ],
           children: [
-            { _type: "span", _key: "en-b7-s1", text: "The technical stack is modern. Sites are built on Next.js (the same framework used by Netflix, TikTok, and many of the most performance-sensitive websites in the world), with Sanity as the content management system, Tailwind for styling, and standard integrations for payments, email, and analytics. This matters less for what the site looks like than for how it performs — DR Web Studio builds typically load in under two seconds, which is fast enough that mobile travelers checking a dive shop's availability from a hotel pool aren't waiting around. Most Punta Cana tourism sites are still on WordPress or template builders that take five to ten seconds to load on the same connection.", marks: [] },
+            { _type: "span", _key: "en-b7-s1", text: "Air consumption — technically your SAC rate (Surface Air Consumption) — is the second big factor and the one that varies most between individuals. According to research summarized by ", marks: [] },
+            { _type: "span", _key: "en-b7-s2", text: "Divers Alert Network", marks: ["en-b7-l1"] },
+            { _type: "span", _key: "en-b7-s3", text: ", typical recreational divers consume 15 to 25 liters per minute at the surface, which translates to different actual consumption rates at different depths (because air is denser at depth). Divers with lower SAC rates naturally get longer bottom times from the same tank; divers with higher rates come up sooner. Experience is the main variable — new divers usually breathe more heavily out of nerves and unfamiliarity, and SAC rate typically drops significantly over the first 20 to 50 dives.", marks: [] },
           ],
         },
         {
@@ -137,7 +137,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b8-s1", text: "Why It Matters for Local Businesses", marks: [] },
+            { _type: "span", _key: "en-b8-s1", text: "Depth and No-Decompression Limits", marks: [] },
           ],
         },
         {
@@ -146,7 +146,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b9-s1", text: "The honest state of Punta Cana small business websites: most of them are either nonexistent, built on free Wix or Squarespace templates that look almost identical to every other tourism site in the area, or trapped on outdated WordPress installations that nobody has updated in years. The result is that the businesses with the best service often have the weakest digital presence, while the ones that paid for a real website (or never had one and rely on Instagram) lose bookings every week to competitors with a smoother online experience.", marks: [] },
+            { _type: "span", _key: "en-b9-s1", text: "Every recreational dive has to stay within a maximum bottom time based on depth, set by no-decompression limits (NDLs). These come from decompression theory — the deeper and longer you dive, the more nitrogen your tissues absorb, and beyond certain thresholds you'd need required decompression stops before you could safely surface. Recreational diving stays within limits that allow direct ascent (with just a safety stop). At 12 meters, NDL is well over an hour. At 18 meters, roughly 50+ minutes. At 25 meters, closer to 30 minutes. At 30 meters, closer to 20 minutes. At 40 meters, less than 10 minutes.", marks: [] },
           ],
         },
         {
@@ -155,7 +155,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b10-s1", text: "A travel-decision moment usually goes like this: someone in a hotel room searches \"scuba diving Punta Cana\" or \"private boat trip Bávaro,\" gets a list of options, taps the first three, and books with whichever site loaded fastest, had clearer pricing, and supported the language they read. If your site takes seven seconds to load, has no Spanish version, hides prices behind a contact form, and looks like the same template as five other operators, you're losing that booking before the customer even reads about your service. That's the problem a properly built website actually solves — not winning awards for design, but converting search traffic into actual booked customers. DR Web Studio's whole approach is built around that conversion-first framing.", marks: [] },
+            { _type: "span", _key: "en-b10-s1", text: "In practice, on a typical Punta Cana reef dive at 12 to 18 meters, air consumption is usually the limiting factor rather than NDL — divers run low on air before they approach the no-deco time. On deeper dives at 25 to 30 meters, the two limits get closer together and NDL sometimes matters more. Modern dive computers track both simultaneously and alert you well before either becomes an issue.", marks: [] },
           ],
         },
         {
@@ -164,51 +164,47 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b11-s1", text: "Transparent Pricing (Yes, Really)", marks: [] },
+            { _type: "span", _key: "en-b11-s1", text: "Water Temperature and Duration", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b12",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b12-l1", href: "https://www.dr-webstudio.com/en/pricing" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b12-s1", text: "Most web design quotes in this industry are deliberately vague until you've spent an hour on a discovery call. DR Web Studio publishes the actual numbers on ", marks: [] },
-            { _type: "span", _key: "en-b12-s2", text: "the pricing page", marks: ["en-b12-l1"] },
-            { _type: "span", _key: "en-b12-s3", text: ", which is unusual enough in the local market that it's worth pointing out. The three standard packages are Starter ($400) for one to three pages with basic SEO and a contact form, Business ($800) for four to eight pages with a custom design, branding, CMS integration, and advanced SEO setup, and E-commerce ($900) for full online stores with product catalogs, secure checkout, and order confirmation. Custom builds and integrations go up from there based on scope.", marks: [] },
+            { _type: "span", _key: "en-b12-s1", text: "Water temperature affects duration in two ways — one small, one bigger. The small effect is that colder water increases air consumption because your body works harder to maintain core temperature; this can shorten dives by a minute or two. In Punta Cana's warm waters (26 to 29°C year-round) this effect is barely noticeable compared to divers coming from colder home waters. The bigger effect is thermal comfort itself — a diver getting cold decides to end the dive early even if air and NDL are fine, which is a psychological limit rather than a hard physical one. This is why proper thermal protection matters even in warm water; a diver who's slightly chilled at minute 35 misses out on the last 10 to 15 minutes of a good dive.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b13",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b13-s1", text: "Context for those numbers: comparable freelance work in the US or Western Europe typically runs $1,500 to $8,000 for a small business site, and agency work starts at $4,000 and goes up well past $15,000. The Dominican pricing isn't lower because the work is worse — it's lower because the cost of living, overhead, and operating expenses in Punta Cana are a fraction of what they are in Miami, New York, or London. A custom Next.js site that would cost $5,000 to $8,000 from a US freelancer can be built for under $1,000 by DR Web Studio, and the technical output is the same. This is the same dynamic that makes the Dominican Republic competitive for tourism — local pricing structures meet international quality, and the gap is the savings.", marks: [] },
+            { _type: "span", _key: "en-b13-s1", text: "Discover Scuba Diving: Shorter Format", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b14",
-          style: "h2",
-          markDefs: [],
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "en-b14-l1", href: "https://www.grandbay-puntacana.com/courses/discover" },
+          ],
           children: [
-            { _type: "span", _key: "en-b14-s1", text: "Who Else Works With Them", marks: [] },
+            { _type: "span", _key: "en-b14-s1", text: "For ", marks: [] },
+            { _type: "span", _key: "en-b14-s2", text: "Discover Scuba Diving", marks: ["en-b14-l1"] },
+            { _type: "span", _key: "en-b14-s3", text: " participants — people trying scuba for the first time without a certification — the underwater time is typically around 30 minutes. This is shorter than a certified dive for two reasons: DSD depth is limited to 12 meters (which is more forgiving on air consumption), and beginner air consumption is usually higher than experienced divers'. The 30-minute figure covers a real dive experience with time to see reef life, practice basic skills, and get comfortable with underwater breathing — but it's shorter than what certified divers get from the same amount of air because a first-time diver breathes through it faster.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b15",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b15-l1", href: "https://www.dr-webstudio.com/en/portfolio" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b15-s1", text: "We're far from the only Punta Cana business that has used DR Web Studio. ", marks: [] },
-            { _type: "span", _key: "en-b15-s2", text: "The portfolio", marks: ["en-b15-l1"] },
-            { _type: "span", _key: "en-b15-s3", text: " covers a fair cross-section of the local market: Sertuin Events for event production, Punta Cana Tour Store for excursion booking, Punta Cana Proposal Packages for luxury proposal planning, Punta Cana Venue Collection for wedding venues, Esencias by Nancy for boutique fragrance, Punta Cana Photo Edition for photography services, and Punta Cana Wedding Packages for full-service wedding planning. Beyond the tourism stack, there's also Fuerza del Pueblo Verón-Punta Cana, a political/civic site with a custom CMS solution. The common thread is that all of them are local Dominican operations that wanted something better than a generic template and didn't want to pay agency rates for it.", marks: [] },
+            { _type: "span", _key: "en-b15-s1", text: "The DSD session itself is longer than 30 minutes — there's a briefing, gear setup, some skills in shallow water before descending, and the underwater exploration portion. Total time from arrival at the shop to end of the dive is usually 2 to 3 hours. If you get comfortable during the DSD, some operators (including us) offer an optional second DSD dive the same day for divers who want more time.", marks: [] },
           ],
         },
         {
@@ -217,25 +213,33 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b16-s1", text: "What Our Own Site Needed", marks: [] },
+            { _type: "span", _key: "en-b16-s1", text: "Certification Course Dives", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b17",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b17-l1", href: "https://www.grandbay-puntacana.com/courses/openwater" },
+          ],
           children: [
-            { _type: "span", _key: "en-b17-s1", text: "Since this is a Grand Bay blog post, it's fair to use our own website as the working example. Our requirements were specific: a full bilingual English/Spanish version because our customers split roughly evenly between English-speaking travelers and Spanish-speaking residents and visitors; a course catalog with PADI certifications, prices, and clear next steps; dive site profiles with photos and dive plan descriptions; trip pages for Catalina and Bayahibe excursions with day-of logistics laid out; a blog system that supports the kind of long-form SEO content you're reading right now; integration with our communication channels (WhatsApp, email); and a content management system that lets non-developers update prices, schedules, and posts without filing a ticket every time.", marks: [] },
+            { _type: "span", _key: "en-b17-s1", text: "For ", marks: [] },
+            { _type: "span", _key: "en-b17-s2", text: "Open Water certification students", marks: ["en-b17-l1"] },
+            { _type: "span", _key: "en-b17-s3", text: ", each of the four open-water training dives runs about 30 to 40 minutes, similar to DSD length but with specific skills to complete during each dive. Skills include things like mask clearing, regulator recovery, controlled emergency swimming ascents, and buoyancy exercises. As students progress from dive one to dive four, their air consumption improves noticeably and later dives feel longer even at the same depth. By the fourth open-water dive, most students are approaching the 40-minute range that mirrors the standard certified dive.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b18",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b18-l1", href: "https://www.grandbay-puntacana.com/courses/advanced" },
+          ],
           children: [
-            { _type: "span", _key: "en-b18-s1", text: "The build came in under what most agencies would have quoted for a static brochure site, and the practical result is that travelers booking dives with us can find what they need, see actual prices, and reach the team on WhatsApp inside about thirty seconds. The site doesn't try to win design awards. It tries to win bookings. That's the right framework for almost every local tourism business making this decision, and it's the philosophy DR Web Studio brings to every project.", marks: [] },
+            { _type: "span", _key: "en-b18-s1", text: "For ", marks: [] },
+            { _type: "span", _key: "en-b18-s2", text: "Advanced Open Water students", marks: ["en-b18-l1"] },
+            { _type: "span", _key: "en-b18-s3", text: ", dive length varies more because different specialty dives have different profiles. A deep dive (adventure dive) at 25 to 30 meters might run 20 to 25 minutes bottom time; a peak buoyancy dive at shallower depth might run 45 to 60 minutes; a navigation dive is typically 30 to 45 minutes. The certification course covers five different dives with a range of depths and formats, so the overall average is similar to a standard certified dive.", marks: [] },
           ],
         },
         {
@@ -244,25 +248,29 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b19-s1", text: "What Makes the Studio Different to Work With", marks: [] },
+            { _type: "span", _key: "en-b19-s1", text: "The Shark Point Exception", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b20",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b20-l1", href: "https://www.grandbay-puntacana.com/shark-dive-punta-cana" },
+          ],
           children: [
-            { _type: "span", _key: "en-b20-s1", text: "A few practical things that come up when local business owners describe what working with DR Web Studio is like. Communication is direct — no account managers, no project coordinators, no creative directors between the client and the person actually building the site. You talk to the developer directly, the work gets done, you review it together. Decisions happen at the speed of the conversation rather than the speed of a Monday status meeting.", marks: [] },
+            { _type: "span", _key: "en-b20-s1", text: "The ", marks: [] },
+            { _type: "span", _key: "en-b20-s2", text: "Shark Point dive", marks: ["en-b20-l1"] },
+            { _type: "span", _key: "en-b20-s3", text: " sits at about 26 meters, deeper than our typical reef sites, and dive length there is closer to 30 to 35 minutes because of the depth. That's still enough time for a legitimate shark encounter — the sharks are typically visible early in the dive because they're in the immediate area, not something you have to search for. The shorter dive time is inherent to the depth, not a limitation of the site.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b21",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b21-s1", text: "The studio also doesn't try to sell features clients don't need. Punta Cana tourism businesses are pitched on chatbots, AI integrations, complex booking systems, membership platforms, and dozens of other add-ons by agencies that bill by the feature. The DR Web Studio approach is closer to the opposite: figure out the smallest, simplest site that actually does what the business needs, ship it fast, see what's working, and add things only when the data says they'll matter. That's not a complicated philosophy, but it's rare in this industry.", marks: [] },
+            { _type: "span", _key: "en-b21-s1", text: "Bottom Time vs Total Dive Time", marks: [] },
           ],
         },
         {
@@ -271,88 +279,70 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b22-s1", text: "The other practical difference is that DR Web Studio is based in Punta Cana itself, which means it understands the realities of the market it's selling to. The team knows what international tourists expect when they land here, what local customers expect when they search in Spanish, what the typical Punta Cana hotel WiFi looks like at 9pm during peak season (it's not great, which is why fast-loading sites matter so much), and how booking conversion patterns actually look in this region. An overseas freelancer building the same site can write good code but doesn't see any of that context.", marks: [] },
+            { _type: "span", _key: "en-b22-s1", text: "A distinction worth understanding. \"Bottom time\" in diving officially refers to the time from starting your descent to starting your ascent. \"Total dive time\" adds the ascent, the safety stop, and any additional shallow exploration on the way up. When we say a typical dive is 45 minutes, we're usually talking about bottom time plus the safety stop and final ascent — closer to the total time you're underwater from getting in the water to surfacing.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b23",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b23-s1", text: "If You're a Punta Cana Business Reading This", marks: [] },
+            { _type: "span", _key: "en-b23-s1", text: "A standard dive typically ends with a 3-minute safety stop at 5 meters, followed by a slow ascent to the surface. This adds about 5 minutes to the total time compared to a hypothetical dive that ends at the bottom. All the depth-and-time figures we give in this post are total in-water times, not narrow \"bottom time\" numbers.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b24",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b24-s1", text: "A simple test for whether your current website is doing its job: open it on your phone using mobile data, not hotel WiFi. Time how long it takes to load. Try to find your prices. Try to switch to Spanish (or English, if you're a Spanish-first site). Try to send a WhatsApp message to your business through the site. If any of those steps took more than a few seconds, that's a friction point that's costing you bookings — and it's the kind of thing DR Web Studio fixes routinely.", marks: [] },
+            { _type: "span", _key: "en-b24-s1", text: "Why Some Divers Come Up Sooner", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b25",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b25-l1", href: "https://www.dr-webstudio.com/en/our-services/website-migrations-or-rebuilds" },
-            { _type: "link", _key: "en-b25-l2", href: "https://www.dr-webstudio.com/en/our-services/landing-pages" },
-            { _type: "link", _key: "en-b25-l3", href: "https://www.dr-webstudio.com/en/our-services/e-commerce" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b25-s1", text: "Most local businesses contacting the studio fall into one of three buckets. They have an old site that needs ", marks: [] },
-            { _type: "span", _key: "en-b25-s2", text: "a full rebuild on a modern platform", marks: ["en-b25-l1"] },
-            { _type: "span", _key: "en-b25-s3", text: "; they have no site at all and need ", marks: [] },
-            { _type: "span", _key: "en-b25-s4", text: "a focused landing page", marks: ["en-b25-l2"] },
-            { _type: "span", _key: "en-b25-s5", text: " to start with; or they're ready to sell products and services online and need ", marks: [] },
-            { _type: "span", _key: "en-b25-s6", text: "a real e-commerce setup", marks: ["en-b25-l3"] },
-            { _type: "span", _key: "en-b25-s7", text: " with payments, checkout, and inventory. Each path has its own scope and price, and the studio's questionnaire process narrows down which one fits before any quote gets written.", marks: [] },
+            { _type: "span", _key: "en-b25-s1", text: "In group diving, the actual end time of any dive is set by the first person to reach a limit — that's the diver who's used the most air, or the one approaching NDL, or the one who's getting cold, or the one who signals they've had enough. This is why couples or friends dive together often end up with slightly different air remaining on the boat: the diver who ate through their air faster ended the dive for everyone, and the more efficient diver still has 500 to 800 PSI left.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b26",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b26-s1", text: "The Bilingual Question Specifically", marks: [] },
+            { _type: "span", _key: "en-b26-s1", text: "This is normal and expected, not a failure on anyone's part. The dive plan is built around the least efficient breather in the group so nobody ends up in an air-critical situation, which is exactly the right way to plan a group dive.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b27",
-          style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b27-l1", href: "https://www.dr-webstudio.com/en/our-services/multilingual-and-international-websites" },
-          ],
+          style: "h2",
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b27-s1", text: "Anyone running a tourism business in Punta Cana eventually faces the multilingual question. The default \"solution\" most operators use is to copy their content into Google Translate and paste the result into the site, which produces Spanish that obviously wasn't written by a human and chases off Spanish-speaking customers. The proper alternative is ", marks: [] },
-            { _type: "span", _key: "en-b27-s2", text: "a real multilingual setup", marks: ["en-b27-l1"] },
-            { _type: "span", _key: "en-b27-s3", text: " where every piece of content has separate, native-quality versions in each language, with proper URL structures, hreflang tags for search engines, and language switching that actually works. This is what we have, and it's a significant part of why our Spanish-language search traffic converts at all. DR Web Studio builds this routinely for tourism clients because it's basically required if you want both halves of the customer base.", marks: [] },
+            { _type: "span", _key: "en-b27-s1", text: "How to Extend Your Bottom Time", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b28",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b28-s1", text: "What the Process Looks Like", marks: [] },
+            { _type: "span", _key: "en-b28-s1", text: "The most reliable way to get longer dives is to improve your air consumption — which mostly means practicing calm, slow breathing patterns and getting comfortable enough underwater that you're not fighting the environment. New divers often breathe too fast or too shallow out of nerves, then run out of air 15 minutes before their more experienced buddy. Deep, slow breaths (in through the mouth, out slowly, no breath holding) are more efficient than rapid shallow breathing, both physiologically and for buoyancy.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b29",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b29-l1", href: "https://www.dr-webstudio.com/en/project-planner" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b29-s1", text: "The starting point is ", marks: [] },
-            { _type: "span", _key: "en-b29-s2", text: "a short questionnaire on the project planner page", marks: ["en-b29-l1"] },
-            { _type: "span", _key: "en-b29-s3", text: " — basic questions about what kind of business you run, what you currently have online, what you'd want a new site to do, and a rough timeline. From there DR Web Studio reviews the answers and either sends a fixed quote (for projects that match one of the standard packages) or schedules a short call to scope a custom build. There's no high-pressure sales meeting; the questionnaire-first approach exists so both sides can decide quickly whether the project is a fit before anyone spends time on a long conversation.", marks: [] },
+            { _type: "span", _key: "en-b29-s1", text: "Buoyancy control is the other big lever. A diver who's constantly compensating for over- or under-inflation of their BCD is doing more physical work than a diver who's neutrally buoyant and gliding. Time invested in mastering buoyancy pays back on every subsequent dive in longer bottom times. This is why the PADI Peak Performance Buoyancy specialty is one of the most useful specialties for improving your diving overall, not just for photography.", marks: [] },
           ],
         },
         {
@@ -361,7 +351,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b30-s1", text: "Once a project is agreed, the typical timeline is two to four weeks for a Starter or Business package, four to eight weeks for E-commerce or custom builds, and longer for projects with complex integrations or large content migrations. Payments are usually split between an upfront deposit and a launch-day balance, with payment plans available for larger custom projects.", marks: [] },
+            { _type: "span", _key: "en-b30-s1", text: "Physical fitness matters at the margin. Divers who are cardiovascularly fit have lower resting oxygen consumption and lower air consumption during moderate underwater activity. This isn't a huge effect for casual reef diving, but it's real over long dives.", marks: [] },
           ],
         },
         {
@@ -370,20 +360,16 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b31-s1", text: "What Happens After Launch", marks: [] },
+            { _type: "span", _key: "en-b31-s1", text: "What Happens If You Run Low on Air", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b32",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b32-l1", href: "https://www.dr-webstudio.com/en/our-services/ongoing-website-maintenance-and-support" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b32-s1", text: "Standard packages include 30 to 60 days of post-launch support, which covers fixing any bugs that surface in early traffic, small content adjustments, and answering questions from the team learning to use the CMS. After that window, ", marks: [] },
-            { _type: "span", _key: "en-b32-s2", text: "ongoing maintenance and support", marks: ["en-b32-l1"] },
-            { _type: "span", _key: "en-b32-s3", text: " is available as a flat monthly fee for businesses that don't want to think about updates, backups, or security patches themselves. This is also when content additions (new blog posts, new dive sites, new courses, new product pages) typically get scheduled. The maintenance arrangement is optional — plenty of clients run their own sites after launch using the CMS — but it's there for businesses that don't have anyone in-house who wants to manage that work.", marks: [] },
+            { _type: "span", _key: "en-b32-s1", text: "Standard practice is to signal the guide when your air reaches about 100 to 70 bar (roughly 1500 to 1000 PSI), and to start the ascent when the group leader signals or when you reach approximately 50 bar (700 PSI). Nobody dives their tank to empty — the reserve is deliberate margin for the ascent and safety stop plus emergency response if anything goes wrong. If you run lower than that in the middle of a dive, the correct response is to signal the guide, share air with the guide's alternate second stage if needed, and ascend safely with the group. This is one of the specific skills covered in Open Water training and reviewed on every dive briefing.", marks: [] },
           ],
         },
         {
@@ -392,7 +378,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b33-s1", text: "When DR Web Studio Isn't the Right Fit", marks: [] },
+            { _type: "span", _key: "en-b33-s1", text: "How Long Is the Full Day at the Shop?", marks: [] },
           ],
         },
         {
@@ -401,7 +387,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b34-s1", text: "A recommendation should mention the cases where it isn't the right call, otherwise the recommendation is incomplete. If your business needs a fifteen-person enterprise team with 24/7 phone support, a dedicated account manager, and a multi-year retainer with SLAs, you want a larger agency, not a focused boutique. If you have a very rare or highly specialized technology need (industry-specific compliance work, regulated medical or financial integrations, native mobile app development from scratch), confirm fit on the discovery call before signing — sometimes the right answer is a referral elsewhere. And if your budget is genuinely zero and you just need something live next week, an honest answer is that Wix or Squarespace will get you online faster, and DR Web Studio's value shows up later when you're ready to invest in something that converts visitors into customers. The studio is most useful for the long middle — businesses past the survival-mode phase, not yet at the enterprise-procurement phase, who need their website to actually earn money rather than just exist.", marks: [] },
+            { _type: "span", _key: "en-b34-s1", text: "The whole two-tank experience takes longer than the sum of the two dives. Typical shape: pickup or arrival at the shop around 8:30 AM, gear setup and briefing 30 minutes, boat ride to first site 20 to 30 minutes, first dive 45 minutes, surface interval 45 to 60 minutes, transit to second site (if different) 10 to 20 minutes, second dive 45 minutes, boat ride back 20 to 30 minutes, gear rinse and debrief 15 minutes. All in, you're back on land around 1:00 to 2:00 PM. Total time at the operation is about 5 hours for something like 90 minutes of actual underwater time.", marks: [] },
           ],
         },
         {
@@ -410,7 +396,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b35-s1", text: "How to Get In Touch", marks: [] },
+            { _type: "span", _key: "en-b35-s1", text: "The Bottom Line", marks: [] },
           ],
         },
         {
@@ -418,21 +404,15 @@ const posts = [
           _key: "en-b36",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "en-b36-l1", href: "https://dr-webstudio.com/" },
-            { _type: "link", _key: "en-b36-l2", href: "https://www.dr-webstudio.com/en/contact" },
-            { _type: "link", _key: "en-b36-l3", href: "https://www.dr-webstudio.com/en/portfolio" },
-            { _type: "link", _key: "en-b36-l4", href: "https://wa.me/18297239338" },
+            { _type: "link", _key: "en-b36-l1", href: "https://www.grandbay-puntacana.com/courses" },
+            { _type: "link", _key: "en-b36-l2", href: "https://wa.me/18297239338" },
           ],
           children: [
-            { _type: "span", _key: "en-b36-s1", text: "The full studio site is at ", marks: [] },
-            { _type: "span", _key: "en-b36-s2", text: "dr-webstudio.com", marks: ["en-b36-l1"] },
-            { _type: "span", _key: "en-b36-s3", text: " with detailed service pages, the public portfolio, and the questionnaire that starts most projects. For direct contact, ", marks: [] },
-            { _type: "span", _key: "en-b36-s4", text: "the contact page", marks: ["en-b36-l2"] },
-            { _type: "span", _key: "en-b36-s5", text: " has email and the standard quote form. If you'd rather see the work first, ", marks: [] },
-            { _type: "span", _key: "en-b36-s6", text: "the portfolio", marks: ["en-b36-l3"] },
-            { _type: "span", _key: "en-b36-s7", text: " walks through several recent Punta Cana builds with a bit of context on what each project needed. And if you'd rather just ask us about our own experience working with DR Web Studio, the fastest channel is ", marks: [] },
-            { _type: "span", _key: "en-b36-s8", text: "WhatsApp", marks: ["en-b36-l4"] },
-            { _type: "span", _key: "en-b36-s9", text: " — we're happy to share specifics on what the build cost, how long it took, and what we'd do differently if we started over today.", marks: [] },
+            { _type: "span", _key: "en-b36-s1", text: "For certified divers doing standard 2-tank days on Punta Cana reefs, expect about 45 minutes per dive with an hour or so between dives on the boat. For first-time divers doing a Discover Scuba Diving experience, expect about 30 minutes underwater on your intro dive. For certification courses, dive length varies but averages between 30 and 45 minutes per dive across the training. Depth, air consumption, and thermal comfort all move these numbers around. If you have specific questions about how long the dives look for your ", marks: [] },
+            { _type: "span", _key: "en-b36-s2", text: "course or trip", marks: ["en-b36-l1"] },
+            { _type: "span", _key: "en-b36-s3", text: ", message us on ", marks: [] },
+            { _type: "span", _key: "en-b36-s4", text: "WhatsApp", marks: ["en-b36-l2"] },
+            { _type: "span", _key: "en-b36-s5", text: " with your certification level and dates and we'll give you a specific answer for your itinerary.", marks: [] },
           ],
         },
       ],
@@ -441,13 +421,9 @@ const posts = [
           _type: "block",
           _key: "es-b1",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b1-l1", href: "https://dr-webstudio.com/" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b1-s1", text: "Cada pocas semanas alguien nos pregunta quién construyó nuestra página web. Usualmente es otro propietario de negocio en Punta Cana que ha notado que la experiencia de reserva funciona suave, que las páginas cargan rápido en el WiFi del hotel y que todo el sitio se comporta igual en inglés y español. La respuesta es ", marks: [] },
-            { _type: "span", _key: "es-b1-s2", text: "DR Web Studio", marks: ["es-b1-l1"] },
-            { _type: "span", _key: "es-b1-s3", text: " — un pequeño estudio de diseño y desarrollo web en Punta Cana que se ha convertido silenciosamente en la opción preferida para sitios web de turismo, eventos y pequeños negocios locales. Como la pregunta sale lo bastante seguido como para que sigamos tecleando la misma respuesta por WhatsApp, decidimos que ya era momento de escribir la versión larga.", marks: [] },
+            { _type: "span", _key: "es-b1-s1", text: "Respuesta corta: una inmersión típica para un buzo certificado en Punta Cana dura unos 45 minutos bajo el agua. Ese es el número que sale más seguido cuando les decimos a los buzos qué esperar de nuestras salidas guiadas estándar de dos tanques — a veces un poco más en sitios someros, a veces un poco menos en sitios más profundos. Una experiencia Discover Scuba Diving, que es un formato más corto para primerizos, suele ser de unos 30 minutos de tiempo real bajo el agua. Pero \"cuánto dura una inmersión\" tiene más matices que un solo número, porque el tiempo real depende de tu profundidad, tu consumo de aire, la temperatura del agua y qué tanto estés esforzándote. Esta publicación recorre los factores, los distintos formatos de inmersión y cómo se ven los tiempos en la práctica en nuestro bote.", marks: [] },
           ],
         },
         {
@@ -456,16 +432,20 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b2-s1", text: "Cómo Terminamos Trabajando con el Estudio", marks: [] },
+            { _type: "span", _key: "es-b2-s1", text: "Inmersiones Estándar de 2 Tanques: Unos 45 Minutos Cada Una", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b3",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b3-l1", href: "https://www.grandbay-puntacana.com/es/sites" },
+          ],
           children: [
-            { _type: "span", _key: "es-b3-s1", text: "Vale la pena divulgar la relación de trabajo por adelantado. James, uno de nuestros instructores de buceo aquí en Grand Bay, también dirige DR Web Studio de forma independiente. Cuando nuestra web anterior necesitaba una reconstrucción hace unos años, contratamos al estudio para hacerla, y ese trabajo fue creciendo — el estudio ahora maneja la mayor parte de nuestras operaciones en línea, incluyendo SEO y comunicación con clientes, junto con el día a día del centro de buceo. Así que aunque recomendamos DR Web Studio abiertamente a otros negocios de Punta Cana, la recomendación se basa en conocimiento directo de trabajo: el mismo equipo detrás de ambos, todos los días.", marks: [] },
+            { _type: "span", _key: "es-b3-s1", text: "Para ", marks: [] },
+            { _type: "span", _key: "es-b3-s2", text: "nuestras inmersiones guiadas estándar en los arrecifes de Punta Cana", marks: ["es-b3-l1"] },
+            { _type: "span", _key: "es-b3-s3", text: ", el tiempo típico de fondo en cada inmersión es de unos 45 minutos. Una salida matutina de dos tanques usualmente se ve así: salir de la tienda alrededor de las 8:30 AM, llegar al primer sitio de buceo 20 a 30 minutos después, hacer una inmersión de 45 minutos a una profundidad en el rango de 12 a 18 metros, subir para un intervalo de superficie de 45 a 60 minutos en el bote, bajar de nuevo para la segunda inmersión de 45 minutos en un sitio cercano, y estar de regreso en tierra a mediodía tarde. Esa es la forma de la mayoría de los días.", marks: [] },
           ],
         },
         {
@@ -474,7 +454,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b4-s1", text: "Mencionamos esto por adelantado porque es el tipo de cosa que es mejor explicada que descubierta. La razón por la que les seguimos hablando a otros negocios de Punta Cana sobre DR Web Studio no es que se nos deban referencias — es que hemos visto el trabajo del estudio rendir en nuestra propia operación, y sabemos que la mayoría de los negocios locales a nuestro alrededor se beneficiarían del mismo tipo de página web. Lo que sigue es una mirada más cercana a qué hace DR Web Studio, cuánto cuesta y dónde sus servicios sí y no tienen sentido.", marks: [] },
+            { _type: "span", _key: "es-b4-s1", text: "La cifra de 45 minutos no es una regla; es un promedio fuerte para el rango de profundidad que típicamente buceamos. Los buzos con mejor eficiencia de aire salen con bastante aire después de 50 minutos; los buzos nuevos o los que todavía trabajan en su respiración a veces llegan a la presión de reserva más cerca de los 35 a 40 minutos. Nadie está revisando un cronómetro forzando a todos a subir exactamente a los 45 — la inmersión real termina cuando o se acerca al límite de no descompresión, o cuando alguien en el grupo se está quedando con poco aire, lo que pase primero.", marks: [] },
           ],
         },
         {
@@ -483,29 +463,29 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b5-s1", text: "Qué Hace Realmente DR Web Studio", marks: [] },
+            { _type: "span", _key: "es-b5-s1", text: "Qué Determina Realmente la Duración de una Inmersión", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b6",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b6-l1", href: "https://www.dr-webstudio.com/es/our-services" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b6-s1", text: "La ", marks: [] },
-            { _type: "span", _key: "es-b6-s2", text: "lista de servicios del estudio", marks: ["es-b6-l1"] },
-            { _type: "span", _key: "es-b6-s3", text: " cubre la mayor parte de lo que un pequeño negocio dominicano necesita para operar en línea: sitios web a medida para negocios, landing pages y sitios de una sola página para campañas, e-commerce completo con integración de pagos, configuraciones multilingües (inglés y español por defecto, con la opción de más idiomas), migraciones de plataformas anticuadas, implementación de CMS headless para que dueños no técnicos puedan gestionar su propio contenido, integraciones de API para sistemas de reservas e inventario, y mantenimiento continuo y soporte después del lanzamiento. DR Web Studio maneja diseño, desarrollo, despliegue y soporte como un solo equipo en lugar de pasar el proyecto entre especialistas que no conocen tu proyecto.", marks: [] },
+            { _type: "span", _key: "es-b6-s1", text: "Cuatro factores principales establecen la duración de cualquier inmersión: profundidad, consumo de aire, temperatura del agua y nivel de esfuerzo. La profundidad es el más grande — cuanto más profundo vas, más rápido usas aire y más pronto te acercas al límite de no descompresión. Por eso una inmersión somera de arrecife a 10 metros puede durar 60+ minutos mientras una inmersión profunda a 30 metros topa cerca de 25 minutos. Los sitios populares de arrecife de Punta Cana a 12 a 18 metros están en el punto dulce donde los 45 minutos de tiempo de fondo son naturales.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b7",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b7-l1", href: "https://dan.org/" },
+          ],
           children: [
-            { _type: "span", _key: "es-b7-s1", text: "El stack técnico es moderno. Los sitios se construyen en Next.js (el mismo framework que usan Netflix, TikTok y muchas de las webs más exigentes en rendimiento del mundo), con Sanity como sistema de gestión de contenido, Tailwind para estilos e integraciones estándar para pagos, correo y analítica. Esto importa menos por cómo se ve el sitio y más por cómo rinde — las construcciones de DR Web Studio normalmente cargan en menos de dos segundos, lo bastante rápido para que un viajero móvil que revisa la disponibilidad de un centro de buceo desde la piscina del hotel no se quede esperando. La mayoría de los sitios turísticos de Punta Cana siguen en WordPress o constructores tipo plantilla que tardan de cinco a diez segundos en cargar en la misma conexión.", marks: [] },
+            { _type: "span", _key: "es-b7-s1", text: "El consumo de aire — técnicamente tu tasa SAC (Surface Air Consumption) — es el segundo gran factor y el que más varía entre individuos. Según investigación resumida por ", marks: [] },
+            { _type: "span", _key: "es-b7-s2", text: "Divers Alert Network", marks: ["es-b7-l1"] },
+            { _type: "span", _key: "es-b7-s3", text: ", los buzos recreativos típicos consumen de 15 a 25 litros por minuto en la superficie, lo que se traduce en distintas tasas reales de consumo a distintas profundidades (porque el aire es más denso en profundidad). Los buzos con tasas SAC más bajas obtienen naturalmente tiempos de fondo más largos del mismo tanque; los buzos con tasas más altas salen antes. La experiencia es la variable principal — los buzos nuevos generalmente respiran más pesado por nervios y falta de familiaridad, y la tasa SAC típicamente baja significativamente en las primeras 20 a 50 inmersiones.", marks: [] },
           ],
         },
         {
@@ -514,7 +494,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b8-s1", text: "Por Qué Importa para los Negocios Locales", marks: [] },
+            { _type: "span", _key: "es-b8-s1", text: "Profundidad y Límites de No Descompresión", marks: [] },
           ],
         },
         {
@@ -523,7 +503,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b9-s1", text: "El estado real de los sitios web de pequeños negocios en Punta Cana: la mayoría son inexistentes, están en plantillas gratuitas de Wix o Squarespace que se ven casi idénticas a cualquier otro sitio turístico de la zona, o están atrapados en instalaciones viejas de WordPress que nadie ha actualizado en años. El resultado es que los negocios con el mejor servicio a menudo tienen la presencia digital más débil, mientras que los que pagaron por una web real (o que nunca tuvieron una y dependen de Instagram) pierden reservas cada semana frente a competidores con una experiencia en línea más fluida.", marks: [] },
+            { _type: "span", _key: "es-b9-s1", text: "Toda inmersión recreativa tiene que mantenerse dentro de un tiempo máximo de fondo basado en la profundidad, establecido por los límites de no descompresión (NDL). Estos vienen de la teoría de descompresión — cuanto más profundo y más tiempo bucees, más nitrógeno absorben tus tejidos, y más allá de ciertos umbrales necesitarías paradas de descompresión requeridas antes de poder subir con seguridad. El buceo recreativo se mantiene dentro de límites que permiten ascenso directo (con solo una parada de seguridad). A 12 metros, el NDL supera con creces la hora. A 18 metros, unos 50+ minutos. A 25 metros, cerca de 30 minutos. A 30 metros, cerca de 20 minutos. A 40 metros, menos de 10 minutos.", marks: [] },
           ],
         },
         {
@@ -532,7 +512,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b10-s1", text: "Un momento típico de decisión de viaje funciona así: alguien en la habitación de un hotel busca \"buceo Punta Cana\" o \"paseo privado en bote Bávaro\", obtiene una lista de opciones, abre las primeras tres y reserva con aquella cuyo sitio cargó más rápido, mostró precios claros y soportaba el idioma en el que lee. Si tu sitio tarda siete segundos en cargar, no tiene versión en español, esconde los precios detrás de un formulario de contacto y se ve como la misma plantilla que otros cinco operadores, pierdes esa reserva antes de que el cliente siquiera lea sobre tu servicio. Ese es el problema que una web bien hecha realmente resuelve — no ganar premios de diseño, sino convertir el tráfico de búsqueda en clientes reales que reservan. Todo el enfoque de DR Web Studio está construido alrededor de ese marco de conversión-primero.", marks: [] },
+            { _type: "span", _key: "es-b10-s1", text: "En la práctica, en una inmersión típica de arrecife en Punta Cana a 12 a 18 metros, el consumo de aire suele ser el factor limitante en lugar del NDL — los buzos se quedan con poco aire antes de acercarse al tiempo de no-deco. En inmersiones más profundas a 25 a 30 metros, los dos límites se acercan y el NDL a veces importa más. Los computadores de buceo modernos rastrean ambos simultáneamente y te alertan mucho antes de que cualquiera se convierta en un problema.", marks: [] },
           ],
         },
         {
@@ -541,51 +521,47 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b11-s1", text: "Precios Transparentes (En Serio)", marks: [] },
+            { _type: "span", _key: "es-b11-s1", text: "Temperatura del Agua y Duración", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b12",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b12-l1", href: "https://www.dr-webstudio.com/es/pricing" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b12-s1", text: "La mayoría de las cotizaciones de diseño web en esta industria son deliberadamente vagas hasta que has pasado una hora en una llamada de descubrimiento. DR Web Studio publica los números reales en ", marks: [] },
-            { _type: "span", _key: "es-b12-s2", text: "la página de precios", marks: ["es-b12-l1"] },
-            { _type: "span", _key: "es-b12-s3", text: ", lo cual es lo bastante inusual en el mercado local como para que valga la pena señalarlo. Los tres paquetes estándar son Starter ($400) para una a tres páginas con SEO básico y formulario de contacto, Business ($800) para cuatro a ocho páginas con diseño a medida, branding, integración de CMS y SEO avanzado, y E-commerce ($900) para tiendas online completas con catálogo de productos, checkout seguro y confirmaciones de pedido. Los proyectos a medida e integraciones suben desde ahí según el alcance.", marks: [] },
+            { _type: "span", _key: "es-b12-s1", text: "La temperatura del agua afecta la duración de dos formas — una pequeña, una más grande. El efecto pequeño es que el agua más fría aumenta el consumo de aire porque tu cuerpo trabaja más para mantener la temperatura core; esto puede acortar las inmersiones por uno o dos minutos. En las aguas cálidas de Punta Cana (26 a 29°C todo el año) este efecto es apenas notable comparado con buzos que vienen de aguas de casa más frías. El efecto más grande es la comodidad térmica misma — un buzo que se enfría decide terminar la inmersión temprano aunque el aire y el NDL estén bien, lo cual es un límite psicológico más que uno físico duro. Por eso la protección térmica adecuada importa incluso en agua cálida; un buzo que está levemente frío al minuto 35 se pierde los últimos 10 a 15 minutos de una buena inmersión.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b13",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b13-s1", text: "Contexto para esos números: el trabajo freelance equivalente en Estados Unidos o Europa Occidental cuesta típicamente entre $1.500 y $8.000 por un sitio de pequeño negocio, y el trabajo de agencia parte de $4.000 y supera fácilmente los $15.000. El precio dominicano no es más bajo porque el trabajo sea peor — es más bajo porque el costo de vida, la sobrecarga y los gastos operativos en Punta Cana son una fracción de lo que son en Miami, Nueva York o Londres. Un sitio en Next.js a medida que costaría entre $5.000 y $8.000 con un freelance estadounidense, DR Web Studio lo puede construir por menos de $1.000, y el resultado técnico es el mismo. Es la misma dinámica que hace competitiva a la República Dominicana para el turismo — estructura de precios local con calidad internacional, y la diferencia es el ahorro.", marks: [] },
+            { _type: "span", _key: "es-b13-s1", text: "Discover Scuba Diving: Formato Más Corto", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b14",
-          style: "h2",
-          markDefs: [],
+          style: "normal",
+          markDefs: [
+            { _type: "link", _key: "es-b14-l1", href: "https://www.grandbay-puntacana.com/es/courses/discover" },
+          ],
           children: [
-            { _type: "span", _key: "es-b14-s1", text: "Quién Más Trabaja Con Ellos", marks: [] },
+            { _type: "span", _key: "es-b14-s1", text: "Para los participantes de ", marks: [] },
+            { _type: "span", _key: "es-b14-s2", text: "Discover Scuba Diving", marks: ["es-b14-l1"] },
+            { _type: "span", _key: "es-b14-s3", text: " — personas probando scuba por primera vez sin certificación — el tiempo bajo el agua es típicamente de unos 30 minutos. Esto es más corto que una inmersión certificada por dos razones: la profundidad DSD está limitada a 12 metros (lo que es más indulgente con el consumo de aire), y el consumo de aire de un principiante suele ser mayor al de los buzos experimentados. La cifra de 30 minutos cubre una experiencia real de inmersión con tiempo para ver vida de arrecife, practicar habilidades básicas y sentirse cómodo respirando bajo el agua — pero es más corta de lo que los buzos certificados obtienen de la misma cantidad de aire porque un buzo primerizo respira a través de él más rápido.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b15",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b15-l1", href: "https://www.dr-webstudio.com/es/portfolio" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b15-s1", text: "Estamos lejos de ser el único negocio de Punta Cana que ha trabajado con DR Web Studio. ", marks: [] },
-            { _type: "span", _key: "es-b15-s2", text: "El portafolio", marks: ["es-b15-l1"] },
-            { _type: "span", _key: "es-b15-s3", text: " cubre una buena muestra del mercado local: Sertuin Events para producción de eventos, Punta Cana Tour Store para reservas de excursiones, Punta Cana Proposal Packages para propuestas matrimoniales de lujo, Punta Cana Venue Collection para venues de boda, Esencias by Nancy para fragancias boutique, Punta Cana Photo Edition para servicios de fotografía y Punta Cana Wedding Packages para planificación integral de bodas. Más allá del stack turístico también está Fuerza del Pueblo Verón-Punta Cana, un sitio político/cívico con solución CMS a medida. El hilo común es que todos son operaciones dominicanas locales que querían algo mejor que una plantilla genérica y que no querían pagar tarifas de agencia.", marks: [] },
+            { _type: "span", _key: "es-b15-s1", text: "La sesión DSD en sí es más larga que 30 minutos — hay un briefing, montaje de equipo, algunas habilidades en agua somera antes de descender, y la porción de exploración bajo el agua. El tiempo total desde llegar a la tienda hasta el fin de la inmersión es usualmente de 2 a 3 horas. Si te sientes cómodo durante el DSD, algunos operadores (incluidos nosotros) ofrecen una segunda inmersión DSD opcional el mismo día para buzos que quieren más tiempo.", marks: [] },
           ],
         },
         {
@@ -594,25 +570,33 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b16-s1", text: "Lo Que Nuestro Sitio Necesitaba", marks: [] },
+            { _type: "span", _key: "es-b16-s1", text: "Inmersiones de Cursos de Certificación", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b17",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b17-l1", href: "https://www.grandbay-puntacana.com/es/courses/openwater" },
+          ],
           children: [
-            { _type: "span", _key: "es-b17-s1", text: "Ya que esta es una publicación del blog de Grand Bay, es justo usar nuestro propio sitio como ejemplo de trabajo. Nuestros requisitos eran específicos: una versión completamente bilingüe en inglés/español porque nuestros clientes se dividen casi por igual entre viajeros angloparlantes y residentes y visitantes hispanohablantes; un catálogo de cursos con certificaciones PADI, precios y siguientes pasos claros; perfiles de sitios de buceo con fotos y descripciones del plan de inmersión; páginas de excursiones a Catalina y Bayahibe con la logística del día explicada; un sistema de blog que soporte el tipo de contenido SEO de formato largo como el que estás leyendo; integración con nuestros canales de comunicación (WhatsApp, correo); y un sistema de gestión de contenido que permita a personas no desarrolladoras actualizar precios, horarios y publicaciones sin tener que abrir un ticket cada vez.", marks: [] },
+            { _type: "span", _key: "es-b17-s1", text: "Para los ", marks: [] },
+            { _type: "span", _key: "es-b17-s2", text: "estudiantes de certificación Open Water", marks: ["es-b17-l1"] },
+            { _type: "span", _key: "es-b17-s3", text: ", cada una de las cuatro inmersiones de entrenamiento en aguas abiertas dura unos 30 a 40 minutos, similar a la duración del DSD pero con habilidades específicas que completar durante cada inmersión. Las habilidades incluyen cosas como despejar la máscara, recuperación del regulador, ascensos controlados de emergencia y ejercicios de flotabilidad. Conforme los estudiantes avanzan de la inmersión uno a la cuatro, su consumo de aire mejora notablemente y las inmersiones posteriores se sienten más largas incluso a la misma profundidad. Para la cuarta inmersión de aguas abiertas, la mayoría de los estudiantes se acerca al rango de los 40 minutos que refleja la inmersión certificada estándar.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b18",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b18-l1", href: "https://www.grandbay-puntacana.com/es/courses/advanced" },
+          ],
           children: [
-            { _type: "span", _key: "es-b18-s1", text: "El proyecto se completó por debajo de lo que la mayoría de las agencias habrían cotizado por un sitio estático tipo folleto, y el resultado práctico es que los viajeros que reservan inmersiones con nosotros pueden encontrar lo que necesitan, ver precios reales y comunicarse con el equipo por WhatsApp en unos treinta segundos. El sitio no busca ganar premios de diseño. Busca ganar reservas. Ese es el marco correcto para casi todo negocio local de turismo que toma esta decisión, y es la filosofía que DR Web Studio trae a cada proyecto.", marks: [] },
+            { _type: "span", _key: "es-b18-s1", text: "Para los ", marks: [] },
+            { _type: "span", _key: "es-b18-s2", text: "estudiantes Advanced Open Water", marks: ["es-b18-l1"] },
+            { _type: "span", _key: "es-b18-s3", text: ", la duración varía más porque distintas inmersiones de especialidad tienen distintos perfiles. Una inmersión profunda (adventure dive) a 25 a 30 metros podría durar 20 a 25 minutos de fondo; una inmersión de flotabilidad de precisión a profundidad somera podría durar 45 a 60 minutos; una inmersión de navegación es típicamente 30 a 45 minutos. El curso de certificación cubre cinco inmersiones distintas con un rango de profundidades y formatos, así que el promedio general es similar a una inmersión certificada estándar.", marks: [] },
           ],
         },
         {
@@ -621,25 +605,29 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b19-s1", text: "Qué Hace Distinto al Estudio para Trabajar Con Él", marks: [] },
+            { _type: "span", _key: "es-b19-s1", text: "La Excepción de Shark Point", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b20",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b20-l1", href: "https://www.grandbay-puntacana.com/es/shark-dive-punta-cana" },
+          ],
           children: [
-            { _type: "span", _key: "es-b20-s1", text: "Algunas cosas prácticas que salen cuando los dueños de negocios locales describen cómo es trabajar con DR Web Studio. La comunicación es directa — sin account managers, sin coordinadores de proyecto, sin directores creativos entre el cliente y la persona que realmente construye el sitio. Hablas directo con el desarrollador, el trabajo se hace, lo revisan juntos. Las decisiones ocurren a la velocidad de la conversación, no a la velocidad de una reunión de estatus de los lunes.", marks: [] },
+            { _type: "span", _key: "es-b20-s1", text: "La ", marks: [] },
+            { _type: "span", _key: "es-b20-s2", text: "inmersión de Shark Point", marks: ["es-b20-l1"] },
+            { _type: "span", _key: "es-b20-s3", text: " está a unos 26 metros, más profunda que nuestros sitios típicos de arrecife, y la duración de la inmersión ahí está más cerca de 30 a 35 minutos por la profundidad. Ese sigue siendo tiempo suficiente para un encuentro legítimo con tiburones — los tiburones típicamente son visibles temprano en la inmersión porque están en el área inmediata, no algo que tengas que buscar. El tiempo de inmersión más corto es inherente a la profundidad, no una limitación del sitio.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b21",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b21-s1", text: "El estudio tampoco intenta venderle al cliente funcionalidades que no necesita. A los negocios turísticos de Punta Cana les ofrecen chatbots, integraciones de IA, sistemas complejos de reservas, plataformas de membresía y docenas de extras más por parte de agencias que facturan por funcionalidad. El enfoque de DR Web Studio es más bien lo opuesto: descubrir el sitio más pequeño y simple que realmente haga lo que el negocio necesita, lanzarlo rápido, ver qué funciona y agregar cosas solo cuando los datos digan que importarán. No es una filosofía complicada, pero es rara en esta industria.", marks: [] },
+            { _type: "span", _key: "es-b21-s1", text: "Tiempo de Fondo vs Tiempo Total de Inmersión", marks: [] },
           ],
         },
         {
@@ -648,88 +636,70 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b22-s1", text: "La otra diferencia práctica es que DR Web Studio está basado en Punta Cana mismo, lo que significa que entiende las realidades del mercado al que le vende. El equipo sabe qué esperan los turistas internacionales cuando aterrizan aquí, qué esperan los clientes locales cuando buscan en español, cómo se ve el WiFi típico de un hotel de Punta Cana a las 9pm en temporada alta (no muy bien, por eso importan tanto los sitios que cargan rápido) y cómo lucen realmente los patrones de conversión de reservas en esta región. Un freelancer en el extranjero construyendo el mismo sitio puede escribir buen código pero no ve nada de ese contexto.", marks: [] },
+            { _type: "span", _key: "es-b22-s1", text: "Una distinción que vale la pena entender. El \"tiempo de fondo\" en buceo se refiere oficialmente al tiempo desde empezar el descenso hasta empezar el ascenso. El \"tiempo total de inmersión\" agrega el ascenso, la parada de seguridad y cualquier exploración somera adicional en el camino hacia arriba. Cuando decimos que una inmersión típica es de 45 minutos, usualmente hablamos del tiempo de fondo más la parada de seguridad y el ascenso final — más cerca del tiempo total que estás bajo el agua desde meterte al agua hasta salir a la superficie.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b23",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b23-s1", text: "Si Eres un Negocio de Punta Cana Leyendo Esto", marks: [] },
+            { _type: "span", _key: "es-b23-s1", text: "Una inmersión estándar típicamente termina con una parada de seguridad de 3 minutos a 5 metros, seguida por un ascenso lento a la superficie. Esto agrega unos 5 minutos al tiempo total comparado con una inmersión hipotética que termine en el fondo. Todas las cifras de profundidad-y-tiempo que damos en esta publicación son tiempos totales en el agua, no números estrechos de \"tiempo de fondo\".", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b24",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b24-s1", text: "Una prueba simple para saber si tu sitio actual está haciendo su trabajo: ábrelo en tu celular usando datos móviles, no WiFi de hotel. Cronometra cuánto tarda en cargar. Intenta encontrar tus precios. Intenta cambiar a español (o a inglés, si tu sitio es español-primero). Intenta enviar un mensaje de WhatsApp a tu negocio a través del sitio. Si cualquiera de esos pasos tomó más de unos segundos, ese es un punto de fricción que te está costando reservas — y es exactamente el tipo de cosa que DR Web Studio arregla de forma rutinaria.", marks: [] },
+            { _type: "span", _key: "es-b24-s1", text: "Por Qué Algunos Buzos Suben Antes", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b25",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b25-l1", href: "https://www.dr-webstudio.com/es/our-services/website-migrations-or-rebuilds" },
-            { _type: "link", _key: "es-b25-l2", href: "https://www.dr-webstudio.com/es/our-services/landing-pages" },
-            { _type: "link", _key: "es-b25-l3", href: "https://www.dr-webstudio.com/es/our-services/e-commerce" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b25-s1", text: "La mayoría de los negocios locales que contactan al estudio caen en uno de tres grupos. Tienen un sitio viejo que necesita ", marks: [] },
-            { _type: "span", _key: "es-b25-s2", text: "una reconstrucción completa en una plataforma moderna", marks: ["es-b25-l1"] },
-            { _type: "span", _key: "es-b25-s3", text: "; no tienen sitio en absoluto y necesitan ", marks: [] },
-            { _type: "span", _key: "es-b25-s4", text: "una landing page enfocada", marks: ["es-b25-l2"] },
-            { _type: "span", _key: "es-b25-s5", text: " para empezar; o están listos para vender productos y servicios en línea y necesitan ", marks: [] },
-            { _type: "span", _key: "es-b25-s6", text: "una configuración de e-commerce real", marks: ["es-b25-l3"] },
-            { _type: "span", _key: "es-b25-s7", text: " con pagos, checkout e inventario. Cada ruta tiene su propio alcance y precio, y el cuestionario del estudio acota cuál encaja antes de que se escriba cualquier cotización.", marks: [] },
+            { _type: "span", _key: "es-b25-s1", text: "En el buceo en grupo, el tiempo real de fin de cualquier inmersión lo establece la primera persona en alcanzar un límite — ese es el buzo que ha usado más aire, o el que se acerca al NDL, o el que se está enfriando, o el que señala que ya tuvo suficiente. Por eso las parejas o amigos que bucean juntos a menudo terminan con aire ligeramente distinto restante en el bote: el buzo que se comió su aire más rápido terminó la inmersión para todos, y el buzo más eficiente todavía tiene 500 a 800 PSI restantes.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b26",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b26-s1", text: "El Tema Bilingüe Específicamente", marks: [] },
+            { _type: "span", _key: "es-b26-s1", text: "Esto es normal y esperado, no una falla de nadie. El plan de inmersión está construido alrededor del respirador menos eficiente del grupo para que nadie termine en una situación crítica de aire, que es exactamente la forma correcta de planear una inmersión de grupo.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b27",
-          style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b27-l1", href: "https://www.dr-webstudio.com/es/our-services/multilingual-and-international-websites" },
-          ],
+          style: "h2",
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b27-s1", text: "Cualquiera que opere un negocio turístico en Punta Cana eventualmente enfrenta la cuestión multilingüe. La \"solución\" por defecto que usan la mayoría de los operadores es copiar su contenido en Google Translate y pegar el resultado en el sitio, lo que produce un español que evidentemente no fue escrito por un humano y espanta a los clientes hispanohablantes. La alternativa correcta es ", marks: [] },
-            { _type: "span", _key: "es-b27-s2", text: "una configuración multilingüe real", marks: ["es-b27-l1"] },
-            { _type: "span", _key: "es-b27-s3", text: " donde cada pieza de contenido tiene versiones separadas, de calidad nativa en cada idioma, con estructuras de URL apropiadas, etiquetas hreflang para los motores de búsqueda y un cambio de idioma que realmente funciona. Esto es lo que tenemos, y es parte significativa de por qué nuestro tráfico de búsqueda en español convierte. DR Web Studio construye esto rutinariamente para clientes turísticos porque básicamente es requisito si quieres ambas mitades de la base de clientes.", marks: [] },
+            { _type: "span", _key: "es-b27-s1", text: "Cómo Extender tu Tiempo de Fondo", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b28",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b28-s1", text: "Cómo es el Proceso", marks: [] },
+            { _type: "span", _key: "es-b28-s1", text: "La forma más confiable de obtener inmersiones más largas es mejorar tu consumo de aire — lo que principalmente significa practicar patrones de respiración lentos y calmados y sentirte lo bastante cómodo bajo el agua como para no estar peleando con el ambiente. Los buzos nuevos a menudo respiran demasiado rápido o demasiado superficialmente por los nervios, y se quedan sin aire 15 minutos antes de su compañero más experimentado. Respiraciones profundas y lentas (por la boca, salir lento, sin retener el aire) son más eficientes que la respiración rápida y superficial, fisiológicamente y para la flotabilidad.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b29",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b29-l1", href: "https://www.dr-webstudio.com/es/project-planner" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b29-s1", text: "El punto de partida es ", marks: [] },
-            { _type: "span", _key: "es-b29-s2", text: "un cuestionario corto en la página de planificación de proyecto", marks: ["es-b29-l1"] },
-            { _type: "span", _key: "es-b29-s3", text: " — preguntas básicas sobre qué tipo de negocio operas, qué tienes en línea actualmente, qué querrías que hiciera un sitio nuevo y un calendario aproximado. Desde ahí DR Web Studio revisa las respuestas y envía una cotización fija (para proyectos que encajan en uno de los paquetes estándar) o agenda una llamada corta para definir un proyecto a medida. No hay una reunión de ventas con alta presión; el enfoque cuestionario-primero existe para que ambos lados puedan decidir rápido si el proyecto encaja antes de que nadie invierta tiempo en una conversación larga.", marks: [] },
+            { _type: "span", _key: "es-b29-s1", text: "El control de flotabilidad es la otra gran palanca. Un buzo que está constantemente compensando por sobre-inflación o sub-inflación de su BCD está haciendo más trabajo físico que un buzo que está neutralmente flotante y planeando. El tiempo invertido en dominar la flotabilidad se paga en cada inmersión subsiguiente en tiempos de fondo más largos. Por eso la especialidad PADI Peak Performance Buoyancy es una de las especialidades más útiles para mejorar tu buceo en general, no solo para fotografía.", marks: [] },
           ],
         },
         {
@@ -738,7 +708,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b30-s1", text: "Una vez acordado el proyecto, el tiempo típico es de dos a cuatro semanas para un paquete Starter o Business, cuatro a ocho semanas para E-commerce o builds a medida, y más para proyectos con integraciones complejas o migraciones grandes de contenido. Los pagos normalmente se dividen entre un depósito inicial y un saldo de día de lanzamiento, con planes de pago disponibles para proyectos a medida más grandes.", marks: [] },
+            { _type: "span", _key: "es-b30-s1", text: "El fitness físico importa al margen. Los buzos que están cardiovascularmente en forma tienen un consumo de oxígeno en reposo más bajo y un consumo de aire más bajo durante actividad subacuática moderada. Este no es un efecto enorme para el buceo casual de arrecife, pero es real en inmersiones largas.", marks: [] },
           ],
         },
         {
@@ -747,20 +717,16 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b31-s1", text: "Qué Pasa Después del Lanzamiento", marks: [] },
+            { _type: "span", _key: "es-b31-s1", text: "Qué Pasa si te Quedas con Poco Aire", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b32",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b32-l1", href: "https://www.dr-webstudio.com/es/our-services/ongoing-website-maintenance-and-support" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b32-s1", text: "Los paquetes estándar incluyen 30 a 60 días de soporte post-lanzamiento, lo que cubre arreglar cualquier bug que aparezca con el tráfico inicial, pequeños ajustes de contenido y responder preguntas del equipo aprendiendo a usar el CMS. Después de esa ventana, ", marks: [] },
-            { _type: "span", _key: "es-b32-s2", text: "el mantenimiento y soporte continuo", marks: ["es-b32-l1"] },
-            { _type: "span", _key: "es-b32-s3", text: " está disponible como una cuota mensual fija para negocios que no quieren pensar en actualizaciones, respaldos ni parches de seguridad por su cuenta. También es cuando se suelen programar las adiciones de contenido (nuevas publicaciones de blog, nuevos sitios de buceo, nuevos cursos, nuevas páginas de producto). El arreglo de mantenimiento es opcional — varios clientes operan sus sitios después del lanzamiento usando el CMS — pero está ahí para negocios que no tienen a alguien internamente que quiera manejar ese trabajo.", marks: [] },
+            { _type: "span", _key: "es-b32-s1", text: "La práctica estándar es señalar al guía cuando tu aire llegue a unos 100 a 70 bar (aproximadamente 1500 a 1000 PSI), y empezar el ascenso cuando el líder del grupo señale o cuando llegues a aproximadamente 50 bar (700 PSI). Nadie bucea su tanque hasta vaciarlo — la reserva es margen deliberado para el ascenso y la parada de seguridad más la respuesta de emergencia si algo sale mal. Si te quedas con menos que eso a mitad de una inmersión, la respuesta correcta es señalar al guía, compartir aire con la segunda etapa alternativa del guía si es necesario, y ascender con seguridad con el grupo. Esta es una de las habilidades específicas cubiertas en el entrenamiento Open Water y revisadas en cada briefing de inmersión.", marks: [] },
           ],
         },
         {
@@ -769,7 +735,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b33-s1", text: "Cuándo DR Web Studio No es la Opción Correcta", marks: [] },
+            { _type: "span", _key: "es-b33-s1", text: "¿Cuánto Dura el Día Completo en la Tienda?", marks: [] },
           ],
         },
         {
@@ -778,7 +744,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b34-s1", text: "Una recomendación debería mencionar los casos donde no es la decisión correcta, si no la recomendación queda incompleta. Si tu negocio necesita un equipo empresarial de quince personas con soporte telefónico 24/7, un account manager dedicado y un contrato plurianual con SLAs, lo que quieres es una agencia más grande, no una boutique enfocada. Si tienes una necesidad tecnológica muy rara o muy especializada (cumplimiento normativo específico de industria, integraciones médicas o financieras reguladas, desarrollo nativo de app móvil desde cero), confirma el encaje en la llamada de descubrimiento antes de firmar — a veces la respuesta correcta es derivarte a otro lado. Y si tu presupuesto es genuinamente cero y solo necesitas algo en línea la semana entrante, la respuesta honesta es que Wix o Squarespace te ponen en línea más rápido, y el valor de DR Web Studio aparece después, cuando estás listo para invertir en algo que convierta visitantes en clientes. El estudio es más útil para el largo medio — negocios pasada la fase de supervivencia, todavía no en la fase de procurement empresarial, que necesitan que su sitio realmente genere dinero en lugar de simplemente existir.", marks: [] },
+            { _type: "span", _key: "es-b34-s1", text: "La experiencia completa de dos tanques toma más tiempo que la suma de las dos inmersiones. Forma típica: recogida o llegada a la tienda alrededor de las 8:30 AM, montaje de equipo y briefing 30 minutos, viaje en bote al primer sitio 20 a 30 minutos, primera inmersión 45 minutos, intervalo de superficie 45 a 60 minutos, traslado al segundo sitio (si es distinto) 10 a 20 minutos, segunda inmersión 45 minutos, viaje en bote de regreso 20 a 30 minutos, enjuague de equipo y debrief 15 minutos. En total, estás de regreso en tierra alrededor de 1:00 a 2:00 PM. Tiempo total en la operación es de unas 5 horas para algo así como 90 minutos de tiempo real bajo el agua.", marks: [] },
           ],
         },
         {
@@ -787,7 +753,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b35-s1", text: "Cómo Contactarlos", marks: [] },
+            { _type: "span", _key: "es-b35-s1", text: "En Resumen", marks: [] },
           ],
         },
         {
@@ -795,21 +761,15 @@ const posts = [
           _key: "es-b36",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "es-b36-l1", href: "https://dr-webstudio.com/" },
-            { _type: "link", _key: "es-b36-l2", href: "https://www.dr-webstudio.com/es/contact" },
-            { _type: "link", _key: "es-b36-l3", href: "https://www.dr-webstudio.com/es/portfolio" },
-            { _type: "link", _key: "es-b36-l4", href: "https://wa.me/18297239338" },
+            { _type: "link", _key: "es-b36-l1", href: "https://www.grandbay-puntacana.com/es/courses" },
+            { _type: "link", _key: "es-b36-l2", href: "https://wa.me/18297239338" },
           ],
           children: [
-            { _type: "span", _key: "es-b36-s1", text: "El sitio completo del estudio está en ", marks: [] },
-            { _type: "span", _key: "es-b36-s2", text: "dr-webstudio.com", marks: ["es-b36-l1"] },
-            { _type: "span", _key: "es-b36-s3", text: " con páginas detalladas de servicios, el portafolio público y el cuestionario con el que arrancan la mayoría de los proyectos. Para contacto directo, ", marks: [] },
-            { _type: "span", _key: "es-b36-s4", text: "la página de contacto", marks: ["es-b36-l2"] },
-            { _type: "span", _key: "es-b36-s5", text: " tiene correo y el formulario estándar de cotización. Si prefieres ver el trabajo primero, ", marks: [] },
-            { _type: "span", _key: "es-b36-s6", text: "el portafolio", marks: ["es-b36-l3"] },
-            { _type: "span", _key: "es-b36-s7", text: " recorre varios proyectos recientes de Punta Cana con un poco de contexto sobre lo que cada uno necesitaba. Y si prefieres simplemente preguntarnos sobre nuestra propia experiencia trabajando con DR Web Studio, el canal más rápido es ", marks: [] },
-            { _type: "span", _key: "es-b36-s8", text: "WhatsApp", marks: ["es-b36-l4"] },
-            { _type: "span", _key: "es-b36-s9", text: " — con gusto compartimos detalles de cuánto costó el build, cuánto tomó y qué haríamos distinto si empezáramos de nuevo hoy.", marks: [] },
+            { _type: "span", _key: "es-b36-s1", text: "Para buzos certificados haciendo días estándar de 2 tanques en los arrecifes de Punta Cana, espera unos 45 minutos por inmersión con una hora entre inmersiones en el bote. Para primerizos haciendo una experiencia Discover Scuba Diving, espera unos 30 minutos bajo el agua en tu inmersión introductoria. Para cursos de certificación, la duración varía pero promedia entre 30 y 45 minutos por inmersión a lo largo del entrenamiento. Profundidad, consumo de aire y comodidad térmica mueven estos números. Si tienes preguntas específicas sobre cómo se ven las inmersiones para tu ", marks: [] },
+            { _type: "span", _key: "es-b36-s2", text: "curso o viaje", marks: ["es-b36-l1"] },
+            { _type: "span", _key: "es-b36-s3", text: ", escríbenos por ", marks: [] },
+            { _type: "span", _key: "es-b36-s4", text: "WhatsApp", marks: ["es-b36-l2"] },
+            { _type: "span", _key: "es-b36-s5", text: " con tu nivel de certificación y fechas y te damos una respuesta específica para tu itinerario.", marks: [] },
           ],
         },
       ],
@@ -819,35 +779,35 @@ const posts = [
       _type: "seo",
       meta: {
         en: {
-          title: "DR Web Studio: The Punta Cana Web Studio Behind Our Website (2026)",
+          title: "How Long Does a Typical Scuba Dive Last in Punta Cana? (2026)",
           description:
-            "DR Web Studio is the local Punta Cana web design studio that built our site. Modern, fast, bilingual websites with transparent pricing — Starter $400, Business $800, E-commerce $900.",
-          keywords: ["dr web studio", "punta cana web design", "dominican republic web developer", "small business website punta cana", "tourism website dominican republic", "next.js dominican republic"],
+            "Certified 2-tank dives in Punta Cana run about 45 minutes each. DSD is around 30 minutes. Depth, air consumption, and thermal comfort all affect dive length — here's the breakdown.",
+          keywords: ["scuba dive length punta cana", "how long dive lasts", "dive time punta cana", "SAC rate diving", "dive duration"],
         },
         es: {
-          title: "DR Web Studio: El Estudio de Diseño Web de Punta Cana Detrás de Nuestra Página (2026)",
+          title: "¿Cuánto Dura una Inmersión en Punta Cana? Guía Práctica (2026)",
           description:
-            "DR Web Studio es el estudio local de diseño web de Punta Cana que construyó nuestro sitio. Webs modernas, rápidas y bilingües con precios transparentes — Starter $400, Business $800, E-commerce $900.",
-          keywords: ["dr web studio", "diseño web punta cana", "desarrollo web republica dominicana", "pagina web pequeño negocio punta cana", "web turismo republica dominicana"],
+            "Las inmersiones certificadas de 2 tanques en Punta Cana duran unos 45 minutos cada una. El DSD dura unos 30 minutos. Profundidad, consumo de aire y comodidad térmica afectan la duración.",
+          keywords: ["duracion inmersion punta cana", "cuanto dura buceo", "tiempo inmersion punta cana", "tasa SAC buceo"],
         },
       },
       openGraph: {
         en: {
-          title: "DR Web Studio: The Punta Cana Web Studio Behind Our Website",
-          description: "A close look at the local Punta Cana studio that built our site — services, pricing, who else works with them, and why Punta Cana businesses keep switching to it.",
+          title: "How Long Does a Typical Scuba Dive Last in Punta Cana?",
+          description: "Certified dives ~45 min. DSD ~30 min. What determines dive length, how depth affects it, and how the full day at Grand Bay looks in practice.",
         },
         es: {
-          title: "DR Web Studio: El Estudio de Diseño Web de Punta Cana Detrás de Nuestra Página",
-          description: "Una mirada cercana al estudio local de Punta Cana que construyó nuestro sitio — servicios, precios, quién más trabaja con ellos y por qué los negocios de Punta Cana se siguen cambiando.",
+          title: "¿Cuánto Dura una Inmersión Típica en Punta Cana?",
+          description: "Inmersiones certificadas ~45 min. DSD ~30 min. Qué determina la duración, cómo la profundidad la afecta y cómo se ve el día completo en Grand Bay.",
         },
       },
       structuredData: {
         en: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: "Meet DR Web Studio: The Local Punta Cana Team That Built Our Website",
-          description: "A profile of DR Web Studio, the Punta Cana web design and development studio that built the Grand Bay of the Sea website. Covers the studio's services, the modern Next.js + Sanity tech stack, transparent pricing ($400 Starter, $800 Business, $900 E-commerce), client list across local tourism and event businesses, why DR pricing is lower than US/EU equivalents, the questionnaire-first project process, ongoing maintenance options, and the broader case for why local Punta Cana businesses benefit from a properly built website.",
-          datePublished: "2026-06-14",
+          headline: "How Long Does a Typical Scuba Dive Last in Punta Cana?",
+          description: "A practical guide to scuba dive duration in Punta Cana. Standard certified 2-tank dives run about 45 minutes each; Discover Scuba Diving is around 30 minutes; the Shark Point dive at 26 meters is closer to 30-35 minutes. Covers what determines dive length (depth, air consumption/SAC rate, water temperature, exertion), no-decompression limits by depth, the difference between bottom time and total dive time, how course dives vary, why group dives end when the first person hits a limit, and how to extend bottom time through improved air consumption and buoyancy control.",
+          datePublished: "2026-07-04",
           inLanguage: "en",
           author: { "@type": "Organization", name: "Grand Bay of the Sea" },
           publisher: {
@@ -857,15 +817,15 @@ const posts = [
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://www.grandbay-puntacana.com/blog/local-businesses/dr-web-studio-punta-cana-website-design",
+            "@id": "https://www.grandbay-puntacana.com/blog/diving-tips/how-long-scuba-dive-lasts-punta-cana",
           },
         }),
         es: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: "Conoce a DR Web Studio: El Equipo Local de Punta Cana Que Construyó Nuestra Web",
-          description: "Un perfil de DR Web Studio, el estudio de diseño y desarrollo web de Punta Cana que construyó la página de Grand Bay of the Sea. Cubre los servicios del estudio, el stack técnico moderno Next.js + Sanity, los precios transparentes ($400 Starter, $800 Business, $900 E-commerce), la lista de clientes entre negocios locales de turismo y eventos, por qué el precio dominicano es menor que el equivalente en EE. UU. o la UE, el proceso de proyecto cuestionario-primero, las opciones de mantenimiento continuo, y el argumento más amplio de por qué los negocios locales de Punta Cana se benefician de una web bien construida.",
-          datePublished: "2026-06-14",
+          headline: "¿Cuánto Dura una Inmersión Típica en Punta Cana?",
+          description: "Una guía práctica sobre la duración de las inmersiones en Punta Cana. Las inmersiones estándar de 2 tanques para certificados duran unos 45 minutos cada una; el Discover Scuba Diving dura unos 30 minutos; la inmersión de Shark Point a 26 metros está más cerca de 30-35 minutos. Cubre qué determina la duración (profundidad, consumo de aire/tasa SAC, temperatura del agua, esfuerzo), los límites de no descompresión por profundidad, la diferencia entre tiempo de fondo y tiempo total, cómo varían las inmersiones de cursos, por qué las inmersiones en grupo terminan cuando la primera persona llega a un límite, y cómo extender el tiempo de fondo mediante mejora del consumo de aire y control de flotabilidad.",
+          datePublished: "2026-07-04",
           inLanguage: "es",
           author: { "@type": "Organization", name: "Grand Bay of the Sea" },
           publisher: {
@@ -875,7 +835,7 @@ const posts = [
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://www.grandbay-puntacana.com/es/blog/local-businesses/dr-web-studio-punta-cana-website-design",
+            "@id": "https://www.grandbay-puntacana.com/es/blog/diving-tips/how-long-scuba-dive-lasts-punta-cana",
           },
         }),
       },

@@ -26,7 +26,7 @@ export async function generateMetadata({
     return {}
   }
 
-  const alternates = getHreflangAlternates("scuba-diving-punta-cana", locale)
+  const alternates = getHreflangAlternates("", locale)
 
   return {
     title: pageSeo.seo.meta[locale].title,
@@ -40,7 +40,7 @@ export async function generateMetadata({
       url: alternates.canonical,
     },
     robots: {
-      index: !pageSeo.seo.noIndex,
+      index: false,
       follow: !pageSeo.seo.noFollow,
     },
     alternates,
