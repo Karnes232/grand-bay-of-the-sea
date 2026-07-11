@@ -33,21 +33,21 @@ const posts = [
 
     title: {
       _type: "localizedString",
-      en: "🎒 Do I Need to Bring My Own Scuba Gear to Punta Cana?",
-      es: "🎒 ¿Necesito Traer Mi Propio Equipo de Buceo a Punta Cana?",
+      en: "🎯 What's Included in a Punta Cana Dive Package? A Transparent Breakdown",
+      es: "🎯 ¿Qué Incluye un Paquete de Buceo en Punta Cana? Un Desglose Transparente",
     },
 
     slug: {
       _type: "slug",
-      current: "bring-own-scuba-gear-punta-cana",
+      current: "whats-included-punta-cana-dive-package",
     },
 
     publishDate: "2026-07-04",
 
     description: {
       _type: "localizedText",
-      en: "Short answer: no. Full rental gear is provided. Here's what's actually included, what you should still bring, and when traveling with your own gear is worth the luggage weight.",
-      es: "Respuesta corta: no. Se proporciona equipo completo de renta. Aquí lo que realmente está incluido, qué deberías traer de todas formas y cuándo vale la pena viajar con tu propio equipo.",
+      en: "What actually comes with a Punta Cana dive booking — gear, tanks, guide, boat, transport — and what usually isn't included. Full pricing breakdown for Grand Bay's local dives, shark dive, DSD, and Catalina trips.",
+      es: "Qué viene realmente incluido en una reserva de buceo en Punta Cana — equipo, tanques, guía, bote, transporte — y qué no suele estar incluido. Desglose completo de precios para las inmersiones locales, buceo con tiburones, DSD y salidas a Catalina de Grand Bay.",
     },
 
     blogCategory: {
@@ -66,7 +66,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b1-s1", text: "Short answer: no, you don't need to bring your own scuba gear to Punta Cana. Full rental equipment is included with every course and guided dive at Grand Bay of the Sea, and the same is true at most reputable dive centers in the area. That said, some divers still choose to travel with their own gear for reasons ranging from fit preferences to sentimental attachment to a mask they've owned for a decade. This post covers what's actually included in the rental, what you should still pack regardless of the operator's rental policy, when bringing your own is genuinely worth the luggage weight, and when it's just an unnecessary hassle.", marks: [] },
+            { _type: "span", _key: "en-b1-s1", text: "\"What's included?\" is one of the first questions we get when someone starts pricing dive trips in Punta Cana. It's a smart question because dive package inclusions vary a lot between operators — one shop's advertised price might cover everything you need for the day, while another's covers only the tanks and expects you to pay separately for gear, transportation, taxes, and gratuities. Comparing prices without knowing what's inside them leads to bad decisions. This post walks through what's standard in the Punta Cana market, what's typically included at Grand Bay specifically, what's usually not, and how to compare packages so you're actually looking at apples to apples.", marks: [] },
           ],
         },
         {
@@ -75,7 +75,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b2-s1", text: "What's Included in the Rental", marks: [] },
+            { _type: "span", _key: "en-b2-s1", text: "What's Standard Across Reputable Operators", marks: [] },
           ],
         },
         {
@@ -83,12 +83,12 @@ const posts = [
           _key: "en-b3",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "en-b3-l1", href: "https://www.grandbay-puntacana.com/courses" },
+            { _type: "link", _key: "en-b3-l1", href: "https://www.padi.com/" },
           ],
           children: [
-            { _type: "span", _key: "en-b3-s1", text: "Full rental gear at Grand Bay includes everything you need to get in the water on ", marks: [] },
-            { _type: "span", _key: "en-b3-s2", text: "any course or guided dive", marks: ["en-b3-l1"] },
-            { _type: "span", _key: "en-b3-s3", text: ": buoyancy compensator (BCD), regulator with alternate air source, submersible pressure gauge (SPG) or dive computer, tank (usually 12-liter aluminum), weights and weight belt, wetsuit (3mm shorty or full 3mm based on season), mask, snorkel, and fins. Everything is checked and serviced regularly. You show up in a swimsuit with your certification card and we handle the rest.", marks: [] },
+            { _type: "span", _key: "en-b3-s1", text: "At any ", marks: [] },
+            { _type: "span", _key: "en-b3-s2", text: "PADI-certified operator", marks: ["en-b3-l1"] },
+            { _type: "span", _key: "en-b3-s3", text: " in Punta Cana, a standard 2-tank dive package includes the tanks themselves (usually 12-liter aluminum), weights and weight belt, buoyancy compensator device (BCD), regulator with alternate air source, submersible pressure gauge (SPG), wetsuit appropriate for the season, mask, snorkel, and fins. The guide is included. The boat is included. So are basic surface refreshments — usually water and fruit between dives. That's the baseline. If an operator's advertised price doesn't include these fundamentals, that's a warning sign about what corners they might be cutting elsewhere.", marks: [] },
           ],
         },
         {
@@ -97,7 +97,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b4-s1", text: "For sizing, we ask about your height and weight during booking so we can pre-select gear that will fit before you arrive. This matters most for BCDs (which come in XS through XXL) and wetsuits (same sizing range), less so for regulators and masks, which have some universal adjustment. Adjustments happen at the shop before you head out, so if something doesn't fit right, we swap it before it becomes a problem on the boat.", marks: [] },
+            { _type: "span", _key: "en-b4-s1", text: "Hotel pickup is a variable — many operators include it within a set radius (typically the main Punta Cana and Bávaro strip) but charge extra for pickups from more distant hotels in Uvero Alto or Cap Cana. Marine park fees (for sites within protected areas like Parque Nacional del Este near Catalina) are sometimes included in the advertised price and sometimes separate. Always ask specifically.", marks: [] },
           ],
         },
         {
@@ -106,16 +106,20 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b5-s1", text: "What You Should Bring Regardless", marks: [] },
+            { _type: "span", _key: "en-b5-s1", text: "What's Included at Grand Bay Specifically", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b6",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b6-l1", href: "https://www.grandbay-puntacana.com/sites" },
+          ],
           children: [
-            { _type: "span", _key: "en-b6-s1", text: "There's a short list of things you should always bring on a dive trip regardless of whether you're renting or using your own gear. Your certification card (C-card) is essential for anything beyond a Discover Scuba Diving experience — the plastic version, a photo of it on your phone, or a printout all work. Your logbook is useful but not strictly required. A dive computer is included in the rental if you don't own one, but if you do own one, bring it — it has your personal history and settings.", marks: [] },
+            { _type: "span", _key: "en-b6-s1", text: "Every booking at Grand Bay includes full rental gear (BCD, regulator, tank, weights, wetsuit, mask, snorkel, fins), the boat and captain, a certified guide, hotel pickup and drop-off from anywhere in the Punta Cana or Bávaro strip, water and light snacks between dives, and access to our ", marks: [] },
+            { _type: "span", _key: "en-b6-s2", text: "dive site list", marks: ["en-b6-l1"] },
+            { _type: "span", _key: "en-b6-s3", text: " with site selection based on your certification and the daily conditions. That's what you're paying for on our advertised price — no additional charges show up on the day beyond your remaining balance and any extras you choose to add.", marks: [] },
           ],
         },
         {
@@ -124,7 +128,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b7-s1", text: "Beyond that: a swimsuit (or two — one for morning, one dry for the ride home), a rashguard for sun and light thermal protection, a lightweight towel that dries fast, reef-safe mineral sunscreen (chemical sunscreens damage coral and get you side-eyed by dive guides), a refillable water bottle, and cash for the balance of your dive fee, tipping the boat crew, and any lunch or drinks. Cards work at the shop with a small processing fee but cash is more efficient day-of.", marks: [] },
+            { _type: "span", _key: "en-b7-s1", text: "The one piece of gear we don't include is a dive computer — this is one of the few items we ask divers to bring if they own one, or to accept that the guide will manage depth and time for the group. Most Caribbean recreational dive operators handle it the same way. If you own a computer, definitely bring it. If you don't, the guide's dive plan and profile management cover the same function during a guided dive.", marks: [] },
           ],
         },
         {
@@ -133,7 +137,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b8-s1", text: "What's Worth Bringing If You Own It", marks: [] },
+            { _type: "span", _key: "en-b8-s1", text: "The Standard Local Dive Pricing", marks: [] },
           ],
         },
         {
@@ -142,8 +146,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b9-s1", text: "Your own mask. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b9-s2", text: "This is the single piece of gear most worth bringing if you own one that fits well. Mask fit is highly personal — face shapes vary a lot, and a mask that seals perfectly on you might leak constantly on someone else. If you have a mask you know works, bring it. It weighs almost nothing, packs flat, and eliminates one variable that can ruin a dive if the rental doesn't fit your face well. Add a defog solution to the checked-luggage bag while you're at it.", marks: [] },
+            { _type: "span", _key: "en-b9-s1", text: "Local 2-tank dives — the standard morning trip to nearby reefs and wrecks in Punta Cana — are $135 per certified diver for a single day. Multi-day divers pay $120 per day starting from their second day of diving with us. That drop reflects real savings on our end (gear stays set up between days, briefing overhead is lower once you know how we work, and repeat divers move faster) that we pass through rather than pocket. If you're planning three or more days of local diving during your trip, this discount adds up.", marks: [] },
           ],
         },
         {
@@ -152,28 +155,29 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b10-s1", text: "Your own dive computer. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b10-s2", text: "If you own one, definitely bring it. Your computer has been tracking your dive history — surface intervals, previous nitrogen loads, personal preferences — and continuing that record is genuinely useful. Rental computers work fine but start each dive from scratch, which means the algorithm treats you as a first-day diver every time. That's conservative, which is safe, but not as tailored as your own device.", marks: [] },
+            { _type: "span", _key: "en-b10-s1", text: "The 2-tank price covers both dives, all the gear, the boat, the guide, and hotel pickup within the standard zone. Two dives at 40 to 50 minutes each with a surface interval in between; typical total time from pickup to drop-off is around 5 hours.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b11",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b11-s1", text: "Your own wetsuit (if you're thermally sensitive). ", marks: ["strong"] },
-            { _type: "span", _key: "en-b11-s2", text: "Rental wetsuits fit a broad range of body types acceptably but few of them fit perfectly. If you've dialed in a specific brand and fit that works for your body, bringing it means you'll be comfortable from dive one instead of adapting to something slightly off. This matters more in December through March when water is coolest and thermal fit affects comfort more directly.", marks: [] },
+            { _type: "span", _key: "en-b11-s1", text: "Shark Dive Pricing", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b12",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b12-l1", href: "https://www.grandbay-puntacana.com/shark-dive-punta-cana" },
+          ],
           children: [
-            { _type: "span", _key: "en-b12-s1", text: "Your own fins. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b12-s2", text: "Somewhat worth bringing if you're serious about your fin choice. Fin efficiency, comfort, and kick style differ a lot between models. If you've dialed in a specific style (split fins, jet fins, full-foot fins for warm water), bringing them is worth it. If you're neutral on fins, rental is fine. Fins take up meaningful luggage space, which is the main downside.", marks: [] },
+            { _type: "span", _key: "en-b12-s1", text: "The ", marks: [] },
+            { _type: "span", _key: "en-b12-s2", text: "Shark Point dive", marks: ["en-b12-l1"] },
+            { _type: "span", _key: "en-b12-s3", text: " at 26 meters is priced at $190 per Advanced Open Water certified diver. This is a specialty dive requiring the Advanced cert because of the depth. The price includes the same standard inclusions (gear, boat, guide, pickup) plus the specific site fee and logistics of running the deeper dive. Divers without Advanced cert can't book Shark Point directly — but if you're doing your Advanced Open Water course with us, the Shark Point dive is often included as one of your Adventure Dives during the certification.", marks: [] },
           ],
         },
         {
@@ -182,47 +186,55 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b13-s1", text: "What's Not Worth Bringing", marks: [] },
+            { _type: "span", _key: "en-b13-s1", text: "Discover Scuba Diving (DSD) Pricing", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b14",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b14-l1", href: "https://www.grandbay-puntacana.com/courses/discover" },
+          ],
           children: [
-            { _type: "span", _key: "en-b14-s1", text: "BCD. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b14-s2", text: "Unless you're doing serious technical diving or have very specific configuration needs, traveling with a BCD is rarely worth it. BCDs are heavy (typically 2 to 4 kg), bulky in luggage, and rental BCDs at reputable shops are perfectly serviceable for recreational diving. The weight in your checked luggage is often the deciding factor — a BCD alone can put you over airline limits and cost more in overweight fees than a week of rental would.", marks: [] },
+            { _type: "span", _key: "en-b14-s1", text: "For first-time divers with no certification, ", marks: [] },
+            { _type: "span", _key: "en-b14-s2", text: "Discover Scuba Diving is $100", marks: ["en-b14-l1"] },
+            { _type: "span", _key: "en-b14-s3", text: ". This includes a briefing on basic scuba theory, a confined water introduction to breathing underwater and essential safety skills, and one guided open-water dive to a maximum of 12 meters. All gear, guide, boat, and hotel pickup are included. The typical DSD starts around 1:30 PM (after our morning trip has returned), so it doesn't require a full day. Total commitment from pickup to drop-off is around 3 to 4 hours.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b15",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b15-s1", text: "Regulator. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b15-s2", text: "Same logic. A regulator is precision equipment, expensive to replace if damaged in transit, and heavy for its size. Reputable rental regulators are serviced regularly and function as well as personal gear for recreational depths. Bringing your own is a personal preference that comes with a real risk of TSA or baggage handling damage. If you do bring yours, hand-carry it in your carry-on rather than checking it.", marks: [] },
+            { _type: "span", _key: "en-b15-s1", text: "Catalina and Bayahibe Trip Pricing", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b16",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b16-l1", href: "https://www.grandbay-puntacana.com/trips/catalina" },
+          ],
           children: [
-            { _type: "span", _key: "en-b16-s1", text: "Tank. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b16-s2", text: "This one shouldn't need saying, but occasionally we get asked. Airline regulations require tanks to be shipped completely empty with valve open, and even then, most divers find the logistics not worth the payoff. Rental tanks are perfectly adequate; skip this.", marks: [] },
+            { _type: "span", _key: "en-b16-s1", text: "The ", marks: [] },
+            { _type: "span", _key: "en-b16-s2", text: "Catalina Island diving trip", marks: ["en-b16-l1"] },
+            { _type: "span", _key: "en-b16-s3", text: " is a full-day excursion at $220 for divers, including lunch and drinks on the boat, park entry fees, all gear, guide, boat, and extended pickup from further hotel zones. Snorkeling on the same trip is $100. Catalina Island sits inside Parque Nacional del Este and the day involves more travel time than a local dive (leaving around 7 AM rather than 8:30) so the pricing reflects the longer day and additional inclusions.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b17",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b17-l1", href: "https://www.grandbay-puntacana.com/trips/bayahibe" },
+          ],
           children: [
-            { _type: "span", _key: "en-b17-s1", text: "Weights. ", marks: ["strong"] },
-            { _type: "span", _key: "en-b17-s2", text: "Universally not worth bringing. Weights are the heaviest item per volume you could pack, they're provided everywhere, and airline weight limits make them impractical.", marks: [] },
+            { _type: "span", _key: "en-b17-s1", text: "The ", marks: [] },
+            { _type: "span", _key: "en-b17-s2", text: "Bayahibe diving trip", marks: ["en-b17-l1"] },
+            { _type: "span", _key: "en-b17-s3", text: " is $180 per diver. This is a half-day trip so lunch isn't included, but everything else is — gear, guide, boat, transport, park entry. Bayahibe's dive sites offer different terrain than Punta Cana's local reefs, including several notable wrecks, which is why it's popular as a variety day for divers spending a week with us.", marks: [] },
           ],
         },
         {
@@ -231,16 +243,26 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b18-s1", text: "Travel Considerations for Personal Gear", marks: [] },
+            { _type: "span", _key: "en-b18-s1", text: "Course Package Pricing", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b19",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b19-l1", href: "https://www.grandbay-puntacana.com/courses/scubadiver" },
+            { _type: "link", _key: "en-b19-l2", href: "https://www.grandbay-puntacana.com/courses/openwater" },
+            { _type: "link", _key: "en-b19-l3", href: "https://www.grandbay-puntacana.com/courses/advanced" },
+          ],
           children: [
-            { _type: "span", _key: "en-b19-s1", text: "If you decide to bring some or all of your own gear, a few practical notes. Airline checked luggage weight limits vary but 23 kg (50 lbs) is common on transatlantic flights. A full set of dive gear can easily exceed that, so know your specific airline's rules and consider a second checked bag if needed (usually cheaper than overweight fees). Bring a padded gear bag rather than throwing gear loose into a suitcase — baggage handling is not gentle.", marks: [] },
+            { _type: "span", _key: "en-b19-s1", text: "For PADI certifications, ", marks: [] },
+            { _type: "span", _key: "en-b19-s2", text: "PADI Scuba Diver", marks: ["en-b19-l1"] },
+            { _type: "span", _key: "en-b19-s3", text: " (a shorter entry-level cert) is $399, ", marks: [] },
+            { _type: "span", _key: "en-b19-s4", text: "PADI Open Water Diver", marks: ["en-b19-l2"] },
+            { _type: "span", _key: "en-b19-s5", text: " (the full entry-level lifetime cert) is $499, and ", marks: [] },
+            { _type: "span", _key: "en-b19-s6", text: "PADI Advanced Open Water Diver", marks: ["en-b19-l3"] },
+            { _type: "span", _key: "en-b19-s7", text: " is $449. Each course price covers all instruction time, learning materials, all pool and open-water training dives, use of gear during training, and the PADI certification fee itself once you've completed the course. What's not included in course pricing is any additional recreational diving before or after the course (that gets priced at the regular 2-tank rate).", marks: [] },
           ],
         },
         {
@@ -249,25 +271,25 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b20-s1", text: "For TSA and security, dive gear generally scans fine but occasionally triggers manual inspection. Regulators, dive computers, and cameras are the most commonly flagged items. Allow extra time at security, keep dive gear in easily-openable bags, and if you're traveling with a hard-shell dive computer, know that TSA sometimes asks to power it on to verify it's not a threat. Photos of gear pre-trip are useful for insurance claims if anything gets damaged in transit.", marks: [] },
+            { _type: "span", _key: "en-b20-s1", text: "Course pricing is a package for a reason — the training days include multiple dives and considerable instructor time. Comparing course prices per individual dive misses the point; you're paying for a lifetime certification and the training that produces safe, competent divers, not just for the tank fills.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b21",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b21-s1", text: "Insurance for dive gear is worth thinking about if you're bringing anything valuable. Standard travel insurance often excludes dive equipment or has low sub-limits; specialized dive insurance from DAN (Divers Alert Network) covers both dive-related medical and equipment for reasonable annual rates. If you're checking a $2,000 regulator and computer setup, an $80 annual DAN membership pays for itself the first time anything happens.", marks: [] },
+            { _type: "span", _key: "en-b21-s1", text: "What's Not Included (And Sometimes Worth Adding)", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b22",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b22-s1", text: "Quality of Rental Gear at Grand Bay", marks: [] },
+            { _type: "span", _key: "en-b22-s1", text: "A few things that don't come with a standard Punta Cana dive package but that some divers add on. Nitrox (enriched air) can be requested for certified nitrox divers, at a small per-tank premium. Underwater photography rental — cameras or GoPros with housing — isn't standard, though we can point you at rental options if you don't have your own. Alcoholic drinks aren't included on any dive day; alcohol is deliberately kept out of dive days because of its physiological effects and DCS risk factors. Distant hotel pickups (Uvero Alto, Cap Cana, hotels further than the standard zone) carry an extra transport charge of $50 to $70 depending on distance.", marks: [] },
           ],
         },
         {
@@ -276,25 +298,25 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b23-s1", text: "A fair question: how good is the rental gear, actually? Every dive shop makes claims about their equipment, and quality varies significantly across the Punta Cana market. Our BCDs are name-brand recreational BCDs (Cressi, Scubapro, Mares depending on the model), regulators are serviced annually per manufacturer specs, computers are current-generation Suunto or similar, and wetsuits are replaced regularly as they wear. The dive industry moves toward better rental fleets than it used to — a well-maintained modern rental setup is genuinely comparable to personal gear for the recreational depths we dive.", marks: [] },
+            { _type: "span", _key: "en-b23-s1", text: "Gratuities for the boat crew and guide are appreciated but never mandatory — Dominican norms suggest $5 to $10 per diver per day for the guide and $3 to $5 per diver per day for the boat crew if you're happy with the service. These aren't required and no reputable operator will pressure you.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b24",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b24-s1", text: "If you're renting anywhere in Punta Cana, a good habit is to inspect your rental gear on day one before you get to the boat. Check that the BCD inflator works both ways (inflate and deflate). Check that both second stages of the regulator produce air. Check the SPG or computer for accurate reading. Check that the mask seals on your face without straps. Any dive shop worth booking with should not just tolerate but welcome this check — it's basic dive safety, and shops that resist show you what they think about accountability.", marks: [] },
+            { _type: "span", _key: "en-b24-s1", text: "Deposits and Payment", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b25",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b25-s1", text: "When Personal Gear Genuinely Makes Sense", marks: [] },
+            { _type: "span", _key: "en-b25-s1", text: "For local dives and the shark dive, a $50 deposit secures your booking. For Catalina and Bayahibe trips, the deposit is $100 because of the additional operator commitments (park fees, longer boat charter). The remaining balance is paid on the day of the dive. We accept cash in USD or Dominican pesos, and credit cards work with a 10% processing surcharge (which reflects the actual fees we pay to the card processor — the surcharge isn't a markup, it's a pass-through). Cash is preferred just because it's simpler for both sides.", marks: [] },
           ],
         },
         {
@@ -303,7 +325,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b26-s1", text: "Some scenarios where bringing your own full setup is genuinely worth the trouble. Advanced divers doing multi-week trips where the cumulative rental cost approaches the shipping cost of your own gear. Divers with specific configuration needs (side-mount, technical diving setups, rebreathers) that rental fleets don't typically cover. Divers with hard-to-fit body types (very short, very tall, unusually wide or narrow torso) where rental BCDs and wetsuits are consistently uncomfortable. Divers with specific certifications (Sidemount, Cavern, Tec 40) that require specialized equipment. Recreational-depth Caribbean tourism diving doesn't usually cross any of these thresholds — most travelers renting for a week are making the right call.", marks: [] },
+            { _type: "span", _key: "en-b26-s1", text: "The deposit is fully refundable if we have to cancel for weather (any dive site becoming unsafe due to conditions), or if you cancel with at least 48 hours notice. Same-day cancellations for reasons other than weather aren't refundable — that reflects the fact that we've already blocked the slot and can't easily fill it. If we can reschedule you within your stay for weather-cancelled dives, we always try that first before processing a refund.", marks: [] },
           ],
         },
         {
@@ -312,7 +334,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b27-s1", text: "The Middle Ground: Selective Personal Gear", marks: [] },
+            { _type: "span", _key: "en-b27-s1", text: "Weather and Rescheduling", marks: [] },
           ],
         },
         {
@@ -321,7 +343,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b28-s1", text: "For most divers, the sensible pattern is bringing a few personal items and renting the rest. Mask, computer, and maybe fins in your luggage; BCD, regulator, wetsuit, weights, and tank from the shop. That combination gives you the fit and comfort benefits of personal gear on the pieces that matter most, without the luggage weight and transit risk of the pieces that don't. It's what most experienced traveling divers land on after a few trips.", marks: [] },
+            { _type: "span", _key: "en-b28-s1", text: "Weather-based cancellations happen occasionally — Punta Cana's tropical weather is generally cooperative but strong winds, rough seas, or storms occasionally make a dive site unsafe. When conditions look marginal we monitor forecasts starting 48 hours out and reach out proactively if a change is likely. When we can, we reschedule within your stay at no extra charge. If rescheduling isn't possible (weather is bad and you're leaving), the deposit is refunded in full and any prepaid balance returned promptly.", marks: [] },
           ],
         },
         {
@@ -330,7 +352,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b29-s1", text: "If you're a first-time traveling diver figuring out your own preferences, the simplest starting point is to rent everything on your first Caribbean trip and see what works. You'll learn where rental gear is fine and where it isn't — and you'll be able to shop for your own gear with the knowledge of what specifically bothers you about rental versions. This is usually a better path than buying gear before your first trip based on manufacturer marketing.", marks: [] },
+            { _type: "span", _key: "en-b29-s1", text: "This flexibility is one reason booking directly with a local operator matters — we know the conditions in real time and can adjust. Booking through a large aggregator or resort concierge often locks you into a fixed refund/rebook protocol that doesn't match the practical reality of tropical weather.", marks: [] },
           ],
         },
         {
@@ -339,102 +361,77 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b30-s1", text: "Course Students and Rental", marks: [] },
+            { _type: "span", _key: "en-b30-s1", text: "How to Compare Packages Between Operators", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b31",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b31-l1", href: "https://www.grandbay-puntacana.com/courses/openwater" },
-            { _type: "link", _key: "en-b31-l2", href: "https://www.grandbay-puntacana.com/courses/discover" },
-          ],
-          children: [
-            { _type: "span", _key: "en-b31-s1", text: "If you're taking a course — ", marks: [] },
-            { _type: "span", _key: "en-b31-s2", text: "Open Water certification", marks: ["en-b31-l1"] },
-            { _type: "span", _key: "en-b31-s3", text: " or a ", marks: [] },
-            { _type: "span", _key: "en-b31-s4", text: "Discover Scuba Diving experience", marks: ["en-b31-l2"] },
-            { _type: "span", _key: "en-b31-s5", text: " — you should definitely rent all your gear. There's no reason for a first-time student to travel with equipment they haven't chosen yet, and PADI courses are specifically designed around standard rental configurations. Get through the course, understand what fits and what doesn't, and then think about buying gear afterward if you plan to keep diving. Buying dive gear before your first course is one of the more common expensive mistakes new divers make.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx1",
-          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-bx1-s1", text: "Buying Your Own Gear After the First Trip", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx2",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-bx2-s1", text: "Most divers who keep diving after their first trip eventually build a personal gear kit. The smart order of purchase, based on years of watching divers figure this out, is roughly: mask first (biggest personal fit variable, cheapest, packs easily), then dive computer (biggest safety and convenience upgrade for around $200 to $400), then fins if you have preferences on kick style, then wetsuit if you dive frequently in cool water, and finally BCD and regulator once you're clear on what configuration works for you. Buying the full kit upfront before you've dived enough to know your preferences is one of the most common expensive mistakes new divers make.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx3",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-bx3-s1", text: "A useful heuristic: after each trip, note what specifically annoyed you about the rental gear. If nothing did, keep renting — you're saving money and travel weight. If something consistently annoyed you (mask fit, fin power, computer interface), that's the next piece worth buying. Buying gear based on what you've actually experienced tends to produce a better collection than buying based on manufacturer marketing.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx4",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-bx4-s1", text: "What Rental Fees Actually Cover", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx5",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-bx5-s1", text: "One question that comes up occasionally: is rental gear an extra fee on top of the dive price, or is it included? At Grand Bay, all rental equipment is included in the price of guided dives and courses — no separate gear fee. That's not universal across the industry (some operators charge $15 to $30 per dive extra for gear), so it's worth checking with any operator you're comparing pricing against. The way pricing is structured says something about how the operator thinks about their customer relationship — bundled all-in-one pricing is simpler and usually reflects a shop that assumes you'll rent, versus itemized pricing that assumes you might BYO.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-bx6",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-bx6-s1", text: "One thing rental doesn't cover: replacement cost if you lose or damage a piece of gear. Rental gear is treated as expected wear, not fragile — normal use is fine — but if you lose a fin over the side of the boat or crack a mask on the ladder, we do ask you to cover the replacement. This is rare and shouldn't factor into your decision to rent, but it's worth knowing so nothing feels surprising if it happens.", marks: [] },
+            { _type: "span", _key: "en-b31-s1", text: "If you're comparing dive packages from multiple Punta Cana operators, ask these specific questions to make the comparison fair. Is gear included, or is it a per-day rental fee on top? Is hotel pickup included, and from what zones? Are marine park fees separate for national park sites? Is the guide included, or is that a separate charge? Is the price per diver or per tank (some operators price per tank, which changes the math)? What's the deposit structure and cancellation policy? Are there hidden card surcharges? Getting these answers in writing before booking prevents most of the day-of surprises that make trips more expensive than the quoted price.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b32",
+          style: "normal",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "en-b32-s1", text: "Also worth asking: what's the group size? Some cheap packages are cheap because they cram 20 divers onto a boat with two guides, which is a very different experience than a small-group operation with a 6-to-8 diver maximum. The cost per diver of running a boat trip doesn't change much whether there are 6 or 20 divers on board — but the experience does.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "en-bA",
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b32-s1", text: "The Bottom Line", marks: [] },
+            { _type: "span", _key: "en-bA-s1", text: "What a Typical Dive Day Actually Looks Like", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "en-bB",
+          style: "normal",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "en-bB-s1", text: "To give you a concrete picture of what you're paying for on a local 2-tank day: pickup at your hotel between 8:15 and 8:45 AM depending on location, then a 15 to 30 minute drive to our boat launch. On arrival, a gear check and full site briefing — the guide covers depth, expected conditions, marine life to look for, hand signals, buddy pairings, and emergency procedures. Boat ride to the first site is typically 10 to 20 minutes. First dive runs 40 to 50 minutes, then back to the boat for a surface interval of 45 to 60 minutes with water, fruit, and light snacks. Second dive to a different site follows, similar duration. Boat ride back, gear rinse, and drop-off at your hotel between 1:30 and 2:00 PM. Total commitment is about five hours pickup-to-drop-off.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "en-bC",
+          style: "normal",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "en-bC-s1", text: "The Catalina full-day trip stretches this to about eight hours pickup-to-drop-off, with a longer boat ride (roughly an hour each way), two dives with a proper lunch break in between (lunch is included on the boat), and time to enjoy the park itself. The Bayahibe trip is in between — around six hours total — with two dives at different Bayahibe sites plus the boat and park travel time. Knowing the actual time commitment for each option helps you plan the rest of your day; a local 2-tank leaves your afternoon completely free, while Catalina fills the entire day. This matters for divers combining multiple activities during their trip or coordinating with non-diving partners who have their own plans.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b33",
+          style: "h2",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "en-b33-s1", text: "The Bottom Line", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "en-b34",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "en-b33-l1", href: "https://www.grandbay-puntacana.com/sites" },
-            { _type: "link", _key: "en-b33-l2", href: "https://wa.me/18297239338" },
+            { _type: "link", _key: "en-b34-l1", href: "https://www.grandbay-puntacana.com/courses" },
+            { _type: "link", _key: "en-b34-l2", href: "https://wa.me/18297239338" },
           ],
           children: [
-            { _type: "span", _key: "en-b33-s1", text: "For a Punta Cana dive trip, the practical default is: rent the heavy stuff, bring the personal stuff. BCD, regulator, tank, weights, wetsuit — all rental, all included in the price of your ", marks: [] },
-            { _type: "span", _key: "en-b33-s2", text: "guided dives or courses", marks: ["en-b33-l1"] },
-            { _type: "span", _key: "en-b33-s3", text: ". Mask, computer, and fins are worth bringing if you own them and love them. Everything else stays at home. If you have specific questions about our rental fleet — brand, size availability, anything unusual — message us on ", marks: [] },
-            { _type: "span", _key: "en-b33-s4", text: "WhatsApp", marks: ["en-b33-l2"] },
-            { _type: "span", _key: "en-b33-s5", text: " before your trip and we'll confirm exactly what we can provide for your dates.", marks: [] },
+            { _type: "span", _key: "en-b34-s1", text: "Standard Grand Bay pricing: $135 for local 2-tank dives ($120/day multi-day), $190 for the Shark Point dive, $100 for Discover Scuba Diving, $220 for Catalina Island diving (or $100 for snorkeling), and $180 for Bayahibe. PADI course packages range from $399 (Scuba Diver) to $499 (Open Water) to $449 (Advanced). All prices include full gear, boat, guide, and pickup from standard Punta Cana/Bávaro hotel zones. A $50 deposit locks in local dives; $100 for Catalina. If you have specific questions about what applies to your ", marks: [] },
+            { _type: "span", _key: "en-b34-s2", text: "trip or course", marks: ["en-b34-l1"] },
+            { _type: "span", _key: "en-b34-s3", text: " — hotel pickup zone, group size on your dates, whether nitrox is available, anything else — message us on ", marks: [] },
+            { _type: "span", _key: "en-b34-s4", text: "WhatsApp", marks: ["en-b34-l2"] },
+            { _type: "span", _key: "en-b34-s5", text: " and we'll confirm exactly what's included for your booking.", marks: [] },
           ],
         },
       ],
@@ -445,7 +442,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b1-s1", text: "Respuesta corta: no, no necesitas traer tu propio equipo de buceo a Punta Cana. El equipo completo de renta está incluido con cada curso e inmersión guiada en Grand Bay of the Sea, y lo mismo es cierto en la mayoría de los centros de buceo reputados de la zona. Dicho eso, algunos buzos deciden viajar con su propio equipo por razones que van desde preferencias de talla hasta apego sentimental a una máscara que llevan una década usando. Esta publicación cubre qué está realmente incluido en la renta, qué deberías empacar de todas formas sin importar la política de renta del operador, cuándo traer el tuyo vale genuinamente el peso en la maleta y cuándo es solo una molestia innecesaria.", marks: [] },
+            { _type: "span", _key: "es-b1-s1", text: "\"¿Qué está incluido?\" es una de las primeras preguntas que recibimos cuando alguien empieza a comparar precios de buceo en Punta Cana. Es una pregunta inteligente porque las inclusiones de los paquetes de buceo varían mucho entre operadores — el precio anunciado de una tienda podría cubrir todo lo que necesitas para el día, mientras que el de otra cubre solo los tanques y espera que pagues aparte el equipo, transporte, impuestos y propinas. Comparar precios sin saber qué hay dentro lleva a malas decisiones. Esta publicación recorre qué es estándar en el mercado de Punta Cana, qué está típicamente incluido en Grand Bay específicamente, qué no suele estar, y cómo comparar paquetes para que realmente estés viendo peras con peras.", marks: [] },
           ],
         },
         {
@@ -454,7 +451,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b2-s1", text: "Qué Está Incluido en la Renta", marks: [] },
+            { _type: "span", _key: "es-b2-s1", text: "Qué es Estándar Entre Operadores Serios", marks: [] },
           ],
         },
         {
@@ -462,12 +459,12 @@ const posts = [
           _key: "es-b3",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "es-b3-l1", href: "https://www.grandbay-puntacana.com/es/courses" },
+            { _type: "link", _key: "es-b3-l1", href: "https://www.padi.com/" },
           ],
           children: [
-            { _type: "span", _key: "es-b3-s1", text: "El equipo completo de renta en Grand Bay incluye todo lo que necesitas para meterte al agua en ", marks: [] },
-            { _type: "span", _key: "es-b3-s2", text: "cualquier curso o inmersión guiada", marks: ["es-b3-l1"] },
-            { _type: "span", _key: "es-b3-s3", text: ": chaleco compensador (BCD), regulador con fuente alterna de aire, manómetro sumergible (SPG) o computador de buceo, tanque (usualmente de aluminio de 12 litros), plomos y cinturón, wetsuit (shorty de 3mm o traje completo de 3mm según la temporada), máscara, snorkel y aletas. Todo se revisa y se le da mantenimiento regularmente. Llegas en traje de baño con tu tarjeta de certificación y nosotros nos encargamos del resto.", marks: [] },
+            { _type: "span", _key: "es-b3-s1", text: "En cualquier ", marks: [] },
+            { _type: "span", _key: "es-b3-s2", text: "operador certificado PADI", marks: ["es-b3-l1"] },
+            { _type: "span", _key: "es-b3-s3", text: " en Punta Cana, un paquete estándar de 2 tanques incluye los tanques mismos (usualmente de aluminio de 12 litros), plomos y cinturón, chaleco compensador (BCD), regulador con fuente alterna de aire, manómetro sumergible (SPG), wetsuit apropiado para la temporada, máscara, snorkel y aletas. El guía está incluido. El bote está incluido. También los refrescos básicos en superficie — usualmente agua y fruta entre inmersiones. Ese es el mínimo base. Si el precio anunciado de un operador no incluye estos fundamentos, es una señal de alerta sobre qué esquinas podrían estar recortando en otras partes.", marks: [] },
           ],
         },
         {
@@ -476,7 +473,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b4-s1", text: "Para las tallas, preguntamos por tu altura y peso durante la reserva para preseleccionar equipo que te quede antes de que llegues. Esto importa más para los BCDs (que vienen desde XS hasta XXL) y wetsuits (mismo rango), menos para reguladores y máscaras, que tienen algún ajuste universal. Los ajustes ocurren en la tienda antes de salir, así que si algo no queda bien, lo cambiamos antes de que sea un problema en el bote.", marks: [] },
+            { _type: "span", _key: "es-b4-s1", text: "La recogida en hotel es variable — muchos operadores la incluyen dentro de un radio establecido (típicamente la franja principal de Punta Cana y Bávaro) pero cobran extra por recogidas de hoteles más distantes en Uvero Alto o Cap Cana. Las tarifas de parque marino (para sitios dentro de áreas protegidas como el Parque Nacional del Este cerca de Catalina) a veces están incluidas en el precio anunciado y a veces son aparte. Siempre pregunta específicamente.", marks: [] },
           ],
         },
         {
@@ -485,16 +482,20 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b5-s1", text: "Qué Deberías Traer de Todas Formas", marks: [] },
+            { _type: "span", _key: "es-b5-s1", text: "Qué Está Incluido en Grand Bay Específicamente", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b6",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b6-l1", href: "https://www.grandbay-puntacana.com/es/sites" },
+          ],
           children: [
-            { _type: "span", _key: "es-b6-s1", text: "Hay una lista corta de cosas que siempre deberías traer en un viaje de buceo, sin importar si rentas o usas tu propio equipo. Tu tarjeta de certificación (C-card) es esencial para cualquier cosa más allá de una experiencia Discover Scuba Diving — la versión de plástico, una foto en tu teléfono o una impresión funcionan. Tu bitácora es útil pero no estrictamente requerida. Un computador de buceo está incluido en la renta si no tienes uno, pero si tienes uno, tráelo — tiene tu historial personal y ajustes.", marks: [] },
+            { _type: "span", _key: "es-b6-s1", text: "Cada reserva en Grand Bay incluye equipo completo de renta (BCD, regulador, tanque, plomos, wetsuit, máscara, snorkel, aletas), el bote y capitán, un guía certificado, recogida y regreso al hotel desde cualquier parte de la franja de Punta Cana o Bávaro, agua y snacks ligeros entre inmersiones, y acceso a nuestra ", marks: [] },
+            { _type: "span", _key: "es-b6-s2", text: "lista de sitios de buceo", marks: ["es-b6-l1"] },
+            { _type: "span", _key: "es-b6-s3", text: " con selección de sitio basada en tu certificación y las condiciones diarias. Eso es lo que estás pagando en nuestro precio anunciado — no aparecen cargos adicionales el día de más allá de tu saldo restante y cualquier extra que decidas agregar.", marks: [] },
           ],
         },
         {
@@ -503,7 +504,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b7-s1", text: "Más allá de eso: un traje de baño (o dos — uno para la mañana, uno seco para el viaje de regreso), una lycra para sol y protección térmica ligera, una toalla liviana que se seque rápido, protector solar mineral reef-safe (los químicos dañan el coral y te ganan miradas raras de los guías de buceo), una botella recargable de agua y efectivo para el saldo de tu tarifa de buceo, propina a la tripulación del bote y cualquier almuerzo o bebida. Las tarjetas funcionan en la tienda con un pequeño cargo por procesamiento pero el efectivo es más eficiente el día de.", marks: [] },
+            { _type: "span", _key: "es-b7-s1", text: "La única pieza de equipo que no incluimos es un computador de buceo — este es uno de los pocos ítems que pedimos a los buzos que traigan si tienen uno, o que acepten que el guía manejará la profundidad y el tiempo del grupo. La mayoría de los operadores recreativos caribeños lo manejan igual. Si tienes un computador, definitivamente tráelo. Si no, el plan de inmersión del guía y el manejo del perfil cubren la misma función durante una inmersión guiada.", marks: [] },
           ],
         },
         {
@@ -512,7 +513,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b8-s1", text: "Qué Vale la Pena Traer si lo Tienes", marks: [] },
+            { _type: "span", _key: "es-b8-s1", text: "Precios Estándar de Inmersiones Locales", marks: [] },
           ],
         },
         {
@@ -521,8 +522,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b9-s1", text: "Tu propia máscara. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b9-s2", text: "Esta es la sola pieza de equipo que más vale la pena traer si tienes una que te queda bien. El ajuste de la máscara es altamente personal — las formas de cara varían mucho, y una máscara que sella perfectamente en ti puede filtrar constantemente en otra persona. Si tienes una máscara que sabes que te funciona, tráela. Casi no pesa, empaca plana y elimina una variable que puede arruinar una inmersión si la de renta no se ajusta bien a tu cara. Agrega una solución antivaho a la maleta facturada de paso.", marks: [] },
+            { _type: "span", _key: "es-b9-s1", text: "Las inmersiones locales de 2 tanques — la salida matutina estándar a arrecifes y naufragios cercanos en Punta Cana — son $135 por buzo certificado en un día único. Los buzos de múltiples días pagan $120 por día desde su segundo día buceando con nosotros. Esa baja refleja ahorros reales de nuestro lado (el equipo queda montado entre días, la carga de briefing es menor una vez que sabes cómo trabajamos, y los buzos que repiten se mueven más rápido) que trasladamos en lugar de embolsar. Si planeas tres o más días de buceo local en tu viaje, este descuento suma.", marks: [] },
           ],
         },
         {
@@ -531,28 +531,29 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b10-s1", text: "Tu propio computador de buceo. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b10-s2", text: "Si tienes uno, definitivamente tráelo. Tu computador ha estado rastreando tu historial — intervalos de superficie, cargas previas de nitrógeno, preferencias personales — y continuar ese registro es genuinamente útil. Los computadores de renta funcionan bien pero empiezan cada inmersión desde cero, lo que significa que el algoritmo te trata como buzo de primer día cada vez. Eso es conservador, lo cual es seguro, pero no tan a la medida como tu propio dispositivo.", marks: [] },
+            { _type: "span", _key: "es-b10-s1", text: "El precio de 2 tanques cubre ambas inmersiones, todo el equipo, el bote, el guía y la recogida en hotel dentro de la zona estándar. Dos inmersiones de 40 a 50 minutos cada una con un intervalo de superficie en medio; el tiempo total típico de recogida a regreso es de unas 5 horas.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b11",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b11-s1", text: "Tu propio wetsuit (si eres térmicamente sensible). ", marks: ["strong"] },
-            { _type: "span", _key: "es-b11-s2", text: "Los wetsuits de renta le quedan a una amplia gama de tipos de cuerpo aceptablemente pero pocos les quedan perfectamente. Si tienes un modelo específico que le queda a tu cuerpo, traerlo significa que estarás cómodo desde la primera inmersión en lugar de adaptarte a algo ligeramente descuadrado. Esto importa más de diciembre a marzo cuando el agua está más fresca y el ajuste térmico afecta la comodidad más directamente.", marks: [] },
+            { _type: "span", _key: "es-b11-s1", text: "Precio del Buceo con Tiburones", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b12",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b12-l1", href: "https://www.grandbay-puntacana.com/es/shark-dive-punta-cana" },
+          ],
           children: [
-            { _type: "span", _key: "es-b12-s1", text: "Tus propias aletas. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b12-s2", text: "Algo digno de traer si eres serio con tu elección de aletas. La eficiencia, comodidad y estilo de patada difieren mucho entre modelos. Si tienes un estilo específico dialogado (aletas partidas, jet fins, aletas de calzo cerrado para agua cálida), vale la pena traerlas. Si eres neutro respecto a las aletas, la renta está bien. Las aletas ocupan espacio significativo en la maleta, que es la desventaja principal.", marks: [] },
+            { _type: "span", _key: "es-b12-s1", text: "La ", marks: [] },
+            { _type: "span", _key: "es-b12-s2", text: "inmersión de Shark Point", marks: ["es-b12-l1"] },
+            { _type: "span", _key: "es-b12-s3", text: " a 26 metros tiene un precio de $190 por buzo certificado Advanced Open Water. Es una inmersión de especialidad que requiere la certificación Advanced por la profundidad. El precio incluye las mismas inclusiones estándar (equipo, bote, guía, recogida) más la tarifa específica del sitio y la logística de operar la inmersión más profunda. Los buzos sin certificación Advanced no pueden reservar Shark Point directamente — pero si estás haciendo tu curso Advanced Open Water con nosotros, la inmersión de Shark Point a menudo se incluye como una de tus Adventure Dives durante la certificación.", marks: [] },
           ],
         },
         {
@@ -561,47 +562,55 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b13-s1", text: "Qué No Vale la Pena Traer", marks: [] },
+            { _type: "span", _key: "es-b13-s1", text: "Precio de Discover Scuba Diving (DSD)", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b14",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b14-l1", href: "https://www.grandbay-puntacana.com/es/courses/discover" },
+          ],
           children: [
-            { _type: "span", _key: "es-b14-s1", text: "BCD. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b14-s2", text: "A menos que estés haciendo buceo técnico serio o tengas necesidades de configuración muy específicas, viajar con un BCD rara vez vale la pena. Los BCDs son pesados (típicamente 2 a 4 kg), voluminosos en la maleta, y los BCDs de renta en tiendas serias son perfectamente funcionales para buceo recreativo. El peso en tu maleta facturada suele ser el factor decisivo — un BCD solo puede ponerte sobre los límites de la aerolínea y costarte más en cargos por sobrepeso de lo que costaría una semana de renta.", marks: [] },
+            { _type: "span", _key: "es-b14-s1", text: "Para buzos primerizos sin certificación, ", marks: [] },
+            { _type: "span", _key: "es-b14-s2", text: "Discover Scuba Diving es $100", marks: ["es-b14-l1"] },
+            { _type: "span", _key: "es-b14-s3", text: ". Esto incluye un briefing sobre teoría básica de scuba, una introducción en aguas confinadas a la respiración bajo el agua y habilidades esenciales de seguridad, y una inmersión guiada en aguas abiertas a un máximo de 12 metros. Todo el equipo, guía, bote y recogida en hotel están incluidos. El DSD típico empieza alrededor de la 1:30 PM (después de que nuestra salida matutina ha regresado), así que no requiere un día completo. El compromiso total desde la recogida hasta el regreso es de unas 3 a 4 horas.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b15",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b15-s1", text: "Regulador. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b15-s2", text: "Misma lógica. Un regulador es equipo de precisión, caro de reemplazar si se daña en tránsito, y pesado para su tamaño. Los reguladores de renta serios reciben servicio regularmente y funcionan tan bien como equipo personal para las profundidades recreativas. Traer el tuyo es una preferencia personal que viene con un riesgo real de daño por TSA o manejo de equipaje. Si traes el tuyo, llévalo en tu equipaje de mano en lugar de facturarlo.", marks: [] },
+            { _type: "span", _key: "es-b15-s1", text: "Precios de Salidas a Catalina y Bayahibe", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b16",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b16-l1", href: "https://www.grandbay-puntacana.com/es/trips/catalina" },
+          ],
           children: [
-            { _type: "span", _key: "es-b16-s1", text: "Tanque. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b16-s2", text: "Esto no debería necesitar decirse, pero ocasionalmente nos preguntan. Las regulaciones de aerolínea requieren que los tanques se envíen completamente vacíos con la válvula abierta, e incluso así, la mayoría de los buzos encuentran que la logística no vale la pena por el beneficio. Los tanques de renta son perfectamente adecuados; sáltate esto.", marks: [] },
+            { _type: "span", _key: "es-b16-s1", text: "La ", marks: [] },
+            { _type: "span", _key: "es-b16-s2", text: "salida de buceo a la Isla Catalina", marks: ["es-b16-l1"] },
+            { _type: "span", _key: "es-b16-s3", text: " es una excursión de día completo a $220 para buzos, incluyendo almuerzo y bebidas en el bote, tarifas de entrada al parque, todo el equipo, guía, bote y recogida extendida desde zonas de hotel más lejanas. El snorkel en la misma salida es $100. La Isla Catalina está dentro del Parque Nacional del Este y el día involucra más tiempo de viaje que una inmersión local (saliendo alrededor de las 7 AM en lugar de las 8:30) así que el precio refleja el día más largo e inclusiones adicionales.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b17",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b17-l1", href: "https://www.grandbay-puntacana.com/es/trips/bayahibe" },
+          ],
           children: [
-            { _type: "span", _key: "es-b17-s1", text: "Plomos. ", marks: ["strong"] },
-            { _type: "span", _key: "es-b17-s2", text: "Universalmente no vale la pena traerlos. Los plomos son lo más pesado por volumen que podrías empacar, están disponibles en todos lados, y los límites de peso de aerolínea los hacen poco prácticos.", marks: [] },
+            { _type: "span", _key: "es-b17-s1", text: "La ", marks: [] },
+            { _type: "span", _key: "es-b17-s2", text: "salida de buceo a Bayahibe", marks: ["es-b17-l1"] },
+            { _type: "span", _key: "es-b17-s3", text: " es $180 por buzo. Es una salida de medio día así que el almuerzo no está incluido, pero todo lo demás sí — equipo, guía, bote, transporte, entrada al parque. Los sitios de buceo de Bayahibe ofrecen un terreno diferente a los arrecifes locales de Punta Cana, incluyendo varios naufragios notables, por lo que es popular como un día de variedad para buzos que pasan una semana con nosotros.", marks: [] },
           ],
         },
         {
@@ -610,16 +619,26 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b18-s1", text: "Consideraciones de Viaje para Equipo Personal", marks: [] },
+            { _type: "span", _key: "es-b18-s1", text: "Precios de Paquetes de Cursos", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b19",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b19-l1", href: "https://www.grandbay-puntacana.com/es/courses/scubadiver" },
+            { _type: "link", _key: "es-b19-l2", href: "https://www.grandbay-puntacana.com/es/courses/openwater" },
+            { _type: "link", _key: "es-b19-l3", href: "https://www.grandbay-puntacana.com/es/courses/advanced" },
+          ],
           children: [
-            { _type: "span", _key: "es-b19-s1", text: "Si decides traer algo o todo tu propio equipo, unas notas prácticas. Los límites de peso para maleta facturada de las aerolíneas varían pero 23 kg (50 lbs) es común en vuelos transatlánticos. Un set completo de equipo de buceo puede exceder eso fácil, así que conoce las reglas específicas de tu aerolínea y considera una segunda maleta facturada si es necesario (usualmente más barato que los cargos por sobrepeso). Trae una bolsa de equipo acolchada en lugar de tirar el equipo suelto en una maleta — el manejo de equipaje no es gentil.", marks: [] },
+            { _type: "span", _key: "es-b19-s1", text: "Para certificaciones PADI, ", marks: [] },
+            { _type: "span", _key: "es-b19-s2", text: "PADI Scuba Diver", marks: ["es-b19-l1"] },
+            { _type: "span", _key: "es-b19-s3", text: " (una certificación de nivel de entrada más corta) es $399, ", marks: [] },
+            { _type: "span", _key: "es-b19-s4", text: "PADI Open Water Diver", marks: ["es-b19-l2"] },
+            { _type: "span", _key: "es-b19-s5", text: " (la certificación completa de por vida de nivel de entrada) es $499, y ", marks: [] },
+            { _type: "span", _key: "es-b19-s6", text: "PADI Advanced Open Water Diver", marks: ["es-b19-l3"] },
+            { _type: "span", _key: "es-b19-s7", text: " es $449. Cada precio de curso cubre todo el tiempo de instrucción, los materiales de aprendizaje, todas las inmersiones de entrenamiento en piscina y aguas abiertas, uso de equipo durante el entrenamiento, y la tarifa de certificación PADI misma una vez que has completado el curso. Lo que no está incluido en el precio del curso es cualquier buceo recreativo adicional antes o después del curso (eso se cotiza a la tarifa regular de 2 tanques).", marks: [] },
           ],
         },
         {
@@ -628,25 +647,25 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b20-s1", text: "Para TSA y seguridad, el equipo de buceo generalmente pasa bien pero ocasionalmente activa una inspección manual. Reguladores, computadores de buceo y cámaras son los ítems más comúnmente marcados. Deja tiempo extra en seguridad, mantén el equipo de buceo en bolsas fáciles de abrir, y si viajas con un computador de buceo de carcasa dura, ten en cuenta que TSA a veces pide encenderlo para verificar que no es una amenaza. Fotos del equipo antes del viaje son útiles para reclamos de seguro si algo se daña en tránsito.", marks: [] },
+            { _type: "span", _key: "es-b20-s1", text: "El precio del curso es un paquete por una razón — los días de entrenamiento incluyen múltiples inmersiones y considerable tiempo de instructor. Comparar precios de curso por inmersión individual pierde el punto; estás pagando por una certificación de por vida y el entrenamiento que produce buzos seguros y competentes, no solo por los llenados de tanque.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b21",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b21-s1", text: "El seguro para el equipo de buceo vale la pena considerarlo si traes algo valioso. El seguro de viaje estándar a menudo excluye equipo de buceo o tiene sublímites bajos; el seguro especializado de buceo de DAN (Divers Alert Network) cubre tanto lo médico relacionado con buceo como el equipo por tarifas anuales razonables. Si estás facturando un set de regulador y computador de $2.000, una membresía anual DAN de $80 se paga sola la primera vez que pase cualquier cosa.", marks: [] },
+            { _type: "span", _key: "es-b21-s1", text: "Qué No Está Incluido (Y A Veces Vale la Pena Agregar)", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b22",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b22-s1", text: "Calidad del Equipo de Renta en Grand Bay", marks: [] },
+            { _type: "span", _key: "es-b22-s1", text: "Algunas cosas que no vienen con un paquete estándar de buceo en Punta Cana pero que algunos buzos agregan. El nitrox (aire enriquecido) puede ser solicitado por buzos certificados en nitrox, con un pequeño extra por tanque. La renta de fotografía subacuática — cámaras o GoPros con carcasa — no es estándar, aunque podemos indicarte opciones de renta si no tienes la tuya. Las bebidas alcohólicas no están incluidas en ningún día de buceo; el alcohol se mantiene deliberadamente fuera de los días de buceo por sus efectos fisiológicos y factores de riesgo de EDC. Las recogidas de hoteles distantes (Uvero Alto, Cap Cana, hoteles más allá de la zona estándar) tienen un cargo extra de transporte de $50 a $70 según la distancia.", marks: [] },
           ],
         },
         {
@@ -655,25 +674,25 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b23-s1", text: "Una pregunta justa: ¿qué tan bueno es el equipo de renta en realidad? Cada tienda de buceo hace afirmaciones sobre su equipo, y la calidad varía significativamente en el mercado de Punta Cana. Nuestros BCDs son BCDs recreativos de marca (Cressi, Scubapro, Mares según el modelo), los reguladores reciben servicio anual según especificaciones del fabricante, los computadores son Suunto o similar de generación actual, y los wetsuits se reemplazan regularmente conforme se desgastan. La industria del buceo se mueve hacia mejores flotas de renta que antes — un setup de renta moderno bien mantenido es genuinamente comparable al equipo personal para las profundidades recreativas que buceamos.", marks: [] },
+            { _type: "span", _key: "es-b23-s1", text: "Las propinas para la tripulación del bote y el guía son apreciadas pero nunca obligatorias — las normas dominicanas sugieren $5 a $10 por buzo por día para el guía y $3 a $5 por buzo por día para la tripulación del bote si estás contento con el servicio. No son requeridas y ningún operador serio te presionará.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b24",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b24-s1", text: "Si rentas en cualquier lugar de Punta Cana, un buen hábito es inspeccionar tu equipo de renta el día uno antes de llegar al bote. Verifica que el inflador del BCD funcione en los dos sentidos (inflar y desinflar). Verifica que ambas etapas segundas del regulador produzcan aire. Verifica el SPG o computador para lectura precisa. Verifica que la máscara selle en tu cara sin correas. Cualquier tienda de buceo con la que valga la pena reservar no solo debería tolerar sino agradecer esta revisión — es seguridad básica de buceo, y las tiendas que se resisten te muestran lo que piensan sobre responsabilidad.", marks: [] },
+            { _type: "span", _key: "es-b24-s1", text: "Depósitos y Pago", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b25",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b25-s1", text: "Cuándo Traer Equipo Personal Sí Tiene Sentido", marks: [] },
+            { _type: "span", _key: "es-b25-s1", text: "Para inmersiones locales y la inmersión con tiburones, un depósito de $50 asegura tu reserva. Para las salidas a Catalina y Bayahibe, el depósito es de $100 por los compromisos adicionales del operador (tarifas de parque, chárter de bote más largo). El saldo restante se paga el día de la inmersión. Aceptamos efectivo en USD o pesos dominicanos, y las tarjetas de crédito funcionan con un recargo de procesamiento del 10% (que refleja las tarifas reales que pagamos al procesador de tarjetas — el recargo no es un margen, es un pase directo). El efectivo se prefiere solo porque es más simple para ambos lados.", marks: [] },
           ],
         },
         {
@@ -682,7 +701,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b26-s1", text: "Algunos escenarios donde traer tu propio setup completo sí vale la pena el trabajo. Buzos avanzados haciendo viajes de varias semanas donde el costo acumulado de renta se acerca al costo de envío de tu propio equipo. Buzos con necesidades de configuración específicas (side-mount, setups técnicos, rebreathers) que las flotas de renta típicamente no cubren. Buzos con tipos de cuerpo difíciles de tallar (muy bajos, muy altos, torso inusualmente ancho o angosto) donde los BCDs y wetsuits de renta son consistentemente incómodos. Buzos con certificaciones específicas (Sidemount, Cavern, Tec 40) que requieren equipo especializado. El turismo caribeño a profundidades recreativas usualmente no cruza ninguno de estos umbrales — la mayoría de los viajeros rentando por una semana están tomando la decisión correcta.", marks: [] },
+            { _type: "span", _key: "es-b26-s1", text: "El depósito es completamente reembolsable si tenemos que cancelar por clima (cualquier sitio de buceo volviéndose inseguro por condiciones), o si cancelas con al menos 48 horas de anticipación. Las cancelaciones el mismo día por razones distintas al clima no son reembolsables — eso refleja el hecho de que ya bloqueamos el espacio y no podemos llenarlo fácilmente. Si podemos reprogramarte dentro de tu estancia por inmersiones canceladas por clima, siempre intentamos eso primero antes de procesar un reembolso.", marks: [] },
           ],
         },
         {
@@ -691,7 +710,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b27-s1", text: "El Punto Medio: Equipo Personal Selectivo", marks: [] },
+            { _type: "span", _key: "es-b27-s1", text: "Clima y Reprogramación", marks: [] },
           ],
         },
         {
@@ -700,7 +719,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b28-s1", text: "Para la mayoría de los buzos, el patrón sensato es traer unos pocos ítems personales y rentar el resto. Máscara, computador y quizás aletas en tu maleta; BCD, regulador, wetsuit, plomos y tanque desde la tienda. Esa combinación te da los beneficios de ajuste y comodidad del equipo personal en las piezas que más importan, sin el peso en maleta ni el riesgo de tránsito de las piezas que no. Es donde aterrizan la mayoría de los buzos viajeros experimentados después de unos cuantos viajes.", marks: [] },
+            { _type: "span", _key: "es-b28-s1", text: "Las cancelaciones por clima pasan ocasionalmente — el clima tropical de Punta Cana generalmente es cooperativo pero vientos fuertes, mar picado o tormentas ocasionalmente hacen un sitio de buceo inseguro. Cuando las condiciones se ven marginales, monitoreamos los pronósticos desde 48 horas antes y te contactamos proactivamente si un cambio es probable. Cuando podemos, reprogramamos dentro de tu estancia sin cargo extra. Si reprogramar no es posible (el clima está mal y te vas), el depósito se reembolsa completo y cualquier saldo pagado por adelantado se devuelve pronto.", marks: [] },
           ],
         },
         {
@@ -709,7 +728,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b29-s1", text: "Si eres un buzo viajero primerizo averiguando tus propias preferencias, el punto de partida más simple es rentar todo en tu primer viaje al Caribe y ver qué funciona. Vas a aprender dónde el equipo de renta está bien y dónde no — y vas a poder comprar tu propio equipo con el conocimiento de qué específicamente te molesta de las versiones de renta. Este suele ser un mejor camino que comprar equipo antes de tu primer viaje basado en el marketing del fabricante.", marks: [] },
+            { _type: "span", _key: "es-b29-s1", text: "Esta flexibilidad es una razón por la que reservar directamente con un operador local importa — conocemos las condiciones en tiempo real y podemos ajustar. Reservar a través de un gran agregador o concierge de resort a menudo te encierra en un protocolo fijo de reembolso/rebook que no coincide con la realidad práctica del clima tropical.", marks: [] },
           ],
         },
         {
@@ -718,102 +737,77 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b30-s1", text: "Estudiantes de Curso y Renta", marks: [] },
+            { _type: "span", _key: "es-b30-s1", text: "Cómo Comparar Paquetes Entre Operadores", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b31",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b31-l1", href: "https://www.grandbay-puntacana.com/es/courses/openwater" },
-            { _type: "link", _key: "es-b31-l2", href: "https://www.grandbay-puntacana.com/es/courses/discover" },
-          ],
-          children: [
-            { _type: "span", _key: "es-b31-s1", text: "Si estás tomando un curso — ", marks: [] },
-            { _type: "span", _key: "es-b31-s2", text: "certificación Open Water", marks: ["es-b31-l1"] },
-            { _type: "span", _key: "es-b31-s3", text: " o una ", marks: [] },
-            { _type: "span", _key: "es-b31-s4", text: "experiencia Discover Scuba Diving", marks: ["es-b31-l2"] },
-            { _type: "span", _key: "es-b31-s5", text: " — definitivamente deberías rentar todo tu equipo. No hay razón para que un estudiante primerizo viaje con equipo que aún no ha elegido, y los cursos PADI están específicamente diseñados alrededor de configuraciones estándar de renta. Termina el curso, entiende qué te queda y qué no, y luego piensa en comprar equipo después si planeas seguir buceando. Comprar equipo de buceo antes de tu primer curso es uno de los errores caros más comunes que cometen los buzos nuevos.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx1",
-          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-bx1-s1", text: "Comprar tu Propio Equipo Después del Primer Viaje", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx2",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-bx2-s1", text: "La mayoría de los buzos que siguen buceando después de su primer viaje eventualmente arman un kit personal. El orden inteligente de compra, basado en años viendo a los buzos resolverlo, es aproximadamente: máscara primero (la variable de ajuste personal más grande, la más barata, empaca fácil), luego computador de buceo (la mayor mejora de seguridad y comodidad por unos $200 a $400), luego aletas si tienes preferencias sobre estilo de patada, luego wetsuit si buceas frecuentemente en agua fresca, y finalmente BCD y regulador una vez que tienes claro qué configuración te funciona. Comprar el kit completo por adelantado antes de haber buceado lo suficiente para conocer tus preferencias es uno de los errores caros más comunes que cometen los buzos nuevos.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx3",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-bx3-s1", text: "Un heurístico útil: después de cada viaje, anota qué específicamente te molestó del equipo de renta. Si nada te molestó, sigue rentando — estás ahorrando dinero y peso de viaje. Si algo te molestó consistentemente (ajuste de máscara, potencia de aleta, interfaz de computador), esa es la siguiente pieza que vale la pena comprar. Comprar equipo basado en lo que realmente has experimentado tiende a producir una mejor colección que comprar basado en el marketing del fabricante.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx4",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-bx4-s1", text: "Qué Cubren Realmente las Tarifas de Renta", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx5",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-bx5-s1", text: "Una pregunta que sale ocasionalmente: ¿el equipo de renta es una tarifa extra sobre el precio de la inmersión, o está incluido? En Grand Bay, todo el equipo de renta está incluido en el precio de las inmersiones guiadas y los cursos — sin tarifa de equipo por separado. Esto no es universal en la industria (algunos operadores cobran $15 a $30 extra por inmersión por el equipo), así que vale la pena verificar con cualquier operador con el que compares precios. La forma en que está estructurado el precio dice algo sobre cómo el operador piensa sobre su relación con el cliente — el precio todo incluido es más simple y usualmente refleja una tienda que asume que rentarás, versus el precio detallado que asume que podrías traer el tuyo.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-bx6",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-bx6-s1", text: "Algo que la renta no cubre: costo de reemplazo si pierdes o dañas una pieza de equipo. El equipo de renta se trata como desgaste esperado, no frágil — el uso normal está bien — pero si pierdes una aleta por el costado del bote o rompes una máscara en la escalera, sí te pedimos que cubras el reemplazo. Esto es raro y no debería influir en tu decisión de rentar, pero vale la pena saberlo para que nada se sienta sorpresivo si pasa.", marks: [] },
+            { _type: "span", _key: "es-b31-s1", text: "Si estás comparando paquetes de buceo de múltiples operadores en Punta Cana, haz estas preguntas específicas para hacer la comparación justa. ¿El equipo está incluido, o es una tarifa de renta por día encima? ¿La recogida en hotel está incluida, y desde qué zonas? ¿Las tarifas de parque marino son aparte para sitios de parque nacional? ¿El guía está incluido, o es un cargo separado? ¿El precio es por buzo o por tanque (algunos operadores cotizan por tanque, lo que cambia las cuentas)? ¿Cuál es la estructura del depósito y la política de cancelación? ¿Hay recargos ocultos por tarjeta? Obtener estas respuestas por escrito antes de reservar previene la mayoría de las sorpresas del día de que hacen los viajes más caros que el precio cotizado.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b32",
+          style: "normal",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "es-b32-s1", text: "También vale la pena preguntar: ¿cuál es el tamaño del grupo? Algunos paquetes baratos son baratos porque meten 20 buzos en un bote con dos guías, lo que es una experiencia muy diferente a la de una operación de grupo pequeño con un máximo de 6 a 8 buzos. El costo por buzo de operar una salida en bote no cambia mucho ya sea que haya 6 o 20 buzos a bordo — pero la experiencia sí.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "es-bA",
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b32-s1", text: "En Resumen", marks: [] },
+            { _type: "span", _key: "es-bA-s1", text: "Cómo Se Ve Realmente un Día Típico de Buceo", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "es-bB",
+          style: "normal",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "es-bB-s1", text: "Para darte una imagen concreta de lo que estás pagando en un día local de 2 tanques: recogida en tu hotel entre las 8:15 y las 8:45 AM según la ubicación, luego un viaje de 15 a 30 minutos hasta el punto de embarque. A la llegada, revisión del equipo y briefing completo del sitio — el guía cubre profundidad, condiciones esperadas, vida marina a buscar, señales de mano, asignaciones de compañero y procedimientos de emergencia. El viaje en bote al primer sitio es típicamente de 10 a 20 minutos. La primera inmersión corre de 40 a 50 minutos, luego regreso al bote para un intervalo de superficie de 45 a 60 minutos con agua, fruta y snacks ligeros. Segunda inmersión en un sitio diferente, duración similar. Viaje de regreso, enjuague del equipo y entrega en tu hotel entre la 1:30 y las 2:00 PM. El compromiso total es de unas cinco horas de recogida a entrega.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "es-bC",
+          style: "normal",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "es-bC-s1", text: "La salida de día completo a Catalina estira esto a unas ocho horas de recogida a entrega, con un viaje en bote más largo (aproximadamente una hora de cada lado), dos inmersiones con una pausa apropiada para el almuerzo en medio (el almuerzo está incluido en el bote) y tiempo para disfrutar el parque mismo. La salida a Bayahibe está en medio — unas seis horas en total — con dos inmersiones en distintos sitios de Bayahibe más el tiempo de bote y viaje al parque. Conocer el compromiso real de tiempo de cada opción te ayuda a planear el resto de tu día; una salida local de 2 tanques deja tu tarde completamente libre, mientras que Catalina llena el día entero. Esto importa para buzos que combinan múltiples actividades durante su viaje o que coordinan con parejas no buzas que tienen sus propios planes.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b33",
+          style: "h2",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "es-b33-s1", text: "En Resumen", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "es-b34",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "es-b33-l1", href: "https://www.grandbay-puntacana.com/es/sites" },
-            { _type: "link", _key: "es-b33-l2", href: "https://wa.me/18297239338" },
+            { _type: "link", _key: "es-b34-l1", href: "https://www.grandbay-puntacana.com/es/courses" },
+            { _type: "link", _key: "es-b34-l2", href: "https://wa.me/18297239338" },
           ],
           children: [
-            { _type: "span", _key: "es-b33-s1", text: "Para un viaje de buceo a Punta Cana, la opción práctica por defecto es: renta lo pesado, trae lo personal. BCD, regulador, tanque, plomos, wetsuit — todo de renta, todo incluido en el precio de tus ", marks: [] },
-            { _type: "span", _key: "es-b33-s2", text: "inmersiones guiadas o cursos", marks: ["es-b33-l1"] },
-            { _type: "span", _key: "es-b33-s3", text: ". Máscara, computador y aletas vale la pena traer si los tienes y los amas. Todo lo demás se queda en casa. Si tienes preguntas específicas sobre nuestra flota de renta — marca, disponibilidad de tallas, cualquier cosa inusual — escríbenos por ", marks: [] },
-            { _type: "span", _key: "es-b33-s4", text: "WhatsApp", marks: ["es-b33-l2"] },
-            { _type: "span", _key: "es-b33-s5", text: " antes de tu viaje y te confirmamos exactamente qué podemos proporcionar para tus fechas.", marks: [] },
+            { _type: "span", _key: "es-b34-s1", text: "Precios estándar de Grand Bay: $135 por inmersiones locales de 2 tanques ($120/día en múltiples días), $190 por la inmersión de Shark Point, $100 por Discover Scuba Diving, $220 por buceo en la Isla Catalina (o $100 por snorkel), y $180 por Bayahibe. Los paquetes de cursos PADI van desde $399 (Scuba Diver) a $499 (Open Water) a $449 (Advanced). Todos los precios incluyen equipo completo, bote, guía y recogida desde las zonas estándar de hoteles en Punta Cana/Bávaro. Un depósito de $50 asegura las inmersiones locales; $100 para Catalina. Si tienes preguntas específicas sobre lo que aplica para tu ", marks: [] },
+            { _type: "span", _key: "es-b34-s2", text: "viaje o curso", marks: ["es-b34-l1"] },
+            { _type: "span", _key: "es-b34-s3", text: " — zona de recogida en hotel, tamaño del grupo en tus fechas, si el nitrox está disponible, cualquier otra cosa — escríbenos por ", marks: [] },
+            { _type: "span", _key: "es-b34-s4", text: "WhatsApp", marks: ["es-b34-l2"] },
+            { _type: "span", _key: "es-b34-s5", text: " y te confirmamos exactamente qué está incluido para tu reserva.", marks: [] },
           ],
         },
       ],
@@ -823,34 +817,34 @@ const posts = [
       _type: "seo",
       meta: {
         en: {
-          title: "Do I Need to Bring My Own Scuba Gear to Punta Cana? (2026)",
+          title: "What's Included in a Punta Cana Dive Package? Full Breakdown (2026)",
           description:
-            "Short answer: no. Full rental gear is provided at Grand Bay. Here's what's included, what you should still bring, and when your own gear is worth the luggage weight.",
-          keywords: ["scuba gear punta cana rental", "bring own scuba gear punta cana", "dive gear rental dominican republic", "scuba equipment punta cana", "dive travel gear"],
+            "Full pricing breakdown: $135 local 2-tank, $190 shark dive, $100 DSD, $220 Catalina, $180 Bayahibe. What's included, what's not, and how to compare packages between operators.",
+          keywords: ["punta cana dive package", "scuba diving punta cana price", "grand bay diving cost", "punta cana scuba package included", "dive trip cost"],
         },
         es: {
-          title: "¿Necesito Traer Mi Propio Equipo de Buceo a Punta Cana? (2026)",
+          title: "¿Qué Incluye un Paquete de Buceo en Punta Cana? Desglose Completo (2026)",
           description:
-            "Respuesta corta: no. Equipo completo de renta incluido en Grand Bay. Aquí lo que está incluido, qué deberías traer de todas formas y cuándo el tuyo vale la pena.",
-          keywords: ["equipo buceo punta cana renta", "traer equipo buceo punta cana", "renta equipo buceo republica dominicana", "equipo scuba punta cana"],
+            "Desglose completo de precios: $135 locales, $190 tiburones, $100 DSD, $220 Catalina, $180 Bayahibe. Qué está incluido, qué no, y cómo comparar paquetes entre operadores.",
+          keywords: ["paquete buceo punta cana", "precio buceo punta cana", "grand bay precio buceo", "buceo punta cana incluido"],
         },
       },
       openGraph: {
         en: {
-          title: "Do I Need to Bring My Own Scuba Gear to Punta Cana?",
-          description: "Full rental gear is included at Grand Bay. Here's what's provided, what to still pack, and when bringing your own is worth the luggage weight.",
+          title: "What's Included in a Punta Cana Dive Package?",
+          description: "Full transparent pricing for Grand Bay dives, courses, and trips. What's included, what's not, and how to compare packages fairly.",
         },
         es: {
-          title: "¿Necesito Traer Mi Propio Equipo de Buceo a Punta Cana?",
-          description: "Equipo completo de renta incluido en Grand Bay. Aquí lo que se proporciona, qué empacar de todas formas y cuándo traer el tuyo vale la pena.",
+          title: "¿Qué Incluye un Paquete de Buceo en Punta Cana?",
+          description: "Precios transparentes completos para inmersiones, cursos y salidas de Grand Bay. Qué está incluido, qué no, y cómo comparar paquetes de forma justa.",
         },
       },
       structuredData: {
         en: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: "Do I Need to Bring My Own Scuba Gear to Punta Cana?",
-          description: "A complete guide to what scuba gear is included with courses and dives at Grand Bay of the Sea, what divers should pack regardless of rental policy, what's worth bringing if you own it (mask, computer, wetsuit, fins), what's not worth traveling with (BCD, regulator, tank, weights), travel considerations for personal gear (airline weight limits, TSA screening, gear damage, insurance), quality of rental gear at Grand Bay, when personal gear genuinely makes sense (multi-week trips, technical diving, hard-to-fit body types), the selective middle ground most experienced traveling divers land on, and why course students should rent everything.",
+          headline: "What's Included in a Punta Cana Dive Package? A Transparent Breakdown",
+          description: "Comprehensive breakdown of what's included in Punta Cana dive packages: full rental gear (BCD, regulator, tank, weights, wetsuit, mask, snorkel, fins), boat, certified guide, hotel pickup, refreshments. Full transparent Grand Bay pricing for local 2-tank dives ($135, or $120 multi-day), Shark Point dive ($190), Discover Scuba Diving ($100), Catalina Island ($220 diving, $100 snorkeling), Bayahibe ($180), and PADI courses (Scuba Diver $399, Open Water $499, Advanced $449). Also covers what's not included (nitrox, cameras, distant pickups, tips), deposit and payment structure, weather rescheduling policy, and how to compare packages between operators.",
           datePublished: "2026-07-04",
           inLanguage: "en",
           author: { "@type": "Organization", name: "Grand Bay of the Sea" },
@@ -861,14 +855,14 @@ const posts = [
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://www.grandbay-puntacana.com/blog/diving-tips/bring-own-scuba-gear-punta-cana",
+            "@id": "https://www.grandbay-puntacana.com/blog/diving-tips/whats-included-punta-cana-dive-package",
           },
         }),
         es: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: "¿Necesito Traer Mi Propio Equipo de Buceo a Punta Cana?",
-          description: "Una guía completa sobre qué equipo de buceo está incluido con los cursos e inmersiones en Grand Bay of the Sea, qué deberían empacar los buzos sin importar la política de renta, qué vale la pena traer si lo tienes (máscara, computador, wetsuit, aletas), qué no vale la pena viajar (BCD, regulador, tanque, plomos), consideraciones de viaje para equipo personal (límites de peso de aerolínea, revisión TSA, daño de equipo, seguro), calidad del equipo de renta en Grand Bay, cuándo el equipo personal sí tiene sentido (viajes de varias semanas, buceo técnico, tipos de cuerpo difíciles de tallar), el punto medio selectivo al que llegan la mayoría de los buzos viajeros experimentados, y por qué los estudiantes de curso deberían rentar todo.",
+          headline: "¿Qué Incluye un Paquete de Buceo en Punta Cana? Un Desglose Transparente",
+          description: "Desglose completo de qué incluyen los paquetes de buceo en Punta Cana: equipo completo de renta (BCD, regulador, tanque, plomos, wetsuit, máscara, snorkel, aletas), bote, guía certificado, recogida en hotel, refrescos. Precios transparentes completos de Grand Bay para inmersiones locales de 2 tanques ($135, o $120 múltiples días), Shark Point ($190), Discover Scuba Diving ($100), Isla Catalina ($220 buceo, $100 snorkel), Bayahibe ($180), y cursos PADI (Scuba Diver $399, Open Water $499, Advanced $449). También cubre qué no está incluido (nitrox, cámaras, recogidas distantes, propinas), estructura de depósitos y pagos, política de reprogramación por clima, y cómo comparar paquetes entre operadores.",
           datePublished: "2026-07-04",
           inLanguage: "es",
           author: { "@type": "Organization", name: "Grand Bay of the Sea" },
@@ -879,7 +873,7 @@ const posts = [
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://www.grandbay-puntacana.com/es/blog/diving-tips/bring-own-scuba-gear-punta-cana",
+            "@id": "https://www.grandbay-puntacana.com/es/blog/diving-tips/whats-included-punta-cana-dive-package",
           },
         }),
       },

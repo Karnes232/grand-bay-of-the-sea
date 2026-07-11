@@ -33,21 +33,21 @@ const posts = [
 
     title: {
       _type: "localizedString",
-      en: "⏱️ How Long Does a Typical Scuba Dive Last in Punta Cana?",
-      es: "⏱️ ¿Cuánto Dura una Inmersión Típica en Punta Cana?",
+      en: "🛟 Are Punta Cana Dive Sites Safe for Tourists? An Honest Assessment",
+      es: "🛟 ¿Son Seguros los Sitios de Buceo en Punta Cana para Turistas? Una Evaluación Honesta",
     },
 
     slug: {
       _type: "slug",
-      current: "how-long-scuba-dive-lasts-punta-cana",
+      current: "punta-cana-dive-sites-safety",
     },
 
     publishDate: "2026-07-04",
 
     description: {
       _type: "localizedText",
-      en: "Certified 2-tank dives in Punta Cana typically run around 45 minutes each. Here's what determines dive length — depth, air consumption, water temperature — and how DSD, courses, and Shark Point compare.",
-      es: "Las inmersiones de dos tanques para buzos certificados en Punta Cana suelen durar unos 45 minutos cada una. Aquí lo que determina la duración — profundidad, consumo de aire, temperatura del agua — y cómo se comparan DSD, cursos y Shark Point.",
+      en: "How safe is scuba diving in Punta Cana, really? Recreational dive safety statistics, what makes a site safe, marine life risks (very few), emergency response infrastructure, and how Grand Bay evaluates conditions daily.",
+      es: "¿Qué tan seguro es realmente bucear en Punta Cana? Estadísticas de seguridad del buceo recreativo, qué hace seguro a un sitio, riesgos de vida marina (muy pocos), infraestructura de respuesta a emergencias, y cómo Grand Bay evalúa las condiciones a diario.",
     },
 
     blogCategory: {
@@ -66,7 +66,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b1-s1", text: "Short answer: a typical certified dive in Punta Cana runs around 45 minutes underwater. That's the number that comes up most often when we tell divers what to expect from our standard two-tank guided trips — sometimes a bit longer at shallower depths, sometimes a bit shorter at deeper sites. A Discover Scuba Diving experience, which is a shorter format for first-timers, is usually 30 minutes or so of actual underwater time. But \"how long does a dive last\" has more to it than a single number, because the actual time depends on your depth, your air consumption rate, the water temperature, and how hard you're working. This post walks through the factors, the different dive formats, and how the timing looks in practice on our boat.", marks: [] },
+            { _type: "span", _key: "en-b1-s1", text: "Short answer: yes. Scuba diving in Punta Cana is safe by any reasonable measure — the dive sites are well-established, the water conditions are consistently mild, marine life risks are minimal, and reputable local operators run tight safety practices. This is true for both certified divers on guided dives and first-timers doing Discover Scuba Diving experiences. That said, \"safe\" doesn't mean \"risk-free,\" and understanding what actually makes a dive site safe (and what could make it unsafe) matters more than a blanket reassurance. This post walks through recreational diving safety generally, what makes Punta Cana's specific sites well-suited to tourism diving, the small marine life risks that do exist, emergency response infrastructure in the Dominican Republic, and how our team evaluates conditions on any given day.", marks: [] },
           ],
         },
         {
@@ -75,7 +75,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b2-s1", text: "Standard 2-Tank Dives: About 45 Minutes Each", marks: [] },
+            { _type: "span", _key: "en-b2-s1", text: "How Safe Is Recreational Diving in General?", marks: [] },
           ],
         },
         {
@@ -83,12 +83,12 @@ const posts = [
           _key: "en-b3",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "en-b3-l1", href: "https://www.grandbay-puntacana.com/sites" },
+            { _type: "link", _key: "en-b3-l1", href: "https://dan.org/" },
           ],
           children: [
-            { _type: "span", _key: "en-b3-s1", text: "For ", marks: [] },
-            { _type: "span", _key: "en-b3-s2", text: "our standard guided dives on Punta Cana reefs", marks: ["en-b3-l1"] },
-            { _type: "span", _key: "en-b3-s3", text: ", the typical bottom time on each dive is about 45 minutes. A two-tank morning trip usually looks like this: leave the shop around 8:30 AM, arrive at the first dive site 20 to 30 minutes later, do a 45-minute dive at a depth in the 12 to 18 meter range, come up for a 45 to 60 minute surface interval on the boat, drop back down for the second 45-minute dive at a nearby site, and be back on land by early afternoon. That's the shape of most days.", marks: [] },
+            { _type: "span", _key: "en-b3-s1", text: "Recreational scuba diving has a strong safety record compared to most adventure sports. According to data compiled by ", marks: [] },
+            { _type: "span", _key: "en-b3-s2", text: "Divers Alert Network", marks: ["en-b3-l1"] },
+            { _type: "span", _key: "en-b3-s3", text: " in their annual diving reports, fatal accident rates in recreational diving are consistently low — roughly on par with recreational cycling and safer than activities like motorcycling or skiing. The overwhelming majority of dive fatalities involve pre-existing medical conditions (particularly cardiovascular disease), out-of-air incidents from poor gas management, or diving well beyond a diver's certification or experience. For a certified diver on a guided recreational dive at appropriate depths, the actual risk profile is genuinely low.", marks: [] },
           ],
         },
         {
@@ -97,7 +97,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b4-s1", text: "The 45-minute figure isn't a rule; it's a strong average for the depth range we typically dive. Divers with better air efficiency come up with plenty of air after 50 minutes; new divers or divers still working on their breathing sometimes reach the reserve pressure closer to the 35 to 40 minute mark. Nobody's checking a stopwatch and forcing everyone up at exactly 45 — the actual dive ends when either the dive's no-decompression limit is approached, or when someone in the group is getting low on air, whichever comes first.", marks: [] },
+            { _type: "span", _key: "en-b4-s1", text: "For Discover Scuba Diving participants (first-time divers with no certification), the risk profile is different but also low — DSD dives happen at shallower depths (12 meters maximum), under direct instructor supervision, with the guide managing everything except the diver's own breathing and basic movement. This is why DSD is a legitimate way for hesitant travelers to try the sport before committing to certification, not a corner-cut version of certified diving.", marks: [] },
           ],
         },
         {
@@ -106,7 +106,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b5-s1", text: "What Actually Determines How Long a Dive Lasts", marks: [] },
+            { _type: "span", _key: "en-b5-s1", text: "What Makes Punta Cana's Sites Well-Suited for Tourism Diving", marks: [] },
           ],
         },
         {
@@ -115,20 +115,16 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b6-s1", text: "Four main factors set the length of any dive: depth, air consumption, water temperature, and exertion level. Depth is the biggest one — the deeper you go, the faster you use air and the sooner you approach the no-decompression limit. This is why a shallow reef dive at 10 meters can last 60+ minutes while a 30-meter deep dive maxes out at around 25 minutes. Punta Cana's popular reef sites at 12 to 18 meters are in the sweet spot where 45-minute bottom times are natural.", marks: [] },
+            { _type: "span", _key: "en-b6-s1", text: "A few characteristics of the Punta Cana dive environment make it particularly forgiving for recreational divers. Water temperatures stay 26 to 29°C year-round, so thermal stress isn't a factor. Currents are typically mild on the reef sites we dive most often, so drift-diving skills aren't required. Depths are moderate — most reef sites in the 12 to 18 meter range, deeper sites at 25 to 30 meters, well within recreational limits. Visibility is generally 15 to 25 meters, which is enough to see your buddy and the reef structure without disorientation. The bottom topography is mostly reef and sand rather than complex overhead environments; there are no cave dives at recreational operations here, no cavern penetrations, no dark chambers.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b7",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b7-l1", href: "https://dan.org/" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b7-s1", text: "Air consumption — technically your SAC rate (Surface Air Consumption) — is the second big factor and the one that varies most between individuals. According to research summarized by ", marks: [] },
-            { _type: "span", _key: "en-b7-s2", text: "Divers Alert Network", marks: ["en-b7-l1"] },
-            { _type: "span", _key: "en-b7-s3", text: ", typical recreational divers consume 15 to 25 liters per minute at the surface, which translates to different actual consumption rates at different depths (because air is denser at depth). Divers with lower SAC rates naturally get longer bottom times from the same tank; divers with higher rates come up sooner. Experience is the main variable — new divers usually breathe more heavily out of nerves and unfamiliarity, and SAC rate typically drops significantly over the first 20 to 50 dives.", marks: [] },
+            { _type: "span", _key: "en-b7-s1", text: "The combination of warm water, moderate depth, mild current, and clear visibility means the same dive site can accommodate a new Open Water diver on their first Caribbean trip and an experienced diver on their thousandth dive equally well. Some destinations require serious technical training or specific specialty skills to dive safely; Punta Cana doesn't.", marks: [] },
           ],
         },
         {
@@ -137,7 +133,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b8-s1", text: "Depth and No-Decompression Limits", marks: [] },
+            { _type: "span", _key: "en-b8-s1", text: "Weather and Sea Conditions", marks: [] },
           ],
         },
         {
@@ -146,7 +142,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b9-s1", text: "Every recreational dive has to stay within a maximum bottom time based on depth, set by no-decompression limits (NDLs). These come from decompression theory — the deeper and longer you dive, the more nitrogen your tissues absorb, and beyond certain thresholds you'd need required decompression stops before you could safely surface. Recreational diving stays within limits that allow direct ascent (with just a safety stop). At 12 meters, NDL is well over an hour. At 18 meters, roughly 50+ minutes. At 25 meters, closer to 30 minutes. At 30 meters, closer to 20 minutes. At 40 meters, less than 10 minutes.", marks: [] },
+            { _type: "span", _key: "en-b9-s1", text: "The variable that changes day-to-day safety more than anything else is weather. Punta Cana has a tropical climate with generally calm conditions, but strong winds, storms, and heavy rain events can make specific sites temporarily unsafe by creating rough surface conditions, poor visibility from stirred-up sediment, or unusual currents. Hurricane season (June through November, with peak risk August through October) occasionally brings systems close enough to affect diving even without a direct hit. This is why weather cancellations exist — reputable operators will decline to run a dive if conditions aren't safe rather than push through and hope.", marks: [] },
           ],
         },
         {
@@ -155,7 +151,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b10-s1", text: "In practice, on a typical Punta Cana reef dive at 12 to 18 meters, air consumption is usually the limiting factor rather than NDL — divers run low on air before they approach the no-deco time. On deeper dives at 25 to 30 meters, the two limits get closer together and NDL sometimes matters more. Modern dive computers track both simultaneously and alert you well before either becomes an issue.", marks: [] },
+            { _type: "span", _key: "en-b10-s1", text: "At Grand Bay, we monitor sea conditions and weather forecasts starting 48 hours out for any booked day. If forecasts look marginal, we reach out to divers proactively about likely rescheduling. On the morning of a dive, we make a final call based on actual conditions — sometimes a day that looked marginal turns out fine, and occasionally a day that looked good turns out to have overnight-developed conditions that push us to reschedule. The judgment call rests with the guide who's actually looking at the sea, not with a booking algorithm.", marks: [] },
           ],
         },
         {
@@ -164,56 +160,56 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b11-s1", text: "Water Temperature and Duration", marks: [] },
+            { _type: "span", _key: "en-b11-s1", text: "Marine Life Risks (There Aren't Many)", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b12",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b12-l1", href: "https://www.grandbay-puntacana.com/shark-dive-punta-cana" },
+          ],
           children: [
-            { _type: "span", _key: "en-b12-s1", text: "Water temperature affects duration in two ways — one small, one bigger. The small effect is that colder water increases air consumption because your body works harder to maintain core temperature; this can shorten dives by a minute or two. In Punta Cana's warm waters (26 to 29°C year-round) this effect is barely noticeable compared to divers coming from colder home waters. The bigger effect is thermal comfort itself — a diver getting cold decides to end the dive early even if air and NDL are fine, which is a psychological limit rather than a hard physical one. This is why proper thermal protection matters even in warm water; a diver who's slightly chilled at minute 35 misses out on the last 10 to 15 minutes of a good dive.", marks: [] },
+            { _type: "span", _key: "en-b12-s1", text: "One question that comes up more than it should: what about the marine life? The reality of Caribbean reef diving is that dangerous marine life encounters are extremely rare and almost always the result of the diver initiating contact. Sharks in Punta Cana waters — including the ", marks: [] },
+            { _type: "span", _key: "en-b12-s2", text: "nurse sharks and Caribbean reef sharks at Shark Point", marks: ["en-b12-l1"] },
+            { _type: "span", _key: "en-b12-s3", text: " — are not aggressive toward divers. They're accustomed to the presence of humans on the reef and treat divers as neither prey nor threat. Nurse sharks in particular are slow, docile, and generally uninterested in people.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b13",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b13-s1", text: "Discover Scuba Diving: Shorter Format", marks: [] },
+            { _type: "span", _key: "en-b13-s1", text: "The marine life that can hurt you here does so mostly through defensive contact when disturbed. Moray eels are docile if left alone but can bite if a hand is stuck in their crevice. Lionfish carry venomous spines that cause painful stings if brushed against. Sea urchins have spines that can pierce a wetsuit. Fire coral causes a stinging rash on contact. Scorpionfish are camouflaged and can be stepped on inadvertently in shallow water. All of these are avoided by the same basic rule: look but don't touch, and keep your hands and feet away from the reef.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b14",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b14-l1", href: "https://www.grandbay-puntacana.com/courses/discover" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b14-s1", text: "For ", marks: [] },
-            { _type: "span", _key: "en-b14-s2", text: "Discover Scuba Diving", marks: ["en-b14-l1"] },
-            { _type: "span", _key: "en-b14-s3", text: " participants — people trying scuba for the first time without a certification — the underwater time is typically around 30 minutes. This is shorter than a certified dive for two reasons: DSD depth is limited to 12 meters (which is more forgiving on air consumption), and beginner air consumption is usually higher than experienced divers'. The 30-minute figure covers a real dive experience with time to see reef life, practice basic skills, and get comfortable with underwater breathing — but it's shorter than what certified divers get from the same amount of air because a first-time diver breathes through it faster.", marks: [] },
+            { _type: "span", _key: "en-b14-s1", text: "Punta Cana doesn't have a persistent jellyfish problem the way some Caribbean destinations occasionally do — box jellyfish and Portuguese man-of-war are rare here. Barracuda, which look intimidating, are essentially harmless to divers as long as you don't wear shiny jewelry (which they can mistake for prey fish). We haven't had a serious marine life incident in our operation.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b15",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b15-s1", text: "The DSD session itself is longer than 30 minutes — there's a briefing, gear setup, some skills in shallow water before descending, and the underwater exploration portion. Total time from arrival at the shop to end of the dive is usually 2 to 3 hours. If you get comfortable during the DSD, some operators (including us) offer an optional second DSD dive the same day for divers who want more time.", marks: [] },
+            { _type: "span", _key: "en-b15-s1", text: "Emergency Response Infrastructure", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b16",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b16-s1", text: "Certification Course Dives", marks: [] },
+            { _type: "span", _key: "en-b16-s1", text: "One thing that matters when evaluating dive destination safety is what the emergency response looks like if something does go wrong. The Dominican Republic has hyperbaric (recompression) chamber facilities in Santo Domingo, about a 2 to 3 hour drive west of Punta Cana. In a suspected decompression sickness (DCS) case, the standard protocol is stabilization on-site with 100% oxygen, evacuation to Santo Domingo by ground or air ambulance, and treatment in the chamber. This is the same infrastructure available across most major Caribbean tourism destinations.", marks: [] },
           ],
         },
         {
@@ -221,65 +217,57 @@ const posts = [
           _key: "en-b17",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "en-b17-l1", href: "https://www.grandbay-puntacana.com/courses/openwater" },
+            { _type: "link", _key: "en-b17-l1", href: "https://dan.org/" },
           ],
           children: [
-            { _type: "span", _key: "en-b17-s1", text: "For ", marks: [] },
-            { _type: "span", _key: "en-b17-s2", text: "Open Water certification students", marks: ["en-b17-l1"] },
-            { _type: "span", _key: "en-b17-s3", text: ", each of the four open-water training dives runs about 30 to 40 minutes, similar to DSD length but with specific skills to complete during each dive. Skills include things like mask clearing, regulator recovery, controlled emergency swimming ascents, and buoyancy exercises. As students progress from dive one to dive four, their air consumption improves noticeably and later dives feel longer even at the same depth. By the fourth open-water dive, most students are approaching the 40-minute range that mirrors the standard certified dive.", marks: [] },
+            { _type: "span", _key: "en-b17-s1", text: "For any diver traveling internationally, ", marks: [] },
+            { _type: "span", _key: "en-b17-s2", text: "Divers Alert Network membership", marks: ["en-b17-l1"] },
+            { _type: "span", _key: "en-b17-s3", text: " is worth considering. DAN offers a 24/7 dive medical emergency hotline, coordination of chamber referrals and evacuations, and dive-specific accident insurance that covers medical evacuation and hyperbaric treatment. Standard travel insurance often excludes diving-related incidents or has low sub-limits; DAN was built specifically for this. An annual membership runs $75 to $100 depending on the region and covers a lot for the money.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b18",
-          style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b18-l1", href: "https://www.grandbay-puntacana.com/courses/advanced" },
-          ],
+          style: "h2",
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b18-s1", text: "For ", marks: [] },
-            { _type: "span", _key: "en-b18-s2", text: "Advanced Open Water students", marks: ["en-b18-l1"] },
-            { _type: "span", _key: "en-b18-s3", text: ", dive length varies more because different specialty dives have different profiles. A deep dive (adventure dive) at 25 to 30 meters might run 20 to 25 minutes bottom time; a peak buoyancy dive at shallower depth might run 45 to 60 minutes; a navigation dive is typically 30 to 45 minutes. The certification course covers five different dives with a range of depths and formats, so the overall average is similar to a standard certified dive.", marks: [] },
+            { _type: "span", _key: "en-b18-s1", text: "Grand Bay's Safety Practices", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b19",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b19-s1", text: "The Shark Point Exception", marks: [] },
+            { _type: "span", _key: "en-b19-s1", text: "A few practical things we do that affect safety on any given dive. Group sizes are kept small — typically 6 to 8 divers per guide, not the 15 to 20 that some volume-oriented operations run. Small groups mean the guide can actually monitor each diver, respond quickly if someone needs help, and keep the group together underwater. Large groups spread out, lose divers to sight lines, and dilute the guide's attention.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b20",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b20-l1", href: "https://www.grandbay-puntacana.com/shark-dive-punta-cana" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b20-s1", text: "The ", marks: [] },
-            { _type: "span", _key: "en-b20-s2", text: "Shark Point dive", marks: ["en-b20-l1"] },
-            { _type: "span", _key: "en-b20-s3", text: " sits at about 26 meters, deeper than our typical reef sites, and dive length there is closer to 30 to 35 minutes because of the depth. That's still enough time for a legitimate shark encounter — the sharks are typically visible early in the dive because they're in the immediate area, not something you have to search for. The shorter dive time is inherent to the depth, not a limitation of the site.", marks: [] },
+            { _type: "span", _key: "en-b20-s1", text: "Every dive gets a full pre-dive briefing covering the specific site, expected conditions, the dive plan (depth, time, direction, exit strategy), buddy assignments, hand signals review, and emergency procedures. This isn't optional and it isn't a formality — it's how the dive team makes sure everyone's on the same page before descent. Standard emergency signaling protocols, buddy checks, and reserve air pressure targets get confirmed on every trip.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b21",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b21-s1", text: "Bottom Time vs Total Dive Time", marks: [] },
+            { _type: "span", _key: "en-b21-s1", text: "Boats carry a fully-stocked oxygen kit, a first aid kit, a marine radio for emergency communication, and life vests for surface flotation. Gear gets inspected before every trip and serviced on manufacturer-recommended schedules — not just when something visibly breaks. The captain remains on the boat during dives, watching for surfacing divers and monitoring surface conditions.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b22",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b22-s1", text: "A distinction worth understanding. \"Bottom time\" in diving officially refers to the time from starting your descent to starting your ascent. \"Total dive time\" adds the ascent, the safety stop, and any additional shallow exploration on the way up. When we say a typical dive is 45 minutes, we're usually talking about bottom time plus the safety stop and final ascent — closer to the total time you're underwater from getting in the water to surfacing.", marks: [] },
+            { _type: "span", _key: "en-b22-s1", text: "The Diver's Side of Safety", marks: [] },
           ],
         },
         {
@@ -288,25 +276,25 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b23-s1", text: "A standard dive typically ends with a 3-minute safety stop at 5 meters, followed by a slow ascent to the surface. This adds about 5 minutes to the total time compared to a hypothetical dive that ends at the bottom. All the depth-and-time figures we give in this post are total in-water times, not narrow \"bottom time\" numbers.", marks: [] },
+            { _type: "span", _key: "en-b23-s1", text: "Not every safety factor sits with the operator. Divers contribute to their own safety in real ways. Diving within your certification and experience level is the biggest one — a newly-certified Open Water diver shouldn't attempt sites at 30 meters, and a diver who hasn't dived in five years should do a refresher or scuba review before jumping into a full day of diving. Being honest on the medical form matters — undisclosed conditions are one of the leading contributing factors in dive fatalities. Following the pre-dive briefing, staying with your buddy, and monitoring your own air pressure are basic responsibilities that operators can't do for you.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b24",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b24-s1", text: "Why Some Divers Come Up Sooner", marks: [] },
+            { _type: "span", _key: "en-b24-s1", text: "Physical readiness matters too. Being adequately rested, hydrated, and sober — no alcohol the night before or the morning of a dive — dramatically reduces DCS risk factors and improves your performance underwater. The most common preventable factor in dive incidents isn't equipment failure or environmental surprise; it's a diver who wasn't physically ready for the dive they signed up for.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b25",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b25-s1", text: "In group diving, the actual end time of any dive is set by the first person to reach a limit — that's the diver who's used the most air, or the one approaching NDL, or the one who's getting cold, or the one who signals they've had enough. This is why couples or friends dive together often end up with slightly different air remaining on the boat: the diver who ate through their air faster ended the dive for everyone, and the more efficient diver still has 500 to 800 PSI left.", marks: [] },
+            { _type: "span", _key: "en-b25-s1", text: "What Happens If Something Does Go Wrong", marks: [] },
           ],
         },
         {
@@ -315,25 +303,25 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b26-s1", text: "This is normal and expected, not a failure on anyone's part. The dive plan is built around the least efficient breather in the group so nobody ends up in an air-critical situation, which is exactly the right way to plan a group dive.", marks: [] },
+            { _type: "span", _key: "en-b26-s1", text: "In an actual dive incident, the response is layered. First is the immediate on-site response — the guide manages the affected diver, provides oxygen if indicated, and coordinates ascent for the rest of the group. Second is on-boat stabilization — oxygen, hydration, monitoring while the boat returns to shore. Third is land-based emergency response — ambulance dispatch, hospital transport, and if DCS is suspected, coordination with the hyperbaric chamber in Santo Domingo. DAN's 24/7 hotline can be called at any point to coordinate specialist medical guidance in real time.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b27",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b27-s1", text: "How to Extend Your Bottom Time", marks: [] },
+            { _type: "span", _key: "en-b27-s1", text: "Serious incidents are rare in this environment, but the plan for them is written down and practiced. This is one of the things we ask when other divers ask us about choosing a local operator — does the shop have a written emergency response plan, and can they walk you through it if asked? Reputable operators everywhere should be able to.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b28",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b28-s1", text: "The most reliable way to get longer dives is to improve your air consumption — which mostly means practicing calm, slow breathing patterns and getting comfortable enough underwater that you're not fighting the environment. New divers often breathe too fast or too shallow out of nerves, then run out of air 15 minutes before their more experienced buddy. Deep, slow breaths (in through the mouth, out slowly, no breath holding) are more efficient than rapid shallow breathing, both physiologically and for buoyancy.", marks: [] },
+            { _type: "span", _key: "en-b28-s1", text: "How Punta Cana Compares to Other Caribbean Destinations", marks: [] },
           ],
         },
         {
@@ -342,77 +330,68 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b29-s1", text: "Buoyancy control is the other big lever. A diver who's constantly compensating for over- or under-inflation of their BCD is doing more physical work than a diver who's neutrally buoyant and gliding. Time invested in mastering buoyancy pays back on every subsequent dive in longer bottom times. This is why the PADI Peak Performance Buoyancy specialty is one of the most useful specialties for improving your diving overall, not just for photography.", marks: [] },
+            { _type: "span", _key: "en-b29-s1", text: "For safety purposes, Punta Cana ranks similarly to the mainstream Caribbean tourism destinations — Cozumel, Cancún, Aruba, Grand Cayman. Water conditions are consistently mild, the tourism dive industry is mature, and there's established emergency infrastructure. It's a step less complex than destinations that require drift-diving skills (Cozumel's stronger currents) or specific technical training (wall dives with rapid depth drops). It's more established than emerging destinations that are just building their dive tourism infrastructure. For a certified recreational diver or first-time DSD participant, Punta Cana is genuinely one of the more forgiving places to dive in the Caribbean.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "en-bA",
+          style: "h2",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "en-bA-s1", text: "The Buddy System and Its Role in Safety", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "en-bB",
+          style: "normal",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "en-bB-s1", text: "One safety practice that gets less attention than it deserves in casual dive planning conversations is the buddy system. Every certified diver is trained to dive with a buddy — a second diver who monitors you as you monitor them, providing redundancy for equipment issues, air-sharing capability if one of you runs low unexpectedly, and a witness if anything unusual happens. On a guided dive, the guide functions as a safety monitor for the whole group, but buddy pairs still matter for the same reasons certification agencies teach them. Your buddy sees you if you're struggling before the guide might, and can help with a small equipment fix that doesn't warrant surfacing the whole group.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "en-bC",
+          style: "normal",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "en-bC-s1", text: "For solo travelers who arrive without a buddy, the guide either pairs them with another compatible solo diver or takes on direct buddy responsibility. Either arrangement works well. The important thing is not to end up in the water without an established plan for who's watching out for whom. Ask before you get on the boat: \"who's my buddy?\" A reputable guide will have a clear answer ready. A rushed or disorganized operator might not have thought about it yet — which is itself a signal.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "en-bD",
+          style: "normal",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "en-bD-s1", text: "Related to this: don't hesitate to signal any issue to your buddy or guide during a dive. Ear equalization problems, buoyancy trouble, mild anxiety, feeling cold, muscle cramping — all of these are things the guide can help address without incident if you signal early. What turns small issues into large ones is not signaling until the situation has already escalated. Every experienced dive professional would rather stop or turn around a dive than push through with a stressed or uncomfortable diver, and no one should feel embarrassed about calling a dive early for their own comfort or safety.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b30",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b30-s1", text: "Physical fitness matters at the margin. Divers who are cardiovascularly fit have lower resting oxygen consumption and lower air consumption during moderate underwater activity. This isn't a huge effect for casual reef diving, but it's real over long dives.", marks: [] },
+            { _type: "span", _key: "en-b30-s1", text: "The Bottom Line", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b31",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b31-s1", text: "What Happens If You Run Low on Air", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b32",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b32-s1", text: "Standard practice is to signal the guide when your air reaches about 100 to 70 bar (roughly 1500 to 1000 PSI), and to start the ascent when the group leader signals or when you reach approximately 50 bar (700 PSI). Nobody dives their tank to empty — the reserve is deliberate margin for the ascent and safety stop plus emergency response if anything goes wrong. If you run lower than that in the middle of a dive, the correct response is to signal the guide, share air with the guide's alternate second stage if needed, and ascend safely with the group. This is one of the specific skills covered in Open Water training and reviewed on every dive briefing.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b33",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b33-s1", text: "How Long Is the Full Day at the Shop?", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b34",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b34-s1", text: "The whole two-tank experience takes longer than the sum of the two dives. Typical shape: pickup or arrival at the shop around 8:30 AM, gear setup and briefing 30 minutes, boat ride to first site 20 to 30 minutes, first dive 45 minutes, surface interval 45 to 60 minutes, transit to second site (if different) 10 to 20 minutes, second dive 45 minutes, boat ride back 20 to 30 minutes, gear rinse and debrief 15 minutes. All in, you're back on land around 1:00 to 2:00 PM. Total time at the operation is about 5 hours for something like 90 minutes of actual underwater time.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b35",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b35-s1", text: "The Bottom Line", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b36",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "en-b36-l1", href: "https://www.grandbay-puntacana.com/courses" },
-            { _type: "link", _key: "en-b36-l2", href: "https://wa.me/18297239338" },
+            { _type: "link", _key: "en-b31-l1", href: "https://www.grandbay-puntacana.com/courses" },
+            { _type: "link", _key: "en-b31-l2", href: "https://wa.me/18297239338" },
           ],
           children: [
-            { _type: "span", _key: "en-b36-s1", text: "For certified divers doing standard 2-tank days on Punta Cana reefs, expect about 45 minutes per dive with an hour or so between dives on the boat. For first-time divers doing a Discover Scuba Diving experience, expect about 30 minutes underwater on your intro dive. For certification courses, dive length varies but averages between 30 and 45 minutes per dive across the training. Depth, air consumption, and thermal comfort all move these numbers around. If you have specific questions about how long the dives look for your ", marks: [] },
-            { _type: "span", _key: "en-b36-s2", text: "course or trip", marks: ["en-b36-l1"] },
-            { _type: "span", _key: "en-b36-s3", text: ", message us on ", marks: [] },
-            { _type: "span", _key: "en-b36-s4", text: "WhatsApp", marks: ["en-b36-l2"] },
-            { _type: "span", _key: "en-b36-s5", text: " with your certification level and dates and we'll give you a specific answer for your itinerary.", marks: [] },
+            { _type: "span", _key: "en-b31-s1", text: "Punta Cana is a safe destination for recreational diving, with mild conditions, moderate depths, low marine life risks, mature emergency response infrastructure, and reputable operators who prioritize safety through small groups, thorough briefings, and well-maintained equipment. Diver contribution matters too — accurate medical disclosure, appropriate certification level, adequate rest, and honest self-assessment before each dive make the biggest difference. If you have specific safety questions about a ", marks: [] },
+            { _type: "span", _key: "en-b31-s2", text: "specific course or trip", marks: ["en-b31-l1"] },
+            { _type: "span", _key: "en-b31-s3", text: " — group sizes, emergency protocols, insurance recommendations — message us on ", marks: [] },
+            { _type: "span", _key: "en-b31-s4", text: "WhatsApp", marks: ["en-b31-l2"] },
+            { _type: "span", _key: "en-b31-s5", text: " and we'll walk you through it.", marks: [] },
           ],
         },
       ],
@@ -423,7 +402,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b1-s1", text: "Respuesta corta: una inmersión típica para un buzo certificado en Punta Cana dura unos 45 minutos bajo el agua. Ese es el número que sale más seguido cuando les decimos a los buzos qué esperar de nuestras salidas guiadas estándar de dos tanques — a veces un poco más en sitios someros, a veces un poco menos en sitios más profundos. Una experiencia Discover Scuba Diving, que es un formato más corto para primerizos, suele ser de unos 30 minutos de tiempo real bajo el agua. Pero \"cuánto dura una inmersión\" tiene más matices que un solo número, porque el tiempo real depende de tu profundidad, tu consumo de aire, la temperatura del agua y qué tanto estés esforzándote. Esta publicación recorre los factores, los distintos formatos de inmersión y cómo se ven los tiempos en la práctica en nuestro bote.", marks: [] },
+            { _type: "span", _key: "es-b1-s1", text: "Respuesta corta: sí. El buceo scuba en Punta Cana es seguro bajo cualquier medida razonable — los sitios de buceo están bien establecidos, las condiciones del agua son consistentemente suaves, los riesgos de vida marina son mínimos y los operadores locales serios manejan prácticas de seguridad estrictas. Esto es cierto tanto para buzos certificados en inmersiones guiadas como para primerizos haciendo experiencias Discover Scuba Diving. Dicho eso, \"seguro\" no significa \"libre de riesgo\", y entender qué hace realmente seguro un sitio de buceo (y qué podría hacerlo inseguro) importa más que una reafirmación en blanco. Esta publicación recorre la seguridad del buceo recreativo en general, qué hace que los sitios específicos de Punta Cana sean idóneos para el buceo turístico, los pequeños riesgos de vida marina que sí existen, la infraestructura de respuesta a emergencias en la República Dominicana y cómo nuestro equipo evalúa las condiciones en cualquier día dado.", marks: [] },
           ],
         },
         {
@@ -432,7 +411,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b2-s1", text: "Inmersiones Estándar de 2 Tanques: Unos 45 Minutos Cada Una", marks: [] },
+            { _type: "span", _key: "es-b2-s1", text: "¿Qué Tan Seguro Es el Buceo Recreativo en General?", marks: [] },
           ],
         },
         {
@@ -440,12 +419,12 @@ const posts = [
           _key: "es-b3",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "es-b3-l1", href: "https://www.grandbay-puntacana.com/es/sites" },
+            { _type: "link", _key: "es-b3-l1", href: "https://dan.org/" },
           ],
           children: [
-            { _type: "span", _key: "es-b3-s1", text: "Para ", marks: [] },
-            { _type: "span", _key: "es-b3-s2", text: "nuestras inmersiones guiadas estándar en los arrecifes de Punta Cana", marks: ["es-b3-l1"] },
-            { _type: "span", _key: "es-b3-s3", text: ", el tiempo típico de fondo en cada inmersión es de unos 45 minutos. Una salida matutina de dos tanques usualmente se ve así: salir de la tienda alrededor de las 8:30 AM, llegar al primer sitio de buceo 20 a 30 minutos después, hacer una inmersión de 45 minutos a una profundidad en el rango de 12 a 18 metros, subir para un intervalo de superficie de 45 a 60 minutos en el bote, bajar de nuevo para la segunda inmersión de 45 minutos en un sitio cercano, y estar de regreso en tierra a mediodía tarde. Esa es la forma de la mayoría de los días.", marks: [] },
+            { _type: "span", _key: "es-b3-s1", text: "El buceo scuba recreativo tiene un fuerte historial de seguridad comparado con la mayoría de los deportes de aventura. Según datos compilados por ", marks: [] },
+            { _type: "span", _key: "es-b3-s2", text: "Divers Alert Network", marks: ["es-b3-l1"] },
+            { _type: "span", _key: "es-b3-s3", text: " en sus reportes anuales de buceo, las tasas de accidentes fatales en el buceo recreativo son consistentemente bajas — más o menos a la par con el ciclismo recreativo y más seguras que actividades como motociclismo o esquí. La abrumadora mayoría de las fatalidades de buceo involucran condiciones médicas preexistentes (particularmente enfermedad cardiovascular), incidentes por quedarse sin aire por mal manejo del gas, o bucear muy por encima de la certificación o experiencia del buzo. Para un buzo certificado en una inmersión guiada recreativa a profundidades apropiadas, el perfil real de riesgo es genuinamente bajo.", marks: [] },
           ],
         },
         {
@@ -454,7 +433,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b4-s1", text: "La cifra de 45 minutos no es una regla; es un promedio fuerte para el rango de profundidad que típicamente buceamos. Los buzos con mejor eficiencia de aire salen con bastante aire después de 50 minutos; los buzos nuevos o los que todavía trabajan en su respiración a veces llegan a la presión de reserva más cerca de los 35 a 40 minutos. Nadie está revisando un cronómetro forzando a todos a subir exactamente a los 45 — la inmersión real termina cuando o se acerca al límite de no descompresión, o cuando alguien en el grupo se está quedando con poco aire, lo que pase primero.", marks: [] },
+            { _type: "span", _key: "es-b4-s1", text: "Para los participantes de Discover Scuba Diving (buzos primerizos sin certificación), el perfil de riesgo es diferente pero también bajo — las inmersiones DSD ocurren a profundidades más someras (máximo 12 metros), bajo supervisión directa del instructor, con el guía manejando todo excepto la propia respiración y movimiento básico del buzo. Por eso el DSD es una forma legítima para viajeros indecisos de probar el deporte antes de comprometerse a la certificación, no una versión con esquinas recortadas del buceo certificado.", marks: [] },
           ],
         },
         {
@@ -463,7 +442,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b5-s1", text: "Qué Determina Realmente la Duración de una Inmersión", marks: [] },
+            { _type: "span", _key: "es-b5-s1", text: "Qué Hace a los Sitios de Punta Cana Idóneos para el Buceo Turístico", marks: [] },
           ],
         },
         {
@@ -472,20 +451,16 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b6-s1", text: "Cuatro factores principales establecen la duración de cualquier inmersión: profundidad, consumo de aire, temperatura del agua y nivel de esfuerzo. La profundidad es el más grande — cuanto más profundo vas, más rápido usas aire y más pronto te acercas al límite de no descompresión. Por eso una inmersión somera de arrecife a 10 metros puede durar 60+ minutos mientras una inmersión profunda a 30 metros topa cerca de 25 minutos. Los sitios populares de arrecife de Punta Cana a 12 a 18 metros están en el punto dulce donde los 45 minutos de tiempo de fondo son naturales.", marks: [] },
+            { _type: "span", _key: "es-b6-s1", text: "Unas características del ambiente de buceo de Punta Cana lo hacen particularmente indulgente para los buzos recreativos. Las temperaturas del agua se mantienen de 26 a 29°C todo el año, así que el estrés térmico no es un factor. Las corrientes son típicamente suaves en los sitios de arrecife que buceamos más frecuentemente, así que no se requieren habilidades de buceo a la deriva. Las profundidades son moderadas — la mayoría de los sitios de arrecife en el rango de 12 a 18 metros, los sitios más profundos a 25 a 30 metros, bien dentro de los límites recreativos. La visibilidad generalmente es de 15 a 25 metros, lo que es suficiente para ver a tu compañero y la estructura del arrecife sin desorientación. La topografía del fondo es principalmente arrecife y arena en lugar de ambientes complejos con techo; no hay inmersiones en cuevas en las operaciones recreativas aquí, no hay penetraciones de caverna, no hay cámaras oscuras.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b7",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b7-l1", href: "https://dan.org/" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b7-s1", text: "El consumo de aire — técnicamente tu tasa SAC (Surface Air Consumption) — es el segundo gran factor y el que más varía entre individuos. Según investigación resumida por ", marks: [] },
-            { _type: "span", _key: "es-b7-s2", text: "Divers Alert Network", marks: ["es-b7-l1"] },
-            { _type: "span", _key: "es-b7-s3", text: ", los buzos recreativos típicos consumen de 15 a 25 litros por minuto en la superficie, lo que se traduce en distintas tasas reales de consumo a distintas profundidades (porque el aire es más denso en profundidad). Los buzos con tasas SAC más bajas obtienen naturalmente tiempos de fondo más largos del mismo tanque; los buzos con tasas más altas salen antes. La experiencia es la variable principal — los buzos nuevos generalmente respiran más pesado por nervios y falta de familiaridad, y la tasa SAC típicamente baja significativamente en las primeras 20 a 50 inmersiones.", marks: [] },
+            { _type: "span", _key: "es-b7-s1", text: "La combinación de agua cálida, profundidad moderada, corriente suave y visibilidad clara significa que el mismo sitio de buceo puede acomodar igualmente bien a un nuevo buzo Open Water en su primer viaje al Caribe y a un buzo experimentado en su inmersión número mil. Algunos destinos requieren entrenamiento técnico serio o habilidades específicas de especialidad para bucear con seguridad; Punta Cana no.", marks: [] },
           ],
         },
         {
@@ -494,7 +469,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b8-s1", text: "Profundidad y Límites de No Descompresión", marks: [] },
+            { _type: "span", _key: "es-b8-s1", text: "Clima y Condiciones del Mar", marks: [] },
           ],
         },
         {
@@ -503,7 +478,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b9-s1", text: "Toda inmersión recreativa tiene que mantenerse dentro de un tiempo máximo de fondo basado en la profundidad, establecido por los límites de no descompresión (NDL). Estos vienen de la teoría de descompresión — cuanto más profundo y más tiempo bucees, más nitrógeno absorben tus tejidos, y más allá de ciertos umbrales necesitarías paradas de descompresión requeridas antes de poder subir con seguridad. El buceo recreativo se mantiene dentro de límites que permiten ascenso directo (con solo una parada de seguridad). A 12 metros, el NDL supera con creces la hora. A 18 metros, unos 50+ minutos. A 25 metros, cerca de 30 minutos. A 30 metros, cerca de 20 minutos. A 40 metros, menos de 10 minutos.", marks: [] },
+            { _type: "span", _key: "es-b9-s1", text: "La variable que cambia la seguridad diaria más que cualquier otra es el clima. Punta Cana tiene un clima tropical con condiciones generalmente calmadas, pero vientos fuertes, tormentas y eventos de lluvia intensa pueden hacer sitios específicos temporalmente inseguros al crear condiciones de superficie bravas, mala visibilidad por sedimento removido o corrientes inusuales. La temporada de huracanes (de junio a noviembre, con riesgo pico de agosto a octubre) ocasionalmente trae sistemas lo bastante cerca para afectar el buceo incluso sin un impacto directo. Por eso existen las cancelaciones por clima — los operadores serios se negarán a operar una inmersión si las condiciones no son seguras en lugar de forzarlo y esperar.", marks: [] },
           ],
         },
         {
@@ -512,7 +487,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b10-s1", text: "En la práctica, en una inmersión típica de arrecife en Punta Cana a 12 a 18 metros, el consumo de aire suele ser el factor limitante en lugar del NDL — los buzos se quedan con poco aire antes de acercarse al tiempo de no-deco. En inmersiones más profundas a 25 a 30 metros, los dos límites se acercan y el NDL a veces importa más. Los computadores de buceo modernos rastrean ambos simultáneamente y te alertan mucho antes de que cualquiera se convierta en un problema.", marks: [] },
+            { _type: "span", _key: "es-b10-s1", text: "En Grand Bay, monitoreamos las condiciones del mar y los pronósticos del clima empezando 48 horas antes de cualquier día reservado. Si los pronósticos se ven marginales, contactamos a los buzos proactivamente sobre posibles reprogramaciones. La mañana de una inmersión, tomamos la decisión final basada en las condiciones reales — a veces un día que se veía marginal resulta bien, y ocasionalmente un día que se veía bien resulta tener condiciones desarrolladas durante la noche que nos empujan a reprogramar. El criterio recae en el guía que realmente está viendo el mar, no en un algoritmo de reservas.", marks: [] },
           ],
         },
         {
@@ -521,56 +496,56 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b11-s1", text: "Temperatura del Agua y Duración", marks: [] },
+            { _type: "span", _key: "es-b11-s1", text: "Riesgos de Vida Marina (No Hay Muchos)", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b12",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b12-l1", href: "https://www.grandbay-puntacana.com/es/shark-dive-punta-cana" },
+          ],
           children: [
-            { _type: "span", _key: "es-b12-s1", text: "La temperatura del agua afecta la duración de dos formas — una pequeña, una más grande. El efecto pequeño es que el agua más fría aumenta el consumo de aire porque tu cuerpo trabaja más para mantener la temperatura core; esto puede acortar las inmersiones por uno o dos minutos. En las aguas cálidas de Punta Cana (26 a 29°C todo el año) este efecto es apenas notable comparado con buzos que vienen de aguas de casa más frías. El efecto más grande es la comodidad térmica misma — un buzo que se enfría decide terminar la inmersión temprano aunque el aire y el NDL estén bien, lo cual es un límite psicológico más que uno físico duro. Por eso la protección térmica adecuada importa incluso en agua cálida; un buzo que está levemente frío al minuto 35 se pierde los últimos 10 a 15 minutos de una buena inmersión.", marks: [] },
+            { _type: "span", _key: "es-b12-s1", text: "Una pregunta que sale más de lo debido: ¿qué pasa con la vida marina? La realidad del buceo de arrecife caribeño es que los encuentros con vida marina peligrosa son extremadamente raros y casi siempre resultado del buzo iniciando el contacto. Los tiburones en aguas de Punta Cana — incluyendo los ", marks: [] },
+            { _type: "span", _key: "es-b12-s2", text: "tiburones nodriza y tiburones de arrecife caribeño en Shark Point", marks: ["es-b12-l1"] },
+            { _type: "span", _key: "es-b12-s3", text: " — no son agresivos hacia los buzos. Están acostumbrados a la presencia de humanos en el arrecife y tratan a los buzos como ni presa ni amenaza. Los tiburones nodriza en particular son lentos, dóciles y generalmente sin interés en las personas.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b13",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b13-s1", text: "Discover Scuba Diving: Formato Más Corto", marks: [] },
+            { _type: "span", _key: "es-b13-s1", text: "La vida marina que sí puede hacerte daño aquí lo hace principalmente a través de contacto defensivo cuando se le molesta. Las morenas son dóciles si las dejas en paz pero pueden morder si una mano se mete en su grieta. Los peces león cargan espinas venenosas que causan piquetes dolorosos si se rozan. Los erizos de mar tienen espinas que pueden perforar un wetsuit. El coral fuego causa erupción urticante al contacto. Los peces escorpión están camuflados y pueden ser pisados inadvertidamente en agua somera. Todos estos se evitan con la misma regla básica: mira pero no toques, y mantén las manos y los pies lejos del arrecife.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b14",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b14-l1", href: "https://www.grandbay-puntacana.com/es/courses/discover" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b14-s1", text: "Para los participantes de ", marks: [] },
-            { _type: "span", _key: "es-b14-s2", text: "Discover Scuba Diving", marks: ["es-b14-l1"] },
-            { _type: "span", _key: "es-b14-s3", text: " — personas probando scuba por primera vez sin certificación — el tiempo bajo el agua es típicamente de unos 30 minutos. Esto es más corto que una inmersión certificada por dos razones: la profundidad DSD está limitada a 12 metros (lo que es más indulgente con el consumo de aire), y el consumo de aire de un principiante suele ser mayor al de los buzos experimentados. La cifra de 30 minutos cubre una experiencia real de inmersión con tiempo para ver vida de arrecife, practicar habilidades básicas y sentirse cómodo respirando bajo el agua — pero es más corta de lo que los buzos certificados obtienen de la misma cantidad de aire porque un buzo primerizo respira a través de él más rápido.", marks: [] },
+            { _type: "span", _key: "es-b14-s1", text: "Punta Cana no tiene un problema persistente de medusas como algunos destinos caribeños ocasionalmente tienen — las medusas caja y la fragata portuguesa son raras aquí. Las barracudas, que se ven intimidantes, son esencialmente inofensivas para los buzos siempre que no uses joyas brillantes (que pueden confundir con peces presa). No hemos tenido un incidente serio de vida marina en nuestra operación.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b15",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b15-s1", text: "La sesión DSD en sí es más larga que 30 minutos — hay un briefing, montaje de equipo, algunas habilidades en agua somera antes de descender, y la porción de exploración bajo el agua. El tiempo total desde llegar a la tienda hasta el fin de la inmersión es usualmente de 2 a 3 horas. Si te sientes cómodo durante el DSD, algunos operadores (incluidos nosotros) ofrecen una segunda inmersión DSD opcional el mismo día para buzos que quieren más tiempo.", marks: [] },
+            { _type: "span", _key: "es-b15-s1", text: "Infraestructura de Respuesta a Emergencias", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b16",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b16-s1", text: "Inmersiones de Cursos de Certificación", marks: [] },
+            { _type: "span", _key: "es-b16-s1", text: "Una cosa que importa al evaluar la seguridad de un destino de buceo es cómo se ve la respuesta a emergencias si algo sí sale mal. La República Dominicana tiene instalaciones de cámara hiperbárica (de recompresión) en Santo Domingo, a unas 2 o 3 horas en auto al oeste de Punta Cana. En un caso sospechoso de enfermedad por descompresión (EDC), el protocolo estándar es estabilización en sitio con oxígeno al 100%, evacuación a Santo Domingo por ambulancia terrestre o aérea, y tratamiento en la cámara. Esta es la misma infraestructura disponible en la mayoría de los destinos turísticos importantes del Caribe.", marks: [] },
           ],
         },
         {
@@ -578,65 +553,57 @@ const posts = [
           _key: "es-b17",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "es-b17-l1", href: "https://www.grandbay-puntacana.com/es/courses/openwater" },
+            { _type: "link", _key: "es-b17-l1", href: "https://dan.org/" },
           ],
           children: [
-            { _type: "span", _key: "es-b17-s1", text: "Para los ", marks: [] },
-            { _type: "span", _key: "es-b17-s2", text: "estudiantes de certificación Open Water", marks: ["es-b17-l1"] },
-            { _type: "span", _key: "es-b17-s3", text: ", cada una de las cuatro inmersiones de entrenamiento en aguas abiertas dura unos 30 a 40 minutos, similar a la duración del DSD pero con habilidades específicas que completar durante cada inmersión. Las habilidades incluyen cosas como despejar la máscara, recuperación del regulador, ascensos controlados de emergencia y ejercicios de flotabilidad. Conforme los estudiantes avanzan de la inmersión uno a la cuatro, su consumo de aire mejora notablemente y las inmersiones posteriores se sienten más largas incluso a la misma profundidad. Para la cuarta inmersión de aguas abiertas, la mayoría de los estudiantes se acerca al rango de los 40 minutos que refleja la inmersión certificada estándar.", marks: [] },
+            { _type: "span", _key: "es-b17-s1", text: "Para cualquier buzo viajando internacionalmente, vale la pena considerar la ", marks: [] },
+            { _type: "span", _key: "es-b17-s2", text: "membresía en Divers Alert Network", marks: ["es-b17-l1"] },
+            { _type: "span", _key: "es-b17-s3", text: ". DAN ofrece una línea de emergencia médica de buceo 24/7, coordinación de referencias a cámara y evacuaciones, y seguro específico para accidentes de buceo que cubre evacuación médica y tratamiento hiperbárico. El seguro de viaje estándar a menudo excluye incidentes relacionados con buceo o tiene sublímites bajos; DAN fue construido específicamente para esto. Una membresía anual va de $75 a $100 según la región y cubre mucho por el dinero.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b18",
-          style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b18-l1", href: "https://www.grandbay-puntacana.com/es/courses/advanced" },
-          ],
+          style: "h2",
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b18-s1", text: "Para los ", marks: [] },
-            { _type: "span", _key: "es-b18-s2", text: "estudiantes Advanced Open Water", marks: ["es-b18-l1"] },
-            { _type: "span", _key: "es-b18-s3", text: ", la duración varía más porque distintas inmersiones de especialidad tienen distintos perfiles. Una inmersión profunda (adventure dive) a 25 a 30 metros podría durar 20 a 25 minutos de fondo; una inmersión de flotabilidad de precisión a profundidad somera podría durar 45 a 60 minutos; una inmersión de navegación es típicamente 30 a 45 minutos. El curso de certificación cubre cinco inmersiones distintas con un rango de profundidades y formatos, así que el promedio general es similar a una inmersión certificada estándar.", marks: [] },
+            { _type: "span", _key: "es-b18-s1", text: "Prácticas de Seguridad de Grand Bay", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b19",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b19-s1", text: "La Excepción de Shark Point", marks: [] },
+            { _type: "span", _key: "es-b19-s1", text: "Unas cosas prácticas que hacemos que afectan la seguridad en cualquier inmersión. Los tamaños de grupo se mantienen pequeños — típicamente 6 a 8 buzos por guía, no los 15 a 20 que algunas operaciones orientadas al volumen manejan. Los grupos pequeños significan que el guía puede realmente monitorear a cada buzo, responder rápido si alguien necesita ayuda y mantener al grupo junto bajo el agua. Los grupos grandes se dispersan, pierden buzos de la línea de vista y diluyen la atención del guía.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b20",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b20-l1", href: "https://www.grandbay-puntacana.com/es/shark-dive-punta-cana" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b20-s1", text: "La ", marks: [] },
-            { _type: "span", _key: "es-b20-s2", text: "inmersión de Shark Point", marks: ["es-b20-l1"] },
-            { _type: "span", _key: "es-b20-s3", text: " está a unos 26 metros, más profunda que nuestros sitios típicos de arrecife, y la duración de la inmersión ahí está más cerca de 30 a 35 minutos por la profundidad. Ese sigue siendo tiempo suficiente para un encuentro legítimo con tiburones — los tiburones típicamente son visibles temprano en la inmersión porque están en el área inmediata, no algo que tengas que buscar. El tiempo de inmersión más corto es inherente a la profundidad, no una limitación del sitio.", marks: [] },
+            { _type: "span", _key: "es-b20-s1", text: "Cada inmersión recibe un briefing pre-inmersión completo cubriendo el sitio específico, condiciones esperadas, el plan de inmersión (profundidad, tiempo, dirección, estrategia de salida), asignaciones de compañero, repaso de señales manuales y procedimientos de emergencia. Esto no es opcional y no es una formalidad — es cómo el equipo de buceo se asegura de que todos estén en la misma página antes del descenso. Los protocolos estándar de señalización de emergencia, verificaciones de compañero y objetivos de presión de aire de reserva se confirman en cada salida.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b21",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b21-s1", text: "Tiempo de Fondo vs Tiempo Total de Inmersión", marks: [] },
+            { _type: "span", _key: "es-b21-s1", text: "Los botes cargan un kit de oxígeno totalmente equipado, un kit de primeros auxilios, una radio marina para comunicación de emergencia y chalecos salvavidas para flotación en superficie. El equipo se inspecciona antes de cada salida y recibe servicio según los cronogramas recomendados por el fabricante — no solo cuando algo se rompe visiblemente. El capitán permanece en el bote durante las inmersiones, atento a buzos que suben y monitoreando las condiciones de superficie.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b22",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b22-s1", text: "Una distinción que vale la pena entender. El \"tiempo de fondo\" en buceo se refiere oficialmente al tiempo desde empezar el descenso hasta empezar el ascenso. El \"tiempo total de inmersión\" agrega el ascenso, la parada de seguridad y cualquier exploración somera adicional en el camino hacia arriba. Cuando decimos que una inmersión típica es de 45 minutos, usualmente hablamos del tiempo de fondo más la parada de seguridad y el ascenso final — más cerca del tiempo total que estás bajo el agua desde meterte al agua hasta salir a la superficie.", marks: [] },
+            { _type: "span", _key: "es-b22-s1", text: "El Lado del Buzo en la Seguridad", marks: [] },
           ],
         },
         {
@@ -645,25 +612,25 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b23-s1", text: "Una inmersión estándar típicamente termina con una parada de seguridad de 3 minutos a 5 metros, seguida por un ascenso lento a la superficie. Esto agrega unos 5 minutos al tiempo total comparado con una inmersión hipotética que termine en el fondo. Todas las cifras de profundidad-y-tiempo que damos en esta publicación son tiempos totales en el agua, no números estrechos de \"tiempo de fondo\".", marks: [] },
+            { _type: "span", _key: "es-b23-s1", text: "No todo factor de seguridad recae en el operador. Los buzos contribuyen a su propia seguridad de formas reales. Bucear dentro de tu certificación y nivel de experiencia es el más grande — un buzo Open Water recién certificado no debería intentar sitios a 30 metros, y un buzo que no ha buceado en cinco años debería hacer un refrescamiento o repaso de scuba antes de saltar a un día completo de buceo. Ser honesto en el formulario médico importa — las condiciones no divulgadas son uno de los principales factores contribuyentes en las fatalidades de buceo. Seguir el briefing pre-inmersión, quedarte con tu compañero y monitorear tu propia presión de aire son responsabilidades básicas que los operadores no pueden hacer por ti.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b24",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b24-s1", text: "Por Qué Algunos Buzos Suben Antes", marks: [] },
+            { _type: "span", _key: "es-b24-s1", text: "La disposición física también importa. Estar adecuadamente descansado, hidratado y sobrio — sin alcohol la noche anterior o la mañana de una inmersión — reduce dramáticamente los factores de riesgo de EDC y mejora tu desempeño bajo el agua. El factor prevenible más común en los incidentes de buceo no es fallo del equipo o sorpresa ambiental; es un buzo que no estaba físicamente listo para la inmersión que reservó.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b25",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b25-s1", text: "En el buceo en grupo, el tiempo real de fin de cualquier inmersión lo establece la primera persona en alcanzar un límite — ese es el buzo que ha usado más aire, o el que se acerca al NDL, o el que se está enfriando, o el que señala que ya tuvo suficiente. Por eso las parejas o amigos que bucean juntos a menudo terminan con aire ligeramente distinto restante en el bote: el buzo que se comió su aire más rápido terminó la inmersión para todos, y el buzo más eficiente todavía tiene 500 a 800 PSI restantes.", marks: [] },
+            { _type: "span", _key: "es-b25-s1", text: "Qué Pasa Si Algo Sí Sale Mal", marks: [] },
           ],
         },
         {
@@ -672,25 +639,25 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b26-s1", text: "Esto es normal y esperado, no una falla de nadie. El plan de inmersión está construido alrededor del respirador menos eficiente del grupo para que nadie termine en una situación crítica de aire, que es exactamente la forma correcta de planear una inmersión de grupo.", marks: [] },
+            { _type: "span", _key: "es-b26-s1", text: "En un incidente real de buceo, la respuesta es en capas. Primero es la respuesta inmediata en sitio — el guía maneja al buzo afectado, provee oxígeno si está indicado y coordina el ascenso del resto del grupo. Segundo es la estabilización en bote — oxígeno, hidratación, monitoreo mientras el bote regresa a tierra. Tercero es la respuesta de emergencia en tierra — despacho de ambulancia, transporte al hospital, y si se sospecha EDC, coordinación con la cámara hiperbárica en Santo Domingo. La línea 24/7 de DAN puede ser llamada en cualquier punto para coordinar guía médica especializada en tiempo real.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b27",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b27-s1", text: "Cómo Extender tu Tiempo de Fondo", marks: [] },
+            { _type: "span", _key: "es-b27-s1", text: "Los incidentes serios son raros en este ambiente, pero el plan para ellos está escrito y practicado. Esta es una de las cosas que preguntamos cuando otros buzos nos preguntan sobre elegir un operador local — ¿tiene la tienda un plan de respuesta a emergencias por escrito, y pueden recorrerlo contigo si se les pide? Los operadores serios en todos lados deberían poder.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b28",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b28-s1", text: "La forma más confiable de obtener inmersiones más largas es mejorar tu consumo de aire — lo que principalmente significa practicar patrones de respiración lentos y calmados y sentirte lo bastante cómodo bajo el agua como para no estar peleando con el ambiente. Los buzos nuevos a menudo respiran demasiado rápido o demasiado superficialmente por los nervios, y se quedan sin aire 15 minutos antes de su compañero más experimentado. Respiraciones profundas y lentas (por la boca, salir lento, sin retener el aire) son más eficientes que la respiración rápida y superficial, fisiológicamente y para la flotabilidad.", marks: [] },
+            { _type: "span", _key: "es-b28-s1", text: "Cómo Se Compara Punta Cana con Otros Destinos Caribeños", marks: [] },
           ],
         },
         {
@@ -699,77 +666,68 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b29-s1", text: "El control de flotabilidad es la otra gran palanca. Un buzo que está constantemente compensando por sobre-inflación o sub-inflación de su BCD está haciendo más trabajo físico que un buzo que está neutralmente flotante y planeando. El tiempo invertido en dominar la flotabilidad se paga en cada inmersión subsiguiente en tiempos de fondo más largos. Por eso la especialidad PADI Peak Performance Buoyancy es una de las especialidades más útiles para mejorar tu buceo en general, no solo para fotografía.", marks: [] },
+            { _type: "span", _key: "es-b29-s1", text: "Para efectos de seguridad, Punta Cana se ubica similar a los destinos turísticos caribeños principales — Cozumel, Cancún, Aruba, Gran Caimán. Las condiciones del agua son consistentemente suaves, la industria del buceo turístico es madura, y hay infraestructura de emergencia establecida. Es un paso menos compleja que destinos que requieren habilidades de buceo a la deriva (las corrientes más fuertes de Cozumel) o entrenamiento técnico específico (inmersiones de pared con caídas rápidas de profundidad). Es más establecida que destinos emergentes que apenas están construyendo su infraestructura de buceo turístico. Para un buzo recreativo certificado o un participante primerizo de DSD, Punta Cana es genuinamente uno de los lugares más indulgentes para bucear en el Caribe.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "es-bA",
+          style: "h2",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "es-bA-s1", text: "El Sistema de Compañero y Su Rol en la Seguridad", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "es-bB",
+          style: "normal",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "es-bB-s1", text: "Una práctica de seguridad que recibe menos atención de la que merece en conversaciones casuales de planeación de buceo es el sistema de compañero. Todo buzo certificado está entrenado para bucear con un compañero — un segundo buzo que te monitorea mientras tú lo monitoreas, proveyendo redundancia para problemas de equipo, capacidad de compartir aire si alguno de los dos se queda bajo inesperadamente, y un testigo si pasa algo inusual. En una inmersión guiada, el guía funciona como monitor de seguridad para todo el grupo, pero los pares de compañeros aún importan por las mismas razones que las agencias de certificación los enseñan. Tu compañero te ve si estás batallando antes que el guía tal vez, y puede ayudar con un arreglo pequeño de equipo que no amerita hacer subir a todo el grupo.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "es-bC",
+          style: "normal",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "es-bC-s1", text: "Para viajeros solos que llegan sin compañero, el guía o los empareja con otro buzo solo compatible o asume responsabilidad directa de compañero. Cualquiera de los dos arreglos funciona bien. Lo importante es no terminar en el agua sin un plan establecido de quién está cuidando a quién. Pregunta antes de subir al bote: \"¿quién es mi compañero?\" Un guía serio tendrá una respuesta clara lista. Un operador apurado o desorganizado podría no haberlo pensado todavía — lo cual es en sí una señal.", marks: [] },
+          ],
+        },
+        {
+          _type: "block",
+          _key: "es-bD",
+          style: "normal",
+          markDefs: [],
+          children: [
+            { _type: "span", _key: "es-bD-s1", text: "Relacionado a esto: no dudes en señalar cualquier problema a tu compañero o guía durante una inmersión. Problemas de compensación de oídos, dificultades de flotabilidad, ansiedad leve, sentir frío, calambres musculares — todos estos son cosas que el guía puede ayudar a abordar sin incidente si señalas temprano. Lo que convierte problemas pequeños en grandes es no señalar hasta que la situación ya escaló. Todo profesional de buceo experimentado preferiría parar o dar vuelta a una inmersión antes que forzar el paso con un buzo estresado o incómodo, y nadie debería sentir vergüenza por terminar una inmersión temprano por su propia comodidad o seguridad.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b30",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b30-s1", text: "El fitness físico importa al margen. Los buzos que están cardiovascularmente en forma tienen un consumo de oxígeno en reposo más bajo y un consumo de aire más bajo durante actividad subacuática moderada. Este no es un efecto enorme para el buceo casual de arrecife, pero es real en inmersiones largas.", marks: [] },
+            { _type: "span", _key: "es-b30-s1", text: "En Resumen", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b31",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b31-s1", text: "Qué Pasa si te Quedas con Poco Aire", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b32",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b32-s1", text: "La práctica estándar es señalar al guía cuando tu aire llegue a unos 100 a 70 bar (aproximadamente 1500 a 1000 PSI), y empezar el ascenso cuando el líder del grupo señale o cuando llegues a aproximadamente 50 bar (700 PSI). Nadie bucea su tanque hasta vaciarlo — la reserva es margen deliberado para el ascenso y la parada de seguridad más la respuesta de emergencia si algo sale mal. Si te quedas con menos que eso a mitad de una inmersión, la respuesta correcta es señalar al guía, compartir aire con la segunda etapa alternativa del guía si es necesario, y ascender con seguridad con el grupo. Esta es una de las habilidades específicas cubiertas en el entrenamiento Open Water y revisadas en cada briefing de inmersión.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b33",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b33-s1", text: "¿Cuánto Dura el Día Completo en la Tienda?", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b34",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b34-s1", text: "La experiencia completa de dos tanques toma más tiempo que la suma de las dos inmersiones. Forma típica: recogida o llegada a la tienda alrededor de las 8:30 AM, montaje de equipo y briefing 30 minutos, viaje en bote al primer sitio 20 a 30 minutos, primera inmersión 45 minutos, intervalo de superficie 45 a 60 minutos, traslado al segundo sitio (si es distinto) 10 a 20 minutos, segunda inmersión 45 minutos, viaje en bote de regreso 20 a 30 minutos, enjuague de equipo y debrief 15 minutos. En total, estás de regreso en tierra alrededor de 1:00 a 2:00 PM. Tiempo total en la operación es de unas 5 horas para algo así como 90 minutos de tiempo real bajo el agua.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b35",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b35-s1", text: "En Resumen", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b36",
           style: "normal",
           markDefs: [
-            { _type: "link", _key: "es-b36-l1", href: "https://www.grandbay-puntacana.com/es/courses" },
-            { _type: "link", _key: "es-b36-l2", href: "https://wa.me/18297239338" },
+            { _type: "link", _key: "es-b31-l1", href: "https://www.grandbay-puntacana.com/es/courses" },
+            { _type: "link", _key: "es-b31-l2", href: "https://wa.me/18297239338" },
           ],
           children: [
-            { _type: "span", _key: "es-b36-s1", text: "Para buzos certificados haciendo días estándar de 2 tanques en los arrecifes de Punta Cana, espera unos 45 minutos por inmersión con una hora entre inmersiones en el bote. Para primerizos haciendo una experiencia Discover Scuba Diving, espera unos 30 minutos bajo el agua en tu inmersión introductoria. Para cursos de certificación, la duración varía pero promedia entre 30 y 45 minutos por inmersión a lo largo del entrenamiento. Profundidad, consumo de aire y comodidad térmica mueven estos números. Si tienes preguntas específicas sobre cómo se ven las inmersiones para tu ", marks: [] },
-            { _type: "span", _key: "es-b36-s2", text: "curso o viaje", marks: ["es-b36-l1"] },
-            { _type: "span", _key: "es-b36-s3", text: ", escríbenos por ", marks: [] },
-            { _type: "span", _key: "es-b36-s4", text: "WhatsApp", marks: ["es-b36-l2"] },
-            { _type: "span", _key: "es-b36-s5", text: " con tu nivel de certificación y fechas y te damos una respuesta específica para tu itinerario.", marks: [] },
+            { _type: "span", _key: "es-b31-s1", text: "Punta Cana es un destino seguro para el buceo recreativo, con condiciones suaves, profundidades moderadas, riesgos bajos de vida marina, infraestructura madura de respuesta a emergencias y operadores serios que priorizan la seguridad a través de grupos pequeños, briefings exhaustivos y equipo bien mantenido. La contribución del buzo también importa — divulgación médica precisa, nivel de certificación apropiado, descanso adecuado y autoevaluación honesta antes de cada inmersión hacen la diferencia más grande. Si tienes preguntas específicas de seguridad sobre un ", marks: [] },
+            { _type: "span", _key: "es-b31-s2", text: "curso o viaje específico", marks: ["es-b31-l1"] },
+            { _type: "span", _key: "es-b31-s3", text: " — tamaños de grupo, protocolos de emergencia, recomendaciones de seguro — escríbenos por ", marks: [] },
+            { _type: "span", _key: "es-b31-s4", text: "WhatsApp", marks: ["es-b31-l2"] },
+            { _type: "span", _key: "es-b31-s5", text: " y te lo recorremos.", marks: [] },
           ],
         },
       ],
@@ -779,34 +737,34 @@ const posts = [
       _type: "seo",
       meta: {
         en: {
-          title: "How Long Does a Typical Scuba Dive Last in Punta Cana? (2026)",
+          title: "Are Punta Cana Dive Sites Safe for Tourists? Honest Assessment (2026)",
           description:
-            "Certified 2-tank dives in Punta Cana run about 45 minutes each. DSD is around 30 minutes. Depth, air consumption, and thermal comfort all affect dive length — here's the breakdown.",
-          keywords: ["scuba dive length punta cana", "how long dive lasts", "dive time punta cana", "SAC rate diving", "dive duration"],
+            "Recreational dive safety statistics, what makes a dive site safe, marine life risks in Punta Cana (very few), emergency response infrastructure including hyperbaric chamber access, and how Grand Bay handles safety daily.",
+          keywords: ["punta cana diving safety", "is scuba diving safe punta cana", "dive site safety dominican republic", "recreational diving risk", "punta cana shark safety"],
         },
         es: {
-          title: "¿Cuánto Dura una Inmersión en Punta Cana? Guía Práctica (2026)",
+          title: "¿Son Seguros los Sitios de Buceo en Punta Cana? Evaluación Honesta (2026)",
           description:
-            "Las inmersiones certificadas de 2 tanques en Punta Cana duran unos 45 minutos cada una. El DSD dura unos 30 minutos. Profundidad, consumo de aire y comodidad térmica afectan la duración.",
-          keywords: ["duracion inmersion punta cana", "cuanto dura buceo", "tiempo inmersion punta cana", "tasa SAC buceo"],
+            "Estadísticas de seguridad del buceo recreativo, qué hace seguro un sitio, riesgos de vida marina en Punta Cana (muy pocos), infraestructura de respuesta a emergencias incluyendo acceso a cámara hiperbárica.",
+          keywords: ["seguridad buceo punta cana", "es seguro bucear punta cana", "seguridad sitio buceo republica dominicana", "riesgo buceo recreativo"],
         },
       },
       openGraph: {
         en: {
-          title: "How Long Does a Typical Scuba Dive Last in Punta Cana?",
-          description: "Certified dives ~45 min. DSD ~30 min. What determines dive length, how depth affects it, and how the full day at Grand Bay looks in practice.",
+          title: "Are Punta Cana Dive Sites Safe for Tourists?",
+          description: "Yes — with context. What makes Punta Cana's sites well-suited for tourism diving, the small marine life risks, emergency response infrastructure, and how Grand Bay evaluates conditions daily.",
         },
         es: {
-          title: "¿Cuánto Dura una Inmersión Típica en Punta Cana?",
-          description: "Inmersiones certificadas ~45 min. DSD ~30 min. Qué determina la duración, cómo la profundidad la afecta y cómo se ve el día completo en Grand Bay.",
+          title: "¿Son Seguros los Sitios de Buceo en Punta Cana para Turistas?",
+          description: "Sí — con contexto. Qué hace idóneos los sitios de Punta Cana para el buceo turístico, los pequeños riesgos de vida marina, la infraestructura de emergencia y cómo Grand Bay evalúa condiciones a diario.",
         },
       },
       structuredData: {
         en: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: "How Long Does a Typical Scuba Dive Last in Punta Cana?",
-          description: "A practical guide to scuba dive duration in Punta Cana. Standard certified 2-tank dives run about 45 minutes each; Discover Scuba Diving is around 30 minutes; the Shark Point dive at 26 meters is closer to 30-35 minutes. Covers what determines dive length (depth, air consumption/SAC rate, water temperature, exertion), no-decompression limits by depth, the difference between bottom time and total dive time, how course dives vary, why group dives end when the first person hits a limit, and how to extend bottom time through improved air consumption and buoyancy control.",
+          headline: "Are Punta Cana Dive Sites Safe for Tourists? An Honest Assessment",
+          description: "A comprehensive assessment of scuba diving safety in Punta Cana, Dominican Republic. Covers recreational diving safety statistics from Divers Alert Network, what makes Punta Cana dive sites well-suited for tourism (mild currents, moderate depths, warm water, clear visibility, no overhead environments), weather and sea condition management, marine life risks (nurse sharks non-aggressive, moray/lionfish/urchin/fire coral avoidance rule), emergency response infrastructure including hyperbaric chamber in Santo Domingo, DAN membership benefits, Grand Bay's safety practices (small groups 6-8 divers, thorough briefings, boat safety equipment), diver responsibilities (medical honesty, appropriate certification level, rest and sobriety), incident response protocols, and comparison to other Caribbean destinations.",
           datePublished: "2026-07-04",
           inLanguage: "en",
           author: { "@type": "Organization", name: "Grand Bay of the Sea" },
@@ -817,14 +775,14 @@ const posts = [
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://www.grandbay-puntacana.com/blog/diving-tips/how-long-scuba-dive-lasts-punta-cana",
+            "@id": "https://www.grandbay-puntacana.com/blog/diving-tips/punta-cana-dive-sites-safety",
           },
         }),
         es: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: "¿Cuánto Dura una Inmersión Típica en Punta Cana?",
-          description: "Una guía práctica sobre la duración de las inmersiones en Punta Cana. Las inmersiones estándar de 2 tanques para certificados duran unos 45 minutos cada una; el Discover Scuba Diving dura unos 30 minutos; la inmersión de Shark Point a 26 metros está más cerca de 30-35 minutos. Cubre qué determina la duración (profundidad, consumo de aire/tasa SAC, temperatura del agua, esfuerzo), los límites de no descompresión por profundidad, la diferencia entre tiempo de fondo y tiempo total, cómo varían las inmersiones de cursos, por qué las inmersiones en grupo terminan cuando la primera persona llega a un límite, y cómo extender el tiempo de fondo mediante mejora del consumo de aire y control de flotabilidad.",
+          headline: "¿Son Seguros los Sitios de Buceo en Punta Cana para Turistas? Una Evaluación Honesta",
+          description: "Una evaluación integral de la seguridad del buceo scuba en Punta Cana, República Dominicana. Cubre estadísticas de seguridad del buceo recreativo de Divers Alert Network, qué hace idóneos los sitios de Punta Cana para el turismo (corrientes suaves, profundidades moderadas, agua cálida, visibilidad clara, sin ambientes con techo), manejo de clima y condiciones del mar, riesgos de vida marina (tiburones nodriza no agresivos, regla de evitar morena/pez león/erizo/coral fuego), infraestructura de respuesta a emergencias incluyendo cámara hiperbárica en Santo Domingo, beneficios de la membresía DAN, prácticas de seguridad de Grand Bay (grupos pequeños de 6-8 buzos, briefings exhaustivos, equipo de seguridad en bote), responsabilidades del buzo (honestidad médica, nivel de certificación apropiado, descanso y sobriedad), protocolos de respuesta a incidentes, y comparación con otros destinos caribeños.",
           datePublished: "2026-07-04",
           inLanguage: "es",
           author: { "@type": "Organization", name: "Grand Bay of the Sea" },
@@ -835,7 +793,7 @@ const posts = [
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://www.grandbay-puntacana.com/es/blog/diving-tips/how-long-scuba-dive-lasts-punta-cana",
+            "@id": "https://www.grandbay-puntacana.com/es/blog/diving-tips/punta-cana-dive-sites-safety",
           },
         }),
       },

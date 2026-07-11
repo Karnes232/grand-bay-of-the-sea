@@ -15,6 +15,7 @@ export default defineType({
         list: [
           { title: "Home", value: "Home" },
           { title: "Courses", value: "Courses" },
+          { title: "Trips", value: "Trips" },
         ],
       },
       validation: Rule => Rule.required(),
