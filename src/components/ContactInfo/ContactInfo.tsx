@@ -49,16 +49,13 @@ const ContactInfo = async ({
             {t("country")}
           </span>
         </div>
-        {/* <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-center gap-2">
           <FaPhoneAlt className={`shrink-0 ${iconColor}`} aria-hidden />
-          <a
-            href={`tel:${BUSINESS.phoneE164}`}
-            aria-label={t("phoneLabel")}
-            className={linkColor}
+          <span
           >
             {BUSINESS.phoneDisplay}
-          </a>
-        </div> */}
+          </span>
+        </div>
         <div className="flex items-center justify-center gap-2">
           <GrMail className={`shrink-0 ${iconColor}`} aria-hidden />
           <a
