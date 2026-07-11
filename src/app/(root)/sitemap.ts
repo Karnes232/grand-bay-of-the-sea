@@ -6,11 +6,15 @@ import {
 } from "@/lib/contentful"
 import { getBlogCategory } from "@/sanity/queries/Blog/BlogCategory"
 import { getBlogPosts } from "@/sanity/queries/Blog/BlogPosts"
+import { getCourseSlugs } from "@/sanity/queries/Courses/IndividualCourses"
+import { getTripSlugs } from "@/sanity/queries/DiveTrips/Trips"
 import type { MetadataRoute } from "next"
 
 // const blogCategories = await getAllEntrySlugs("blogCategory")
 const blogCategoriesSanity = await getBlogCategory()
 const blogPostsSanity = await getBlogPosts()
+const courseSlugsSanity = await getCourseSlugs()
+const tripSlugsSanity = await getTripSlugs()
 
 // const blogPosts = await getAllEntrySlugsWithCategory("blogPost")
 
@@ -57,6 +61,27 @@ const blogCategoriesSpanish = blogCategoriesSanity.map(page => {
     priority: 1,
   }
 })
+
+// Course and trip detail pages are Sanity-driven ([slug] routes): sourcing the
+// sitemap from the same documents means new content can never be silently
+// missing here (4 of 8 courses had already drifted out of the hardcoded list).
+const courseEntries = courseSlugsSanity.flatMap(course =>
+  ["", "/es"].map(prefix => ({
+    url: `https://www.grandbay-puntacana.com${prefix}/courses/${course.slug}`,
+    lastModified: course._updatedAt ? new Date(course._updatedAt) : SITE_LASTMOD,
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  })),
+)
+
+const tripEntries = tripSlugsSanity.flatMap(trip =>
+  ["", "/es"].map(prefix => ({
+    url: `https://www.grandbay-puntacana.com${prefix}/trips/${trip.slug}`,
+    lastModified: trip._updatedAt ? new Date(trip._updatedAt) : SITE_LASTMOD,
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  })),
+)
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -132,54 +157,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.7,
     },
-    {
-      url: "https://www.grandbay-puntacana.com/courses/discover",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/es/courses/discover",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/courses/scubadiver",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/es/courses/scubadiver",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/courses/openwater",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/es/courses/openwater",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/courses/advanced",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/es/courses/advanced",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
+    ...courseEntries,
     {
       url: "https://www.grandbay-puntacana.com/trips",
       lastModified: SITE_LASTMOD,
@@ -192,42 +170,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.7,
     },
-    {
-      url: "https://www.grandbay-puntacana.com/trips/catalina",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/es/trips/catalina",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/trips/saona",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/es/trips/saona",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/trips/bayahibe",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: "https://www.grandbay-puntacana.com/es/trips/bayahibe",
-      lastModified: SITE_LASTMOD,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
+    ...tripEntries,
     {
       url: "https://www.grandbay-puntacana.com/sites",
       lastModified: SITE_LASTMOD,

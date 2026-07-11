@@ -59,6 +59,18 @@ export const getTripCards = async (): Promise<TripCards[]> => {
   return trips
 }
 
+/** Lean projection for the sitemap — every trip slug with its real lastmod. */
+export const tripSlugsQuery = `*[_type == "trips"]{
+  "slug": slug.current,
+  _updatedAt
+}`
+
+export const getTripSlugs = async (): Promise<
+  { slug: string; _updatedAt: string }[]
+> => {
+  return await client.fetch(tripSlugsQuery)
+}
+
 export interface Trip {
   page: string
   title?: {

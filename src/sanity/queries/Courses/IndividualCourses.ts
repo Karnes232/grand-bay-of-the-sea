@@ -54,6 +54,18 @@ export const individualCoursesCardsQuery = `*[_type == "individualCourse" && cou
   order
 }`
 
+/** Lean projection for the sitemap — every course slug with its real lastmod. */
+export const courseSlugsQuery = `*[_type == "individualCourse"]{
+  "slug": slug.current,
+  _updatedAt
+}`
+
+export const getCourseSlugs = async (): Promise<
+  { slug: string; _updatedAt: string }[]
+> => {
+  return await client.fetch(courseSlugsQuery)
+}
+
 export const getIndividualCoursesCards = async (
   courseLevel: string,
 ): Promise<IndividualCourseCard[]> => {
