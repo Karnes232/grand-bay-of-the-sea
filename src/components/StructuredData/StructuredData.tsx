@@ -84,8 +84,8 @@ export function generateStructuredData(locale: string = "en") {
     ],
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: 4.7,
-      reviewCount: 138,
+      ratingValue: BUSINESS.rating.value,
+      reviewCount: BUSINESS.rating.count,
       bestRating: 5,
       worstRating: 1,
     },

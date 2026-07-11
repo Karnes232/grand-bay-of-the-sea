@@ -25,6 +25,12 @@ export const BUSINESS = {
   email: "grandbayofthesea@gmail.com",
   hours: { opens: "08:30", closes: "17:00" },
   mapUrl: "https://maps.app.goo.gl/tAB86MjFxiF7Hefj7",
+  /**
+   * Google Business Profile rating (single verifiable source; the site embeds
+   * the Google reviews widget). Snapshot as of 2026-07-11 — refresh
+   * periodically against the live GBP listing.
+   */
+  rating: { value: 4.8, count: 151, source: "Google" },
   latitude: process.env.NEXT_PUBLIC_BUSINESS_LATITUDE || "18.64857",
   longitude: process.env.NEXT_PUBLIC_BUSINESS_LONGITUDE || "-68.358637",
 } as const
