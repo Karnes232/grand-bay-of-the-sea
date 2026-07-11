@@ -82,7 +82,7 @@ export default async function Page({
           className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}
         />
         <div className="my-5">
-          <div className="flex flex-col lg:flex-row lg:mx-auto max-w-6xl xl:h-[35rem]">
+          <div className="flex flex-col lg:flex-row lg:mx-auto max-w-6xl xl:min-h-[35rem]">
             <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:justify-center xl:mt-0">
               <BlockContent
                 content={individualCourse.paragraph1}
