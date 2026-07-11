@@ -67,33 +67,34 @@ const DiveSiteCard = ({
           {diveSite.name === "Shark Point" ? (
             <>
               <Link href="/shark-dive-punta-cana" className="no-underline">
-                <h5 className="text-gray-900 text-xl font-medium mb-2">
+                <h3 className="text-gray-900 text-xl font-medium mb-2">
                   {diveSite.name}
-                </h5>
+                </h3>
               </Link>
             </>
           ) : (
             <>
-              <h5 className="text-gray-900 dark:text-white text-xl font-medium mb-2">
+              <h3 className="text-gray-900 dark:text-white text-xl font-medium mb-2">
                 {diveSite.name}
-              </h5>
+              </h3>
             </>
           )}
           <p className="text-lg text-gray-700 dark:text-white mb-2">
             {diveSite.meters} {t("meters")} / {diveSite.feet} {t("feet")}
           </p>
-          <p className="text-gray-700 dark:text-white text-base mb-4 min-h-[160px] flex flex-col items-start justify-between">
-            {readMore
-              ? diveSite.description[locale]
-              : `${diveSite.description[locale].substring(0, 150)}...`}
-            <br />
+          <div className="text-gray-700 dark:text-white text-base mb-4 min-h-[160px] flex flex-col items-start justify-between">
+            {/* Full text always in the HTML (crawlers see it); the toggle is
+                visual-only via line-clamp. */}
+            <p className={readMore ? "" : "line-clamp-4"}>
+              {diveSite.description[locale]}
+            </p>
             <button
               className="text-blue-700"
               onClick={() => setReadMore(!readMore)}
             >
               {readMore ? t("showLess") : t("readMore")}
             </button>
-          </p>
+          </div>
         </div>
       </div>
     </motion.div>

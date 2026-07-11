@@ -15,6 +15,8 @@ import SanityTripCards from "@/components/TourOverviews/SanityTripCards"
 import JsonLd from "@/components/StructuredData/JsonLd"
 import { getTranslations } from "next-intl/server"
 import { BUSINESS } from "@/lib/business"
+import { getFaqs } from "@/sanity/queries/Faqs/Faqs"
+import Faqs from "@/components/FaqsComponent/Faqs"
 
 export const revalidate = 3600 // ISR — regenerate hourly (Netlify-compatible)
 
@@ -63,10 +65,11 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData, diveTripsPage, tripCards] = await Promise.all([
+  const [structuredData, diveTripsPage, tripCards, faqs] = await Promise.all([
     getStructuredData("Trips"),
     getDiveTripsPage(),
     getTripCards(),
+    getFaqs("Trips"),
   ])
 
   const heroImageUrl = diveTripsPage.heroImage.asset.url
@@ -122,6 +125,20 @@ export default async function Page({
         videoId={"scubaHero_wzvqdg"}
       />
       <SanityTripCards locale={locale} tripCards={tripCards} />
+      {diveTripsPage.paragraph2 && (
+        <BlockContent
+          content={diveTripsPage.paragraph2}
+          locale={locale}
+          demoteH1
+        />
+      )}
+      {faqs && (
+        <Faqs
+          faqs={faqs.faqs}
+          structuredData={faqs.structuredData}
+          locale={locale}
+        />
+      )}
     </main>
   )
 }

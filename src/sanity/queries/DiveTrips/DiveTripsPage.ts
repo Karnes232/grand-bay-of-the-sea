@@ -21,6 +21,10 @@ export interface DiveTripsPage {
     en: any[]
     es: any[]
   }
+  paragraph2?: {
+    en: any[]
+    es: any[]
+  }
   heroImage: {
     asset: {
       url: string
@@ -54,6 +58,10 @@ export const diveTripsPageQuery = `*[_type == "diveTripsPage"][0] {
     link
   },
   paragraph1 {
+    en,
+    es
+  },
+  paragraph2 {
     en,
     es
   },

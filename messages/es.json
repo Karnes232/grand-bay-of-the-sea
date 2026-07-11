@@ -133,6 +133,9 @@
     "meters": "metros",
     "feet": "pies"
   },
+  "DiveSites": {
+    "heading": "Sitios de Buceo en Punta Cana — Profundidades y Destacados"
+  },
   "Footer": {
     "builtBy": "Desarrollado por",
     "developedBy": "Desarrollo Web en República Dominicana"

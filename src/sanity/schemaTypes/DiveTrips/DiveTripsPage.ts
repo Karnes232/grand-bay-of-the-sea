@@ -69,6 +69,13 @@ export default defineType({
       type: "localizedBlock",
       validation: Rule => Rule.required(),
     }),
+    defineField({
+      name: "paragraph2",
+      title: "Paragraph 2",
+      description:
+        "Optional second content section, rendered below the trip cards (logistics, what's included, which trip suits whom).",
+      type: "localizedBlock",
+    }),
   ],
   preview: {
     select: {
