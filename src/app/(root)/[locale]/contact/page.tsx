@@ -92,9 +92,18 @@ export default async function Home({
         blurDataURL={contact.heroImage.asset.metadata.lqip}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <ContactForm />
-      <ContactInfo variant="page" />
-      <GoogleMaps flat />
+      <div className="max-w-6xl mx-auto lg:grid lg:grid-cols-2 lg:gap-12 lg:items-start lg:px-8">
+        <ContactForm />
+        <div>
+          <ContactInfo variant="page" />
+          <div className="hidden lg:block">
+            <GoogleMaps variant="card" />
+          </div>
+        </div>
+      </div>
+      <div className="lg:hidden">
+        <GoogleMaps variant="flat" />
+      </div>
     </main>
   )
 }
