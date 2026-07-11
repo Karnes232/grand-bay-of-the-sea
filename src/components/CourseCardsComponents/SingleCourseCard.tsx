@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import React from "react"
+import { useTranslations } from "next-intl"
 
 const SingleCourseCard = ({
   title,
@@ -10,6 +11,7 @@ const SingleCourseCard = ({
   hash1,
   hash2,
   hash3,
+  price,
 }: {
   title: string
   description: string
@@ -18,7 +20,9 @@ const SingleCourseCard = ({
   hash1: string
   hash2: string
   hash3: string
+  price?: number
 }) => {
+  const t = useTranslations("Cards")
   return (
     <Link href={link} className="no-underline ">
       <div className="max-w-xs w-80 my-4 rounded overflow-hidden shadow-lg dark:bg-neutral-900">
@@ -36,6 +40,11 @@ const SingleCourseCard = ({
             {description}
           </p>
         </div>
+        {price != null && (
+          <div className="px-6 text-sm font-semibold text-sky-800 dark:text-sky-400">
+            {t("from")} ${price}
+          </div>
+        )}
         <div className="px-6 pt-4 pb-2 h-24 flex flex-wrap items-end justify-center">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
             #{hash1}

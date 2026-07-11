@@ -25,6 +25,7 @@ const AdvancedCourseCards = ({
             hash1={course.cardHashTags[0]}
             hash2={course.cardHashTags[1]}
             hash3={course.cardHashTags[2]}
+            price={course.padiPrice}
           />
         ))}
       </div>

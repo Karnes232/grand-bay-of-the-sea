@@ -137,6 +137,12 @@
     "builtBy": "Desarrollado por",
     "developedBy": "Desarrollo Web en República Dominicana"
   },
+  "TrustLine": {
+    "line": "★ {rating} · {count} reseñas en Google · Centro de Buceo PADI Verificado #27147"
+  },
+  "Cards": {
+    "from": "desde"
+  },
   "ContactInfo": {
     "title": "Contacto y Ubicación",
     "addressLabel": "Dirección",

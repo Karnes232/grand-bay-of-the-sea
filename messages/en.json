@@ -137,6 +137,12 @@
     "builtBy": "Built by",
     "developedBy": "Web Development in the Dominican Republic"
   },
+  "TrustLine": {
+    "line": "★ {rating} · {count} Google reviews · Verified PADI Dive Center #27147"
+  },
+  "Cards": {
+    "from": "from"
+  },
   "ContactInfo": {
     "title": "Contact & Location",
     "addressLabel": "Address",

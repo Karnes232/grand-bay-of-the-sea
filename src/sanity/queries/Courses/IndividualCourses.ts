@@ -21,6 +21,7 @@ export interface IndividualCourseCard {
     en: string
     es: string
   }
+  padiPrice?: number
   cardHashTags: string[]
   courseLevel: string
   order: number
@@ -49,6 +50,7 @@ export const individualCoursesCardsQuery = `*[_type == "individualCourse" && cou
   },
   cardHashTags,
   courseLevel,
+  padiPrice,
   order
 }`
 

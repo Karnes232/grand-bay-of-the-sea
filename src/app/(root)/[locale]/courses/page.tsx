@@ -5,7 +5,8 @@ import PadiBanner from "@/components/DivingOrganizations/PadiBanner"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
 
-import { setRequestLocale } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
+import { BUSINESS } from "@/lib/business"
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import JsonLd from "@/components/StructuredData/JsonLd"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
@@ -91,6 +92,12 @@ export default async function Page({
     base64: coursesMainPage.heroImage.asset.metadata?.lqip || "",
   }
 
+  const tTrust = await getTranslations("TrustLine")
+  const trustLine = tTrust("line", {
+    rating: BUSINESS.rating.value,
+    count: BUSINESS.rating.count,
+  })
+
   return (
     <>
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
@@ -105,6 +112,7 @@ export default async function Page({
             }
             title={coursesMainPage.heroTitle?.[locale]}
             subtitle={coursesMainPage.heroSubtitle?.[locale]}
+            trustLine={trustLine}
             cta={
               coursesMainPage.heroCta?.label?.[locale] &&
               coursesMainPage.heroCta?.link

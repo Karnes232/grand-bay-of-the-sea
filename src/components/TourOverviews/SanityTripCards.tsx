@@ -20,6 +20,7 @@ const SanityTripCards = ({
             url={`/trips/${tripCard.slug.current}`}
             description={tripCard.cardDescription[locale]}
             image={tripCard.cardImage}
+            price={tripCard.price}
           />
         ))}
       </div>

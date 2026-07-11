@@ -1,18 +1,22 @@
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import React from "react"
+import { useTranslations } from "next-intl"
 
 const SanityIndividualTrip = ({
   name,
   url,
   description,
   image,
+  price,
 }: {
   name: string
   url: string
   description: string
   image: any
+  price?: number
 }) => {
+  const t = useTranslations("Cards")
   return (
     <Link
       href={url}
@@ -39,6 +43,11 @@ const SanityIndividualTrip = ({
       >
         {description}
       </p>
+      {price != null && (
+        <p className="text-sm font-semibold text-sky-800 dark:text-sky-400 mt-1 md:text-base">
+          {t("from")} ${price}
+        </p>
+      )}
     </Link>
   )
 }

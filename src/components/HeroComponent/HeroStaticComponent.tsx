@@ -7,6 +7,7 @@ const HeroStaticComponent = ({
   title,
   subtitle,
   cta,
+  trustLine,
   blurDataURL,
   alt = "Scuba diving punta cana",
 }: {
@@ -14,6 +15,8 @@ const HeroStaticComponent = ({
   title?: string
   subtitle?: string
   cta?: { label: string; href: string }
+  /** e.g. "★ 4.8 · 151 Google reviews · Verified PADI Dive Center #27147" */
+  trustLine?: string
   /** Sanity `metadata.lqip` base64 blur placeholder. Optional. */
   blurDataURL?: string
   alt?: string
@@ -36,7 +39,7 @@ const HeroStaticComponent = ({
           loading="eager"
         />
         <div className="absolute inset-0 z-10 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.52),rgba(0,0,0,0.73))]" />
-        {(title || subtitle || cta) && (
+        {(title || subtitle || cta || trustLine) && (
           <div className="absolute inset-0 z-20 flex items-center justify-center px-4">
             {/* Contained dark scrim keeps the white text legible (WCAG AA)
                 regardless of how bright the underlying hero image is. */}
@@ -49,6 +52,11 @@ const HeroStaticComponent = ({
               {subtitle && (
                 <p className="max-w-2xl text-base md:text-lg lg:text-xl text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.65)]">
                   {subtitle}
+                </p>
+              )}
+              {trustLine && (
+                <p className="text-sm md:text-base text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.65)]">
+                  {trustLine}
                 </p>
               )}
               {cta && (

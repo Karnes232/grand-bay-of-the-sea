@@ -11,6 +11,8 @@ import { getHomePage } from "@/sanity/queries/HomePage/HomePage"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import { getFaqs } from "@/sanity/queries/Faqs/Faqs"
 import Faqs from "@/components/FaqsComponent/Faqs"
+import { getTranslations } from "next-intl/server"
+import { BUSINESS } from "@/lib/business"
 
 const CloudinaryBackgroundVideo = dynamicImport(
   () =>
@@ -130,6 +132,12 @@ export default async function Home({
     homePage.tertiaryHeroImage,
   )
 
+  const tTrust = await getTranslations("TrustLine")
+  const trustLine = tTrust("line", {
+    rating: BUSINESS.rating.value,
+    count: BUSINESS.rating.count,
+  })
+
   return (
     <>
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
@@ -141,6 +149,7 @@ export default async function Home({
             alt={heroImageDetails.alt || "Scuba diving in Punta Cana"}
             title={homePage.heroTitle?.[locale]}
             subtitle={homePage.heroSubtitle?.[locale]}
+            trustLine={trustLine}
             cta={
               homePage.heroCta?.label?.[locale] && homePage.heroCta?.link
                 ? {

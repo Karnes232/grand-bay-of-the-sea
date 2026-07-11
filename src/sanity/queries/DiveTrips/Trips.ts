@@ -5,6 +5,7 @@ export interface TripCards {
   slug: {
     current: string
   }
+  price?: number
   cardTitle: {
     en: string
     es: string
@@ -30,6 +31,7 @@ export interface TripCards {
 export const tripsQuery = `*[_type == "trips"] {
   page,
   slug,
+  price,
   cardTitle {
     en,
     es

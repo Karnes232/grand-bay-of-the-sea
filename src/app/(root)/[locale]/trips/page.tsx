@@ -13,6 +13,8 @@ import BlockContent from "@/components/BlockContent/BlockContent"
 import { getTripCards } from "@/sanity/queries/DiveTrips/Trips"
 import SanityTripCards from "@/components/TourOverviews/SanityTripCards"
 import JsonLd from "@/components/StructuredData/JsonLd"
+import { getTranslations } from "next-intl/server"
+import { BUSINESS } from "@/lib/business"
 
 export const revalidate = 3600 // ISR — regenerate hourly (Netlify-compatible)
 
@@ -72,6 +74,12 @@ export default async function Page({
   // stays ISR-cacheable). A bare fetch() here would force dynamic `no-store`.
   const heroImageBlurDataURL = diveTripsPage.heroImage.asset.metadata.lqip
 
+  const tTrust = await getTranslations("TrustLine")
+  const trustLine = tTrust("line", {
+    rating: BUSINESS.rating.value,
+    count: BUSINESS.rating.count,
+  })
+
   return (
     <main id="main">
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
@@ -93,6 +101,7 @@ export default async function Page({
         alt={diveTripsPage.heroImage.alt || "Dive trips from Punta Cana"}
         title={diveTripsPage.heroTitle?.[locale]}
         subtitle={diveTripsPage.heroSubtitle?.[locale]}
+        trustLine={trustLine}
         cta={
           diveTripsPage.heroCta?.label?.[locale] && diveTripsPage.heroCta?.link
             ? {
