@@ -1,4 +1,5 @@
 import { searchEntries } from "@/lib/contentful"
+import { BUSINESS } from "@/lib/business"
 import React from "react"
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa"
 import { GrMail } from "react-icons/gr"
@@ -37,7 +38,7 @@ const SocialMedia = async () => {
           <GrMail className="footerIcons" />
         </a>
         <a
-          href={`https://wa.me/18297239338`}
+          href={`https://wa.me/${BUSINESS.phoneE164.replace("+", "")}`}
           target="_blank"
           aria-label="WhatsApp"
           rel="noreferrer"

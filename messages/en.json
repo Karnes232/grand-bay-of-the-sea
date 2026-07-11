@@ -137,6 +137,16 @@
     "builtBy": "Built by",
     "developedBy": "Web Development in the Dominican Republic"
   },
+  "ContactInfo": {
+    "title": "Contact & Location",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "hoursLabel": "Opening Hours",
+    "hoursValue": "Monday – Sunday, 8:30 AM – 5:00 PM",
+    "country": "Dominican Republic",
+    "mapLink": "View on Google Maps"
+  },
   "SelectionComponent": {
     "learnToDiveWithExperts": "Learn to Dive with Experts",
     "discoverTheUnderwaterWorld": "Discover the underwater world with our internationally certified instructors. From beginners to advanced divers, we offer courses for all levels.",

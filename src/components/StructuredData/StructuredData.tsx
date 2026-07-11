@@ -1,3 +1,5 @@
+import { BUSINESS } from "@/lib/business"
+
 const SITE_URL = "https://www.grandbay-puntacana.com"
 
 /**
@@ -5,16 +7,11 @@ const SITE_URL = "https://www.grandbay-puntacana.com"
  * Injected site-wide in the <head> via (root)/[locale]/layout.tsx so every page
  * references the same LocalBusiness identity (avoids a split entity graph).
  *
- * Verified NAP/geo defaults are baked in; `NEXT_PUBLIC_BUSINESS_*` env vars, if set,
- * override them.
+ * NAP/geo values come from `@/lib/business` (shared with the visible
+ * ContactInfo component); `NEXT_PUBLIC_BUSINESS_*` env vars override there.
  */
-const streetAddress =
-  process.env.NEXT_PUBLIC_BUSINESS_STREET_ADDRESS?.trim() ||
-  "Carretera Cabeza de Toro"
-const postalCode =
-  process.env.NEXT_PUBLIC_BUSINESS_POSTAL_CODE?.trim() || "23000"
-const lat = process.env.NEXT_PUBLIC_BUSINESS_LATITUDE || "18.64857"
-const lng = process.env.NEXT_PUBLIC_BUSINESS_LONGITUDE || "-68.358637"
+const lat = BUSINESS.latitude
+const lng = BUSINESS.longitude
 
 export function generateStructuredData(locale: string = "en") {
   const geo =
@@ -30,8 +27,8 @@ export function generateStructuredData(locale: string = "en") {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "SportsActivityLocation"],
     "@id": `${SITE_URL}/#business`,
-    name: "Grand Bay of the Sea",
-    alternateName: "Grand Bay of the Sea Dive Center",
+    name: BUSINESS.name,
+    alternateName: BUSINESS.alternateName,
     description:
       "PADI dive center in Punta Cana, Dominican Republic offering Discover Scuba Diving for beginners, PADI certification courses, and guided reef, wreck, and shark diving experiences.",
     url: `${SITE_URL}/`,
@@ -39,8 +36,8 @@ export function generateStructuredData(locale: string = "en") {
     logo: "https://images.ctfassets.net/iqfmqk4smewk/4AKIgOA6drFSpgIoRpPPu3/6b8b92af64259355d55d245dbe71b0cc/logo.png",
     image:
       "https://images.ctfassets.net/iqfmqk4smewk/4CYN3rPs0ryO4Gi4JDPm8e/156feb808cdad566332c11071dac1e09/pexels-leonardo-lamas-7001709.webp",
-    telephone: "+1-829-723-9338",
-    email: "grandbayofthesea@gmail.com",
+    telephone: BUSINESS.phoneSchema,
+    email: BUSINESS.email,
     foundingDate: "2016",
     priceRange: "$$",
     currenciesAccepted: "USD",
@@ -48,11 +45,11 @@ export function generateStructuredData(locale: string = "en") {
     knowsLanguage: ["en", "es", "fr"],
     address: {
       "@type": "PostalAddress",
-      streetAddress,
-      addressLocality: "Punta Cana",
-      addressRegion: "La Altagracia",
-      postalCode,
-      addressCountry: "DO",
+      streetAddress: BUSINESS.streetAddress,
+      addressLocality: BUSINESS.addressLocality,
+      addressRegion: BUSINESS.addressRegion,
+      postalCode: BUSINESS.postalCode,
+      addressCountry: BUSINESS.addressCountry,
     },
     ...(geo ? { geo } : {}),
     openingHoursSpecification: [
@@ -67,11 +64,11 @@ export function generateStructuredData(locale: string = "en") {
           "Saturday",
           "Sunday",
         ],
-        opens: "08:30",
-        closes: "17:00",
+        opens: BUSINESS.hours.opens,
+        closes: BUSINESS.hours.closes,
       },
     ],
-    hasMap: "https://maps.app.goo.gl/tAB86MjFxiF7Hefj7",
+    hasMap: BUSINESS.mapUrl,
     areaServed: [
       { "@type": "City", name: "Punta Cana" },
       { "@type": "City", name: "Bávaro" },
@@ -80,7 +77,7 @@ export function generateStructuredData(locale: string = "en") {
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: "+1-829-723-9338",
+        telephone: BUSINESS.phoneSchema,
         contactType: "customer service",
         availableLanguage: ["en", "es", "fr"],
       },

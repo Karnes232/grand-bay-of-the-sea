@@ -1,8 +1,14 @@
 import ContactForm from "@/components/ContactForm/ContactForm"
+import ContactInfo from "@/components/ContactInfo/ContactInfo"
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import JsonLd from "@/components/StructuredData/JsonLd"
 import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
+import dynamicImport from "next/dynamic"
+
+const GoogleMaps = dynamicImport(
+  () => import("@/components/GoogleMapsComponent/GoogleMaps"),
+)
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
@@ -87,6 +93,8 @@ export default async function Home({
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
       <ContactForm />
+      <ContactInfo variant="page" />
+      <GoogleMaps flat />
     </main>
   )
 }

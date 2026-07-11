@@ -137,6 +137,16 @@
     "builtBy": "Desarrollado por",
     "developedBy": "Desarrollo Web en República Dominicana"
   },
+  "ContactInfo": {
+    "title": "Contacto y Ubicación",
+    "addressLabel": "Dirección",
+    "phoneLabel": "Teléfono",
+    "emailLabel": "Correo Electrónico",
+    "hoursLabel": "Horario",
+    "hoursValue": "Lunes a Domingo, 8:30 AM – 5:00 PM",
+    "country": "República Dominicana",
+    "mapLink": "Ver en Google Maps"
+  },
   "SelectionComponent": {
     "learnToDiveWithExperts": "Aprende a Bucear con Expertos",
     "discoverTheUnderwaterWorld": "Descubre el mundo submarino con nuestros instructores certificados internacionalmente. Desde principiantes hasta buceadores avanzados, ofrecemos cursos para todos los niveles.",

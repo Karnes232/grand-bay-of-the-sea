@@ -4,6 +4,7 @@ import "@/styles/footer/footer.css"
 import Sitemap from "./Sitemap"
 import Copyright from "./Copyright"
 import Signature from "./Signature"
+import ContactInfo from "@/components/ContactInfo/ContactInfo"
 import dynamic from "next/dynamic"
 
 const TrustBadges = dynamic(() => import("./TrustBadges"))
@@ -14,6 +15,8 @@ const Footer = () => {
       <div className="mx-5 flex max-w-6xl flex-col justify-between xl:mx-auto">
         <SocialMedia />
         <Sitemap />
+
+        <ContactInfo variant="footer" />
 
         <TrustBadges />
 
