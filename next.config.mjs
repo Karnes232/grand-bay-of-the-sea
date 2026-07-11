@@ -48,6 +48,9 @@ const nextConfig = {
   poweredByHeader: false,
   images: {
     qualities: [65, 70, 75, 80, 85, 90, 95, 100],
+    // Cap srcsets at w=1920 (default adds 2048/3840): the full-bleed heroes use
+    // sizes="100vw", so high-DPR clients were fetching 3840px variants.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     // unoptimized: true,
     loader: 'default',
     // domains: ['images.ctfassets.net', 'www.kayak.com'],

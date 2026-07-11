@@ -1,6 +1,13 @@
 import React from "react"
 import { searchEntries } from "@/lib/contentful"
 import Image, { getImageProps } from "next/image"
+import LazyIframeWhenVisible from "@/components/performance/LazyIframeWhenVisible"
+
+// The widget pulls ~1.5 MB of third-party JS (analytics included) once loaded,
+// so it must stay behind the lazy facade.
+const PADI_WIDGET_SRC =
+  "https://travel.padi.com/widget/dive-operator/grand-bay-of-the-sea/adventures/?products=30&aid=27147&utm_campaign=ww-all-travel-pros-affiliates_shops-widgets&utm_medium=widget&utm_source=affiliate_27147&language=en&currency_code=USD&utm_content=search_iframe"
+
 const PadiBanner = async () => {
   const searchResults = await searchEntries(
     "layout",
@@ -45,11 +52,14 @@ const PadiBanner = async () => {
         <img {...restPadi} alt={commonPadi.alt} />
       </picture>
 
+      {/* display:none wrappers never intersect, so only the visible
+          breakpoint's widget actually loads (previously both did). */}
       <div className="hidden md:block">
-        <iframe
-          title="PADI"
+        <LazyIframeWhenVisible
+          title="PADI booking widget"
           className="diviac-iframe md:w-[45rem]"
-          id="diviac-iframe"
+          id="diviac-iframe-desktop"
+          rootMargin="600px"
           style={{
             border: 0,
             margin: 0,
@@ -57,19 +67,20 @@ const PadiBanner = async () => {
             minHeight: "50vh",
             overflow: "auto",
           }}
-          src="https://travel.padi.com/widget/dive-operator/grand-bay-of-the-sea/adventures/?products=30&aid=27147&utm_campaign=ww-all-travel-pros-affiliates_shops-widgets&utm_medium=widget&utm_source=affiliate_27147&language=en&currency_code=USD&utm_content=search_iframe"
+          src={PADI_WIDGET_SRC}
           data-iframe-type="adventures"
           data-shop-slug="grand-bay-of-the-sea"
           data-shop-id="75625"
           data-widget-type="iframe"
-        ></iframe>
+        />
       </div>
 
       <div className="block md:hidden w-full">
-        <iframe
-          title="PADI"
+        <LazyIframeWhenVisible
+          title="PADI booking widget"
           className="diviac-iframe w-full md:w-[45rem]"
-          id="diviac-iframe"
+          id="diviac-iframe-mobile"
+          rootMargin="600px"
           style={{
             border: 0,
             margin: 0,
@@ -77,12 +88,12 @@ const PadiBanner = async () => {
             minHeight: "100vh",
             overflow: "auto",
           }}
-          src="https://travel.padi.com/widget/dive-operator/grand-bay-of-the-sea/adventures/?products=30&aid=27147&utm_campaign=ww-all-travel-pros-affiliates_shops-widgets&utm_medium=widget&utm_source=affiliate_27147&language=en&currency_code=USD&utm_content=search_iframe"
+          src={PADI_WIDGET_SRC}
           data-iframe-type="adventures"
           data-shop-slug="grand-bay-of-the-sea"
           data-shop-id="75625"
           data-widget-type="iframe"
-        ></iframe>
+        />
       </div>
     </div>
   )
