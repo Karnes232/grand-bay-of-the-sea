@@ -51,7 +51,7 @@ basic skill practice, and an open-water dive to a maximum depth of 12 meters (40
 the direct supervision of a certified PADI instructor. Equipment included. Minimum age 10.
 Can later count toward a PADI Open Water course. URL: /courses/discover
 
-### Certified Fun Dives — 2-tank $125 · 4-tank package $220
+### Certified Fun Dives — 2-tank $135 · 4-tank package $240
 Guided two-tank reef and wreck dives for certified divers (Open Water or equivalent).
 Two-tank outing runs about 2.5 hours; the 4-tank package is the best value for multi-day
 divers. Equipment and hotel transport from the Bávaro resort area included. URL: /sites
@@ -74,9 +74,9 @@ The theory (eLearning) portion can be completed before arrival to save vacation 
 | Course | Price | Duration | Max depth certified | Prerequisites |
 |---|---|---|---|---|
 | Discover Scuba Diving | $100 | ~half day | 12 m / 40 ft (supervised) | None; min age 10 |
-| PADI Scuba Diver | $380 | 2 days | 12 m / 40 ft (supervised) | None; min age 10; basic swimming |
-| PADI Open Water Diver | $470 | 3–4 days | 18 m / 60 ft | None; min age 10; basic swimming |
-| PADI Advanced Open Water | $400 | 2–3 days | 30 m / 100 ft | Open Water (or equiv.); min age 12 |
+| PADI Scuba Diver | $399 | 2 days | 12 m / 40 ft (supervised) | None; min age 10; basic swimming |
+| PADI Open Water Diver | $499 | 3–4 days | 18 m / 60 ft | None; min age 10; basic swimming |
+| PADI Advanced Open Water | $449 | 2–3 days | 30 m / 100 ft | Open Water (or equiv.); min age 12 |
 | Enriched Air (Nitrox) | $350 | — | — | Open Water (or equiv.) |
 | Wreck Diver (specialty) | $400 | — | — | Open Water (or equiv.) |
 | Deep Diver (specialty) | $400 | — | 40 m / 130 ft | Advanced Open Water (or equiv.) |
@@ -133,7 +133,7 @@ Half day from Punta Cana. ~7:30 AM pickup → ~1.5 h bus to Bayahibe → two-tan
 legendary **St. George wreck** (73 m cargo ship at 40 m depth), with additional reef/wreck sites
 such as the Atlantic Princess depending on conditions. **Advanced Open Water required** for the
 St. George. Returns ~4:00 PM. Lunch/drinks not included; non-diving companions $100. $100 deposit
-per booking. Not yet Advanced? Take the AOW course (from $400). URL: /trips/bayahibe
+per booking. Not yet Advanced? Take the AOW course (from $449). URL: /trips/bayahibe
 
 ---
 
@@ -208,8 +208,8 @@ Not for Discover Scuba Diving. Guided reef/wreck fun dives require Open Water (o
 Full PADI certification courses are available on site.
 
 **How much does it cost?**
-Discover Scuba from $100; certified two-tank dives $125; shark dive $190; Catalina trip $220
-(diving) / $100 (snorkeling); Saona $220 / $110; Bayahibe $180. PADI Open Water $470, Advanced $400.
+Discover Scuba from $100; certified two-tank dives $135; shark dive $190; Catalina trip $220
+(diving) / $100 (snorkeling); Saona $220 / $110; Bayahibe $180. PADI Open Water $499, Advanced $449.
 
 **How long to get certified?**
 Scuba Diver ~2 days; Open Water ~3–4 days; Advanced Open Water ~2–3 days. Most travelers can
