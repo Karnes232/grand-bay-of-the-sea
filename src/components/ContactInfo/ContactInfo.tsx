@@ -38,18 +38,18 @@ const ContactInfo = async ({
         {t("title")}
       </h2>
       <address className={`not-italic flex flex-col gap-2 text-sm ${textColor}`}>
-        <div className="flex items-start justify-center gap-2">
+        <div className="flex items-start justify-center text-center gap-2">
           <FaMapMarkerAlt
             className={`mt-0.5 shrink-0 ${iconColor}`}
             aria-hidden
           />
           <span>
             <span className="font-semibold">{BUSINESS.name}</span>
-            {`, ${BUSINESS.streetAddress}, ${BUSINESS.addressLocality}, ${BUSINESS.addressRegion} ${BUSINESS.postalCode}, `}
+            {`, ${BUSINESS.streetAddress}, ${BUSINESS.addressLocality}, ${BUSINESS.addressRegion}, `}
             {t("country")}
           </span>
         </div>
-        <div className="flex items-center justify-center gap-2">
+        {/* <div className="flex items-center justify-center gap-2">
           <FaPhoneAlt className={`shrink-0 ${iconColor}`} aria-hidden />
           <a
             href={`tel:${BUSINESS.phoneE164}`}
@@ -58,7 +58,7 @@ const ContactInfo = async ({
           >
             {BUSINESS.phoneDisplay}
           </a>
-        </div>
+        </div> */}
         <div className="flex items-center justify-center gap-2">
           <GrMail className={`shrink-0 ${iconColor}`} aria-hidden />
           <a

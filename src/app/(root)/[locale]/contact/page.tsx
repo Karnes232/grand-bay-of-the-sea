@@ -92,7 +92,7 @@ export default async function Home({
         blurDataURL={contact.heroImage.asset.metadata.lqip}
       />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <div className="max-w-6xl mx-auto lg:grid lg:grid-cols-2 lg:gap-12 lg:items-start lg:px-8">
+      <div className="max-w-6xl mx-auto lg:grid lg:grid-cols-2 lg:gap-12 lg:items-start lg:px-8 mb-10">
         <ContactForm />
         <div>
           <ContactInfo variant="page" />

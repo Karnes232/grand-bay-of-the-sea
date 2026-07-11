@@ -16,9 +16,9 @@ const Footer = () => {
         <SocialMedia />
         <Sitemap />
 
-        <ContactInfo variant="footer" />
-
+       
         <TrustBadges />
+        <ContactInfo variant="footer" />
 
         <div className="flex flex-col w-full justify-between md:flex-row">
           <Copyright />
