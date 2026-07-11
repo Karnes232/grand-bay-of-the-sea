@@ -41,6 +41,13 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: "title",
+      title: "Page Title (H1)",
+      description:
+        "Rendered as the page's visible H1. The first heading inside Paragraph 1 renders as an H2.",
+      type: "localizedString",
+    }),
+    defineField({
       name: "slug",
       title: "Slug",
       type: "slug",

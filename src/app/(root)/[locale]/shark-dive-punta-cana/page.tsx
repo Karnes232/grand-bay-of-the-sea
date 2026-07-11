@@ -106,17 +106,30 @@ export default async function Home({
         videoId={"greyshark_aowggg"}
         className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}
       />
+      <header className="max-w-6xl mx-5 md:mx-10 xl:mx-auto mt-8">
+        <h1 className="font-bold font-crimson text-center text-balance text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white">
+          {sharkDive.title?.[locale] || sharkDive.page}
+        </h1>
+      </header>
       <div className="my-5">
         <div className="flex flex-col lg:flex-row lg:mx-auto max-w-6xl xl:h-[35rem]">
           <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:justify-center xl:mt-0">
-            <BlockContent content={sharkDive.paragraph1} locale={locale} />
+            <BlockContent
+              content={sharkDive.paragraph1}
+              locale={locale}
+              demoteH1
+            />
           </div>
           <div className="lg:w-[45rem] xl:mx-10 lg:min-h-full lg:flex lg:flex-col md:justify-start md:mt-2 lg:mt-7 2xl:mt-14">
             <SanityTripOverview tour={sharkDive} locale={locale} />
             {/* <TripOverview tour={pageLayout.items[0].fields} /> */}
           </div>
           <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:justify-center xl:mt-0">
-            <BlockContent content={sharkDive.paragraph2} locale={locale} />
+            <BlockContent
+              content={sharkDive.paragraph2}
+              locale={locale}
+              demoteH1
+            />
           </div>
         </div>
         <SanitySwiperCarousel
@@ -127,9 +140,17 @@ export default async function Home({
         <div className="flex flex-col justify-center items-center xl:my-10">
           <div className="flex flex-col max-w-6xl">
             <div className="lg:flex items-center xl:space-x-4">
-              <BlockContent content={sharkDive.paragraph3} locale={locale} />
+              <BlockContent
+                content={sharkDive.paragraph3}
+                locale={locale}
+                demoteH1
+              />
 
-              <BlockContent content={sharkDive.paragraph4} locale={locale} />
+              <BlockContent
+                content={sharkDive.paragraph4}
+                locale={locale}
+                demoteH1
+              />
             </div>
           </div>
         </div>

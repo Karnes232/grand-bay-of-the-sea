@@ -164,6 +164,10 @@ export const getIndividualCourseSEO = async (
 
 export interface IndividualCourse {
   course: string
+  title?: {
+    en: string
+    es: string
+  }
   slug: {
     current: string
   }
@@ -230,6 +234,10 @@ export interface IndividualCourse {
 
 export const individualCourseQuery = `*[_type == "individualCourse" && slug.current == $slug][0] {
   course,
+  title {
+    en,
+    es
+  },
   slug {
     current
   },

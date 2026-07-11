@@ -2,6 +2,10 @@ import { client } from "@/sanity/lib/client"
 
 export interface SharkDive {
   page: string
+  title?: {
+    en: string
+    es: string
+  }
   paragraph1: {
     en: any[]
     es: any[]
@@ -55,6 +59,10 @@ export interface SharkDive {
 
 export const sharkDiveQuery = `*[_type == "sharkDive"][0] {
   page,
+  title {
+    en,
+    es
+  },
   paragraph1 {
     en,
     es

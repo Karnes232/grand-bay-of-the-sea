@@ -61,6 +61,10 @@ export const getTripCards = async (): Promise<TripCards[]> => {
 
 export interface Trip {
   page: string
+  title?: {
+    en: string
+    es: string
+  }
   slug: {
     current: string
   }
@@ -116,6 +120,10 @@ export interface Trip {
 
 export const individualTripQuery = `*[_type == "trips" && slug.current == $slug][0] {
   page,
+  title {
+    en,
+    es
+  },
   slug,
   videoId,
   paragraph1 {
