@@ -30,7 +30,9 @@ export function generateStructuredData(locale: string = "en") {
     name: BUSINESS.name,
     alternateName: BUSINESS.alternateName,
     description:
-      "PADI dive center in Punta Cana, Dominican Republic offering Discover Scuba Diving for beginners, PADI certification courses, and guided reef, wreck, and shark diving experiences.",
+      locale === "es"
+        ? "Centro de buceo PADI en Punta Cana, República Dominicana, que ofrece Discover Scuba Diving para principiantes, cursos de certificación PADI y buceo guiado en arrecifes, pecios y con tiburones."
+        : "PADI dive center in Punta Cana, Dominican Republic offering Discover Scuba Diving for beginners, PADI certification courses, and guided reef, wreck, and shark diving experiences.",
     url: `${SITE_URL}/`,
     inLanguage: locale,
     logo: "https://images.ctfassets.net/iqfmqk4smewk/4AKIgOA6drFSpgIoRpPPu3/6b8b92af64259355d55d245dbe71b0cc/logo.png",

@@ -5,7 +5,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/tui/*", "/studio"],
+      // /tui/* and /studio are excluded via meta noindex instead of Disallow:
+      // a robots.txt block would stop Google from ever seeing the noindex tag
+      // (documented anti-pattern), leaving bare URL listings possible.
     },
     sitemap: "https://www.grandbay-puntacana.com/sitemap.xml",
   }

@@ -2,6 +2,20 @@
   command = "npm run build"
   publish = ".next"
 
+# Canonical host: single-hop 301s from http/apex straight to https://www
+# (previously http://apex needed two hops: ->https://apex ->https://www).
+[[redirects]]
+  from = "http://grandbay-puntacana.com/*"
+  to = "https://www.grandbay-puntacana.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://grandbay-puntacana.com/*"
+  to = "https://www.grandbay-puntacana.com/:splat"
+  status = 301
+  force = true
+
 # i18n redirects for proper language handling
 [[redirects]]
   from = "/"
@@ -47,11 +61,12 @@
 
 # Do not set Cache-Control on "/*" — it overrides Next.js / Netlify ISR headers and
 # forces every HTML request to miss the edge cache (slow TTFB, bad LCP in lab tests).
+# SAMEORIGIN matches the value next.config.mjs sends on SSR responses
+# (was DENY here, causing conflicting values). X-XSS-Protection is deprecated.
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
+    X-Frame-Options = "SAMEORIGIN"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

@@ -3,6 +3,24 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
+  async redirects() {
+    // Old near-duplicate DR Web Studio post; the newer 2026 article is canonical.
+    return [
+      {
+        source: "/blog/local-businesses/dr-web-studio-punta-cana-web-design",
+        destination:
+          "/blog/local-businesses/dr-web-studio-punta-cana-website-design",
+        permanent: true,
+      },
+      {
+        source:
+          "/es/blog/local-businesses/dr-web-studio-punta-cana-web-design",
+        destination:
+          "/es/blog/local-businesses/dr-web-studio-punta-cana-website-design",
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {
