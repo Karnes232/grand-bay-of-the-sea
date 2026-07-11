@@ -31,9 +31,9 @@ const BlogPostCard = ({ blog, locale }: { blog: any; locale: string }) => {
           )}
         </div>
         <div className="p-5">
-          <h3 className="font-bold text-lg mb-2 text-gray-800 line-clamp-1">
+          <p className="font-bold text-lg mb-2 text-gray-800 line-clamp-1">
             {blog.title[locale]}
-          </h3>
+          </p>
           <p className="text-gray-600 text-sm line-clamp-3">
             {blog.description[locale]}
           </p>

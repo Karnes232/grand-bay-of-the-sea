@@ -165,6 +165,11 @@ export default async function Page({
         {individualBlogPost.backgroundImages?.length > 0 && (
           <HeroImages backgroundImages={individualBlogPost.backgroundImages} />
         )}
+        <header className="max-w-6xl mx-5 md:mx-10 xl:mx-auto xl:min-w-[65rem] mt-8">
+          <h1 className="font-bold font-crimson text-left text-balance text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white">
+            {individualBlogPost.title[locale]}
+          </h1>
+        </header>
         <BlogMeta
           author={t("author")}
           publishDate={individualBlogPost.publishDate}
@@ -176,7 +181,11 @@ export default async function Page({
             updated: t("updated"),
           }}
         />
-        <SanityBlogBody content={individualBlogPost.blogBody} locale={locale} />
+        <SanityBlogBody
+          content={individualBlogPost.blogBody}
+          locale={locale}
+          skipLeadingTitle={individualBlogPost.title[locale]}
+        />
         <Recommendations
           relatedPosts={relatedPosts}
           title={t("youMayAlsoLike")}

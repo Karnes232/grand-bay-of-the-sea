@@ -82,6 +82,7 @@ export default async function Page({
       />
       <HeroStaticComponent
         heroImage={blogPageLayout.heroImage.asset.url}
+        title={blogPageLayout.title?.[locale]}
         alt={blogPageLayout.heroImage.alt}
         blurDataURL={blogPageLayout.heroImage.asset.metadata.lqip}
       />

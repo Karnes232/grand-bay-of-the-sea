@@ -23,12 +23,12 @@ const BlogCategory = ({
             fill
             className="object-cover"
           />
-          <h1
+          <h2
             translate="no"
             className="relative inline-block text-center text-white z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-crimson tracking-widest text-3xl md:text-4xl mx-2 text-balance"
           >
             {category.blogCategory[locale]}
-          </h1>
+          </h2>
           <div className="absolute inset-0 bg-black/20" />
         </div>
       </div>

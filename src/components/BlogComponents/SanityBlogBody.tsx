@@ -81,10 +81,12 @@ const components = {
         ParagraphClassName={`mb-5 text-left text-pretty max-w-none ${articleBody}`}
       />
     ),
+    // Authored h1 blocks render as <h2>: the page template owns the single
+    // <h1> (the post title), so an in-body h1 would create a duplicate.
     h1: ({ children }: any) => (
       <TextComponentHeading
         heading={children}
-        headingNumber="h1"
+        headingNumber="h2"
         HeadingClassName="font-bold font-crimson text-left text-balance !mt-10 mb-4 scroll-mt-24 text-3xl md:text-4xl text-neutral-950 dark:text-white first:mt-0"
       />
     ),
@@ -146,17 +148,43 @@ const components = {
   },
 }
 
+const normalizeHeadingText = (s: string) =>
+  s.normalize("NFKC").replace(/\s+/g, " ").trim().toLowerCase()
+
+const blockText = (block: any): string =>
+  block?._type === "block" && Array.isArray(block.children)
+    ? block.children.map((c: any) => c.text ?? "").join("")
+    : ""
+
 const SanityBlogBody = ({
   content,
   locale,
+  skipLeadingTitle,
 }: {
   content: any
   locale: string
+  /**
+   * Post title rendered as the page <h1> by the template. Most legacy post
+   * bodies start with the title authored as a heading block; when the first
+   * block is a heading that exactly matches this title, it's dropped to
+   * avoid showing the title twice. Exact match only — a merely similar
+   * first heading is real content and must be kept.
+   */
+  skipLeadingTitle?: string
 }) => {
   if (!content || !content[locale]) {
     return null
   }
-  const blockContent = content[locale]
+  let blockContent = content[locale]
+  const first = blockContent[0]
+  if (
+    skipLeadingTitle &&
+    /^h[1-4]$/.test(first?.style ?? "") &&
+    normalizeHeadingText(blockText(first)) ===
+      normalizeHeadingText(skipLeadingTitle)
+  ) {
+    blockContent = blockContent.slice(1)
+  }
   return (
     <article
       className="w-full max-w-[42rem] xl:max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14"
