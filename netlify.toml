@@ -16,6 +16,21 @@
   status = 301
   force = true
 
+# Old near-duplicate DR Web Studio post -> canonical 2026 article.
+# Lives here (not only next.config) because the next-intl edge middleware
+# rewrites paths before next.config redirects are evaluated on Netlify.
+[[redirects]]
+  from = "/blog/local-businesses/dr-web-studio-punta-cana-web-design"
+  to = "/blog/local-businesses/dr-web-studio-punta-cana-website-design"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/blog/local-businesses/dr-web-studio-punta-cana-web-design"
+  to = "/es/blog/local-businesses/dr-web-studio-punta-cana-website-design"
+  status = 301
+  force = true
+
 # i18n redirects for proper language handling
 [[redirects]]
   from = "/"
