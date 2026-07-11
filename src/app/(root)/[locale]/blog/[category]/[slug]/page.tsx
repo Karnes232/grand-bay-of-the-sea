@@ -165,8 +165,8 @@ export default async function Page({
         {individualBlogPost.backgroundImages?.length > 0 && (
           <HeroImages backgroundImages={individualBlogPost.backgroundImages} />
         )}
-        <header className="max-w-6xl mx-5 md:mx-10 xl:mx-auto xl:min-w-[65rem] mt-8">
-          <h1 className="font-bold font-crimson text-left text-balance text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white">
+        <header className="max-w-[42rem] mx-5 md:mx-10 lg:mx-auto lg:min-w-[65rem] lg:pt-8">
+          <h1 className="font-bold font-crimson text-center text-balance text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white">
             {individualBlogPost.title[locale]}
           </h1>
         </header>

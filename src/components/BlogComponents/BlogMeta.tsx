@@ -33,7 +33,7 @@ const BlogMeta = ({
   const showUpdated = updated && updated !== published
 
   return (
-    <div className="max-w-6xl mx-5 md:mx-10 xl:mx-auto xl:min-w-[65rem] mt-6 mb-2 text-sm text-gray-600 flex flex-wrap items-center gap-x-2 gap-y-1">
+    <div className="max-w-[42rem] mx-5 md:mx-10 lg:mx-auto mt-6 mb-2 text-sm text-gray-600 flex flex-wrap items-center gap-x-2 gap-y-1">
       <span className="font-semibold text-gray-800">
         {labels.by} {author}
       </span>
