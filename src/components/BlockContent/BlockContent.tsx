@@ -35,6 +35,7 @@ const components = {
             alt={value.alt || ""}
             width={1000}
             height={1000}
+            sizes="(max-width: 1024px) 100vw, 1000px"
             className="w-full rounded-lg"
           />
           {/* <img

@@ -32,7 +32,7 @@ const GoogleMaps = dynamicImport(
 // export const dynamic = "force-static"
 
 // OPTION 2: Use revalidate for Incremental Static Regeneration (ISR)
-export const revalidate = 3600 // Regenerate every hour for better Netlify compatibility
+export const revalidate = 604800 // ISR 7 days — content refreshes on Netlify redeploy
 
 export async function generateMetadata({
   params,

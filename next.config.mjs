@@ -91,6 +91,9 @@ const nextConfig = {
   },
   // Optimize bundle for better performance
   experimental: {
+    // Inline page CSS into the HTML — removes render-blocking stylesheet
+    // requests that PSI attributed ~660ms of LCP render delay to.
+    inlineCss: true,
     optimizePackageImports: [
       'lucide-react',
       '@headlessui/react',

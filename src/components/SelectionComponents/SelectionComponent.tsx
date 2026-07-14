@@ -14,14 +14,6 @@ const SelectionComponent = ({
 }) => {
   const t = useTranslations("SelectionComponent")
 
-  const HeroStyles = {
-    backgroundPosition: "75% 70%",
-    backgroundImage:
-      "linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(" +
-      secondaryHeroImage +
-      ")",
-  }
-
   return (
     <div className="w-full h-[150vh] md:h-[75vh] lg:h-[85vh] xl:h-[75vh] my-5">
       <div className="relative h-[150vh] md:h-[75vh] lg:h-[85vh] xl:h-[75vh] [clip-path:polygon(0%_5vh,100%_0%,100%_145vh,0%_100%)] md:[clip-path:polygon(0%_5vh,100%_0%,100%_70vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_80vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_70vh,0%_100%)]">

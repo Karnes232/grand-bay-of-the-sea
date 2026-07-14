@@ -18,7 +18,7 @@ import { BUSINESS } from "@/lib/business"
 import { getFaqs } from "@/sanity/queries/Faqs/Faqs"
 import Faqs from "@/components/FaqsComponent/Faqs"
 
-export const revalidate = 3600 // ISR — regenerate hourly (Netlify-compatible)
+export const revalidate = 604800 // ISR 7 days — content refreshes on Netlify redeploy
 
 export async function generateMetadata({
   params,

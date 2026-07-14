@@ -126,5 +126,7 @@ const getGrandBayLogoLayoutCached = unstable_cache(
     return { src, intrinsicWidth, intrinsicHeight }
   },
   ["contentful-layout-logo-grand-bay-of-the-sea"],
-  { revalidate: 3600 },
+  // Must be >= the route-level `revalidate` (7 days) — the lowest revalidate
+  // touched during a render caps the whole route's ISR window.
+  { revalidate: 604800 },
 )

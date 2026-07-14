@@ -78,7 +78,7 @@ export const metadata: Metadata = {
 // to `no-store`, which marked every page dynamic and bypassed Netlify's edge
 // cache (`cache-control: no-store`, `fwd=bypass`), hurting TTFB/LCP. The (tui)
 // route group has its own layout and is unaffected by this config.
-export const revalidate = 3600
+export const revalidate = 604800 // ISR 7 days — content refreshes on Netlify redeploy
 export const fetchCache = "force-cache"
 
 export async function generateStaticParams() {

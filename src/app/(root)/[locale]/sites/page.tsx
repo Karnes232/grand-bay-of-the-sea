@@ -12,7 +12,7 @@ import BlockContent from "@/components/BlockContent/BlockContent"
 import Faqs from "@/components/FaqsComponent/Faqs"
 import JsonLd from "@/components/StructuredData/JsonLd"
 
-export const revalidate = 3600 // ISR — regenerate hourly (Netlify-compatible)
+export const revalidate = 604800 // ISR 7 days — content refreshes on Netlify redeploy
 
 export async function generateMetadata({
   params,
