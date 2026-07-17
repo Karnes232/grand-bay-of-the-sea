@@ -75,6 +75,67 @@ export default defineType({
       title: "Paragraph 3",
       type: "localizedBlock",
     }),
+
+    // ── 2026 redesign sections ────────────────────────────────────────────
+    defineField({
+      name: "introHeading",
+      title: "Intro Heading",
+      description: "Heading above Paragraph 1.",
+      type: "localizedString",
+      group: "sections",
+    }),
+    defineField({
+      name: "beginnerEyebrow",
+      title: "Beginner Eyebrow",
+      description: 'Small label above the beginner heading, e.g. "Start here".',
+      type: "localizedString",
+      group: "sections",
+    }),
+    defineField({
+      name: "beginnerHeading",
+      title: "Beginner Heading",
+      description: "Heading for the beginner courses section (above Paragraph 2).",
+      type: "localizedString",
+      group: "sections",
+    }),
+    defineField({
+      name: "advancedHeading",
+      title: "Advanced Heading",
+      description: "Heading above Paragraph 3 (already-certified section).",
+      type: "localizedString",
+      group: "sections",
+    }),
+    defineField({
+      name: "specialtyEyebrow",
+      title: "Specialty Eyebrow",
+      description: 'Small label above the advanced/specialty cards, e.g. "Specialty courses".',
+      type: "localizedString",
+      group: "sections",
+    }),
+    defineField({
+      name: "courseCta",
+      title: "Course CTA Band",
+      type: "object",
+      group: "sections",
+      fields: [
+        defineField({ name: "heading", title: "Heading", type: "localizedString" }),
+        defineField({ name: "body", title: "Body", type: "localizedText" }),
+        defineField({
+          name: "ctaLabel",
+          title: "CTA Label",
+          type: "localizedString",
+        }),
+        defineField({
+          name: "ctaLink",
+          title: "CTA Link",
+          description: 'Path, e.g. "/contact".',
+          type: "string",
+        }),
+      ],
+    }),
+  ],
+  groups: [
+    { name: "sections", title: "Sections (Redesign)" },
   ],
   preview: {
     select: {

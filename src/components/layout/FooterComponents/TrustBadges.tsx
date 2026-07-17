@@ -1,6 +1,7 @@
 import Image from "next/image"
 import React from "react"
 import LazyIframeWhenVisible from "@/components/performance/LazyIframeWhenVisible"
+import { BUSINESS } from "@/lib/business"
 
 const TrustBadges = () => {
   return (
@@ -20,12 +21,12 @@ const TrustBadges = () => {
           />
         </a>
         <a
-          href="https://travel.padi.com/dive-center/dominican-republic/grand-bay-of-the-sea/"
+          href={BUSINESS.padiUrl}
           rel="noopener noreferrer"
           target="_blank"
           className="mt-4 text-sm text-gray-300 hover:text-white underline underline-offset-2"
         >
-          Verified PADI Dive Center — Store #27147
+          Verified PADI Dive Center — Store #{BUSINESS.padiNumber}
         </a>
       </div>
       <LazyIframeWhenVisible

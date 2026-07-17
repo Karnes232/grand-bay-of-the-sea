@@ -5,24 +5,19 @@ import { Link } from "@/i18n/navigation"
 import DropDownMenu from "./DropDownMenu"
 import { useTranslations } from "next-intl"
 
+// Shared desktop nav link style for the redesigned header bar.
+export const navLinkClass =
+  "whitespace-nowrap text-[15px] font-medium text-white/80 transition-colors hover:text-white"
+
 const Links = () => {
   const t = useTranslations("Navbar")
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/courses", label: "Scuba Classes" },
-    { href: "/sites", label: "Dive Packages" },
-    { href: "/trips", label: "Dive Trips" },
-    { href: "/shark-dive-punta-cana", label: "Shark Dive" },
-    { href: "/fishing-punta-cana", label: "Deep Sea Fishing" },
-    { href: "/contact", label: "Contact Us" },
-  ]
   return (
     <>
-      <Link href="/" className="no-underline">
-        <button className="navLinks">{t("home")}</button>
+      <Link href="/" className={`no-underline ${navLinkClass}`}>
+        {t("home")}
       </Link>
-      <Link href="/courses" className="no-underline">
-        <button className="navLinks">{t("scubaClasses")}</button>
+      <Link href="/courses" className={`no-underline ${navLinkClass}`}>
+        {t("scubaClasses")}
       </Link>
       <DropDownMenu
         name={t("divePackages")}
@@ -33,8 +28,11 @@ const Links = () => {
         ]}
         useHover
       />
-      <Link href="/fishing-punta-cana" className="no-underline">
-        <button className="navLinks">{t("deepSeaFishing")}</button>
+      <Link
+        href="/fishing-punta-cana"
+        className={`no-underline ${navLinkClass}`}
+      >
+        {t("deepSeaFishing")}
       </Link>
       <DropDownMenu
         name={t("photoGallery")}
@@ -44,8 +42,8 @@ const Links = () => {
         ]}
         useHover
       />
-      <Link href="/contact" className="no-underline">
-        <button className="navLinks">{t("contactUs")}</button>
+      <Link href="/contact" className={`no-underline ${navLinkClass}`}>
+        {t("contactUs")}
       </Link>
     </>
   )

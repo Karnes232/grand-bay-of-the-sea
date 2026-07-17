@@ -15,7 +15,8 @@
     "liveAboards": "Viajes en Barco",
     "cancellationPolicy": "Política de Cancelación",
     "siteMap": "Mapa del Sitio",
-    "blog": "Blog"
+    "blog": "Blog",
+    "bookCta": "Reservar"
   },
   "ContactForm": {
     "fullName": "Nombre Completo",
@@ -138,7 +139,11 @@
   },
   "Footer": {
     "builtBy": "Desarrollado por",
-    "developedBy": "Desarrollo Web en República Dominicana"
+    "developedBy": "Desarrollo Web en República Dominicana",
+    "columnDive": "Bucea",
+    "columnExplore": "Explora",
+    "columnConfidence": "Reserva con confianza",
+    "padiVerified": "Centro de Buceo PADI Verificado"
   },
   "TrustLine": {
     "line": "★ {rating} · {count} reseñas en Google · Centro de Buceo PADI Verificado #27147"
@@ -213,5 +218,41 @@
     "previousPage": "Página anterior",
     "nextPage": "Página siguiente",
     "goToPage": "Ir a la página"
+  },
+  "Home": {
+    "hero": {
+      "book": "Reserva tu inmersión",
+      "exploreCourses": "Explora los cursos de buceo"
+    },
+    "cards": {
+      "cta": "Explorar"
+    },
+    "courses": {
+      "heading": "Cursos PADI y experiencias guiadas"
+    },
+    "faq": {
+      "heading": "Preguntas frecuentes"
+    },
+    "booking": {
+      "requestTitle": "Solicita una reserva",
+      "fullName": "Nombre completo",
+      "namePlaceholder": "Tu nombre",
+      "email": "Correo electrónico",
+      "date": "Fecha",
+      "experience": "Experiencia",
+      "divers": "Buzos",
+      "submit": "Solicitar mi inmersión",
+      "submitting": "Enviando…",
+      "disclaimer": "Sin pago ahora. Confirmaremos la disponibilidad y te enviaremos un enlace de depósito.",
+      "successTitle": "¡Solicitud recibida!",
+      "successBody": "Gracias {name}: confirmaremos tu inmersión por correo y mensaje en breve. Nos vemos bajo el agua.",
+      "expFirst": "Primera vez / Discover",
+      "expCert": "Obteniendo certificación",
+      "expCertified": "Buzo certificado"
+    }
+  },
+  "Courses": {
+    "viewCourse": "Ver curso",
+    "faqHeading": "Preguntas frecuentes"
   }
 }

@@ -7,13 +7,13 @@ import Nav from "./Nav"
 // SSR HTML, avoiding the client-side-rendering bailout and the skeleton's CLS.
 const Header = () => {
   return (
-    <nav className="bg-transparent sticky top-0 z-50">
-      <div className="flex items-center justify-between bg-transparent lg:max-w-fit mx-5 xl:mx-auto">
+    <header className="absolute inset-x-0 top-0 z-50">
+      <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between gap-6 px-4 md:h-24 md:px-6">
         <Logo />
 
         <Nav />
       </div>
-    </nav>
+    </header>
   )
 }
 

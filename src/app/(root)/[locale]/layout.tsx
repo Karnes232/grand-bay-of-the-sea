@@ -8,7 +8,7 @@ import Script from "next/script"
 import { LazyGoogleTagManager } from "@/components/analytics/LazyGoogleTagManager"
 import { DeferredClientWidgets } from "@/components/layout/DeferredClientWidgets"
 import { generateStructuredData } from "@/components/StructuredData/StructuredData"
-import { Crimson_Pro } from "next/font/google"
+import { Crimson_Pro, Bricolage_Grotesque, Instrument_Sans } from "next/font/google"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
@@ -20,6 +20,20 @@ const crimsonPro = Crimson_Pro({
   variable: "--font-crimson-pro",
   // Only font-crimson usages: hero H1 font-bold (700), blog category default (400).
   weight: ["400", "700"],
+})
+
+// 2026 redesign: Bricolage Grotesque = display/headings (font-display),
+// Instrument Sans = body default (font-sans). See tailwind.config.ts + globals.css.
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-bricolage",
+})
+
+const instrument = Instrument_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-instrument",
 })
 
 export const metadata: Metadata = {
@@ -111,7 +125,10 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale} className={`${crimsonPro.variable}`}>
+    <html
+      lang={locale}
+      className={`${crimsonPro.variable} ${bricolage.variable} ${instrument.variable}`}
+    >
       <head>
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
@@ -149,7 +166,7 @@ export default async function RootLayout({
           key={locale}
         >
           <DeferredClientWidgets />
-          <div className="min-h-screen flex flex-col justify-between overflow-x-hidden">
+          <div className="relative min-h-screen flex flex-col justify-between overflow-x-hidden">
             <Header />
             {children}
             <Footer />

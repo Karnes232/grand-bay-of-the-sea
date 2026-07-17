@@ -29,6 +29,20 @@ export interface CoursesMainPage {
       }
       alt: string
     }
+    ref?: string
+    crop?: {
+      top: number
+      bottom: number
+      left: number
+      right: number
+    } | null
+    hotspot?: {
+      x: number
+      y: number
+      height: number
+      width: number
+    } | null
+    alt?: string
   }
   paragraph1: {
     en: any[]
@@ -41,6 +55,17 @@ export interface CoursesMainPage {
   paragraph3: {
     en: any[]
     es: any[]
+  }
+  introHeading?: { en: string; es: string }
+  beginnerEyebrow?: { en: string; es: string }
+  beginnerHeading?: { en: string; es: string }
+  advancedHeading?: { en: string; es: string }
+  specialtyEyebrow?: { en: string; es: string }
+  courseCta?: {
+    heading?: { en: string; es: string }
+    body?: { en: string; es: string }
+    ctaLabel?: { en: string; es: string }
+    ctaLink?: string
   }
 }
 
@@ -72,6 +97,9 @@ export const coursesMainPageQuery = `*[_type == "coursesMainPage"][0] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   paragraph1 {
@@ -85,6 +113,41 @@ export const coursesMainPageQuery = `*[_type == "coursesMainPage"][0] {
   paragraph3 {
     en,
     es
+  },
+  introHeading {
+    en,
+    es
+  },
+  beginnerEyebrow {
+    en,
+    es
+  },
+  beginnerHeading {
+    en,
+    es
+  },
+  advancedHeading {
+    en,
+    es
+  },
+  specialtyEyebrow {
+    en,
+    es
+  },
+  courseCta {
+    heading {
+      en,
+      es
+    },
+    body {
+      en,
+      es
+    },
+    ctaLabel {
+      en,
+      es
+    },
+    ctaLink
   }
 }`
 

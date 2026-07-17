@@ -1,38 +1,33 @@
 import dynamicImport from "next/dynamic"
 
-import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
 import { getHreflangAlternates } from "@/utils/hreflang"
 
-import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import JsonLd from "@/components/StructuredData/JsonLd"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSectionLinks } from "@/sanity/queries/Scuba-Diving-Punta-Cana/SectionLinks"
 import { getHomePage } from "@/sanity/queries/HomePage/HomePage"
-import BlockContent from "@/components/BlockContent/BlockContent"
 import { getFaqs } from "@/sanity/queries/Faqs/Faqs"
-import Faqs from "@/components/FaqsComponent/Faqs"
 import { getTranslations } from "next-intl/server"
 import { BUSINESS } from "@/lib/business"
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 
-const CloudinaryBackgroundVideo = dynamicImport(
-  () =>
-    import("@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"),
-)
-const DivingOrganizations = dynamicImport(
-  () => import("@/components/DivingOrganizations/DivingOrganizations"),
-)
-const BackgroundImage = dynamicImport(
-  () => import("@/components/BackgroundImageComponent/BackgroundImage"),
-)
+import HomeHero from "@/components/home/HomeHero"
+import StatsBar from "@/components/home/StatsBar"
+import HomeIntro from "@/components/home/HomeIntro"
+import FeatureCards from "@/components/home/FeatureCards"
+import WhyUnique from "@/components/home/WhyUnique"
+import SharkBanner from "@/components/home/SharkBanner"
+import CourseHighlights from "@/components/home/CourseHighlights"
+import ImageBand from "@/components/home/ImageBand"
+import BookingSection from "@/components/home/BookingSection"
+import FaqAccordion from "@/components/home/FaqAccordion"
+
 const GoogleMaps = dynamicImport(
   () => import("@/components/GoogleMapsComponent/GoogleMaps"),
 )
 
-// OPTION 1: Remove force-static to allow dynamic rendering for language switching
-// export const dynamic = "force-static"
-
-// OPTION 2: Use revalidate for Incremental Static Regeneration (ISR)
-export const revalidate = 604800 // ISR 7 days — content refreshes on Netlify redeploy
+// ISR (7 days) — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
 
 export async function generateMetadata({
   params,
@@ -76,33 +71,20 @@ export default async function Home({
 }) {
   const { locale } = await params
 
-  const [structuredData, sectionLinks, homePage, faqs] = await Promise.all([
-    getStructuredData("Index"),
-    getSectionLinks(),
-    getHomePage(),
-    getFaqs("Home"),
-  ])
-
-  // let pageLayout
-  // try {
-  //   const pageLayoutResult = await searchEntries("pageLayout", {
-  //     "fields.page": "Index",
-  //     locale: locale || "en",
-  //   })
-  //   pageLayout = pageLayoutResult.items[0]
-  // } catch (error) {
-  //   console.error("Failed to fetch page layout:", error)
-  //   return (
-  //     <main id="main">
-  //       <p>Unable to load content at this time. Please try again later.</p>
-  //     </main>
-  //   )
-  // }
+  const [structuredData, sectionLinks, homePage, faqs, tHome, tTrust] =
+    await Promise.all([
+      getStructuredData("Index"),
+      getSectionLinks(),
+      getHomePage(),
+      getFaqs("Home"),
+      getTranslations("Home"),
+      getTranslations("TrustLine"),
+    ])
 
   if (!homePage) {
     return (
       <main id="main">
-        <p>Content not found for this page. Please check Contentful.</p>
+        <p>Content not found for this page. Please check Sanity.</p>
       </main>
     )
   }
@@ -110,8 +92,7 @@ export default async function Home({
   /**
    * Synchronous: no network fetch. The blur placeholder comes from Sanity's
    * built-in `metadata.lqip` (projected in the GROQ query for the hero image),
-   * which keeps the route statically renderable / ISR-cacheable. A bare
-   * `fetch()` here would opt the whole page into dynamic `no-store` rendering.
+   * which keeps the route statically renderable / ISR-cacheable.
    */
   const getFullImageDetails = (field: any) => {
     if (!field?.asset?.url) return {} as any
@@ -132,58 +113,99 @@ export default async function Home({
     homePage.tertiaryHeroImage,
   )
 
-  const tTrust = await getTranslations("TrustLine")
+  // Crop + hotspot-aware sources (framing follows Studio). Per-slot target
+  // aspect; object-position keeps the hotspot in view when the slot re-crops.
+  const heroSrc = sanityCropUrl(homePage.heroImage, 2000, 1333)
+  const heroPosition = hotspotPosition(homePage.heroImage)
+  const sharkSrc = sanityCropUrl(homePage.secondaryHeroImage, 2000, 900)
+  const sharkPosition = hotspotPosition(homePage.secondaryHeroImage)
+  const bandSrc = sanityCropUrl(homePage.tertiaryHeroImage, 2000, 760)
+  const bandPosition = hotspotPosition(homePage.tertiaryHeroImage)
+
   const trustLine = tTrust("line", {
     rating: BUSINESS.rating.value,
     count: BUSINESS.rating.count,
   })
+
+  // Secondary hero CTA: prefer the Sanity heroCta, else fall back to courses.
+  const secondaryCta =
+    homePage.heroCta?.label?.[locale] && homePage.heroCta?.link
+      ? { label: homePage.heroCta.label[locale], href: homePage.heroCta.link }
+      : { label: tHome("hero.exploreCourses"), href: "/courses" }
 
   return (
     <>
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <main id="main">
         {heroImageDetails.url && (
-          <HeroStaticComponent
-            heroImage={heroImageDetails.url}
+          <HomeHero
+            heroImage={heroSrc || heroImageDetails.url}
+            objectPosition={heroPosition}
             blurDataURL={heroImageDetails.base64}
             alt={heroImageDetails.alt || "Scuba diving in Punta Cana"}
             title={homePage.heroTitle?.[locale]}
             subtitle={homePage.heroSubtitle?.[locale]}
             trustLine={trustLine}
-            cta={
-              homePage.heroCta?.label?.[locale] && homePage.heroCta?.link
-                ? {
-                    label: homePage.heroCta.label[locale],
-                    href: homePage.heroCta.link,
-                  }
-                : undefined
-            }
+            bookLabel={tHome("hero.book")}
+            secondaryCta={secondaryCta}
           />
         )}
-        <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-        <BlockContent content={homePage.paragraph1} locale={locale} demoteH1 />
 
-        <SelectionComponent
+        <StatsBar stats={homePage.stats} locale={locale} />
+
+        <HomeIntro content={homePage.paragraph1} locale={locale} />
+
+        <FeatureCards
           sectionLinks={sectionLinks}
           locale={locale}
-          secondaryHeroImage={secondaryHeroImageDetails.url || ""}
+          ctaLabel={tHome("cards.cta")}
         />
-        <BlockContent content={homePage.paragraph2} locale={locale} />
-        <CloudinaryBackgroundVideo
-          className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
-          videoId={"coral-cut_lyykuw"}
+
+        <WhyUnique
+          heading={homePage.whyUniqueHeading?.[locale]}
+          content={homePage.paragraph2}
+          locale={locale}
         />
-        <DivingOrganizations />
-        <BlockContent content={homePage.paragraph3} locale={locale} />
-        <Faqs
+
+        {secondaryHeroImageDetails.url && (
+          <SharkBanner
+            banner={homePage.sharkBanner}
+            image={sharkSrc || secondaryHeroImageDetails.url}
+            objectPosition={sharkPosition}
+            alt={secondaryHeroImageDetails.alt || "Shark diving in Punta Cana"}
+            locale={locale}
+          />
+        )}
+
+        <CourseHighlights
+          heading={tHome("courses.heading")}
+          courses={homePage.courseHighlights}
+          paragraph3={homePage.paragraph3}
+          locale={locale}
+        />
+
+        {tertiaryHeroImageDetails.url && (
+          <ImageBand
+            image={bandSrc || tertiaryHeroImageDetails.url}
+            objectPosition={bandPosition}
+            alt={tertiaryHeroImageDetails.alt || "Diving in Punta Cana"}
+          />
+        )}
+
+        <BookingSection
+          booking={homePage.bookingSection}
+          benefits={homePage.bookingBenefits}
+          locale={locale}
+        />
+
+        <FaqAccordion
           faqs={faqs.faqs}
           structuredData={faqs.structuredData}
           locale={locale}
+          heading={tHome("faq.heading")}
         />
-        {tertiaryHeroImageDetails.url && (
-          <BackgroundImage image={tertiaryHeroImageDetails.url} />
-        )}
-        <GoogleMaps />
+
+        <GoogleMaps variant="flat" />
       </main>
     </>
   )

@@ -86,6 +86,44 @@ export async function submitForm(formData: any, certificationData: any) {
   }
 }
 
+/**
+ * Homepage "Request a booking" lead form. Saves to Supabase (form_type "lead"
+ * so the owner can tell website leads from full bookings) and emails the
+ * customer a confirmation via the existing Resend template. Owner notification
+ * is handled by the Netlify Forms capture on the client (form-name "booking").
+ */
+export async function submitLeadForm(formData: any) {
+  await saveBookingToSupabase(formData, "lead")
+
+  try {
+    await sendConfirmationEmail({
+      customerName: formData.name,
+      customerEmail: formData.email,
+      hotel: "",
+      excursionName: formData.tourSelect || "Dive booking request",
+      excursionDate: formData.date,
+      guestCount: formData.guestCount,
+      certification: formData.certification,
+      deposit: "",
+      price: "",
+    })
+    return {
+      success: true,
+      data: {
+        "form-name": "booking",
+        name: formData.name?.toString() || "",
+        email: formData.email?.toString() || "",
+        date: formData.date?.toString() || "",
+        guestCount: formData.guestCount?.toString() || "",
+        certification: formData.certification?.toString() || "",
+      },
+    }
+  } catch (error) {
+    console.error("Lead form submission error:", error)
+    return { success: false }
+  }
+}
+
 export async function submitBookingForm(formData: any) {
   await saveBookingToSupabase(formData, "booking")
 

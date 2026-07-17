@@ -15,7 +15,8 @@
     "liveAboards": "Live Aboards",
     "cancellationPolicy": "Cancellation Policy",
     "siteMap": "Site Map",
-    "blog": "Blog"
+    "blog": "Blog",
+    "bookCta": "Book a dive"
   },
   "ContactForm": {
     "fullName": "Full Name",
@@ -138,7 +139,11 @@
   },
   "Footer": {
     "builtBy": "Built by",
-    "developedBy": "Web Development in the Dominican Republic"
+    "developedBy": "Web Development in the Dominican Republic",
+    "columnDive": "Dive",
+    "columnExplore": "Explore",
+    "columnConfidence": "Book with confidence",
+    "padiVerified": "Verified PADI Dive Center"
   },
   "TrustLine": {
     "line": "★ {rating} · {count} Google reviews · Verified PADI Dive Center #27147"
@@ -213,5 +218,41 @@
     "previousPage": "Previous page",
     "nextPage": "Next page",
     "goToPage": "Go to page"
+  },
+  "Home": {
+    "hero": {
+      "book": "Book your dive",
+      "exploreCourses": "Explore dive courses"
+    },
+    "cards": {
+      "cta": "Explore"
+    },
+    "courses": {
+      "heading": "PADI courses & guided experiences"
+    },
+    "faq": {
+      "heading": "Frequently asked questions"
+    },
+    "booking": {
+      "requestTitle": "Request a booking",
+      "fullName": "Full name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "date": "Date",
+      "experience": "Experience",
+      "divers": "Divers",
+      "submit": "Request my dive",
+      "submitting": "Sending…",
+      "disclaimer": "No payment now. We'll confirm availability and send a deposit link.",
+      "successTitle": "Request received!",
+      "successBody": "Thanks {name} — we'll confirm your dive by email and text shortly. See you underwater.",
+      "expFirst": "First-time / Discover",
+      "expCert": "Getting certified",
+      "expCertified": "Certified diver"
+    }
+  },
+  "Courses": {
+    "viewCourse": "View course",
+    "faqHeading": "Frequently asked questions"
   }
 }

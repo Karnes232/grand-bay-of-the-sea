@@ -3,28 +3,57 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f2f5f5;
+  --foreground: #0b2129;
+
+  /*
+   * 2026 redesign palette as RGB channel triples so Tailwind opacity modifiers
+   * (e.g. bg-accent/20) work. Exposed as Tailwind colors in tailwind.config.ts
+   * via rgb(var(--x) / <alpha-value>).
+   */
+  --accent: 255 106 61; /* #ff6a3d */
+  --ink: 11 33 41; /* #0b2129 */
+  --ink-deep: 6 26 32; /* #061a20 */
+  --surface: 242 245 245; /* #f2f5f5 */
+  --moss: 86 122 47; /* #567a2f */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/*
+ * The redesign is intentionally light with explicitly-colored dark sections.
+ * A prefers-color-scheme:dark auto-flip of --background/--foreground would
+ * corrupt bg-background/text-foreground surfaces, so it is deliberately omitted.
+ */
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-instrument), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
   padding-right: 0px;
+}
+
+::selection {
+  background: rgb(var(--accent));
+  color: rgb(var(--ink));
 }
 
 @layer base {
   html {
     overflow-y: scroll !important;
     padding-right: 0 !important;
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  .animate-rise-in,
+  .animate-float-y,
+  .animate-fade-in-up {
+    animation: none !important;
   }
 }
 
@@ -38,4 +67,19 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Redesign FAQ accordion: rotate the "+" into an "×" when the item is open. */
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-plus {
+  transition: transform 0.2s ease;
+}
+.faq-item[open] .faq-plus {
+  transform: rotate(45deg);
 }

@@ -1,5 +1,18 @@
 import { client } from "@/sanity/lib/client"
 
+interface Crop {
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
+interface Hotspot {
+  x: number
+  y: number
+  height: number
+  width: number
+}
+
 export interface HomePage {
   heroImage: {
     asset: {
@@ -12,6 +25,9 @@ export interface HomePage {
         }
       }
     }
+    ref?: string
+    crop?: Crop | null
+    hotspot?: Hotspot | null
     alt: string
   }
   secondaryHeroImage: {
@@ -24,6 +40,9 @@ export interface HomePage {
         }
       }
     }
+    ref?: string
+    crop?: Crop | null
+    hotspot?: Hotspot | null
     alt: string
   }
   tertiaryHeroImage: {
@@ -36,6 +55,9 @@ export interface HomePage {
         }
       }
     }
+    ref?: string
+    crop?: Crop | null
+    hotspot?: Hotspot | null
     alt: string
   }
   heroTitle?: {
@@ -65,6 +87,36 @@ export interface HomePage {
     en: any[]
     es: any[]
   }
+  stats?: {
+    value?: { en: string; es: string }
+    label?: { en: string; es: string }
+  }[]
+  whyUniqueHeading?: {
+    en: string
+    es: string
+  }
+  sharkBanner?: {
+    eyebrow?: { en: string; es: string }
+    heading?: { en: string; es: string }
+    body?: { en: string; es: string }
+    ctaLabel?: { en: string; es: string }
+    ctaLink?: string
+  }
+  courseHighlights?: {
+    badge?: { en: string; es: string }
+    title?: { en: string; es: string }
+    blurb?: { en: string; es: string }
+    href?: string
+  }[]
+  bookingSection?: {
+    eyebrow?: { en: string; es: string }
+    heading?: { en: string; es: string }
+    body?: { en: string; es: string }
+  }
+  bookingBenefits?: {
+    en: string
+    es: string
+  }[]
 }
 
 export const homePageQuery = `*[_type == "homePage"][0] {
@@ -79,6 +131,9 @@ export const homePageQuery = `*[_type == "homePage"][0] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   secondaryHeroImage {
@@ -91,8 +146,11 @@ export const homePageQuery = `*[_type == "homePage"][0] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
-  },    
+  },
   tertiaryHeroImage {
     asset -> {
       url,
@@ -103,6 +161,9 @@ export const homePageQuery = `*[_type == "homePage"][0] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   heroTitle {
@@ -129,6 +190,72 @@ export const homePageQuery = `*[_type == "homePage"][0] {
     es
   },
   paragraph3 {
+    en,
+    es
+  },
+  stats[] {
+    value {
+      en,
+      es
+    },
+    label {
+      en,
+      es
+    }
+  },
+  whyUniqueHeading {
+    en,
+    es
+  },
+  sharkBanner {
+    eyebrow {
+      en,
+      es
+    },
+    heading {
+      en,
+      es
+    },
+    body {
+      en,
+      es
+    },
+    ctaLabel {
+      en,
+      es
+    },
+    ctaLink
+  },
+  courseHighlights[] {
+    badge {
+      en,
+      es
+    },
+    title {
+      en,
+      es
+    },
+    blurb {
+      en,
+      es
+    },
+    href
+  },
+  bookingSection {
+    eyebrow {
+      en,
+      es
+    },
+    heading {
+      en,
+      es
+    },
+    body {
+      en,
+      es
+    }
+  },
+  bookingBenefits[] {
     en,
     es
   }

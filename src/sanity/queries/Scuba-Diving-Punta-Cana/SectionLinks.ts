@@ -20,6 +20,19 @@ export interface SectionLinks {
         }
       }
     }
+    ref?: string
+    crop?: {
+      top: number
+      bottom: number
+      left: number
+      right: number
+    } | null
+    hotspot?: {
+      x: number
+      y: number
+      height: number
+      width: number
+    } | null
     alt: string
   }
 }
@@ -44,6 +57,9 @@ export const sectionLinksQuery = `*[_type == "sectionLinks"] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   }
 }`

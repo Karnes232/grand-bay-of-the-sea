@@ -19,7 +19,17 @@ interface Props {
   /** When true, render `h1` Portable Text blocks as `h2`. Use on pages that
    *  already render an `h1` elsewhere (e.g. the hero) to keep a single H1. */
   demoteH1?: boolean
+  /**
+   * "default" keeps the historical centered `max-w-3xl` wrapper used across the
+   * legacy pages. "prose" drops the baked-in wrapper/centering for the 2026
+   * redesign — left-aligned body copy, display-font headings, moss links — so
+   * the caller controls width via `wrapperClassName`.
+   */
+  variant?: "default" | "prose"
+  /** Wrapper class override. Only applied in the "prose" variant. */
+  wrapperClassName?: string
 }
+
 const builder = imageUrlBuilder(client)
 const components = {
   types: {
@@ -139,15 +149,95 @@ const components = {
   },
 }
 
+/** 2026 redesign renderer: left-aligned, no forced centering, new palette. */
+const proseComponents = {
+  types: components.types,
+  marks: {
+    link: ({ children, value }: any) => (
+      <a
+        href={value.href}
+        rel="noopener noreferrer"
+        className="font-semibold text-moss underline decoration-moss/30 underline-offset-2 hover:decoration-moss"
+      >
+        {children}
+      </a>
+    ),
+    strong: ({ children }: any) => (
+      <strong className="font-semibold text-ink">{children}</strong>
+    ),
+    em: ({ children }: any) => <em className="italic">{children}</em>,
+  },
+  block: {
+    normal: ({ children }: any) => (
+      <p className="mb-5 text-[17px] leading-relaxed text-[#3d5459]">
+        {children}
+      </p>
+    ),
+    h1: ({ children }: any) => (
+      <h2 className="mb-4 font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
+        {children}
+      </h2>
+    ),
+    h2: ({ children }: any) => (
+      <h2 className="mb-4 font-display text-2xl font-bold tracking-tight text-ink md:text-3xl">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }: any) => (
+      <h3 className="mb-3 font-display text-xl font-bold tracking-tight text-ink md:text-2xl">
+        {children}
+      </h3>
+    ),
+    h4: ({ children }: any) => (
+      <h4 className="mb-3 font-display text-lg font-bold tracking-tight text-ink md:text-xl">
+        {children}
+      </h4>
+    ),
+    h5: ({ children }: any) => (
+      <h5 className="mb-2 font-display text-base font-bold tracking-tight text-ink md:text-lg">
+        {children}
+      </h5>
+    ),
+    h6: ({ children }: any) => (
+      <h6 className="mb-2 font-display text-base font-bold tracking-tight text-ink">
+        {children}
+      </h6>
+    ),
+  },
+  list: {
+    bullet: ({ children }: any) => (
+      <ul className="mb-5 ml-5 list-disc space-y-2 text-[17px] leading-relaxed text-[#3d5459]">
+        {children}
+      </ul>
+    ),
+    number: ({ children }: any) => (
+      <ol className="mb-5 ml-5 list-decimal space-y-2 text-[17px] leading-relaxed text-[#3d5459]">
+        {children}
+      </ol>
+    ),
+  },
+}
+
 const BlockContent: React.FC<Props> = ({
   content,
   locale = "en",
   demoteH1 = false,
+  variant = "default",
+  wrapperClassName,
 }) => {
   if (!content || !content[locale]) {
     return null
   }
   const blockContent = content[locale]
+
+  if (variant === "prose") {
+    return (
+      <div className={wrapperClassName ?? ""}>
+        <PortableText value={blockContent} components={proseComponents} />
+      </div>
+    )
+  }
+
   const activeComponents = demoteH1
     ? { ...components, block: { ...components.block, h1: components.block.h2 } }
     : components

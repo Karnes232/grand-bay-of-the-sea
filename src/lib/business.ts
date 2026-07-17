@@ -33,4 +33,8 @@ export const BUSINESS = {
   rating: { value: 4.8, count: 151, source: "Google" },
   latitude: process.env.NEXT_PUBLIC_BUSINESS_LATITUDE || "18.64857",
   longitude: process.env.NEXT_PUBLIC_BUSINESS_LONGITUDE || "-68.358637",
+  /** PADI dive-center registration — surfaced in the hero badge, stats bar, and trust badges. */
+  padiNumber: "27147",
+  padiUrl:
+    "https://travel.padi.com/dive-center/dominican-republic/grand-bay-of-the-sea/",
 } as const

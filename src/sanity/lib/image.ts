@@ -10,6 +10,57 @@ export const urlFor = (source: SanityImageSource) => {
   return builder.image(source)
 }
 
+/**
+ * A GROQ-projected image that carries the pieces needed to honor Studio's
+ * hotspot/crop: the asset `_ref` (projected as `ref`) plus `crop`/`hotspot`.
+ * Falls back to the dereferenced `asset.url` when the ref/crop data is absent.
+ */
+type CroppableImage = {
+  ref?: string
+  crop?: unknown
+  hotspot?: { x: number; y: number } | null
+  asset?: { url?: string } | null
+} | null | undefined
+
+/**
+ * Build a crop + hotspot-aware CDN URL for a fixed WxH slot. Passing both width
+ * and height with `fit("crop")` makes @sanity/image-url emit `rect=` (crop) and
+ * `fp-x/fp-y` (hotspot), so the framing follows what the editor set in Studio.
+ */
+export function sanityCropUrl(
+  img: CroppableImage,
+  w: number,
+  h: number,
+): string {
+  if (img?.ref) {
+    return urlFor({
+      _type: "image",
+      asset: { _ref: img.ref },
+      crop: img.crop ?? undefined,
+      hotspot: img.hotspot ?? undefined,
+    } as SanityImageSource)
+      .width(w)
+      .height(h)
+      .fit("crop")
+      .auto("format")
+      .quality(75)
+      .url()
+  }
+  return img?.asset?.url || ""
+}
+
+/**
+ * CSS `object-position` string from the image hotspot, for responsive
+ * `object-cover` slots whose aspect differs from the baked crop. Returns
+ * `undefined` (browser default of 50% 50%) when no hotspot is set.
+ */
+export function hotspotPosition(img: CroppableImage): string | undefined {
+  if (img?.hotspot && typeof img.hotspot.x === "number") {
+    return `${(img.hotspot.x * 100).toFixed(2)}% ${(img.hotspot.y * 100).toFixed(2)}%`
+  }
+  return undefined
+}
+
 /** Append Sanity CDN transforms when `url` is already a resolved cdn.sanity.io URL (e.g. from GROQ). */
 export function sanityCdnUrlWithParams(
   url: string | undefined | null,
