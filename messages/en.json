@@ -179,7 +179,9 @@
     "contactUs": "Contact Us",
     "reserveNow": "Reserve Now",
     "only50Deposit": "Only a 50% deposit",
-    "transport": "Transport"
+    "transport": "Transport",
+    "dives": "Dives",
+    "maxDepth": "Max depth"
   },
   "PaymentPopupCourses": {
     "bookNow": "Book Now",
@@ -253,6 +255,45 @@
   },
   "Courses": {
     "viewCourse": "View course",
-    "faqHeading": "Frequently asked questions"
+    "faqHeading": "Frequently asked questions",
+    "detail": {
+      "galleryHeading": "A glimpse of what you'll see",
+      "ctaHeading": "Ready to get started?",
+      "ctaBody": "Reserve your spot with a 50% deposit. We'll confirm your dates and send everything you need to prepare.",
+      "ctaLabel": "Reserve now",
+      "depositNote": "Reserve with only a 50% deposit",
+      "equipmentProvided": "All equipment provided",
+      "transportIncluded": "Hotel transport included",
+      "smallGroups": "Small groups, personal attention",
+      "viewGallery": "View full gallery"
+    }
+  },
+  "SharkDive": {
+    "heroSubtitle": "An adventure that takes your diving to the next level — encounter nurse, blacktip, and reef sharks in their natural habitat, led by experienced instructors.",
+    "experienceEyebrow": "The experience",
+    "notReadyEyebrow": "Not ready yet?",
+    "exploreAdvanced": "Explore Advanced Open Water",
+    "galleryHeading": "Face to face with the ocean's apex predators",
+    "ctaHeading": "Ready for the dive of a lifetime?",
+    "ctaBody": "Book your shark diving tour with Grand Bay of the Sea today and experience the thrill of diving with sharks in Punta Cana.",
+    "ctaLabel": "Book your shark dive",
+    "featuredIn": "As featured in Listín Diario",
+    "factFormat": "Format",
+    "factFormatValue": "2-tank dive",
+    "factDuration": "Duration",
+    "factMaxDepth": "Max depth",
+    "factLevel": "Level"
+  },
+  "Trips": {
+    "tripEyebrow": "Full-day excursion",
+    "viewTrip": "View trip details",
+    "perDiver": "/ diver",
+    "tripDayHeading": "What a trip day looks like",
+    "tripDayIntro": "From hotel doorstep to the last dive, everything's handled so you can focus on the water.",
+    "ctaHeading": "Make it a day to remember",
+    "ctaBody": "Trips run on select days and fill quickly. Tell us your dates and we'll reserve your spot with a deposit.",
+    "ctaLabel": "Book a trip",
+    "enquire": "Enquire",
+    "privateOnly": "Private excursions only"
   }
 }

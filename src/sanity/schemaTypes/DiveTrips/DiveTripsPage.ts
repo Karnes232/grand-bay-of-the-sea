@@ -76,6 +76,38 @@ export default defineType({
         "Optional second content section, rendered below the trip cards (logistics, what's included, which trip suits whom).",
       type: "localizedBlock",
     }),
+    defineField({
+      name: "tripDaySteps",
+      title: "Trip Day Steps",
+      description:
+        'The "What a trip day looks like" itinerary (generic). Uses the Catalina/Saona order (both dives before lunch); note the Bayahibe exception in "Trip Day Note".',
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "tripStep",
+          fields: [
+            defineField({
+              name: "stepTitle",
+              title: "Title",
+              type: "localizedString",
+            }),
+            defineField({
+              name: "stepBody",
+              title: "Body",
+              type: "localizedText",
+            }),
+          ],
+          preview: { select: { title: "stepTitle.en" } },
+        },
+      ],
+    }),
+    defineField({
+      name: "tripDayNote",
+      title: "Trip Day Note",
+      description: 'Small caveat under the steps, e.g. "Bayahibe excludes lunch."',
+      type: "localizedString",
+    }),
   ],
   preview: {
     select: {

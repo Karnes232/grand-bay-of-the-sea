@@ -25,6 +25,14 @@ export interface DiveTripsPage {
     en: any[]
     es: any[]
   }
+  tripDaySteps?: {
+    stepTitle?: { en: string; es: string }
+    stepBody?: { en: string; es: string }
+  }[]
+  tripDayNote?: {
+    en: string
+    es: string
+  }
   heroImage: {
     asset: {
       url: string
@@ -36,6 +44,9 @@ export interface DiveTripsPage {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
 }
@@ -65,6 +76,20 @@ export const diveTripsPageQuery = `*[_type == "diveTripsPage"][0] {
     en,
     es
   },
+  tripDaySteps[] {
+    stepTitle {
+      en,
+      es
+    },
+    stepBody {
+      en,
+      es
+    }
+  },
+  tripDayNote {
+    en,
+    es
+  },
   heroImage {
     asset -> {
       url,
@@ -76,6 +101,9 @@ export const diveTripsPageQuery = `*[_type == "diveTripsPage"][0] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   }
 }`

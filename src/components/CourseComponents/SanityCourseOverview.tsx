@@ -1,11 +1,21 @@
 "use client"
 
 import React from "react"
-import { motion } from "motion/react"
 import { Link } from "@/i18n/navigation"
 import PaymentPopupCourses from "../PaymentComponents/PaymentPopupCourses"
 import { useTranslations } from "next-intl"
 import { IndividualCourse } from "@/sanity/queries/Courses/IndividualCourses"
+
+/**
+ * Booking card (2026 redesign). Dark sticky card with price, deposit note, and
+ * an includes checklist.
+ *
+ * CRITICAL: the PayPal deposit flow is entirely driven by
+ * `<PaymentPopupCourses course={course.course} price={course.padiPrice} />`.
+ * That line must stay mounted with those exact props — deposit (price/2),
+ * tourSelect, guest-count scaling, and the PayPal amount are derived downstream.
+ * Everything else here is presentational.
+ */
 const SanityCourseOverview = ({
   course,
   locale,
@@ -14,63 +24,61 @@ const SanityCourseOverview = ({
   locale: string
 }) => {
   const t = useTranslations("CourseOverview")
-  return (
-    <div className="my-5">
-      {" "}
-      <div className="flex flex-col justify-center items-center mb-2">
-        <h4 className="text-xl font-semibold mb-1 xl:text-3xl">
-          <strong>{t("courseOverview")}</strong>
-        </h4>
-        <p className="my-1 text-center text-sm md:text-base xl:text-lg">
-          <b>{t("courseLevel")}:</b> {course.level[locale]}
-        </p>
-        {course.padiPrice && (
-          <p className="my-1 text-sm md:text-base xl:text-lg">
-            <b>{t("price")}:</b> ${course.padiPrice} {t("perPerson")}
-          </p>
-        )}
+  const td = useTranslations("Courses")
 
-        <p className="my-1 text-sm md:text-base xl:text-lg">
-          <b>{t("duration")}: </b>
-          {course.duration[locale]}
-        </p>
-        <p className="my-1 text-sm md:text-base xl:text-lg">
-          <b> {t("includes")}: </b>
-          {t("transport")}
-        </p>
-        {course.extraInfo && (
-          <p className="my-1 text-sm md:text-base xl:text-lg">
-            {course.extraInfo[locale]}
-          </p>
-        )}
+  const includes = [
+    td("detail.equipmentProvided"),
+    td("detail.transportIncluded"),
+    td("detail.smallGroups"),
+  ]
+
+  return (
+    <div className="rounded-[22px] bg-ink p-[30px] text-white shadow-[0_24px_60px_rgba(11,33,41,0.22)] lg:sticky lg:top-24">
+      {course.padiPrice != null && (
+        <div className="mb-1 flex items-baseline gap-2">
+          <span className="font-display text-[2.6rem] font-extrabold tracking-[-0.03em]">
+            ${course.padiPrice}
+          </span>
+          <span className="text-[14.5px] text-white/60">{t("perPerson")}</span>
+        </div>
+      )}
+      <div className="mb-[22px] text-[14px] font-semibold text-accent">
+        {td("detail.depositNote")}
       </div>
-      <div className="flex flex-col justify-center w-[200px] h-[70px] mx-auto space-y-2 my-2">
-        <Link href="/contact" className="no-underline w-[200px] h-[35px]">
-          <button className=" bg-[#2C2E2F] text-[#FFF] text-sm rounded-3xl w-full h-full px-5">
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 3,
-                delay: 0.3,
-              }}
-            >
-              {t("contactUs")}
-            </motion.p>
-          </button>
-        </Link>
+
+      <ul className="mb-6 flex flex-col gap-[13px]">
+        {includes.map(item => (
+          <li
+            key={item}
+            className="flex items-center gap-[11px] text-[14.5px] text-white/90"
+          >
+            <span className="grid h-6 w-6 flex-none place-items-center rounded-full bg-accent/[0.16] text-[13px] text-accent">
+              ✓
+            </span>
+            {item}
+          </li>
+        ))}
+        {course.extraInfo?.[locale] && (
+          <li className="flex items-center gap-[11px] text-[14.5px] text-white/90">
+            <span className="grid h-6 w-6 flex-none place-items-center rounded-full bg-accent/[0.16] text-[13px] text-accent">
+              ✓
+            </span>
+            {course.extraInfo[locale]}
+          </li>
+        )}
+      </ul>
+
+      {/* PayPal booking trigger — DO NOT change these props. */}
+      <div className="flex justify-center [&_button]:w-full">
         <PaymentPopupCourses course={course.course} price={course.padiPrice} />
       </div>
-      <div className="flex flex-col justify-center items-center mb-4">
-        <p className="mb-1 mt-2">
-          <strong>{t("reserveNow")}</strong>
-        </p>
-        <p className="mt-1">{t("only50Deposit")}</p>
-      </div>
-      {/* <CustomPayPal
-        price={course.fields.ssiPrice / 2 || course.fields.padiPrice / 2}
-      /> */}
+
+      <p className="mt-4 text-center text-[13px] text-white/60">
+        {t("reserveNow")} ·{" "}
+        <Link href="/contact" className="underline hover:text-white">
+          {t("contactUs")}
+        </Link>
+      </p>
     </div>
   )
 }

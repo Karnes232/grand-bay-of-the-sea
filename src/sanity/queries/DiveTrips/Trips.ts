@@ -6,6 +6,7 @@ export interface TripCards {
     current: string
   }
   price?: number
+  privateOnly?: boolean
   cardTitle: {
     en: string
     es: string
@@ -18,20 +19,33 @@ export interface TripCards {
     asset: {
       url: string
       metadata: {
+        lqip?: string
         dimensions: {
           width: number
           height: number
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
+  duration?: {
+    en: string
+    es: string
+  }
+  extras?: {
+    en: string
+    es: string
+  }[]
 }
 
 export const tripsQuery = `*[_type == "trips"] {
   page,
   slug,
   price,
+  privateOnly,
   cardTitle {
     en,
     es
@@ -44,13 +58,25 @@ export const tripsQuery = `*[_type == "trips"] {
     asset -> {
       url,
       metadata {
+        lqip,
         dimensions {
           width,
           height
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
+  },
+  duration {
+    en,
+    es
+  },
+  extras[] {
+    en,
+    es
   }
 }`
 

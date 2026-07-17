@@ -61,6 +61,14 @@ const nextConfig = {
     ]
   },
   reactStrictMode: true,
+  webpack: config => {
+    // Silence noisy webpack persistent-cache infra warnings. next-intl's
+    // extractor uses a dynamic import(t) webpack can't statically parse
+    // (benign — that node_modules file never changes). Real errors and
+    // compile warnings are unaffected.
+    config.infrastructureLogging = { level: "error" }
+    return config
+  },
   // Optimize for static generation and better performance
   trailingSlash: false,
   poweredByHeader: false,

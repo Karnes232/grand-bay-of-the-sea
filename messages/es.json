@@ -179,7 +179,9 @@
     "contactUs": "Contacto",
     "reserveNow": "Reservar Ahora",
     "only50Deposit": "Solo un 50% de depósito",
-    "transport": "Transporte"
+    "transport": "Transporte",
+    "dives": "Inmersiones",
+    "maxDepth": "Profundidad máx."
   },
   "PaymentPopupCourses": {
     "bookNow": "Reservar Ahora",
@@ -253,6 +255,45 @@
   },
   "Courses": {
     "viewCourse": "Ver curso",
-    "faqHeading": "Preguntas frecuentes"
+    "faqHeading": "Preguntas frecuentes",
+    "detail": {
+      "galleryHeading": "Un vistazo de lo que verás",
+      "ctaHeading": "¿Listo para empezar?",
+      "ctaBody": "Reserva tu lugar con un depósito del 50%. Confirmaremos tus fechas y te enviaremos todo lo que necesitas para prepararte.",
+      "ctaLabel": "Reserva ahora",
+      "depositNote": "Reserva con solo un depósito del 50%",
+      "equipmentProvided": "Todo el equipo incluido",
+      "transportIncluded": "Transporte desde el hotel incluido",
+      "smallGroups": "Grupos pequeños, atención personalizada",
+      "viewGallery": "Ver galería completa"
+    }
+  },
+  "SharkDive": {
+    "heroSubtitle": "Una aventura que lleva tu buceo al siguiente nivel: encuentra tiburones nodriza, de puntas negras y de arrecife en su hábitat natural, guiado por instructores expertos.",
+    "experienceEyebrow": "La experiencia",
+    "notReadyEyebrow": "¿Aún no estás listo?",
+    "exploreAdvanced": "Explora Advanced Open Water",
+    "galleryHeading": "Cara a cara con los depredadores del océano",
+    "ctaHeading": "¿Listo para la inmersión de tu vida?",
+    "ctaBody": "Reserva tu tour de buceo con tiburones con Grand Bay of the Sea hoy y vive la emoción de bucear con tiburones en Punta Cana.",
+    "ctaLabel": "Reserva tu buceo con tiburones",
+    "featuredIn": "Destacado en Listín Diario",
+    "factFormat": "Formato",
+    "factFormatValue": "Inmersión de 2 tanques",
+    "factDuration": "Duración",
+    "factMaxDepth": "Profundidad máx.",
+    "factLevel": "Nivel"
+  },
+  "Trips": {
+    "tripEyebrow": "Excursión de día completo",
+    "viewTrip": "Ver detalles del viaje",
+    "perDiver": "/ buzo",
+    "tripDayHeading": "Cómo es un día de excursión",
+    "tripDayIntro": "Desde la puerta de tu hotel hasta la última inmersión, nos encargamos de todo para que solo pienses en el agua.",
+    "ctaHeading": "Que sea un día para recordar",
+    "ctaBody": "Las excursiones se realizan en días seleccionados y se llenan rápido. Cuéntanos tus fechas y reservaremos tu lugar con un depósito.",
+    "ctaLabel": "Reserva una excursión",
+    "enquire": "Consultar",
+    "privateOnly": "Solo excursiones privadas"
   }
 }

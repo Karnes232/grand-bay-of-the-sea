@@ -56,6 +56,15 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: "privateOnly",
+      title: "Private Excursions Only",
+      description:
+        'When on, the trips-hub card shows a "Private excursions only" badge and an "Enquire" CTA linking to /contact (instead of the detail page). Price still shows.',
+      type: "boolean",
+      initialValue: false,
+      group: "cardInfo",
+    }),
+    defineField({
       name: "cardImage",
       title: "Card Image",
       type: "image",

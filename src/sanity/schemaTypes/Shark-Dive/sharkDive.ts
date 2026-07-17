@@ -85,6 +85,18 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: "level",
+      title: "Level",
+      description: 'e.g. "Advanced".',
+      type: "localizedString",
+    }),
+    defineField({
+      name: "maxDepth",
+      title: "Max Depth",
+      description: 'e.g. "25 m / 82 ft".',
+      type: "localizedString",
+    }),
+    defineField({
       name: "extras",
       title: "Extras",
       type: "array",

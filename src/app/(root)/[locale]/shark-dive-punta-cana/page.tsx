@@ -1,14 +1,22 @@
-import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
+import Image from "next/image"
 import { Metadata, ResolvingMetadata } from "next"
+import { getTranslations } from "next-intl/server"
+
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSharkDive } from "@/sanity/queries/Shark-Dive/sharkDive"
-import BlockContent from "@/components/BlockContent/BlockContent"
-import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
-import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
-import Faqs from "@/components/FaqsComponent/Faqs"
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
+
+import BlockContent from "@/components/BlockContent/BlockContent"
 import JsonLd from "@/components/StructuredData/JsonLd"
+import FaqAccordion from "@/components/home/FaqAccordion"
+import CourseDetailHero from "@/components/courses/CourseDetailHero"
+import CourseGallery from "@/components/courses/CourseGallery"
+import CourseStats from "@/components/courses/CourseStats"
+import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
+import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
+import { Link } from "@/i18n/navigation"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -39,10 +47,6 @@ export async function generateMetadata(
       follow: !pageSeo.seo.noFollow,
     },
     alternates,
-    // other: {
-    //   "Cache-Control":
-    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
-    // },
   }
 }
 
@@ -52,15 +56,29 @@ export default async function Home({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  // const pageLayout = await searchEntries("tours", {
-  //   "fields.page": "Shark Dive Punta Cana",
-  //   locale: locale || "en",
-  // })
+  const [structuredData, sharkDive, tShark, tCourses, tNav] = await Promise.all(
+    [
+      getStructuredData("Shark Dive Punta Cana"),
+      getSharkDive(),
+      getTranslations("SharkDive"),
+      getTranslations("Courses"),
+      getTranslations("Navbar"),
+    ],
+  )
 
-  const [structuredData, sharkDive] = await Promise.all([
-    getStructuredData("Shark Dive Punta Cana"),
-    getSharkDive(),
-  ])
+  const s = sharkDive
+  const h1 = s.title?.[locale] || s.page
+
+  const chips = [s.level?.[locale], s.maxDepth?.[locale]].filter(
+    Boolean,
+  ) as string[]
+
+  // "Not ready yet?" split image (crop/hotspot-aware) — a photo from the list.
+  const splitImg = s.photoList?.[s.photoList.length - 1]
+  const splitSrc = splitImg
+    ? sanityCropUrl(splitImg, 1100, 1400) || splitImg.asset?.url
+    : ""
+  const splitPos = hotspotPosition(splitImg)
 
   return (
     <main id="main">
@@ -80,6 +98,7 @@ export default async function Home({
           ),
         }}
       />
+      {/* VideoObject JSON-LD — Listín Diario feature (preserved) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -102,84 +121,139 @@ export default async function Home({
           }),
         }}
       />
-      <CloudinaryBackgroundVideo
-        videoId={"greyshark_aowggg"}
-        className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}
-      />
-      <header className="max-w-6xl mx-5 md:mx-10 xl:mx-auto mt-8">
-        <h1 className="font-bold font-crimson text-center text-balance text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white">
-          {sharkDive.title?.[locale] || sharkDive.page}
-        </h1>
-      </header>
-      <div className="my-5">
-        <div className="flex flex-col lg:flex-row lg:mx-auto max-w-6xl xl:h-[35rem]">
-          <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:justify-center xl:mt-0">
-            <BlockContent
-              content={sharkDive.paragraph1}
-              locale={locale}
-              demoteH1
-            />
-          </div>
-          <div className="lg:w-[45rem] xl:mx-10 lg:min-h-full lg:flex lg:flex-col md:justify-start md:mt-2 lg:mt-7 2xl:mt-14">
-            <SanityTripOverview tour={sharkDive} locale={locale} />
-            {/* <TripOverview tour={pageLayout.items[0].fields} /> */}
-          </div>
-          <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:justify-center xl:mt-0">
-            <BlockContent
-              content={sharkDive.paragraph2}
-              locale={locale}
-              demoteH1
-            />
-          </div>
-        </div>
-        <SanitySwiperCarousel
-          photoList={sharkDive.photoList}
-          className={`mt-5 [clip-path:polygon(0_5vh,100%_0,100%_30vh,0%_100%)] md:[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_50vh,0%_100%)] xl:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
-          height={`h-[35vh] md:h-[45vh] lg:h-[55vh] xl:h-[65vh]`}
-        />
-        <div className="flex flex-col justify-center items-center xl:my-10">
-          <div className="flex flex-col max-w-6xl">
-            <div className="lg:flex items-center xl:space-x-4">
-              <BlockContent
-                content={sharkDive.paragraph3}
-                locale={locale}
-                demoteH1
-              />
 
-              <BlockContent
-                content={sharkDive.paragraph4}
-                locale={locale}
-                demoteH1
-              />
-            </div>
+      <CourseDetailHero
+        videoId="greyshark_aowggg"
+        title={h1}
+        subtitle={tShark("heroSubtitle")}
+        chips={chips}
+        courseName={tNav("sharkDive")}
+        homeLabel={tNav("home")}
+        coursesLabel={tNav("divePackages")}
+        parentHref="/sites"
+      />
+
+      {/* Booking section */}
+      <section
+        id="book"
+        className="mx-auto max-w-[1280px] scroll-mt-20 px-6 pb-10 pt-20"
+      >
+        <div className="grid grid-cols-1 items-start gap-[52px] lg:grid-cols-[1.7fr_1fr]">
+          <div>
+            <span className="mb-4 inline-block text-[13px] font-semibold uppercase tracking-[0.14em] text-moss">
+              {tShark("experienceEyebrow")}
+            </span>
+            <BlockContent
+              content={s.paragraph1}
+              locale={locale}
+              variant="prose"
+              demoteH1
+            />
+            <BlockContent content={s.paragraph2} locale={locale} variant="prose" />
+            <CourseStats
+              stats={[
+                { label: tShark("factFormat"), value: tShark("factFormatValue") },
+                { label: tShark("factDuration"), value: s.duration?.[locale] },
+                { label: tShark("factMaxDepth"), value: s.maxDepth?.[locale] },
+                { label: tShark("factLevel"), value: s.level?.[locale] },
+              ]}
+            />
           </div>
+          <SanityTripOverview tour={s} locale={locale} />
         </div>
-      </div>
-      <div className="flex justify-center my-6 px-5">
+      </section>
+
+      {/* Photo gallery */}
+      <CourseGallery
+        photoList={s.photoList}
+        heading={tShark("galleryHeading")}
+        viewAllLabel={tCourses("detail.viewGallery")}
+      />
+
+      {/* Listín Diario feature credit (preserved) */}
+      <div className="flex justify-center px-6 py-4">
         <a
           href="https://www.youtube.com/watch?v=KT_fnLkw_bc"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-gray-500 hover:text-gray-800 underline underline-offset-2 text-center"
+          className="text-center text-sm text-[#5f7378] underline underline-offset-2 hover:text-ink"
         >
-          {locale === "es"
-            ? "Destacado en Listín Diario"
-            : "As featured in Listín Diario"}
+          {tShark("featuredIn")}
         </a>
       </div>
-      {sharkDive.faqs?.length > 0 && (
-        <div className="mb-10">
-          <Faqs
-            faqs={sharkDive.faqs}
-            structuredData={{ en: "", es: "" }}
-            locale={locale}
-          />
+
+      {/* "Not ready yet?" split */}
+      <section className="mx-auto max-w-[1280px] px-6 py-8">
+        <div className="grid grid-cols-1 overflow-hidden rounded-[24px] border border-[#e2e9e9] bg-white md:grid-cols-2">
+          {splitSrc && (
+            <div className="relative min-h-[340px]">
+              <Image
+                src={splitSrc}
+                alt={splitImg?.alt || s.page}
+                fill
+                sizes="(max-width: 768px) 100vw, 640px"
+                quality={75}
+                className="object-cover"
+                style={splitPos ? { objectPosition: splitPos } : undefined}
+              />
+            </div>
+          )}
+          <div className="flex flex-col justify-center p-[clamp(32px,4vw,56px)]">
+            <span className="mb-3.5 inline-block text-[13px] font-semibold uppercase tracking-[0.14em] text-moss">
+              {tShark("notReadyEyebrow")}
+            </span>
+            <BlockContent content={s.paragraph3} locale={locale} variant="prose" />
+            <BlockContent content={s.paragraph4} locale={locale} variant="prose" />
+            <Link
+              href="/courses/advanced"
+              className="mt-2 inline-block self-start rounded-full bg-ink px-[26px] py-3.5 text-[15.5px] font-semibold text-white transition-transform hover:-translate-y-0.5"
+            >
+              {tShark("exploreAdvanced")} →
+            </Link>
+          </div>
         </div>
-      )}
-      <CloudinaryBackgroundVideo
-        videoId={"shark_hzrsvc"}
-        className={`[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
-      />
+      </section>
+
+      {s.faqs?.length ? (
+        <FaqAccordion
+          faqs={s.faqs}
+          structuredData={{ en: "", es: "" }}
+          locale={locale}
+          heading={tCourses("faqHeading")}
+        />
+      ) : null}
+
+      {/* Full-bleed video CTA band (shark_hzrsvc) */}
+      <section className="relative isolate overflow-hidden text-white">
+        <CloudinaryBackgroundVideo
+          className="!absolute inset-0 -z-20 !min-h-full"
+          videoId="shark_hzrsvc"
+          videoBrightness="brightness-90"
+        />
+        <div
+          className="absolute inset-0 -z-10"
+          style={{
+            background:
+              "linear-gradient(90deg,rgba(4,18,24,.9) 0%,rgba(4,18,24,.6) 55%,rgba(4,18,24,.35) 100%)",
+          }}
+        />
+        <div className="mx-auto max-w-[1280px] px-6 py-24">
+          <div className="max-w-[540px]">
+            <h2 className="mb-[18px] font-display text-[clamp(2rem,4vw,3rem)] font-bold leading-[1.03] tracking-[-0.03em] text-balance">
+              {tShark("ctaHeading")}
+            </h2>
+            <p className="mb-[30px] text-[17px] leading-relaxed text-white/85">
+              {tShark("ctaBody")}
+            </p>
+            <a
+              href="#book"
+              className="inline-block rounded-full bg-accent px-[30px] py-4 text-[16.5px] font-bold text-ink shadow-[0_12px_34px_rgba(255,106,61,0.35)] transition-transform hover:-translate-y-[3px] hover:shadow-[0_18px_44px_rgba(255,106,61,0.5)]"
+            >
+              {tShark("ctaLabel")} →
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }

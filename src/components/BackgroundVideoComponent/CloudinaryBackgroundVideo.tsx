@@ -5,9 +5,11 @@ import React, { useEffect, useRef, useState } from "react"
 const CloudinaryBackgroundVideo = ({
   className,
   videoId,
+  videoBrightness = 'brightness-50'
 }: {
   className: string
   videoId: string
+  videoBrightness?: string
 }) => {
   const cloudName = "di4fbucgh"
 
@@ -43,7 +45,7 @@ const CloudinaryBackgroundVideo = ({
       ref={wrapRef}
       className={`relative min-h-[40vh] lg:min-h-[60vh] ${className}`}
     >
-      <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-100 overflow-hidden brightness-50">
+      <div className={`absolute top-0 left-0 w-full h-full -z-10 opacity-100 overflow-hidden ${videoBrightness}`}>
         {active ? (
           <video
             className={mediaClassName}

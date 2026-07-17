@@ -218,14 +218,46 @@ export interface IndividualCourse {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }[]
+  cardImage?: {
+    asset: {
+      url: string
+      metadata: {
+        lqip?: string
+        dimensions: {
+          width: number
+          height: number
+        }
+      }
+    }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
+    alt?: string
+  }
+  cardDescription?: {
+    en: string
+    es: string
+  }
+  cardHashTags?: string[]
   level: {
     en: string
     es: string
   }
   padiPrice: number
   duration: {
+    en: string
+    es: string
+  }
+  dives?: {
+    en: string
+    es: string
+  }
+  maxDepth?: {
     en: string
     es: string
   }
@@ -288,14 +320,46 @@ export const individualCourseQuery = `*[_type == "individualCourse" && slug.curr
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
+  cardImage {
+    asset -> {
+      url,
+      metadata {
+        lqip,
+        dimensions {
+          width,
+          height
+        }
+      }
+    },
+    "ref": asset._ref,
+    crop,
+    hotspot,
+    alt
+  },
+  cardDescription {
+    en,
+    es
+  },
+  cardHashTags,
   level {
     en,
     es
   },
   padiPrice,
   duration {
+    en,
+    es
+  },
+  dives {
+    en,
+    es
+  },
+  maxDepth {
     en,
     es
   },

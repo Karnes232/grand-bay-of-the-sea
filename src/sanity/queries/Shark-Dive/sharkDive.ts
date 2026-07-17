@@ -32,11 +32,22 @@ export interface SharkDive {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }[]
   price: number
   depositPrice: number
   duration: {
+    en: string
+    es: string
+  }
+  level?: {
+    en: string
+    es: string
+  }
+  maxDepth?: {
     en: string
     es: string
   }
@@ -89,11 +100,22 @@ export const sharkDiveQuery = `*[_type == "sharkDive"][0] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   price,
   depositPrice,
   duration {
+    en,
+    es
+  },
+  level {
+    en,
+    es
+  },
+  maxDepth {
     en,
     es
   },

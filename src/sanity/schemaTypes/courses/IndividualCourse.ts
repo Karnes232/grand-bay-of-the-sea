@@ -176,6 +176,20 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: "dives",
+      title: "Dives",
+      description: 'Number/type of dives, e.g. "4 open water".',
+      type: "localizedString",
+      group: "overview",
+    }),
+    defineField({
+      name: "maxDepth",
+      title: "Max Depth",
+      description: 'Maximum depth, e.g. "18 m / 60 ft".',
+      type: "localizedString",
+      group: "overview",
+    }),
+    defineField({
       name: "extraInfo",
       title: "Extra Info",
       type: "localizedString",
