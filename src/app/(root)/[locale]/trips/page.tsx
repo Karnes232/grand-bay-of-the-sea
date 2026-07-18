@@ -177,10 +177,10 @@ export default async function Page({
         <section className="mx-auto max-w-[1280px] px-6 pb-6 pt-16">
           <div className="mb-10 max-w-[640px]">
             <h2 className="mb-3 font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-bold leading-[1.04] tracking-[-0.03em] text-balance text-ink">
-              {tTrips("tripDayHeading")}
+              {diveTripsPage.tripDayHeading?.[locale]}
             </h2>
             <p className="text-base leading-relaxed text-[#3d5459]">
-              {tTrips("tripDayIntro")}
+              {diveTripsPage.tripDayIntro?.[locale]}
             </p>
           </div>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
@@ -214,17 +214,17 @@ export default async function Page({
         <div className="mx-auto flex max-w-[1080px] flex-wrap items-center justify-between gap-8 px-6 py-16">
           <div className="max-w-[46ch]">
             <h2 className="mb-3 font-display text-[clamp(1.7rem,3vw,2.4rem)] font-bold leading-[1.05] tracking-[-0.03em]">
-              {tTrips("ctaHeading")}
+              {diveTripsPage.ctaHeading?.[locale]}
             </h2>
             <p className="text-[16.5px] leading-relaxed text-white/80">
-              {tTrips("ctaBody")}
+              {diveTripsPage.ctaBody?.[locale]}
             </p>
           </div>
           <Link
             href="/contact"
             className="flex-none rounded-full bg-accent px-8 py-4 text-[16.5px] font-bold text-ink shadow-[0_12px_34px_rgba(255,106,61,0.35)] transition-transform hover:-translate-y-[3px] hover:shadow-[0_18px_44px_rgba(255,106,61,0.5)]"
           >
-            {tTrips("ctaLabel")} →
+            {diveTripsPage.ctaLabel?.[locale]} →
           </Link>
         </div>
       </section>

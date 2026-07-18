@@ -37,6 +37,22 @@ export default defineType({
       type: "localizedText",
     }),
     defineField({
+      name: "heroTrustLine",
+      title: "Hero Trust Line",
+      description: "Small pill above the hero title. Use {price} to insert the 2-tank dive price.",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "gridHeading",
+      title: "Dive Sites Grid Heading",
+      type: "localizedString",
+    }),
+    defineField({
+      name: "gridIntro",
+      title: "Dive Sites Grid Intro",
+      type: "localizedText",
+    }),
+    defineField({
       name: "heroCta",
       title: "Hero Booking CTA",
       description: "Primary call-to-action button shown in the hero.",

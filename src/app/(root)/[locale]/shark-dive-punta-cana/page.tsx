@@ -56,15 +56,12 @@ export default async function Home({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData, sharkDive, tShark, tCourses, tNav] = await Promise.all(
-    [
-      getStructuredData("Shark Dive Punta Cana"),
-      getSharkDive(),
-      getTranslations("SharkDive"),
-      getTranslations("Courses"),
-      getTranslations("Navbar"),
-    ],
-  )
+  const [structuredData, sharkDive, tCourses, tNav] = await Promise.all([
+    getStructuredData("Shark Dive Punta Cana"),
+    getSharkDive(),
+    getTranslations("Courses"),
+    getTranslations("Navbar"),
+  ])
 
   const s = sharkDive
   const h1 = s.title?.[locale] || s.page
@@ -125,7 +122,7 @@ export default async function Home({
       <CourseDetailHero
         videoId="greyshark_aowggg"
         title={h1}
-        subtitle={tShark("heroSubtitle")}
+        subtitle={s.heroSubtitle?.[locale]}
         chips={chips}
         courseName={tNav("sharkDive")}
         homeLabel={tNav("home")}
@@ -141,7 +138,7 @@ export default async function Home({
         <div className="grid grid-cols-1 items-start gap-[52px] lg:grid-cols-[1.7fr_1fr]">
           <div>
             <span className="mb-4 inline-block text-[13px] font-semibold uppercase tracking-[0.14em] text-moss">
-              {tShark("experienceEyebrow")}
+              {s.experienceEyebrow?.[locale]}
             </span>
             <BlockContent
               content={s.paragraph1}
@@ -152,10 +149,19 @@ export default async function Home({
             <BlockContent content={s.paragraph2} locale={locale} variant="prose" />
             <CourseStats
               stats={[
-                { label: tShark("factFormat"), value: tShark("factFormatValue") },
-                { label: tShark("factDuration"), value: s.duration?.[locale] },
-                { label: tShark("factMaxDepth"), value: s.maxDepth?.[locale] },
-                { label: tShark("factLevel"), value: s.level?.[locale] },
+                {
+                  label: s.factFormat?.[locale] ?? "",
+                  value: s.factFormatValue?.[locale],
+                },
+                {
+                  label: s.factDuration?.[locale] ?? "",
+                  value: s.duration?.[locale],
+                },
+                {
+                  label: s.factMaxDepth?.[locale] ?? "",
+                  value: s.maxDepth?.[locale],
+                },
+                { label: s.factLevel?.[locale] ?? "", value: s.level?.[locale] },
               ]}
             />
           </div>
@@ -166,7 +172,7 @@ export default async function Home({
       {/* Photo gallery */}
       <CourseGallery
         photoList={s.photoList}
-        heading={tShark("galleryHeading")}
+        heading={s.galleryHeading?.[locale] ?? ""}
         viewAllLabel={tCourses("detail.viewGallery")}
       />
 
@@ -178,7 +184,7 @@ export default async function Home({
           rel="noopener noreferrer"
           className="text-center text-sm text-[#5f7378] underline underline-offset-2 hover:text-ink"
         >
-          {tShark("featuredIn")}
+          {s.featuredIn?.[locale]}
         </a>
       </div>
 
@@ -200,7 +206,7 @@ export default async function Home({
           )}
           <div className="flex flex-col justify-center p-[clamp(32px,4vw,56px)]">
             <span className="mb-3.5 inline-block text-[13px] font-semibold uppercase tracking-[0.14em] text-moss">
-              {tShark("notReadyEyebrow")}
+              {s.notReadyEyebrow?.[locale]}
             </span>
             <BlockContent content={s.paragraph3} locale={locale} variant="prose" />
             <BlockContent content={s.paragraph4} locale={locale} variant="prose" />
@@ -208,7 +214,7 @@ export default async function Home({
               href="/courses/advanced"
               className="mt-2 inline-block self-start rounded-full bg-ink px-[26px] py-3.5 text-[15.5px] font-semibold text-white transition-transform hover:-translate-y-0.5"
             >
-              {tShark("exploreAdvanced")} →
+              {s.exploreAdvanced?.[locale]} →
             </Link>
           </div>
         </div>
@@ -240,16 +246,16 @@ export default async function Home({
         <div className="mx-auto max-w-[1280px] px-6 py-24">
           <div className="max-w-[540px]">
             <h2 className="mb-[18px] font-display text-[clamp(2rem,4vw,3rem)] font-bold leading-[1.03] tracking-[-0.03em] text-balance">
-              {tShark("ctaHeading")}
+              {s.ctaHeading?.[locale]}
             </h2>
             <p className="mb-[30px] text-[17px] leading-relaxed text-white/85">
-              {tShark("ctaBody")}
+              {s.ctaBody?.[locale]}
             </p>
             <a
               href="#book"
               className="inline-block rounded-full bg-accent px-[30px] py-4 text-[16.5px] font-bold text-ink shadow-[0_12px_34px_rgba(255,106,61,0.35)] transition-transform hover:-translate-y-[3px] hover:shadow-[0_18px_44px_rgba(255,106,61,0.5)]"
             >
-              {tShark("ctaLabel")} →
+              {s.ctaLabel?.[locale]} →
             </a>
           </div>
         </div>

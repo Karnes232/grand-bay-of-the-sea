@@ -1,11 +1,24 @@
 import { client } from "@/sanity/lib/client"
 
+type Loc = { en: string; es: string }
+
 export interface SharkDive {
   page: string
-  title?: {
-    en: string
-    es: string
-  }
+  title?: Loc
+  heroSubtitle?: Loc
+  experienceEyebrow?: Loc
+  galleryHeading?: Loc
+  featuredIn?: Loc
+  notReadyEyebrow?: Loc
+  exploreAdvanced?: Loc
+  ctaHeading?: Loc
+  ctaBody?: Loc
+  ctaLabel?: Loc
+  factFormat?: Loc
+  factFormatValue?: Loc
+  factDuration?: Loc
+  factMaxDepth?: Loc
+  factLevel?: Loc
   paragraph1: {
     en: any[]
     es: any[]
@@ -70,10 +83,21 @@ export interface SharkDive {
 
 export const sharkDiveQuery = `*[_type == "sharkDive"][0] {
   page,
-  title {
-    en,
-    es
-  },
+  title { en, es },
+  heroSubtitle { en, es },
+  experienceEyebrow { en, es },
+  galleryHeading { en, es },
+  featuredIn { en, es },
+  notReadyEyebrow { en, es },
+  exploreAdvanced { en, es },
+  ctaHeading { en, es },
+  ctaBody { en, es },
+  ctaLabel { en, es },
+  factFormat { en, es },
+  factFormatValue { en, es },
+  factDuration { en, es },
+  factMaxDepth { en, es },
+  factLevel { en, es },
   paragraph1 {
     en,
     es

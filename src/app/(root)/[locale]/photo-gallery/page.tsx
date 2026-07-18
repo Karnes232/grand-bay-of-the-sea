@@ -1,13 +1,10 @@
-import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import JsonLd from "@/components/StructuredData/JsonLd"
 import PhotoGallery from "@/components/PhotoGalleryComponents/PhotoGallery"
-import RichText from "@/components/RichTextComponents/RichText"
-import { searchEntries } from "@/lib/contentful"
-import { Metadata, ResolvingMetadata } from "next"
+import CoursesHero from "@/components/courses/CoursesHero"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getPhotoGallery } from "@/sanity/queries/Photo-Gallery/PhotoGallery"
-import TextComponent from "@/components/RichTextComponents/TextComponent"
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 
 export async function generateMetadata({
@@ -42,22 +39,22 @@ export async function generateMetadata({
       follow: !pageSeo.seo.noFollow,
     },
     alternates,
-    // other: {
-    //   "Cache-Control":
-    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
-    // },
   }
 }
+
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
   const [structuredData, photoGallery] = await Promise.all([
     getStructuredData("Photo Gallery"),
     getPhotoGallery(),
   ])
+
+  const mainImg = photoGallery.mainImage
+  const heroSrc = sanityCropUrl(mainImg, 2000, 1200) || mainImg.asset.url
 
   return (
     <main id="main">
@@ -100,20 +97,20 @@ export default async function Page({
           }),
         }}
       />
-      <HeroStaticComponent
-        heroImage={photoGallery.mainImage.asset.url}
-        blurDataURL={photoGallery.mainImage.asset.metadata.lqip}
-      />
-      <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <TextComponent
+
+      <CoursesHero
+        heroImage={heroSrc}
+        objectPosition={hotspotPosition(mainImg)}
+        blurDataURL={mainImg.asset.metadata.lqip}
+        alt={mainImg.alt || "Photo gallery"}
         title={photoGallery.title[locale]}
-        heading="h1"
-        className="text-center font-bold md:my-10 xl:mb-20 xl:text-5xl"
+        subtitle={photoGallery.heroSubtitle?.[locale]}
+        trustLine={photoGallery.heroEyebrow?.[locale]}
       />
-      {/* <RichText context={pageLayout.items[0].fields.title} /> */}
-      <PhotoGallery
-        photos={photoGallery.photoList.sort(() => Math.random() - 0.5)}
-      />
+
+      <div className="pt-14">
+        <PhotoGallery photos={photoGallery.photoList} />
+      </div>
     </main>
   )
 }

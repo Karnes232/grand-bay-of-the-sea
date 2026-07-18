@@ -13,6 +13,8 @@ export default defineType({
       type: "localizedString",
       validation: Rule => Rule.required(),
     }),
+    defineField({ name: "heroEyebrow", title: "Hero Eyebrow", type: "localizedString" }),
+    defineField({ name: "heroSubtitle", title: "Hero Subtitle", type: "localizedText" }),
     defineField({
       name: "mainImage",
       title: "Main Image",
@@ -46,6 +48,23 @@ export default defineType({
               title: "Alt",
               type: "string",
               validation: Rule => Rule.required(),
+            }),
+            defineField({
+              name: "categories",
+              title: "Categories",
+              description:
+                "Tag this photo so it shows under the gallery filter. A photo can belong to several.",
+              type: "array",
+              of: [{ type: "string" }],
+              options: {
+                list: [
+                  { title: "Marine Life", value: "Marine Life" },
+                  { title: "Sharks", value: "Sharks" },
+                  { title: "Wrecks", value: "Wrecks" },
+                  { title: "Divers", value: "Divers" },
+                ],
+                layout: "grid",
+              },
             }),
           ],
           validation: Rule => Rule.required(),

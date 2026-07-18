@@ -62,12 +62,11 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData, sitesLayout, sharkDivePrice, tSites, tCourses] =
+  const [structuredData, sitesLayout, sharkDivePrice, tCourses] =
     await Promise.all([
       getStructuredData("Sites"),
       getSites(),
       getSharkDivePrice(),
-      getTranslations("Sites"),
       getTranslations("Courses"),
     ])
 
@@ -109,7 +108,10 @@ export default async function Page({
           }
           title={sitesLayout.heroTitle?.[locale]}
           subtitle={sitesLayout.heroSubtitle?.[locale]}
-          trustLine={tSites("heroTrustLine", { price: sitesLayout.twoTankDive })}
+          trustLine={sitesLayout.heroTrustLine?.[locale]?.replace(
+            "{price}",
+            String(sitesLayout.twoTankDive),
+          )}
           cta={heroCta}
         />
       )}
@@ -138,7 +140,11 @@ export default async function Page({
       </section>
 
       {/* Dive sites grid */}
-      <DiveSites locale={locale} />
+      <DiveSites
+        locale={locale}
+        heading={sitesLayout.gridHeading?.[locale]}
+        intro={sitesLayout.gridIntro?.[locale]}
+      />
 
       {/* Grey-shark video band */}
       <section className="mx-auto max-w-[1280px] px-6 pb-2 pt-10">

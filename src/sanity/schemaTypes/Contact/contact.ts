@@ -23,6 +23,13 @@ export default defineType({
       },
       validation: Rule => Rule.required(),
     }),
+    defineField({ name: "heroEyebrow", title: "Hero Eyebrow", type: "localizedString" }),
+    defineField({ name: "heroTitle", title: "Hero Title (H1)", type: "localizedString" }),
+    defineField({ name: "heroSubtitle", title: "Hero Subtitle", type: "localizedText" }),
+    defineField({ name: "visitHeading", title: "Visit Card Heading", type: "localizedString" }),
+    defineField({ name: "hoursEyebrow", title: "Opening Hours Eyebrow", type: "localizedString" }),
+    defineField({ name: "hoursValue", title: "Opening Hours Value", type: "localizedString" }),
+    defineField({ name: "hoursDesc", title: "Opening Hours Description", type: "localizedText" }),
   ],
   preview: {
     select: {

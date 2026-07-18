@@ -1,7 +1,18 @@
 import { client } from "@/sanity/lib/client"
 
+type LocalizedString = { en: string; es: string }
+
 export interface Fishing {
   page: string
+  heroEyebrow?: LocalizedString
+  heroTitle?: LocalizedString
+  heroSubtitle?: LocalizedString
+  bookEyebrow?: LocalizedString
+  factDuration?: LocalizedString
+  galleryHeading?: LocalizedString
+  ctaHeading?: LocalizedString
+  ctaBody?: LocalizedString
+  ctaLabel?: LocalizedString
   paragraph1: {
     en: any[]
     es: any[]
@@ -24,6 +35,9 @@ export interface Fishing {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }[]
   price: number
@@ -35,6 +49,15 @@ export interface Fishing {
 
 export const fishingQuery = `*[_type == "fishing"][0] {
   page,
+  heroEyebrow { en, es },
+  heroTitle { en, es },
+  heroSubtitle { en, es },
+  bookEyebrow { en, es },
+  factDuration { en, es },
+  galleryHeading { en, es },
+  ctaHeading { en, es },
+  ctaBody { en, es },
+  ctaLabel { en, es },
   paragraph1 {
     en,
     es
@@ -57,6 +80,9 @@ export const fishingQuery = `*[_type == "fishing"][0] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   price,

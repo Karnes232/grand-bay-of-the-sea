@@ -23,12 +23,14 @@ export default defineType({
       ],
       validation: Rule => Rule.required(),
     }),
+    defineField({ name: "eyebrow", title: "Eyebrow", type: "localizedString" }),
     defineField({
       name: "content",
       title: "Content",
       type: "localizedBlock",
       validation: Rule => Rule.required(),
     }),
+    defineField({ name: "contactPrompt", title: "Contact CTA Prompt", type: "localizedText" }),
   ],
   preview: {
     select: {

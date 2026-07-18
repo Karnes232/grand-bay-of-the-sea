@@ -13,7 +13,7 @@ const CourseDetailHero = ({
   courseName,
   homeLabel,
   coursesLabel,
-  parentHref = "/courses",
+  parentHref,
 }: {
   videoId?: string
   title: string
@@ -21,8 +21,9 @@ const CourseDetailHero = ({
   chips?: string[]
   courseName: string
   homeLabel: string
-  coursesLabel: string
-  /** Middle-breadcrumb link target (default the courses index). */
+  /** Middle-breadcrumb label. Omit (with parentHref) for a 2-crumb Home / courseName. */
+  coursesLabel?: string
+  /** Middle-breadcrumb link target. */
   parentHref?: string
 }) => {
   return (
@@ -47,10 +48,17 @@ const CourseDetailHero = ({
               {homeLabel}
             </Link>
             <span>/</span>
-            <Link href={parentHref} className="hover:text-white">
-              {coursesLabel}
-            </Link>
-            <span>/</span>
+            {coursesLabel && (
+              <>
+                <Link
+                  href={parentHref ?? "/courses"}
+                  className="hover:text-white"
+                >
+                  {coursesLabel}
+                </Link>
+                <span>/</span>
+              </>
+            )}
             <span className="text-white">{courseName}</span>
           </nav>
 

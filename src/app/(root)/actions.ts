@@ -36,6 +36,7 @@ export async function submitForm(formData: any, certificationData: any) {
   const email = formData.get("email")
   const hotel = formData.get("hotel")
   const message = formData.get("message")
+  const page = formData.get("page")
 
   if (certificationData?.certification !== "Not Certifed") {
     // Check if email already exists in the database
@@ -78,6 +79,7 @@ export async function submitForm(formData: any, certificationData: any) {
         hotel: hotel?.toString() || "",
         message: message?.toString() || "",
         certification: certificationData?.certification?.toString() || "",
+        page: page?.toString() || "",
       },
     }
   } catch (error) {

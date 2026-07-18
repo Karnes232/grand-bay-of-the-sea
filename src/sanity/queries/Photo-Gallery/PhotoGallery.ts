@@ -5,6 +5,8 @@ export interface PhotoGallery {
     en: string
     es: string
   }
+  heroEyebrow?: { en: string; es: string }
+  heroSubtitle?: { en: string; es: string }
   mainImage: {
     asset: {
       url: string
@@ -16,9 +18,13 @@ export interface PhotoGallery {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
   photoList: {
+    _key?: string
     asset: {
       url: string
       metadata: {
@@ -28,6 +34,10 @@ export interface PhotoGallery {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
+    categories?: string[]
     alt: string
   }[]
 }
@@ -37,6 +47,8 @@ export const photoGalleryQuery = `*[_type == "photoGallery"][0] {
     en,
     es
   },
+  heroEyebrow { en, es },
+  heroSubtitle { en, es },
   mainImage {
     asset -> {
       url,
@@ -48,9 +60,13 @@ export const photoGalleryQuery = `*[_type == "photoGallery"][0] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   photoList[] {
+    _key,
     asset -> {
       url,
       metadata {
@@ -60,6 +76,10 @@ export const photoGalleryQuery = `*[_type == "photoGallery"][0] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
+    categories,
     alt
   }
 }`

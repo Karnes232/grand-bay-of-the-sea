@@ -1,18 +1,19 @@
-import ContactForm from "@/components/ContactForm/ContactForm"
-import ContactInfo from "@/components/ContactInfo/ContactInfo"
-import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
-import JsonLd from "@/components/StructuredData/JsonLd"
-import { searchEntries } from "@/lib/contentful"
-import { Metadata, ResolvingMetadata } from "next"
 import dynamicImport from "next/dynamic"
+import { getTranslations } from "next-intl/server"
 
-const GoogleMaps = dynamicImport(
-  () => import("@/components/GoogleMapsComponent/GoogleMaps"),
-)
+import JsonLd from "@/components/StructuredData/JsonLd"
+import CoursesHero from "@/components/courses/CoursesHero"
+import ContactForm from "@/components/ContactForm/ContactForm"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getContact } from "@/sanity/queries/Contact/Contact"
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
+import { BUSINESS } from "@/lib/business"
+
+const GoogleMaps = dynamicImport(
+  () => import("@/components/GoogleMapsComponent/GoogleMaps"),
+)
 
 export async function generateMetadata({
   params,
@@ -46,31 +47,25 @@ export async function generateMetadata({
       follow: !pageSeo.seo.noFollow,
     },
     alternates,
-    // other: {
-    //   "Cache-Control":
-    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
-    // },
   }
 }
 
-export default async function Home({
+export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData, contact] = await Promise.all([
+  const [structuredData, contact, tInfo] = await Promise.all([
     getStructuredData("Contact"),
     getContact(),
+    getTranslations("ContactInfo"),
   ])
-  /*const searchResults = await searchEntries(
-    "pageLayout",
-    {
-      "fields.page": "Courses",
-    },
-    ["fields.heroImage"],
-  )
-  */
+
+  const heroImg = contact.heroImage
+  const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg?.asset?.url || ""
+  const heroPosition = hotspotPosition(heroImg)
+
   return (
     <main id="main">
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
@@ -86,24 +81,91 @@ export default async function Home({
           ),
         }}
       />
-      <HeroStaticComponent
-        heroImage={contact.heroImage.asset.url}
-        alt={contact.heroImage.alt}
-        blurDataURL={contact.heroImage.asset.metadata.lqip}
-      />
-      <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <div className="max-w-6xl mx-auto lg:grid lg:grid-cols-2 lg:gap-12 lg:items-start lg:px-8 mb-10">
-        <ContactForm />
-        <div>
-          <ContactInfo variant="page" />
-          <div className="hidden lg:block">
-            <GoogleMaps variant="card" />
+
+      {heroSrc && (
+        <CoursesHero
+          heroImage={heroSrc}
+          objectPosition={heroPosition}
+          blurDataURL={heroImg?.asset?.metadata?.lqip || ""}
+          alt={heroImg?.alt || "Contact Grand Bay of the Sea"}
+          title={contact.heroTitle?.[locale] ?? ""}
+          subtitle={contact.heroSubtitle?.[locale]}
+          trustLine={contact.heroEyebrow?.[locale]}
+        />
+      )}
+
+      {/* Form + map */}
+      <section
+        id="form"
+        className="mx-auto max-w-[1280px] scroll-mt-20 px-6 pb-24 pt-14"
+      >
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[1.1fr_1fr]">
+          <ContactForm />
+
+          <div className="flex flex-col gap-5">
+            <div className="overflow-hidden rounded-[20px] border border-[#e2e9e9]">
+              <GoogleMaps variant="card" />
+            </div>
+
+            <div className="rounded-[20px] border border-[#e2e9e9] bg-white p-7">
+              <h3 className="mb-4 font-display text-[1.25rem] font-bold tracking-[-0.02em] text-ink">
+                {contact.visitHeading?.[locale]}
+              </h3>
+              <div className="mb-3.5 flex items-start gap-3">
+                <span className="mt-0.5 flex-none text-accent">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </span>
+                <p className="text-[15px] leading-relaxed text-[#3d5459]">
+                  {`${BUSINESS.streetAddress}, ${BUSINESS.addressLocality}, ${BUSINESS.addressRegion}, ${tInfo("country")}`}
+                </p>
+              </div>
+              <a
+                href={BUSINESS.mapUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-block border-b-[1.5px] border-moss/30 text-[14.5px] font-semibold text-moss"
+              >
+                {tInfo("mapLink")} →
+              </a>
+
+              {/* Opening hours */}
+              <div className="mt-5 flex items-start gap-3 border-t border-[#eef3f3] pt-5">
+                <span className="mt-0.5 flex-none text-accent">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 2" />
+                  </svg>
+                </span>
+                <div>
+                  <div className="text-[12.5px] font-semibold uppercase tracking-[0.1em] text-moss">
+                    {contact.hoursEyebrow?.[locale]}
+                  </div>
+                  <div className="mt-0.5 text-[15px] font-semibold text-ink">
+                    {contact.hoursValue?.[locale]}
+                  </div>
+                  <div className="mt-0.5 text-[13.5px] leading-relaxed text-[#4a5f63]">
+                    {contact.hoursDesc?.[locale]}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-5">
+                <a
+                  href={BUSINESS.padiUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center rounded-full bg-[#eef3f3] px-4 py-2.5 text-[13px] font-semibold text-ink"
+                >
+                  PADI #{BUSINESS.padiNumber}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="lg:hidden">
-        <GoogleMaps variant="flat" />
-      </div>
+      </section>
     </main>
   )
 }

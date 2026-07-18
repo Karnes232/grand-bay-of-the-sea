@@ -76,6 +76,11 @@ export default defineType({
         "Optional second content section, rendered below the trip cards (logistics, what's included, which trip suits whom).",
       type: "localizedBlock",
     }),
+    defineField({ name: "tripDayHeading", title: "Trip Day Section Heading", type: "localizedString" }),
+    defineField({ name: "tripDayIntro", title: "Trip Day Section Intro", type: "localizedText" }),
+    defineField({ name: "ctaHeading", title: "CTA Heading", type: "localizedString" }),
+    defineField({ name: "ctaBody", title: "CTA Body", type: "localizedText" }),
+    defineField({ name: "ctaLabel", title: "CTA Button Label", type: "localizedString" }),
     defineField({
       name: "tripDaySteps",
       title: "Trip Day Steps",

@@ -9,6 +9,9 @@ export interface Sites {
     en: string
     es: string
   }
+  heroTrustLine?: { en: string; es: string }
+  gridHeading?: { en: string; es: string }
+  gridIntro?: { en: string; es: string }
   heroCta?: {
     label?: {
       en: string
@@ -67,6 +70,9 @@ export const sitesQuery = `*[_type == "sites"][0] {
     en,
     es
   },
+  heroTrustLine { en, es },
+  gridHeading { en, es },
+  gridIntro { en, es },
   heroCta {
     label {
       en,

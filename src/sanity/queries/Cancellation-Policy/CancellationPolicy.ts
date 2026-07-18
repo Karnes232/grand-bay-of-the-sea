@@ -12,12 +12,17 @@ export interface CancellationPolicy {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
   content: {
     en: any[]
     es: any[]
   }
+  eyebrow?: { en: string; es: string }
+  contactPrompt?: { en: string; es: string }
 }
 
 export const cancellationPolicyQuery = `*[_type == "cancellationPolicy"][0] {
@@ -32,12 +37,17 @@ export const cancellationPolicyQuery = `*[_type == "cancellationPolicy"][0] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   content {
     en,
     es
-  }
+  },
+  eyebrow { en, es },
+  contactPrompt { en, es }
 }`
 
 export const getCancellationPolicy = async (): Promise<CancellationPolicy> => {

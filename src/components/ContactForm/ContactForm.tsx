@@ -1,9 +1,13 @@
 "use client"
 import { submitForm } from "@/app/(root)/actions"
 import { useTranslations } from "next-intl"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import React, { useState } from "react"
 import CertificationLevel from "../PaymentComponents/CertificationLevel"
+
+const labelClass = "mb-1.5 block text-[13px] font-semibold text-[#12303a]"
+const inputClass =
+  "w-full rounded-[11px] border-[1.5px] border-[#d7e0e0] bg-white px-[15px] py-[13px] text-[15px] text-ink outline-none transition-colors focus:border-accent"
 
 const ContactForm = ({ onSubmit }: { onSubmit?: () => void }) => {
   const [certificationData, setCertificationData] = useState({
@@ -11,7 +15,9 @@ const ContactForm = ({ onSubmit }: { onSubmit?: () => void }) => {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
+  const pathname = usePathname()
   const t = useTranslations("ContactForm")
+  const tc = useTranslations("CertificationLevel")
 
   const handleSubmit = async (formData: FormData) => {
     if (isSubmitting) return
@@ -42,83 +48,84 @@ const ContactForm = ({ onSubmit }: { onSubmit?: () => void }) => {
       setIsSubmitting(false)
     }
   }
+
   return (
-    <>
+    <div className="rounded-[22px] border border-[#e2e9e9] bg-white p-[clamp(28px,3vw,40px)] shadow-[0_20px_50px_rgba(11,33,41,0.06)]">
+      <h2 className="mb-1.5 font-display text-[clamp(1.5rem,2.4vw,2rem)] font-bold tracking-[-0.02em] text-ink">
+        {t("heading")}
+      </h2>
+      <p className="mb-6 text-[15px] text-[#4a5f63]">{t("subheading")}</p>
+
       <form
         action={handleSubmit}
         name="contact"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         id="contact"
-        className="w-64 md:w-full max-w-md flex flex-col justify-center items-center mx-auto my-5"
+        className="flex flex-col gap-4"
       >
         <input type="hidden" name="bot-field" />
         <input type="hidden" name="form-name" value="contact" />
-        <div className="relative z-0 mb-6 w-full group">
-          <input
-            type="text"
-            name="name"
-            id="name"
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            required
-          />
-          <label
-            htmlFor="name"
-            className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >
-            {t("fullName")}
-          </label>
+        {/* Records which page the form was submitted from. */}
+        <input type="hidden" name="page" value={pathname} />
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="name" className={labelClass}>
+              {t("fullName")}
+            </label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              className={inputClass}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className={labelClass}>
+              {t("emailAddress")}
+            </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              className={inputClass}
+              required
+            />
+          </div>
         </div>
-        <div className="relative z-0 mb-6 w-full group">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            required
-          />
-          <label
-            htmlFor="email"
-            className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >
-            {t("emailAddress")}
-          </label>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor="hotel" className={labelClass}>
+              {t("hotel")}
+            </label>
+            <input
+              type="text"
+              name="hotel"
+              id="hotel"
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <span className={labelClass}>{tc("certificationLevel")}</span>
+            <CertificationLevel
+              setFormData={setCertificationData}
+              formData={certificationData}
+            />
+          </div>
         </div>
-        <div className="relative z-0 mb-6 w-full group">
-          <input
-            type="text"
-            name="hotel"
-            id="hotel"
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-          />
-          <label
-            htmlFor="hotel"
-            className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >
-            {t("hotel")}
-          </label>
-        </div>
-        <div className="relative z-0 mb-6 w-full group">
-          <CertificationLevel
-            setFormData={setCertificationData}
-            formData={certificationData}
-          />
-        </div>
-        <div className="relative z-0 mb-6 w-full group">
-          <label
-            htmlFor="message"
-            className="block mb-2 text-sm font-medium text-gray-900"
-          >
+
+        <div>
+          <label htmlFor="message" className={labelClass}>
             {t("yourMessage")}
           </label>
           <textarea
             id="message"
             name="message"
             rows={4}
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            className={`${inputClass} resize-y`}
             placeholder={t("leaveAComment")}
           ></textarea>
         </div>
@@ -126,12 +133,12 @@ const ContactForm = ({ onSubmit }: { onSubmit?: () => void }) => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-60 disabled:cursor-not-allowed"
+          className="mt-1 rounded-[12px] bg-accent px-4 py-4 text-[16px] font-bold text-ink shadow-[0_10px_26px_rgba(255,106,61,0.3)] transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting ? t("submitting") : t("submit")}
         </button>
       </form>
-    </>
+    </div>
   )
 }
 
