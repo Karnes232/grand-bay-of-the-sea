@@ -1,17 +1,29 @@
-import BackgroundImage from "@/components/BackgroundImageComponent/BackgroundImage"
-import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
-import DivingOrganizations from "@/components/DivingOrganizations/DivingOrganizations"
-import GoogleMaps from "@/components/GoogleMapsComponent/GoogleMaps"
-import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
-import SelectionComponent from "@/components/SelectionComponents/SelectionComponent"
-import Faqs from "@/components/FaqsComponent/Faqs"
-import JsonLd from "@/components/StructuredData/JsonLd"
+import dynamicImport from "next/dynamic"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getScubaDivingPuntaCana } from "@/sanity/queries/Scuba-Diving-Punta-Cana/ScubaDivingPuntaCana"
-import BlockContent from "@/components/BlockContent/BlockContent"
 import { getSectionLinks } from "@/sanity/queries/Scuba-Diving-Punta-Cana/SectionLinks"
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
+import { getTranslations } from "next-intl/server"
+import { BUSINESS } from "@/lib/business"
+
+import JsonLd from "@/components/StructuredData/JsonLd"
+import HomeHero from "@/components/home/HomeHero"
+import HomeIntro from "@/components/home/HomeIntro"
+import FeatureCards from "@/components/home/FeatureCards"
+import WhyUnique from "@/components/home/WhyUnique"
+import ImageBand from "@/components/home/ImageBand"
+import FaqAccordion from "@/components/home/FaqAccordion"
+import DivingOrganizations from "@/components/DivingOrganizations/DivingOrganizations"
+
+const GoogleMaps = dynamicImport(
+  () => import("@/components/GoogleMapsComponent/GoogleMaps"),
+)
+
+// ISR (7 days) — matches the home page; keeps language switching working on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata({
   params,
 }: {
@@ -44,62 +56,104 @@ export async function generateMetadata({
       follow: !pageSeo.seo.noFollow,
     },
     alternates,
-    // other: {
-    //   "Cache-Control":
-    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
-    // },
   }
 }
 
-export default async function Home({
+export default async function Page({
   params,
 }: {
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData, scubaDivingPuntaCana, sectionLinks] =
+  const [structuredData, scuba, sectionLinks, tHome, tTrust, tCourses] =
     await Promise.all([
       getStructuredData("Scuba Diving Punta Cana"),
       getScubaDivingPuntaCana(),
       getSectionLinks(),
+      getTranslations("Home"),
+      getTranslations("TrustLine"),
+      getTranslations("Courses"),
     ])
 
+  const heroImg = scuba.heroImage
+  const secondaryImg = scuba.secondaryHeroImage
+  const tertiaryImg = scuba.tertiaryHeroImage
+
+  // Lift paragraph1's leading H1 into the hero (so the hero has a title without
+  // inventing copy); render the rest of paragraph1 as the intro. Falls back to
+  // an image-only hero + the full paragraph if the first block isn't an H1.
+  const p1 = scuba.paragraph1
+  const firstIsH1 = p1?.[locale]?.[0]?.style === "h1"
+  const heroTitle = firstIsH1
+    ? (p1[locale][0]?.children?.[0]?.text as string | undefined)
+    : undefined
+  const introContent = firstIsH1
+    ? { en: p1.en.slice(1), es: p1.es.slice(1) }
+    : p1
+
+  const trustLine = tTrust("line", {
+    rating: BUSINESS.rating.value,
+    count: BUSINESS.rating.count,
+  })
+
   return (
-    <main id="main">
+    <>
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
-      <HeroStaticComponent
-        heroImage={scubaDivingPuntaCana.heroImage.asset.url}
-        alt={scubaDivingPuntaCana.heroImage.alt}
-        blurDataURL={scubaDivingPuntaCana.heroImage.asset.metadata.lqip}
-      />
-      <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <BlockContent content={scubaDivingPuntaCana.paragraph1} locale={locale} />
-      <SelectionComponent
-        sectionLinks={sectionLinks}
-        locale={locale}
-        secondaryHeroImage={scubaDivingPuntaCana.secondaryHeroImage.asset.url}
-      />
-      <BlockContent content={scubaDivingPuntaCana.paragraph2} locale={locale} />
-      <CloudinaryBackgroundVideo
-        className="xl:min-h-[80vh] [clip-path:polygon(0%_5vh,100%_0%,100%_35vh,0%_100%)] lg:[clip-path:polygon(0%_5vh,100%_0%,100%_55vh,0%_100%)] xl:[clip-path:polygon(0%_5vh,100%_0%,100%_75vh,0%_100%)]"
-        videoId={"coral-cut_lyykuw"}
-      />
-      <DivingOrganizations />
-      <BlockContent content={scubaDivingPuntaCana.paragraph3} locale={locale} />
-      {scubaDivingPuntaCana.faqs?.length > 0 && (
-        <div className="mb-10">
-          <Faqs
-            faqs={scubaDivingPuntaCana.faqs}
+      <main id="main">
+        <HomeHero
+          heroImage={sanityCropUrl(heroImg, 2000, 1333) || heroImg.asset.url}
+          objectPosition={hotspotPosition(heroImg)}
+          blurDataURL={heroImg.asset.metadata.lqip}
+          alt={heroImg.alt || "Scuba diving in Punta Cana"}
+          title={heroTitle}
+          trustLine={trustLine}
+          bookLabel={tHome("hero.book")}
+          secondaryCta={{
+            label: tHome("hero.exploreCourses"),
+            href: "/courses",
+          }}
+        />
+
+        <HomeIntro content={introContent} locale={locale} />
+
+        <FeatureCards
+          sectionLinks={sectionLinks}
+          locale={locale}
+          ctaLabel={tHome("cards.cta")}
+        />
+
+        <ImageBand
+          image={
+            sanityCropUrl(secondaryImg, 2000, 900) || secondaryImg.asset.url
+          }
+          objectPosition={hotspotPosition(secondaryImg)}
+          alt={secondaryImg.alt || "Scuba diving in Punta Cana"}
+        />
+
+        {/* paragraph2 + the coral-cut video are rendered together by WhyUnique */}
+        <WhyUnique content={scuba.paragraph2} locale={locale} />
+
+        <DivingOrganizations />
+
+        <HomeIntro content={scuba.paragraph3} locale={locale} />
+
+        {scuba.faqs?.length ? (
+          <FaqAccordion
+            faqs={scuba.faqs}
             structuredData={{ en: "", es: "" }}
             locale={locale}
+            heading={tCourses("faqHeading")}
           />
-        </div>
-      )}
-      <BackgroundImage
-        image={scubaDivingPuntaCana.tertiaryHeroImage.asset.url}
-      />
+        ) : null}
 
-      <GoogleMaps />
-    </main>
+        <ImageBand
+          image={sanityCropUrl(tertiaryImg, 2000, 760) || tertiaryImg.asset.url}
+          objectPosition={hotspotPosition(tertiaryImg)}
+          alt={tertiaryImg.alt || "Diving in Punta Cana"}
+        />
+
+        <GoogleMaps variant="flat" />
+      </main>
+    </>
   )
 }

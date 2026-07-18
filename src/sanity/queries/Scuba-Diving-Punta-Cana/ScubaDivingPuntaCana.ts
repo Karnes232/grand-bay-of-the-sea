@@ -12,6 +12,9 @@ export interface ScubaDivingPuntaCana {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
   secondaryHeroImage: {
@@ -24,6 +27,9 @@ export interface ScubaDivingPuntaCana {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
   tertiaryHeroImage: {
@@ -36,6 +42,9 @@ export interface ScubaDivingPuntaCana {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
   paragraph1: {
@@ -75,6 +84,9 @@ export const scubaDivingPuntaCanaQuery = `*[_type == "scubaDivingPuntaCana"][0] 
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   secondaryHeroImage {
@@ -87,8 +99,11 @@ export const scubaDivingPuntaCanaQuery = `*[_type == "scubaDivingPuntaCana"][0] 
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
-  },    
+  },
   tertiaryHeroImage {
     asset -> {
       url,
@@ -99,6 +114,9 @@ export const scubaDivingPuntaCanaQuery = `*[_type == "scubaDivingPuntaCana"][0] 
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   paragraph1 {
