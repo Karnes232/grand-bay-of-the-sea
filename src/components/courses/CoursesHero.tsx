@@ -13,6 +13,7 @@ const CoursesHero = ({
   title,
   subtitle,
   trustLine,
+  breadcrumb,
   cta,
 }: {
   heroImage: string
@@ -22,6 +23,7 @@ const CoursesHero = ({
   title?: string
   subtitle?: string
   trustLine?: string
+  breadcrumb?: { label: string; href?: string }[]
   cta?: { label: string; href: string }
 }) => {
   return (
@@ -48,6 +50,30 @@ const CoursesHero = ({
       />
       <div className="mx-auto w-full max-w-[1280px] px-6 pb-[66px]">
         <div className="max-w-[760px] animate-rise-in">
+          {breadcrumb && breadcrumb.length > 0 && (
+            <nav
+              aria-label="Breadcrumb"
+              className="mb-[18px] flex flex-wrap items-center gap-x-[9px] gap-y-1 text-[13.5px] text-white/70"
+            >
+              {breadcrumb.map((crumb, i) => (
+                <span key={i} className="flex items-center gap-x-[9px]">
+                  {crumb.href ? (
+                    <Link
+                      href={crumb.href}
+                      className="transition-colors hover:text-white"
+                    >
+                      {crumb.label}
+                    </Link>
+                  ) : (
+                    <span className="text-white">{crumb.label}</span>
+                  )}
+                  {i < breadcrumb.length - 1 && (
+                    <span aria-hidden="true">/</span>
+                  )}
+                </span>
+              ))}
+            </nav>
+          )}
           {trustLine && (
             <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[13.5px] font-medium backdrop-blur-sm">
               {trustLine}

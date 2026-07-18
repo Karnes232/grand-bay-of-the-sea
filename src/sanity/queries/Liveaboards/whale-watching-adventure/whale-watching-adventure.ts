@@ -105,6 +105,8 @@ export async function getWhaleWatchingAdventureStructuredData(): Promise<WhaleWa
 }
 
 export interface WhaleWatchingAdventure {
+  titleEn?: string
+  titleEs?: string
   paragraph1: {
     en: any[]
     es: any[]
@@ -125,17 +127,23 @@ export interface WhaleWatchingAdventure {
     asset: {
       url: string
       metadata: {
+        lqip?: string
         dimensions: {
           width: number
           height: number
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }[]
 }
 
 export const whaleWatchingAdventureQuery = `*[_type == "whale-watching-adventure"][0] {
+    "titleEn": pt::text(paragraph1.en[0]),
+    "titleEs": pt::text(paragraph1.es[0]),
     paragraph1 {
         en,
         es
@@ -156,12 +164,16 @@ export const whaleWatchingAdventureQuery = `*[_type == "whale-watching-adventure
         asset -> {
             url,
             metadata {
+                lqip,
                 dimensions {
                     width,
                     height
-                }   
+                }
             }
         },
+        "ref": asset._ref,
+        crop,
+        hotspot,
         alt
     }
 }`

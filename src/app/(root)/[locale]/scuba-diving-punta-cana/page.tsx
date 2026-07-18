@@ -151,8 +151,8 @@ export default async function Page({
           objectPosition={hotspotPosition(tertiaryImg)}
           alt={tertiaryImg.alt || "Diving in Punta Cana"}
         />
-
-        <GoogleMaps variant="flat" />
+<div className="-mt-8">
+        <GoogleMaps variant="flat" /></div>
       </main>
     </>
   )

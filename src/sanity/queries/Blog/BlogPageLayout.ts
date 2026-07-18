@@ -1,10 +1,13 @@
 import { client } from "@/sanity/lib/client"
 
+type Loc = { en: string; es: string }
+
 export interface BlogPageLayout {
-  title: {
-    en: string
-    es: string
-  }
+  title: Loc
+  heroEyebrow?: Loc
+  ctaHeading?: Loc
+  ctaBody?: Loc
+  ctaLabel?: Loc
   heroImage: {
     asset: {
       url: string
@@ -16,11 +19,14 @@ export interface BlogPageLayout {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
   paragraph: {
-    en: string
-    es: string
+    en: any[]
+    es: any[]
   }
 }
 
@@ -29,6 +35,10 @@ export const blogPageLayoutQuery = `*[_type == "blogPageLayout"][0] {
         en,
         es
     },
+    heroEyebrow { en, es },
+    ctaHeading { en, es },
+    ctaBody { en, es },
+    ctaLabel { en, es },
     heroImage {
         asset -> {
             url,
@@ -40,6 +50,9 @@ export const blogPageLayoutQuery = `*[_type == "blogPageLayout"][0] {
                 }
             }
         },
+        "ref": asset._ref,
+        crop,
+        hotspot,
         alt
     },
     paragraph {

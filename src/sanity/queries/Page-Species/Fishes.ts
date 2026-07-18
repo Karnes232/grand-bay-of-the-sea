@@ -13,12 +13,16 @@ export interface Fishes {
     asset: {
       url: string
       metadata: {
+        lqip?: string
         dimensions: {
           width: number
           height: number
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
   blogReference: {
@@ -39,12 +43,16 @@ export const fishesQuery = `*[_type == "fishes"] {
     asset -> {
       url,
       metadata {
+        lqip,
         dimensions {
           width,
           height
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   blogReference -> {

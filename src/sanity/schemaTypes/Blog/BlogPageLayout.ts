@@ -9,10 +9,14 @@ export default defineType({
   fields: [
     defineField({
       name: "title",
-      title: "Title",
+      title: "Title (H1)",
       type: "localizedString",
       validation: Rule => Rule.required(),
     }),
+    defineField({ name: "heroEyebrow", title: "Hero Eyebrow", type: "localizedString" }),
+    defineField({ name: "ctaHeading", title: "CTA Heading", type: "localizedString" }),
+    defineField({ name: "ctaBody", title: "CTA Body", type: "localizedText" }),
+    defineField({ name: "ctaLabel", title: "CTA Button Label", type: "localizedString" }),
     defineField({
       name: "heroImage",
       title: "Hero Image",

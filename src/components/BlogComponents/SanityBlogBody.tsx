@@ -2,24 +2,10 @@ import { PortableText } from "@portabletext/react"
 
 import Image from "next/image"
 import { urlFor } from "@/sanity/lib/image"
-import TextComponentParagraph from "../BlockContent/TextComponentParagraph"
-import TextComponentHeading from "../BlockContent/TextComponentHeading"
 
-interface LocaleBlockContent {
-  _type?: string
-  en: any[]
-  es: any[]
-}
+const bodyText = "text-[17px] leading-[1.8] text-[#3d5459]"
 
-interface Props {
-  content: LocaleBlockContent
-  locale?: "en" | "es"
-}
-const articleBody =
-  "text-neutral-800 dark:text-neutral-200 antialiased [font-feature-settings:'kern'_1,'liga'_1]"
-
-const listClasses =
-  "my-6 space-y-2.5 pl-5 text-left text-base md:text-lg leading-relaxed marker:text-sky-800 dark:marker:text-sky-400"
+const listClasses = `mb-[22px] ml-[22px] flex flex-col gap-[9px] ${bodyText}`
 
 const components = {
   types: {
@@ -32,18 +18,18 @@ const components = {
 
       return (
         <figure className="my-10 md:my-12">
-          <div className="overflow-hidden rounded-xl shadow-md ring-1 ring-black/[0.06] dark:ring-white/10">
+          <div className="overflow-hidden rounded-[20px] border border-[#e2e9e9]">
             <Image
               src={imageUrl}
               alt={value.alt || ""}
               width={1000}
               height={1000}
               sizes="(max-width: 1280px) 100vw, 768px"
-              className="w-full h-auto"
+              className="h-auto w-full"
             />
           </div>
           {value.caption && (
-            <figcaption className="mt-3 text-center text-sm italic text-neutral-600 dark:text-neutral-400 leading-relaxed px-1">
+            <figcaption className="mt-3 px-1 text-center text-sm italic leading-relaxed text-[#7c8f93]">
               {value.caption}
             </figcaption>
           )}
@@ -52,96 +38,80 @@ const components = {
     },
   },
   marks: {
-    link: ({ children, value }: any) => {
-      return (
-        <a
-          href={value.href}
-          rel="noopener noreferrer"
-          className="font-medium text-sky-800 underline decoration-sky-800/40 underline-offset-[3px] transition-colors hover:text-sky-950 hover:decoration-sky-950/60 dark:text-sky-400 dark:decoration-sky-400/50 dark:hover:text-sky-300 dark:hover:decoration-sky-300/60"
-        >
-          {children}
-        </a>
-      )
-    },
-    strong: ({ children }: any) => (
-      <strong className="font-semibold text-neutral-950 dark:text-white">
+    link: ({ children, value }: any) => (
+      <a
+        href={value.href}
+        rel="noopener noreferrer"
+        className="font-semibold text-moss transition-colors [border-bottom:1.5px_solid_rgba(86,122,47,0.3)] hover:[border-bottom-color:rgb(86,122,47)]"
+      >
         {children}
-      </strong>
+      </a>
+    ),
+    strong: ({ children }: any) => (
+      <strong className="font-semibold text-[#12303a]">{children}</strong>
     ),
     em: ({ children }: any) => (
-      <em className="italic text-neutral-900 dark:text-neutral-100">
-        {children}
-      </em>
+      <em className="italic text-[#12303a]">{children}</em>
     ),
   },
   block: {
     normal: ({ children }: any) => (
-      <TextComponentParagraph
-        paragraph={children}
-        ParagraphClassName={`mb-5 text-left text-pretty max-w-none ${articleBody}`}
-      />
+      <p className={`mb-[22px] text-pretty ${bodyText}`}>{children}</p>
     ),
     // Authored h1 blocks render as <h2>: the page template owns the single
     // <h1> (the post title), so an in-body h1 would create a duplicate.
     h1: ({ children }: any) => (
-      <TextComponentHeading
-        heading={children}
-        headingNumber="h2"
-        HeadingClassName="font-bold font-crimson text-left text-balance !mt-10 mb-4 scroll-mt-24 text-3xl md:text-4xl text-neutral-950 dark:text-white first:mt-0"
-      />
+      <h2 className="mb-4 mt-11 scroll-mt-24 font-display text-[clamp(1.5rem,2.6vw,2rem)] font-bold leading-[1.1] tracking-[-0.02em] text-ink first:mt-0">
+        {children}
+      </h2>
     ),
     h2: ({ children }: any) => (
-      <TextComponentHeading
-        heading={children}
-        headingNumber="h2"
-        HeadingClassName="font-bold font-crimson text-left text-balance !mt-12 mb-4 pt-2 border-t border-neutral-200/80 dark:border-neutral-700/80 scroll-mt-24 text-2xl md:text-3xl text-neutral-950 dark:text-white first:mt-0 first:border-0 first:pt-0"
-      />
+      <h2 className="mb-4 mt-11 scroll-mt-24 font-display text-[clamp(1.5rem,2.6vw,2rem)] font-bold leading-[1.1] tracking-[-0.02em] text-ink first:mt-0">
+        {children}
+      </h2>
     ),
     h3: ({ children }: any) => (
-      <TextComponentHeading
-        heading={children}
-        headingNumber="h3"
-        HeadingClassName="font-semibold font-crimson text-left text-balance !mt-10 mb-3 scroll-mt-24 text-xl md:text-2xl text-neutral-900 dark:text-neutral-50 first:mt-0"
-      />
+      <h3 className="mb-3 mt-8 scroll-mt-24 font-display text-[1.3rem] font-bold tracking-[-0.02em] text-ink">
+        {children}
+      </h3>
     ),
     h4: ({ children }: any) => (
-      <TextComponentHeading
-        heading={children}
-        headingNumber="h4"
-        HeadingClassName="font-semibold font-crimson text-left text-balance !mt-8 mb-3 scroll-mt-24 text-lg md:text-xl text-neutral-900 dark:text-neutral-100"
-      />
+      <h4 className="mb-2 mt-7 scroll-mt-24 font-display text-[1.15rem] font-bold tracking-[-0.02em] text-ink">
+        {children}
+      </h4>
     ),
     h5: ({ children }: any) => (
-      <TextComponentHeading
-        heading={children}
-        headingNumber="h5"
-        HeadingClassName="font-semibold font-crimson text-left text-balance !mt-8 mb-2 scroll-mt-24 text-lg md:text-xl text-neutral-900 dark:text-neutral-100"
-      />
+      <h5 className="mb-2 mt-6 scroll-mt-24 font-display text-[1.05rem] font-bold tracking-[-0.01em] text-ink">
+        {children}
+      </h5>
     ),
     h6: ({ children }: any) => (
-      <TextComponentHeading
-        heading={children}
-        headingNumber="h6"
-        HeadingClassName="font-semibold font-crimson text-left text-balance !mt-6 mb-2 scroll-mt-24 text-base md:text-lg text-neutral-800 dark:text-neutral-200"
-      />
+      <h6 className="mb-2 mt-6 scroll-mt-24 font-display text-base font-bold tracking-[-0.01em] text-ink">
+        {children}
+      </h6>
+    ),
+    blockquote: ({ children }: any) => (
+      <blockquote className="my-8 rounded-r-[14px] border-l-4 border-accent bg-white px-[26px] py-5 text-[1.15rem] italic text-[#12303a]">
+        {children}
+      </blockquote>
     ),
   },
   list: {
     bullet: ({ children }: any) => (
-      <ul className={`list-disc ${listClasses} mb-6`}>{children}</ul>
+      <ul className={`list-disc ${listClasses}`}>{children}</ul>
     ),
     number: ({ children }: any) => (
-      <ol className={`list-decimal ${listClasses} mb-6`}>{children}</ol>
+      <ol className={`list-decimal ${listClasses}`}>{children}</ol>
     ),
   },
   listItem: {
     bullet: ({ children }: any) => (
-      <li className="pl-1 marker:font-medium [&_p]:mb-0 [&_p]:inline">
+      <li className="pl-1 marker:text-moss [&_p]:mb-0 [&_p]:inline">
         {children}
       </li>
     ),
     number: ({ children }: any) => (
-      <li className="pl-1 marker:font-medium [&_p]:mb-0 [&_p]:inline">
+      <li className="pl-1 marker:text-moss [&_p]:mb-0 [&_p]:inline">
         {children}
       </li>
     ),
@@ -187,7 +157,7 @@ const SanityBlogBody = ({
   }
   return (
     <article
-      className="w-full max-w-[42rem] xl:max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14"
+      className="max-w-[70ch] [&>p:first-of-type]:text-[1.28rem] [&>p:first-of-type]:leading-[1.6] [&>p:first-of-type]:text-[#12303a]"
       lang={locale === "es" ? "es" : "en"}
     >
       <PortableText value={blockContent} components={components} />

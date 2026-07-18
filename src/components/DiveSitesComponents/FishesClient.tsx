@@ -26,13 +26,13 @@ const FishesClient = ({
   }, [fishesData, searchQuery, locale])
 
   return (
-    <div className="w-full max-w-6xl lg:mx-auto my-5 xl:my-14">
+    <section className="mx-auto max-w-[1280px] px-6 pb-6 pt-4">
       {/* Search Bar */}
-      <div className="mb-6 flex justify-center ">
-        <div className="relative w-full mx-5 md:mx-10 lg:max-w-2xl xl:max-w-3xl xl:mx-0">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+      <div className="mb-9 flex justify-center">
+        <div className="relative w-full max-w-[560px]">
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
             <svg
-              className="w-5 h-5 text-gray-500"
+              className="h-5 w-5 text-[#8a9a9e]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -51,28 +51,28 @@ const FishesClient = ({
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder={locale === "es" ? "Buscar peces..." : "Search fish..."}
-            className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all"
+            className="block w-full rounded-full border-[1.5px] border-[#d7e0e0] bg-white py-3.5 pl-11 pr-4 text-[15px] text-ink outline-none transition-colors placeholder:text-[#8a9a9e] focus:border-accent"
           />
         </div>
       </div>
 
       {/* Fish Cards */}
-      <div className="flex flex-col flex-wrap justify-center items-center sm:flex-row">
-        {filteredFishes.length > 0 ? (
-          filteredFishes.map((fish, index) => (
+      {filteredFishes.length > 0 ? (
+        <div className="grid grid-cols-1 gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
+          {filteredFishes.map((fish, index) => (
             <FishCard2 fish={fish} key={index} locale={locale} />
-          ))
-        ) : (
-          <div className="w-full text-center py-12">
-            <p className="text-gray-600 text-lg">
-              {locale === "es"
-                ? "No se encontraron peces con ese nombre."
-                : "No fish found with that name."}
-            </p>
-          </div>
-        )}
-      </div>
-    </div>
+          ))}
+        </div>
+      ) : (
+        <div className="w-full py-12 text-center">
+          <p className="text-lg text-[#4a5f63]">
+            {locale === "es"
+              ? "No se encontraron peces con ese nombre."
+              : "No fish found with that name."}
+          </p>
+        </div>
+      )}
+    </section>
   )
 }
 

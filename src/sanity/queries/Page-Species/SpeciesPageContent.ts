@@ -1,13 +1,17 @@
 import { client } from "@/sanity/lib/client"
 
+type Loc = { en: string; es: string }
+
 export interface SpeciesPageContent {
-  title: {
-    en: string
-    es: string
-  }
+  title: Loc
+  heroEyebrow?: Loc
+  heroSubtitle?: Loc
+  ctaHeading?: Loc
+  ctaBody?: Loc
+  ctaLabel?: Loc
   content: {
-    en: string
-    es: string
+    en: any[]
+    es: any[]
   }
   heroImage: {
     asset: {
@@ -20,6 +24,9 @@ export interface SpeciesPageContent {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
 }
@@ -29,6 +36,11 @@ export const speciesPageContentQuery = `*[_type == "speciesPageContent"] {
         en,
         es
     },
+    heroEyebrow { en, es },
+    heroSubtitle { en, es },
+    ctaHeading { en, es },
+    ctaBody { en, es },
+    ctaLabel { en, es },
     content {
         en,
         es
@@ -43,12 +55,15 @@ export const speciesPageContentQuery = `*[_type == "speciesPageContent"] {
                     height
                 }
             }
-        },  
+        },
+        "ref": asset._ref,
+        crop,
+        hotspot,
         alt
     }
 
   }`
 
-export async function getSpeciesPageContent(): Promise<SpeciesPageContent> {
+export async function getSpeciesPageContent(): Promise<SpeciesPageContent[]> {
   return await client.fetch(speciesPageContentQuery)
 }

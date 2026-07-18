@@ -8,16 +8,22 @@ export interface BlogCategory {
   slug: {
     current: string
   }
+  descEn?: string
+  descEs?: string
   cardImage: {
     asset: {
       url: string
       metadata: {
+        lqip?: string
         dimensions: {
           width: number
           height: number
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
   _updatedAt?: string
@@ -31,17 +37,23 @@ export const blogCategoryQuery = `*[_type == "blogCategory"] {
     slug {
         current
     },
+    "descEn": pt::text(description.en),
+    "descEs": pt::text(description.es),
     _updatedAt,
     cardImage {
         asset -> {
             url,
             metadata {
+                lqip,
                 dimensions {
                     width,
-                    height  
+                    height
                 }
             }
         },
+        "ref": asset._ref,
+        crop,
+        hotspot,
         alt
     }
 }`
@@ -63,6 +75,9 @@ export interface individualBlogCategory {
         lqip: string
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
   description: {
@@ -94,6 +109,9 @@ export const individualBlogCategoryQuery = `*[_type == "blogCategory" && slug.cu
                 }
             }
         },
+        "ref": asset._ref,
+        crop,
+        hotspot,
         alt
     },
     description {

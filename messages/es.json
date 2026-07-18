@@ -224,6 +224,7 @@
   },
   "Blog": {
     "readMore": "Leer Más",
+    "browseArticles": "Ver artículos",
     "youMayAlsoLike": "También te puede interesar",
     "by": "Por",
     "author": "Grand Bay Dive Team",
@@ -238,7 +239,10 @@
     "of": "de",
     "previousPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "goToPage": "Ir a la página"
+    "goToPage": "Ir a la página",
+    "share": "Compartir",
+    "morePhotos": "Más fotos",
+    "backToCategory": "← Volver a todas las publicaciones de {category}"
   },
   "Home": {
     "hero": {
@@ -297,5 +301,15 @@
     "factDuration": "Duración",
     "factDives": "Inmersiones",
     "factDivesValue": "2 guiadas"
+  },
+  "Liveaboard": {
+    "expeditionsEyebrow": "Expediciones",
+    "expeditionsHeading": "Rutas destacadas de vida a bordo",
+    "silverbankTitle": "Expedición Silverbank",
+    "whaleTitle": "Aventura de avistamiento de ballenas",
+    "viewExpedition": "Ver expedición",
+    "galleryHeading": "La vida a bordo",
+    "viewGallery": "Ver galería completa",
+    "faqHeading": "Preguntas frecuentes"
   }
 }

@@ -1,17 +1,14 @@
-import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
-import DiveSites from "@/components/DiveSitesComponents/DiveSites"
-import Fishes from "@/components/DiveSitesComponents/Fishes"
-import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import JsonLd from "@/components/StructuredData/JsonLd"
-import RichText from "@/components/RichTextComponents/RichText"
-import LocalDivesOverview from "@/components/TourOverviews/LocalDivesOverview"
-import { getAllEntries, searchEntries } from "@/lib/contentful"
-import { Metadata, ResolvingMetadata } from "next"
+import Fishes from "@/components/DiveSitesComponents/Fishes"
+import CoursesHero from "@/components/courses/CoursesHero"
+import BlockContent from "@/components/BlockContent/BlockContent"
+import { Link } from "@/i18n/navigation"
+
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSpeciesPageContent } from "@/sanity/queries/Page-Species/SpeciesPageContent"
-import BlockContent from "@/components/BlockContent/BlockContent"
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 
 export async function generateMetadata({
   params,
@@ -45,10 +42,6 @@ export async function generateMetadata({
       follow: !pageSeo.seo.noFollow,
     },
     alternates,
-    // other: {
-    //   "Cache-Control":
-    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
-    // },
   }
 }
 
@@ -62,16 +55,13 @@ export default async function Page({
     getStructuredData("Species"),
     getSpeciesPageContent(),
   ])
-  // const pageLayout = await searchEntries("pageLayout", {
-  //   "fields.page": "Species",
-  //   locale: locale,
-  // })
+
+  const sp = speciesPageContent[0]
+  const heroImg = sp.heroImage
+  const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg.asset.url
 
   return (
-    <main
-      id="main"
-      className="bg-gradient-to-b from-sky-50 via-slate-100 to-cyan-50"
-    >
+    <main id="main">
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
       <script
         type="application/ld+json"
@@ -85,18 +75,44 @@ export default async function Page({
           ),
         }}
       />
-      <HeroStaticComponent
-        heroImage={speciesPageContent[0].heroImage.asset.url}
-        alt={speciesPageContent[0].heroImage.alt}
-        blurDataURL={speciesPageContent[0].heroImage.asset.metadata.lqip}
-      />
-      <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
 
-      <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
-        {/* <RichText context={pageLayout.items[0].fields.paragraph1} /> */}
-        <BlockContent content={speciesPageContent[0].content} locale={locale} />
-      </div>
+      <CoursesHero
+        heroImage={heroSrc}
+        objectPosition={hotspotPosition(heroImg)}
+        blurDataURL={heroImg.asset.metadata.lqip}
+        alt={heroImg.alt || "Marine life in Punta Cana"}
+        title={sp.title[locale]}
+        subtitle={sp.heroSubtitle?.[locale]}
+        trustLine={sp.heroEyebrow?.[locale]}
+      />
+
+      {/* Intro */}
+      <section className="mx-auto max-w-[1080px] px-6 pb-2 pt-[72px]">
+        <BlockContent content={sp.content} locale={locale} variant="prose" demoteH1 />
+      </section>
+
+      {/* Species search + grid */}
       <Fishes locale={locale} />
+
+      {/* CTA band */}
+      <section className="mt-14 bg-ink text-white">
+        <div className="mx-auto flex max-w-[1080px] flex-wrap items-center justify-between gap-8 px-6 py-16">
+          <div className="max-w-[46ch]">
+            <h2 className="mb-3 font-display text-[clamp(1.7rem,3vw,2.4rem)] font-bold leading-[1.05] tracking-[-0.03em]">
+              {sp.ctaHeading?.[locale]}
+            </h2>
+            <p className="text-[16.5px] leading-relaxed text-white/80">
+              {sp.ctaBody?.[locale]}
+            </p>
+          </div>
+          <Link
+            href="/sites"
+            className="flex-none rounded-full bg-accent px-8 py-4 text-[16.5px] font-bold text-ink shadow-[0_12px_34px_rgba(255,106,61,0.35)] transition-transform hover:-translate-y-[3px] hover:shadow-[0_18px_44px_rgba(255,106,61,0.5)]"
+          >
+            {sp.ctaLabel?.[locale]} →
+          </Link>
+        </div>
+      </section>
     </main>
   )
 }

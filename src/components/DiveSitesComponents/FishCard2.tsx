@@ -1,50 +1,53 @@
 "use client"
 import React, { useState } from "react"
-import { motion } from "motion/react"
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import { useTranslations } from "next-intl"
-const FishCard = ({ fish, locale }: { fish: any; locale: string }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 3,
-        delay: 0.3,
-      }}
-      id={
-        fish.name["en"]?.replace(/\s+/g, "") || fish.name.en.replace(/\s+/g, "")
-      }
-      className="flex justify-center items-center m-4 w-80"
-    >
-      <div className="rounded-lg shadow-lg hover:shadow-xl transition-all bg-white max-w-sm overflow-hidden">
-        <Image
-          src={fish.image.asset.url || ""}
-          alt={fish.image.alt || ""}
-          width={fish.image.asset.metadata.dimensions.width}
-          height={fish.image.asset.metadata.dimensions.height}
-          className="rounded-t-lg h-64 w-80 object-cover object-center"
-          quality={75}
-        />
-        <div className="p-6">
-          {fish.blogReference?.slug ? (
-            <Link href={`/blog/marine-life/${fish.blogReference.slug.current}`}>
-              <h5 className="text-xl font-medium mb-2 cursor-pointer text-blue-600 truncate">
-                {fish.name[locale as "en" | "es"] || fish.name.en}
-              </h5>
-            </Link>
-          ) : (
-            <h5 className="text-gray-900 text-xl font-medium mb-2">
-              {fish.name[locale as "en" | "es"] || fish.name.en}
-            </h5>
-          )}
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 
-          <DescriptionWithReadMore description={fish.description[locale]} />
-        </div>
+const FishCard = ({ fish, locale }: { fish: any; locale: string }) => {
+  const name = fish.name[locale as "en" | "es"] || fish.name.en
+  const src = sanityCropUrl(fish.image, 640, 480) || fish.image.asset.url
+  const position = hotspotPosition(fish.image)
+
+  return (
+    <div
+      id={fish.name.en?.replace(/\s+/g, "")}
+      className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-[#e2e9e9] bg-white transition-all duration-300 ease-smooth hover:-translate-y-[5px] hover:shadow-[0_22px_48px_rgba(11,33,41,0.13)]"
+    >
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#dce6e6]">
+        <Image
+          src={src}
+          alt={fish.image.alt || name}
+          fill
+          sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 400px"
+          quality={75}
+          style={position ? { objectPosition: position } : undefined}
+          className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.06]"
+        />
       </div>
-    </motion.div>
+      <div className="flex flex-1 flex-col p-6">
+        {fish.blogReference?.slug ? (
+          <Link
+            href={`/blog/marine-life/${fish.blogReference.slug.current}`}
+            className="group/link mb-2 inline-block font-display text-[1.3rem] font-bold tracking-[-0.02em] text-moss underline decoration-moss/40 decoration-2 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+          >
+            {name}{" "}
+            <span
+              aria-hidden
+              className="inline-block no-underline transition-transform group-hover/link:translate-x-1"
+            >
+              →
+            </span>
+          </Link>
+        ) : (
+          <h3 className="mb-2 font-display text-[1.3rem] font-bold tracking-[-0.02em] text-ink">
+            {name}
+          </h3>
+        )}
+        <DescriptionWithReadMore description={fish.description[locale]} />
+      </div>
+    </div>
   )
 }
 
@@ -52,21 +55,17 @@ export default FishCard
 
 const DescriptionWithReadMore = ({ description }: { description: string }) => {
   const [expanded, setExpanded] = useState(false)
-  const isLong = description.length > 120 // adjust as needed
+  const isLong = description.length > 120
   const t = useTranslations("FishCard")
   return (
-    <div>
+    <div className="flex flex-1 flex-col">
       <p
-        className={
-          expanded
-            ? "text-gray-700 text-base mb-4"
-            : "text-gray-700 text-base mb-4 line-clamp-2"
-        }
+        className="flex-1 text-[14.5px] leading-relaxed text-[#4a5f63]"
         style={
           !expanded
             ? {
                 display: "-webkit-box",
-                WebkitLineClamp: 2,
+                WebkitLineClamp: 3,
                 WebkitBoxOrient: "vertical",
                 overflow: "hidden",
               }
@@ -77,7 +76,7 @@ const DescriptionWithReadMore = ({ description }: { description: string }) => {
       </p>
       {isLong && (
         <button
-          className="text-blue-500 hover:underline text-sm"
+          className="mt-2 self-start text-sm font-semibold text-moss hover:underline"
           onClick={() => setExpanded(v => !v)}
         >
           {expanded ? t("readLess") : t("readMore")}

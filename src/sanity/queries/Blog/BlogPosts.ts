@@ -17,12 +17,16 @@ export interface BlogPostsCards {
     asset: {
       url: string
       metadata: {
+        lqip?: string
         dimensions: {
           width: number
           height: number
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
   blogCategory: {
@@ -45,12 +49,16 @@ export const blogPostsCardsQuery = `*[_type == "blogPost" && blogCategory->slug.
     asset -> {
       url,
       metadata {
+        lqip,
         dimensions {
           width,
           height
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   blogCategory -> {
@@ -79,12 +87,17 @@ export interface BlogPost {
     asset: {
       url: string
       metadata: {
+        lqip?: string
         dimensions: {
           width: number
           height: number
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
+    alt?: string
   }[]
   blogCategory: {
     slug: {
@@ -118,12 +131,16 @@ export const individualBlogPostQuery = `*[_type == "blogPost" && slug.current ==
     asset -> {
       url,
       metadata {
+        lqip,
         dimensions {
           width,
           height
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   blogCategory -> {

@@ -87,18 +87,18 @@ const BlogPostList = ({
   }
 
   return (
-    <div className="w-full max-w-5xl xl:max-w-6xl mx-auto">
+    <div className="mx-auto w-full max-w-[1080px]">
       <div className="mb-8">
-        <div className="relative lg:mx-10 xl:mx-5">
+        <div className="relative">
           <input
             type="text"
             placeholder={t("searchPlaceholder")}
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-3 text-gray-900 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+            className="w-full rounded-[14px] border border-[#e2e9e9] bg-white px-5 py-3.5 pr-12 text-ink transition-all duration-200 placeholder:text-[#7c8f93] focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
           />
           <svg
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+            className="absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#7c8f93]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -113,36 +113,43 @@ const BlogPostList = ({
           </svg>
         </div>
         {(searchQuery || totalPages > 1) && (
-          <p className="mt-2 text-sm text-gray-600 lg:mx-10 xl:mx-5">
-            {filteredBlogPosts.length === 0
-              ? t("noBlogPostsFound")
-              : `${filteredBlogPosts.length} ${filteredBlogPosts.length === 1 ? t("blogPostsFound") : t("blogPostsFoundPlural")}${totalPages > 1 ? ` ${t("showing")} ${startIndex + 1}-${Math.min(endIndex, filteredBlogPosts.length)} ${t("of")} ${filteredBlogPosts.length}` : ""}`}
-          </p>
+          <div className="mt-6 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-b border-[#e2e9e9] pb-[18px]">
+            <span className="font-display text-[1.3rem] font-bold tracking-[-0.02em] text-ink">
+              {filteredBlogPosts.length === 0
+                ? t("noBlogPostsFound")
+                : `${filteredBlogPosts.length} ${filteredBlogPosts.length === 1 ? t("blogPostsFound") : t("blogPostsFoundPlural")}`}
+            </span>
+            {totalPages > 1 && (
+              <span className="text-sm text-[#7c8f93]">
+                {`${t("showing")} ${startIndex + 1}-${Math.min(endIndex, filteredBlogPosts.length)} ${t("of")} ${filteredBlogPosts.length}`}
+              </span>
+            )}
+          </div>
         )}
       </div>
-      <div className="flex flex-col md:flex-row md:flex-wrap md:justify-evenly gap-10">
+      <div className="flex flex-col gap-[22px]">
         {paginatedBlogPosts && paginatedBlogPosts.length > 0 ? (
           paginatedBlogPosts.map((blog, index) => {
             return <BlogPostCard blog={blog} key={index} locale={locale} />
           })
         ) : searchQuery ? (
-          <div className="w-full text-center py-12">
-            <p className="text-gray-500 text-lg">{t("noMatch")}</p>
+          <div className="w-full py-12 text-center">
+            <p className="text-lg text-[#7c8f93]">{t("noMatch")}</p>
           </div>
         ) : null}
       </div>
 
       {/* Pagination Controls */}
       {totalPages > 1 && (
-        <div className="mt-12 flex justify-center items-center gap-2 lg:mx-10 xl:mx-5">
+        <div className="mt-11 flex items-center justify-center gap-2">
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
-            className="px-4 py-2 text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 hover:border-blue-500 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-300 transition-all duration-200"
+            className="flex h-[44px] min-w-[44px] items-center justify-center rounded-[11px] border-[1.5px] border-[#d7e0e0] bg-white px-3.5 text-[#3d5459] transition-all duration-200 hover:border-accent disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-[#d7e0e0]"
             aria-label={t("previousPage")}
           >
             <svg
-              className="w-5 h-5"
+              className="h-5 w-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -162,7 +169,7 @@ const BlogPostList = ({
                 return (
                   <span
                     key={`ellipsis-${index}`}
-                    className="px-4 py-2 text-gray-500"
+                    className="flex h-[44px] min-w-[44px] items-center justify-center text-[#a7b3b6]"
                   >
                     ...
                   </span>
@@ -173,10 +180,10 @@ const BlogPostList = ({
                 <button
                   key={page}
                   onClick={() => handlePageChange(page as number)}
-                  className={`px-4 py-2 rounded-lg transition-all duration-200 ${
+                  className={`h-[44px] min-w-[44px] rounded-[11px] border-[1.5px] px-3.5 font-semibold transition-all duration-200 ${
                     currentPage === page
-                      ? "bg-blue-500 text-white border-2 border-blue-500"
-                      : "text-gray-700 bg-white border-2 border-gray-300 hover:bg-gray-50 hover:border-blue-500"
+                      ? "border-accent bg-accent text-ink"
+                      : "border-[#d7e0e0] bg-white text-[#3d5459] hover:border-accent"
                   }`}
                   aria-label={`${t("goToPage")} ${page}`}
                   aria-current={currentPage === page ? "page" : undefined}
@@ -190,11 +197,11 @@ const BlogPostList = ({
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 hover:border-blue-500 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-gray-300 transition-all duration-200"
+            className="flex h-[44px] min-w-[44px] items-center justify-center rounded-[11px] border-[1.5px] border-[#d7e0e0] bg-white px-3.5 text-[#3d5459] transition-all duration-200 hover:border-accent disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-[#d7e0e0]"
             aria-label={t("nextPage")}
           >
             <svg
-              className="w-5 h-5"
+              className="h-5 w-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

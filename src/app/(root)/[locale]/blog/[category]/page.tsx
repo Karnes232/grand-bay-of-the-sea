@@ -1,17 +1,19 @@
 import BlogPostList from "@/components/BlogComponents/BlogPostList"
-import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import JsonLd from "@/components/StructuredData/JsonLd"
-import RichText from "@/components/RichTextComponents/RichText"
-import { getAllEntries, searchEntries } from "@/lib/contentful"
+import CoursesHero from "@/components/courses/CoursesHero"
+import BlockContent from "@/components/BlockContent/BlockContent"
+import { Link } from "@/i18n/navigation"
 import { Metadata, ResolvingMetadata } from "next"
+import { getTranslations } from "next-intl/server"
 import { getHreflangAlternates } from "@/utils/hreflang"
-import { notFound } from "next/navigation"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import {
   getIndividualBlogCategory,
   getIndividualBlogCategorySEO,
 } from "@/sanity/queries/Blog/BlogCategory"
-import BlockContent from "@/components/BlockContent/BlockContent"
 import { getBlogPostsCards } from "@/sanity/queries/Blog/BlogPosts"
+import { getBlogPageLayout } from "@/sanity/queries/Blog/BlogPageLayout"
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ category: string; locale: "en" | "es" }> },
@@ -25,23 +27,6 @@ export async function generateMetadata(
   }
 
   const alternates = getHreflangAlternates(`blog/${category}`, locale)
-
-  // const seoSearchResults = await searchEntries(
-  //   "blogCategory",
-  //   {
-  //     "fields.slug": category,
-  //     locale: locale || "en",
-  //   },
-  //   [
-  //     "fields.seoTitle",
-  //     "fields.seoDescription",
-  //     "fields.seoKeywords",
-  //     "fields.seoImage",
-  //   ],
-  // )
-  // if (!seoSearchResults?.items?.[0]) {
-  //   notFound()
-  // }
 
   return {
     title: pageSeo.seo.meta[locale].title,
@@ -59,10 +44,6 @@ export async function generateMetadata(
       follow: !pageSeo.seo.noFollow,
     },
     alternates,
-    // other: {
-    //   "Cache-Control":
-    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
-    // },
   }
 }
 
@@ -73,39 +54,82 @@ export default async function Page({
 }) {
   const { category, locale } = await params
 
-  const blogCategory = await getIndividualBlogCategory(category)
-  const blogPostsCards = await getBlogPostsCards(category)
+  const [blogCategory, blogPostsCards, layout, tNav] = await Promise.all([
+    getIndividualBlogCategory(category),
+    getBlogPostsCards(category),
+    getBlogPageLayout(),
+    getTranslations("Navbar"),
+  ])
 
-  // const blogCategory2 = await searchEntries("blogCategory", {
-  //   "fields.slug": category,
-  //   locale: locale || "en",
-  // })
-  // const blogCategoryId = blogCategory2.items[0]?.fields.blogCategory
+  const heroImg = blogCategory.heroImage
+  const heroSrc =
+    (heroImg && sanityCropUrl(heroImg, 2000, 1200)) || heroImg?.asset?.url
+  const name = blogCategory.blogCategory[locale]
 
-  // const blogPostsByCategory = await searchEntries("blogPost", {
-  //   "fields.blogCategory.sys.contentType.sys.id": "blogCategory",
-  //   "fields.blogCategory.fields.blogCategory": blogCategoryId,
-  //   locale: locale || "en",
-  // })
   return (
     <main id="main">
       <JsonLd raw={blogCategory?.seo?.structuredData[locale]} />
-      {blogCategory.heroImage?.asset?.url && (
-        <HeroStaticComponent
-          heroImage={blogCategory.heroImage.asset.url}
-          title={blogCategory.blogCategory[locale]}
-          alt={blogCategory.heroImage.alt}
-          blurDataURL={blogCategory.heroImage.asset.metadata.lqip}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd(
+            [
+              { name: "Home", path: "" },
+              { name: "Blog", path: "/blog" },
+              { name, path: `/blog/${category}` },
+            ],
+            locale,
+          ),
+        }}
+      />
+
+      {heroSrc && (
+        <CoursesHero
+          heroImage={heroSrc}
+          objectPosition={hotspotPosition(heroImg)}
+          blurDataURL={heroImg.asset.metadata.lqip}
+          alt={heroImg.alt || name}
+          title={name}
+          breadcrumb={[
+            { label: tNav("blog"), href: "/blog" },
+            { label: name },
+          ]}
         />
       )}
-      <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center mx-5 lg:mx-auto">
+
+      {/* Category description */}
+      <section className="mx-auto max-w-[900px] px-6 pb-2 pt-[56px]">
         <BlockContent
           content={blogCategory.description as any}
           locale={locale}
+          variant="prose"
         />
+      </section>
+
+      {/* Posts */}
+      <section className="mx-auto max-w-[1080px] px-6 py-10">
         <BlogPostList blogPosts={blogPostsCards} locale={locale} />
-      </div>
+      </section>
+
+      {/* CTA band */}
+      <section className="mt-14 bg-ink text-white">
+        <div className="mx-auto flex max-w-[1080px] flex-wrap items-center justify-between gap-8 px-6 py-16">
+          <div className="max-w-[46ch]">
+            <h2 className="mb-3 font-display text-[clamp(1.7rem,3vw,2.4rem)] font-bold leading-[1.05] tracking-[-0.03em]">
+              {layout.ctaHeading?.[locale]}
+            </h2>
+            <p className="text-[16.5px] leading-relaxed text-white/80">
+              {layout.ctaBody?.[locale]}
+            </p>
+          </div>
+          <Link
+            href="/contact"
+            className="flex-none rounded-full bg-accent px-8 py-4 text-[16.5px] font-bold text-ink shadow-[0_12px_34px_rgba(255,106,61,0.35)] transition-transform hover:-translate-y-[3px] hover:shadow-[0_18px_44px_rgba(255,106,61,0.5)]"
+          >
+            {layout.ctaLabel?.[locale]} →
+          </Link>
+        </div>
+      </section>
     </main>
   )
 }

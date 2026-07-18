@@ -224,6 +224,7 @@
   },
   "Blog": {
     "readMore": "Read More",
+    "browseArticles": "Browse articles",
     "youMayAlsoLike": "You may also like",
     "by": "By",
     "author": "Grand Bay Dive Team",
@@ -238,7 +239,10 @@
     "of": "of",
     "previousPage": "Previous page",
     "nextPage": "Next page",
-    "goToPage": "Go to page"
+    "goToPage": "Go to page",
+    "share": "Share",
+    "morePhotos": "More photos",
+    "backToCategory": "← Back to all {category} posts"
   },
   "Home": {
     "hero": {
@@ -297,5 +301,15 @@
     "factDuration": "Duration",
     "factDives": "Dives",
     "factDivesValue": "2 guided"
+  },
+  "Liveaboard": {
+    "expeditionsEyebrow": "Expeditions",
+    "expeditionsHeading": "Featured liveaboard routes",
+    "silverbankTitle": "Silverbank Expedition",
+    "whaleTitle": "Whale Watching Adventure",
+    "viewExpedition": "View expedition",
+    "galleryHeading": "Life aboard",
+    "viewGallery": "View full gallery",
+    "faqHeading": "Frequently asked questions"
   }
 }

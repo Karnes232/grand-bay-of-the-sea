@@ -1,15 +1,16 @@
 import BlogCategory from "@/components/BlogComponents/BlogCategory"
-import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import JsonLd from "@/components/StructuredData/JsonLd"
-import RichText from "@/components/RichTextComponents/RichText"
-import { getAllEntries, searchEntries } from "@/lib/contentful"
-import { Metadata, ResolvingMetadata } from "next"
+import CoursesHero from "@/components/courses/CoursesHero"
+import BlockContent from "@/components/BlockContent/BlockContent"
+import { Link } from "@/i18n/navigation"
+import { getTranslations } from "next-intl/server"
+
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getBlogPageLayout } from "@/sanity/queries/Blog/BlogPageLayout"
-import BlockContent from "@/components/BlockContent/BlockContent"
 import { getBlogCategory } from "@/sanity/queries/Blog/BlogCategory"
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 
 export async function generateMetadata({
   params,
@@ -43,10 +44,6 @@ export async function generateMetadata({
       follow: !pageSeo.seo.noFollow,
     },
     alternates,
-    // other: {
-    //   "Cache-Control":
-    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
-    // },
   }
 }
 
@@ -56,15 +53,16 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData] = await Promise.all([getStructuredData("Blog")])
-  // const pageLayout = await searchEntries("pageLayout", {
-  //   "fields.page": "Blog",
-  //   locale: locale || "en",
-  // })
-  const blogPageLayout = await getBlogPageLayout()
-  const blogCategories = await getBlogCategory()
+  const [structuredData, layout, blogCategories, tBlog] = await Promise.all([
+    getStructuredData("Blog"),
+    getBlogPageLayout(),
+    getBlogCategory(),
+    getTranslations("Blog"),
+  ])
 
-  // const blogPosts = await getAllEntries("blogCategory", locale)
+  const heroImg = layout.heroImage
+  const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg.asset.url
+
   return (
     <main id="main">
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
@@ -80,25 +78,59 @@ export default async function Page({
           ),
         }}
       />
-      <HeroStaticComponent
-        heroImage={blogPageLayout.heroImage.asset.url}
-        title={blogPageLayout.title?.[locale]}
-        alt={blogPageLayout.heroImage.alt}
-        blurDataURL={blogPageLayout.heroImage.asset.metadata.lqip}
+
+      <CoursesHero
+        heroImage={heroSrc}
+        objectPosition={hotspotPosition(heroImg)}
+        blurDataURL={heroImg.asset.metadata.lqip}
+        alt={heroImg.alt || "Grand Bay of the Sea blog"}
+        title={layout.title[locale]}
+        trustLine={layout.heroEyebrow?.[locale]}
       />
-      <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
-        {/* <RichText context={pageLayout.items[0].fields.paragraph1} /> */}
+
+      {/* Intro */}
+      <section className="mx-auto max-w-[900px] px-6 pb-2 pt-[72px]">
         <BlockContent
-          content={blogPageLayout.paragraph as any}
+          content={layout.paragraph}
           locale={locale}
+          variant="prose"
+          demoteH1
         />
-      </div>
-      <div className="flex flex-col xl:my-5 md:flex-row md:flex-wrap md:justify-evenly  max-w-5xl xl:max-w-6xl mx-auto md:gap-5">
-        {blogCategories.map((category, index) => (
-          <BlogCategory key={index} category={category} locale={locale} />
-        ))}
-      </div>
+      </section>
+
+      {/* Category grid */}
+      <section className="mx-auto max-w-[1280px] px-6 pb-6 pt-10">
+        <div className="grid grid-cols-1 gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
+          {blogCategories.map((category, index) => (
+            <BlogCategory
+              key={index}
+              category={category}
+              locale={locale}
+              browseLabel={tBlog("browseArticles")}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* CTA band */}
+      <section className="mt-14 bg-ink text-white">
+        <div className="mx-auto flex max-w-[1080px] flex-wrap items-center justify-between gap-8 px-6 py-16">
+          <div className="max-w-[46ch]">
+            <h2 className="mb-3 font-display text-[clamp(1.7rem,3vw,2.4rem)] font-bold leading-[1.05] tracking-[-0.03em]">
+              {layout.ctaHeading?.[locale]}
+            </h2>
+            <p className="text-[16.5px] leading-relaxed text-white/80">
+              {layout.ctaBody?.[locale]}
+            </p>
+          </div>
+          <Link
+            href="/contact"
+            className="flex-none rounded-full bg-accent px-8 py-4 text-[16.5px] font-bold text-ink shadow-[0_12px_34px_rgba(255,106,61,0.35)] transition-transform hover:-translate-y-[3px] hover:shadow-[0_18px_44px_rgba(255,106,61,0.5)]"
+          >
+            {layout.ctaLabel?.[locale]} →
+          </Link>
+        </div>
+      </section>
     </main>
   )
 }

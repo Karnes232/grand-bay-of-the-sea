@@ -1,20 +1,25 @@
-import BlogBody from "@/components/BlogComponents/BlogBody"
-import HeroImages from "@/components/BlogComponents/HeroImages"
+import Image from "next/image"
+import { Link } from "@/i18n/navigation"
 import Recommendations from "@/components/BlogComponents/Recommendations"
-import { searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getTranslations } from "next-intl/server"
-import { notFound } from "next/navigation"
 import {
   getBlogPostsCards,
   getIndividualBlogPost,
   getIndividualBlogPostSEO,
 } from "@/sanity/queries/Blog/BlogPosts"
+import { getIndividualBlogCategory } from "@/sanity/queries/Blog/BlogCategory"
+import { getBlogPageLayout } from "@/sanity/queries/Blog/BlogPageLayout"
 import SanityBlogBody from "@/components/BlogComponents/SanityBlogBody"
-import BlogMeta from "@/components/BlogComponents/BlogMeta"
-import { sanityCdnUrlWithParams } from "@/sanity/lib/image"
-import { breadcrumbJsonLd, humanizeSlug } from "@/utils/breadcrumb"
+import BlogPostHero from "@/components/BlogComponents/BlogPostHero"
+import ShareLinks from "@/components/BlogComponents/ShareLinks"
+import {
+  sanityCdnUrlWithParams,
+  sanityCropUrl,
+  hotspotPosition,
+} from "@/sanity/lib/image"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import JsonLd from "@/components/StructuredData/JsonLd"
 
 export async function generateMetadata(
@@ -112,65 +117,62 @@ export async function generateMetadata(
 export default async function Page({
   params,
 }: {
-  params: Promise<{ category: string; slug: string; locale: string }>
+  params: Promise<{ category: string; slug: string; locale: "en" | "es" }>
 }) {
   const { category, slug, locale } = await params
-  const t = await getTranslations("Blog")
 
-  const individualBlogPost = await getIndividualBlogPost(slug)
-  const related = await getBlogPostsCards(category)
+  const [individualBlogPost, related, blogCategory, layout, t, tNav] =
+    await Promise.all([
+      getIndividualBlogPost(slug),
+      getBlogPostsCards(category),
+      getIndividualBlogCategory(category),
+      getBlogPageLayout(),
+      getTranslations("Blog"),
+      getTranslations("Navbar"),
+    ])
 
   const relatedPosts = related.filter((post: any) => post.slug.current !== slug)
-
-  // const blogPost = await searchEntries("blogPost", {
-  //   "fields.slug": slug,
-  //   locale: locale || "en",
-  // })
-
-  // const blogCategory = (blogPost.items[0].fields.blogCategory as any)?.fields
-  //   ?.blogCategory
-
-  // const blogPostsByCategory = await searchEntries("blogPost", {
-  //   "fields.blogCategory.sys.contentType.sys.id": "blogCategory",
-  //   "fields.blogCategory.fields.blogCategory": blogCategory,
-  //   locale: locale || "en",
-  // })
-
-  // // Filter out the current blog post using the slug
-  // const relatedPosts = blogPostsByCategory.items.filter(
-  //   post => post.fields.slug !== slug,
-  // )
+  const categoryName = blogCategory?.blogCategory?.[locale] ?? category
+  const title = individualBlogPost.title[locale]
+  const images = individualBlogPost.backgroundImages ?? []
+  const hero = images[0]
+  const galleryImages = images.slice(1)
+  const shareUrl = `https://www.grandbay-puntacana.com${
+    locale === "es" ? "/es" : ""
+  }/blog/${category}/${slug}`
 
   return (
-    <>
-      <main id="main">
-        <JsonLd raw={individualBlogPost?.seo?.structuredData[locale]} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: breadcrumbJsonLd(
-              [
-                { name: "Home", path: "" },
-                { name: "Blog", path: "/blog" },
-                { name: humanizeSlug(category), path: `/blog/${category}` },
-                {
-                  name: individualBlogPost.title[locale],
-                  path: `/blog/${category}/${slug}`,
-                },
-              ],
-              locale,
-            ),
+    <main id="main">
+      <JsonLd raw={individualBlogPost?.seo?.structuredData[locale]} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd(
+            [
+              { name: "Home", path: "" },
+              { name: "Blog", path: "/blog" },
+              { name: categoryName, path: `/blog/${category}` },
+              { name: title, path: `/blog/${category}/${slug}` },
+            ],
+            locale,
+          ),
+        }}
+      />
+
+      {hero?.asset?.url && (
+        <BlogPostHero
+          image={{
+            url: sanityCdnUrlWithParams(hero.asset.url, { w: 1920, q: 80 }),
+            lqip: hero.asset.metadata?.lqip,
+            alt: hero.alt,
           }}
-        />
-        {individualBlogPost.backgroundImages?.length > 0 && (
-          <HeroImages backgroundImages={individualBlogPost.backgroundImages} />
-        )}
-        <header className="max-w-[42rem] mx-5 md:mx-10 lg:mx-auto lg:min-w-[65rem] lg:pt-8">
-          <h1 className="font-bold font-crimson text-center text-balance text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white">
-            {individualBlogPost.title[locale]}
-          </h1>
-        </header>
-        <BlogMeta
+          breadcrumb={[
+            { label: tNav("blog"), href: "/blog" },
+            { label: categoryName, href: `/blog/${category}` },
+            { label: title },
+          ]}
+          categoryLabel={categoryName}
+          title={title}
           author={t("author")}
           publishDate={individualBlogPost.publishDate}
           updatedAt={individualBlogPost._updatedAt}
@@ -181,17 +183,85 @@ export default async function Page({
             updated: t("updated"),
           }}
         />
-        <SanityBlogBody
-          content={individualBlogPost.blogBody}
-          locale={locale}
-          skipLeadingTitle={individualBlogPost.title[locale]}
-        />
-        <Recommendations
-          relatedPosts={relatedPosts}
-          title={t("youMayAlsoLike")}
-          locale={locale}
-        />
-      </main>
-    </>
+      )}
+
+      {/* Article + share + inline CTA */}
+      <section className="mx-auto max-w-[1080px] px-6 py-14">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_68px] lg:items-start">
+          <div>
+            <SanityBlogBody
+              content={individualBlogPost.blogBody}
+              locale={locale}
+              skipLeadingTitle={title}
+            />
+
+            {/* Inline CTA card */}
+            <div className="mt-9 flex max-w-[70ch] flex-wrap items-center justify-between gap-6 rounded-[20px] bg-ink px-[30px] py-7 text-white">
+              <div className="max-w-[42ch]">
+                <h2 className="mb-1.5 font-display text-[1.3rem] font-bold tracking-[-0.02em]">
+                  {layout.ctaHeading?.[locale]}
+                </h2>
+                <p className="text-[15px] leading-relaxed text-white/80">
+                  {layout.ctaBody?.[locale]}
+                </p>
+              </div>
+              <Link
+                href="/contact"
+                className="flex-none rounded-full bg-accent px-7 py-3.5 text-[15.5px] font-bold text-ink transition-transform hover:-translate-y-[2px]"
+              >
+                {layout.ctaLabel?.[locale]} →
+              </Link>
+            </div>
+          </div>
+
+          <ShareLinks url={shareUrl} label={t("share")} />
+        </div>
+      </section>
+
+      {/* Gallery of remaining hero images */}
+      {galleryImages.length > 0 && (
+        <section className="mx-auto max-w-[1080px] px-6 pb-6">
+          <h2 className="mb-6 font-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-bold tracking-[-0.02em] text-ink">
+            {t("morePhotos")}
+          </h2>
+          <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
+            {galleryImages.map((img: any, index: number) => {
+              const src = sanityCropUrl(img, 800, 600) || img?.asset?.url
+              const position = hotspotPosition(img)
+              const lqip = img?.asset?.metadata?.lqip
+              return (
+                <div
+                  key={index}
+                  className="relative aspect-[4/3] overflow-hidden rounded-[18px] border border-[#e2e9e9] bg-[#dce6e6]"
+                >
+                  {src && (
+                    <Image
+                      src={src}
+                      alt={img?.alt ?? title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 340px"
+                      quality={75}
+                      placeholder={lqip ? "blur" : "empty"}
+                      blurDataURL={lqip}
+                      style={position ? { objectPosition: position } : undefined}
+                      className="object-cover"
+                    />
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </section>
+      )}
+
+      <Recommendations
+        relatedPosts={relatedPosts}
+        title={t("youMayAlsoLike")}
+        locale={locale}
+        categoryName={categoryName}
+        categorySlug={category}
+        backLabel={t("backToCategory", { category: categoryName })}
+      />
+    </main>
   )
 }

@@ -1,16 +1,12 @@
-import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
-
 import { Metadata, ResolvingMetadata } from "next"
+import { getTranslations } from "next-intl/server"
 import { getHreflangAlternates } from "@/utils/hreflang"
-import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import {
   getSilverbankExpedition,
   getSilverbankExpeditionSEO,
   getSilverbankExpeditionStructuredData,
 } from "@/sanity/queries/Liveaboards/silverbank-expedition/silverbank-expedition"
-import BlockContent from "@/components/BlockContent/BlockContent"
-import SanitySwiperCarousel from "@/components/BackgroundCarouselComponents/SanitySwiperCarousel"
-import JsonLd from "@/components/StructuredData/JsonLd"
+import ExpeditionLayout from "@/components/liveaboard/ExpeditionLayout"
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
@@ -51,84 +47,29 @@ export async function generateMetadata(
   }
 }
 
-export default async function Home({
+export default async function Page({
   params,
 }: {
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData, silverbankExpedition] = await Promise.all([
-    getSilverbankExpeditionStructuredData(),
-    getSilverbankExpedition(),
-  ])
+  const [structuredData, silverbankExpedition, tLiveaboard] = await Promise.all(
+    [
+      getSilverbankExpeditionStructuredData(),
+      getSilverbankExpedition(),
+      getTranslations("Liveaboard"),
+    ],
+  )
 
   return (
-    <main id="main">
-      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: breadcrumbJsonLd(
-            [
-              { name: "Home", path: "" },
-              { name: "Liveaboard", path: "/liveaboard-dominican-republic" },
-              {
-                name: "Silver Bank Expedition",
-                path: "/liveaboard-dominican-republic/silverbank-expedition",
-              },
-            ],
-            locale,
-          ),
-        }}
-      />
-      <CloudinaryBackgroundVideo
-        videoId={"coral-cut_lyykuw"}
-        className={`-mt-20 md:-mt-40 [clip-path:polygon(0_0,100%_0,100%_35vh,0%_100%)] lg:[clip-path:polygon(0_0,100%_0,100%_55vh,0%_100%)]`}
-      />
-
-      <div className="my-5">
-        <div className="flex flex-col lg:flex-row lg:mx-auto max-w-7xl xl:space-x-10">
-          <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:mt-0">
-            <BlockContent
-              content={silverbankExpedition.paragraph1}
-              locale={locale}
-            />
-          </div>
-          {/* <div className="lg:w-[45rem] xl:mx-10 lg:min-h-full lg:flex lg:flex-col md:justify-start md:mt-2 lg:mt-7 2xl:mt-14">
-            <TripOverview tour={pageLayout.items[0].fields} />
-          </div> */}
-          <div className="lg:flex lg:flex-col lg:justify-start lg:mt-5 xl:min-h-full xl:mt-0">
-            <BlockContent
-              content={silverbankExpedition.paragraph2}
-              locale={locale}
-            />
-          </div>
-        </div>
-        <SanitySwiperCarousel
-          photoList={silverbankExpedition.photoList}
-          className={`mt-5 [clip-path:polygon(0_5vh,100%_0,100%_30vh,0%_100%)] md:[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_50vh,0%_100%)] xl:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
-          height={`h-[35vh] md:h-[45vh] lg:h-[55vh] xl:h-[65vh]`}
-        />
-        <div className="flex flex-col justify-center items-center xl:my-10">
-          <div className="flex flex-col max-w-7xl">
-            <div className="lg:flex items-start xl:space-x-10">
-              <BlockContent
-                content={silverbankExpedition.paragraph3}
-                locale={locale}
-              />
-
-              <BlockContent
-                content={silverbankExpedition.paragraph4}
-                locale={locale}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <CloudinaryBackgroundVideo
-        videoId={"scubaHero_wzvqdg"}
-        className={`[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
-      />
-    </main>
+    <ExpeditionLayout
+      locale={locale}
+      structuredData={structuredData?.seo?.structuredData[locale]}
+      path="/liveaboard-dominican-republic/silverbank-expedition"
+      expeditionName={tLiveaboard("silverbankTitle")}
+      heroVideoId="coral-cut_lyykuw"
+      closingVideoId="scubaHero_wzvqdg"
+      data={silverbankExpedition}
+    />
   )
 }
