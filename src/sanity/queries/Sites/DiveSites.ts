@@ -6,6 +6,12 @@ export interface DiveSites {
     en: any[]
     es: any[]
   }
+  cardDescription?: {
+    en: string
+    es: string
+  }
+  level?: string
+  location?: string
   image: {
     asset: {
       url: string
@@ -16,6 +22,9 @@ export interface DiveSites {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
   meters: number
@@ -28,6 +37,12 @@ export const diveSitesQuery = `*[_type == "diveSite"] {
     en,
     es
   },
+  cardDescription {
+    en,
+    es
+  },
+  level,
+  location,
   image {
     asset -> {
       url,
@@ -38,6 +53,9 @@ export const diveSitesQuery = `*[_type == "diveSite"] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   meters,

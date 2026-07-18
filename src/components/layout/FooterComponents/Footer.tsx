@@ -1,5 +1,6 @@
 import React from "react"
 import dynamic from "next/dynamic"
+import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import { getTranslations } from "next-intl/server"
 import "@/styles/footer/footer.css"
@@ -7,6 +8,7 @@ import SocialMedia from "./SocialMedia"
 import Copyright from "./Copyright"
 import Signature from "./Signature"
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
+import { getCachedGrandBayLogoLayout } from "@/lib/contentful"
 import { BUSINESS } from "@/lib/business"
 
 const TrustBadges = dynamic(() => import("./TrustBadges"))
@@ -14,28 +16,17 @@ const TrustBadges = dynamic(() => import("./TrustBadges"))
 const linkClass =
   "text-[14.5px] text-white/70 transition-colors hover:text-white"
 
-const WaveMark = () => (
-  <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-accent">
-    <svg
-      width="19"
-      height="19"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#0b2129"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M2 12c2-3 5-3 7 0s5 3 7 0 5-3 6 0" />
-      <path d="M2 18c2-3 5-3 7 0s5 3 7 0 5-3 6 0" />
-    </svg>
-  </span>
-)
-
 const Footer = async () => {
   const t = await getTranslations("Navbar")
   const tc = await getTranslations("ContactInfo")
   const tf = await getTranslations("Footer")
+  const logo = await getCachedGrandBayLogoLayout()
+
+  // Display the logo at ~48px tall (2× intrinsic ratio for retina), width auto.
+  const logoH = logo ? Math.min(logo.intrinsicHeight, 96) : 0
+  const logoW = logo
+    ? Math.max(1, Math.round((logoH * logo.intrinsicWidth) / logo.intrinsicHeight))
+    : 0
 
   return (
     <footer className="w-full bg-ink-deep text-white/70">
@@ -44,14 +35,24 @@ const Footer = async () => {
           {/* Brand + NAP */}
           <div>
             <div className="mb-4 flex items-center gap-[11px] text-white">
-              <WaveMark />
+              {logo?.src && (
+                <Image
+                  src={logo.src}
+                  alt={BUSINESS.name}
+                  width={logoW}
+                  height={logoH}
+                  sizes="120px"
+                  quality={75}
+                  className="h-12 w-auto flex-none object-contain"
+                />
+              )}
               <span className="whitespace-nowrap font-display text-[17px] font-bold tracking-tight">
                 {BUSINESS.name}
               </span>
             </div>
             <address className="not-italic text-[14px] leading-relaxed">
               <p className="max-w-[34ch]">
-                {`${BUSINESS.name}, ${BUSINESS.streetAddress}, ${BUSINESS.addressLocality}, ${BUSINESS.addressRegion}, `}
+                {`${BUSINESS.streetAddress}, ${BUSINESS.addressLocality}, ${BUSINESS.addressRegion}, `}
                 {tc("country")}.
               </p>
               <p className="mt-3">

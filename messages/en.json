@@ -109,7 +109,12 @@
     "onlyADeposit": "Only a",
     "deposit": "deposit",
     "bookNowViaPad": "Book now Via Padi",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "packagesEyebrow": "Dive packages",
+    "bestValue": "Best value for multi-day",
+    "advancedDivers": "Advanced divers",
+    "otherPackages": "Other packages",
+    "reserveSubtitle": "Secure your spot with only a ${price} deposit — pay the balance on the day of your dive."
   },
   "PaymentPopupLocalDives": {
     "bookNow": "Book Now",
@@ -132,10 +137,22 @@
     "showLess": "Show Less",
     "readMore": "Read More",
     "meters": "meters",
-    "feet": "feet"
+    "feet": "feet",
+    "exploreSharkDive": "Explore the shark dive",
+    "levelBeginner": "Beginner",
+    "levelIntermediate": "Intermediate",
+    "levelAdvanced": "Advanced",
+    "levelAllLevels": "All levels",
+    "locCatalina": "Catalina",
+    "locBayahibe": "Bayahibe",
+    "locLocal": "Local"
   },
   "DiveSites": {
-    "heading": "Punta Cana Dive Sites — Depths & Highlights"
+    "heading": "Punta Cana Dive Sites — Depths & Highlights",
+    "intro": "Dive sites are selected daily based on weather, sea conditions, and visibility to give you the best possible experience."
+  },
+  "Sites": {
+    "heroTrustLine": "★ Daily departures · 2-tank dives from ${price}"
   },
   "Footer": {
     "builtBy": "Built by",
@@ -294,6 +311,10 @@
     "ctaBody": "Trips run on select days and fill quickly. Tell us your dates and we'll reserve your spot with a deposit.",
     "ctaLabel": "Book a trip",
     "enquire": "Enquire",
-    "privateOnly": "Private excursions only"
+    "privateOnly": "Private excursions only",
+    "excursionEyebrow": "The excursion",
+    "factDuration": "Duration",
+    "factDives": "Dives",
+    "factDivesValue": "2 guided"
   }
 }

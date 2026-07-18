@@ -1,103 +1,115 @@
-"use client"
-import React, { useState } from "react"
-import { motion } from "motion/react"
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
-import { useTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
+import type { DiveSites } from "@/sanity/queries/Sites/DiveSites"
 
-interface DiveSite {
-  name: string
-  meters: number
-  feet: number
-  description: {
-    en: any[]
-    es: any[]
-  }
-  image: any
+/**
+ * Dive-site grid card (2026 redesign). White rounded card with a 4:3 image,
+ * a depth badge and a coloured difficulty-level badge, the site name, and the
+ * short `cardDescription`. Shark Point links through to the shark-dive page.
+ */
+
+// Level badge palette (mirrors the mockup): beginner→teal, advanced→coral,
+// everything else (intermediate / all levels)→amber.
+const levelBadgeClass = (level?: string) => {
+  const l = (level || "").toLowerCase()
+  if (l.includes("begin")) return "bg-[#2ec696] text-[#04241a]"
+  if (l.includes("advanc")) return "bg-accent text-[#2a0d02]"
+  return "bg-[#f5a623] text-[#2e1c00]"
 }
 
-const DiveSiteCard = ({
+// Sanity stores the canonical English enum value; the visible label is
+// translated per-locale via these i18n keys.
+const LEVEL_KEY: Record<string, string> = {
+  Beginner: "levelBeginner",
+  Intermediate: "levelIntermediate",
+  Advanced: "levelAdvanced",
+  "All levels": "levelAllLevels",
+}
+const LOCATION_KEY: Record<string, string> = {
+  Catalina: "locCatalina",
+  Bayahibe: "locBayahibe",
+  Local: "locLocal",
+}
+
+const DiveSiteCard = async ({
   diveSite,
   locale,
 }: {
-  diveSite: DiveSite
-  locale: string
+  diveSite: DiveSites
+  locale: "en" | "es"
 }) => {
-  const t = useTranslations("DiveSiteCard")
-  const [readMore, setReadMore] = useState(false)
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 3,
-        delay: 0.3,
-      }}
-      className="flex justify-center m-4 w-80"
-    >
-      <div className="rounded-lg shadow-lg bg-white dark:bg-neutral-900 max-w-sm">
-        {diveSite.name === "Shark Point" ? (
-          <>
-            <Link href="/shark-dive-punta-cana" className="no-underline">
-              <Image
-                src={diveSite.image.asset.url}
-                alt={diveSite.image.alt}
-                width={diveSite.image.asset.metadata.dimensions.width}
-                height={diveSite.image.asset.metadata.dimensions.height}
-                className="rounded-t-lg h-64 w-80 object-cover object-center"
-              />
-            </Link>
-          </>
-        ) : (
-          <>
-            {" "}
-            <Image
-              src={diveSite.image.asset.url}
-              alt={diveSite.image.alt}
-              width={diveSite.image.asset.metadata.dimensions.width}
-              height={diveSite.image.asset.metadata.dimensions.height}
-              className="rounded-t-lg h-64 w-80 object-cover object-center"
-              quality={75}
-            />
-          </>
-        )}
+  const t = await getTranslations("DiveSiteCard")
+  const isShark = diveSite.name === "Shark Point"
 
-        <div className="p-6">
-          {diveSite.name === "Shark Point" ? (
-            <>
-              <Link href="/shark-dive-punta-cana" className="no-underline">
-                <h3 className="text-gray-900 text-xl font-medium mb-2">
-                  {diveSite.name}
-                </h3>
-              </Link>
-            </>
-          ) : (
-            <>
-              <h3 className="text-gray-900 dark:text-white text-xl font-medium mb-2">
-                {diveSite.name}
-              </h3>
-            </>
-          )}
-          <p className="text-lg text-gray-700 dark:text-white mb-2">
-            {diveSite.meters} {t("meters")} / {diveSite.feet} {t("feet")}
-          </p>
-          <div className="text-gray-700 dark:text-white text-base mb-4 min-h-[160px] flex flex-col items-start justify-between">
-            {/* Full text always in the HTML (crawlers see it); the toggle is
-                visual-only via line-clamp. */}
-            <p className={readMore ? "" : "line-clamp-4"}>
-              {diveSite.description[locale]}
-            </p>
-            <button
-              className="text-blue-700"
-              onClick={() => setReadMore(!readMore)}
-            >
-              {readMore ? t("showLess") : t("readMore")}
-            </button>
-          </div>
-        </div>
+  const src =
+    sanityCropUrl(diveSite.image, 640, 480) || diveSite.image.asset.url
+  const position = hotspotPosition(diveSite.image)
+  // Guard against legacy/mid-migration data where these may still be objects.
+  const level = typeof diveSite.level === "string" ? diveSite.level : undefined
+  const levelLabel = level ? (LEVEL_KEY[level] ? t(LEVEL_KEY[level]) : level) : undefined
+  const location =
+    typeof diveSite.location === "string" ? diveSite.location : undefined
+  const locationLabel = location
+    ? LOCATION_KEY[location]
+      ? t(LOCATION_KEY[location])
+      : location
+    : undefined
+  const blurb = diveSite.cardDescription?.[locale] ?? diveSite.description?.[locale]
+
+  const Card = (
+    <div className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-[#e2e9e9] bg-white transition-all duration-300 ease-smooth hover:-translate-y-[5px] hover:shadow-[0_22px_48px_rgba(11,33,41,0.13)]">
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <Image
+          src={src}
+          alt={diveSite.image.alt}
+          fill
+          sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 400px"
+          quality={75}
+          style={position ? { objectPosition: position } : undefined}
+          className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.06]"
+        />
+        <span className="absolute left-3.5 top-3.5 rounded-full bg-ink/80 px-3 py-1.5 text-[12.5px] font-semibold text-white backdrop-blur-sm">
+          {diveSite.meters} {t("meters")} / {diveSite.feet} {t("feet")}
+        </span>
+        {levelLabel && (
+          <span
+            className={`absolute right-3.5 top-3.5 rounded-full px-2.5 py-1.5 text-[11.5px] font-bold uppercase tracking-[0.04em] ${levelBadgeClass(
+              level,
+            )}`}
+          >
+            {levelLabel}
+          </span>
+        )}
       </div>
-    </motion.div>
+      <div className="flex flex-1 flex-col p-6">
+        {locationLabel && (
+          <span className="mb-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-moss">
+            {locationLabel}
+          </span>
+        )}
+        <h3 className="mb-2 font-display text-[1.3rem] font-bold tracking-[-0.02em] text-ink">
+          {diveSite.name}
+        </h3>
+        <p className="flex-1 text-[14.5px] leading-relaxed text-[#4a5f63]">
+          {blurb}
+        </p>
+        {isShark && (
+          <span className="mt-3.5 text-sm font-semibold text-accent">
+            {t("exploreSharkDive")} →
+          </span>
+        )}
+      </div>
+    </div>
+  )
+
+  return isShark ? (
+    <Link href="/shark-dive-punta-cana" className="no-underline">
+      {Card}
+    </Link>
+  ) : (
+    Card
   )
 }
 

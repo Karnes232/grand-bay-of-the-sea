@@ -176,6 +176,40 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: "tripDaySteps",
+      title: "Your Day Steps",
+      description:
+        "The trip's hour-by-hour itinerary, shown as a timeline on the detail page.",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "tripStep",
+          fields: [
+            defineField({
+              name: "stepTitle",
+              title: "Title",
+              type: "localizedString",
+            }),
+            defineField({
+              name: "stepBody",
+              title: "Body",
+              type: "localizedText",
+            }),
+          ],
+          preview: { select: { title: "stepTitle.en" } },
+        },
+      ],
+      group: "mainContent",
+    }),
+    defineField({
+      name: "tripDayNote",
+      title: "Your Day Note",
+      description: "Optional small caveat shown under the itinerary steps.",
+      type: "localizedString",
+      group: "mainContent",
+    }),
+    defineField({
       name: "faqs",
       title: "FAQs",
       type: "array",

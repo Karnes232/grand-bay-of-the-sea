@@ -48,6 +48,44 @@ export default defineType({
       type: "number",
       validation: Rule => Rule.required(),
     }),
+    defineField({
+      name: "level",
+      title: "Difficulty Level",
+      description:
+        "Shown as the coloured level badge on the dive-sites grid card. The label is translated per-locale on the site.",
+      type: "string",
+      options: {
+        list: [
+          { title: "Beginner", value: "Beginner" },
+          { title: "Intermediate", value: "Intermediate" },
+          { title: "Advanced", value: "Advanced" },
+          { title: "All levels", value: "All levels" },
+        ],
+        layout: "dropdown",
+      },
+    }),
+    defineField({
+      name: "location",
+      title: "Location",
+      description:
+        "Where the dive site is reached from. Shown as a label on the dive-sites grid card.",
+      type: "string",
+      options: {
+        list: [
+          { title: "Catalina", value: "Catalina" },
+          { title: "Bayahibe", value: "Bayahibe" },
+          { title: "Local", value: "Local" },
+        ],
+        layout: "dropdown",
+      },
+    }),
+    defineField({
+      name: "cardDescription",
+      title: "Card Description",
+      description:
+        "Short blurb shown on the dive-sites grid card. The longer Description field is reserved for the future individual dive-site page.",
+      type: "localizedText",
+    }),
   ],
   preview: {
     select: {

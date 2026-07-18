@@ -109,7 +109,12 @@
     "onlyADeposit": "Solo un depósito de",
     "deposit": "",
     "bookNowViaPad": "Reservar Ahora Via Padi",
-    "contactUs": "Contacto"
+    "contactUs": "Contacto",
+    "packagesEyebrow": "Paquetes de buceo",
+    "bestValue": "Mejor precio para varios días",
+    "advancedDivers": "Buceadores avanzados",
+    "otherPackages": "Otros paquetes",
+    "reserveSubtitle": "Asegura tu lugar con solo un depósito de ${price} — paga el saldo el día de tu inmersión."
   },
   "PaymentPopupLocalDives": {
     "bookNow": "Reservar Ahora",
@@ -132,10 +137,22 @@
     "showLess": "Mostrar Menos",
     "readMore": "Leer Más",
     "meters": "metros",
-    "feet": "pies"
+    "feet": "pies",
+    "exploreSharkDive": "Descubre el buceo con tiburones",
+    "levelBeginner": "Principiante",
+    "levelIntermediate": "Intermedio",
+    "levelAdvanced": "Avanzado",
+    "levelAllLevels": "Todos los niveles",
+    "locCatalina": "Catalina",
+    "locBayahibe": "Bayahibe",
+    "locLocal": "Local"
   },
   "DiveSites": {
-    "heading": "Sitios de Buceo en Punta Cana — Profundidades y Destacados"
+    "heading": "Sitios de Buceo en Punta Cana — Profundidades y Destacados",
+    "intro": "Los sitios de buceo se seleccionan a diario según el clima, las condiciones del mar y la visibilidad para ofrecerte la mejor experiencia posible."
+  },
+  "Sites": {
+    "heroTrustLine": "★ Salidas diarias · inmersiones de 2 tanques desde ${price}"
   },
   "Footer": {
     "builtBy": "Desarrollado por",
@@ -294,6 +311,10 @@
     "ctaBody": "Las excursiones se realizan en días seleccionados y se llenan rápido. Cuéntanos tus fechas y reservaremos tu lugar con un depósito.",
     "ctaLabel": "Reserva una excursión",
     "enquire": "Consultar",
-    "privateOnly": "Solo excursiones privadas"
+    "privateOnly": "Solo excursiones privadas",
+    "excursionEyebrow": "La excursión",
+    "factDuration": "Duración",
+    "factDives": "Inmersiones",
+    "factDivesValue": "2 guiadas"
   }
 }

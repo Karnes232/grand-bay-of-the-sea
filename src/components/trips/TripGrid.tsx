@@ -39,7 +39,7 @@ const TripGrid = ({
         return (
           <Link
             key={trip.page}
-            href={isPrivate ? "/contact" : `/trips/${trip.slug.current}`}
+            href={`/trips/${trip.slug.current}`}
             className="group grid grid-cols-1 overflow-hidden rounded-[24px] border border-[#e2e9e9] bg-white md:grid-cols-2"
           >
             <div

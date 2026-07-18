@@ -133,15 +133,33 @@ export interface Trip {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }[]
+  cardDescription?: {
+    en: string
+    es: string
+  }
   price: number
   spectatorSnorkel: number
-  duration: string
+  duration: {
+    en: string
+    es: string
+  }
   extras: {
     en: string
     es: string
   }[]
+  tripDaySteps?: {
+    stepTitle?: { en: string; es: string }
+    stepBody?: { en: string; es: string }
+  }[]
+  tripDayNote?: {
+    en: string
+    es: string
+  }
   depositPrice: number
   faqs?: {
     _key: string
@@ -190,12 +208,33 @@ export const individualTripQuery = `*[_type == "trips" && slug.current == $slug]
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
+  },
+  cardDescription {
+    en,
+    es
   },
   price,
   spectatorSnorkel,
   duration,
   extras[] {
+    en,
+    es
+  },
+  tripDaySteps[] {
+    stepTitle {
+      en,
+      es
+    },
+    stepBody {
+      en,
+      es
+    }
+  },
+  tripDayNote {
     en,
     es
   },

@@ -27,6 +27,9 @@ export interface Sites {
         }
       }
     }
+    ref?: string
+    crop?: unknown
+    hotspot?: { x: number; y: number } | null
     alt: string
   }
   paragraph1: {
@@ -82,6 +85,9 @@ export const sitesQuery = `*[_type == "sites"][0] {
         }
       }
     },
+    "ref": asset._ref,
+    crop,
+    hotspot,
     alt
   },
   paragraph1 {

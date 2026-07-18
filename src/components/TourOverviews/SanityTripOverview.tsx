@@ -41,11 +41,18 @@ const SanityTripOverview = ({
           <span className="text-[14.5px] text-white/60">{t("perPerson")}</span>
         </div>
       )}
-      {tour.depositPrice != null && (
-        <div className="mb-[22px] text-[14px] font-semibold text-accent">
-          {t("onlyADeposit")}: ${tour.depositPrice} {t("deposit")}
-        </div>
-      )}
+      <div className="mb-[22px]">
+        {tour.depositPrice != null && (
+          <div className="text-[14px] font-semibold text-accent">
+            {t("onlyADeposit")}: ${tour.depositPrice} {t("deposit")}
+          </div>
+        )}
+        {tour.spectatorSnorkel ? (
+          <div className="mt-1 text-[13.5px] text-white/70">
+            {t("companion")}: ${tour.spectatorSnorkel} {t("perPerson")}
+          </div>
+        ) : null}
+      </div>
 
       <ul className="mb-6 flex flex-col gap-[13px]">
         {bullets.map((item, i) => (

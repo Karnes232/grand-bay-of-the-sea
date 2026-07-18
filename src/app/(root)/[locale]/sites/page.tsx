@@ -1,16 +1,23 @@
-import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
-import DiveSites from "@/components/DiveSitesComponents/DiveSites"
-// Change import from HeroComponent to HeroStaticComponent
-import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent" // Assuming HeroStaticComponent is in the same path
-
-import LocalDivesOverview from "@/components/TourOverviews/LocalDivesOverview"
+import dynamicImport from "next/dynamic"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
+import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSharkDivePrice, getSites } from "@/sanity/queries/Sites/sites"
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
+import { getTranslations } from "next-intl/server"
+
 import BlockContent from "@/components/BlockContent/BlockContent"
-import Faqs from "@/components/FaqsComponent/Faqs"
 import JsonLd from "@/components/StructuredData/JsonLd"
+import FaqAccordion from "@/components/home/FaqAccordion"
+import CoursesHero from "@/components/courses/CoursesHero"
+import DiveSites from "@/components/DiveSitesComponents/DiveSites"
+import LocalDivesOverview from "@/components/TourOverviews/LocalDivesOverview"
+
+const CloudinaryBackgroundVideo = dynamicImport(
+  () =>
+    import("@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"),
+)
 
 export const revalidate = 604800 // ISR 7 days — content refreshes on Netlify redeploy
 
@@ -46,10 +53,6 @@ export async function generateMetadata({
       follow: !pageSeo.seo.noFollow,
     },
     alternates,
-    // other: {
-    //   "Cache-Control":
-    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
-    // },
   }
 }
 
@@ -59,67 +62,102 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
-  const [structuredData, sitesLayout, sharkDivePrice] = await Promise.all([
-    getStructuredData("Sites"),
-    getSites(),
-    getSharkDivePrice(),
-  ])
+  const [structuredData, sitesLayout, sharkDivePrice, tSites, tCourses] =
+    await Promise.all([
+      getStructuredData("Sites"),
+      getSites(),
+      getSharkDivePrice(),
+      getTranslations("Sites"),
+      getTranslations("Courses"),
+    ])
 
-  const heroImageUrl = sitesLayout.heroImage.asset.url
-  // Blur placeholder from Sanity's built-in `lqip` (no network fetch → page
-  // stays ISR-cacheable). A bare fetch() here would force dynamic `no-store`.
-  const heroImageBlurDataURL = sitesLayout.heroImage.asset.metadata.lqip
+  const heroImg = sitesLayout.heroImage
+  const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg?.asset?.url || ""
+  const heroPosition = hotspotPosition(heroImg)
+
+  const heroCta =
+    sitesLayout.heroCta?.label?.[locale] && sitesLayout.heroCta?.link
+      ? {
+          label: sitesLayout.heroCta.label[locale],
+          href: sitesLayout.heroCta.link,
+        }
+      : undefined
 
   return (
     <main id="main">
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
-      <HeroStaticComponent // Use HeroStaticComponent
-        heroImage={heroImageUrl}
-        blurDataURL={heroImageBlurDataURL}
-        alt={
-          sitesLayout.heroImage.alt || "Dive sites and packages in Punta Cana"
-        }
-        title={sitesLayout.heroTitle?.[locale]}
-        subtitle={sitesLayout.heroSubtitle?.[locale]}
-        cta={
-          sitesLayout.heroCta?.label?.[locale] && sitesLayout.heroCta?.link
-            ? {
-                label: sitesLayout.heroCta.label[locale],
-                href: sitesLayout.heroCta.link,
-              }
-            : undefined
-        }
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd(
+            [
+              { name: "Home", path: "" },
+              { name: "Dive Sites", path: "/sites" },
+            ],
+            locale,
+          ),
+        }}
       />
-      <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
 
-      <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
+      {heroSrc && (
+        <CoursesHero
+          heroImage={heroSrc}
+          objectPosition={heroPosition}
+          blurDataURL={heroImg?.asset?.metadata?.lqip || ""}
+          alt={
+            heroImg?.alt || "Dive sites and packages in Punta Cana"
+          }
+          title={sitesLayout.heroTitle?.[locale]}
+          subtitle={sitesLayout.heroSubtitle?.[locale]}
+          trustLine={tSites("heroTrustLine", { price: sitesLayout.twoTankDive })}
+          cta={heroCta}
+        />
+      )}
+
+      {/* Intro — "What can you see while diving in Punta Cana?" */}
+      <section className="mx-auto max-w-[1280px] px-6 pb-2 pt-[88px]">
         <BlockContent
           content={sitesLayout.paragraph1}
           locale={locale}
+          variant="prose"
           demoteH1
+          wrapperClassName="md:columns-2 md:gap-14 [&_p]:break-inside-avoid [&_h2]:[column-span:all] [&_h2]:mt-0"
         />
-        <div className="lg:w-[45rem]">
-          <LocalDivesOverview
-            info={sitesLayout}
-            sharkPrice={sharkDivePrice.price as number}
-            locale={locale}
-          />
-        </div>
-      </div>
+      </section>
+
+      {/* Dive packages + booking (PayPal / Contact / PADI) */}
+      <section
+        id="packages"
+        className="mx-auto max-w-[1280px] scroll-mt-20 px-6 pb-2 pt-14"
+      >
+        <LocalDivesOverview
+          info={sitesLayout}
+          sharkPrice={sharkDivePrice.price as number}
+          locale={locale}
+        />
+      </section>
+
+      {/* Dive sites grid */}
       <DiveSites locale={locale} />
-      {sitesLayout.faqs?.length ? (
-        <div className="mb-10">
-          <Faqs
-            faqs={sitesLayout.faqs}
-            structuredData={sitesLayout.structuredData ?? { en: "", es: "" }}
-            locale={locale}
+
+      {/* Grey-shark video band */}
+      <section className="mx-auto max-w-[1280px] px-6 pb-2 pt-10">
+        <div className="relative aspect-[21/9] overflow-hidden rounded-[24px]">
+          <CloudinaryBackgroundVideo
+            className="!absolute inset-0 !min-h-full"
+            videoId="greyshark_aowggg"
           />
         </div>
+      </section>
+
+      {sitesLayout.faqs?.length ? (
+        <FaqAccordion
+          faqs={sitesLayout.faqs}
+          structuredData={sitesLayout.structuredData ?? { en: "", es: "" }}
+          locale={locale}
+          heading={tCourses("faqHeading")}
+        />
       ) : null}
-      <CloudinaryBackgroundVideo
-        videoId={"greyshark_aowggg"}
-        className={`[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
-      />
     </main>
   )
 }
