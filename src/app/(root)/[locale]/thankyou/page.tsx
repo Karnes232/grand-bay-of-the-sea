@@ -1,11 +1,12 @@
-import SwiperCarousel from "@/components/BackgroundCarouselComponents/SwiperCarousel"
-import ContactForm from "@/components/ContactForm/ContactForm"
-import ThankYou from "@/components/ContactForm/ThankYou"
-import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
-import RichText from "@/components/RichTextComponents/RichText"
-import { searchEntries } from "@/lib/contentful"
+import { getTranslations } from "next-intl/server"
+
+import JsonLd from "@/components/StructuredData/JsonLd"
+import CoursesHero from "@/components/courses/CoursesHero"
 import { getHreflangAlternates } from "@/utils/hreflang"
-import { getPageSeo } from "@/sanity/queries/SEO/seo"
+import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
+import { getThankYou } from "@/sanity/queries/ThankYou/ThankYou"
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
+import { BUSINESS } from "@/lib/business"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -47,61 +48,62 @@ export async function generateMetadata({
       follow: !pageSeo.seo.noFollow,
     },
     alternates,
-    // other: {
-    //   "Cache-Control":
-    //     "public, max-age=259200, s-maxage=259200, stale-while-revalidate=518400",
-    // },
   }
 }
 
-export default async function Home(props: any) {
-  const searchResults = await searchEntries(
-    "pageLayout",
-    {
-      "fields.page": "Courses",
-    },
-    ["fields.heroImage"],
-  )
-  const email = await searchEntries(
-    "layout",
-    {
-      "fields.companyName": "Grand Bay of the Sea",
-    },
-    ["fields.email"],
-  )
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: "en" | "es" }>
+  searchParams: Promise<{ name?: string }>
+}) {
+  const { locale } = await params
+  const [{ name }, structuredData, thankYou, t] = await Promise.all([
+    searchParams,
+    getStructuredData("Thank You"),
+    getThankYou(),
+    getTranslations("ThankYou"),
+  ])
+
+  const heroImg = thankYou.heroImage
+  const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg?.asset?.url || ""
+  const heroPosition = hotspotPosition(heroImg)
 
   return (
     <main id="main">
-      <HeroStaticComponent
-        heroImage={`https:${(searchResults.items[0] as any).fields.heroImage.fields.file.url}`}
-      />
-      <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
-      {/* <div className="flex flex-col items-center justify-center max-w-xs xl:max-w-sm mx-auto min-h-[40vh] xl:min-h-[50vh]">
-        <div className="mb-10">
-          <div className="flex flex-col justify-center items-center text-slate-600 ">
-            <div className="text-2xl xl:text-4xl font-serif text-center mt-6">
-              {t("thankYou")} {props.searchParams.name}, {t("ourTeamWillReachOut")}
-            </div>
+      <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
 
-            <div className="text-center text-sm xl:text-base mt-2 xl:mt-6">
-              {t("pleaseFeelFreeTo")}
-              <a
-                href={`mailto:${email.items[0].fields.email as string}`}
-                aria-label="Gmail"
-                rel="noreferrer"
-                className="underline"
-              >
-                {t("contactUs")}
-              </a>{" "}
-              {t("withAnyQuestionsOrConcerns")}
-            </div>
-          </div>
+      {heroSrc && (
+        <CoursesHero
+          heroImage={heroSrc}
+          objectPosition={heroPosition}
+          blurDataURL={heroImg?.asset?.metadata?.lqip || ""}
+          alt={heroImg?.alt || "Grand Bay of the Sea dive boat"}
+          title={thankYou.heroTitle?.[locale] ?? ""}
+          subtitle={thankYou.heroSubtitle?.[locale]}
+          trustLine={thankYou.heroEyebrow?.[locale]}
+        />
+      )}
+
+      <section className="mx-auto max-w-[1280px] px-6 pb-24 pt-14">
+        <div className="mx-auto max-w-[640px] rounded-[20px] border border-[#e2e9e9] bg-white p-7 text-center md:p-10">
+          <h2 className="font-display text-[clamp(1.5rem,2.4vw,2rem)] font-bold tracking-[-0.02em] text-ink">
+            {t("thankYou")}
+            {name ? ` ${name}` : ""}, {t("ourTeamWillReachOut")}
+          </h2>
+          <p className="mt-4 text-[15px] leading-relaxed text-[#3d5459]">
+            {t("pleaseFeelFreeTo")}{" "}
+            <a
+              href={`mailto:${BUSINESS.email}`}
+              className="border-b-[1.5px] border-moss/30 font-semibold text-moss"
+            >
+              {t("contactUs")}
+            </a>{" "}
+            {t("withAnyQuestionsOrConcerns")}
+          </p>
         </div>
-      </div> */}
-      <ThankYou
-        searchParams={props.searchParams}
-        email={email.items[0].fields.email as string}
-      />
+      </section>
     </main>
   )
 }

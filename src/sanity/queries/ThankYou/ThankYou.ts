@@ -1,6 +1,6 @@
 import { client } from "@/sanity/lib/client"
 
-export interface CustomPayment {
+export interface ThankYou {
   heroImage: {
     asset: {
       url: string
@@ -20,13 +20,9 @@ export interface CustomPayment {
   heroEyebrow?: { en: string; es: string }
   heroTitle?: { en: string; es: string }
   heroSubtitle?: { en: string; es: string }
-  paragraph1: {
-    en: any[]
-    es: any[]
-  }
 }
 
-export const customPaymentQuery = `*[_type == "customPayment"][0] {
+export const thankYouQuery = `*[_type == "thankYou"][0] {
   heroImage {
     asset -> {
       url,
@@ -45,13 +41,9 @@ export const customPaymentQuery = `*[_type == "customPayment"][0] {
   },
   heroEyebrow { en, es },
   heroTitle { en, es },
-  heroSubtitle { en, es },
-  paragraph1 {
-    en,
-    es
-  }
+  heroSubtitle { en, es }
 }`
 
-export const getCustomPayment = async (): Promise<CustomPayment> => {
-  return await client.fetch(customPaymentQuery)
+export const getThankYou = async (): Promise<ThankYou> => {
+  return await client.fetch(thankYouQuery)
 }

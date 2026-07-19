@@ -78,6 +78,14 @@ export const structure: StructureResolver = S =>
             .documentId("contact"),
         ),
       S.listItem()
+        .title("Thank You")
+        .child(
+          S.document()
+            .schemaType("thankYou")
+            .title("Thank You")
+            .documentId("thankYou"),
+        ),
+      S.listItem()
         .title("Species Page Content")
         .child(
           S.list()

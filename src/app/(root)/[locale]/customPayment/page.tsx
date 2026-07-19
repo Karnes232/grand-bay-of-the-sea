@@ -1,10 +1,11 @@
-import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
 import JsonLd from "@/components/StructuredData/JsonLd"
+import CoursesHero from "@/components/courses/CoursesHero"
 import CustomPagePayPal from "@/components/PayPalComponents/CustomPagePayPal"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getCustomPayment } from "@/sanity/queries/CustomPayment/CustomPayment"
+import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import BlockContent from "@/components/BlockContent/BlockContent"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
@@ -66,19 +67,38 @@ export default async function Page({
     getCustomPayment(),
   ])
 
+  const heroImg = customPayment.heroImage
+  const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg?.asset?.url || ""
+  const heroPosition = hotspotPosition(heroImg)
+
   return (
     <main id="main">
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
-      <HeroStaticComponent
-        heroImage={customPayment.heroImage.asset.url}
-        alt={customPayment.heroImage.alt}
-        blurDataURL={customPayment.heroImage.asset.metadata.lqip}
-      />
-      <div className="mt-[45vh] md:mt-[40vh] lg:mt-[65vh]" />
-      <div className="py-20 lg:pt-12">
-        <BlockContent content={customPayment.paragraph1} locale={locale} />
-        <CustomPagePayPal />
-      </div>
+
+      {heroSrc && (
+        <CoursesHero
+          heroImage={heroSrc}
+          objectPosition={heroPosition}
+          blurDataURL={heroImg?.asset?.metadata?.lqip || ""}
+          alt={heroImg?.alt || "Grand Bay of the Sea dive boat"}
+          title={customPayment.heroTitle?.[locale] ?? ""}
+          subtitle={customPayment.heroSubtitle?.[locale]}
+          trustLine={customPayment.heroEyebrow?.[locale]}
+        />
+      )}
+
+      <section className="mx-auto max-w-[1280px] px-6 pb-24 pt-14">
+        <div className="mx-auto max-w-[720px]">
+          <BlockContent
+            content={customPayment.paragraph1}
+            locale={locale}
+            variant="prose"
+          />
+          <div className="mt-10 rounded-[20px] border border-[#e2e9e9] bg-white p-7 md:p-10">
+            <CustomPagePayPal />
+          </div>
+        </div>
+      </section>
     </main>
   )
 }

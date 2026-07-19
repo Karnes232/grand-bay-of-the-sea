@@ -28,6 +28,9 @@ import CancellationPolicy from "./Cancellation-Policy/CancellationPolicy"
 //Contact
 import Contact from "./Contact/contact"
 
+//Thank You
+import ThankYou from "./ThankYou/thankYou"
+
 //Scuba-Diving-Punta-Cana
 import ScubaDivingPuntaCana from "./Scuba-Diving-Punta-Cana/ScubaDivingPuntaCana"
 import SectionLinks from "./Scuba-Diving-Punta-Cana/SectionLinks"
@@ -93,6 +96,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     //Contact
     Contact,
+
+    //Thank You
+    ThankYou,
 
     //Scuba-Diving-Punta-Cana
     ScubaDivingPuntaCana,

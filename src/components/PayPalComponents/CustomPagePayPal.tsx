@@ -11,21 +11,21 @@ const CustomPagePayPal = () => {
   const t = useTranslations("CustomPagePayPal")
   return (
     <>
-      <div className="max-w-[10rem] mx-auto relative z-0 mb-6 w-full group">
+      <div className="mx-auto mb-6 w-full max-w-[13rem]">
+        <label
+          htmlFor="deposit"
+          className="mb-1.5 block text-center text-[13px] font-semibold text-[#12303a]"
+        >
+          {t("depositAmount")}
+        </label>
         <input
           type="number"
           name="deposit"
           id="deposit"
-          className="text-center block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          className="w-full rounded-[11px] border-[1.5px] border-[#d7e0e0] bg-white px-[15px] py-[13px] text-center text-[15px] text-ink outline-none transition-colors focus:border-accent"
           required
           onChange={updatePrice}
         />
-        <label
-          htmlFor="email"
-          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-        >
-          {t("depositAmount")}
-        </label>
       </div>
       <CustomPayPal price={price} />
     </>
