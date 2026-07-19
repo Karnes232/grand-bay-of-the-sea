@@ -15,7 +15,7 @@ const CustomPayPal = ({ price }) => {
       <div className="flex flex-col">
         <PayPalScriptProvider
           options={{
-            clientId: liveId,
+            clientId: sandBox,
             components: "buttons",
             currency: "USD",
           }}
