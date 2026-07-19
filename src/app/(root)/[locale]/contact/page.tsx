@@ -15,6 +15,9 @@ const GoogleMaps = dynamicImport(
   () => import("@/components/GoogleMapsComponent/GoogleMaps"),
 )
 
+// ISR 7 days — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata({
   params,
 }: {

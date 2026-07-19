@@ -10,6 +10,9 @@ import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSpeciesPageContent } from "@/sanity/queries/Page-Species/SpeciesPageContent"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 
+// ISR 7 days — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata({
   params,
 }: {

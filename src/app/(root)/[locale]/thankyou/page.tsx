@@ -7,6 +7,9 @@ import { searchEntries } from "@/lib/contentful"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo } from "@/sanity/queries/SEO/seo"
 
+// ISR 7 days — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata({
   params,
 }: {

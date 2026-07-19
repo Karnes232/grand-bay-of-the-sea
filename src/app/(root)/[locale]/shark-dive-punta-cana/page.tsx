@@ -18,6 +18,9 @@ import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
 import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 import { Link } from "@/i18n/navigation"
 
+// ISR 7 days — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
   parent: ResolvingMetadata,

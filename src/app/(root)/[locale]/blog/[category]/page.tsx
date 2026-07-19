@@ -15,6 +15,9 @@ import { getBlogPostsCards } from "@/sanity/queries/Blog/BlogPosts"
 import { getBlogPageLayout } from "@/sanity/queries/Blog/BlogPageLayout"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 
+// ISR 7 days — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata(
   { params }: { params: Promise<{ category: string; locale: "en" | "es" }> },
   parent: ResolvingMetadata,

@@ -7,6 +7,9 @@ import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getCustomPayment } from "@/sanity/queries/CustomPayment/CustomPayment"
 import BlockContent from "@/components/BlockContent/BlockContent"
 
+// ISR 7 days — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata({
   params,
 }: {

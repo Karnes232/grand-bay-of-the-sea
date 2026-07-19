@@ -11,6 +11,9 @@ import { getCancellationPolicy } from "@/sanity/queries/Cancellation-Policy/Canc
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import { BUSINESS } from "@/lib/business"
 
+// ISR 7 days — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata({
   params,
 }: {

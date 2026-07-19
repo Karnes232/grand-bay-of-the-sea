@@ -7,6 +7,9 @@ import { getPhotoGallery } from "@/sanity/queries/Photo-Gallery/PhotoGallery"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 
+// ISR 7 days — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata({
   params,
 }: {

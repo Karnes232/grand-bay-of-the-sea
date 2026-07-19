@@ -12,6 +12,9 @@ import { getLiveaboards } from "@/sanity/queries/Liveaboards/Liveaboards"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 
+// ISR 7 days — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata({
   params,
 }: {

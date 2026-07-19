@@ -6,6 +6,9 @@ import TuiLocalDiveOverview from "@/components/TuiComponents/TuiLocalDiveOvervie
 import { getAllEntries, searchEntries } from "@/lib/contentful"
 import { Metadata, ResolvingMetadata } from "next"
 
+// ISR 7 days — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
   parent: ResolvingMetadata,

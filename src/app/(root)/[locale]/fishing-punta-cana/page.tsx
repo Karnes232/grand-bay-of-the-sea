@@ -13,6 +13,9 @@ import CourseStats from "@/components/courses/CourseStats"
 import FishingOverview from "@/components/TourOverviews/FishingOverview"
 import { Link } from "@/i18n/navigation"
 
+// ISR 7 days — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata({
   params,
 }: {

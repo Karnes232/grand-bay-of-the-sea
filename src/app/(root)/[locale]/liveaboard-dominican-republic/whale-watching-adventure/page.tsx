@@ -8,6 +8,9 @@ import {
 } from "@/sanity/queries/Liveaboards/whale-watching-adventure/whale-watching-adventure"
 import ExpeditionLayout from "@/components/liveaboard/ExpeditionLayout"
 
+// ISR 7 days — not force-static, so language switching works on Netlify.
+export const revalidate = 604800
+
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
   parent: ResolvingMetadata,
