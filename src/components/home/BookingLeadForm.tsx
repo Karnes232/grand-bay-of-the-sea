@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { useTranslations } from "next-intl"
-import { submitLeadForm } from "@/app/(root)/actions"
+import { CgSpinner } from "react-icons/cg"
+import { submitCtaForm } from "@/app/(root)/actions"
 
 /**
  * Homepage "Request a booking" lead form. Mirrors ContactForm's React-19
@@ -13,6 +14,8 @@ import { submitLeadForm } from "@/app/(root)/actions"
 const BookingLeadForm = () => {
   const t = useTranslations("Home")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  // Synchronous guard so a rapid second click (before the button disables) bails out.
+  const submittingRef = useRef(false)
   const [submittedName, setSubmittedName] = useState<string | null>(null)
 
   const inputClass =
@@ -20,7 +23,8 @@ const BookingLeadForm = () => {
   const labelClass = "mb-1.5 block text-[13px] font-semibold text-[#12303a]"
 
   const handleSubmit = async (formData: FormData) => {
-    if (isSubmitting) return
+    if (submittingRef.current) return
+    submittingRef.current = true
     setIsSubmitting(true)
 
     const payload = {
@@ -31,7 +35,7 @@ const BookingLeadForm = () => {
       guestCount: formData.get("guestCount")?.toString() || "",
     }
 
-    const result = await submitLeadForm(payload)
+    const result = await submitCtaForm(payload)
 
     if (result.success) {
       try {
@@ -45,6 +49,7 @@ const BookingLeadForm = () => {
       }
       setSubmittedName(payload.name)
     } else {
+      submittingRef.current = false
       setIsSubmitting(false)
     }
   }
@@ -71,12 +76,12 @@ const BookingLeadForm = () => {
     <div className="rounded-[22px] bg-white p-[34px] text-ink shadow-[0_30px_70px_rgba(0,0,0,0.3)]">
       <form
         action={handleSubmit}
-        name="booking"
+        name="cta"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
         <input type="hidden" name="bot-field" />
-        <input type="hidden" name="form-name" value="booking" />
+        <input type="hidden" name="form-name" value="cta" />
         <h3 className="mb-5 font-display text-[1.4rem] font-bold tracking-tight">
           {t("booking.requestTitle")}
         </h3>
@@ -156,9 +161,16 @@ const BookingLeadForm = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="mt-1.5 rounded-xl bg-accent py-4 text-base font-bold text-ink shadow-[0_10px_26px_rgba(255,106,61,0.3)] transition-transform hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(255,106,61,0.42)] disabled:cursor-not-allowed disabled:opacity-60"
+            className="mt-1.5 rounded-xl bg-accent py-4 text-base font-bold text-ink shadow-[0_10px_26px_rgba(255,106,61,0.3)] transition-transform hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(255,106,61,0.42)] disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {isSubmitting ? t("booking.submitting") : t("booking.submit")}
+            {isSubmitting ? (
+              <span className="inline-flex items-center justify-center gap-2">
+                <CgSpinner className="animate-spin" aria-hidden />
+                {t("booking.submitting")}
+              </span>
+            ) : (
+              t("booking.submit")
+            )}
           </button>
           <p className="text-center text-[12.5px] text-[#7c8f93]">
             {t("booking.disclaimer")}

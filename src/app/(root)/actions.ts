@@ -89,30 +89,18 @@ export async function submitForm(formData: any, certificationData: any) {
 }
 
 /**
- * Homepage "Request a booking" lead form. Saves to Supabase (form_type "lead"
- * so the owner can tell website leads from full bookings) and emails the
- * customer a confirmation via the existing Resend template. Owner notification
- * is handled by the Netlify Forms capture on the client (form-name "booking").
+ * Homepage "Request a booking" CTA. This is a plain lead/inquiry — no deposit,
+ * no payment — so it behaves like a contact submission: it does NOT write to the
+ * Grand Bay Bookings table and does NOT send a booking confirmation email. The
+ * owner is notified through Netlify Forms (form-name "cta"); this action just
+ * reshapes the payload into the fields Netlify captures.
  */
-export async function submitLeadForm(formData: any) {
-  await saveBookingToSupabase(formData, "lead")
-
+export async function submitCtaForm(formData: any) {
   try {
-    await sendConfirmationEmail({
-      customerName: formData.name,
-      customerEmail: formData.email,
-      hotel: "",
-      excursionName: formData.tourSelect || "Dive booking request",
-      excursionDate: formData.date,
-      guestCount: formData.guestCount,
-      certification: formData.certification,
-      deposit: "",
-      price: "",
-    })
     return {
       success: true,
       data: {
-        "form-name": "booking",
+        "form-name": "cta",
         name: formData.name?.toString() || "",
         email: formData.email?.toString() || "",
         date: formData.date?.toString() || "",
@@ -121,7 +109,7 @@ export async function submitLeadForm(formData: any) {
       },
     }
   } catch (error) {
-    console.error("Lead form submission error:", error)
+    console.error("CTA form submission error:", error)
     return { success: false }
   }
 }

@@ -78,7 +78,8 @@
   "PayPalButtonWrapperBooking": {
     "pleaseCompleteAllRequiredFieldsBeforeProceedingWithPayment": "Please complete all required fields before proceeding with payment.",
     "byProceedingWithPayment": "By proceeding with payment, you acknowledge that you have read and agree to our",
-    "termsAndConditions": "Terms and Conditions"
+    "termsAndConditions": "Terms and Conditions",
+    "processing": "Processing your booking…"
   },
   "DatePickerComponent": {
     "preferredDate": "Preferred Date",

@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useEffect } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import {
   PayPalButtons,
   PayPalButtonsComponentProps,
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js"
+import { CgSpinner } from "react-icons/cg"
 import { useTranslations } from "next-intl"
 
 const PayPalButtonWrapperBooking = ({
@@ -19,6 +20,12 @@ const PayPalButtonWrapperBooking = ({
   const style = { layout: "vertical", shape: "pill" }
 
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer()
+
+  // Once the order is approved and we start recording the booking, block any
+  // further triggering of the submit. The ref is the synchronous guard; the
+  // state drives the dimmed/spinner UI.
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const submittingRef = useRef(false)
 
   useEffect(() => {
     dispatch({
@@ -54,9 +61,22 @@ const PayPalButtonWrapperBooking = ({
           {t("pleaseCompleteAllRequiredFieldsBeforeProceedingWithPayment")}
         </div>
       )}
+      {isSubmitting && (
+        <div className="mb-2 flex items-center justify-center gap-2 text-sm text-gray-600">
+          <CgSpinner className="animate-spin" aria-hidden />
+          {t("processing")}
+        </div>
+      )}
+      <div
+        className={
+          isSubmitting
+            ? "pointer-events-none opacity-50 transition-opacity"
+            : "transition-opacity"
+        }
+      >
       <PayPalButtons
         style={style}
-        disabled={!formComplete}
+        disabled={!formComplete || isSubmitting}
         forceReRender={[amount, currency, style, formData.date]}
         fundingSource={undefined}
         createOrder={(data, actions) => {
@@ -81,13 +101,18 @@ const PayPalButtonWrapperBooking = ({
             })
         }}
         onApprove={async function (data, actions) {
-          return actions.order.capture().then(function () {
-            handleSubmit(formData)
+          return actions.order.capture().then(async function () {
+            // Payment is captured; record the booking exactly once.
+            if (submittingRef.current) return
+            submittingRef.current = true
+            setIsSubmitting(true)
+            await handleSubmit(formData)
             // Your code here after capture the order
             console.log("order captured")
           })
         }}
       />
+      </div>
     </>
   )
 }
