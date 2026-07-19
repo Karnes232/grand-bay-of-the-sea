@@ -94,7 +94,7 @@ export default async function Page({
             locale={locale}
             variant="prose"
           />
-          <div className="mt-10 rounded-[20px] border border-[#e2e9e9] bg-white p-7 md:p-10">
+          <div className="mt-10 rounded-[20px] border border-line bg-card p-7 md:p-10">
             <CustomPagePayPal />
           </div>
         </div>

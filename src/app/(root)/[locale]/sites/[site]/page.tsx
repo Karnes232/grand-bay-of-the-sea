@@ -174,7 +174,7 @@ export default async function Page({
         </span>
         <div className="flex flex-col gap-4">
           {paragraphs.map((p, i) => (
-            <p key={i} className="text-[16.5px] leading-[1.8] text-[#3d5459]">
+            <p key={i} className="text-[16.5px] leading-[1.8] text-muted">
               {p}
             </p>
           ))}
@@ -185,12 +185,12 @@ export default async function Page({
       {nearby.length > 0 && (
         <section className="mx-auto max-w-[1280px] px-6 py-16">
           <div className="mb-8 flex flex-wrap items-end justify-between gap-5">
-            <h2 className="font-display text-[clamp(1.7rem,3vw,2.3rem)] font-bold leading-[1.05] tracking-[-0.03em] text-ink">
+            <h2 className="font-display text-[clamp(1.7rem,3vw,2.3rem)] font-bold leading-[1.05] tracking-[-0.03em] text-fg">
               {t("nearbyHeading")}
             </h2>
             <Link
               href="/sites"
-              className="border-b-2 border-accent pb-0.5 text-[15px] font-semibold text-ink no-underline"
+              className="border-b-2 border-accent pb-0.5 text-[15px] font-semibold text-fg no-underline"
             >
               {t("viewAll")} →
             </Link>

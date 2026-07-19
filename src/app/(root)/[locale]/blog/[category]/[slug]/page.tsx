@@ -221,7 +221,7 @@ export default async function Page({
       {/* Gallery of remaining hero images */}
       {galleryImages.length > 0 && (
         <section className="mx-auto max-w-[1080px] px-6 pb-6">
-          <h2 className="mb-6 font-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-bold tracking-[-0.02em] text-ink">
+          <h2 className="mb-6 font-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-bold tracking-[-0.02em] text-fg">
             {t("morePhotos")}
           </h2>
           <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
@@ -232,7 +232,7 @@ export default async function Page({
               return (
                 <div
                   key={index}
-                  className="relative aspect-[4/3] overflow-hidden rounded-[18px] border border-[#e2e9e9] bg-[#dce6e6]"
+                  className="relative aspect-[4/3] overflow-hidden rounded-[18px] border border-line bg-line"
                 >
                   {src && (
                     <Image

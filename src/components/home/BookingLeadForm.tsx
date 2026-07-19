@@ -19,8 +19,8 @@ const BookingLeadForm = () => {
   const [submittedName, setSubmittedName] = useState<string | null>(null)
 
   const inputClass =
-    "w-full rounded-[11px] border-[1.5px] border-[#d7e0e0] px-[15px] py-[13px] text-[15px] text-ink outline-none transition-colors focus:border-accent"
-  const labelClass = "mb-1.5 block text-[13px] font-semibold text-[#12303a]"
+    "w-full rounded-[11px] border-[1.5px] border-line-strong px-[15px] py-[13px] text-[15px] text-fg outline-none transition-colors focus:border-accent"
+  const labelClass = "mb-1.5 block text-[13px] font-semibold text-fg"
 
   const handleSubmit = async (formData: FormData) => {
     if (submittingRef.current) return
@@ -56,7 +56,7 @@ const BookingLeadForm = () => {
 
   if (submittedName !== null) {
     return (
-      <div className="rounded-[22px] bg-white p-[34px] text-ink shadow-[0_30px_70px_rgba(0,0,0,0.3)]">
+      <div className="rounded-[22px] border border-transparent bg-card p-[34px] text-fg shadow-[0_30px_70px_rgba(0,0,0,0.3)] dark:border-white/10">
         <div className="px-2 py-[26px] text-center">
           <div className="mx-auto mb-[18px] grid h-[60px] w-[60px] place-items-center rounded-full bg-accent/[0.14] text-[30px] text-accent">
             ✓
@@ -64,7 +64,7 @@ const BookingLeadForm = () => {
           <h3 className="mb-2.5 font-display text-2xl font-bold tracking-tight">
             {t("booking.successTitle")}
           </h3>
-          <p className="text-[15.5px] leading-relaxed text-[#4a5f63]">
+          <p className="text-[15.5px] leading-relaxed text-muted">
             {t("booking.successBody", { name: submittedName })}
           </p>
         </div>
@@ -73,7 +73,7 @@ const BookingLeadForm = () => {
   }
 
   return (
-    <div className="rounded-[22px] bg-white p-[34px] text-ink shadow-[0_30px_70px_rgba(0,0,0,0.3)]">
+    <div className="rounded-[22px] border border-transparent bg-card p-[34px] text-fg shadow-[0_30px_70px_rgba(0,0,0,0.3)] dark:border-white/10">
       <form
         action={handleSubmit}
         name="cta"
@@ -133,7 +133,7 @@ const BookingLeadForm = () => {
               <select
                 id="lead-cert"
                 name="certification"
-                className={`${inputClass} bg-white`}
+                className={`${inputClass} bg-card`}
                 defaultValue={t("booking.expFirst")}
               >
                 <option>{t("booking.expFirst")}</option>
@@ -148,7 +148,7 @@ const BookingLeadForm = () => {
               <select
                 id="lead-guests"
                 name="guestCount"
-                className={`${inputClass} bg-white`}
+                className={`${inputClass} bg-card`}
                 defaultValue="1"
               >
                 <option>1</option>
@@ -172,7 +172,7 @@ const BookingLeadForm = () => {
               t("booking.submit")
             )}
           </button>
-          <p className="text-center text-[12.5px] text-[#7c8f93]">
+          <p className="text-center text-[12.5px] text-faint">
             {t("booking.disclaimer")}
           </p>
         </div>

@@ -14,7 +14,7 @@ const CustomPagePayPal = () => {
       <div className="mx-auto mb-6 w-full max-w-[13rem]">
         <label
           htmlFor="deposit"
-          className="mb-1.5 block text-center text-[13px] font-semibold text-[#12303a]"
+          className="mb-1.5 block text-center text-[13px] font-semibold text-fg"
         >
           {t("depositAmount")}
         </label>
@@ -22,7 +22,7 @@ const CustomPagePayPal = () => {
           type="number"
           name="deposit"
           id="deposit"
-          className="w-full rounded-[11px] border-[1.5px] border-[#d7e0e0] bg-white px-[15px] py-[13px] text-center text-[15px] text-ink outline-none transition-colors focus:border-accent"
+          className="w-full rounded-[11px] border-[1.5px] border-line-strong bg-card px-[15px] py-[13px] text-center text-[15px] text-fg outline-none transition-colors focus:border-accent"
           required
           onChange={updatePrice}
         />

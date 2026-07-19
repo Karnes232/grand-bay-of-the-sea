@@ -87,12 +87,12 @@ export default async function Page({
       )}
 
       <section className="mx-auto max-w-[1280px] px-6 pb-24 pt-14">
-        <div className="mx-auto max-w-[640px] rounded-[20px] border border-[#e2e9e9] bg-white p-7 text-center md:p-10">
-          <h2 className="font-display text-[clamp(1.5rem,2.4vw,2rem)] font-bold tracking-[-0.02em] text-ink">
+        <div className="mx-auto max-w-[640px] rounded-[20px] border border-line bg-card p-7 text-center md:p-10">
+          <h2 className="font-display text-[clamp(1.5rem,2.4vw,2rem)] font-bold tracking-[-0.02em] text-fg">
             {t("thankYou")}
             {name ? ` ${name}` : ""}, {t("ourTeamWillReachOut")}
           </h2>
-          <p className="mt-4 text-[15px] leading-relaxed text-[#3d5459]">
+          <p className="mt-4 text-[15px] leading-relaxed text-muted">
             {t("pleaseFeelFreeTo")}{" "}
             <a
               href={`mailto:${BUSINESS.email}`}

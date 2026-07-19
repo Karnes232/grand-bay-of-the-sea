@@ -26,7 +26,7 @@ const WhyUnique = ({
       <div className="grid grid-cols-1 items-center gap-[60px] lg:grid-cols-[1.05fr_1fr]">
         <div>
           {heading && (
-            <h2 className="mb-[22px] font-display text-[clamp(2rem,3.8vw,3.1rem)] font-bold leading-[1.02] tracking-[-0.03em] text-balance text-ink">
+            <h2 className="mb-[22px] font-display text-[clamp(2rem,3.8vw,3.1rem)] font-bold leading-[1.02] tracking-[-0.03em] text-balance text-fg">
               {heading}
             </h2>
           )}

@@ -301,7 +301,11 @@
     "excursionEyebrow": "The excursion",
     "factDuration": "Duration",
     "factDives": "Dives",
-    "factDivesValue": "2 guided"
+    "factDivesValue": "2 guided",
+    "tripDayHeading": "Your day on the water",
+    "ctaHeading": "Ready to dive in?",
+    "ctaBody": "Reserve your spot with just a deposit — we'll confirm your date and handle the rest.",
+    "ctaLabel": "Reserve now"
   },
   "Liveaboard": {
     "expeditionsEyebrow": "Expeditions",

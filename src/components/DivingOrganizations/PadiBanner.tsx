@@ -13,7 +13,7 @@ const PadiBanner = async () => {
 
   const commonPadi = { alt: "Padi Logo", width: 480, height: 150 }
   const {
-    props: { srcSet: darkPadi },
+    props: { srcSet: darkPadi, ...restDarkPadi },
   } = getImageProps({
     ...commonPadi,
     src: settings.padiLogoDark?.asset?.url ?? "",
@@ -26,11 +26,20 @@ const PadiBanner = async () => {
   })
   return (
     <div className="mt-5 mb-10 mx-5 max-w-6xl md:mx-auto flex flex-col justify-center items-center">
-      <picture className="mb-8 object-cover">
-        <source media="(prefers-color-scheme: dark)" srcSet={darkPadi} />
-        <source media="(prefers-color-scheme: light)" srcSet={lightPadi} />
-        <img {...restPadi} alt={commonPadi.alt} />
-      </picture>
+      {/* Class-driven light/dark swap — the site theme is toggled via the
+          `.dark` class, so a prefers-color-scheme <picture> would desync. */}
+      <img
+        {...restPadi}
+        srcSet={lightPadi}
+        alt={commonPadi.alt}
+        className="mb-8 object-cover dark:hidden"
+      />
+      <img
+        {...restDarkPadi}
+        srcSet={darkPadi}
+        alt={commonPadi.alt}
+        className="mb-8 hidden object-cover dark:block"
+      />
 
       {/* display:none wrappers never intersect, so only the visible
           breakpoint's widget actually loads (previously both did). */}

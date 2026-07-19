@@ -37,7 +37,7 @@ function renderNextImage(
 ) {
   return (
     <div
-      className="group relative overflow-hidden rounded-[16px] bg-[#dce6e6]"
+      className="group relative overflow-hidden rounded-[16px] bg-line"
       style={{ width: "100%", aspectRatio: `${width} / ${height}` }}
     >
       <Image
@@ -101,7 +101,7 @@ const PhotoGallery = ({ photos }: { photos: PhotoGallery["photoList"] }) => {
         className={`rounded-full border px-5 py-2.5 text-[14.5px] font-semibold transition-colors ${
           isActive
             ? "border-accent bg-accent text-ink"
-            : "border-[#d7e0e0] bg-white text-[#3d5459] hover:border-accent"
+            : "border-line-strong bg-card text-muted hover:border-accent"
         }`}
       >
         {label}

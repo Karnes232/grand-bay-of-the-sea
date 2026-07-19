@@ -2,6 +2,7 @@ import React from "react"
 import Links from "./Links"
 import HamburgerMenu from "./HamburgerMenu"
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle"
 import { Link } from "@/i18n/navigation"
 import { getTranslations } from "next-intl/server"
 
@@ -14,6 +15,9 @@ const Nav = async () => {
       </div>
       <div className="hidden xl:block">
         <LanguageSwitcher color="white" className="" />
+      </div>
+      <div className="hidden xl:block">
+        <ThemeToggle />
       </div>
       <Link
         href="/contact"

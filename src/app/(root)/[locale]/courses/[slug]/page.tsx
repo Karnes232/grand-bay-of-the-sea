@@ -145,7 +145,7 @@ export default async function Page({
 
       {/* About the course split */}
       <section className="mx-auto max-w-[1280px] px-6 py-8">
-        <div className="grid grid-cols-1 overflow-hidden rounded-[24px] border border-[#e2e9e9] bg-white md:grid-cols-2">
+        <div className="grid grid-cols-1 overflow-hidden rounded-[24px] border border-line bg-card md:grid-cols-2">
           <div className="flex flex-col justify-center p-[clamp(32px,4vw,56px)]">
             <BlockContent content={c.paragraph2} locale={locale} variant="prose" />
           </div>
@@ -181,7 +181,7 @@ export default async function Page({
                 key={i}
                 className="grid grid-cols-[auto_1fr] items-start gap-[26px]"
               >
-                <span className="font-display text-[3rem] font-extrabold leading-none tracking-[-0.03em] text-[#dce6e6]">
+                <span className="font-display text-[3rem] font-extrabold leading-none tracking-[-0.03em] text-line">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <BlockContent content={step} locale={locale} variant="prose" />

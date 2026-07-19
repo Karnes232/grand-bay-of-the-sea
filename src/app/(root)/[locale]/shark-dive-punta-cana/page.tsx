@@ -190,7 +190,7 @@ export default async function Home({
           href="https://www.youtube.com/watch?v=KT_fnLkw_bc"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-center text-sm text-[#5f7378] underline underline-offset-2 hover:text-ink"
+          className="text-center text-sm text-muted underline underline-offset-2 hover:text-fg"
         >
           {s.featuredIn?.[locale]}
         </a>
@@ -198,7 +198,7 @@ export default async function Home({
 
       {/* "Not ready yet?" split */}
       <section className="mx-auto max-w-[1280px] px-6 py-8">
-        <div className="grid grid-cols-1 overflow-hidden rounded-[24px] border border-[#e2e9e9] bg-white md:grid-cols-2">
+        <div className="grid grid-cols-1 overflow-hidden rounded-[24px] border border-line bg-card md:grid-cols-2">
           {splitSrc && (
             <div className="relative min-h-[340px]">
               <Image

@@ -142,12 +142,12 @@ export default async function Page({
             {liveaboards.stats.map((stat, i) => (
               <div
                 key={i}
-                className="rounded-[18px] border border-[#e2e9e9] bg-white p-6"
+                className="rounded-[18px] border border-line bg-card p-6"
               >
                 <div className="mb-2 text-[12.5px] font-semibold uppercase tracking-[0.1em] text-moss">
                   {stat.label?.[locale]}
                 </div>
-                <div className="font-display text-[1.3rem] font-bold tracking-[-0.02em] text-ink">
+                <div className="font-display text-[1.3rem] font-bold tracking-[-0.02em] text-fg">
                   {stat.value?.[locale]}
                 </div>
               </div>
@@ -162,7 +162,7 @@ export default async function Page({
           <span className="mb-3 inline-block text-[13px] font-semibold uppercase tracking-[0.14em] text-moss">
             {t("expeditionsEyebrow")}
           </span>
-          <h2 className="font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-bold leading-[1.04] tracking-[-0.03em] text-balance text-ink">
+          <h2 className="font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-bold leading-[1.04] tracking-[-0.03em] text-balance text-fg">
             {t("expeditionsHeading")}
           </h2>
         </div>
@@ -176,10 +176,10 @@ export default async function Page({
               key={i}
               href={exp.href}
               aria-label={exp.title}
-              className="group grid grid-cols-1 overflow-hidden rounded-[24px] border border-[#e2e9e9] bg-white no-underline transition-shadow duration-300 hover:shadow-[0_22px_48px_rgba(11,33,41,0.13)] lg:grid-cols-2"
+              className="group grid grid-cols-1 overflow-hidden rounded-[24px] border border-line bg-card no-underline transition-shadow duration-300 hover:shadow-[0_22px_48px_rgba(11,33,41,0.13)] lg:grid-cols-2"
             >
               <div
-                className={`relative min-h-[300px] overflow-hidden bg-[#dce6e6] lg:min-h-[400px] ${
+                className={`relative min-h-[300px] overflow-hidden bg-line lg:min-h-[400px] ${
                   i % 2 === 1 ? "lg:order-2" : ""
                 }`}
               >
@@ -196,7 +196,7 @@ export default async function Page({
                 />
               </div>
               <div className="flex flex-col p-[clamp(30px,3.5vw,48px)]">
-                <h3 className="mb-3 font-display text-[clamp(1.6rem,2.6vw,2.1rem)] font-bold leading-[1.05] tracking-[-0.02em] text-ink">
+                <h3 className="mb-3 font-display text-[clamp(1.6rem,2.6vw,2.1rem)] font-bold leading-[1.05] tracking-[-0.02em] text-fg">
                   {exp.title}
                 </h3>
                 <BlockContent
@@ -204,7 +204,7 @@ export default async function Page({
                   locale={locale}
                   variant="prose"
                 />
-                <span className="mt-auto inline-flex items-center gap-2 pt-4 text-[15.5px] font-semibold text-ink">
+                <span className="mt-auto inline-flex items-center gap-2 pt-4 text-[15.5px] font-semibold text-fg">
                   {t("viewExpedition")} <span className="text-accent">→</span>
                 </span>
               </div>

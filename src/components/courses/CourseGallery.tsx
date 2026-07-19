@@ -48,7 +48,7 @@ const CourseGallery = ({
 
   return (
     <section className="mx-auto max-w-[1280px] px-6 pb-6 pt-14">
-      <h2 className="mb-[26px] font-display text-[clamp(1.7rem,3vw,2.4rem)] font-bold leading-[1.05] tracking-[-0.03em] text-ink">
+      <h2 className="mb-[26px] font-display text-[clamp(1.7rem,3vw,2.4rem)] font-bold leading-[1.05] tracking-[-0.03em] text-fg">
         {heading}
       </h2>
       <div className="grid auto-rows-[200px] grid-cols-2 gap-3.5 md:grid-cols-4">

@@ -40,7 +40,7 @@ const TripGrid = ({
           <Link
             key={trip.page}
             href={`/trips/${trip.slug.current}`}
-            className="group grid grid-cols-1 overflow-hidden rounded-[24px] border border-[#e2e9e9] bg-white md:grid-cols-2"
+            className="group grid grid-cols-1 overflow-hidden rounded-[24px] border border-line bg-card md:grid-cols-2"
           >
             <div
               className={`relative order-1 min-h-[280px] overflow-hidden md:min-h-[420px] ${
@@ -70,15 +70,15 @@ const TripGrid = ({
               <span className="mb-3 inline-block text-[13px] font-semibold uppercase tracking-[0.14em] text-moss">
                 {eyebrow}
               </span>
-              <h3 className="mb-3.5 font-display text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold leading-[1.05] tracking-[-0.02em] text-ink">
+              <h3 className="mb-3.5 font-display text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold leading-[1.05] tracking-[-0.02em] text-fg">
                 {trip.cardTitle?.[locale]}
               </h3>
-              <p className="mb-[22px] text-base leading-relaxed text-[#4a5f63]">
+              <p className="mb-[22px] text-base leading-relaxed text-muted">
                 {trip.cardDescription?.[locale]}
               </p>
 
               {trip.duration?.[locale] && (
-                <div className="mb-[18px] inline-flex w-fit items-center gap-2 rounded-full bg-[#f4f7f6] px-3.5 py-1.5 text-[13px] font-semibold text-ink">
+                <div className="mb-[18px] inline-flex w-fit items-center gap-2 rounded-full bg-surface-soft px-3.5 py-1.5 text-[13px] font-semibold text-fg">
                   {trip.duration[locale]}
                 </div>
               )}
@@ -88,7 +88,7 @@ const TripGrid = ({
                   {trip.extras.map((extra, x) => (
                     <li
                       key={x}
-                      className="flex items-center gap-2.5 text-[14.5px] text-[#3d5459]"
+                      className="flex items-center gap-2.5 text-[14.5px] text-muted"
                     >
                       <span className="grid h-[22px] w-[22px] flex-none place-items-center rounded-full bg-moss/[0.14] text-[12px] text-moss">
                         ✓
@@ -99,13 +99,13 @@ const TripGrid = ({
                 </ul>
               )}
 
-              <div className="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-[#eef3f3] pt-5">
+              <div className="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-surface-soft pt-5">
                 {trip.price != null && (
                   <div>
-                    <span className="font-display text-[1.9rem] font-extrabold tracking-[-0.03em] text-ink">
+                    <span className="font-display text-[1.9rem] font-extrabold tracking-[-0.03em] text-fg">
                       ${trip.price}
                     </span>
-                    <span className="text-sm text-[#7c8f93]"> {perDiverLabel}</span>
+                    <span className="text-sm text-faint"> {perDiverLabel}</span>
                   </div>
                 )}
                 <span className="rounded-full bg-accent px-[26px] py-3.5 text-[15.5px] font-semibold text-ink shadow-[0_10px_26px_rgba(255,106,61,0.28)] transition-transform group-hover:-translate-y-0.5">

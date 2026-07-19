@@ -15,12 +15,12 @@ const CourseStats = ({
       {shown.map(stat => (
         <div
           key={stat.label}
-          className="rounded-2xl border border-[#e2e9e9] bg-white p-[22px]"
+          className="rounded-2xl border border-line bg-card p-[22px]"
         >
           <div className="mb-2 text-[12.5px] font-semibold uppercase tracking-[0.1em] text-moss">
             {stat.label}
           </div>
-          <div className="font-display text-[1.3rem] font-bold tracking-[-0.02em] text-ink">
+          <div className="font-display text-[1.3rem] font-bold tracking-[-0.02em] text-fg">
             {stat.value}
           </div>
         </div>

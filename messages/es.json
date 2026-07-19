@@ -301,7 +301,11 @@
     "excursionEyebrow": "La excursión",
     "factDuration": "Duración",
     "factDives": "Inmersiones",
-    "factDivesValue": "2 guiadas"
+    "factDivesValue": "2 guiadas",
+    "tripDayHeading": "Tu día en el mar",
+    "ctaHeading": "¿Listo para la aventura?",
+    "ctaBody": "Reserva tu cupo con solo un depósito — confirmamos tu fecha y nos encargamos del resto.",
+    "ctaLabel": "Reserva ahora"
   },
   "Liveaboard": {
     "expeditionsEyebrow": "Expediciones",

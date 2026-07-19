@@ -147,7 +147,7 @@ export default async function Page({
         {/* Intro split */}
         <section className="mx-auto max-w-[1080px] px-6 pb-2 pt-[88px]">
           {coursesMainPage.introHeading?.[locale] && (
-            <h2 className="mb-[22px] font-display text-[clamp(1.9rem,3.6vw,2.8rem)] font-bold leading-[1.05] tracking-[-0.03em] text-balance text-ink">
+            <h2 className="mb-[22px] font-display text-[clamp(1.9rem,3.6vw,2.8rem)] font-bold leading-[1.05] tracking-[-0.03em] text-balance text-fg">
               {coursesMainPage.introHeading[locale]}
             </h2>
           )}
@@ -176,7 +176,7 @@ export default async function Page({
               <Eyebrow>{coursesMainPage.beginnerEyebrow[locale]}</Eyebrow>
             )}
             {coursesMainPage.beginnerHeading?.[locale] && (
-              <h2 className="mb-4 font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-bold leading-[1.05] tracking-[-0.03em] text-balance text-ink">
+              <h2 className="mb-4 font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-bold leading-[1.05] tracking-[-0.03em] text-balance text-fg">
                 {coursesMainPage.beginnerHeading[locale]}
               </h2>
             )}
@@ -196,7 +196,7 @@ export default async function Page({
         {/* Already certified? split */}
         <section className="mx-auto max-w-[1080px] px-6 pb-2 pt-[72px]">
           {coursesMainPage.advancedHeading?.[locale] && (
-            <h2 className="mb-[22px] font-display text-[clamp(1.9rem,3.6vw,2.8rem)] font-bold leading-[1.05] tracking-[-0.03em] text-balance text-ink">
+            <h2 className="mb-[22px] font-display text-[clamp(1.9rem,3.6vw,2.8rem)] font-bold leading-[1.05] tracking-[-0.03em] text-balance text-fg">
               {coursesMainPage.advancedHeading[locale]}
             </h2>
           )}

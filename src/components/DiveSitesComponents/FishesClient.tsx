@@ -32,7 +32,7 @@ const FishesClient = ({
         <div className="relative w-full max-w-[560px]">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
             <svg
-              className="h-5 w-5 text-[#8a9a9e]"
+              className="h-5 w-5 text-faint"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -51,7 +51,7 @@ const FishesClient = ({
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder={locale === "es" ? "Buscar peces..." : "Search fish..."}
-            className="block w-full rounded-full border-[1.5px] border-[#d7e0e0] bg-white py-3.5 pl-11 pr-4 text-[15px] text-ink outline-none transition-colors placeholder:text-[#8a9a9e] focus:border-accent"
+            className="block w-full rounded-full border-[1.5px] border-line-strong bg-card py-3.5 pl-11 pr-4 text-[15px] text-fg outline-none transition-colors placeholder:text-faint focus:border-accent"
           />
         </div>
       </div>
@@ -65,7 +65,7 @@ const FishesClient = ({
         </div>
       ) : (
         <div className="w-full py-12 text-center">
-          <p className="text-lg text-[#4a5f63]">
+          <p className="text-lg text-muted">
             {locale === "es"
               ? "No se encontraron peces con ese nombre."
               : "No fish found with that name."}

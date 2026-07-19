@@ -59,7 +59,7 @@ const DiveSiteCard = async ({
   const blurb = diveSite.cardDescription?.[locale] ?? diveSite.description?.[locale]
 
   const Card = (
-    <div className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-[#e2e9e9] bg-white transition-all duration-300 ease-smooth hover:-translate-y-[5px] hover:shadow-[0_22px_48px_rgba(11,33,41,0.13)]">
+    <div className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-line bg-card transition-all duration-300 ease-smooth hover:-translate-y-[5px] hover:shadow-[0_22px_48px_rgba(11,33,41,0.13)]">
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
           src={src}
@@ -89,10 +89,10 @@ const DiveSiteCard = async ({
             {locationLabel}
           </span>
         )}
-        <h3 className="mb-2 font-display text-[1.3rem] font-bold tracking-[-0.02em] text-ink">
+        <h3 className="mb-2 font-display text-[1.3rem] font-bold tracking-[-0.02em] text-fg">
           {diveSite.name}
         </h3>
-        <p className="flex-1 text-[14.5px] leading-relaxed text-[#4a5f63]">
+        <p className="flex-1 text-[14.5px] leading-relaxed text-muted">
           {blurb}
         </p>
         {isShark && (

@@ -6,9 +6,9 @@ import React, { useRef, useState } from "react"
 import { CgSpinner } from "react-icons/cg"
 import CertificationLevel from "../PaymentComponents/CertificationLevel"
 
-const labelClass = "mb-1.5 block text-[13px] font-semibold text-[#12303a]"
+const labelClass = "mb-1.5 block text-[13px] font-semibold text-fg"
 const inputClass =
-  "w-full rounded-[11px] border-[1.5px] border-[#d7e0e0] bg-white px-[15px] py-[13px] text-[15px] text-ink outline-none transition-colors focus:border-accent"
+  "w-full rounded-[11px] border-[1.5px] border-line-strong bg-card px-[15px] py-[13px] text-[15px] text-fg outline-none transition-colors focus:border-accent"
 
 const ContactForm = ({
   onSubmit,
@@ -70,11 +70,11 @@ const ContactForm = ({
   }
 
   return (
-    <div className="rounded-[22px] border border-[#e2e9e9] bg-white p-[clamp(28px,3vw,40px)] shadow-[0_20px_50px_rgba(11,33,41,0.06)]">
-      <h2 className="mb-1.5 font-display text-[clamp(1.5rem,2.4vw,2rem)] font-bold tracking-[-0.02em] text-ink">
+    <div className="rounded-[22px] border border-line bg-card p-[clamp(28px,3vw,40px)] shadow-[0_20px_50px_rgba(11,33,41,0.06)]">
+      <h2 className="mb-1.5 font-display text-[clamp(1.5rem,2.4vw,2rem)] font-bold tracking-[-0.02em] text-fg">
         {t("heading")}
       </h2>
-      <p className="mb-6 text-[15px] text-[#4a5f63]">{t("subheading")}</p>
+      <p className="mb-6 text-[15px] text-muted">{t("subheading")}</p>
 
       <form
         action={handleSubmit}
@@ -133,6 +133,7 @@ const ContactForm = ({
             <CertificationLevel
               setFormData={setCertificationData}
               formData={certificationData}
+              themed
             />
           </div>
         </div>

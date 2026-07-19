@@ -163,55 +163,55 @@ const proseComponents = {
       </a>
     ),
     strong: ({ children }: any) => (
-      <strong className="font-semibold text-ink">{children}</strong>
+      <strong className="font-semibold text-fg">{children}</strong>
     ),
     em: ({ children }: any) => <em className="italic">{children}</em>,
   },
   block: {
     normal: ({ children }: any) => (
-      <p className="mb-5 text-[17px] leading-relaxed text-[#3d5459]">
+      <p className="mb-5 text-[17px] leading-relaxed text-muted">
         {children}
       </p>
     ),
     h1: ({ children }: any) => (
-      <h2 className="mb-4 font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
+      <h2 className="mb-4 font-display text-3xl font-bold tracking-tight text-fg md:text-4xl">
         {children}
       </h2>
     ),
     h2: ({ children }: any) => (
-      <h2 className="mb-4 font-display text-2xl font-bold tracking-tight text-ink md:text-3xl">
+      <h2 className="mb-4 font-display text-2xl font-bold tracking-tight text-fg md:text-3xl">
         {children}
       </h2>
     ),
     h3: ({ children }: any) => (
-      <h3 className="mb-3 font-display text-xl font-bold tracking-tight text-ink md:text-2xl">
+      <h3 className="mb-3 font-display text-xl font-bold tracking-tight text-fg md:text-2xl">
         {children}
       </h3>
     ),
     h4: ({ children }: any) => (
-      <h4 className="mb-3 font-display text-lg font-bold tracking-tight text-ink md:text-xl">
+      <h4 className="mb-3 font-display text-lg font-bold tracking-tight text-fg md:text-xl">
         {children}
       </h4>
     ),
     h5: ({ children }: any) => (
-      <h5 className="mb-2 font-display text-base font-bold tracking-tight text-ink md:text-lg">
+      <h5 className="mb-2 font-display text-base font-bold tracking-tight text-fg md:text-lg">
         {children}
       </h5>
     ),
     h6: ({ children }: any) => (
-      <h6 className="mb-2 font-display text-base font-bold tracking-tight text-ink">
+      <h6 className="mb-2 font-display text-base font-bold tracking-tight text-fg">
         {children}
       </h6>
     ),
   },
   list: {
     bullet: ({ children }: any) => (
-      <ul className="mb-5 ml-5 list-disc space-y-2 text-[17px] leading-relaxed text-[#3d5459]">
+      <ul className="mb-5 ml-5 list-disc space-y-2 text-[17px] leading-relaxed text-muted">
         {children}
       </ul>
     ),
     number: ({ children }: any) => (
-      <ol className="mb-5 ml-5 list-decimal space-y-2 text-[17px] leading-relaxed text-[#3d5459]">
+      <ol className="mb-5 ml-5 list-decimal space-y-2 text-[17px] leading-relaxed text-muted">
         {children}
       </ol>
     ),

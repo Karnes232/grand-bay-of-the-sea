@@ -23,8 +23,8 @@ const ShareLinks = ({ url, label }: { url: string; label: string }) => {
   ]
 
   return (
-    <aside className="flex flex-row flex-wrap items-center gap-[10px] lg:sticky lg:top-24 lg:flex-col lg:items-start lg:border-l lg:border-[#e2e9e9] lg:pl-5">
-      <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#7c8f93] lg:mb-0.5 lg:w-full">
+    <aside className="flex flex-row flex-wrap items-center gap-[10px] lg:sticky lg:top-24 lg:flex-col lg:items-start lg:border-l lg:border-line lg:pl-5">
+      <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-faint lg:mb-0.5 lg:w-full">
         {label}
       </span>
       {links.map(l => (
@@ -34,7 +34,7 @@ const ShareLinks = ({ url, label }: { url: string; label: string }) => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${label}: ${l.label}`}
-          className="grid h-[44px] w-[44px] place-items-center rounded-[12px] border-[1.5px] border-[#d7e0e0] text-[#3d5459] transition-all hover:border-accent hover:bg-accent hover:text-ink"
+          className="grid h-[44px] w-[44px] place-items-center rounded-[12px] border-[1.5px] border-line-strong text-muted transition-all hover:border-accent hover:bg-accent hover:text-ink"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d={l.path} />

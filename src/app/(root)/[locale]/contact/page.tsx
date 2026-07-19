@@ -111,12 +111,12 @@ export default async function Page({
           <ContactForm />
 
           <div className="flex flex-col gap-5">
-            <div className="overflow-hidden rounded-[20px] border border-[#e2e9e9]">
+            <div className="overflow-hidden rounded-[20px] border border-line">
               <GoogleMaps variant="card" />
             </div>
 
-            <div className="rounded-[20px] border border-[#e2e9e9] bg-white p-7">
-              <h3 className="mb-4 font-display text-[1.25rem] font-bold tracking-[-0.02em] text-ink">
+            <div className="rounded-[20px] border border-line bg-card p-7">
+              <h3 className="mb-4 font-display text-[1.25rem] font-bold tracking-[-0.02em] text-fg">
                 {contact.visitHeading?.[locale]}
               </h3>
               <div className="mb-3.5 flex items-start gap-3">
@@ -126,7 +126,7 @@ export default async function Page({
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                 </span>
-                <p className="text-[15px] leading-relaxed text-[#3d5459]">
+                <p className="text-[15px] leading-relaxed text-muted">
                   {`${BUSINESS.streetAddress}, ${BUSINESS.addressLocality}, ${BUSINESS.addressRegion}, ${tInfo("country")}`}
                 </p>
               </div>
@@ -140,7 +140,7 @@ export default async function Page({
               </a>
 
               {/* Opening hours */}
-              <div className="mt-5 flex items-start gap-3 border-t border-[#eef3f3] pt-5">
+              <div className="mt-5 flex items-start gap-3 border-t border-surface-soft pt-5">
                 <span className="mt-0.5 flex-none text-accent">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="9" />
@@ -151,10 +151,10 @@ export default async function Page({
                   <div className="text-[12.5px] font-semibold uppercase tracking-[0.1em] text-moss">
                     {contact.hoursEyebrow?.[locale]}
                   </div>
-                  <div className="mt-0.5 text-[15px] font-semibold text-ink">
+                  <div className="mt-0.5 text-[15px] font-semibold text-fg">
                     {contact.hoursValue?.[locale]}
                   </div>
-                  <div className="mt-0.5 text-[13.5px] leading-relaxed text-[#4a5f63]">
+                  <div className="mt-0.5 text-[13.5px] leading-relaxed text-muted">
                     {contact.hoursDesc?.[locale]}
                   </div>
                 </div>
@@ -165,7 +165,7 @@ export default async function Page({
                   href={BUSINESS.padiUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-full bg-[#eef3f3] px-4 py-2.5 text-[13px] font-semibold text-ink"
+                  className="inline-flex items-center rounded-full bg-surface-soft px-4 py-2.5 text-[13px] font-semibold text-fg"
                 >
                   PADI #{BUSINESS.padiNumber}
                 </a>

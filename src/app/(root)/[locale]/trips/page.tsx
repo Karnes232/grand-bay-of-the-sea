@@ -181,10 +181,10 @@ export default async function Page({
       {tripSteps.length > 0 && (
         <section className="mx-auto max-w-[1280px] px-6 pb-6 pt-16">
           <div className="mb-10 max-w-[640px]">
-            <h2 className="mb-3 font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-bold leading-[1.04] tracking-[-0.03em] text-balance text-ink">
+            <h2 className="mb-3 font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-bold leading-[1.04] tracking-[-0.03em] text-balance text-fg">
               {diveTripsPage.tripDayHeading?.[locale]}
             </h2>
-            <p className="text-base leading-relaxed text-[#3d5459]">
+            <p className="text-base leading-relaxed text-muted">
               {diveTripsPage.tripDayIntro?.[locale]}
             </p>
           </div>
@@ -192,22 +192,22 @@ export default async function Page({
             {tripSteps.map((step, i) => (
               <div
                 key={i}
-                className="rounded-[18px] border border-[#e2e9e9] bg-white p-[26px]"
+                className="rounded-[18px] border border-line bg-card p-[26px]"
               >
-                <span className="font-display text-[2rem] font-extrabold leading-none tracking-[-0.03em] text-[#dce6e6]">
+                <span className="font-display text-[2rem] font-extrabold leading-none tracking-[-0.03em] text-line">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h4 className="mb-1.5 mt-3 font-display text-[1.15rem] font-bold tracking-tight text-ink">
+                <h4 className="mb-1.5 mt-3 font-display text-[1.15rem] font-bold tracking-tight text-fg">
                   {step.stepTitle?.[locale]}
                 </h4>
-                <p className="text-sm leading-relaxed text-[#4a5f63]">
+                <p className="text-sm leading-relaxed text-muted">
                   {step.stepBody?.[locale]}
                 </p>
               </div>
             ))}
           </div>
           {diveTripsPage.tripDayNote?.[locale] && (
-            <p className="mt-5 text-sm italic text-[#7c8f93]">
+            <p className="mt-5 text-sm italic text-faint">
               {diveTripsPage.tripDayNote[locale]}
             </p>
           )}

@@ -115,8 +115,8 @@ export default async function Page({
         <BlockContent content={bodyContent} locale={locale} variant="prose" />
 
         {/* Contact CTA */}
-        <div className="mt-14 border-t border-[#e2e9e9] pt-10">
-          <p className="mb-5 text-[16.5px] text-[#3d5459]">
+        <div className="mt-14 border-t border-line pt-10">
+          <p className="mb-5 text-[16.5px] text-muted">
             {cancellationPolicy.contactPrompt?.[locale]}
           </p>
           <div className="flex flex-wrap gap-3">
@@ -128,7 +128,7 @@ export default async function Page({
             </Link>
             <a
               href={`mailto:${BUSINESS.email}`}
-              className="rounded-full border border-[#d7e0e0] px-6 py-3.5 text-[15px] font-semibold text-ink transition-colors hover:border-accent"
+              className="rounded-full border border-line-strong px-6 py-3.5 text-[15px] font-semibold text-fg transition-colors hover:border-accent"
             >
               {BUSINESS.email}
             </a>

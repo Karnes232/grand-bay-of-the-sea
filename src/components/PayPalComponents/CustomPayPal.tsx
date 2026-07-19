@@ -26,7 +26,7 @@ const CustomPayPal = ({ price }) => {
             showSpinner={false}
           />
         </PayPalScriptProvider>
-        <p className="mx-6 mt-2 text-wrap text-[13.5px] leading-relaxed text-[#4a5f63]">
+        <p className="mx-6 mt-2 text-wrap text-[13.5px] leading-relaxed text-muted">
           {t("byProceedingWithPayment")}{" "}
           <Link
             href={"/terms-and-conditions"}

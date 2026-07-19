@@ -180,8 +180,8 @@ export default function LanguageSwitcher({
           aria-expanded={isOpen}
           className={`flex items-center space-x-1 text-${color} transition-all duration-200 p-2 rounded-lg ${
             isLoading
-              ? "opacity-70 cursor-not-allowed bg-orange-50 scale-95"
-              : "hover:text-orange-500 hover:bg-orange-50 hover:scale-105"
+              ? "opacity-70 cursor-not-allowed bg-accent/10 scale-95"
+              : "hover:text-accent hover:bg-accent/10 hover:scale-105"
           }`}
         >
           {isLoading ? (
@@ -204,7 +204,7 @@ export default function LanguageSwitcher({
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-slate-200 py-2 z-50">
+        <div className="absolute top-full right-0 mt-2 w-48 bg-card rounded-lg shadow-xl border border-line py-2 z-50">
           {languageOptions.map(lng => {
             const isActive = safeLocale === lng.code
             const isChangingToThis = isLoading && !isActive
@@ -216,11 +216,11 @@ export default function LanguageSwitcher({
                 className={`w-full text-left px-4 py-2 flex items-center space-x-3 transition-all duration-200 ${
                   isLoading
                     ? isChangingToThis
-                      ? "bg-orange-50 text-orange-600 cursor-not-allowed"
+                      ? "bg-accent/10 text-accent cursor-not-allowed"
                       : "opacity-50 cursor-not-allowed"
                     : isActive
-                      ? "bg-orange-50 text-orange-600"
-                      : "text-slate-700 hover:bg-orange-50 hover:text-orange-600"
+                      ? "bg-accent/10 text-accent"
+                      : "text-muted hover:bg-accent/10 hover:text-accent"
                 }`}
               >
                 <span

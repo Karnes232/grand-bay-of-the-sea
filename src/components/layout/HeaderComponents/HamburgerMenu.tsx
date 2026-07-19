@@ -10,6 +10,7 @@ import {
 } from "@headlessui/react"
 import { Bars3Icon } from "@heroicons/react/24/outline"
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle"
 import { useTranslations } from "next-intl"
 
 const HamburgerMenu = () => {
@@ -56,7 +57,7 @@ const HamburgerMenu = () => {
             <MenuItems
               anchor="bottom"
               static
-              className={`absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none cursor-default z-50 ${
+              className={`absolute right-0 w-56 mt-2 origin-top-right bg-card border border-line divide-y divide-line rounded-md shadow-lg outline-none cursor-default z-50 ${
                 isLanguageDropdownOpen ? "pb-32" : ""
               }`}
             >
@@ -66,7 +67,7 @@ const HamburgerMenu = () => {
                     <MenuItem key={link.href}>
                       <Link href={link.href} className="no-underline">
                         <button
-                          className={`active:bg-gray-100 active:text-gray-900 text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
+                          className={`active:bg-surface-soft active:text-fg text-muted flex justify-between w-full px-4 py-2 text-sm leading-5 text-left`}
                         >
                           {link.label}
                         </button>
@@ -77,10 +78,11 @@ const HamburgerMenu = () => {
               </>
               <div className="px-3 flex flex-col justify-center pb-2">
                 <LanguageSwitcher
-                  color="gray-700"
+                  color="muted"
                   className=""
                   onDropdownToggle={isOpen => setIsLanguageDropdownOpen(isOpen)}
                 />
+                <ThemeToggle variant="menu" />
               </div>
             </MenuItems>
           </Transition>

@@ -3,7 +3,7 @@ import { PortableText } from "@portabletext/react"
 import Image from "next/image"
 import { urlFor } from "@/sanity/lib/image"
 
-const bodyText = "text-[17px] leading-[1.8] text-[#3d5459]"
+const bodyText = "text-[17px] leading-[1.8] text-muted"
 
 const listClasses = `mb-[22px] ml-[22px] flex flex-col gap-[9px] ${bodyText}`
 
@@ -18,7 +18,7 @@ const components = {
 
       return (
         <figure className="my-10 md:my-12">
-          <div className="overflow-hidden rounded-[20px] border border-[#e2e9e9]">
+          <div className="overflow-hidden rounded-[20px] border border-line">
             <Image
               src={imageUrl}
               alt={value.alt || ""}
@@ -29,7 +29,7 @@ const components = {
             />
           </div>
           {value.caption && (
-            <figcaption className="mt-3 px-1 text-center text-sm italic leading-relaxed text-[#7c8f93]">
+            <figcaption className="mt-3 px-1 text-center text-sm italic leading-relaxed text-faint">
               {value.caption}
             </figcaption>
           )}
@@ -48,10 +48,10 @@ const components = {
       </a>
     ),
     strong: ({ children }: any) => (
-      <strong className="font-semibold text-[#12303a]">{children}</strong>
+      <strong className="font-semibold text-fg">{children}</strong>
     ),
     em: ({ children }: any) => (
-      <em className="italic text-[#12303a]">{children}</em>
+      <em className="italic text-fg">{children}</em>
     ),
   },
   block: {
@@ -61,37 +61,37 @@ const components = {
     // Authored h1 blocks render as <h2>: the page template owns the single
     // <h1> (the post title), so an in-body h1 would create a duplicate.
     h1: ({ children }: any) => (
-      <h2 className="mb-4 mt-11 scroll-mt-24 font-display text-[clamp(1.5rem,2.6vw,2rem)] font-bold leading-[1.1] tracking-[-0.02em] text-ink first:mt-0">
+      <h2 className="mb-4 mt-11 scroll-mt-24 font-display text-[clamp(1.5rem,2.6vw,2rem)] font-bold leading-[1.1] tracking-[-0.02em] text-fg first:mt-0">
         {children}
       </h2>
     ),
     h2: ({ children }: any) => (
-      <h2 className="mb-4 mt-11 scroll-mt-24 font-display text-[clamp(1.5rem,2.6vw,2rem)] font-bold leading-[1.1] tracking-[-0.02em] text-ink first:mt-0">
+      <h2 className="mb-4 mt-11 scroll-mt-24 font-display text-[clamp(1.5rem,2.6vw,2rem)] font-bold leading-[1.1] tracking-[-0.02em] text-fg first:mt-0">
         {children}
       </h2>
     ),
     h3: ({ children }: any) => (
-      <h3 className="mb-3 mt-8 scroll-mt-24 font-display text-[1.3rem] font-bold tracking-[-0.02em] text-ink">
+      <h3 className="mb-3 mt-8 scroll-mt-24 font-display text-[1.3rem] font-bold tracking-[-0.02em] text-fg">
         {children}
       </h3>
     ),
     h4: ({ children }: any) => (
-      <h4 className="mb-2 mt-7 scroll-mt-24 font-display text-[1.15rem] font-bold tracking-[-0.02em] text-ink">
+      <h4 className="mb-2 mt-7 scroll-mt-24 font-display text-[1.15rem] font-bold tracking-[-0.02em] text-fg">
         {children}
       </h4>
     ),
     h5: ({ children }: any) => (
-      <h5 className="mb-2 mt-6 scroll-mt-24 font-display text-[1.05rem] font-bold tracking-[-0.01em] text-ink">
+      <h5 className="mb-2 mt-6 scroll-mt-24 font-display text-[1.05rem] font-bold tracking-[-0.01em] text-fg">
         {children}
       </h5>
     ),
     h6: ({ children }: any) => (
-      <h6 className="mb-2 mt-6 scroll-mt-24 font-display text-base font-bold tracking-[-0.01em] text-ink">
+      <h6 className="mb-2 mt-6 scroll-mt-24 font-display text-base font-bold tracking-[-0.01em] text-fg">
         {children}
       </h6>
     ),
     blockquote: ({ children }: any) => (
-      <blockquote className="my-8 rounded-r-[14px] border-l-4 border-accent bg-white px-[26px] py-5 text-[1.15rem] italic text-[#12303a]">
+      <blockquote className="my-8 rounded-r-[14px] border-l-4 border-accent bg-card px-[26px] py-5 text-[1.15rem] italic text-fg">
         {children}
       </blockquote>
     ),
@@ -157,7 +157,7 @@ const SanityBlogBody = ({
   }
   return (
     <article
-      className="max-w-[70ch] [&>p:first-of-type]:text-[1.28rem] [&>p:first-of-type]:leading-[1.6] [&>p:first-of-type]:text-[#12303a]"
+      className="max-w-[70ch] [&>p:first-of-type]:text-[1.28rem] [&>p:first-of-type]:leading-[1.6] [&>p:first-of-type]:text-fg"
       lang={locale === "es" ? "es" : "en"}
     >
       <PortableText value={blockContent} components={components} />

@@ -96,7 +96,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
               ref={dropdownRef}
               onMouseEnter={() => useHover && onMouseEnter(!open)}
               onMouseLeave={() => useHover && onMouseLeave(open)}
-              className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+              className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-card shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
             >
               <div className="py-2 mt-2">
                 {subItems.map((item, index) => (
@@ -105,7 +105,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({
                       {({ focus }) => (
                         <Link
                           href={item.url}
-                          className={`font-lato uppercase text-black no-underline mx-3 ${focus ? "bg-blue-100" : ""}`}
+                          className={`font-lato uppercase text-fg no-underline mx-3 ${focus ? "bg-accent/10" : ""}`}
                         >
                           {item.name}
                         </Link>

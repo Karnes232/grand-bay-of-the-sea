@@ -95,6 +95,13 @@ export const metadata: Metadata = {
 export const revalidate = 604800 // ISR 7 days — content refreshes on Netlify redeploy
 export const fetchCache = "force-cache"
 
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f2f5f5" },
+    { media: "(prefers-color-scheme: dark)", color: "#061a20" },
+  ],
+}
+
 export async function generateStaticParams() {
   return [{ locale: "en" }, { locale: "es" }]
 }
@@ -128,8 +135,17 @@ export default async function RootLayout({
     <html
       lang={locale}
       className={`${crimsonPro.variable} ${bricolage.variable} ${instrument.variable}`}
+      suppressHydrationWarning
     >
       <head>
+        {/* No-flash theme init: set the .dark class before first paint from the
+            stored preference (falling back to the OS setting). Must run inline —
+            pages are ISR-cached, so the theme can only be applied client-side. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.theme;if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.classList.add("dark")}catch(e){}`,
+          }}
+        />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link

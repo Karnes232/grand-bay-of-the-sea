@@ -24,9 +24,9 @@ const Recommendations = ({
   if (posts.length === 0) return null
 
   return (
-    <section className="border-t border-[#e2e9e9] bg-white">
+    <section className="border-t border-line bg-card">
       <div className="mx-auto max-w-[1080px] px-6 py-16">
-        <h2 className="mb-7 font-display text-[clamp(1.5rem,2.6vw,2rem)] font-bold tracking-[-0.03em] text-ink">
+        <h2 className="mb-7 font-display text-[clamp(1.5rem,2.6vw,2rem)] font-bold tracking-[-0.03em] text-fg">
           {title}
         </h2>
         <div className="grid grid-cols-1 gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
@@ -41,9 +41,9 @@ const Recommendations = ({
                 key={index}
                 href={`/blog/${post.blogCategory.slug.current ?? categorySlug}/${post.slug.current}`}
                 aria-label={name}
-                className="group flex flex-col overflow-hidden rounded-[18px] border border-[#e2e9e9] bg-white no-underline transition-shadow duration-300 hover:shadow-[0_18px_40px_rgba(11,33,41,0.12)]"
+                className="group flex flex-col overflow-hidden rounded-[18px] border border-line bg-card no-underline transition-shadow duration-300 hover:shadow-[0_18px_40px_rgba(11,33,41,0.12)]"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#dce6e6]">
+                <div className="relative aspect-[16/10] overflow-hidden bg-line">
                   {src && (
                     <Image
                       src={src}
@@ -59,7 +59,7 @@ const Recommendations = ({
                   )}
                 </div>
                 <div className="px-[22px] py-5">
-                  <h3 className="font-display text-[1.1rem] font-bold leading-[1.2] tracking-[-0.02em] text-ink">
+                  <h3 className="font-display text-[1.1rem] font-bold leading-[1.2] tracking-[-0.02em] text-fg">
                     {name}
                   </h3>
                 </div>
@@ -69,7 +69,7 @@ const Recommendations = ({
         </div>
         <Link
           href={`/blog/${categorySlug}`}
-          className="mt-8 inline-block border-b-2 border-accent pb-0.5 text-[15.5px] font-semibold text-ink no-underline"
+          className="mt-8 inline-block border-b-2 border-accent pb-0.5 text-[15.5px] font-semibold text-fg no-underline"
         >
           {backLabel}
         </Link>

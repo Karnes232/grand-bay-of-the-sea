@@ -19,7 +19,7 @@ const HomeIntro = ({
         content={content}
         locale={locale}
         variant="prose"
-        wrapperClassName="[&_p]:text-[clamp(1.25rem,2.3vw,1.7rem)] [&_p]:leading-[1.5] [&_p]:tracking-[-0.01em] [&_p]:text-[#12303a] [&_p]:text-pretty"
+        wrapperClassName="[&_p]:text-[clamp(1.25rem,2.3vw,1.7rem)] [&_p]:leading-[1.5] [&_p]:tracking-[-0.01em] [&_p]:text-fg [&_p]:text-pretty"
       />
     </section>
   )

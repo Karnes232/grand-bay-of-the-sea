@@ -13,9 +13,9 @@ const FishCard = ({ fish, locale }: { fish: any; locale: string }) => {
   return (
     <div
       id={fish.name.en?.replace(/\s+/g, "")}
-      className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-[#e2e9e9] bg-white transition-all duration-300 ease-smooth hover:-translate-y-[5px] hover:shadow-[0_22px_48px_rgba(11,33,41,0.13)]"
+      className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-line bg-card transition-all duration-300 ease-smooth hover:-translate-y-[5px] hover:shadow-[0_22px_48px_rgba(11,33,41,0.13)]"
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-[#dce6e6]">
+      <div className="relative aspect-[4/3] overflow-hidden bg-line">
         <Image
           src={src}
           alt={fish.image.alt || name}
@@ -41,7 +41,7 @@ const FishCard = ({ fish, locale }: { fish: any; locale: string }) => {
             </span>
           </Link>
         ) : (
-          <h3 className="mb-2 font-display text-[1.3rem] font-bold tracking-[-0.02em] text-ink">
+          <h3 className="mb-2 font-display text-[1.3rem] font-bold tracking-[-0.02em] text-fg">
             {name}
           </h3>
         )}
@@ -60,7 +60,7 @@ const DescriptionWithReadMore = ({ description }: { description: string }) => {
   return (
     <div className="flex flex-1 flex-col">
       <p
-        className="flex-1 text-[14.5px] leading-relaxed text-[#4a5f63]"
+        className="flex-1 text-[14.5px] leading-relaxed text-muted"
         style={
           !expanded
             ? {

@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss"
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,14 +11,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
         // 2026 redesign palette (channel triples → opacity modifiers work)
         accent: "rgb(var(--accent) / <alpha-value>)",
         ink: "rgb(var(--ink) / <alpha-value>)",
         "ink-deep": "rgb(var(--ink-deep) / <alpha-value>)",
         surface: "rgb(var(--surface) / <alpha-value>)",
         moss: "rgb(var(--moss) / <alpha-value>)",
+        // Semantic theme tokens (flip under `.dark` — see globals.css)
+        fg: "rgb(var(--fg) / <alpha-value>)",
+        card: "rgb(var(--card) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        "line-strong": "rgb(var(--line-strong) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        faint: "rgb(var(--faint) / <alpha-value>)",
+        "surface-soft": "rgb(var(--surface-soft) / <alpha-value>)",
       },
       fontFamily: {
         // Bricolage Grotesque — display/headings

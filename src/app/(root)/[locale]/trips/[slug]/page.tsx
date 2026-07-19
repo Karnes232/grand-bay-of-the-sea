@@ -154,28 +154,28 @@ export default async function Page({
       {/* Your day timeline (per-trip itinerary from the trip doc) */}
       {tripSteps.length > 0 && (
         <section className="mx-auto max-w-[1280px] px-6 py-10">
-          <h2 className="mb-9 font-display text-[clamp(1.7rem,3vw,2.4rem)] font-bold leading-[1.05] tracking-[-0.03em] text-ink">
+          <h2 className="mb-9 font-display text-[clamp(1.7rem,3vw,2.4rem)] font-bold leading-[1.05] tracking-[-0.03em] text-fg">
             {tTrips("tripDayHeading")}
           </h2>
           <div className="ml-2 flex flex-col">
             {tripSteps.map((step, i) => (
               <div
                 key={i}
-                className={`relative grid grid-cols-[64px_1fr] gap-5 border-l-2 border-[#e2e9e9] pl-7 ${
+                className={`relative grid grid-cols-[64px_1fr] gap-5 border-l-2 border-line pl-7 ${
                   i === tripSteps.length - 1
                     ? "border-transparent pb-0"
                     : "pb-7"
                 }`}
               >
                 <span className="absolute -left-[9px] top-1 h-4 w-4 rounded-full border-[3px] border-surface bg-accent" />
-                <span className="font-display text-[1.05rem] font-bold tracking-tight text-ink">
+                <span className="font-display text-[1.05rem] font-bold tracking-tight text-fg">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <h4 className="mb-1 text-[16.5px] font-semibold text-[#12303a]">
+                  <h4 className="mb-1 text-[16.5px] font-semibold text-fg">
                     {step.stepTitle?.[locale]}
                   </h4>
-                  <p className="text-[15px] leading-relaxed text-[#4a5f63]">
+                  <p className="text-[15px] leading-relaxed text-muted">
                     {step.stepBody?.[locale]}
                   </p>
                 </div>
@@ -183,7 +183,7 @@ export default async function Page({
             ))}
           </div>
           {trip.tripDayNote?.[locale] && (
-            <p className="mt-5 text-sm italic text-[#7c8f93]">
+            <p className="mt-5 text-sm italic text-faint">
               {trip.tripDayNote[locale]}
             </p>
           )}
