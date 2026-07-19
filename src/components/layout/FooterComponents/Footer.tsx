@@ -8,7 +8,7 @@ import SocialMedia from "./SocialMedia"
 import Copyright from "./Copyright"
 import Signature from "./Signature"
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher"
-import { getCachedGrandBayLogoLayout } from "@/lib/contentful"
+import { getCachedSiteLogo } from "@/sanity/queries/SiteSettings/siteSettings"
 import { BUSINESS } from "@/lib/business"
 
 const TrustBadges = dynamic(() => import("./TrustBadges"))
@@ -20,7 +20,7 @@ const Footer = async () => {
   const t = await getTranslations("Navbar")
   const tc = await getTranslations("ContactInfo")
   const tf = await getTranslations("Footer")
-  const logo = await getCachedGrandBayLogoLayout()
+  const logo = await getCachedSiteLogo()
 
   // Display the logo at ~48px tall (2× intrinsic ratio for retina), width auto.
   const logoH = logo ? Math.min(logo.intrinsicHeight, 96) : 0

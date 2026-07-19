@@ -2,7 +2,7 @@ import React from "react"
 import Logo from "./Logo"
 import Nav from "./Nav"
 
-// Logo is an async server component (cached Contentful fetch). Rendering it
+// Logo is an async server component (cached Sanity fetch). Rendering it
 // directly — rather than inside <Suspense> with a skeleton — keeps it in the
 // SSR HTML, avoiding the client-side-rendering bailout and the skeleton's CLS.
 const Header = () => {

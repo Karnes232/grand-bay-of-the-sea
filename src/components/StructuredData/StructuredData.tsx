@@ -35,9 +35,9 @@ export function generateStructuredData(locale: string = "en") {
         : "PADI dive center in Punta Cana, Dominican Republic offering Discover Scuba Diving for beginners, PADI certification courses, and guided reef, wreck, and shark diving experiences.",
     url: `${SITE_URL}/`,
     inLanguage: locale,
-    logo: "https://images.ctfassets.net/iqfmqk4smewk/4AKIgOA6drFSpgIoRpPPu3/6b8b92af64259355d55d245dbe71b0cc/logo.png",
+    logo: "https://cdn.sanity.io/images/33b6wn5r/production/d716adb82827e51188be53d82df1bab3b0eae4a2-493x427.png",
     image:
-      "https://images.ctfassets.net/iqfmqk4smewk/4CYN3rPs0ryO4Gi4JDPm8e/156feb808cdad566332c11071dac1e09/pexels-leonardo-lamas-7001709.webp",
+      "https://cdn.sanity.io/images/33b6wn5r/production/ae5f4fb01336d33f5836c5e959866a97a830f53f-2000x1325.webp",
     telephone: BUSINESS.phoneSchema,
     email: BUSINESS.email,
     foundingDate: "2016",

@@ -1,22 +1,13 @@
-import {
-  getAllEntries,
-  getAllEntrySlugs,
-  getAllEntrySlugsWithCategory,
-  searchEntries,
-} from "@/lib/contentful"
 import { getBlogCategory } from "@/sanity/queries/Blog/BlogCategory"
 import { getBlogPosts } from "@/sanity/queries/Blog/BlogPosts"
 import { getCourseSlugs } from "@/sanity/queries/Courses/IndividualCourses"
 import { getTripSlugs } from "@/sanity/queries/DiveTrips/Trips"
 import type { MetadataRoute } from "next"
 
-// const blogCategories = await getAllEntrySlugs("blogCategory")
 const blogCategoriesSanity = await getBlogCategory()
 const blogPostsSanity = await getBlogPosts()
 const courseSlugsSanity = await getCourseSlugs()
 const tripSlugsSanity = await getTripSlugs()
-
-// const blogPosts = await getAllEntrySlugsWithCategory("blogPost")
 
 /**
  * Stable lastmod for static/service routes that aren't threaded to a Sanity

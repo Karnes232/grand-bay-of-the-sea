@@ -14,6 +14,14 @@ export const structure: StructureResolver = S =>
             .filter("_type == 'pageSeo'"),
         ),
       S.listItem()
+        .title("Site Settings")
+        .child(
+          S.document()
+            .schemaType("siteSettings")
+            .title("Site Settings")
+            .documentId("siteSettings"),
+        ),
+      S.listItem()
         .title("Home Page")
         .child(
           S.document()

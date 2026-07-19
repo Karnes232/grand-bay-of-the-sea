@@ -7,7 +7,7 @@ import "swiper/css"
 import "swiper/css/effect-fade"
 import { Autoplay, EffectFade } from "swiper/modules"
 import Image from "next/image"
-const SwiperCarousel = ({
+const SanitySwiperCarousel = ({
   photoList,
   className,
   height,
@@ -18,10 +18,10 @@ const SwiperCarousel = ({
 }) => {
   const photoListEdited = photoList.map((photo: any) => {
     return {
-      image: `https:${photo.fields.file.url}`,
-      title: photo.fields.title,
-      width: photo.fields.file.details.image.width,
-      height: photo.fields.file.details.image.height,
+      image: photo.asset.url,
+      title: photo.alt,
+      width: photo.asset.metadata.dimensions.width,
+      height: photo.asset.metadata.dimensions.height,
     }
   })
   return (
@@ -53,4 +53,4 @@ const SwiperCarousel = ({
   )
 }
 
-export default SwiperCarousel
+export default SanitySwiperCarousel

@@ -1,6 +1,6 @@
 import React from "react"
-import { searchEntries } from "@/lib/contentful"
-import Image, { getImageProps } from "next/image"
+import { getSiteSettings } from "@/sanity/queries/SiteSettings/siteSettings"
+import { getImageProps } from "next/image"
 import LazyIframeWhenVisible from "@/components/performance/LazyIframeWhenVisible"
 
 // The widget pulls ~1.5 MB of third-party JS (analytics included) once loaded,
@@ -9,43 +9,23 @@ const PADI_WIDGET_SRC =
   "https://travel.padi.com/widget/dive-operator/grand-bay-of-the-sea/adventures/?products=30&aid=27147&utm_campaign=ww-all-travel-pros-affiliates_shops-widgets&utm_medium=widget&utm_source=affiliate_27147&language=en&currency_code=USD&utm_content=search_iframe"
 
 const PadiBanner = async () => {
-  const searchResults = await searchEntries(
-    "layout",
-    {
-      "fields.companyName": "Grand Bay of the Sea",
-    },
-    ["fields.padiLogoDark", "fields.padiLogo"],
-  )
+  const settings = await getSiteSettings()
 
   const commonPadi = { alt: "Padi Logo", width: 480, height: 150 }
   const {
     props: { srcSet: darkPadi },
   } = getImageProps({
     ...commonPadi,
-    src: `https:${(searchResults.items[0] as any).fields.padiLogoDark?.fields?.file?.url ?? ""}`,
+    src: settings.padiLogoDark?.asset?.url ?? "",
   })
   const {
     props: { srcSet: lightPadi, ...restPadi },
   } = getImageProps({
     ...commonPadi,
-    src: `https:${(searchResults.items[0] as any).fields.padiLogo?.fields?.file?.url ?? ""}`,
+    src: settings.padiLogo?.asset?.url ?? "",
   })
   return (
     <div className="mt-5 mb-10 mx-5 max-w-6xl md:mx-auto flex flex-col justify-center items-center">
-      {/* <Image
-        className="w-10/12 lg:w-1/2 mb-8 object-cover"
-        src={`https:${(searchResults.items[0] as any).fields.padiLogo?.fields?.file?.url ?? ""}`}
-        alt="PADI Logo"
-        width={
-          (searchResults.items[0] as any).fields.padiLogo?.fields?.file.details
-            .image.width
-        }
-        height={
-          (searchResults.items[0] as any).fields.padiLogo?.fields?.file.details
-            .image.height
-        }
-        quality={75}
-      /> */}
       <picture className="mb-8 object-cover">
         <source media="(prefers-color-scheme: dark)" srcSet={darkPadi} />
         <source media="(prefers-color-scheme: light)" srcSet={lightPadi} />

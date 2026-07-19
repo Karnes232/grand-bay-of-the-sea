@@ -57,24 +57,6 @@ export async function generateMetadata(
     ? new Date(pageSeo._updatedAt).toISOString()
     : undefined
 
-  // const seoSearchResults = await searchEntries(
-  //   "blogPost",
-  //   {
-  //     "fields.slug": slug,
-  //     locale: locale || "en",
-  //   },
-  //   [
-  //     "fields.seoTitle",
-  //     "fields.seoDescription",
-  //     "fields.seoKeywords",
-  //     "fields.seoImage",
-  //   ],
-  // )
-
-  // if (!seoSearchResults?.items?.[0]) {
-  //   notFound()
-  // }
-
   const rawOg = pageSeo.seo.openGraph.image?.url || ""
   const ogImage = rawOg
     ? sanityCdnUrlWithParams(rawOg, {

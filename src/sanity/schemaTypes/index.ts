@@ -10,6 +10,9 @@ import {
 import seo from "./SEO/seo"
 import PageSeo from "./SEO/PageSeo"
 
+//Site Settings
+import SiteSettings from "./SiteSettings/siteSettings"
+
 //Species
 import SpeciesPageContent from "./Page-Species/SpeciesPageContent"
 import Fishes from "./Page-Species/Fishes"
@@ -78,6 +81,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     //SEO
     seo,
     PageSeo,
+
+    //Site Settings
+    SiteSettings,
 
     //Page-Species
     SpeciesPageContent,

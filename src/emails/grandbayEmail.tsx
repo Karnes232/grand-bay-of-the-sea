@@ -35,7 +35,7 @@ export const grandbayEmail = ({
           <Container className="bg-white max-w-2xl mx-auto my-8 rounded-lg shadow-lg">
             <Section className="bg-white rounded-t-lg p-8 border-b border-gray-700">
               <Img
-                src={`https://www.grandbay-puntacana.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fiqfmqk4smewk%2F4AKIgOA6drFSpgIoRpPPu3%2F6b8b92af64259355d55d245dbe71b0cc%2Flogo.png&w=640&q=75`}
+                src={`https://cdn.sanity.io/images/33b6wn5r/production/d716adb82827e51188be53d82df1bab3b0eae4a2-493x427.png?w=640&q=75&auto=format`}
                 width="150"
                 height="120"
                 alt="Dive Center Logo"

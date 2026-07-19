@@ -1,26 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import Select from "react-select"
 import { useTranslations } from "next-intl"
 const TourSelect = ({ setFormData, formData }) => {
   const t = useTranslations("TourSelect")
-  // const [contentfulData, setContentfulData] = useState<any[]>([])
-  // useEffect(() => {
-  //   const fetchContentfulData = async () => {
-  //     try {
-  //       const response = await fetch("/api/contentful")
-  //       if (!response.ok) {
-  //         throw new Error("Failed to fetch content")
-  //       }
-  //       const data = await response.json()
-  //       setContentfulData(data)
-  //     } catch (error) {
-  //       console.error("Error fetching Contentful data:", error)
-  //     } finally {
-  //     }
-  //   }
-
-  //   fetchContentfulData()
-  // }, [])
 
   const style = {
     control: base => ({
@@ -43,13 +25,6 @@ const TourSelect = ({ setFormData, formData }) => {
       label: t("fourTankPackage"),
     },
   ]
-  // contentfulData.map(tour => {
-  //   const option = {
-  //     value: tour.title,
-  //     label: tour.title,
-  //   }
-  //   return options.push(option)
-  // })
 
   const handleChange = e => {
     setFormData({

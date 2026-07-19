@@ -1,22 +1,16 @@
-import { searchEntries } from "@/lib/contentful"
+import { getSiteSettings } from "@/sanity/queries/SiteSettings/siteSettings"
 import { BUSINESS } from "@/lib/business"
 import React from "react"
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa"
 import { GrMail } from "react-icons/gr"
 const SocialMedia = async () => {
-  const searchResults = await searchEntries(
-    "layout",
-    {
-      "fields.companyName": "Grand Bay of the Sea",
-    },
-    ["fields.facebook", "fields.instagram", "fields.email"],
-  )
+  const settings = await getSiteSettings()
   const iconLink =
     "grid h-10 w-10 place-items-center rounded-full bg-white/[0.08] text-white transition-colors hover:bg-accent hover:text-ink"
   return (
     <div className="flex gap-3">
       <a
-        href={searchResults.items[0].fields.facebook as string}
+        href={settings.facebook}
         target="_blank"
         aria-label="Facebook"
         rel="noreferrer"
@@ -25,7 +19,7 @@ const SocialMedia = async () => {
         <FaFacebookF className="h-[18px] w-[18px]" />
       </a>
       <a
-        href={searchResults.items[0].fields.instagram as string}
+        href={settings.instagram}
         target="_blank"
         aria-label="Instagram"
         rel="noreferrer"
@@ -34,7 +28,7 @@ const SocialMedia = async () => {
         <FaInstagram className="h-[18px] w-[18px]" />
       </a>
       <a
-        href={`mailto:${searchResults.items[0].fields.email}`}
+        href={`mailto:${settings.email}`}
         aria-label="Gmail"
         rel="noreferrer"
         className={iconLink}

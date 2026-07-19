@@ -49,7 +49,7 @@ const nextConfig = {
           },
           // Clickjacking protection only. A full content CSP is intentionally
           // omitted — the site loads many third parties (GTM/GA, Ahrefs, PayPal,
-          // Cloudinary, Sanity, Contentful, PADI + SociableKit iframes, Maps)
+          // Cloudinary, Sanity, PADI + SociableKit iframes, Maps)
           // and would need a report-only rollout first.
           { key: 'Content-Security-Policy', value: "frame-ancestors 'self'" },
           // Explicitly welcome AI search/training/retrieval (contentsignals.org).
@@ -86,13 +86,7 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     // unoptimized: true,
     loader: 'default',
-    // domains: ['images.ctfassets.net', 'www.kayak.com'],
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.ctfassets.net',
-        pathname: '**',
-      },
       {
         protocol: 'https',
         hostname: 'www.kayak.com',

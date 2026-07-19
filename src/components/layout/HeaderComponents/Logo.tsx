@@ -1,10 +1,10 @@
 import React from "react"
-import { getCachedGrandBayLogoLayout } from "@/lib/contentful"
+import { getCachedSiteLogo } from "@/sanity/queries/SiteSettings/siteSettings"
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 
 const Logo = async () => {
-  const data = await getCachedGrandBayLogoLayout()
+  const data = await getCachedSiteLogo()
 
   if (!data?.src) {
     return (

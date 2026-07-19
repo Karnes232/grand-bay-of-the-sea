@@ -45,16 +45,11 @@ The app uses two Next.js route groups:
 
 ### Content Sources
 
-The project has **two active CMS backends** (migration from Contentful to Sanity is in progress):
-
-| Source         | Used for                                                                                              |
-| -------------- | ----------------------------------------------------------------------------------------------------- |
-| **Sanity**     | Courses, Trips, Blog posts, Home page, SEO, Sites, Species, Fishing, Liveaboards, Photo Gallery, FAQs |
-| **Contentful** | Blog (legacy — some pages still call `searchEntries`), logo from layout entry                         |
+**Sanity is the only CMS** (the Contentful migration is complete — the SDK, env vars, and all `searchEntries` calls are gone). All content lives in Sanity: Courses, Trips, Blog posts, Home page, SEO, Sites, Species, Fishing, Liveaboards, Photo Gallery, FAQs, Thank You, Custom Payment, and the `siteSettings` singleton (site logo, social links, contact email, PADI logos — consumed by the shared Header/Footer, `SocialMedia`, `DivingOrganizations`, and `PadiBanner`).
 
 Sanity client is at `src/sanity/lib/client.ts`. All GROQ queries live in `src/sanity/queries/` and are organised by feature, mirroring the schema structure in `src/sanity/schemaTypes/`.
 
-Contentful helpers are in `src/lib/contentful.ts`. The logo is still fetched from Contentful via `getCachedGrandBayLogoLayout()` (cached with `unstable_cache`).
+The header/footer logo comes from `getCachedSiteLogo()` in `src/sanity/queries/SiteSettings/siteSettings.ts` (cached with `unstable_cache`). The TUI pages reuse the same Sanity course/trip/sites content as the root site (English only).
 
 ### Sanity Image Utilities (`src/sanity/lib/image.ts`)
 
@@ -99,8 +94,7 @@ Server components fetch data at the top of the default export with `Promise.all`
 NEXT_PUBLIC_SANITY_PROJECT_ID
 NEXT_PUBLIC_SANITY_DATASET
 NEXT_PUBLIC_SANITY_API_VERSION   # optional, defaults to 2025-11-13
-CONTENTFUL_SPACE_ID
-CONTENTFUL_ACCESS_TOKEN
+SANITY_API_WRITE_TOKEN           # scripts/ only (migrations, asset uploads)
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
 SUPABASE_SERVICE_ROLE_KEY        # server-only, used in supabaseServer.ts

@@ -1,57 +1,53 @@
 import BackgroundVideo from "@/components/BackgroundVideoComponent/BackgroundVideo"
 import DiveSites from "@/components/DiveSitesComponents/DiveSites"
 import HeroStaticComponent from "@/components/HeroComponent/HeroStaticComponent"
-import RichText from "@/components/RichTextComponents/RichText"
+import BlockContent from "@/components/BlockContent/BlockContent"
 import TuiLocalDiveOverview from "@/components/TuiComponents/TuiLocalDiveOverview"
-import { getAllEntries, searchEntries } from "@/lib/contentful"
-import { Metadata, ResolvingMetadata } from "next"
+import { getPageSeo } from "@/sanity/queries/SEO/seo"
+import { getSites } from "@/sanity/queries/Sites/sites"
+import { cloudinaryVideoUrl } from "@/utils/cloudinaryVideoUrl"
+import { Metadata } from "next"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
 
-export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const seoSearchResults = await searchEntries("seo", {
-    "fields.page": "Sites",
-  })
+export async function generateMetadata(): Promise<Metadata> {
+  const pageSeo = await getPageSeo("Sites")
+
+  if (!pageSeo) {
+    // Never ship a page with a blank <head>: fail the build (or the single
+    // ISR regeneration) loudly instead of silently caching empty metadata.
+    throw new Error(
+      "[metadata] SEO data came back empty for /tui/sites. " +
+        "Check the Sanity pageSeo 'Sites' document.",
+    )
+  }
+
+  const image = {
+    url: pageSeo.seo.openGraph.image.url,
+    width: pageSeo.seo.openGraph.image.width,
+    height: pageSeo.seo.openGraph.image.height,
+    alt: pageSeo.seo.openGraph.image.alt,
+  }
+
   return {
-    title: String(seoSearchResults.items[0].fields.title),
-    description: String(seoSearchResults.items[0].fields.description),
-    keywords: seoSearchResults.items[0].fields.keywords as string[],
+    title: pageSeo.seo.meta.en.title,
+    description: pageSeo.seo.meta.en.description,
+    keywords: pageSeo.seo.meta.en.keywords,
     openGraph: {
       url: "https://www.grandbay-puntacana.com/tui/sites",
       type: "website",
-      title: String(seoSearchResults.items[0].fields.title),
-      description: String(seoSearchResults.items[0].fields.description),
-      images: [
-        {
-          url: `https:${(seoSearchResults.items[0] as any).fields.image.fields.file.url}`,
-          width: (seoSearchResults.items[0] as any).fields.image.fields.file
-            .details.image.width,
-          height: (seoSearchResults.items[0] as any).fields.image.fields.file
-            .details.image.height,
-          alt: (seoSearchResults.items[0] as any).fields.image.fields.title,
-        },
-      ],
+      title: pageSeo.seo.openGraph.en.title,
+      description: pageSeo.seo.openGraph.en.description,
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
-      title: String(seoSearchResults.items[0].fields.title),
-      description: String(seoSearchResults.items[0].fields.description),
+      title: pageSeo.seo.openGraph.en.title,
+      description: pageSeo.seo.openGraph.en.description,
       creator: "@grandbay",
       site: "@grandbay",
-      images: [
-        {
-          url: `https:${(seoSearchResults.items[0] as any).fields.image.fields.file.url}`,
-          width: (seoSearchResults.items[0] as any).fields.image.fields.file
-            .details.image.width,
-          height: (seoSearchResults.items[0] as any).fields.image.fields.file
-            .details.image.height,
-          alt: (seoSearchResults.items[0] as any).fields.image.fields.title,
-        },
-      ],
+      images: [image],
     },
     alternates: {
       canonical: "https://www.grandbay-puntacana.com/tui/sites/",
@@ -60,26 +56,24 @@ export async function generateMetadata(
 }
 
 export default async function Page() {
-  const pageLayout = await searchEntries("pageLayout", {
-    "fields.page": "Sites",
-  })
+  const sites = await getSites()
   return (
     <main id="main">
-      <HeroStaticComponent
-        heroImage={`https:${(pageLayout.items[0] as any).fields.heroImage.fields.file.url}`}
-      />
+      <HeroStaticComponent heroImage={sites.heroImage.asset.url} />
       <div className="mt-[50vh] md:mt-[40vh] lg:mt-[70vh]" />
 
       <div className="max-w-6xl my-5 xl:my-14 flex flex-col justify-center items-center lg:flex-row mx-5 lg:mx-auto">
-        <RichText context={pageLayout.items[0].fields.paragraph1} />
+        <BlockContent content={sites.paragraph1} locale="en" />
         <div className="lg:w-[45rem]">
           <TuiLocalDiveOverview />
         </div>
       </div>
       <DiveSites locale={"en"} />
 
+      {/* Same reef video the root /sites page uses — the sites singleton has no
+          video field of its own. */}
       <BackgroundVideo
-        video={(pageLayout.items[0] as any).fields.videoHero.fields.file.url}
+        video={cloudinaryVideoUrl("greyshark_aowggg")}
         className={`[clip-path:polygon(0_5vh,100%_0,100%_40vh,0%_100%)] lg:[clip-path:polygon(0_5vh,100%_0,100%_60vh,0%_100%)]`}
       />
     </main>
