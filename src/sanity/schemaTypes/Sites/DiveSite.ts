@@ -14,6 +14,14 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: "slug",
+      title: "Slug",
+      description: "URL segment for the individual dive-site page (/sites/…).",
+      type: "slug",
+      options: { source: "name", maxLength: 96 },
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "localizedText",
@@ -83,8 +91,17 @@ export default defineType({
       name: "cardDescription",
       title: "Card Description",
       description:
-        "Short blurb shown on the dive-sites grid card. The longer Description field is reserved for the future individual dive-site page.",
+        "Short blurb shown on the dive-sites grid card and as the hero subtitle on the individual dive-site page.",
       type: "localizedText",
+    }),
+    defineField({
+      name: "nearbySites",
+      title: "Nearby Dive Sites",
+      description:
+        "Other dive sites to feature in the “Nearby dive sites” row at the bottom of this site's page. Pick up to 3. If left empty, other sites are shown automatically.",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "diveSite" }] }],
+      validation: Rule => Rule.max(3).unique(),
     }),
   ],
   preview: {

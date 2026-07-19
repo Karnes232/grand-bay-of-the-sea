@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import Recommendations from "@/components/BlogComponents/Recommendations"
 import { Metadata, ResolvingMetadata } from "next"
+import { notFound } from "next/navigation"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getTranslations } from "next-intl/server"
 import {
@@ -31,8 +32,14 @@ export async function generateMetadata(
   const { category, slug, locale } = await params
   const pageSeo = await getIndividualBlogPostSEO(slug)
   if (!pageSeo) {
-    // Never ship a page with a blank <head>: fail the build (or the single
-    // ISR regeneration) loudly instead of silently caching empty metadata.
+    // No document at all — the post doesn't exist. A real 404, not a data
+    // failure (the page itself also calls notFound()).
+    notFound()
+  }
+  if (!pageSeo.seo) {
+    // The post exists but its seo fields are empty. Never ship a page with a
+    // blank <head>: fail the build (or the single ISR regeneration) loudly
+    // instead of silently caching empty metadata.
     throw new Error(
       `[metadata] SEO data came back empty for blog post ${category}/${slug}. ` +
         "Check the Sanity document's seo fields and the fetch above.",
@@ -135,6 +142,9 @@ export default async function Page({
       getTranslations("Blog"),
       getTranslations("Navbar"),
     ])
+
+  // Unknown slug → real 404 instead of crashing on missing fields below.
+  if (!individualBlogPost) notFound()
 
   const relatedPosts = related.filter((post: any) => post.slug.current !== slug)
   const categoryName = blogCategory?.blogCategory?.[locale] ?? category

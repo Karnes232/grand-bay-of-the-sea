@@ -311,5 +311,14 @@
     "galleryHeading": "Life aboard",
     "viewGallery": "View full gallery",
     "faqHeading": "Frequently asked questions"
+  },
+  "DiveSite": {
+    "diveSites": "Dive Sites",
+    "aboutEyebrow": "About the site",
+    "maxDepth": "Max depth",
+    "level": "Level",
+    "location": "Location",
+    "nearbyHeading": "Nearby dive sites",
+    "viewAll": "View all dive sites"
   }
 }

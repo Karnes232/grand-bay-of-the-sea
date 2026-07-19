@@ -158,7 +158,9 @@ export const individualBlogPostQuery = `*[_type == "blogPost" && slug.current ==
   }
 }`
 
-export async function getIndividualBlogPost(slug: string): Promise<BlogPost> {
+export async function getIndividualBlogPost(
+  slug: string,
+): Promise<BlogPost | null> {
   return await client.fetch(individualBlogPostQuery, { slug })
 }
 

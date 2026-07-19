@@ -311,5 +311,14 @@
     "galleryHeading": "La vida a bordo",
     "viewGallery": "Ver galería completa",
     "faqHeading": "Preguntas frecuentes"
+  },
+  "DiveSite": {
+    "diveSites": "Sitios de buceo",
+    "aboutEyebrow": "Sobre el sitio",
+    "maxDepth": "Profundidad máx.",
+    "level": "Nivel",
+    "location": "Ubicación",
+    "nearbyHeading": "Sitios de buceo cercanos",
+    "viewAll": "Ver todos los sitios de buceo"
   }
 }

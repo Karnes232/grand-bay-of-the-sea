@@ -104,8 +104,16 @@ const DiveSiteCard = async ({
     </div>
   )
 
-  return isShark ? (
-    <Link href="/shark-dive-punta-cana" className="no-underline">
+  // Shark Point routes to its dedicated page; every other site links to its
+  // individual dive-site page. Sites without a slug fall back to no link.
+  const href = isShark
+    ? "/shark-dive-punta-cana"
+    : diveSite.slug
+      ? `/sites/${diveSite.slug}`
+      : undefined
+
+  return href ? (
+    <Link href={href} className="no-underline">
       {Card}
     </Link>
   ) : (
