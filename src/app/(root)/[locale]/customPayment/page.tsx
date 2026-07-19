@@ -18,7 +18,12 @@ export async function generateMetadata({
   const pageSeo = await getPageSeo("Custom Payment")
 
   if (!pageSeo) {
-    return {}
+    // Never ship a page with a blank <head>: fail the build (or the single
+    // ISR regeneration) loudly instead of silently caching empty metadata.
+    throw new Error(
+      "[metadata] SEO data came back empty for /customPayment. " +
+        "Check the Sanity document's seo fields and the fetch above.",
+    )
   }
 
   const alternates = getHreflangAlternates("customPayment", locale)

@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npm run build && node scripts/verify-metadata.mjs"
   publish = ".next"
 
 # Canonical host: single-hop 301s from http/apex straight to https://www

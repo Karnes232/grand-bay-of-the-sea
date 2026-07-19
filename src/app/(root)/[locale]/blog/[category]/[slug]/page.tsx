@@ -31,7 +31,12 @@ export async function generateMetadata(
   const { category, slug, locale } = await params
   const pageSeo = await getIndividualBlogPostSEO(slug)
   if (!pageSeo) {
-    return {}
+    // Never ship a page with a blank <head>: fail the build (or the single
+    // ISR regeneration) loudly instead of silently caching empty metadata.
+    throw new Error(
+      `[metadata] SEO data came back empty for blog post ${category}/${slug}. ` +
+        "Check the Sanity document's seo fields and the fetch above.",
+    )
   }
 
   const alternates = getHreflangAlternates(`blog/${category}/${slug}`, locale)

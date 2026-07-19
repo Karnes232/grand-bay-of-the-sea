@@ -22,10 +22,17 @@ const nextConfig = {
     ]
   },
   async headers() {
+    // Netlify sets URL to the site's primary URL at build time, so the
+    // *.netlify.app dev site gets a blanket noindex while the production
+    // custom-domain site is unaffected by the same code.
+    const isNetlifyDevHost = (process.env.URL ?? '').endsWith('.netlify.app')
     return [
       {
         source: '/:path*',
         headers: [
+          ...(isNetlifyDevHost
+            ? [{ key: 'X-Robots-Tag', value: 'noindex' }]
+            : []),
           { key: 'Access-Control-Allow-Origin', value: '*' },
           // Security headers (applied to the Next SSR responses; netlify.toml
           // [[headers]] don't reliably reach the SSR function output).
