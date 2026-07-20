@@ -27,6 +27,7 @@ const HamburgerMenu = () => {
     { href: "/liveaboard-dominican-republic", label: t("liveAboards") },
     { href: "/species", label: t("speciesGuide") },
     { href: "/photo-gallery", label: t("photoGallery") },
+    { href: "/about-us", label: t("aboutUs") },
     { href: "/contact", label: t("contactUs") },
   ]
 

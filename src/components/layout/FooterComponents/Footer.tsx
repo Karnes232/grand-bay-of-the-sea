@@ -126,6 +126,9 @@ const Footer = async () => {
               <Link href="/photo-gallery" className={linkClass}>
                 {t("photoGallery")}
               </Link>
+              <Link href="/about-us" className={linkClass}>
+                {t("aboutUs")}
+              </Link>
               <Link href="/blog" className={linkClass}>
                 {t("blog")}
               </Link>

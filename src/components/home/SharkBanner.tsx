@@ -14,6 +14,7 @@ const SharkBanner = ({
   objectPosition,
   alt,
   locale,
+  secondCta,
 }: {
   banner?: {
     eyebrow?: L
@@ -26,6 +27,8 @@ const SharkBanner = ({
   objectPosition?: string
   alt: string
   locale: Locale
+  /** Optional outlined second button (e.g. the About page's "Explore courses"). */
+  secondCta?: { label?: L; href: string }
 }) => {
   if (!banner?.heading?.[locale]) return null
 
@@ -62,14 +65,24 @@ const SharkBanner = ({
               {banner.body[locale]}
             </p>
           )}
-          {banner.ctaLabel?.[locale] && banner.ctaLink && (
-            <Link
-              href={banner.ctaLink}
-              className="inline-block rounded-full bg-accent px-7 py-[15px] text-base font-semibold text-ink shadow-[0_12px_30px_rgba(255,106,61,0.3)] transition-transform hover:-translate-y-[3px] hover:shadow-[0_16px_40px_rgba(255,106,61,0.45)]"
-            >
-              {banner.ctaLabel[locale]} →
-            </Link>
-          )}
+          <div className="flex flex-wrap gap-3.5">
+            {banner.ctaLabel?.[locale] && banner.ctaLink && (
+              <Link
+                href={banner.ctaLink}
+                className="inline-block rounded-full bg-accent px-7 py-[15px] text-base font-semibold text-ink shadow-[0_12px_30px_rgba(255,106,61,0.3)] transition-transform hover:-translate-y-[3px] hover:shadow-[0_16px_40px_rgba(255,106,61,0.45)]"
+              >
+                {banner.ctaLabel[locale]} →
+              </Link>
+            )}
+            {secondCta?.label?.[locale] && (
+              <Link
+                href={secondCta.href}
+                className="inline-block rounded-full border-[1.5px] border-white/55 px-7 py-[15px] text-base font-semibold text-white transition-colors hover:border-white hover:bg-white/[0.14]"
+              >
+                {secondCta.label[locale]}
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </section>

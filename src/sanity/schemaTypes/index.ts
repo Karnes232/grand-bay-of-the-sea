@@ -34,6 +34,9 @@ import Contact from "./Contact/contact"
 //Thank You
 import ThankYou from "./ThankYou/thankYou"
 
+//About Us
+import AboutUs from "./AboutUs/aboutUs"
+
 //Scuba-Diving-Punta-Cana
 import ScubaDivingPuntaCana from "./Scuba-Diving-Punta-Cana/ScubaDivingPuntaCana"
 import SectionLinks from "./Scuba-Diving-Punta-Cana/SectionLinks"
@@ -105,6 +108,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     //Thank You
     ThankYou,
+
+    //About Us
+    AboutUs,
 
     //Scuba-Diving-Punta-Cana
     ScubaDivingPuntaCana,

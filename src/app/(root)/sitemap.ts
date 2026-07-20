@@ -223,6 +223,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: "https://www.grandbay-puntacana.com/about-us",
+      lastModified: SITE_LASTMOD,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
+      url: "https://www.grandbay-puntacana.com/es/about-us",
+      lastModified: SITE_LASTMOD,
+      changeFrequency: "yearly",
+      priority: 0.5,
+    },
+    {
       url: "https://www.grandbay-puntacana.com/contact",
       lastModified: SITE_LASTMOD,
       changeFrequency: "yearly",
