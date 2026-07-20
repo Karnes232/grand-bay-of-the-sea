@@ -122,7 +122,7 @@ const DatePickerComponent = ({ setFormData, formData }) => {
           value={value}
           popoverDirection="up"
           onChange={handleValueChange}
-          inputClassName="pl-0"
+          inputClassName="pl-0 w-full bg-transparent text-gray-900 outline-none"
           // disabledDates={generateDisabledSundays()}
         />
       </div>

@@ -41,7 +41,10 @@ const PaymentPopupFishing = ({ tour }: { tour: any }) => {
 
   useEffect(() => {
     const fishermanPrice = tour.price * formData.guestCount
-    const spectatorPrice = tour.spectatorSnorkel * formData.spectator
+    // Fishing docs store the companion rate as `spectatorPrice` (the trips
+    // field `spectatorSnorkel` does not exist here — undefined would turn the
+    // whole total into NaN, even with zero spectators).
+    const spectatorPrice = (tour.spectatorPrice || 0) * formData.spectator
     setFormData({
       ...formData,
       price: fishermanPrice + spectatorPrice,

@@ -4,7 +4,7 @@
 > scuba dive center in Punta Cana, Dominican Republic, operating since 2016. It offers
 > Discover Scuba Diving for first-timers, the full range of PADI certification courses,
 > guided reef and wreck dives, an open-water shark dive at Shark Point, multi-site island
-> day trips (Catalina, Saona, Bayahibe), liveaboard and whale-watching expeditions, and
+> day trips (Catalina, Bayahibe; Saona as a private charter), liveaboard and whale-watching expeditions, and
 > deep-sea fishing charters. Instruction is available in English, Spanish, and French.
 > Booking is direct (no third-party markup), with hotel pickup included across the main
 > Punta Cana / Bávaro resort area.
@@ -27,7 +27,7 @@ confirm current pricing and availability at the time of booking.
 - **Phone / WhatsApp:** +1 829-723-9338
 - **Email:** grandbayofthesea@gmail.com
 - **Currencies / payment:** USD; cash and credit card; online deposit + balance on the day
-- **Rating:** 4.7 / 5 (138 reviews)
+- **Rating:** 4.8 / 5 (151 Google reviews)
 - **Website:** https://www.grandbay-puntacana.com
 - **Booking:** direct via the website contact form or WhatsApp
 
@@ -121,12 +121,13 @@ trumpetfish, barrel sponges), plus reef snorkeling. Lunch and alcoholic/non-alco
 included. Returns ~6:00 PM. All certification levels welcome; non-divers can snorkel ($100).
 $100 deposit per booking. URL: /trips/catalina
 
-### Saona Island — Diving $220 · Snorkeling $110 · Private charter $250 diver / $150 snorkeler (min $1,000)
-Full day from Punta Cana. ~7:30 AM pickup → ~40-min drive to Bayahibe → two-tank dive/snorkel at
-the **Atlantic Princess** wreck (12 m) and **El Peñón** reef → boat to **Saona Island** for a
-beach buffet lunch with drinks → brief stop at the **natural pool** (shallow turquoise sandbank
-with starfish) on the return. Returns ~6:00 PM. All certification levels; snorkelers welcome.
-Private/exclusive charter available on request. $100 deposit per booking. URL: /trips/saona
+### Saona Island — Private charter only · $250 per diver / $150 per snorkeler (min $1,000)
+Exclusive full-day **private charter** from Punta Cana (no shared group departures — the boat is
+yours). ~7:30 AM pickup → ~40-min drive to Bayahibe → two-tank dive/snorkel at the **Atlantic
+Princess** wreck (12 m) and **El Peñón** reef → boat to **Saona Island** for a beach buffet lunch
+with drinks → brief stop at the **natural pool** (shallow turquoise sandbank with starfish) on
+the return. Returns ~6:00 PM. All certification levels; snorkelers welcome. $1,000 charter
+minimum; $200 deposit per booking. URL: /trips/saona
 
 ### Bayahibe — Diving $180 · Companion boat ride $100
 Half day from Punta Cana. ~7:30 AM pickup → ~1.5 h bus to Bayahibe → two-tank dive featuring the
@@ -149,8 +150,9 @@ dive center to confirm. URLs: /liveaboard-dominican-republic ·
 
 ## Deep-Sea Fishing
 
-Deep-sea fishing charters out of Punta Cana are available. Contact the dive center for current
-options and pricing. URL: /fishing-punta-cana
+Deep-sea fishing charters out of Punta Cana. Shared charter **$130 per person** (spectators /
+non-fishing companions **$90**); **private charter $700**. $50 deposit per booking; the balance
+is paid on the day. Closed Sundays. URL: /fishing-punta-cana
 
 ---
 
@@ -168,7 +170,7 @@ angelfish, sergeant major, and more).
 ## Booking, Transport & Policies
 
 - **How to book:** direct via the website contact form (/contact) or WhatsApp (+1 829-723-9338). The team typically responds within a few hours to confirm availability.
-- **Deposit & balance:** many bookings are secured with a deposit ($100 per booking on island day trips); the remaining balance is paid on the day of the activity.
+- **Deposit & balance:** bookings are secured with a deposit — $100 per booking on Catalina and Bayahibe day trips, $200 on the Saona private charter, and $50 on local dives, the shark dive, and fishing charters; the remaining balance is paid on the day of the activity.
 - **Payment:** cash and credit card; online deposit options available.
 - **Hotel transport:** included for guests in the main Bávaro / Punta Cana resort area. An additional transport fee applies for Uvero Alto, Cap Cana, and Punta Cana Resort — share your hotel name to confirm before booking.
 - **Equipment:** all scuba equipment (BCD, regulator, wetsuit, tank, weights) is provided; bring your own if you prefer.
@@ -179,13 +181,19 @@ angelfish, sergeant major, and more).
 
 ## Travel & Diving Guides (Blog)
 
-In-depth articles at https://www.grandbay-puntacana.com/blog (categories: Marine Life, Diving Tips,
-Travel Tips, Conservation & Ocean Awareness, Local Businesses). Selected guides:
+A library of 115+ in-depth articles at https://www.grandbay-puntacana.com/blog (categories:
+Marine Life, Diving Tips, Travel Tips, Conservation & Ocean Awareness, Local Businesses).
+Selected guides:
 
 - Is Punta Cana Safe for Tourists? — /blog/travel-tips/is-punta-cana-safe-for-tourists
 - How Many Days to Dive Punta Cana (itinerary) — /blog/travel-tips/how-many-days-dive-punta-cana-itinerary
-- Is Scuba Diving in Punta Cana Good? — /blog/travel-tips/is-scuba-diving-in-punta-cana-good
+- Best Time to Scuba Dive Punta Cana, Month by Month — /blog/travel-tips/best-time-scuba-dive-punta-cana-month-by-month
+- How Much Does Scuba Diving Cost in Punta Cana? — /blog/travel-tips/how-much-does-scuba-diving-cost-punta-cana
+- Best Dive Sites in Punta Cana: Reef & Wreck — /blog/travel-tips/best-dive-sites-punta-cana-reef-wreck
+- Catalina Island vs Bayahibe: Which Dive Trip? — /blog/travel-tips/catalina-island-vs-bayahibe-which-dive-trip
 - Scuba Diving for Beginners: What to Expect — /blog/diving-tips/scuba-diving-for-beginners-what-to-expect
+- Can You Scuba Dive Without Certification? — /blog/diving-tips/can-you-scuba-dive-without-certification-punta-cana
+- How to Get PADI Certified in Punta Cana — /blog/diving-tips/how-to-get-padi-certified-punta-cana
 - Equalization Techniques for Scuba Diving — /blog/diving-tips/equalization-techniques-scuba-diving
 - How to Improve Air Consumption While Diving — /blog/diving-tips/how-to-improve-air-consumption-while-diving
 - Is Scuba Diving Safe? Real Risks — /blog/diving-tips/is-scuba-diving-safe-real-risks
@@ -209,7 +217,8 @@ Full PADI certification courses are available on site.
 
 **How much does it cost?**
 Discover Scuba from $100; certified two-tank dives $135; shark dive $190; Catalina trip $220
-(diving) / $100 (snorkeling); Saona $220 / $110; Bayahibe $180. PADI Open Water $499, Advanced $449.
+(diving) / $100 (snorkeling); Bayahibe $180; Saona private charter $250 per diver / $150 per
+snorkeler (min $1,000). PADI Open Water $499, Advanced $449.
 
 **How long to get certified?**
 Scuba Diver ~2 days; Open Water ~3–4 days; Advanced Open Water ~2–3 days. Most travelers can

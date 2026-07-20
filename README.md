@@ -31,37 +31,38 @@ Grand Bay of the Sea is a modern, professional website for a premier dive center
 
 ### 🎨 Content Management
 
-- **Contentful CMS**: Headless CMS for easy content updates and management
-- **Rich Text Support**: Flexible content editing with rich text formatting
-- **SEO Optimization**: Meta tags, sitemaps, and structured data for search engines
-- **Multi-language Ready**: Internationalization support structure
+- **Sanity CMS**: Headless CMS for all site content, with Sanity Studio embedded at `/studio` — courses, trips, blog, dive sites, SEO, and the `siteSettings` singleton (logo, social links, PADI logos)
+- **Portable Text**: Flexible content editing with rich text formatting (GROQ queries in `src/sanity/queries/`)
+- **SEO Optimization**: Per-page Sanity-driven meta tags, sitemaps, and structured data with build-time verification
+- **Bilingual**: Full English/Spanish internationalization via next-intl (`/es` URL prefix)
 
 ## 🛠️ Technology Stack
 
 ### Frontend Framework
 
-- **Next.js 15**: Latest version with App Router for optimal performance
-- **React 18**: Modern React with concurrent features
+- **Next.js 15**: App Router with ISR (7-day revalidate) for optimal performance
+- **React 19**: Modern React with server components and form actions
 - **TypeScript**: Type-safe development experience
+- **next-intl**: English/Spanish internationalization
 
 ### Styling & UI
 
-- **Tailwind CSS**: Utility-first CSS framework for rapid development
+- **Tailwind CSS**: Utility-first CSS with a semantic token system (CSS variables) powering light and dark themes
+- **Bricolage Grotesque / Instrument Sans / Crimson Pro**: Display, body, and editorial typefaces via next/font
 - **Headless UI**: Accessible UI components
-- **Heroicons**: Beautiful SVG icons
 - **Motion**: Smooth animations and transitions
 
 ### Content & Media
 
-- **Contentful**: Headless CMS for content management
-- **Cloudinary**: Video and image optimization
-- **Plaiceholder**: Image placeholder generation for better loading experience
+- **Sanity**: Headless CMS for all content (Studio embedded at `/studio`)
+- **Cloudinary**: Video optimization and hero video backgrounds
+- **Sanity CDN + next/image**: Crop/hotspot-aware responsive images with LQIP blur placeholders
 
-### Payment & Forms
+### Payment, Data & Email
 
 - **PayPal React SDK**: Secure payment processing
-- **React Email**: Email template generation
-- **Nodemailer**: Server-side email functionality
+- **Supabase**: Booking record storage (server-side service role)
+- **React Email + Resend/Nodemailer**: Confirmation email templates and delivery
 
 ### Development Tools
 
@@ -73,28 +74,30 @@ Grand Bay of the Sea is a modern, professional website for a premier dive center
 
 ```
 src/
-├── app/                    # Next.js App Router pages
-│   ├── (root)/            # Main website routes
-│   │   ├── courses/       # Scuba diving courses
-│   │   ├── trips/         # Dive excursions
-│   │   ├── sites/         # Dive sites information
-│   │   ├── photo-gallery/ # Image galleries
-│   │   └── contact/       # Contact information
-│   ├── (tui)/             # TUI-specific routes (no-index)
-│   └── api/               # API routes
-├── components/            # Reusable React components
-│   ├── layout/           # Header, footer, navigation
-│   ├── HeroComponent/    # Hero sections and backgrounds
-│   ├── PaymentComponents/ # Booking and payment forms
-│   ├── PayPalComponents/ # PayPal integration
-│   ├── CourseCards/      # Course display components
-│   └── RichTextComponents/ # Content rendering
-├── lib/                  # Utility libraries
-├── types/                # TypeScript type definitions
-├── utils/                # Helper functions
-├── hooks/                # Custom React hooks
-├── styles/               # Global styles and CSS
-└── emails/               # Email templates
+├── app/                     # Next.js App Router pages
+│   ├── (root)/[locale]/    # Public bilingual site (en default, /es prefix)
+│   │   ├── courses/        # PADI courses + [slug] detail pages
+│   │   ├── trips/          # Dive excursions + [slug] detail pages
+│   │   ├── sites/          # Dive sites + [site] detail pages
+│   │   ├── blog/           # Blog categories and posts
+│   │   ├── photo-gallery/  # Image galleries
+│   │   └── contact/        # Contact form + map
+│   ├── (tui)/tui/          # TUI white-label routes (noindex, English)
+│   ├── studio/             # Embedded Sanity Studio
+│   └── api/                # API routes
+├── components/              # Reusable React components
+│   ├── layout/             # Header, footer, navigation
+│   ├── home/               # Homepage sections (hero, booking, FAQ…)
+│   ├── courses/ trips/     # Redesign page sections
+│   ├── PaymentComponents/  # Booking and payment forms
+│   ├── PayPalComponents/   # PayPal integration
+│   ├── BlockContent/       # Portable Text rendering
+│   └── ThemeToggle/        # Dark mode toggle
+├── sanity/                  # Schemas, GROQ queries, client, Studio structure
+├── i18n/                    # next-intl routing + navigation
+├── lib/ utils/ types/       # Utilities and helpers
+└── emails/                  # Email templates
+messages/                    # en.json / es.json UI strings
 ```
 
 ## 🎯 Main Pages & Features
@@ -159,9 +162,10 @@ src/
 
 ### Visual Elements
 
+- **2026 Redesign**: Coral accent (#ff6a3d) on a deep-ocean palette, Bricolage Grotesque display type, rounded cards, and full-bleed image/video heroes
+- **Dark Mode**: Class-based theme with a sun/moon header toggle — defaults to the OS preference, persists the visitor's choice
 - **Hero Sections**: Full-screen background images and videos
-- **Clipped Paths**: Modern geometric design elements
-- **Responsive Images**: Optimized for all device sizes
+- **Responsive Images**: Crop/hotspot-aware Sanity images optimized for all device sizes
 - **Smooth Transitions**: Motion-based page transitions
 - **Interactive Cards**: Hover effects and animations
 
@@ -201,9 +205,12 @@ npm run lint
 
 Required environment variables for full functionality:
 
-- `CONTENTFUL_SPACE_ID`: Contentful space identifier
-- `CONTENTFUL_ACCESS_TOKEN`: Contentful API access token
-- PayPal configuration (configured in components)
+- `NEXT_PUBLIC_SANITY_PROJECT_ID` / `NEXT_PUBLIC_SANITY_DATASET`: Sanity project
+- `NEXT_PUBLIC_SANITY_API_VERSION`: optional, defaults to 2025-11-13
+- `SANITY_API_WRITE_TOKEN`: scripts only (migrations, asset uploads)
+- `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` / `SUPABASE_SERVICE_ROLE_KEY`: booking storage
+- `RESEND_API_KEY`: confirmation emails (or SMTP credentials for Nodemailer)
+- `NEXT_PUBLIC_PAYPAL_CLIENT_ID`: PayPal integration
 
 ### Deployment
 
@@ -218,26 +225,27 @@ Required environment variables for full functionality:
 ### Image Optimization
 
 - **Next.js Image Component**: Automatic optimization
-- **Plaiceholder**: Blur placeholders for better UX
+- **LQIP Blur Placeholders**: Sanity-generated low-quality previews for better UX
 - **Sharp**: High-performance image processing
-- **Responsive Images**: Device-specific image sizes
+- **Responsive Images**: Device-specific image sizes (srcset capped at 1920w)
 
 ### Loading Performance
 
-- **Static Generation**: Pre-rendered pages for fast loading
+- **ISR Static Generation**: Pre-rendered pages (7-day revalidate) for fast loading
+- **Inlined Critical CSS**: `experimental.inlineCss` removes render-blocking stylesheets
 - **Code Splitting**: Automatic bundle optimization
-- **Lazy Loading**: Images and components loaded on demand
-- **Service Worker**: Caching for offline functionality
+- **Lazy Loading**: Images, videos, and third-party widgets loaded on demand
 
 ## 🔍 SEO & Marketing
 
 ### Search Engine Optimization
 
-- **Meta Tags**: Dynamic meta descriptions and titles
-- **Structured Data**: Rich snippets for search results
-- **Sitemap**: Automatic XML sitemap generation
+- **Meta Tags**: Locale-aware titles/descriptions from Sanity, verified at build time (builds fail loudly on empty metadata)
+- **Structured Data**: JSON-LD rich snippets for search results
+- **Hreflang**: EN/ES alternate + canonical links on every page
+- **Sitemap**: Automatic XML sitemap generation from Sanity slugs
+- **AI Search (GEO)**: `llms.txt` and `llms-full.txt` reference files for AI-powered search engines
 - **Robots.txt**: Search engine crawling directives
-- **Canonical URLs**: Duplicate content prevention
 
 ### Social Media
 
@@ -274,8 +282,8 @@ Required environment variables for full functionality:
 
 ### Social Media
 
-- **Facebook**: [Grand Bay of the Sea](https://www.facebook.com/grandbayofthesea)
-- **Instagram**: [@grandbayofthesea](https://www.instagram.com/grandbayofthesea)
+- **Facebook**: [Grand Bay of the Sea](https://www.facebook.com/grandbaydivecenter/)
+- **Instagram**: [@grandbayoftheseard](https://www.instagram.com/grandbayoftheseard/)
 - **WhatsApp**: +1 (829) 723-9338
 
 ## 📄 License
@@ -285,5 +293,5 @@ This project is proprietary software developed for Grand Bay of the Sea dive cen
 ---
 
 **Developer**: James Karnes  
-**Last Updated**: 2024  
-**Version**: 1.0.0
+**Last Updated**: July 2026  
+**Version**: 2.0.0

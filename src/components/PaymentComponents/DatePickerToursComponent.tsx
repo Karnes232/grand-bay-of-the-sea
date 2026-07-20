@@ -107,7 +107,7 @@ const DatePickerToursComponent = ({ setFormData, formData, tour }) => {
           value={value}
           popoverDirection="up"
           onChange={handleValueChange}
-          inputClassName="pl-0"
+          inputClassName="pl-0 w-full bg-transparent text-gray-900 outline-none"
         />
       </div>
       {tour && (
