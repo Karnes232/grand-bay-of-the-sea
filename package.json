@@ -14,6 +14,8 @@
     "start": "next start",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
     "lint": "next lint",
+    "verify:meta": "node scripts/verify-metadata.mjs",
+    "verify:meta:live": "node scripts/verify-metadata.mjs --url https://www.grandbay-puntacana.com",
     "seed:blog": "tsx --env-file=.env.local scripts/1.ts"
   },
   "dependencies": {
