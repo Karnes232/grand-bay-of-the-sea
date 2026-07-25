@@ -176,6 +176,12 @@ const Footer = async () => {
           >
             {t("cancellationPolicy")}
           </Link>
+          <Link
+            href="/privacy-policy"
+            className="transition-colors hover:text-white"
+          >
+            {t("privacyPolicy")}
+          </Link>
           <Link href="/contact" className="transition-colors hover:text-white">
             {t("contactUs")}
           </Link>

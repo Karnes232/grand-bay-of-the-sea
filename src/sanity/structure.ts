@@ -78,6 +78,14 @@ export const structure: StructureResolver = S =>
             .documentId("cancellationPolicy"),
         ),
       S.listItem()
+        .title("Privacy Policy")
+        .child(
+          S.document()
+            .schemaType("privacyPolicy")
+            .title("Privacy Policy")
+            .documentId("privacyPolicy"),
+        ),
+      S.listItem()
         .title("Contact")
         .child(
           S.document()

@@ -259,6 +259,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
+      url: "https://www.grandbay-puntacana.com/privacy-policy",
+      lastModified: SITE_LASTMOD,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: "https://www.grandbay-puntacana.com/es/privacy-policy",
+      lastModified: SITE_LASTMOD,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
       url: "https://www.grandbay-puntacana.com/blog",
       lastModified: SITE_LASTMOD,
       changeFrequency: "weekly",

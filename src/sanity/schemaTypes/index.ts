@@ -27,6 +27,8 @@ import PhotoGallery from "./Photo-Gallery/PhotoGallery"
 
 //Cancellation-Policy
 import CancellationPolicy from "./Cancellation-Policy/CancellationPolicy"
+//Privacy-Policy
+import PrivacyPolicy from "./Privacy-Policy/PrivacyPolicy"
 
 //Contact
 import Contact from "./Contact/contact"
@@ -102,6 +104,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     //Cancellation-Policy
     CancellationPolicy,
+    //Privacy-Policy
+    PrivacyPolicy,
 
     //Contact
     Contact,
