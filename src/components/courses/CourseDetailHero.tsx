@@ -32,6 +32,7 @@ const CourseDetailHero = ({
         <CloudinaryBackgroundVideo
           className="!absolute inset-0 -z-20 !min-h-full"
           videoId={videoId}
+          aboveFold
         />
       )}
       <div

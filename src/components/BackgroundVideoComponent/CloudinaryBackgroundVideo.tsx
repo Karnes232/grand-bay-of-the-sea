@@ -5,17 +5,24 @@ import React, { useEffect, useRef, useState } from "react"
 const CloudinaryBackgroundVideo = ({
   className,
   videoId,
-  videoBrightness = 'brightness-50'
+  videoBrightness = 'brightness-50',
+  aboveFold = false,
 }: {
   className: string
   videoId: string
   videoBrightness?: string
+  /** Set when this renders the page's above-fold hero: the poster becomes the
+   *  LCP element, so it must load eagerly at high priority (below-fold video
+   *  bands keep the default lazy poster). */
+  aboveFold?: boolean
 }) => {
   const cloudName = "di4fbucgh"
 
   const base = `https://res.cloudinary.com/${cloudName}/video/upload`
   // First frame of the video as a lightweight placeholder image.
-  const poster = `${base}/so_0,q_auto,f_auto,w_720/${videoId}.jpg`
+  const posterAt = (w: number) => `${base}/so_0,q_auto,f_auto,w_${w}/${videoId}.jpg`
+  const poster = posterAt(720)
+  const posterSrcSet = `${posterAt(720)} 720w, ${posterAt(1280)} 1280w, ${posterAt(1920)} 1920w`
 
   const wrapRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(false)
@@ -75,9 +82,12 @@ const CloudinaryBackgroundVideo = ({
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={poster}
+            srcSet={posterSrcSet}
+            sizes="100vw"
             alt=""
             aria-hidden
-            loading="lazy"
+            loading={aboveFold ? "eager" : "lazy"}
+            fetchPriority={aboveFold ? "high" : undefined}
             decoding="async"
             className={mediaClassName}
           />
