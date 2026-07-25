@@ -5,7 +5,7 @@ import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getScubaDivingPuntaCana } from "@/sanity/queries/Scuba-Diving-Punta-Cana/ScubaDivingPuntaCana"
 import { getSectionLinks } from "@/sanity/queries/Scuba-Diving-Punta-Cana/SectionLinks"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 import { BUSINESS } from "@/lib/business"
 
 import JsonLd from "@/components/StructuredData/JsonLd"
@@ -32,6 +32,7 @@ export async function generateMetadata({
   }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getPageSeo("Scuba Diving Punta Cana")
 
   if (!pageSeo) {
@@ -70,6 +71,7 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [structuredData, scuba, sectionLinks, tHome, tTrust, tCourses] =
     await Promise.all([
       getStructuredData("Scuba Diving Punta Cana"),

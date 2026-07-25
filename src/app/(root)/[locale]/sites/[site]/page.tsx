@@ -1,15 +1,22 @@
 import { Metadata, ResolvingMetadata } from "next"
 import { redirect, notFound } from "next/navigation"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
-import { getDiveSite } from "@/sanity/queries/Sites/DiveSites"
+import { getDiveSite, getDiveSites } from "@/sanity/queries/Sites/DiveSites"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import CoursesHero from "@/components/courses/CoursesHero"
 import DiveSiteCard from "@/components/DiveSitesComponents/DiveSiteCard"
 
 export const revalidate = 604800 // ISR 7 days — content refreshes on redeploy
+
+// Without generateStaticParams a dynamic segment renders fully dynamically
+// (no-store) even when statically renderable — prerender all dive sites.
+export async function generateStaticParams() {
+  const sites = await getDiveSites()
+  return sites.filter(s => s.slug).map(s => ({ site: s.slug as string }))
+}
 
 // Sanity stores the canonical English enum; the visible label is translated
 // per-locale via the DiveSiteCard i18n keys.
@@ -30,6 +37,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { site, locale } = await params
+  setRequestLocale(locale)
   const diveSite = await getDiveSite(site)
   // Unknown slug is a real 404 (the page itself calls notFound()), not a
   // data failure — don't throw, and never ship a blank <head> either.
@@ -62,6 +70,7 @@ export default async function Page({
 }) {
   const { site, locale } = await params
 
+  setRequestLocale(locale)
   // Shark Point has its own dedicated page.
   if (site === "shark-point") {
     redirect("/shark-dive-punta-cana")

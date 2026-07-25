@@ -5,7 +5,7 @@ import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSharkDivePrice, getSites } from "@/sanity/queries/Sites/sites"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 
 import BlockContent from "@/components/BlockContent/BlockContent"
 import JsonLd from "@/components/StructuredData/JsonLd"
@@ -29,6 +29,7 @@ export async function generateMetadata({
   }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getPageSeo("Sites")
 
   if (!pageSeo) {
@@ -67,6 +68,7 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [structuredData, sitesLayout, sharkDivePrice, tCourses] =
     await Promise.all([
       getStructuredData("Sites"),

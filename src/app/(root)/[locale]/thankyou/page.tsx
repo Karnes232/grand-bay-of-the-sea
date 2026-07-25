@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 
 import JsonLd from "@/components/StructuredData/JsonLd"
 import CoursesHero from "@/components/courses/CoursesHero"
@@ -19,6 +19,7 @@ export async function generateMetadata({
   }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getPageSeo("Thank You")
 
   if (!pageSeo) {
@@ -59,6 +60,7 @@ export default async function Page({
   searchParams: Promise<{ name?: string }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [{ name }, structuredData, thankYou, t] = await Promise.all([
     searchParams,
     getStructuredData("Thank You"),

@@ -6,7 +6,7 @@ import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getLiveaboards } from "@/sanity/queries/Liveaboards/Liveaboards"
 import BlockContent from "@/components/BlockContent/BlockContent"
@@ -23,6 +23,7 @@ export async function generateMetadata({
   }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getPageSeo("Liveaboard")
 
   if (!pageSeo) {
@@ -68,6 +69,7 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [structuredData, liveaboards, t] = await Promise.all([
     getStructuredData("Liveaboard"),
     getLiveaboards(),

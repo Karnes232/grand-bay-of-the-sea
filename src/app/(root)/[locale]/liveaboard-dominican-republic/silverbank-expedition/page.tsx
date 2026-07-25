@@ -1,5 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import {
   getSilverbankExpedition,
@@ -16,6 +16,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getSilverbankExpeditionSEO()
 
   if (!pageSeo) {
@@ -61,6 +62,7 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [structuredData, silverbankExpedition, tLiveaboard] = await Promise.all(
     [
       getSilverbankExpeditionStructuredData(),

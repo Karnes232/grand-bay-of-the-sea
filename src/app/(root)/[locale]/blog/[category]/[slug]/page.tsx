@@ -4,8 +4,9 @@ import Recommendations from "@/components/BlogComponents/Recommendations"
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 import { getHreflangAlternates } from "@/utils/hreflang"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 import {
+  getBlogPosts,
   getBlogPostsCards,
   getIndividualBlogPost,
   getIndividualBlogPostSEO,
@@ -27,6 +28,17 @@ import JsonLd from "@/components/StructuredData/JsonLd"
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
 
+// Without generateStaticParams a dynamic segment renders fully dynamically
+// (no-store) even when statically renderable — prerender every post.
+export async function generateStaticParams() {
+  const posts = await getBlogPosts()
+  return posts.map(p => ({
+    category: p.blogCategory.slug.current,
+    slug: p.slug.current,
+  }))
+}
+
+
 export async function generateMetadata(
   {
     params,
@@ -34,6 +46,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { category, slug, locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getIndividualBlogPostSEO(slug)
   if (!pageSeo) {
     // No document at all — the post doesn't exist. A real 404, not a data
@@ -119,6 +132,7 @@ export default async function Page({
 }) {
   const { category, slug, locale } = await params
 
+  setRequestLocale(locale)
   const [individualBlogPost, related, blogCategory, layout, t, tNav] =
     await Promise.all([
       getIndividualBlogPost(slug),

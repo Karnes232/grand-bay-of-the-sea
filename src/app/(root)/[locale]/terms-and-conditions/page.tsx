@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/navigation"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 
 import JsonLd from "@/components/StructuredData/JsonLd"
 import BlockContent from "@/components/BlockContent/BlockContent"
@@ -22,6 +22,7 @@ export async function generateMetadata({
   }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getPageSeo("Cancellation Policy")
 
   if (!pageSeo) {
@@ -60,6 +61,7 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [structuredData, cancellationPolicy, tNav] = await Promise.all([
     getStructuredData("Cancellation Policy"),
     getCancellationPolicy(),

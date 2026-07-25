@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Metadata, ResolvingMetadata } from "next"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
@@ -26,6 +26,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getPageSeo("Shark Dive Punta Cana")
 
   if (!pageSeo) {
@@ -64,6 +65,7 @@ export default async function Home({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [structuredData, sharkDive, tCourses, tNav] = await Promise.all([
     getStructuredData("Shark Dive Punta Cana"),
     getSharkDive(),

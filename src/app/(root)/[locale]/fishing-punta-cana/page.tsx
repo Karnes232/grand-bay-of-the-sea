@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
@@ -24,6 +24,7 @@ export async function generateMetadata({
   }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getPageSeo("Fishing Punta Cana")
 
   if (!pageSeo) {
@@ -62,6 +63,7 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [structuredData, fishing, tCourses, tNav] = await Promise.all([
     getStructuredData("Fishing Punta Cana"),
     getFishing(),

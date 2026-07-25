@@ -5,10 +5,11 @@ import BlockContent from "@/components/BlockContent/BlockContent"
 import { Link } from "@/i18n/navigation"
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import {
+  getBlogCategory,
   getIndividualBlogCategory,
   getIndividualBlogCategorySEO,
 } from "@/sanity/queries/Blog/BlogCategory"
@@ -19,11 +20,20 @@ import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
 
+// Without generateStaticParams a dynamic segment renders fully dynamically
+// (no-store) even when statically renderable — prerender all categories.
+export async function generateStaticParams() {
+  const categories = await getBlogCategory()
+  return categories.map(c => ({ category: c.slug.current }))
+}
+
+
 export async function generateMetadata(
   { params }: { params: Promise<{ category: string; locale: "en" | "es" }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { category, locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getIndividualBlogCategorySEO(category)
 
   if (!pageSeo) {
@@ -60,6 +70,7 @@ export default async function Page({
 }) {
   const { category, locale } = await params
 
+  setRequestLocale(locale)
   const [blogCategory, blogPostsCards, layout, tNav] = await Promise.all([
     getIndividualBlogCategory(category),
     getBlogPostsCards(category),

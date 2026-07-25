@@ -1,4 +1,5 @@
 import JsonLd from "@/components/StructuredData/JsonLd"
+import { setRequestLocale } from "next-intl/server"
 import CoursesHero from "@/components/courses/CoursesHero"
 import CustomPagePayPal from "@/components/PayPalComponents/CustomPagePayPal"
 
@@ -19,6 +20,7 @@ export async function generateMetadata({
   }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getPageSeo("Custom Payment")
 
   if (!pageSeo) {
@@ -62,6 +64,7 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [structuredData, customPayment] = await Promise.all([
     getStructuredData("Custom Payment"),
     getCustomPayment(),

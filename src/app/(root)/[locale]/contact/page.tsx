@@ -1,5 +1,5 @@
 import dynamicImport from "next/dynamic"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 
 import JsonLd from "@/components/StructuredData/JsonLd"
 import CoursesHero from "@/components/courses/CoursesHero"
@@ -26,6 +26,7 @@ export async function generateMetadata({
   }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getPageSeo("Contact")
 
   if (!pageSeo) {
@@ -64,6 +65,7 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [structuredData, contact, tInfo] = await Promise.all([
     getStructuredData("Contact"),
     getContact(),

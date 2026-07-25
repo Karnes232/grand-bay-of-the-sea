@@ -7,7 +7,7 @@ import { getDiveTripsPage } from "@/sanity/queries/DiveTrips/DiveTripsPage"
 import { getTripCards } from "@/sanity/queries/DiveTrips/Trips"
 import { getFaqs } from "@/sanity/queries/Faqs/Faqs"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 import { BUSINESS } from "@/lib/business"
 
 import BlockContent from "@/components/BlockContent/BlockContent"
@@ -32,6 +32,7 @@ export async function generateMetadata({
   }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getPageSeo("Trips")
 
   if (!pageSeo) {
@@ -70,6 +71,7 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [structuredData, diveTripsPage, tripCards, faqs, tTrips, tCourses, tTrust] =
     await Promise.all([
       getStructuredData("Trips"),

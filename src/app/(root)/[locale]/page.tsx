@@ -7,7 +7,7 @@ import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSectionLinks } from "@/sanity/queries/Scuba-Diving-Punta-Cana/SectionLinks"
 import { getHomePage } from "@/sanity/queries/HomePage/HomePage"
 import { getFaqs } from "@/sanity/queries/Faqs/Faqs"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 import { BUSINESS } from "@/lib/business"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 
@@ -37,6 +37,7 @@ export async function generateMetadata({
   }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getPageSeo("Index")
 
   if (!pageSeo) {
@@ -76,6 +77,7 @@ export default async function Home({
 }) {
   const { locale } = await params
 
+  setRequestLocale(locale)
   const [structuredData, sectionLinks, homePage, faqs, tHome, tTrust] =
     await Promise.all([
       getStructuredData("Index"),

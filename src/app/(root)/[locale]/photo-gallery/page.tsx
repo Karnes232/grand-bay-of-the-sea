@@ -1,4 +1,5 @@
 import JsonLd from "@/components/StructuredData/JsonLd"
+import { setRequestLocale } from "next-intl/server"
 import PhotoGallery from "@/components/PhotoGalleryComponents/PhotoGallery"
 import CoursesHero from "@/components/courses/CoursesHero"
 import { getHreflangAlternates } from "@/utils/hreflang"
@@ -18,6 +19,7 @@ export async function generateMetadata({
   }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getPageSeo("Photo Gallery")
 
   if (!pageSeo) {
@@ -56,6 +58,7 @@ export default async function Page({
   params: Promise<{ locale: "en" | "es" }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const [structuredData, photoGallery] = await Promise.all([
     getStructuredData("Photo Gallery"),
     getPhotoGallery(),

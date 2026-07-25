@@ -1,12 +1,13 @@
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
-import { getTranslations } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import {
   getIndividualTrip,
   getTripSeo,
+  getTripSlugs,
   getTripStructuredData,
 } from "@/sanity/queries/DiveTrips/Trips"
 
@@ -21,11 +22,20 @@ import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
 
+// Without generateStaticParams a dynamic segment renders fully dynamically
+// (no-store) even when statically renderable — this opts the route into
+// build-time prerender + on-demand ISR for any new slugs.
+export async function generateStaticParams() {
+  const slugs = await getTripSlugs()
+  return slugs.map(s => ({ slug: s.slug }))
+}
+
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string; locale: string }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { slug, locale } = await params
+  setRequestLocale(locale)
   const pageSeo = await getTripSeo(slug)
 
   if (!pageSeo) {
@@ -62,6 +72,7 @@ export default async function Page({
 }) {
   const { slug, locale } = await params
 
+  setRequestLocale(locale)
   const [trip, structuredData, tTrips, tCourses, tNav] = await Promise.all([
     getIndividualTrip(slug),
     getTripStructuredData(slug),
