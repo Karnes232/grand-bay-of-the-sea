@@ -36,7 +36,7 @@ confirm current pricing and availability at the time of booking.
 ## Diving Conditions in Punta Cana
 
 - **Water temperature:** 26–29 °C (78–84 °F) year-round — comfortable diving in every season.
-- **Visibility:** typically 10–25 meters (30–80 feet) depending on weather and sea conditions.
+- **Visibility:** typically 15–25 meters (50–80 feet) depending on weather and sea conditions.
 - **Local dive-site depth range:** 6–30 meters (20–100 feet); day-trip wreck diving in Bayahibe reaches 40 meters.
 - **Dive-site selection:** local sites are chosen daily based on weather, sea state, and visibility for the safest, best experience — they are not pre-assigned.
 - **Suitability:** many reefs start shallow (from 6 m), making Punta Cana well suited to beginners and certification students while still offering advanced sites for experienced divers.
@@ -47,7 +47,7 @@ confirm current pricing and availability at the time of booking.
 
 ### Discover Scuba Diving — from $100
 Try scuba diving for the first time, no certification required. Includes a theory briefing,
-basic skill practice, and an open-water dive to a maximum depth of 12 meters (40 feet) under
+basic skill practice, and an open-water dive to a maximum depth of 6 meters (20 feet) under
 the direct supervision of a certified PADI instructor. Equipment included. Minimum age 10.
 Can later count toward a PADI Open Water course. URL: /courses/discover
 
@@ -58,8 +58,8 @@ divers. Equipment and hotel transport from the Bávaro resort area included. URL
 
 ### Shark Dive at Shark Point — $190
 Open-water (no cage) guided two-tank shark dive at Shark Point, a coral reef site 15–20
-minutes from shore by boat reaching ~26 meters (80 feet). Divers encounter nurse sharks and
-Caribbean reef sharks in their natural habitat. **Requires Advanced Open Water certification,
+minutes from shore by boat reaching ~26 meters (80 feet). Divers encounter nurse sharks,
+blacktip reef sharks, and Caribbean reef sharks in their natural habitat. **Requires Advanced Open Water certification,
 or Open Water with a minimum of 20 logged dives** (assessed case by case — bring your logbook).
 All equipment provided; hotel transport from Punta Cana and Bávaro included. URL: /shark-dive-punta-cana
 
@@ -73,7 +73,7 @@ The theory (eLearning) portion can be completed before arrival to save vacation 
 
 | Course | Price | Duration | Max depth certified | Prerequisites |
 |---|---|---|---|---|
-| Discover Scuba Diving | $100 | ~half day | 12 m / 40 ft (supervised) | None; min age 10 |
+| Discover Scuba Diving | $100 | ~half day | 6 m / 20 ft (supervised) | None; min age 10 |
 | PADI Scuba Diver | $399 | 2 days | 12 m / 40 ft (supervised) | None; min age 10; basic swimming |
 | PADI Open Water Diver | $499 | 3–4 days | 18 m / 60 ft | None; min age 10; basic swimming |
 | PADI Advanced Open Water | $449 | 2–3 days | 30 m / 100 ft | Open Water (or equiv.); min age 12 |
@@ -140,11 +140,12 @@ per booking. Not yet Advanced? Take the AOW course (from $449). URL: /trips/baya
 
 ## Liveaboard & Whale Watching
 
-Grand Bay of the Sea also arranges liveaboard and whale-focused expeditions in the Dominican
-Republic, including **Silver Bank humpback whale** experiences (the Silver Bank, north of the DR,
-is one of the world's premier humpback whale sanctuaries; the season typically runs January–April)
-and a **whale-watching adventure**. Specifics, dates, and pricing vary by season — contact the
-dive center to confirm. URLs: /liveaboard-dominican-republic ·
+Grand Bay of the Sea also arranges liveaboard expeditions in the Dominican Republic. The
+**Silverbank Expedition** is a diving-focused summer liveaboard (June–August) to the Silver Bank,
+north of the DR — it is not a whale trip, and no whale watching is done at the Silver Bank. A
+separate seasonal **whale-watching adventure** runs during the Dominican Republic's humpback
+whale season (January–March). Specifics, dates, and pricing vary by season — contact the dive
+center to confirm. URLs: /liveaboard-dominican-republic ·
 /liveaboard-dominican-republic/silverbank-expedition ·
 /liveaboard-dominican-republic/whale-watching-adventure
 
@@ -159,8 +160,8 @@ is paid on the day. Closed Sundays. URL: /fishing-punta-cana
 ## Marine Life
 
 Common sightings while diving in Punta Cana include sea turtles, stingrays, moray eels, angelfish,
-trumpetfish, parrotfish, nurse sharks, Caribbean reef sharks, and large schools of colorful reef
-fish. Reefs feature healthy coral including brain coral, pillar coral, sea fans, and fire coral.
+trumpetfish, parrotfish, nurse sharks, blacktip reef sharks, Caribbean reef sharks, and large
+schools of colorful reef fish. Reefs feature healthy coral including brain coral, pillar coral, sea fans, and fire coral.
 A detailed marine species directory is at /species (covering eagle rays, moray eels, squirrelfish,
 spiny lobster, scrawled filefish, blue-headed wrasse, glassy sweeper, goatfish, porcupine fish,
 angelfish, sergeant major, and more).
@@ -229,8 +230,8 @@ Yes — or Open Water with 20+ logged dives, assessed individually (the dive rea
 your logbook.
 
 **Is the shark dive cage diving?**
-No. It is an open-water dive on a natural reef alongside your divemaster — nurse sharks and
-Caribbean reef sharks in their natural habitat.
+No. It is an open-water dive on a natural reef alongside your divemaster — nurse sharks,
+blacktip reef sharks, and Caribbean reef sharks in their natural habitat.
 
 **What is the St. George wreck?**
 A 73-meter cargo ship built in Scotland (1962), sunk in 1999 as an artificial reef off Bayahibe;
