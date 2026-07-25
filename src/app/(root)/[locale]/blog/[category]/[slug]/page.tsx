@@ -21,6 +21,7 @@ import {
   hotspotPosition,
 } from "@/sanity/lib/image"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
+import { syncSchemaDates } from "@/utils/syncSchemaDates"
 import JsonLd from "@/components/StructuredData/JsonLd"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
@@ -143,7 +144,13 @@ export default async function Page({
 
   return (
     <main id="main">
-      <JsonLd raw={individualBlogPost?.seo?.structuredData[locale]} />
+      <JsonLd
+        raw={syncSchemaDates(
+          individualBlogPost?.seo?.structuredData[locale],
+          individualBlogPost.publishDate,
+          individualBlogPost._updatedAt,
+        )}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
