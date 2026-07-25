@@ -26,7 +26,23 @@ const StorySplit = ({
 }) => {
   if (!heading?.[locale]) return null
 
-  const imgSrc = sanityCropUrl(image, 1000, 1250) || image?.asset?.url || ""
+  // Size the image slot to the uploaded asset's own (crop-adjusted) aspect
+  // ratio, so a landscape team photo isn't forced into a portrait crop.
+  // Clamped so an extreme upload can't wreck the split layout.
+  const dims = image?.asset?.metadata?.dimensions
+  const crop = image?.crop as
+    | { top?: number; bottom?: number; left?: number; right?: number }
+    | undefined
+  const rawRatio = dims
+    ? (dims.width * (1 - (crop?.left ?? 0) - (crop?.right ?? 0))) /
+      (dims.height * (1 - (crop?.top ?? 0) - (crop?.bottom ?? 0)))
+    : 4 / 5
+  const ratio = Math.min(1.6, Math.max(0.8, rawRatio))
+
+  const imgSrc =
+    sanityCropUrl(image, 1200, Math.round(1200 / ratio)) ||
+    image?.asset?.url ||
+    ""
 
   return (
     <section className="mx-auto max-w-[1280px] px-6 pb-10 pt-[88px]">
@@ -50,7 +66,10 @@ const StorySplit = ({
           )}
         </div>
         {imgSrc && (
-          <div className="relative order-first aspect-[4/5] min-h-[320px] overflow-hidden rounded-[22px] lg:order-none">
+          <div
+            className="relative order-first overflow-hidden rounded-[22px] lg:order-none lg:min-h-[320px]"
+            style={{ aspectRatio: ratio }}
+          >
             <Image
               src={imgSrc}
               alt={image?.alt || ""}

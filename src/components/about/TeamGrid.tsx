@@ -1,5 +1,6 @@
 import Image from "next/image"
 
+import DiverSilhouette from "./DiverSilhouette"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import type { TeamMember } from "@/sanity/queries/AboutUs/AboutUs"
 
@@ -52,8 +53,10 @@ const TeamGrid = ({
               key={i}
               className="group flex flex-col overflow-hidden rounded-[20px] border border-line bg-card"
             >
-              {photoSrc && (
-                <div className="relative aspect-[4/5] overflow-hidden bg-surface-soft">
+              {/* Always rendered, so photo-less members keep the same card
+                  shape as the rest of the row (initials monogram fallback). */}
+              <div className="relative aspect-[4/5] overflow-hidden bg-surface-soft">
+                {photoSrc ? (
                   <Image
                     src={photoSrc}
                     alt={member.photo?.alt || member.name || ""}
@@ -71,8 +74,15 @@ const TeamGrid = ({
                         : undefined
                     }
                   />
-                </div>
-              )}
+                ) : (
+                  <div
+                    aria-hidden
+                    className="flex h-full w-full items-center justify-center bg-gradient-to-br from-moss/10 via-surface-soft to-accent/10"
+                  >
+                    <DiverSilhouette className="w-[55%] max-w-[190px] text-moss/35" />
+                  </div>
+                )}
+              </div>
               <div className="px-[22px] pb-[26px] pt-[22px]">
                 <h3 className="mb-[3px] font-display text-[1.25rem] font-bold tracking-[-0.02em] text-fg">
                   {member.name}
