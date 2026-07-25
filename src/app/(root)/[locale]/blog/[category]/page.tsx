@@ -4,6 +4,7 @@ import CoursesHero from "@/components/courses/CoursesHero"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import { Link } from "@/i18n/navigation"
 import { Metadata, ResolvingMetadata } from "next"
+import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
@@ -26,12 +27,9 @@ export async function generateMetadata(
   const pageSeo = await getIndividualBlogCategorySEO(category)
 
   if (!pageSeo) {
-    // Never ship a page with a blank <head>: fail the build (or the single
-    // ISR regeneration) loudly instead of silently caching empty metadata.
-    throw new Error(
-      `[metadata] SEO data came back empty for blog category ${category}. ` +
-        "Check the Sanity document's seo fields and the fetch above.",
-    )
+    // Unknown category is a user/crawler error, not a data failure — serve a
+    // real 404 instead of crashing with a 500 (the page also calls notFound()).
+    notFound()
   }
 
   const alternates = getHreflangAlternates(`blog/${category}`, locale)
@@ -68,6 +66,9 @@ export default async function Page({
     getBlogPageLayout(),
     getTranslations("Navbar"),
   ])
+
+  // Unknown category → real 404 instead of crashing on missing fields below.
+  if (!blogCategory) notFound()
 
   const heroImg = blogCategory.heroImage
   const heroSrc =

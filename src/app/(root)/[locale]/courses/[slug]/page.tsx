@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Metadata, ResolvingMetadata } from "next"
+import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
@@ -31,12 +32,9 @@ export async function generateMetadata(
   const pageSeo = await getIndividualCourseSEO(slug)
 
   if (!pageSeo) {
-    // Never ship a page with a blank <head>: fail the build (or the single
-    // ISR regeneration) loudly instead of silently caching empty metadata.
-    throw new Error(
-      `[metadata] SEO data came back empty for course ${slug}. ` +
-        "Check the Sanity document's seo fields and the fetch above.",
-    )
+    // Unknown slug is a user/crawler error, not a data failure — serve a real
+    // 404 instead of crashing with a 500 (the page itself also calls notFound()).
+    notFound()
   }
 
   const alternates = getHreflangAlternates(`courses/${slug}`, locale)
@@ -74,6 +72,9 @@ export default async function Page({
       getTranslations("CourseOverview"),
       getTranslations("Navbar"),
     ])
+
+  // Unknown slug → real 404 instead of crashing on missing fields below.
+  if (!individualCourse) notFound()
 
   const c = individualCourse
   const h1 = c.title?.[locale] || c.course
