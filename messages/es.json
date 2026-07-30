@@ -38,6 +38,13 @@
     "submit": "Enviar",
     "submitting": "Enviando..."
   },
+  "FloatingContact": {
+    "openMenu": "Abrir opciones de contacto",
+    "closeMenu": "Cerrar opciones de contacto",
+    "contactForm": "Formulario de Contacto",
+    "whatsapp": "WhatsApp",
+    "closeForm": "Cerrar formulario"
+  },
   "ThankYou": {
     "thankYou": "Gracias",
     "ourTeamWillReachOut": "nuestro equipo se pondrá en contacto contigo pronto!",
