@@ -19,15 +19,19 @@ export async function GET(request: Request) {
   const locale = searchParams.get("locale") === "es" ? "es" : "en"
   const userAgent = request.headers.get("user-agent") || ""
 
-  let page = ""
-  const referer = request.headers.get("referer")
-  if (referer) {
-    try {
-      page = new URL(referer).pathname
-    } catch {
-      // ignore malformed referer
+  let page = searchParams.get("page") || ""
+  if (!page) {
+    const referer = request.headers.get("referer")
+    if (referer) {
+      try {
+        page = new URL(referer).pathname
+      } catch {
+        // ignore malformed referer
+      }
     }
   }
+  if (!page.startsWith("/")) page = ""
+  page = page.slice(0, 200)
 
   if (!BOT_UA.test(userAgent)) {
     const { error } = await supabaseServer.from("whatsapp_clicks").insert([

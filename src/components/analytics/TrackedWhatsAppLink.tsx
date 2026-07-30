@@ -25,9 +25,9 @@ const TrackedWhatsAppLink = ({
   const pathname = usePathname()
   return (
     <a
-      href={`/api/wa?src=${encodeURIComponent(source)}&locale=${locale}`}
+      href={`/api/wa?src=${encodeURIComponent(source)}&locale=${locale}&page=${encodeURIComponent(pathname)}`}
       target="_blank"
-      rel="noreferrer"
+      rel="noopener"
       aria-label={ariaLabel}
       className={className}
       onClick={() => {
