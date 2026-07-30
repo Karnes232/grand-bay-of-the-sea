@@ -33,6 +33,34 @@ export async function GET(request: Request) {
   if (!page.startsWith("/")) page = ""
   page = page.slice(0, 200)
 
+  // Netlify's CDN geolocates every request; the header shape has varied
+  // between plain and base64-encoded JSON across runtime versions.
+  let geo: { country?: { code?: string } | string; city?: string } = {}
+  const rawGeo = request.headers.get("x-nf-geo")
+  if (rawGeo) {
+    try {
+      geo = JSON.parse(rawGeo)
+    } catch {
+      try {
+        geo = JSON.parse(Buffer.from(rawGeo, "base64").toString())
+      } catch {
+        // leave geo empty
+      }
+    }
+  }
+  const country =
+    (typeof geo.country === "object" ? geo.country?.code : geo.country) ||
+    request.headers.get("x-country") ||
+    ""
+  const city = geo.city || ""
+  const browserLanguage = (request.headers.get("accept-language") || "")
+    .split(",")[0]
+    .trim()
+    .slice(0, 35)
+  const device = /Mobi|Android|iPhone|iPad/i.test(userAgent)
+    ? "mobile"
+    : "desktop"
+
   if (!BOT_UA.test(userAgent)) {
     const { error } = await supabaseServer.from("whatsapp_clicks").insert([
       {
@@ -40,6 +68,10 @@ export async function GET(request: Request) {
         page,
         locale,
         user_agent: userAgent.slice(0, 500),
+        country: country.slice(0, 10),
+        city: city.slice(0, 100),
+        browser_language: browserLanguage,
+        device,
       },
     ])
     if (error) {
