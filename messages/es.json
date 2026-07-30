@@ -72,6 +72,7 @@
     "contactInfo": "Información de Contacto",
     "fullName": "Nombre Completo",
     "emailAddress": "Correo Electrónico",
+    "whatsappPhone": "WhatsApp / Teléfono",
     "hotel": "Hotel",
     "numberOfFishermen": "Número de Pescadores",
     "numberOfSpectators": "Número de Espectadores",
@@ -105,6 +106,7 @@
     "contactInfo": "Información de Contacto",
     "fullName": "Nombre Completo",
     "emailAddress": "Correo Electrónico",
+    "whatsappPhone": "WhatsApp / Teléfono",
     "hotel": "Hotel",
     "numberOfDivers": "Número de Buceadores",
     "numberOfSnorkelers": "Número de Snorkelers",
@@ -133,6 +135,7 @@
     "contactInfo": "Información de Contacto",
     "fullName": "Nombre Completo",
     "emailAddress": "Correo Electrónico",
+    "whatsappPhone": "WhatsApp / Teléfono",
     "hotel": "Hotel",
     "numberOfGuests": "Cantidad de Personas"
   },
@@ -210,6 +213,7 @@
     "contactInfo": "Información de Contacto",
     "fullName": "Nombre Completo",
     "emailAddress": "Correo Electrónico",
+    "whatsappPhone": "WhatsApp / Teléfono",
     "hotel": "Hotel",
     "numberOfGuests": "Cantidad de Personas",
     "excursion": "Excursión"

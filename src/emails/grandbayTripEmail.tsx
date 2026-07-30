@@ -16,6 +16,7 @@ import {
 
 export const grandbayTripEmail = ({
   customerName = "Diving Enthusiast",
+  customerPhone = "",
   hotel = "Barcelo",
   excursionName = "Two Tank Dive",
   excursionDate = "June 1, 2025",
@@ -63,6 +64,10 @@ export const grandbayTripEmail = ({
 
               <Text className="text-gray-700">
                 <strong>Date:</strong> {excursionDate}
+              </Text>
+
+              <Text className="text-gray-700">
+                <strong>WhatsApp / Phone:</strong> {customerPhone}
               </Text>
 
               <Text className="text-gray-700">

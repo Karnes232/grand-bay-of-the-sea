@@ -42,6 +42,7 @@ const PayPalButtonWrapperBooking = ({
     return (
       formData.name.trim() !== "" &&
       formData.email.trim() !== "" &&
+      (formData.phone || "").trim() !== "" &&
       formData.hotel.trim() !== "" &&
       formData.guestCount > 0 &&
       formData.date !== "" &&

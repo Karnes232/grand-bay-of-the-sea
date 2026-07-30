@@ -11,6 +11,7 @@ async function saveBookingToSupabase(formData: any, formType: string) {
     {
       name: formData.name?.toString() || "",
       email: formData.email?.toString() || "",
+      phone: formData.phone?.toString() || "",
       hotel: formData.hotel?.toString() || "",
       tour_name: formData.tourSelect?.toString() || "",
       excursion_date: formData.date?.toString() || "",
@@ -121,6 +122,7 @@ export async function submitBookingForm(formData: any) {
     await sendConfirmationEmail({
       customerName: formData.name,
       customerEmail: formData.email,
+      customerPhone: formData.phone,
       hotel: formData.hotel,
       excursionName: formData.tourSelect,
       excursionDate: formData.date,
@@ -136,6 +138,7 @@ export async function submitBookingForm(formData: any) {
         "form-name": "booking",
         name: formData.name?.toString() || "",
         email: formData.email?.toString() || "",
+        phone: formData.phone?.toString() || "",
         hotel: formData.hotel?.toString() || "",
         guestCount: formData.guestCount?.toString() || "",
         date: formData.date?.toString() || "",
@@ -158,6 +161,7 @@ export async function submitFishingForm(formData: any) {
     await sendConfirmationFishingEmail({
       customerName: formData.name,
       customerEmail: formData.email,
+      customerPhone: formData.phone,
       hotel: formData.hotel,
       excursionName: formData.tourSelect,
       excursionDate: formData.date,
@@ -174,6 +178,7 @@ export async function submitFishingForm(formData: any) {
         "form-name": "fishing",
         name: formData.name?.toString() || "",
         email: formData.email?.toString() || "",
+        phone: formData.phone?.toString() || "",
         hotel: formData.hotel?.toString() || "",
         guestCount: formData.guestCount?.toString() || "",
         spectator: formData.spectator?.toString() || "",
@@ -197,6 +202,7 @@ export async function submitTripForm(formData: any) {
     await sendConfirmationTripEmail({
       customerName: formData.name,
       customerEmail: formData.email,
+      customerPhone: formData.phone,
       hotel: formData.hotel,
       excursionName: formData.tourSelect,
       excursionDate: formData.date,
@@ -213,6 +219,7 @@ export async function submitTripForm(formData: any) {
         "form-name": "trip",
         name: formData.name?.toString() || "",
         email: formData.email?.toString() || "",
+        phone: formData.phone?.toString() || "",
         hotel: formData.hotel?.toString() || "",
         guestCount: formData.guestCount?.toString() || "",
         snorkelers: formData.snorkelers?.toString() || "",
