@@ -21,30 +21,22 @@ const FloatingContactForm = () => {
             href={`https://wa.me/${BUSINESS.phoneE164.replace("+", "")}`}
             target="_blank"
             rel="noreferrer"
+            aria-label={t("whatsapp")}
             onClick={() => setIsMenuOpen(false)}
-            className="flex items-center gap-3 group"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md"
           >
-            <span className="rounded-full bg-white/95 px-3 py-1 text-sm font-medium text-gray-800 shadow-md">
-              {t("whatsapp")}
-            </span>
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md">
-              <FaWhatsapp size={24} aria-hidden />
-            </span>
+            <FaWhatsapp size={24} aria-hidden />
           </a>
           <button
             type="button"
+            aria-label={t("contactForm")}
             onClick={() => {
               setIsMenuOpen(false)
               setIsFormOpen(true)
             }}
-            className="flex items-center gap-3 group"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-black/75 text-[#007FFF] shadow-md"
           >
-            <span className="rounded-full bg-white/95 px-3 py-1 text-sm font-medium text-gray-800 shadow-md">
-              {t("contactForm")}
-            </span>
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-black/75 text-[#007FFF] shadow-md">
-              <FaRegMessage size={22} aria-hidden />
-            </span>
+            <FaRegMessage size={22} aria-hidden />
           </button>
         </div>
       )}
