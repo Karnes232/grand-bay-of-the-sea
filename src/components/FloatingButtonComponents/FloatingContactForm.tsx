@@ -7,7 +7,7 @@ import { FaWhatsapp } from "react-icons/fa"
 import { Dialog, DialogPanel } from "@headlessui/react"
 import { useTranslations } from "next-intl"
 import ContactForm from "../ContactForm/ContactForm"
-import { BUSINESS } from "@/lib/business"
+import TrackedWhatsAppLink from "../analytics/TrackedWhatsAppLink"
 
 const FloatingContactForm = () => {
   const t = useTranslations("FloatingContact")
@@ -17,16 +17,14 @@ const FloatingContactForm = () => {
     <>
       {isMenuOpen && (
         <div className="fixed z-[500] bottom-24 right-6 xl:right-10 flex flex-col items-end gap-3 animate-fade-in-up">
-          <a
-            href={`https://wa.me/${BUSINESS.phoneE164.replace("+", "")}`}
-            target="_blank"
-            rel="noreferrer"
+          <TrackedWhatsAppLink
+            source="floating_button"
             aria-label={t("whatsapp")}
-            onClick={() => setIsMenuOpen(false)}
+            onNavigate={() => setIsMenuOpen(false)}
             className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md"
           >
             <FaWhatsapp size={24} aria-hidden />
-          </a>
+          </TrackedWhatsAppLink>
           <button
             type="button"
             aria-label={t("contactForm")}

@@ -1,8 +1,8 @@
 import { getSiteSettings } from "@/sanity/queries/SiteSettings/siteSettings"
-import { BUSINESS } from "@/lib/business"
 import React from "react"
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa"
 import { GrMail } from "react-icons/gr"
+import TrackedWhatsAppLink from "@/components/analytics/TrackedWhatsAppLink"
 const SocialMedia = async () => {
   const settings = await getSiteSettings()
   const iconLink =
@@ -35,15 +35,13 @@ const SocialMedia = async () => {
       >
         <GrMail className="h-[18px] w-[18px]" />
       </a>
-      <a
-        href={`https://wa.me/${BUSINESS.phoneE164.replace("+", "")}`}
-        target="_blank"
+      <TrackedWhatsAppLink
+        source="footer"
         aria-label="WhatsApp"
-        rel="noreferrer"
         className={iconLink}
       >
         <FaWhatsapp className="h-[18px] w-[18px]" />
-      </a>
+      </TrackedWhatsAppLink>
     </div>
   )
 }
