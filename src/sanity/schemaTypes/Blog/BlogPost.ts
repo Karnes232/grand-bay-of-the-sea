@@ -102,7 +102,7 @@ export default defineType({
   preview: {
     select: {
       title: "title.en",
-      media: "backgroundImages.0",
+      media: "backgroundImages.0.asset",
     },
   },
 })
