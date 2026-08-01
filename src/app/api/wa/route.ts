@@ -4,7 +4,10 @@ import { BUSINESS } from "@/lib/business"
 
 // Link-preview fetchers and crawlers hit this URL too (WhatsApp itself
 // previews it when the link is shared) — redirect them, but don't log.
-const BOT_UA = /bot|crawler|spider|preview|facebookexternalhit|whatsapp/i
+// UA sniffing can't catch scrapers with ordinary Chrome UAs, so logging also
+// requires c=1, which TrackedWhatsAppLink appends only at interaction time.
+const BOT_UA =
+  /bot|crawler|spider|preview|facebookexternalhit|whatsapp|googleother|headless|python|curl|wget|scrapy|okhttp|go-http|axios|node-fetch|java\//i
 
 const MESSAGES = {
   en: "Hi! I'd like more information about diving.",
@@ -17,6 +20,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const source = searchParams.get("src") || "unknown"
   const locale = searchParams.get("locale") === "es" ? "es" : "en"
+  const clicked = searchParams.get("c") === "1"
   const userAgent = request.headers.get("user-agent") || ""
 
   let page = searchParams.get("page") || ""
@@ -61,7 +65,7 @@ export async function GET(request: Request) {
     ? "mobile"
     : "desktop"
 
-  if (!BOT_UA.test(userAgent)) {
+  if (clicked && !BOT_UA.test(userAgent)) {
     const { error } = await supabaseServer.from("whatsapp_clicks").insert([
       {
         source,
