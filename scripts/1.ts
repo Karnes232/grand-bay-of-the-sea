@@ -33,26 +33,26 @@ const posts = [
 
     title: {
       _type: "localizedString",
-      en: "🔍 How to Choose a Reputable Dive Shop in Punta Cana",
-      es: "🔍 Cómo Elegir una Tienda de Buceo Confiable en Punta Cana",
+      en: "✈️ PUJ vs SDQ: Which Airport Should You Fly Into for Punta Cana?",
+      es: "✈️ PUJ vs SDQ: ¿A Qué Aeropuerto Debes Volar para Punta Cana?",
     },
 
     slug: {
       _type: "slug",
-      current: "how-to-choose-dive-shop-punta-cana",
+      current: "puj-vs-sdq-airport-punta-cana",
     },
 
-    publishDate: "2026-07-04",
+    publishDate: "2026-07-06",
 
     description: {
       _type: "localizedText",
-      en: "What separates a serious dive operator from an aggregator listing or resort-desk booking. Certification, group size, instructor qualifications, equipment condition, red flags, and specific questions to ask before you book.",
-      es: "Qué separa a un operador de buceo serio de una listing de agregador o una reserva de escritorio de resort. Certificación, tamaño de grupo, calificaciones del instructor, condición del equipo, señales de alerta y preguntas específicas antes de reservar.",
+      en: "PUJ is 20-45 minutes from most Punta Cana resorts; SDQ is 2-3 hours away via Autopista del Coral. When each airport makes sense, transfer costs and options, and how to compare fares that look cheaper into SDQ.",
+      es: "PUJ está a 20-45 minutos de la mayoría de resorts de Punta Cana; SDQ está a 2-3 horas vía Autopista del Coral. Cuándo tiene sentido cada aeropuerto, costos de transporte y cómo comparar tarifas que parecen más baratas a SDQ.",
     },
 
     blogCategory: {
       _type: "reference",
-      _ref: CATEGORIES.divingTips,
+      _ref: CATEGORIES.travelTips,
     },
 
     backgroundImages: [],
@@ -66,7 +66,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b1-s1", text: "Choosing a dive operator is one of the most consequential decisions in planning a diving trip — more than the destination, more than the specific dive sites, arguably more than the certification agency. A good operator will run a safe, well-organized dive that shows you the reef properly. A bad one will hand you sketchy gear, push you into a 20-diver herd, and race through the site to fit in the next trip. Same reef, radically different experience. This is especially true in a tourism-heavy destination like Punta Cana, where dozens of operators compete for the same divers and the range of quality is wide. This post walks through what actually distinguishes a reputable dive shop from a mediocre or dangerous one — certification, group size, gear, instructor qualifications, transparency, and the specific red flags worth watching for.", marks: [] },
+            { _type: "span", _key: "en-b1-s1", text: "Short answer: fly into PUJ (Punta Cana International) if you're heading straight to a Punta Cana resort. Fly into SDQ (Las Américas in Santo Domingo) if the flight is significantly cheaper, if you're combining Santo Domingo with your beach time, or if you can't get a good direct flight into PUJ from your city. The two airports are 100+ miles apart with a 2-3 hour drive between them, so \"which airport\" is a real decision that shows up in cost, time, and how much of your vacation you spend in transit. This post walks through when each choice makes sense, what the transfer looks like, and how to actually compare the total-cost math when SDQ fares look cheaper on paper.", marks: [] },
           ],
         },
         {
@@ -75,20 +75,16 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b2-s1", text: "Certification Agency Affiliation", marks: [] },
+            { _type: "span", _key: "en-b2-s1", text: "PUJ (Punta Cana International Airport)", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b3",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b3-l1", href: "https://www.padi.com/" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b3-s1", text: "Every legitimate dive shop is affiliated with a recognized certification agency. In the Caribbean, the biggest are ", marks: [] },
-            { _type: "span", _key: "en-b3-s2", text: "PADI (Professional Association of Diving Instructors)", marks: ["en-b3-l1"] },
-            { _type: "span", _key: "en-b3-s3", text: ", SSI (Scuba Schools International), and SDI (Scuba Diving International). PADI is by far the largest globally and issues the certifications most divers already hold. When a shop is a \"PADI 5-Star Dive Center\" or \"PADI Dive Resort,\" it means they've met specific operational standards — instructor qualifications, gear maintenance, safety practices, business practices — that PADI audits. This isn't a marketing badge; it's an accountability structure. If something goes seriously wrong at a certified dive center, the agency can investigate and revoke affiliation, which is a real business consequence.", marks: [] },
+            { _type: "span", _key: "en-b3-s1", text: "PUJ is the primary tourism airport for the Dominican Republic and the busiest airport in the country. It's designed specifically for the Punta Cana resort corridor, sits in the middle of the tourism zone, and puts you 20 to 45 minutes from almost every resort in the area — Bavaro is typically 15-30 minutes, Cabeza de Toro around 20-30 minutes, Cap Cana around 15-25 minutes, Uvero Alto around 40-60 minutes. The terminal itself is famously open-air with a thatched-roof design that says \"you're on vacation\" before you've even cleared immigration.", marks: [] },
           ],
         },
         {
@@ -97,7 +93,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b4-s1", text: "Verify agency affiliation independently rather than taking the shop's word. PADI maintains a dive center locator on their website where you can search for authorized centers by location. If a shop claims PADI affiliation but doesn't show up in the locator, that's a red flag — either they're not actually affiliated, or their affiliation has lapsed. This same principle applies to any agency they claim.", marks: [] },
+            { _type: "span", _key: "en-b4-s1", text: "Direct flights operate to PUJ from most major US cities (New York, Miami, Atlanta, Chicago, Boston, Charlotte, Newark, and dozens more), major Canadian cities (Toronto, Montreal, Ottawa, Vancouver seasonally), and increasingly from Europe (Madrid, Frankfurt, Paris, London, Amsterdam) and Latin America. For most vacationers coming from a primary market, a direct PUJ flight will exist on multiple airlines with pricing that's competitive with SDQ once you factor in transfer costs.", marks: [] },
           ],
         },
         {
@@ -106,7 +102,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b5-s1", text: "Group Size Per Guide", marks: [] },
+            { _type: "span", _key: "en-b5-s1", text: "SDQ (Las Américas International Airport)", marks: [] },
           ],
         },
         {
@@ -115,7 +111,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b6-s1", text: "Group size is one of the single biggest quality indicators, and it's rarely mentioned in marketing copy. A good recreational operator runs 6 to 8 divers per guide. A cheap volume operation runs 15 to 20 divers per guide, sometimes with two guides splitting a group of 20 across a shared boat. The economics of a dive boat are largely fixed — the boat, fuel, captain, gear, and permits cost roughly the same whether there are 6 or 20 divers on board — so the cheap-per-diver model works by cramming more people onto the same trip.", marks: [] },
+            { _type: "span", _key: "en-b6-s1", text: "SDQ serves Santo Domingo, the DR's capital city on the south coast. It's the country's other major international airport, with a broader mix of business and leisure traffic since Santo Domingo itself is a city of 3 million people. From SDQ to Punta Cana resorts is about 100 miles / 160 km by road, following Autopista del Coral (Highway 3) — a modern divided toll highway with 2 toll booths totaling around $3-5 USD in tolls. Drive time is 2 to 3 hours depending on traffic and your destination in the Punta Cana area.", marks: [] },
           ],
         },
         {
@@ -124,7 +120,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b7-s1", text: "The difference underwater is significant. With 6 divers, the guide can actually see everyone, respond quickly to any signal, and keep the group tight enough to see the marine life the guide points out. With 20 divers, the group spreads over 30 meters of reef, the guide loses eye contact with individuals, and the animals get scared off by the mass of divers before you have a chance to observe them. This isn't a subjective preference — it's a measurable difference in what you see and how much attention you get if you need help. Ask specifically: how many divers per guide? Answers over 8 to 10 should give you pause.", marks: [] },
+            { _type: "span", _key: "en-b7-s1", text: "SDQ can be significantly cheaper on airfare — routes from secondary US cities, Latin American hubs, and connecting flights from Europe often price $100 to $200 less through SDQ than PUJ per person. This is the main reason a Punta Cana traveler ends up at SDQ: the math on airfare savings versus the added transfer cost sometimes favors SDQ, especially for couples and families where the savings multiply.", marks: [] },
           ],
         },
         {
@@ -133,7 +129,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b8-s1", text: "Instructor Qualifications and Local Experience", marks: [] },
+            { _type: "span", _key: "en-b8-s1", text: "The Total-Cost Math", marks: [] },
           ],
         },
         {
@@ -142,7 +138,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b9-s1", text: "For courses (Discover Scuba, Open Water, Advanced), the qualifications of your specific instructor matter enormously. A PADI Open Water Scuba Instructor (OWSI) is the minimum credential to teach entry-level courses. Beyond that, look at experience level — an instructor teaching for five years at a specific site will handle every situation the site presents; an instructor two months into their first job in a new destination is still learning. This isn't a knock on new instructors, who are usually well-supervised, but it's worth knowing which you're getting.", marks: [] },
+            { _type: "span", _key: "en-b9-s1", text: "The comparison isn't just about ticket price. To make a fair PUJ vs SDQ decision, add the transfer cost and time value to each option:", marks: [] },
           ],
         },
         {
@@ -151,16 +147,16 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b10-s1", text: "For guided dives (not courses), the guide should be at minimum a certified Divemaster, though many shops use Instructors as guides. Also worth checking: does the guide actually know the specific sites, or are they following a memorized route? A guide who knows the reef intimately will show you the resident moray eel, the passageway where the reef sharks pass through, the specific coral formation with the octopus. A guide who's just following a compass heading will show you the same rectangle of reef whether it's your first dive here or your tenth.", marks: [] },
+            { _type: "span", _key: "en-b10-s1", text: "PUJ transfer: $30 to $60 for a private taxi to most Punta Cana hotels (round trip $60 to $120). Time: 30 to 45 minutes each way. Many all-inclusive packages include PUJ transfers, so this may be $0 depending on how you booked.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b11",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b11-s1", text: "Equipment Condition", marks: [] },
+            { _type: "span", _key: "en-b11-s1", text: "SDQ transfer: $130 to $270 for a private transfer service (round trip $260 to $540) for one to four people. Time: 2 to 3 hours each way. Alternatively, Expreso Bávaro operates a bus service between SDQ and Bávaro at around $17 per person one way, taking 4 to 4.5 hours with stops — cheap but eating a large chunk of vacation time.", marks: [] },
           ],
         },
         {
@@ -169,38 +165,34 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b12-s1", text: "Rental gear condition is one of the visible signals of an operator's overall care. When you arrive at the shop or boat, look at the gear you're being handed. Regulator hoses should be intact, not cracked or leaking. BCDs should hold air when inflated (test this before entering the water). Mask straps and fin straps should be in good condition. Tanks should have recent hydrostatic test stamps (usually visible near the valve). Wetsuits should be free of large tears. If the gear looks well-maintained, the operator is probably running a tight operation overall. If it looks like it's been abused and never serviced, that's a broader warning.", marks: [] },
+            { _type: "span", _key: "en-b12-s1", text: "Rough math for a couple: SDQ airfare $200 cheaper per person = $400 saved. SDQ private transfer $250 round trip vs PUJ $80 round trip = $170 extra. Net: still $230 ahead on SDQ. For a family of four, the airfare savings multiply while transfer costs stay roughly the same (a single vehicle for four fits in the standard transfer), so SDQ makes even more sense. For a solo traveler with a modest airfare gap, PUJ almost always wins on total cost once transfer is factored in.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b13",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b13-s1", text: "Reputable operators service regulators annually, replace BCDs on a rotation, and inspect tanks per legal schedules. They don't push gear until it fails and then only replace what visibly broke. This costs money and shows in the price — an operator running \"too cheap\" packages often is either cutting gear maintenance corners or paying instructors below industry rates, both of which affect safety.", marks: [] },
+            { _type: "span", _key: "en-b13-s1", text: "When PUJ Makes Sense", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b14",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b14-s1", text: "Safety Practices and Emergency Response", marks: [] },
+            { _type: "span", _key: "en-b14-s1", text: "PUJ is the right choice for the vast majority of Punta Cana vacationers, especially: short trips (3-5 days) where losing 4-6 hours of vacation to airport transfers is a big deal proportionally; travelers with kids or elderly companions where a shorter transfer is easier on everyone; anyone whose primary purpose is beach/resort time (no city interest); anyone landing late at night or leaving early morning (the extra transfer time on top of a red-eye is brutal); and anyone whose airfare from their home city into PUJ is within $75-100 per person of the SDQ alternative.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b15",
-          style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b15-l1", href: "https://dan.org/" },
-          ],
+          style: "h2",
+          markDefs: [],
           children: [
-            { _type: "span", _key: "en-b15-s1", text: "Ask the operator about their emergency response plan. A reputable shop will be able to tell you what happens if a diver has an incident — on-boat oxygen procedures, communication with land emergency services, coordination with the nearest hyperbaric chamber (in Santo Domingo for Punta Cana operations), and any relationship with ", marks: [] },
-            { _type: "span", _key: "en-b15-s2", text: "Divers Alert Network", marks: ["en-b15-l1"] },
-            { _type: "span", _key: "en-b15-s3", text: ". Many serious operators carry DAN professional membership, which provides accident coverage for their operation and access to DAN's 24/7 medical consultation hotline. If the shop can't articulate their emergency plan clearly, that's a genuine concern — it usually means they don't have one.", marks: [] },
+            { _type: "span", _key: "en-b15-s1", text: "When SDQ Makes Sense", marks: [] },
           ],
         },
         {
@@ -209,25 +201,25 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b16-s1", text: "Boats should visibly carry oxygen (a green kit with regulator), a first aid kit, marine radio, life vests, and surface flotation. If you don't see this gear on the boat, ask where it is. \"We don't need that\" is not an acceptable answer — every certification agency requires it and every reputable operator carries it.", marks: [] },
+            { _type: "span", _key: "en-b16-s1", text: "SDQ makes sense in three specific scenarios. First: significant airfare savings — $150+ per person per direction, which multiplies for couples and families. Second: you want to combine Santo Domingo with your beach time — the Zona Colonial (Colonial Zone) is a genuinely worthwhile UNESCO World Heritage historic district with 500-year-old buildings, cathedrals, and streetscapes; spending 1-2 nights in Santo Domingo before transferring to Punta Cana turns \"extra transfer time\" into \"cultural pre-game.\" Third: your airline of choice only serves SDQ from your city, or the SDQ schedule matches your dates when PUJ doesn't.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b17",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b17-s1", text: "Reviews (With Skepticism)", marks: [] },
+            { _type: "span", _key: "en-b17-s1", text: "If you're going the combo route, the logical sequence is: fly into SDQ → 1-2 nights in Santo Domingo (Colonial Zone) → private transfer to Punta Cana → beach and diving portion of the trip → PUJ departure back home. This gives you city + beach in one trip without doubling back to Santo Domingo for departure. Total transfer time is similar to a round-trip SDQ approach but you get a legitimate cultural experience added.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b18",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b18-s1", text: "Reviews matter but they're not the neutral signal they seem. Aggregator platforms (TripAdvisor, Viator, GetYourGuide) monetize the operator side by taking commission on bookings, which creates conflicts of interest in how they surface operators. Google reviews are generally more trustworthy because Google doesn't take booking commission — the operators have less ability to game the ranking. Read reviews for patterns rather than individual complaints (one bad review can happen to anyone; twenty complaints about the same issue tell you something). Look specifically for mentions of small groups, safety-focused briefings, quality gear, and knowledgeable guides. Watch out for repeated complaints about being upsold on the boat, unclear pricing, or dive sites that don't match what was advertised.", marks: [] },
+            { _type: "span", _key: "en-b18-s1", text: "Other Airport Options", marks: [] },
           ],
         },
         {
@@ -236,25 +228,25 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b19-s1", text: "Review counts matter more than average score for very small operators (the difference between 4.6 and 4.9 across 500 reviews is much more meaningful than the same difference across 10 reviews). Operators with only glowing recent reviews and no history are worth extra scrutiny — sometimes these are new operators, sometimes review manipulation.", marks: [] },
+            { _type: "span", _key: "en-b19-s1", text: "For completeness, there are three other DR airports occasionally relevant to Punta Cana travelers. LRM (La Romana International Airport) is a small airport about 90 minutes from Punta Cana, closer to Bayahibe and Casa de Campo. Limited flights, mostly charter and some seasonal European service. Sometimes cheaper than PUJ but the flight options are scarce enough that most travelers never see LRM as a real alternative.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b20",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b20-s1", text: "Booking Directly vs Through Third Parties", marks: [] },
+            { _type: "span", _key: "en-b20-s1", text: "STI (Cibao International Airport in Santiago) is in the north-central part of the country, about 4 hours from Punta Cana by road. Serves the Cibao region (Puerto Plata, Cabarete, Sosúa area) and would be inappropriate for a Punta Cana-only trip. POP (Gregorio Luperón International Airport in Puerto Plata) is on the north coast and similarly serves that region — about 4.5 hours from Punta Cana. Only relevant if you're doing a Puerto Plata + Punta Cana combined trip.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b21",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b21-s1", text: "Where you book from affects the price and the flexibility you get. Booking through a large aggregator platform typically adds a 15 to 25% markup that goes to the platform, not to the operator delivering the dive. It also locks you into the platform's rigid cancellation and refund protocols, which often don't accommodate weather flexibility the way a direct booking would. Booking through a resort concierge involves a similar dynamic — many resorts operate on a commission or kickback basis with specific operators, which is why the same handful of names get recommended regardless of quality.", marks: [] },
+            { _type: "span", _key: "en-b21-s1", text: "The Autopista del Coral Drive", marks: [] },
           ],
         },
         {
@@ -263,7 +255,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b22-s1", text: "Booking directly with a local operator — via their website, email, or WhatsApp — usually gets you the operator's actual price without markup, more flexible rescheduling for weather, direct communication with the people running your dive, and better ability to customize (\"I want to see a moray eel today\" or \"we'd prefer a quieter site\"). Direct booking is not the same as ignoring reviews — reputation still matters — but once you've identified operators you trust, direct is usually the better booking channel.", marks: [] },
+            { _type: "span", _key: "en-b22-s1", text: "If you do end up at SDQ, the drive to Punta Cana is on Autopista del Coral (Highway 3), which is a modern divided toll highway — much better than the older secondary roads Dominican tourists used before it was completed. Two toll booths, cash or card accepted, roughly $3 to $5 total in tolls. The scenery is mostly rural — sugar cane fields, small towns, occasional coastal views. Rest stops are limited but exist along the route. If you're doing this drive independently in a rental car, know that Dominican highway driving is different from the US or Europe (aggressive lane discipline, mixed vehicle speeds, and occasional livestock near the road are all normal), and most travelers prefer a private transfer where a local driver handles that.", marks: [] },
           ],
         },
         {
@@ -272,16 +264,20 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b23-s1", text: "Language Capabilities", marks: [] },
+            { _type: "span", _key: "en-b23-s1", text: "Booking Transfers", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b24",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "en-b24-l1", href: "https://www.grandbay-puntacana.com/blog/travel-tips/getting-around-punta-cana" },
+          ],
           children: [
-            { _type: "span", _key: "en-b24-s1", text: "For international divers, the guide's language capability matters more than it seems. Dive briefings are safety-critical — they cover the specific plan, hand signals, emergency procedures, and details about the site. A briefing delivered in a language you don't speak fluently means you miss information you need. Look for operators whose guides genuinely speak your language, not \"translation apps and gestures.\" In Punta Cana, most reputable operators handle English and Spanish comfortably; some also handle French, German, Italian, or Russian. Ask specifically what languages are available on your dates, and confirm before booking.", marks: [] },
+            { _type: "span", _key: "en-b24-s1", text: "For SDQ to Punta Cana, book a private transfer service in advance rather than negotiating with airport taxis on arrival — pre-booked transfers are often $40 to $50 cheaper and much less stressful after a long flight. Most reputable operators charge $130 to $200 for a private car for 1-4 people, with larger vans available for groups. For PUJ, if your resort didn't include transport, any pre-booked private taxi is typically $30 to $50 depending on destination. Our ", marks: [] },
+            { _type: "span", _key: "en-b24-s2", text: "getting around Punta Cana guide", marks: ["en-b24-l1"] },
+            { _type: "span", _key: "en-b24-s3", text: " covers ground transport options in more depth once you're in the area.", marks: [] },
           ],
         },
         {
@@ -290,135 +286,23 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "en-b25-s1", text: "Booking Transparency", marks: [] },
+            { _type: "span", _key: "en-b25-s1", text: "The Bottom Line", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "en-b26",
           style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b26-s1", text: "A reputable operator gives you clear pricing before you book, in writing. This means the base rate, what's included, any additional charges (marine park fees, distant hotel pickup, gear rental if not included, card surcharges), the deposit structure, and the cancellation policy. If you can't get clear answers in writing, that's a warning. Day-of surprise charges are one of the most common complaints in the Punta Cana tourism industry — divers arrive expecting to pay the quoted price and find that gear, transport, or park fees weren't included after all.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b27",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b27-s1", text: "Payment structure should also be reasonable. A deposit to secure the booking (typically $50 to $100 depending on trip type) is standard; being asked to pay the full amount upfront in cash weeks before your trip is unusual and worth questioning. Refund and rescheduling terms should be spelled out — weather cancellations should refund or rebook, and reasonable-notice cancellations by the diver should be refundable. Non-refundable everything is a policy that only benefits the operator.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b28",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b28-s1", text: "Red Flags", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b29",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b29-s1", text: "A few patterns that consistently correlate with poor operations. No physical shop or verifiable local address — an Instagram profile and a WhatsApp number is not a dive operation; it's a middleman or a very new operator without infrastructure. Refusal to provide clear pricing in writing. Extreme underpricing compared to the market — Punta Cana 2-tank dives at $60 to $80 are almost always corner-cut operations because the real cost of running a safe dive boat is higher than that. Group sizes over 15 divers per guide. Vague or missing certification agency affiliation. No visible safety gear on the boat. Vague or defensive answers to safety questions. Refusal to let you see the boat or gear before the dive day.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b30",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b30-s1", text: "The single strongest red flag: pressure tactics. Any operator that tries to rush your decision, insists on payment before you've seen the operation, or pressures you into upgrades on the boat is showing you how they treat customers when they have your money. Reputable operators don't need to pressure — their reputation and reviews do the selling.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b31",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b31-s1", text: "Questions to Ask Before Booking", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b32",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b32-s1", text: "The specific questions that separate a real operator conversation from a marketing brochure. What certification agency are you affiliated with, and can I verify that on your agency's site? How many divers per guide is your typical group? What sites are we likely to visit for my certification level? What's your cancellation and reschedule policy for weather? What's included in the quoted price, and what isn't? What safety equipment does the boat carry? Do you have DAN professional membership or equivalent? What's your emergency response protocol? Who is my instructor or guide, and what's their experience level? What language will the briefing be in?", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b33",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b33-s1", text: "A reputable operator will answer these directly, without hedging or getting defensive. A bad operator will change the subject, promise vaguely, or push you toward booking before you've gotten answers. The response quality is often more informative than the specific answers.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b34",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b34-s1", text: "How This Applies to Grand Bay", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b35",
-          style: "normal",
           markDefs: [
-            { _type: "link", _key: "en-b35-l1", href: "https://www.grandbay-puntacana.com/" },
-            { _type: "link", _key: "en-b35-l2", href: "https://www.grandbay-puntacana.com/courses" },
+            { _type: "link", _key: "en-b26-l1", href: "https://www.grandbay-puntacana.com/courses" },
+            { _type: "link", _key: "en-b26-l2", href: "https://wa.me/18297239338" },
           ],
           children: [
-            { _type: "span", _key: "en-b35-s1", text: "Here's how ", marks: [] },
-            { _type: "span", _key: "en-b35-s2", text: "Grand Bay", marks: ["en-b35-l1"] },
-            { _type: "span", _key: "en-b35-s3", text: " stacks up on each criteria above, so you can compare us against others fairly. PADI-affiliated, verifiable on PADI's dive center locator. Groups capped at 6 to 8 divers per guide. Instructors and guides who work the same sites daily and know them intimately. Gear serviced on manufacturer schedules, not on breakage. Written emergency protocol including on-boat oxygen, marine radio, and coordination with the Santo Domingo hyperbaric chamber. English and Spanish native-level briefings. Transparent pricing in writing before booking. 48-hour cancellation policy with full weather refunds. Direct booking via ", marks: [] },
-            { _type: "span", _key: "en-b35-s4", text: "our website", marks: ["en-b35-l2"] },
-            { _type: "span", _key: "en-b35-s5", text: " or WhatsApp — no aggregator markup, no resort commission structure.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b36",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b36-s1", text: "That's not a claim we're the only reputable operator in Punta Cana — there are others worth considering. It's a template for how to evaluate any operator on the criteria that actually matter. Ask other shops the same questions, verify their answers independently, and pick the one that gives you confidence.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b37",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "en-b37-s1", text: "The Bottom Line", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "en-b38",
-          style: "normal",
-          markDefs: [
-            { _type: "link", _key: "en-b38-l1", href: "https://wa.me/18297239338" },
-          ],
-          children: [
-            { _type: "span", _key: "en-b38-s1", text: "A reputable dive operator is verifiable, transparent, small-group, well-equipped, and responsive to safety questions. Price alone isn't the signal — dive operations have real costs and dangerously underpriced trips usually mean corners cut somewhere. Certification affiliation, group size, gear condition, and how the operator answers safety questions tell you more than star ratings on aggregator sites. If you want to compare us specifically against any other operator you're considering, message us on ", marks: [] },
-            { _type: "span", _key: "en-b38-s2", text: "WhatsApp", marks: ["en-b38-l1"] },
-            { _type: "span", _key: "en-b38-s3", text: " and we'll answer any specific question directly. If we're not the right fit for your trip, we'll say so.", marks: [] },
+            { _type: "span", _key: "en-b26-s1", text: "Fly PUJ for almost every straightforward Punta Cana vacation — it's 20-45 minutes from your resort, direct flights exist from most major cities, and transfer costs are low. Fly SDQ if the airfare is significantly cheaper ($150+ per person), if you want to add Santo Domingo's Colonial Zone to the trip, or if PUJ schedules don't work for you. The math tilts toward SDQ for couples and families with real airfare gaps, toward PUJ for solo travelers and short trips. If you're planning a ", marks: [] },
+            { _type: "span", _key: "en-b26-s2", text: "diving-focused trip", marks: ["en-b26-l1"] },
+            { _type: "span", _key: "en-b26-s3", text: " and want help coordinating airport pickup or figuring out logistics, message us on ", marks: [] },
+            { _type: "span", _key: "en-b26-s4", text: "WhatsApp", marks: ["en-b26-l2"] },
+            { _type: "span", _key: "en-b26-s5", text: " with your dates and we'll help you plan the arrival day around your first dive.", marks: [] },
           ],
         },
       ],
@@ -429,7 +313,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b1-s1", text: "Elegir un operador de buceo es una de las decisiones más consecuentes al planear un viaje de buceo — más que el destino, más que los sitios específicos, discutiblemente más que la agencia de certificación. Un buen operador manejará una inmersión segura y bien organizada que te muestre el arrecife apropiadamente. Uno malo te entregará equipo dudoso, te empujará a una manada de 20 buzos y correrá a través del sitio para embonar el próximo viaje. Mismo arrecife, experiencia radicalmente diferente. Esto es especialmente cierto en un destino cargado de turismo como Punta Cana, donde docenas de operadores compiten por los mismos buzos y el rango de calidad es amplio. Esta publicación recorre qué distingue realmente a una tienda de buceo confiable de una mediocre o peligrosa — certificación, tamaño de grupo, equipo, calificaciones del instructor, transparencia y las señales de alerta específicas que vale la pena vigilar.", marks: [] },
+            { _type: "span", _key: "es-b1-s1", text: "Respuesta corta: vuela a PUJ (Punta Cana Internacional) si vas directo a un resort en Punta Cana. Vuela a SDQ (Las Américas en Santo Domingo) si el vuelo es significativamente más barato, si estás combinando Santo Domingo con tu tiempo de playa, o si no puedes conseguir un buen vuelo directo a PUJ desde tu ciudad. Los dos aeropuertos están a más de 160 km de distancia con 2-3 horas de manejo entre ellos, así que \"cuál aeropuerto\" es una decisión real que aparece en costo, tiempo y cuánto de tus vacaciones pasas en tránsito. Esta publicación recorre cuándo tiene sentido cada opción, cómo se ve el transporte y cómo comparar realmente la matemática de costo total cuando las tarifas a SDQ parecen más baratas en papel.", marks: [] },
           ],
         },
         {
@@ -438,20 +322,16 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b2-s1", text: "Afiliación a Agencia de Certificación", marks: [] },
+            { _type: "span", _key: "es-b2-s1", text: "PUJ (Aeropuerto Internacional de Punta Cana)", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b3",
           style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b3-l1", href: "https://www.padi.com/" },
-          ],
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b3-s1", text: "Toda tienda de buceo legítima está afiliada a una agencia de certificación reconocida. En el Caribe, las más grandes son ", marks: [] },
-            { _type: "span", _key: "es-b3-s2", text: "PADI (Professional Association of Diving Instructors)", marks: ["es-b3-l1"] },
-            { _type: "span", _key: "es-b3-s3", text: ", SSI (Scuba Schools International) y SDI (Scuba Diving International). PADI es por lejos la más grande globalmente y emite las certificaciones que la mayoría de los buzos ya tiene. Cuando una tienda es un \"PADI 5-Star Dive Center\" o \"PADI Dive Resort\", significa que ha cumplido con estándares operacionales específicos — calificaciones de instructor, mantenimiento de equipo, prácticas de seguridad, prácticas de negocio — que PADI audita. Esta no es una insignia de marketing; es una estructura de rendición de cuentas. Si algo sale seriamente mal en un centro de buceo certificado, la agencia puede investigar y revocar la afiliación, lo cual es una consecuencia real de negocio.", marks: [] },
+            { _type: "span", _key: "es-b3-s1", text: "PUJ es el aeropuerto turístico primario de la República Dominicana y el aeropuerto más ocupado del país. Está diseñado específicamente para el corredor de resorts de Punta Cana, se sienta en medio de la zona turística y te pone a 20-45 minutos de casi todo resort en el área — Bávaro es típicamente 15-30 minutos, Cabeza de Toro alrededor de 20-30 minutos, Cap Cana alrededor de 15-25 minutos, Uvero Alto alrededor de 40-60 minutos. La terminal en sí es famosamente al aire libre con un diseño de techo de palma que dice \"estás de vacaciones\" antes de que hayas pasado inmigración.", marks: [] },
           ],
         },
         {
@@ -460,7 +340,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b4-s1", text: "Verifica la afiliación de la agencia independientemente en lugar de tomar la palabra de la tienda. PADI mantiene un localizador de centros de buceo en su sitio web donde puedes buscar centros autorizados por ubicación. Si una tienda dice tener afiliación PADI pero no aparece en el localizador, es una señal de alerta — o no están realmente afiliados, o su afiliación caducó. Este mismo principio aplica a cualquier agencia que digan.", marks: [] },
+            { _type: "span", _key: "es-b4-s1", text: "Los vuelos directos operan a PUJ desde la mayoría de las ciudades importantes de EE.UU. (Nueva York, Miami, Atlanta, Chicago, Boston, Charlotte, Newark, y docenas más), grandes ciudades canadienses (Toronto, Montreal, Ottawa, Vancouver estacional), y cada vez más desde Europa (Madrid, Frankfurt, París, Londres, Ámsterdam) y Latinoamérica. Para la mayoría de vacacionistas que vienen de un mercado primario, existirá un vuelo directo a PUJ en múltiples aerolíneas con precios que son competitivos con SDQ una vez que factorizas los costos de transporte.", marks: [] },
           ],
         },
         {
@@ -469,7 +349,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b5-s1", text: "Tamaño de Grupo Por Guía", marks: [] },
+            { _type: "span", _key: "es-b5-s1", text: "SDQ (Aeropuerto Internacional Las Américas)", marks: [] },
           ],
         },
         {
@@ -478,7 +358,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b6-s1", text: "El tamaño del grupo es uno de los indicadores de calidad más grandes, y rara vez se menciona en el copy de marketing. Un buen operador recreativo maneja de 6 a 8 buzos por guía. Una operación barata de volumen maneja de 15 a 20 buzos por guía, a veces con dos guías dividiendo un grupo de 20 en un bote compartido. La economía de un bote de buceo es en gran parte fija — el bote, combustible, capitán, equipo y permisos cuestan más o menos lo mismo ya sea que haya 6 o 20 buzos a bordo — así que el modelo barato-por-buzo funciona metiendo más gente en el mismo viaje.", marks: [] },
+            { _type: "span", _key: "es-b6-s1", text: "SDQ sirve a Santo Domingo, la ciudad capital de la RD en la costa sur. Es el otro aeropuerto internacional importante del país, con una mezcla más amplia de tráfico de negocios y turismo ya que Santo Domingo en sí es una ciudad de 3 millones de personas. De SDQ a resorts de Punta Cana es aproximadamente 160 km por carretera, siguiendo la Autopista del Coral (Autovía 3) — una autopista moderna de peaje dividida con 2 casetas de peaje que totalizan aproximadamente $3-5 USD en peajes. El tiempo de manejo es de 2 a 3 horas dependiendo del tráfico y tu destino en el área de Punta Cana.", marks: [] },
           ],
         },
         {
@@ -487,7 +367,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b7-s1", text: "La diferencia bajo el agua es significativa. Con 6 buzos, el guía puede realmente ver a todos, responder rápido a cualquier señal y mantener al grupo lo bastante junto para ver la vida marina que el guía señala. Con 20 buzos, el grupo se dispersa a lo largo de 30 metros de arrecife, el guía pierde contacto visual con individuos y los animales se asustan por la masa de buzos antes de que tengas oportunidad de observarlos. Esto no es una preferencia subjetiva — es una diferencia medible en lo que ves y cuánta atención recibes si necesitas ayuda. Pregunta específicamente: ¿cuántos buzos por guía? Respuestas por encima de 8 a 10 deberían darte pausa.", marks: [] },
+            { _type: "span", _key: "es-b7-s1", text: "SDQ puede ser significativamente más barato en tarifa aérea — las rutas desde ciudades secundarias de EE.UU., hubs latinoamericanos y vuelos con conexión desde Europa frecuentemente cotizan $100 a $200 menos por SDQ que por PUJ por persona. Esta es la razón principal por la que un viajero a Punta Cana termina en SDQ: la matemática de ahorros de tarifa aérea contra el costo adicional de transporte a veces favorece a SDQ, especialmente para parejas y familias donde los ahorros se multiplican.", marks: [] },
           ],
         },
         {
@@ -496,7 +376,7 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b8-s1", text: "Calificaciones del Instructor y Experiencia Local", marks: [] },
+            { _type: "span", _key: "es-b8-s1", text: "La Matemática de Costo Total", marks: [] },
           ],
         },
         {
@@ -505,7 +385,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b9-s1", text: "Para cursos (Discover Scuba, Open Water, Advanced), las calificaciones de tu instructor específico importan enormemente. Un PADI Open Water Scuba Instructor (OWSI) es la credencial mínima para enseñar cursos de nivel de entrada. Más allá de eso, mira el nivel de experiencia — un instructor enseñando por cinco años en un sitio específico manejará cada situación que el sitio presente; un instructor dos meses en su primer trabajo en un nuevo destino todavía está aprendiendo. Esto no es un golpe a los instructores nuevos, que usualmente están bien supervisados, pero vale la pena saber cuál te va a tocar.", marks: [] },
+            { _type: "span", _key: "es-b9-s1", text: "La comparación no es solo el precio del boleto. Para hacer una decisión justa PUJ vs SDQ, agrega el costo de transporte y el valor del tiempo a cada opción:", marks: [] },
           ],
         },
         {
@@ -514,16 +394,16 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b10-s1", text: "Para inmersiones guiadas (no cursos), el guía debería ser mínimo un Divemaster certificado, aunque muchas tiendas usan Instructores como guías. También vale la pena verificar: ¿el guía realmente conoce los sitios específicos, o está siguiendo una ruta memorizada? Un guía que conoce el arrecife íntimamente te mostrará la morena residente, el pasaje donde los tiburones de arrecife pasan, la formación de coral específica con el pulpo. Un guía que solo está siguiendo un rumbo de brújula te mostrará el mismo rectángulo de arrecife ya sea que sea tu primera inmersión aquí o la décima.", marks: [] },
+            { _type: "span", _key: "es-b10-s1", text: "Transporte PUJ: $30 a $60 por un taxi privado a la mayoría de los hoteles de Punta Cana (ida y vuelta $60 a $120). Tiempo: 30 a 45 minutos cada trayecto. Muchos paquetes todo-incluido incluyen transporte PUJ, así que esto puede ser $0 dependiendo de cómo reservaste.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b11",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b11-s1", text: "Condición del Equipo", marks: [] },
+            { _type: "span", _key: "es-b11-s1", text: "Transporte SDQ: $130 a $270 por un servicio de transporte privado (ida y vuelta $260 a $540) para una a cuatro personas. Tiempo: 2 a 3 horas cada trayecto. Alternativamente, Expreso Bávaro opera un servicio de autobús entre SDQ y Bávaro por alrededor de $17 por persona un trayecto, tomando 4 a 4.5 horas con paradas — barato pero comiéndose un pedazo grande de tiempo de vacaciones.", marks: [] },
           ],
         },
         {
@@ -532,38 +412,34 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b12-s1", text: "La condición del equipo de renta es una de las señales visibles del cuidado general de un operador. Cuando llegues a la tienda o el bote, mira el equipo que te están entregando. Las mangueras del regulador deberían estar intactas, no agrietadas ni fugando. Los BCDs deberían mantener el aire cuando se inflan (prueba esto antes de entrar al agua). Las correas de máscara y de aletas deberían estar en buena condición. Los tanques deberían tener sellos recientes de prueba hidrostática (usualmente visibles cerca de la válvula). Los wetsuits deberían estar libres de desgarres grandes. Si el equipo se ve bien mantenido, el operador probablemente maneja una operación estricta en general. Si se ve como si hubiera sido abusado y nunca hubiera recibido servicio, esa es una advertencia más amplia.", marks: [] },
+            { _type: "span", _key: "es-b12-s1", text: "Matemática aproximada para una pareja: tarifa aérea SDQ $200 más barata por persona = $400 ahorrados. Transporte privado SDQ $250 ida y vuelta vs PUJ $80 ida y vuelta = $170 extra. Neto: aún $230 adelante en SDQ. Para una familia de cuatro, los ahorros de tarifa aérea se multiplican mientras los costos de transporte se mantienen aproximadamente iguales (un solo vehículo para cuatro cabe en el transporte estándar), así que SDQ tiene aún más sentido. Para un viajero solitario con una brecha modesta de tarifa aérea, PUJ casi siempre gana en costo total una vez que se factoriza el transporte.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b13",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b13-s1", text: "Los operadores serios dan servicio a los reguladores anualmente, reemplazan BCDs en rotación e inspeccionan tanques según los cronogramas legales. No fuerzan el equipo hasta que falla y luego solo reemplazan lo que visiblemente se rompió. Esto cuesta dinero y se muestra en el precio — un operador manejando paquetes \"demasiado baratos\" a menudo está recortando esquinas de mantenimiento de equipo o pagando instructores por debajo de las tarifas de la industria, ambos de los cuales afectan la seguridad.", marks: [] },
+            { _type: "span", _key: "es-b13-s1", text: "Cuándo Tiene Sentido PUJ", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b14",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b14-s1", text: "Prácticas de Seguridad y Respuesta a Emergencias", marks: [] },
+            { _type: "span", _key: "es-b14-s1", text: "PUJ es la elección correcta para la gran mayoría de los vacacionistas de Punta Cana, especialmente: viajes cortos (3-5 días) donde perder 4-6 horas de vacaciones a transportes al aeropuerto es un gran tema proporcionalmente; viajeros con niños o acompañantes mayores donde un transporte más corto es más fácil para todos; cualquiera cuyo propósito principal sea tiempo de playa/resort (sin interés en la ciudad); cualquiera aterrizando tarde en la noche o saliendo temprano en la mañana (el tiempo extra de transporte encima de un vuelo nocturno es brutal); y cualquiera cuya tarifa aérea desde su ciudad de origen a PUJ esté dentro de $75-100 por persona de la alternativa SDQ.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b15",
-          style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b15-l1", href: "https://dan.org/" },
-          ],
+          style: "h2",
+          markDefs: [],
           children: [
-            { _type: "span", _key: "es-b15-s1", text: "Pregúntale al operador sobre su plan de respuesta a emergencias. Una tienda confiable podrá decirte qué pasa si un buzo tiene un incidente — procedimientos de oxígeno en bote, comunicación con servicios de emergencia en tierra, coordinación con la cámara hiperbárica más cercana (en Santo Domingo para operaciones de Punta Cana), y cualquier relación con ", marks: [] },
-            { _type: "span", _key: "es-b15-s2", text: "Divers Alert Network", marks: ["es-b15-l1"] },
-            { _type: "span", _key: "es-b15-s3", text: ". Muchos operadores serios cargan membresía profesional DAN, que provee cobertura de accidentes para su operación y acceso a la línea de consulta médica 24/7 de DAN. Si la tienda no puede articular su plan de emergencia claramente, es una preocupación genuina — usualmente significa que no tienen uno.", marks: [] },
+            { _type: "span", _key: "es-b15-s1", text: "Cuándo Tiene Sentido SDQ", marks: [] },
           ],
         },
         {
@@ -572,25 +448,25 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b16-s1", text: "Los botes deberían visiblemente cargar oxígeno (un kit verde con regulador), un kit de primeros auxilios, radio marina, chalecos salvavidas y flotación de superficie. Si no ves este equipo en el bote, pregunta dónde está. \"No lo necesitamos\" no es una respuesta aceptable — toda agencia de certificación lo requiere y todo operador serio lo carga.", marks: [] },
+            { _type: "span", _key: "es-b16-s1", text: "SDQ tiene sentido en tres escenarios específicos. Primero: ahorros significativos de tarifa aérea — $150+ por persona por dirección, que se multiplican para parejas y familias. Segundo: quieres combinar Santo Domingo con tu tiempo de playa — la Zona Colonial es un distrito histórico Patrimonio Mundial de la UNESCO genuinamente valioso con edificios, catedrales y calles de 500 años; pasar 1-2 noches en Santo Domingo antes de transferir a Punta Cana convierte el \"tiempo extra de transporte\" en \"precalentamiento cultural.\" Tercero: tu aerolínea preferida solo sirve SDQ desde tu ciudad, o el itinerario de SDQ coincide con tus fechas cuando PUJ no.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b17",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b17-s1", text: "Reseñas (Con Escepticismo)", marks: [] },
+            { _type: "span", _key: "es-b17-s1", text: "Si vas por la ruta combo, la secuencia lógica es: volar a SDQ → 1-2 noches en Santo Domingo (Zona Colonial) → transporte privado a Punta Cana → porción de playa y buceo del viaje → salida por PUJ de vuelta a casa. Esto te da ciudad + playa en un viaje sin regresar a Santo Domingo para la salida. El tiempo total de transporte es similar a un enfoque de SDQ ida y vuelta pero obtienes una experiencia cultural legítima agregada.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b18",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b18-s1", text: "Las reseñas importan pero no son la señal neutral que parecen. Las plataformas agregadoras (TripAdvisor, Viator, GetYourGuide) monetizan el lado del operador tomando comisión en las reservas, lo cual crea conflictos de interés en cómo hacen aparecer a los operadores. Las reseñas de Google son generalmente más confiables porque Google no toma comisión de reserva — los operadores tienen menos capacidad de manipular el ranking. Lee reseñas por patrones en lugar de quejas individuales (una mala reseña puede pasarle a cualquiera; veinte quejas sobre el mismo tema te dicen algo). Busca específicamente menciones de grupos pequeños, briefings enfocados en seguridad, equipo de calidad y guías conocedores. Cuidado con quejas repetidas sobre ser vendidas cosas de más en el bote, precios poco claros o sitios de buceo que no coinciden con lo anunciado.", marks: [] },
+            { _type: "span", _key: "es-b18-s1", text: "Otras Opciones de Aeropuerto", marks: [] },
           ],
         },
         {
@@ -599,25 +475,25 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b19-s1", text: "El conteo de reseñas importa más que la puntuación promedio para operadores muy pequeños (la diferencia entre 4.6 y 4.9 a lo largo de 500 reseñas es mucho más significativa que la misma diferencia en 10 reseñas). Los operadores con solo reseñas recientes elogiosas y sin historial merecen escrutinio extra — a veces son operadores nuevos, a veces manipulación de reseñas.", marks: [] },
+            { _type: "span", _key: "es-b19-s1", text: "Para completar, hay tres otros aeropuertos de la RD ocasionalmente relevantes para viajeros de Punta Cana. LRM (Aeropuerto Internacional de La Romana) es un aeropuerto pequeño a aproximadamente 90 minutos de Punta Cana, más cerca de Bayahibe y Casa de Campo. Vuelos limitados, mayormente charter y algún servicio europeo estacional. A veces más barato que PUJ pero las opciones de vuelo son tan escasas que la mayoría de los viajeros nunca ven LRM como una alternativa real.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b20",
-          style: "h2",
+          style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b20-s1", text: "Reservar Directo vs A Través de Terceros", marks: [] },
+            { _type: "span", _key: "es-b20-s1", text: "STI (Aeropuerto Internacional del Cibao en Santiago) está en la parte centro-norte del país, aproximadamente 4 horas de Punta Cana por carretera. Sirve la región del Cibao (Puerto Plata, Cabarete, área de Sosúa) y sería inapropiado para un viaje solo a Punta Cana. POP (Aeropuerto Internacional Gregorio Luperón en Puerto Plata) está en la costa norte y similarmente sirve esa región — aproximadamente 4.5 horas de Punta Cana. Solo relevante si estás haciendo un viaje combinado de Puerto Plata + Punta Cana.", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b21",
-          style: "normal",
+          style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b21-s1", text: "Dónde reservas afecta el precio y la flexibilidad que obtienes. Reservar a través de una gran plataforma agregadora típicamente agrega un margen de 15 a 25% que va a la plataforma, no al operador entregando la inmersión. También te encierra en los protocolos rígidos de cancelación y reembolso de la plataforma, que a menudo no acomodan la flexibilidad de clima como lo haría una reserva directa. Reservar a través de un concierge de resort involucra una dinámica similar — muchos resorts operan sobre una base de comisión o kickback con operadores específicos, por eso los mismos pocos nombres se recomiendan sin importar la calidad.", marks: [] },
+            { _type: "span", _key: "es-b21-s1", text: "El Trayecto por la Autopista del Coral", marks: [] },
           ],
         },
         {
@@ -626,7 +502,7 @@ const posts = [
           style: "normal",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b22-s1", text: "Reservar directamente con un operador local — vía su sitio web, correo o WhatsApp — usualmente te consigue el precio real del operador sin margen, reprogramación más flexible por clima, comunicación directa con la gente manejando tu inmersión y mejor capacidad de personalizar (\"quiero ver una morena hoy\" o \"preferimos un sitio más tranquilo\"). La reserva directa no es lo mismo que ignorar reseñas — la reputación aún importa — pero una vez identificados los operadores que confías, la directa suele ser el mejor canal.", marks: [] },
+            { _type: "span", _key: "es-b22-s1", text: "Si terminas en SDQ, el trayecto a Punta Cana es por la Autopista del Coral (Autovía 3), que es una autopista moderna dividida de peaje — mucho mejor que las carreteras secundarias más viejas que los turistas dominicanos usaban antes de que fuera terminada. Dos casetas de peaje, efectivo o tarjeta aceptados, aproximadamente $3 a $5 total en peajes. El paisaje es mayormente rural — campos de caña de azúcar, pequeños pueblos, vistas costeras ocasionales. Los paradores son limitados pero existen a lo largo de la ruta. Si estás haciendo este trayecto independientemente en un auto rentado, sepa que manejar en autopistas dominicanas es diferente que en EE.UU. o Europa (disciplina de carril agresiva, velocidades mixtas de vehículo y ganado ocasional cerca de la carretera son todos normales), y la mayoría de los viajeros prefieren un transporte privado donde un conductor local maneja eso.", marks: [] },
           ],
         },
         {
@@ -635,16 +511,20 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b23-s1", text: "Capacidades de Idioma", marks: [] },
+            { _type: "span", _key: "es-b23-s1", text: "Reservando Transportes", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b24",
           style: "normal",
-          markDefs: [],
+          markDefs: [
+            { _type: "link", _key: "es-b24-l1", href: "https://www.grandbay-puntacana.com/es/blog/travel-tips/getting-around-punta-cana" },
+          ],
           children: [
-            { _type: "span", _key: "es-b24-s1", text: "Para buzos internacionales, la capacidad de idioma del guía importa más de lo que parece. Los briefings de inmersión son críticos para la seguridad — cubren el plan específico, señales de mano, procedimientos de emergencia y detalles del sitio. Un briefing entregado en un idioma que no hablas fluidamente significa que te pierdes información que necesitas. Busca operadores cuyos guías genuinamente hablan tu idioma, no \"apps de traducción y gestos\". En Punta Cana, la mayoría de los operadores serios manejan inglés y español cómodamente; algunos también manejan francés, alemán, italiano o ruso. Pregunta específicamente qué idiomas están disponibles en tus fechas, y confirma antes de reservar.", marks: [] },
+            { _type: "span", _key: "es-b24-s1", text: "Para SDQ a Punta Cana, reserva un servicio de transporte privado por adelantado en lugar de negociar con taxis del aeropuerto a la llegada — los transportes pre-reservados frecuentemente son $40 a $50 más baratos y mucho menos estresantes después de un vuelo largo. La mayoría de los operadores serios cobran $130 a $200 por un auto privado para 1-4 personas, con vans más grandes disponibles para grupos. Para PUJ, si tu resort no incluyó transporte, cualquier taxi privado pre-reservado es típicamente $30 a $50 dependiendo del destino. Nuestra ", marks: [] },
+            { _type: "span", _key: "es-b24-s2", text: "guía para moverte en Punta Cana", marks: ["es-b24-l1"] },
+            { _type: "span", _key: "es-b24-s3", text: " cubre las opciones de transporte terrestre con más profundidad una vez que estás en el área.", marks: [] },
           ],
         },
         {
@@ -653,135 +533,23 @@ const posts = [
           style: "h2",
           markDefs: [],
           children: [
-            { _type: "span", _key: "es-b25-s1", text: "Transparencia en la Reserva", marks: [] },
+            { _type: "span", _key: "es-b25-s1", text: "En Resumen", marks: [] },
           ],
         },
         {
           _type: "block",
           _key: "es-b26",
           style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b26-s1", text: "Un operador confiable te da precios claros antes de reservar, por escrito. Esto significa la tarifa base, qué está incluido, cualquier cargo adicional (tarifas de parque marino, recogida de hotel distante, renta de equipo si no está incluida, recargos por tarjeta), la estructura de depósito y la política de cancelación. Si no puedes obtener respuestas claras por escrito, es una advertencia. Los cargos sorpresa del día son una de las quejas más comunes en la industria turística de Punta Cana — los buzos llegan esperando pagar el precio cotizado y encuentran que el equipo, transporte o tarifas de parque no estaban incluidos después de todo.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b27",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b27-s1", text: "La estructura de pago también debería ser razonable. Un depósito para asegurar la reserva (típicamente $50 a $100 dependiendo del tipo de viaje) es estándar; que te pidan pagar el monto completo por adelantado en efectivo semanas antes de tu viaje es inusual y digno de cuestionar. Los términos de reembolso y reprogramación deberían estar deletreados — las cancelaciones por clima deberían reembolsar o reprogramar, y las cancelaciones con aviso razonable por parte del buzo deberían ser reembolsables. Todo no reembolsable es una política que solo beneficia al operador.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b28",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b28-s1", text: "Señales de Alerta", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b29",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b29-s1", text: "Unos patrones que consistentemente se correlacionan con operaciones pobres. Sin tienda física o dirección local verificable — un perfil de Instagram y un número de WhatsApp no es una operación de buceo; es un intermediario o un operador muy nuevo sin infraestructura. Negarse a proveer precios claros por escrito. Precios extremadamente bajos comparado con el mercado — inmersiones de 2 tanques en Punta Cana a $60 a $80 son casi siempre operaciones que recortan esquinas porque el costo real de manejar un bote de buceo seguro es más alto que eso. Tamaños de grupo por encima de 15 buzos por guía. Afiliación de agencia de certificación vaga o ausente. Sin equipo de seguridad visible en el bote. Respuestas vagas o defensivas a preguntas de seguridad. Negarse a dejarte ver el bote o el equipo antes del día de la inmersión.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b30",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b30-s1", text: "La señal de alerta más fuerte: tácticas de presión. Cualquier operador que trate de apurar tu decisión, insista en el pago antes de que hayas visto la operación, o te presione a upgrades en el bote está mostrándote cómo trata a los clientes cuando tiene tu dinero. Los operadores serios no necesitan presionar — su reputación y reseñas hacen la venta.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b31",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b31-s1", text: "Preguntas para Hacer Antes de Reservar", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b32",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b32-s1", text: "Las preguntas específicas que separan una conversación real con el operador de un folleto de marketing. ¿A qué agencia de certificación están afiliados, y puedo verificarlo en el sitio de su agencia? ¿Cuántos buzos por guía es tu grupo típico? ¿Qué sitios probablemente visitaremos para mi nivel de certificación? ¿Cuál es tu política de cancelación y reprogramación por clima? ¿Qué está incluido en el precio cotizado, y qué no? ¿Qué equipo de seguridad carga el bote? ¿Tienen membresía profesional DAN o equivalente? ¿Cuál es tu protocolo de respuesta a emergencias? ¿Quién es mi instructor o guía, y cuál es su nivel de experiencia? ¿En qué idioma será el briefing?", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b33",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b33-s1", text: "Un operador serio contestará estas directamente, sin evadir o ponerse defensivo. Un mal operador cambiará el tema, prometerá vagamente, o te empujará a reservar antes de que hayas obtenido respuestas. La calidad de la respuesta es a menudo más informativa que las respuestas específicas.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b34",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b34-s1", text: "Cómo Aplica Esto a Grand Bay", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b35",
-          style: "normal",
           markDefs: [
-            { _type: "link", _key: "es-b35-l1", href: "https://www.grandbay-puntacana.com/es" },
-            { _type: "link", _key: "es-b35-l2", href: "https://www.grandbay-puntacana.com/es/courses" },
+            { _type: "link", _key: "es-b26-l1", href: "https://www.grandbay-puntacana.com/es/courses" },
+            { _type: "link", _key: "es-b26-l2", href: "https://wa.me/18297239338" },
           ],
           children: [
-            { _type: "span", _key: "es-b35-s1", text: "Así es como ", marks: [] },
-            { _type: "span", _key: "es-b35-s2", text: "Grand Bay", marks: ["es-b35-l1"] },
-            { _type: "span", _key: "es-b35-s3", text: " se compara en cada criterio de arriba, para que puedas compararnos con otros de forma justa. Afiliados a PADI, verificable en el localizador de centros de buceo de PADI. Grupos limitados a 6 a 8 buzos por guía. Instructores y guías que trabajan los mismos sitios diariamente y los conocen íntimamente. Equipo con servicio en cronogramas del fabricante, no por rotura. Protocolo de emergencia escrito incluyendo oxígeno en bote, radio marina y coordinación con la cámara hiperbárica de Santo Domingo. Briefings a nivel nativo en inglés y español. Precios transparentes por escrito antes de reservar. Política de cancelación de 48 horas con reembolsos completos por clima. Reserva directa vía ", marks: [] },
-            { _type: "span", _key: "es-b35-s4", text: "nuestro sitio web", marks: ["es-b35-l2"] },
-            { _type: "span", _key: "es-b35-s5", text: " o WhatsApp — sin margen de agregador, sin estructura de comisión de resort.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b36",
-          style: "normal",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b36-s1", text: "Eso no es una afirmación de que somos el único operador serio en Punta Cana — hay otros dignos de considerar. Es una plantilla de cómo evaluar cualquier operador en los criterios que realmente importan. Hazles a otras tiendas las mismas preguntas, verifica sus respuestas independientemente, y elige la que te dé confianza.", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b37",
-          style: "h2",
-          markDefs: [],
-          children: [
-            { _type: "span", _key: "es-b37-s1", text: "En Resumen", marks: [] },
-          ],
-        },
-        {
-          _type: "block",
-          _key: "es-b38",
-          style: "normal",
-          markDefs: [
-            { _type: "link", _key: "es-b38-l1", href: "https://wa.me/18297239338" },
-          ],
-          children: [
-            { _type: "span", _key: "es-b38-s1", text: "Un operador de buceo serio es verificable, transparente, de grupo pequeño, bien equipado y responde a preguntas de seguridad. El precio solo no es la señal — las operaciones de buceo tienen costos reales y viajes peligrosamente subvalorados usualmente significan esquinas recortadas en alguna parte. La afiliación de certificación, tamaño de grupo, condición del equipo y cómo el operador contesta preguntas de seguridad te dicen más que las puntuaciones de estrellas en sitios agregadores. Si quieres compararnos específicamente contra cualquier otro operador que estés considerando, escríbenos por ", marks: [] },
-            { _type: "span", _key: "es-b38-s2", text: "WhatsApp", marks: ["es-b38-l1"] },
-            { _type: "span", _key: "es-b38-s3", text: " y respondemos cualquier pregunta específica directamente. Si no somos el fit correcto para tu viaje, te lo diremos.", marks: [] },
+            { _type: "span", _key: "es-b26-s1", text: "Vuela PUJ para casi cualquier vacación directa a Punta Cana — está a 20-45 minutos de tu resort, existen vuelos directos desde la mayoría de las ciudades importantes y los costos de transporte son bajos. Vuela SDQ si la tarifa aérea es significativamente más barata ($150+ por persona), si quieres agregar la Zona Colonial de Santo Domingo al viaje, o si los itinerarios de PUJ no funcionan para ti. La matemática se inclina hacia SDQ para parejas y familias con brechas reales de tarifa aérea, hacia PUJ para viajeros solos y viajes cortos. Si estás planeando un ", marks: [] },
+            { _type: "span", _key: "es-b26-s2", text: "viaje enfocado en buceo", marks: ["es-b26-l1"] },
+            { _type: "span", _key: "es-b26-s3", text: " y quieres ayuda coordinando la recogida en aeropuerto o resolviendo logística, escríbenos por ", marks: [] },
+            { _type: "span", _key: "es-b26-s4", text: "WhatsApp", marks: ["es-b26-l2"] },
+            { _type: "span", _key: "es-b26-s5", text: " con tus fechas y te ayudamos a planear el día de llegada alrededor de tu primera inmersión.", marks: [] },
           ],
         },
       ],
@@ -791,35 +559,35 @@ const posts = [
       _type: "seo",
       meta: {
         en: {
-          title: "How to Choose a Reputable Dive Shop in Punta Cana (2026 Guide)",
+          title: "PUJ vs SDQ: Which Airport for Punta Cana? (2026 Guide)",
           description:
-            "PADI affiliation, group size, gear condition, safety protocols, and specific red flags. The full checklist for evaluating a Punta Cana dive operator before you book.",
-          keywords: ["choose dive shop punta cana", "best dive shop punta cana", "reputable scuba operator", "dive shop red flags", "PADI dive center punta cana"],
+            "PUJ (Punta Cana) is 20-45 min from resorts. SDQ (Santo Domingo) is 2-3 hours away via Autopista del Coral. When each makes sense, transfer costs, total-cost math, and other DR airports.",
+          keywords: ["puj vs sdq", "punta cana airport", "santo domingo vs punta cana airport", "which airport punta cana", "SDQ transfer to punta cana", "PUJ airport"],
         },
         es: {
-          title: "Cómo Elegir una Tienda de Buceo Confiable en Punta Cana (2026)",
+          title: "PUJ vs SDQ: ¿Qué Aeropuerto para Punta Cana? (Guía 2026)",
           description:
-            "Afiliación PADI, tamaño de grupo, condición del equipo, protocolos de seguridad y señales de alerta específicas. La lista completa para evaluar un operador de buceo en Punta Cana antes de reservar.",
-          keywords: ["elegir tienda buceo punta cana", "mejor tienda buceo punta cana", "operador buceo serio", "señales alerta buceo", "centro PADI punta cana"],
+            "PUJ (Punta Cana) está a 20-45 min de los resorts. SDQ (Santo Domingo) está a 2-3 horas vía Autopista del Coral. Cuándo tiene sentido cada uno, costos de transporte y matemática de costo total.",
+          keywords: ["puj vs sdq", "aeropuerto punta cana", "santo domingo aeropuerto", "que aeropuerto punta cana", "transporte SDQ punta cana"],
         },
       },
       openGraph: {
         en: {
-          title: "How to Choose a Reputable Dive Shop in Punta Cana",
-          description: "Certification, group size, gear condition, safety practices, and red flags. A full evaluation framework for picking a Punta Cana dive operator that runs safe, well-organized trips.",
+          title: "PUJ vs SDQ: Which Airport for Punta Cana?",
+          description: "Full comparison of Punta Cana International (PUJ) vs Las Américas Santo Domingo (SDQ): distances, drive times, transfer costs, and when each choice makes sense.",
         },
         es: {
-          title: "Cómo Elegir una Tienda de Buceo Confiable en Punta Cana",
-          description: "Certificación, tamaño de grupo, condición del equipo, prácticas de seguridad y señales de alerta. Un marco completo para elegir un operador que maneje inmersiones seguras y bien organizadas.",
+          title: "PUJ vs SDQ: ¿Qué Aeropuerto para Punta Cana?",
+          description: "Comparación completa de Punta Cana Internacional (PUJ) vs Las Américas Santo Domingo (SDQ): distancias, tiempos de manejo, costos de transporte y cuándo tiene sentido cada opción.",
         },
       },
       structuredData: {
         en: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: "How to Choose a Reputable Dive Shop in Punta Cana",
-          description: "A comprehensive framework for evaluating dive operators in Punta Cana. Covers certification agency affiliation (PADI, SSI, SDI) and independent verification, group size per guide (6-8 reputable vs 15-20 volume operators), instructor qualifications and local experience, equipment condition inspection tips, safety practices and emergency response including DAN professional membership, review skepticism (aggregator conflicts vs Google reviews), direct booking vs aggregator markup, language capabilities for briefings, booking transparency and pricing clarity, red flags (no local address, extreme underpricing, large groups, pressure tactics), specific questions to ask before booking, and Grand Bay's transparent stack against each criterion.",
-          datePublished: "2026-07-04",
+          headline: "PUJ vs SDQ: Which Airport Should You Fly Into for Punta Cana?",
+          description: "Complete comparison of Punta Cana International Airport (PUJ) versus Las Américas International Airport (SDQ) for Punta Cana travel. PUJ is 20-45 minutes from most Punta Cana resorts (Bavaro 15-30 min, Cabeza de Toro 20-30 min, Cap Cana 15-25 min, Uvero Alto 40-60 min). SDQ is 100+ miles/160+ km away with a 2-3 hour drive via Autopista del Coral (Highway 3, $3-5 tolls). SDQ can be $100-200 cheaper on airfare from secondary US cities, Latin American hubs, and European connections. Total-cost math worked through for couples and families. When PUJ makes sense (short trips, families with kids, red-eye flights, small airfare gaps). When SDQ makes sense (significant airfare savings, Santo Domingo combo trips including Colonial Zone UNESCO site, airline availability). Transfer costs: PUJ private taxi $30-60, SDQ private transfer $130-270, Expreso Bavaro bus $17 (4.5 hours). Other DR airports: LRM (La Romana), STI (Santiago), POP (Puerto Plata).",
+          datePublished: "2026-07-06",
           inLanguage: "en",
           author: { "@type": "Organization", name: "Grand Bay of the Sea" },
           publisher: {
@@ -829,15 +597,15 @@ const posts = [
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://www.grandbay-puntacana.com/blog/diving-tips/how-to-choose-dive-shop-punta-cana",
+            "@id": "https://www.grandbay-puntacana.com/blog/travel-tips/puj-vs-sdq-airport-punta-cana",
           },
         }),
         es: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: "Cómo Elegir una Tienda de Buceo Confiable en Punta Cana",
-          description: "Un marco completo para evaluar operadores de buceo en Punta Cana. Cubre afiliación a agencia de certificación (PADI, SSI, SDI) y verificación independiente, tamaño de grupo por guía (6-8 operadores serios vs 15-20 operadores de volumen), calificaciones del instructor y experiencia local, tips de inspección de la condición del equipo, prácticas de seguridad y respuesta a emergencias incluyendo membresía profesional DAN, escepticismo hacia reseñas (conflictos de agregadores vs reseñas de Google), reserva directa vs margen de agregador, capacidades de idioma para briefings, transparencia de reservas y claridad de precios, señales de alerta (sin dirección local, precios extremadamente bajos, grupos grandes, tácticas de presión), preguntas específicas para hacer antes de reservar, y cómo se compara Grand Bay contra cada criterio.",
-          datePublished: "2026-07-04",
+          headline: "PUJ vs SDQ: ¿A Qué Aeropuerto Debes Volar para Punta Cana?",
+          description: "Comparación completa del Aeropuerto Internacional de Punta Cana (PUJ) contra el Aeropuerto Internacional Las Américas (SDQ) para viajes a Punta Cana. PUJ está a 20-45 minutos de la mayoría de los resorts. SDQ está a más de 160 km con manejo de 2-3 horas por la Autopista del Coral. SDQ puede ser $100-200 más barato en tarifa aérea. Matemática de costo total trabajada para parejas y familias. Cuándo tiene sentido cada opción. Costos de transporte. Otros aeropuertos: LRM, STI, POP.",
+          datePublished: "2026-07-06",
           inLanguage: "es",
           author: { "@type": "Organization", name: "Grand Bay of the Sea" },
           publisher: {
@@ -847,7 +615,7 @@ const posts = [
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://www.grandbay-puntacana.com/es/blog/diving-tips/how-to-choose-dive-shop-punta-cana",
+            "@id": "https://www.grandbay-puntacana.com/es/blog/travel-tips/puj-vs-sdq-airport-punta-cana",
           },
         }),
       },
