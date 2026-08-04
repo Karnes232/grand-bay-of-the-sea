@@ -156,7 +156,6 @@ const PaymentPopupFishing = ({ tour }: { tour: any }) => {
               </div>
               <div className="rounded-lg p-6 h-full flex flex-col">
                 <form
-                  action={handleSubmit}
                   name="fishing"
                   data-netlify="true"
                   data-netlify-honeypot="bot-field"

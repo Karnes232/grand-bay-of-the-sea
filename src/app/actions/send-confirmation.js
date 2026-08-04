@@ -1,5 +1,6 @@
-"use server"
-
+// Plain server-side module (no "use server"): these are only called from the
+// /api/booking route handler, so registering them as server-action endpoints
+// would just recreate the deploy-invalidation surface this refactor removed.
 import grandbayEmail from "@/emails/grandbayEmail"
 import grandbayFishingEmail from "@/emails/grandbayFishingEmail"
 import grandbayTripEmail from "@/emails/grandbayTripEmail"
