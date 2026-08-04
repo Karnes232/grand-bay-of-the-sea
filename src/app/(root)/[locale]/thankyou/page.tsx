@@ -57,11 +57,11 @@ export default async function Page({
   searchParams,
 }: {
   params: Promise<{ locale: "en" | "es" }>
-  searchParams: Promise<{ name?: string }>
+  searchParams: Promise<{ name?: string; pending?: string }>
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  const [{ name }, structuredData, thankYou, t] = await Promise.all([
+  const [{ name, pending }, structuredData, thankYou, t] = await Promise.all([
     searchParams,
     getStructuredData("Thank You"),
     getThankYou(),
@@ -94,6 +94,11 @@ export default async function Page({
             {t("thankYou")}
             {name ? ` ${name}` : ""}, {t("ourTeamWillReachOut")}
           </h2>
+          {pending === "1" && (
+            <p className="mt-4 text-[15px] leading-relaxed text-muted">
+              {t("paymentReceivedPending")}
+            </p>
+          )}
           <p className="mt-4 text-[15px] leading-relaxed text-muted">
             {t("pleaseFeelFreeTo")}{" "}
             <a

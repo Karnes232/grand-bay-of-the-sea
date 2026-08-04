@@ -50,7 +50,8 @@
     "ourTeamWillReachOut": "our team will reach out to you shortly!",
     "pleaseFeelFreeTo": "Please feel free to",
     "contactUs": "contact us",
-    "withAnyQuestionsOrConcerns": "with any questions or concerns."
+    "withAnyQuestionsOrConcerns": "with any questions or concerns.",
+    "paymentReceivedPending": "Your payment was received. We are finalizing your booking and will confirm by WhatsApp or email shortly."
   },
   "CustomPagePayPal": {
     "depositAmount": "Deposit Amount",

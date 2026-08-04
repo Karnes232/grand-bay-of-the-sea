@@ -9,7 +9,6 @@ import {
 import DatePickerComponent from "./DatePickerComponent"
 import TourSelect from "./TourSelect"
 import CertificationLevel from "./CertificationLevel"
-import { submitBookingForm } from "@/app/(root)/actions"
 import { useRouter } from "next/navigation"
 import CustomPayPalBookingForm from "../PayPalComponents/CustomPayPalBookingForm"
 import { useTranslations } from "next-intl"
@@ -61,28 +60,56 @@ const PaymentPopupLocalDives = ({ tour }: { tour: DiveInfo }) => {
   }, [formData.tourSelect, formData.guestCount])
 
   const handleSubmit = async formData => {
-    const result = await submitBookingForm(formData)
-    if (result.success) {
-      try {
-        const response = await fetch("/__forms.html", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams(result.data).toString(),
-        })
-
-        if (response.ok) {
-          router.push(`/thankyou/?name=${result.data.name}`)
-        } else {
-          // Handle error
-        }
-      } catch (error) {
-        console.error("Submission error:", error)
-      }
-    } else {
-      console.log("Submission error")
+    // Netlify lead capture first, built from local data — the owner always
+    // gets the lead even if the backend call below fails.
+    try {
+      await fetch("/__forms.html", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          "form-name": "booking",
+          name: formData.name?.toString() || "",
+          email: formData.email?.toString() || "",
+          phone: formData.phone?.toString() || "",
+          hotel: formData.hotel?.toString() || "",
+          guestCount: formData.guestCount?.toString() || "",
+          date: formData.date?.toString() || "",
+          tourSelect: formData.tourSelect?.toString() || "",
+          certification: formData.certification?.toString() || "",
+          deposit: formData.deposit?.toString() || "",
+          price: formData.price?.toString() || "",
+        }).toString(),
+      })
+    } catch (error) {
+      console.error("Netlify form capture failed:", error)
     }
+
+    // Supabase + confirmation email via /api/booking — a route handler, not a
+    // server action, because action IDs die on every deploy and would lose
+    // bookings made from pages loaded before a redeploy.
+    let backendOk = false
+    try {
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formType: "booking", formData }),
+      })
+      if (res.ok) {
+        const result = await res.json()
+        backendOk = !!result.success
+      }
+    } catch (error) {
+      console.error("Booking API failed:", error)
+    }
+
+    // The customer has already paid — always land on /thankyou.
+    const params = new URLSearchParams({
+      name: formData.name?.toString() || "",
+    })
+    if (!backendOk) params.set("pending", "1")
+    router.push(`/thankyou/?${params.toString()}`)
   }
 
   const handleInputChange = e => {
