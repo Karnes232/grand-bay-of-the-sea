@@ -236,8 +236,8 @@ const referralCourse = {
   slug: { _type: "slug", current: "openwater-referral" },
   cardImage: imageRef(IMG.girlOnReef, "Diver over a coral reef in Punta Cana"),
   cardDescription: lt(
-    "Finished your theory and pool training at home? Complete your 4 certification dives with us in Punta Cana!",
-    "¿Terminaste la teoría y el entrenamiento en piscina en casa? ¡Completa tus 4 inmersiones de certificación con nosotros en Punta Cana!"
+    "Finished your theory and confined water training at home? Complete your 4 certification dives with us in Punta Cana!",
+    "¿Terminaste la teoría y el entrenamiento en aguas confinadas en casa? ¡Completa tus 4 inmersiones de certificación con nosotros en Punta Cana!"
   ),
   cardHashTags: ["referral", "PADI", "Caribbean dives"],
   courseLevel: "beginner",
@@ -274,8 +274,8 @@ const referralCourse = {
     },
     {
       style: "normal",
-      en: "Bring your signed PADI Referral Form — or your eLearning completion record plus the confined water sign-off from your instructor. We check your paperwork, meet you at the dive center, and get you straight into the water; there's no classroom time and no pool sessions to repeat.",
-      es: "Trae tu formulario de referral PADI firmado — o tu registro de eLearning completado más la firma de tu instructor de las sesiones en aguas confinadas. Revisamos tu documentación, te recibimos en el centro de buceo y te llevamos directo al agua; no hay tiempo de aula ni sesiones de piscina que repetir.",
+      en: "Bring your signed PADI Referral Form — or your eLearning completion record plus the confined water sign-off from your instructor. We check your paperwork, meet you at the dive center, and get you straight into the water; there's no classroom time and no confined water sessions to repeat.",
+      es: "Trae tu formulario de referral PADI firmado — o tu registro de eLearning completado más la firma de tu instructor de las sesiones en aguas confinadas. Revisamos tu documentación, te recibimos en el centro de buceo y te llevamos directo al agua; no hay tiempo de aula ni sesiones de aguas confinadas que repetir.",
     },
     {
       style: "normal",
@@ -501,8 +501,8 @@ const elearningCourse = {
   slug: { _type: "slug", current: "openwater-elearning" },
   cardImage: imageRef(IMG.girlDiving, "Girl diving in Punta Cana"),
   cardDescription: lt(
-    "Bought PADI eLearning and finished the theory? Do your pool training and 4 ocean dives with us!",
-    "¿Compraste el PADI eLearning y terminaste la teoría? ¡Haz tu entrenamiento en piscina y tus 4 inmersiones con nosotros!"
+    "Bought PADI eLearning and finished the theory? Do your confined water training and 4 ocean dives with us!",
+    "¿Compraste el PADI eLearning y terminaste la teoría? ¡Haz tu entrenamiento en aguas confinadas y tus 4 inmersiones con nosotros!"
   ),
   cardHashTags: ["eLearning", "PADI", "get certified"],
   courseLevel: "beginner",
