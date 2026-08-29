@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation"
 import React from "react"
 import PaymentPopupLocalDives from "../PaymentComponents/PaymentPopupLocalDives"
 import { useTranslations } from "next-intl"
+import type { Locale } from "@/i18n/locales"
 
 declare global {
   interface Window {
@@ -45,12 +46,11 @@ const LocalDivesOverview = ({
 }: {
   info: DiveInfo
   sharkPrice: number
-  locale: "en" | "es"
+  locale: Locale
 }) => {
   const t = useTranslations("LocalDivesOverview")
 
-  const tileBase =
-    "rounded-[16px] border border-white/12 bg-white/[0.05] p-5"
+  const tileBase = "rounded-[16px] border border-white/12 bg-white/[0.05] p-5"
   const price =
     "font-display text-[1.9rem] font-extrabold leading-none tracking-[-0.03em]"
 

@@ -4,9 +4,10 @@ import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import { useTranslations } from "next-intl"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
+import type { Locale } from "@/i18n/locales"
 
 const FishCard = ({ fish, locale }: { fish: any; locale: string }) => {
-  const name = fish.name[locale as "en" | "es"] || fish.name.en
+  const name = fish.name[locale as Locale] || fish.name.en
   const src = sanityCropUrl(fish.image, 640, 480) || fish.image.asset.url
   const position = hotspotPosition(fish.image)
 

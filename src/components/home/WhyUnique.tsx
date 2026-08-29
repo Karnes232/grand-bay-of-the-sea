@@ -1,12 +1,11 @@
 import dynamicImport from "next/dynamic"
 import BlockContent from "@/components/BlockContent/BlockContent"
+import type { Locale } from "@/i18n/locales"
 
 const CloudinaryBackgroundVideo = dynamicImport(
   () =>
     import("@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"),
 )
-
-type Locale = "en" | "es"
 
 /**
  * Split section: new heading + existing Sanity `paragraph2` on the left, the

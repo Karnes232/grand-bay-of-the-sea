@@ -8,11 +8,16 @@ import Script from "next/script"
 import { LazyGoogleTagManager } from "@/components/analytics/LazyGoogleTagManager"
 import { DeferredClientWidgets } from "@/components/layout/DeferredClientWidgets"
 import { generateStructuredData } from "@/components/StructuredData/StructuredData"
-import { Crimson_Pro, Bricolage_Grotesque, Instrument_Sans } from "next/font/google"
+import {
+  Crimson_Pro,
+  Bricolage_Grotesque,
+  Instrument_Sans,
+} from "next/font/google"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
+import { ACTIVE_LOCALES } from "@/i18n/locales"
 
 const crimsonPro = Crimson_Pro({
   subsets: ["latin"],
@@ -103,7 +108,7 @@ export const viewport = {
 }
 
 export async function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "es" }]
+  return ACTIVE_LOCALES.map(locale => ({ locale }))
 }
 
 export default async function RootLayout({

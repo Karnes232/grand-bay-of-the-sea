@@ -18,6 +18,7 @@ import CourseDetailHero from "@/components/courses/CourseDetailHero"
 import CourseGallery from "@/components/courses/CourseGallery"
 import CourseStats from "@/components/courses/CourseStats"
 import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
+import type { Locale } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -68,7 +69,7 @@ export async function generateMetadata(
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string; locale: "en" | "es" }>
+  params: Promise<{ slug: string; locale: Locale }>
 }) {
   const { slug, locale } = await params
 
@@ -138,7 +139,10 @@ export default async function Page({
             />
             <CourseStats
               stats={[
-                { label: tTrips("factDuration"), value: trip.duration?.[locale] },
+                {
+                  label: tTrips("factDuration"),
+                  value: trip.duration?.[locale],
+                },
                 { label: tTrips("factDives"), value: tTrips("factDivesValue") },
               ]}
             />

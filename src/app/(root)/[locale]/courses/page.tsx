@@ -15,6 +15,7 @@ import FaqAccordion from "@/components/home/FaqAccordion"
 import CoursesHero from "@/components/courses/CoursesHero"
 import CourseGrid from "@/components/courses/CourseGrid"
 import CourseCta from "@/components/courses/CourseCta"
+import type { Locale } from "@/i18n/locales"
 
 const CloudinaryBackgroundVideo = dynamicImport(
   () =>
@@ -30,7 +31,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{
-    locale: "en" | "es"
+    locale: Locale
   }>
 }) {
   const { locale } = await params
@@ -76,7 +77,7 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: "en" | "es" }>
+  params: Promise<{ locale: Locale }>
 }) {
   const { locale } = await params
   setRequestLocale(locale)

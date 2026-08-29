@@ -7,6 +7,7 @@ import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getThankYou } from "@/sanity/queries/ThankYou/ThankYou"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import { BUSINESS } from "@/lib/business"
+import type { Locale } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -15,7 +16,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{
-    locale: "en" | "es"
+    locale: Locale
   }>
 }) {
   const { locale } = await params
@@ -56,7 +57,7 @@ export default async function Page({
   params,
   searchParams,
 }: {
-  params: Promise<{ locale: "en" | "es" }>
+  params: Promise<{ locale: Locale }>
   searchParams: Promise<{ name?: string; pending?: string }>
 }) {
   const { locale } = await params
@@ -69,7 +70,8 @@ export default async function Page({
   ])
 
   const heroImg = thankYou.heroImage
-  const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg?.asset?.url || ""
+  const heroSrc =
+    sanityCropUrl(heroImg, 2000, 1200) || heroImg?.asset?.url || ""
   const heroPosition = hotspotPosition(heroImg)
 
   return (

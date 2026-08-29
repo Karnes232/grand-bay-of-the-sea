@@ -1,8 +1,7 @@
 import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
-
-type Locale = "en" | "es"
+import type { Locale } from "@/i18n/locales"
 
 interface SectionLink {
   title: { en: string; es: string }

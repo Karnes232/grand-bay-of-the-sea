@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react"
 import FishCard2 from "./FishCard2"
 import { Fishes as FishesType } from "@/sanity/queries/Page-Species/Fishes"
+import type { Locale } from "@/i18n/locales"
 
 const FishesClient = ({
   fishesData,
@@ -20,7 +21,7 @@ const FishesClient = ({
 
     const query = searchQuery.toLowerCase().trim()
     return fishesData.filter(fish => {
-      const fishName = fish.name[locale as "en" | "es"] || fish.name.en
+      const fishName = fish.name[locale as Locale] || fish.name.en
       return fishName.toLowerCase().includes(query)
     })
   }, [fishesData, searchQuery, locale])

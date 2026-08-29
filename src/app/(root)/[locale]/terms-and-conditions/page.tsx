@@ -10,6 +10,7 @@ import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getCancellationPolicy } from "@/sanity/queries/Cancellation-Policy/CancellationPolicy"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import { BUSINESS } from "@/lib/business"
+import type { Locale } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -18,7 +19,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{
-    locale: "en" | "es"
+    locale: Locale
   }>
 }) {
   const { locale } = await params
@@ -58,7 +59,7 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: "en" | "es" }>
+  params: Promise<{ locale: Locale }>
 }) {
   const { locale } = await params
   setRequestLocale(locale)
@@ -69,7 +70,8 @@ export default async function Page({
   ])
 
   const heroImg = cancellationPolicy.heroImage
-  const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg?.asset?.url || ""
+  const heroSrc =
+    sanityCropUrl(heroImg, 2000, 1200) || heroImg?.asset?.url || ""
   const heroPosition = hotspotPosition(heroImg)
 
   // The policy's own leading H1 becomes the hero title (so it isn't shown

@@ -1,11 +1,14 @@
 import { defineRouting } from "next-intl/routing"
 
+import { ACTIVE_LOCALES, DEFAULT_LOCALE } from "./locales"
+
 export const routing = defineRouting({
-  // A list of all locales that are supported
-  locales: ["en", "es"],
+  // A list of all locales that are supported. Sourced from ./locales so the
+  // list lives in exactly one place — see that file for LOCALES vs ACTIVE_LOCALES.
+  locales: ACTIVE_LOCALES,
 
   // Used when no locale matches
-  defaultLocale: "en",
+  defaultLocale: DEFAULT_LOCALE,
   localePrefix: "as-needed",
 
   // Don't set the NEXT_LOCALE cookie from middleware. Writing a cookie forces

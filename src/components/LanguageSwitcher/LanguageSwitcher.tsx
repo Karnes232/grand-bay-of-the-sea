@@ -1,11 +1,28 @@
 "use client"
 
 import { useRouter, usePathname } from "@/i18n/navigation"
-import { languages, fallbackLng } from "@/i18n/settings"
+import {
+  ACTIVE_LOCALES,
+  DEFAULT_LOCALE,
+  stripLocalePrefix,
+  type Locale,
+} from "@/i18n/locales"
 import { useState, useRef, useEffect, useMemo, useCallback } from "react"
 import { useParams } from "next/navigation"
 import { Globe, ChevronDown, Loader2 } from "lucide-react"
 import { getSafeLocale, preloadLanguageMessages } from "@/utils/languageUtils"
+
+// Display metadata per locale. Which of these actually render is decided by
+// ACTIVE_LOCALES, so a locale whose translation isn't live yet stays hidden.
+const LOCALE_DISPLAY: Record<Locale, { display: string; flag: string }> = {
+  en: { display: "English", flag: "🇺🇸" },
+  es: { display: "Español", flag: "🇩🇴" },
+}
+
+const LANGUAGE_OPTIONS = ACTIVE_LOCALES.map(code => ({
+  code,
+  ...LOCALE_DISPLAY[code],
+}))
 
 interface LanguageSwitcherProps {
   color?: string
@@ -26,13 +43,10 @@ export default function LanguageSwitcher({
 
   // Use useParams at the top level with better error handling
   const params = useParams()
-  const currentLocale = (params?.locale as string) || fallbackLng
+  const currentLocale = (params?.locale as string) || DEFAULT_LOCALE
   const safeLocale = getSafeLocale(currentLocale)
 
-  const languageOptions = [
-    { code: "en", display: "English", flag: "🇺🇸" },
-    { code: "es", display: "Español", flag: "🇩🇴" },
-  ]
+  const languageOptions = LANGUAGE_OPTIONS
 
   // Memoize the current language option to prevent unnecessary re-renders
   const currentLangOption = useMemo(
@@ -67,7 +81,10 @@ export default function LanguageSwitcher({
         // Fallback: try a full page reload if router fails
         if (typeof window !== "undefined") {
           const currentPath = window.location.pathname
-          const newPath = currentPath.replace(/^\/(en|es)/, `/${newLocale}`)
+          const newPath =
+            newLocale === DEFAULT_LOCALE
+              ? stripLocalePrefix(currentPath)
+              : `/${newLocale}${stripLocalePrefix(currentPath)}`
           window.location.href = newPath
         }
       } finally {

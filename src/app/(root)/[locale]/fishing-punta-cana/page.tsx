@@ -12,6 +12,7 @@ import CourseGallery from "@/components/courses/CourseGallery"
 import CourseStats from "@/components/courses/CourseStats"
 import FishingOverview from "@/components/TourOverviews/FishingOverview"
 import { Link } from "@/i18n/navigation"
+import type { Locale } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -20,7 +21,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{
-    locale: "en" | "es"
+    locale: Locale
   }>
 }) {
   const { locale } = await params
@@ -60,7 +61,7 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: "en" | "es" }>
+  params: Promise<{ locale: Locale }>
 }) {
   const { locale } = await params
   setRequestLocale(locale)

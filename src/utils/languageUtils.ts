@@ -1,46 +1,28 @@
 /**
- * Utility functions for language switching and i18n performance
+ * Language-switching helpers.
+ *
+ * The locale list itself lives in `@/i18n/locales` — this module only adds the
+ * client-side behaviour on top of it. The aliases below are kept so existing
+ * call sites don't have to change; new code should import from `@/i18n/locales`
+ * directly.
  */
+import {
+  LOCALES,
+  DEFAULT_LOCALE,
+  isLocale,
+  toLocale,
+  type Locale,
+} from "@/i18n/locales"
 
-export const LANGUAGES = ["en", "es"] as const
-export type Language = (typeof LANGUAGES)[number]
+export const LANGUAGES = LOCALES
+export type Language = Locale
+export const FALLBACK_LANGUAGE = DEFAULT_LOCALE
 
-export const FALLBACK_LANGUAGE = "en" as const
+/** Validates if a locale is supported. */
+export const isValidLocale = isLocale
 
-/**
- * Validates if a locale is supported
- */
-export function isValidLocale(locale: string): locale is Language {
-  return LANGUAGES.includes(locale as Language)
-}
-
-/**
- * Gets a safe locale, falling back to the default if invalid
- */
-export function getSafeLocale(locale: string | undefined | null): Language {
-  if (locale && isValidLocale(locale)) {
-    return locale
-  }
-  return FALLBACK_LANGUAGE
-}
-
-/**
- * Creates a language switch URL with proper path handling
- */
-export function createLanguageSwitchUrl(
-  currentPath: string,
-  newLocale: Language,
-): string {
-  // Remove existing locale prefix
-  const pathWithoutLocale = currentPath.replace(/^\/(en|es)/, "") || "/"
-
-  // Add new locale prefix
-  if (newLocale === FALLBACK_LANGUAGE) {
-    return pathWithoutLocale
-  }
-
-  return `/${newLocale}${pathWithoutLocale}`
-}
+/** Gets a safe locale, falling back to the default if invalid. */
+export const getSafeLocale = toLocale
 
 /**
  * Debounce function for language switching to prevent rapid clicks

@@ -3,8 +3,8 @@ import Image from "next/image"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import type { AboutImage } from "@/sanity/queries/AboutUs/AboutUs"
+import type { Locale } from "@/i18n/locales"
 
-type Locale = "en" | "es"
 type L = { en: string; es: string }
 
 /**

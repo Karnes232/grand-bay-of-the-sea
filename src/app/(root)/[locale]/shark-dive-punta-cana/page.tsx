@@ -17,6 +17,7 @@ import CourseStats from "@/components/courses/CourseStats"
 import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
 import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 import { Link } from "@/i18n/navigation"
+import type { Locale } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -62,7 +63,7 @@ export async function generateMetadata(
 export default async function Home({
   params,
 }: {
-  params: Promise<{ locale: "en" | "es" }>
+  params: Promise<{ locale: Locale }>
 }) {
   const { locale } = await params
   setRequestLocale(locale)
@@ -156,7 +157,11 @@ export default async function Home({
               variant="prose"
               demoteH1
             />
-            <BlockContent content={s.paragraph2} locale={locale} variant="prose" />
+            <BlockContent
+              content={s.paragraph2}
+              locale={locale}
+              variant="prose"
+            />
             <CourseStats
               stats={[
                 {
@@ -171,7 +176,10 @@ export default async function Home({
                   label: s.factMaxDepth?.[locale] ?? "",
                   value: s.maxDepth?.[locale],
                 },
-                { label: s.factLevel?.[locale] ?? "", value: s.level?.[locale] },
+                {
+                  label: s.factLevel?.[locale] ?? "",
+                  value: s.level?.[locale],
+                },
               ]}
             />
           </div>
@@ -218,8 +226,16 @@ export default async function Home({
             <span className="mb-3.5 inline-block text-[13px] font-semibold uppercase tracking-[0.14em] text-moss">
               {s.notReadyEyebrow?.[locale]}
             </span>
-            <BlockContent content={s.paragraph3} locale={locale} variant="prose" />
-            <BlockContent content={s.paragraph4} locale={locale} variant="prose" />
+            <BlockContent
+              content={s.paragraph3}
+              locale={locale}
+              variant="prose"
+            />
+            <BlockContent
+              content={s.paragraph4}
+              locale={locale}
+              variant="prose"
+            />
             <Link
               href="/courses/advanced"
               className="mt-2 inline-block self-start rounded-full bg-ink px-[26px] py-3.5 text-[15.5px] font-semibold text-white transition-transform hover:-translate-y-0.5"

@@ -16,6 +16,7 @@ import {
 import { getBlogPostsCards } from "@/sanity/queries/Blog/BlogPosts"
 import { getBlogPageLayout } from "@/sanity/queries/Blog/BlogPageLayout"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
+import type { Locale } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -27,9 +28,8 @@ export async function generateStaticParams() {
   return categories.map(c => ({ category: c.slug.current }))
 }
 
-
 export async function generateMetadata(
-  { params }: { params: Promise<{ category: string; locale: "en" | "es" }> },
+  { params }: { params: Promise<{ category: string; locale: Locale }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { category, locale } = await params
@@ -66,7 +66,7 @@ export async function generateMetadata(
 export default async function Page({
   params,
 }: {
-  params: Promise<{ category: string; locale: "en" | "es" }>
+  params: Promise<{ category: string; locale: Locale }>
 }) {
   const { category, locale } = await params
 
@@ -110,10 +110,7 @@ export default async function Page({
           blurDataURL={heroImg.asset.metadata.lqip}
           alt={heroImg.alt || name}
           title={name}
-          breadcrumb={[
-            { label: tNav("blog"), href: "/blog" },
-            { label: name },
-          ]}
+          breadcrumb={[{ label: tNav("blog"), href: "/blog" }, { label: name }]}
         />
       )}
 

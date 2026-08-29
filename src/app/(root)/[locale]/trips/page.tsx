@@ -16,6 +16,7 @@ import FaqAccordion from "@/components/home/FaqAccordion"
 import CoursesHero from "@/components/courses/CoursesHero"
 import TripGrid from "@/components/trips/TripGrid"
 import { Link } from "@/i18n/navigation"
+import type { Locale } from "@/i18n/locales"
 
 const CloudinaryBackgroundVideo = dynamicImport(
   () =>
@@ -28,7 +29,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{
-    locale: "en" | "es"
+    locale: Locale
   }>
 }) {
   const { locale } = await params
@@ -68,20 +69,27 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: "en" | "es" }>
+  params: Promise<{ locale: Locale }>
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  const [structuredData, diveTripsPage, tripCards, faqs, tTrips, tCourses, tTrust] =
-    await Promise.all([
-      getStructuredData("Trips"),
-      getDiveTripsPage(),
-      getTripCards(),
-      getFaqs("Trips"),
-      getTranslations("Trips"),
-      getTranslations("Courses"),
-      getTranslations("TrustLine"),
-    ])
+  const [
+    structuredData,
+    diveTripsPage,
+    tripCards,
+    faqs,
+    tTrips,
+    tCourses,
+    tTrust,
+  ] = await Promise.all([
+    getStructuredData("Trips"),
+    getDiveTripsPage(),
+    getTripCards(),
+    getFaqs("Trips"),
+    getTranslations("Trips"),
+    getTranslations("Courses"),
+    getTranslations("TrustLine"),
+  ])
 
   const heroImg = diveTripsPage.heroImage
   const heroSrc =

@@ -21,6 +21,7 @@ import CourseDetailHero from "@/components/courses/CourseDetailHero"
 import CourseGallery from "@/components/courses/CourseGallery"
 import CourseStats from "@/components/courses/CourseStats"
 import { Link } from "@/i18n/navigation"
+import type { Locale } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -71,7 +72,7 @@ export async function generateMetadata(
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: "en" | "es"; slug: string }>
+  params: Promise<{ locale: Locale; slug: string }>
 }) {
   const { locale, slug } = await params
   setRequestLocale(locale)
@@ -159,7 +160,11 @@ export default async function Page({
       <section className="mx-auto max-w-[1280px] px-6 py-8">
         <div className="grid grid-cols-1 overflow-hidden rounded-[24px] border border-line bg-card md:grid-cols-2">
           <div className="flex flex-col justify-center p-[clamp(32px,4vw,56px)]">
-            <BlockContent content={c.paragraph2} locale={locale} variant="prose" />
+            <BlockContent
+              content={c.paragraph2}
+              locale={locale}
+              variant="prose"
+            />
           </div>
           {splitSrc && (
             <div className="relative min-h-[320px]">

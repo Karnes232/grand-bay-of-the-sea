@@ -2,8 +2,7 @@ import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import { sanityCropUrl } from "@/sanity/lib/image"
 import type { TripCards } from "@/sanity/queries/DiveTrips/Trips"
-
-type Locale = "en" | "es"
+import type { Locale } from "@/i18n/locales"
 
 /**
  * Redesigned trip cards for the hub: large horizontal cards with the image on

@@ -16,6 +16,7 @@ import WhyUnique from "@/components/home/WhyUnique"
 import ImageBand from "@/components/home/ImageBand"
 import FaqAccordion from "@/components/home/FaqAccordion"
 import DivingOrganizations from "@/components/DivingOrganizations/DivingOrganizations"
+import type { Locale } from "@/i18n/locales"
 
 const GoogleMaps = dynamicImport(
   () => import("@/components/GoogleMapsComponent/GoogleMaps"),
@@ -28,7 +29,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{
-    locale: "en" | "es"
+    locale: Locale
   }>
 }) {
   const { locale } = await params
@@ -68,7 +69,7 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: "en" | "es" }>
+  params: Promise<{ locale: Locale }>
 }) {
   const { locale } = await params
   setRequestLocale(locale)
@@ -158,8 +159,9 @@ export default async function Page({
           objectPosition={hotspotPosition(tertiaryImg)}
           alt={tertiaryImg.alt || "Diving in Punta Cana"}
         />
-<div className="-mt-8">
-        <GoogleMaps variant="flat" /></div>
+        <div className="-mt-8">
+          <GoogleMaps variant="flat" />
+        </div>
       </main>
     </>
   )

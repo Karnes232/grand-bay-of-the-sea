@@ -24,6 +24,7 @@ import {
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { syncSchemaDates } from "@/utils/syncSchemaDates"
 import JsonLd from "@/components/StructuredData/JsonLd"
+import type { Locale } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -37,7 +38,6 @@ export async function generateStaticParams() {
     slug: p.slug.current,
   }))
 }
-
 
 export async function generateMetadata(
   {
@@ -128,7 +128,7 @@ export async function generateMetadata(
 export default async function Page({
   params,
 }: {
-  params: Promise<{ category: string; slug: string; locale: "en" | "es" }>
+  params: Promise<{ category: string; slug: string; locale: Locale }>
 }) {
   const { category, slug, locale } = await params
 
@@ -264,7 +264,9 @@ export default async function Page({
                       quality={75}
                       placeholder={lqip ? "blur" : "empty"}
                       blurDataURL={lqip}
-                      style={position ? { objectPosition: position } : undefined}
+                      style={
+                        position ? { objectPosition: position } : undefined
+                      }
                       className="object-cover"
                     />
                   )}

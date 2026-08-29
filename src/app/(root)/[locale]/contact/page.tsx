@@ -10,6 +10,7 @@ import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getContact } from "@/sanity/queries/Contact/Contact"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import { BUSINESS } from "@/lib/business"
+import type { Locale } from "@/i18n/locales"
 
 const GoogleMaps = dynamicImport(
   () => import("@/components/GoogleMapsComponent/GoogleMaps"),
@@ -22,7 +23,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{
-    locale: "en" | "es"
+    locale: Locale
   }>
 }) {
   const { locale } = await params
@@ -62,7 +63,7 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: "en" | "es" }>
+  params: Promise<{ locale: Locale }>
 }) {
   const { locale } = await params
   setRequestLocale(locale)
@@ -73,7 +74,8 @@ export default async function Page({
   ])
 
   const heroImg = contact.heroImage
-  const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg?.asset?.url || ""
+  const heroSrc =
+    sanityCropUrl(heroImg, 2000, 1200) || heroImg?.asset?.url || ""
   const heroPosition = hotspotPosition(heroImg)
 
   return (
@@ -123,7 +125,16 @@ export default async function Page({
               </h3>
               <div className="mb-3.5 flex items-start gap-3">
                 <span className="mt-0.5 flex-none text-accent">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
@@ -144,7 +155,16 @@ export default async function Page({
               {/* Opening hours */}
               <div className="mt-5 flex items-start gap-3 border-t border-surface-soft pt-5">
                 <span className="mt-0.5 flex-none text-accent">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <circle cx="12" cy="12" r="9" />
                     <path d="M12 7v5l3 2" />
                   </svg>

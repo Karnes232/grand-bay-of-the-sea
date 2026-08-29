@@ -2,6 +2,7 @@ import { Link } from "@/i18n/navigation"
 import Image from "next/image"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import type { BlogCategory as BlogCategoryType } from "@/sanity/queries/Blog/BlogCategory"
+import type { Locale } from "@/i18n/locales"
 
 const BlogCategory = ({
   category,
@@ -9,12 +10,13 @@ const BlogCategory = ({
   browseLabel,
 }: {
   category: BlogCategoryType
-  locale: "en" | "es"
+  locale: Locale
   browseLabel: string
 }) => {
   const name = category.blogCategory[locale]
   const desc = locale === "es" ? category.descEs : category.descEn
-  const src = sanityCropUrl(category.cardImage, 800, 500) || category.cardImage.asset.url
+  const src =
+    sanityCropUrl(category.cardImage, 800, 500) || category.cardImage.asset.url
   const position = hotspotPosition(category.cardImage)
 
   return (

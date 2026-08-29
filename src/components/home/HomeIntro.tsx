@@ -1,6 +1,5 @@
 import BlockContent from "@/components/BlockContent/BlockContent"
-
-type Locale = "en" | "es"
+import type { Locale } from "@/i18n/locales"
 
 /**
  * Intro lead prose — renders the existing Sanity `paragraph1` in the new

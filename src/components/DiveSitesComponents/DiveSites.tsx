@@ -1,12 +1,13 @@
 import DiveSiteCard from "./DiveSiteCard"
 import { getDiveSites } from "@/sanity/queries/Sites/DiveSites"
+import type { Locale } from "@/i18n/locales"
 
 const DiveSites = async ({
   locale,
   heading,
   intro,
 }: {
-  locale: "en" | "es"
+  locale: Locale
   heading?: string
   intro?: string
 }) => {

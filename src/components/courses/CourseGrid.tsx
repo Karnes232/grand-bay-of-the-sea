@@ -1,6 +1,5 @@
 import { Link } from "@/i18n/navigation"
-
-type Locale = "en" | "es"
+import type { Locale } from "@/i18n/locales"
 
 interface CourseCard {
   course: string

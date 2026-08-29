@@ -7,6 +7,7 @@ import {
   getSilverbankExpeditionStructuredData,
 } from "@/sanity/queries/Liveaboards/silverbank-expedition/silverbank-expedition"
 import ExpeditionLayout from "@/components/liveaboard/ExpeditionLayout"
+import type { Locale } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -59,7 +60,7 @@ export async function generateMetadata(
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: "en" | "es" }>
+  params: Promise<{ locale: Locale }>
 }) {
   const { locale } = await params
   setRequestLocale(locale)

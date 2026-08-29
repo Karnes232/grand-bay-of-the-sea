@@ -7,6 +7,7 @@ import BlockContent from "@/components/BlockContent/BlockContent"
 import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getLiveaboards } from "@/sanity/queries/Liveaboards/Liveaboards"
+import type { Locale } from "@/i18n/locales"
 
 type Loc = { en: any[]; es: any[] }
 
@@ -20,7 +21,10 @@ interface ExpeditionData {
   photoList: {
     asset: {
       url: string
-      metadata: { lqip?: string; dimensions?: { width?: number; height?: number } }
+      metadata: {
+        lqip?: string
+        dimensions?: { width?: number; height?: number }
+      }
     }
     ref?: string
     crop?: unknown
@@ -43,7 +47,7 @@ const ExpeditionLayout = async ({
   closingVideoId,
   data,
 }: {
-  locale: "en" | "es"
+  locale: Locale
   structuredData?: string
   path: string
   expeditionName: string
@@ -57,7 +61,8 @@ const ExpeditionLayout = async ({
     getLiveaboards(),
   ])
 
-  const title = (locale === "es" ? data.titleEs : data.titleEn) ?? expeditionName
+  const title =
+    (locale === "es" ? data.titleEs : data.titleEn) ?? expeditionName
 
   // Drop the leading heading (lifted into the hero) from the first prose block.
   const intro = {

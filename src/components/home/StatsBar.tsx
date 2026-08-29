@@ -1,17 +1,11 @@
-type Locale = "en" | "es"
+import type { Locale } from "@/i18n/locales"
 
 interface Stat {
   value?: { en: string; es: string }
   label?: { en: string; es: string }
 }
 
-const StatsBar = ({
-  stats,
-  locale,
-}: {
-  stats?: Stat[]
-  locale: Locale
-}) => {
+const StatsBar = ({ stats, locale }: { stats?: Stat[]; locale: Locale }) => {
   if (!stats?.length) return null
 
   return (

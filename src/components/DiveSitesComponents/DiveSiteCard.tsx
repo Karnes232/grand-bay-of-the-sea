@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation"
 import { getTranslations } from "next-intl/server"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import type { DiveSites } from "@/sanity/queries/Sites/DiveSites"
+import type { Locale } from "@/i18n/locales"
 
 /**
  * Dive-site grid card (2026 redesign). White rounded card with a 4:3 image,
@@ -38,7 +39,7 @@ const DiveSiteCard = async ({
   locale,
 }: {
   diveSite: DiveSites
-  locale: "en" | "es"
+  locale: Locale
 }) => {
   const t = await getTranslations("DiveSiteCard")
   const isShark = diveSite.name === "Shark Point"
@@ -48,7 +49,11 @@ const DiveSiteCard = async ({
   const position = hotspotPosition(diveSite.image)
   // Guard against legacy/mid-migration data where these may still be objects.
   const level = typeof diveSite.level === "string" ? diveSite.level : undefined
-  const levelLabel = level ? (LEVEL_KEY[level] ? t(LEVEL_KEY[level]) : level) : undefined
+  const levelLabel = level
+    ? LEVEL_KEY[level]
+      ? t(LEVEL_KEY[level])
+      : level
+    : undefined
   const location =
     typeof diveSite.location === "string" ? diveSite.location : undefined
   const locationLabel = location
@@ -56,7 +61,8 @@ const DiveSiteCard = async ({
       ? t(LOCATION_KEY[location])
       : location
     : undefined
-  const blurb = diveSite.cardDescription?.[locale] ?? diveSite.description?.[locale]
+  const blurb =
+    diveSite.cardDescription?.[locale] ?? diveSite.description?.[locale]
 
   const Card = (
     <div className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-line bg-card transition-all duration-300 ease-smooth hover:-translate-y-[5px] hover:shadow-[0_22px_48px_rgba(11,33,41,0.13)]">

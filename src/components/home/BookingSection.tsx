@@ -1,6 +1,6 @@
 import BookingLeadForm from "./BookingLeadForm"
+import type { Locale } from "@/i18n/locales"
 
-type Locale = "en" | "es"
 type L = { en: string; es: string }
 
 /**

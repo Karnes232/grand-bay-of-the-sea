@@ -6,6 +6,7 @@ import Image from "next/image"
 import TextComponentParagraph from "./TextComponentParagraph"
 import TextComponentHeading from "./TextComponentHeading"
 import TextComponentList from "./TextComponentList"
+import type { Locale } from "@/i18n/locales"
 
 interface LocaleBlockContent {
   _type?: string
@@ -15,7 +16,7 @@ interface LocaleBlockContent {
 
 interface Props {
   content: LocaleBlockContent
-  locale?: "en" | "es"
+  locale?: Locale
   /** When true, render `h1` Portable Text blocks as `h2`. Use on pages that
    *  already render an `h1` elsewhere (e.g. the hero) to keep a single H1. */
   demoteH1?: boolean
@@ -169,9 +170,7 @@ const proseComponents = {
   },
   block: {
     normal: ({ children }: any) => (
-      <p className="mb-5 text-[17px] leading-relaxed text-muted">
-        {children}
-      </p>
+      <p className="mb-5 text-[17px] leading-relaxed text-muted">{children}</p>
     ),
     h1: ({ children }: any) => (
       <h2 className="mb-4 font-display text-3xl font-bold tracking-tight text-fg md:text-4xl">

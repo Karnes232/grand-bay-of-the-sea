@@ -13,6 +13,7 @@ import FaqAccordion from "@/components/home/FaqAccordion"
 import CoursesHero from "@/components/courses/CoursesHero"
 import DiveSites from "@/components/DiveSitesComponents/DiveSites"
 import LocalDivesOverview from "@/components/TourOverviews/LocalDivesOverview"
+import type { Locale } from "@/i18n/locales"
 
 const CloudinaryBackgroundVideo = dynamicImport(
   () =>
@@ -25,7 +26,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{
-    locale: "en" | "es"
+    locale: Locale
   }>
 }) {
   const { locale } = await params
@@ -65,7 +66,7 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: "en" | "es" }>
+  params: Promise<{ locale: Locale }>
 }) {
   const { locale } = await params
   setRequestLocale(locale)
@@ -78,7 +79,8 @@ export default async function Page({
     ])
 
   const heroImg = sitesLayout.heroImage
-  const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg?.asset?.url || ""
+  const heroSrc =
+    sanityCropUrl(heroImg, 2000, 1200) || heroImg?.asset?.url || ""
   const heroPosition = hotspotPosition(heroImg)
 
   const heroCta =
@@ -110,9 +112,7 @@ export default async function Page({
           heroImage={heroSrc}
           objectPosition={heroPosition}
           blurDataURL={heroImg?.asset?.metadata?.lqip || ""}
-          alt={
-            heroImg?.alt || "Dive sites and packages in Punta Cana"
-          }
+          alt={heroImg?.alt || "Dive sites and packages in Punta Cana"}
           title={sitesLayout.heroTitle?.[locale]}
           subtitle={sitesLayout.heroSubtitle?.[locale]}
           trustLine={sitesLayout.heroTrustLine?.[locale]?.replace(

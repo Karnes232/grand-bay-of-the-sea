@@ -1,8 +1,7 @@
 import BlockContent from "@/components/BlockContent/BlockContent"
 import JsonLd from "@/components/StructuredData/JsonLd"
 import type { Faqs as FaqsType } from "@/sanity/queries/Faqs/Faqs"
-
-type Locale = "en" | "es"
+import type { Locale } from "@/i18n/locales"
 
 /**
  * Redesign FAQ accordion (native <details>, no JS). Reads the same

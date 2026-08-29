@@ -8,6 +8,7 @@ import { getDiveSite, getDiveSites } from "@/sanity/queries/Sites/DiveSites"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import CoursesHero from "@/components/courses/CoursesHero"
 import DiveSiteCard from "@/components/DiveSitesComponents/DiveSiteCard"
+import type { Locale } from "@/i18n/locales"
 
 export const revalidate = 604800 // ISR 7 days — content refreshes on redeploy
 
@@ -33,7 +34,7 @@ const LOCATION_KEY: Record<string, string> = {
 }
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ site: string; locale: "en" | "es" }> },
+  { params }: { params: Promise<{ site: string; locale: Locale }> },
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { site, locale } = await params
@@ -66,7 +67,7 @@ export async function generateMetadata(
 export default async function Page({
   params,
 }: {
-  params: Promise<{ site: string; locale: "en" | "es" }>
+  params: Promise<{ site: string; locale: Locale }>
 }) {
   const { site, locale } = await params
 
@@ -87,8 +88,7 @@ export default async function Page({
   const heroSrc =
     sanityCropUrl(diveSite.image, 2000, 1200) || diveSite.image.asset.url
 
-  const level =
-    typeof diveSite.level === "string" ? diveSite.level : undefined
+  const level = typeof diveSite.level === "string" ? diveSite.level : undefined
   const levelLabel = level
     ? LEVEL_KEY[level]
       ? tCard(LEVEL_KEY[level])

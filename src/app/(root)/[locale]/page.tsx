@@ -21,6 +21,7 @@ import CourseHighlights from "@/components/home/CourseHighlights"
 import ImageBand from "@/components/home/ImageBand"
 import BookingSection from "@/components/home/BookingSection"
 import FaqAccordion from "@/components/home/FaqAccordion"
+import type { Locale } from "@/i18n/locales"
 
 const GoogleMaps = dynamicImport(
   () => import("@/components/GoogleMapsComponent/GoogleMaps"),
@@ -33,7 +34,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{
-    locale: "en" | "es"
+    locale: Locale
   }>
 }) {
   const { locale } = await params
@@ -73,7 +74,7 @@ export async function generateMetadata({
 export default async function Home({
   params,
 }: {
-  params: Promise<{ locale: "en" | "es" }>
+  params: Promise<{ locale: Locale }>
 }) {
   const { locale } = await params
 
