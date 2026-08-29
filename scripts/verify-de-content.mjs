@@ -20,16 +20,39 @@
  * Anything missing is reported with its document id and field path, so it can
  * be handed straight back to the translator.
  *
- * Run: node scripts/verify-de-content.mjs
+ * Run: node scripts/verify-de-content.mjs            (published content — what is live)
+ *      node scripts/verify-de-content.mjs --drafts   (drafts overlaid — what publishing would give you)
  *      node scripts/verify-de-content.mjs --json
+ *
+ * Use --drafts after `npm run i18n:import --write` to confirm a delivery is
+ * complete BEFORE publishing, and the plain form before flipping the launch
+ * gate to confirm what is actually live.
  */
 import { createClient } from "next-sanity"
+
+/**
+ * Excluded from the translation export, so not counted as gaps here either —
+ * keep in sync with EXCLUDED_PATH_SEGMENTS in scripts/lib/localized-fields.ts.
+ *
+ *  - slug            German URLs keep the English slugs deliberately.
+ *  - structuredData  JSON-LD blobs. A translator editing raw JSON is a
+ *                    corruption risk, and a missing German blob degrades
+ *                    gracefully (no JSON-LD on the German page) rather than
+ *                    breaking it. Worth revisiting as its own task.
+ */
+const EXCLUDED_PATHS = new Set(["slug", "structuredData"])
+
+const useDrafts = process.argv.includes("--drafts")
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "33b6wn5r",
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   apiVersion: "2025-11-13",
+  token: process.env.SANITY_API_WRITE_TOKEN,
   useCdn: false,
+  // "raw" is the only perspective that returns `drafts.*` documents; the
+  // default filters them out even with a token.
+  perspective: "raw",
 })
 
 /**
@@ -79,6 +102,9 @@ const gaps = []
 function walk(node, path, doc) {
   if (node === null || typeof node !== "object") return
 
+  const leaf = path.split(".").pop()?.replace(/\[\d+\]$/, "")
+  if (leaf && EXCLUDED_PATHS.has(leaf)) return
+
   if (isLocalizedObject(node)) {
     // Only require German where English actually has content — an empty
     // English field is a content gap of its own, not a translation gap.
@@ -104,9 +130,17 @@ function walk(node, path, doc) {
   }
 }
 
-const docs = await client.fetch(`*[!(_id in path("drafts.**"))]`)
+const all = await client.fetch(`*[!(_type match "sanity.*")]`)
 
-const checked = docs.filter(d => !EXCLUDED_TYPES.has(d._type))
+// Overlay drafts onto their published counterparts when asked: that is exactly
+// what the site would serve if the owner hit Publish on everything.
+const published = all.filter(d => !d._id.startsWith("drafts."))
+const drafts = new Map(
+  all.filter(d => d._id.startsWith("drafts.")).map(d => [d._id.slice(7), d]),
+)
+const checked = published
+  .filter(d => !EXCLUDED_TYPES.has(d._type))
+  .map(d => (useDrafts && drafts.has(d._id) ? drafts.get(d._id) : d))
 for (const doc of checked) walk(doc, "", doc)
 
 if (asJson) {
@@ -120,13 +154,15 @@ if (asJson) {
 
   if (gaps.length === 0) {
     console.log(
-      `[verify-de-content] OK — ${checked.length} documents checked, ` +
+      `[verify-de-content] OK — ${checked.length} documents checked` +
+        `${useDrafts ? " (drafts overlaid)" : " (published)"}, ` +
         `every field with English content has German.`,
     )
   } else {
     console.log(
       `[verify-de-content] ${gaps.length} missing German field(s) across ` +
-        `${byDoc.size} document(s) (of ${checked.length} checked):\n`,
+        `${byDoc.size} document(s) (of ${checked.length} checked` +
+        `${useDrafts ? ", drafts overlaid" : ", published"}):\n`,
     )
     for (const d of byDoc.values()) {
       console.log(`  ${d.type} — ${d.title}`)

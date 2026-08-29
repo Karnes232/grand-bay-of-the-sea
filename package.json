@@ -19,7 +19,8 @@
     "seed:blog": "tsx --env-file=.env.local scripts/1.ts",
     "verify:de": "node --env-file=.env.local scripts/verify-de-content.mjs",
     "i18n:export": "tsx --env-file=.env.local scripts/i18n-export.ts",
-    "i18n:import": "tsx --env-file=.env.local scripts/i18n-import.ts"
+    "i18n:import": "tsx --env-file=.env.local scripts/i18n-import.ts",
+    "verify:de:drafts": "node --env-file=.env.local scripts/verify-de-content.mjs --drafts"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
