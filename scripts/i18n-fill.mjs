@@ -116,7 +116,11 @@ for (const r of rows) {
   if (tagsOf(en) !== tagsOf(de)) {
     problems.tags.push({ id, en: tagsOf(en), de: tagsOf(de) })
   }
-  if (de.trim() === en.trim() && en.split(/\s+/).length > 2) {
+  // Flag suspected untranslated copy, but not values that are *meant* to be
+  // identical — "30 m / 100 ft", "2.5", prices. Require at least three real
+  // words before calling it a miss.
+  const realWords = (en.match(/[A-Za-zÄÖÜäöüß]{4,}/g) ?? []).length
+  if (de.trim() === en.trim() && realWords >= 3) {
     problems.untranslated.push({ id, doc: r[col.document], en: en.slice(0, 60) })
   }
   // Only seo.meta carries length validation in the Sanity schema
