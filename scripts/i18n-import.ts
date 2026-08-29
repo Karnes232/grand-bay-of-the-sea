@@ -21,6 +21,13 @@ const client = createClient({
   apiVersion: "2025-11-13",
   token: process.env.SANITY_API_WRITE_TOKEN,
   useCdn: false,
+  // "raw" is required to read draft documents by their `drafts.<id>` id.
+  // The default perspective filters drafts out of query results entirely —
+  // even with a write token — which would make the existing-draft lookup below
+  // silently return nothing and clobber the owner's unpublished edits.
+  // ("drafts" is not the answer either: it overlays drafts onto the published
+  // id, so `_id in path("drafts.**")` still matches nothing.)
+  perspective: "raw",
 })
 
 const args = process.argv.slice(2)
@@ -126,24 +133,44 @@ async function main() {
     fields.get(path)!.set(blockKey ?? "", value)
   }
 
-  const docs: any[] = await client.fetch(`*[_id in $ids]`, {
-    ids: [...byDoc.keys()],
+  // Fetch published documents AND any existing drafts.
+  //
+  // This matters: German is written onto the draft, and the patch sets whole
+  // top-level fields. If the owner already has a draft with unpublished edits,
+  // building those fields from the *published* document would silently discard
+  // that work. The draft, when it exists, is the correct base.
+  const ids = [...byDoc.keys()]
+  const draftIds = ids.map(id => `drafts.${id}`)
+  const docs: any[] = await client.fetch(`*[_id in $ids || _id in $draftIds]`, {
+    ids,
+    draftIds,
   })
   const docsById = new Map(docs.map(d => [d._id, d]))
 
   let fieldsWritten = 0
   let incomplete = 0
-  const touched: { id: string; type: string; fields: string[] }[] = []
+  let ontoExistingDrafts = 0
+  const touched: {
+    id: string
+    type: string
+    fields: string[]
+    hadDraft: boolean
+  }[] = []
   const tx = client.transaction()
 
   for (const [docId, fields] of byDoc) {
-    const doc = docsById.get(docId)
-    if (!doc) {
+    const published = docsById.get(docId)
+    if (!published) {
       console.warn(`  ! document not found, skipping: ${docId}`)
       continue
     }
 
-    const clone = JSON.parse(JSON.stringify(doc))
+    // Prefer the existing draft as the base so pending edits survive.
+    const existingDraft = docsById.get(`drafts.${docId}`)
+    if (existingDraft) ontoExistingDrafts++
+    const base = existingDraft ?? published
+
+    const clone = JSON.parse(JSON.stringify(base))
     const changedTopLevel = new Set<string>()
     const fieldNames: string[] = []
 
@@ -193,11 +220,17 @@ async function main() {
     const setOps: Record<string, any> = {}
     for (const key of changedTopLevel) setOps[key] = clone[key]
 
-    const draftId = docId.startsWith("drafts.") ? docId : `drafts.${docId}`
-    tx.createIfNotExists({ ...doc, _id: draftId })
+    const draftId = `drafts.${docId}`
+    // No-op when a draft already exists; seeds one from published otherwise.
+    tx.createIfNotExists({ ...published, _id: draftId })
     tx.patch(draftId, { set: setOps })
 
-    touched.push({ id: docId, type: doc._type, fields: fieldNames })
+    touched.push({
+      id: docId,
+      type: published._type,
+      fields: fieldNames,
+      hadDraft: Boolean(existingDraft),
+    })
   }
 
   console.log(
@@ -210,8 +243,14 @@ async function main() {
         `translated. Re-export to get just the outstanding blocks.`,
     )
   }
+  if (ontoExistingDrafts > 0) {
+    console.log(
+      `  ${ontoExistingDrafts} document(s) already had a draft — German is ` +
+        `merged into it, pending edits preserved (marked * below).`,
+    )
+  }
   for (const t of touched.slice(0, 15)) {
-    console.log(`  ${t.type} ${t.id}`)
+    console.log(`  ${t.hadDraft ? "*" : " "} ${t.type} ${t.id}`)
     console.log(
       `    ${t.fields.slice(0, 6).join(", ")}${t.fields.length > 6 ? `, +${t.fields.length - 6} more` : ""}`,
     )
