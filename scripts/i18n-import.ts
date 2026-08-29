@@ -202,6 +202,31 @@ async function main() {
           continue // leave the field untouched rather than write a half array
         }
         localized.de = rebuilt
+      } else if (
+        localized.en !== null &&
+        typeof localized.en === "object" &&
+        !Array.isArray(localized.en)
+      ) {
+        // Object-valued wrapper: seo.meta = { en: { title, description,
+        // keywords }, … }. Build `de` leaf by leaf, starting from whatever
+        // German already exists so a partial delivery doesn't drop leaves.
+        // The sibling `openGraph.image` lives outside `en` and is untouched.
+        const de: Record<string, any> = { ...(localized.de ?? {}) }
+        let wrote = false
+        for (const [leafKey, source] of Object.entries<any>(localized.en)) {
+          const translated = values.get(leafKey)
+          if (translated === undefined) continue
+          // Keywords round-trip as a comma-joined string.
+          de[leafKey] = Array.isArray(source)
+            ? unescapeXml(translated)
+                .split(",")
+                .map(k => k.trim())
+                .filter(Boolean)
+            : unescapeXml(translated)
+          wrote = true
+        }
+        if (!wrote) continue
+        localized.de = de
       } else {
         const value = values.get("")
         if (value === undefined) continue

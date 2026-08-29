@@ -26,6 +26,11 @@ export interface Segment {
   kind: SegmentKind
   /** Portable Text block key, for `kind === "block"` */
   blockKey?: string
+  /**
+   * Leaf key inside an object-valued locale wrapper — e.g. `title` for
+   * `seo.meta = { en: { title, description, keywords } }`.
+   */
+  leafKey?: string
   /** Block style (normal, h2, blockquote…) — context for the translator */
   style?: string
   /** The English source text */
@@ -61,6 +66,10 @@ export function isLocalizedObject(node: any): boolean {
     !Array.isArray(node) &&
     "en" in node
   )
+}
+
+function isPlainObject(value: any): boolean {
+  return value !== null && typeof value === "object" && !Array.isArray(value)
 }
 
 export function isEmpty(value: any): boolean {
@@ -222,8 +231,38 @@ export function collectSegments(
             source: node.en,
           })
         }
-        // Nested objects (e.g. seo.meta.en = { title, description }) fall
-        // through to the generic descent below.
+      }
+
+      // Object-valued locale wrapper — `seo.meta = { en: { title,
+      // description, keywords }, es, de }` and the same for `seo.openGraph`.
+      // These carry every page's search-result title and description, so
+      // missing them silently omits the most SEO-critical text on the site.
+      // Handled outside the `needed` check because completeness is per-leaf:
+      // a wrapper can have German for `title` but not `description`.
+      if (isPlainObject(node.en)) {
+        for (const [leafKey, value] of Object.entries<any>(node.en)) {
+          const source =
+            typeof value === "string"
+              ? value
+              : Array.isArray(value) && value.every(v => typeof v === "string")
+                ? value.join(", ") // e.g. seo.meta.keywords
+                : null
+          if (source === null || !source.trim()) continue
+          if (!includeTranslated && !isEmpty(node.de?.[leafKey])) continue
+          segments.push({
+            id: `${doc._id}::${path}::${leafKey}`,
+            docId: doc._id,
+            docType: doc._type,
+            docLabel: label,
+            path,
+            kind: source.includes("\n") ? "text" : "string",
+            leafKey,
+            source,
+          })
+        }
+        // Don't descend: the only sibling is a non-translatable asset
+        // (`openGraph.image`), and the locale branches hold no `en` key.
+        return
       }
     }
 
