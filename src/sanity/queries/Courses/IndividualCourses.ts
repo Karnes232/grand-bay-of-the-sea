@@ -20,6 +20,7 @@ export interface IndividualCourseCard {
   cardDescription: {
     en: string
     es: string
+    de: string
   }
   padiPrice?: number
   cardHashTags: string[]
@@ -46,7 +47,8 @@ export const individualCoursesCardsQuery = `*[_type == "individualCourse" && cou
   },
   cardDescription {
     en,
-    es
+    es,
+    de
   },
   cardHashTags,
   courseLevel,
@@ -77,6 +79,7 @@ export interface IndividualStucturedData {
     structuredData: {
       en: string
       es: string
+      de: string
     }
   }
 }
@@ -85,7 +88,8 @@ export const individualCourseStructuredDataQuery = `*[_type == "individualCourse
   seo {
     structuredData {
       en,
-      es
+      es,
+      de
     }
   }
 }`
@@ -108,6 +112,11 @@ export interface IndividualCourseSEO {
         title: string
         description: string
         keywords: string[]
+      },
+      de: {
+        title: string
+        description: string
+        keywords: string[]
       }
     }
     openGraph: {
@@ -116,6 +125,10 @@ export interface IndividualCourseSEO {
         description: string
       }
       es: {
+        title: string
+        description: string
+      },
+      de: {
         title: string
         description: string
       }
@@ -143,6 +156,11 @@ export const individualCourseSEOQuery = `*[_type == "individualCourse" && slug.c
       title,
       description,
       keywords
+    },
+    de {
+      title,
+      description,
+      keywords
     }
   },
   // Open Graph data
@@ -152,6 +170,10 @@ export const individualCourseSEOQuery = `*[_type == "individualCourse" && slug.c
       description
     },
     es {
+      title,
+      description
+    },
+    de {
       title,
       description
     },
@@ -179,6 +201,7 @@ export interface IndividualCourse {
   title?: {
     en: string
     es: string
+    de: string
   }
   slug: {
     current: string
@@ -187,26 +210,32 @@ export interface IndividualCourse {
   paragraph1: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph2: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph3?: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph4?: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph5?: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph6?: {
     en: any[]
     es: any[]
+    de: any[]
   }
   photoList: {
     asset: {
@@ -242,28 +271,34 @@ export interface IndividualCourse {
   cardDescription?: {
     en: string
     es: string
+    de: string
   }
   cardHashTags?: string[]
   level: {
     en: string
     es: string
+    de: string
   }
   padiPrice: number
   duration: {
     en: string
     es: string
+    de: string
   }
   dives?: {
     en: string
     es: string
+    de: string
   }
   maxDepth?: {
     en: string
     es: string
+    de: string
   }
   extraInfo?: {
     en: string
     es: string
+    de: string
   }
   faqs?: {
     _key: string
@@ -273,6 +308,7 @@ export interface IndividualCourse {
   structuredData?: {
     en: string
     es: string
+    de: string
   }
 }
 
@@ -280,7 +316,8 @@ export const individualCourseQuery = `*[_type == "individualCourse" && slug.curr
   course,
   title {
     en,
-    es
+    es,
+    de
   },
   slug {
     current
@@ -288,27 +325,33 @@ export const individualCourseQuery = `*[_type == "individualCourse" && slug.curr
   videoId,
   paragraph1 {
     en,
-    es
+    es,
+    de
   },
   paragraph2 {
     en,
-    es
+    es,
+    de
   },
   paragraph3 {
     en,
-    es
+    es,
+    de
   },
   paragraph4 {
     en,
-    es
+    es,
+    de
   },
   paragraph5 {
     en,
-    es
+    es,
+    de
   },
   paragraph6 {
     en,
-    es
+    es,
+    de
   },
   photoList[] {
     asset -> {
@@ -343,44 +386,53 @@ export const individualCourseQuery = `*[_type == "individualCourse" && slug.curr
   },
   cardDescription {
     en,
-    es
+    es,
+    de
   },
   cardHashTags,
   level {
     en,
-    es
+    es,
+    de
   },
   padiPrice,
   duration {
     en,
-    es
+    es,
+    de
   },
   dives {
     en,
-    es
+    es,
+    de
   },
   maxDepth {
     en,
-    es
+    es,
+    de
   },
   extraInfo {
     en,
-    es
+    es,
+    de
   },
   faqs[] {
     _key,
     question {
       en,
-      es
+      es,
+      de
     },
     answer {
       en,
-      es
+      es,
+      de
     }
   },
   structuredData {
     en,
-    es
+    es,
+    de
   }
 }`
 

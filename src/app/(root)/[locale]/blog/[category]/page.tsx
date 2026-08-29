@@ -16,7 +16,7 @@ import {
 import { getBlogPostsCards } from "@/sanity/queries/Blog/BlogPosts"
 import { getBlogPageLayout } from "@/sanity/queries/Blog/BlogPageLayout"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
-import type { Locale } from "@/i18n/locales"
+import { BLOG_LOCALES, type Locale } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -34,6 +34,10 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { category, locale } = await params
   setRequestLocale(locale)
+  // The blog is en/es only — see BLOG_LOCALES. Guard here as well as in the
+  // page body: generateMetadata runs first and would crash indexing
+  // `seo.meta[locale]` for a locale the blog has no content in.
+  if (!(BLOG_LOCALES as readonly string[]).includes(locale)) notFound()
   const pageSeo = await getIndividualBlogCategorySEO(category)
 
   if (!pageSeo) {
@@ -42,7 +46,11 @@ export async function generateMetadata(
     notFound()
   }
 
-  const alternates = getHreflangAlternates(`blog/${category}`, locale)
+  const alternates = getHreflangAlternates(
+    `blog/${category}`,
+    locale,
+    BLOG_LOCALES,
+  )
 
   return {
     title: pageSeo.seo.meta[locale].title,
@@ -71,6 +79,10 @@ export default async function Page({
   const { category, locale } = await params
 
   setRequestLocale(locale)
+  // The blog is en/es only — see BLOG_LOCALES. Guard here as well as in the
+  // page body: generateMetadata runs first and would crash indexing
+  // `seo.meta[locale]` for a locale the blog has no content in.
+  if (!(BLOG_LOCALES as readonly string[]).includes(locale)) notFound()
   const [blogCategory, blogPostsCards, layout, tNav] = await Promise.all([
     getIndividualBlogCategory(category),
     getBlogPostsCards(category),

@@ -4,6 +4,7 @@ export interface BlogCategory {
   blogCategory: {
     en: string
     es: string
+    de: string
   }
   slug: {
     current: string
@@ -32,7 +33,8 @@ export interface BlogCategory {
 export const blogCategoryQuery = `*[_type == "blogCategory"] {
     blogCategory {
         en,
-        es
+        es,
+        de
     },
     slug {
         current
@@ -66,6 +68,7 @@ export interface individualBlogCategory {
   blogCategory: {
     en: string
     es: string
+    de: string
   }
   slug: string
   heroImage: {
@@ -83,11 +86,13 @@ export interface individualBlogCategory {
   description: {
     en: string
     es: string
+    de: string
   }
   seo: {
     structuredData: {
       en: string
       es: string
+      de: string
     }
   }
 }
@@ -95,7 +100,8 @@ export interface individualBlogCategory {
 export const individualBlogCategoryQuery = `*[_type == "blogCategory" && slug.current == $slug][0] {
     blogCategory {
         en,
-        es
+        es,
+        de
     },
     slug,
     heroImage {
@@ -116,12 +122,14 @@ export const individualBlogCategoryQuery = `*[_type == "blogCategory" && slug.cu
     },
     description {
         en,
-        es
+        es,
+        de
     },
     seo {
         structuredData {
             en,
-            es
+            es,
+            de
         }
     }
 }`
@@ -144,6 +152,11 @@ export interface individualBlogCategorySEO {
         title: string
         description: string
         keywords: string[]
+      },
+      de: {
+        title: string
+        description: string
+        keywords: string[]
       }
     }
     openGraph: {
@@ -152,6 +165,10 @@ export interface individualBlogCategorySEO {
         description: string
       }
       es: {
+        title: string
+        description: string
+      },
+      de: {
         title: string
         description: string
       }
@@ -179,6 +196,11 @@ seo {
       title,
       description,
       keywords
+    },
+    de {
+      title,
+      description,
+      keywords
     }
   },
   // Open Graph data
@@ -188,6 +210,10 @@ seo {
       description
     },
     es {
+      title,
+      description
+    },
+    de {
       title,
       description
     },

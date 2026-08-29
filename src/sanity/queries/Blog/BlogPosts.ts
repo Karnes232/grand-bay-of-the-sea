@@ -4,6 +4,7 @@ export interface BlogPostsCards {
   title: {
     en: string
     es: string
+    de: string
   }
   slug: {
     current: string
@@ -11,6 +12,7 @@ export interface BlogPostsCards {
   description: {
     en: string
     es: string
+    de: string
   }
   publishDate: string
   backgroundImages: {
@@ -37,12 +39,14 @@ export interface BlogPostsCards {
 export const blogPostsCardsQuery = `*[_type == "blogPost" && blogCategory->slug.current == $slug] | order(publishDate desc) {
   title {
     en,
-    es
+    es,
+    de
   },
   slug,
   description {
     en,
-    es
+    es,
+    de
   },
   publishDate,
   backgroundImages[0] {
@@ -76,10 +80,12 @@ export interface BlogPost {
   title: {
     en: string
     es: string
+    de: string
   }
   description: {
     en: string
     es: string
+    de: string
   }
   publishDate: string
   _updatedAt?: string
@@ -107,11 +113,13 @@ export interface BlogPost {
   blogBody: {
     en: string
     es: string
+    de: string
   }
   seo: {
     structuredData: {
       en: string
       es: string
+      de: string
     }
   }
 }
@@ -119,11 +127,13 @@ export interface BlogPost {
 export const individualBlogPostQuery = `*[_type == "blogPost" && slug.current == $slug][0] {
   title {
     en,
-    es
+    es,
+    de
   },
   description {
     en,
-    es
+    es,
+    de
   },
   publishDate,
   _updatedAt,
@@ -148,12 +158,14 @@ export const individualBlogPostQuery = `*[_type == "blogPost" && slug.current ==
   },
   blogBody {
     en,
-    es
+    es,
+    de
   },
   seo {
     structuredData {
       en,
-      es
+      es,
+      de
     }
   }
 }`
@@ -178,6 +190,11 @@ export interface IndividualBlogPostSEO {
         title: string
         description: string
         keywords: string[]
+      },
+      de: {
+        title: string
+        description: string
+        keywords: string[]
       }
     }
     openGraph: {
@@ -186,6 +203,10 @@ export interface IndividualBlogPostSEO {
         description: string
       }
       es: {
+        title: string
+        description: string
+      },
+      de: {
         title: string
         description: string
       }
@@ -215,6 +236,11 @@ export const individualBlogPostSEOQuery = `*[_type == "blogPost" && slug.current
       title,
       description,
       keywords
+    },
+    de {
+      title,
+      description,
+      keywords
     }
   },
   // Open Graph data
@@ -224,6 +250,10 @@ export const individualBlogPostSEOQuery = `*[_type == "blogPost" && slug.current
       description
     },
     es {
+      title,
+      description
+    },
+    de {
       title,
       description
     },

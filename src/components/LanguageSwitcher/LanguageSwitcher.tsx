@@ -17,6 +17,7 @@ import { getSafeLocale, preloadLanguageMessages } from "@/utils/languageUtils"
 const LOCALE_DISPLAY: Record<Locale, { display: string; flag: string }> = {
   en: { display: "English", flag: "🇺🇸" },
   es: { display: "Español", flag: "🇩🇴" },
+  de: { display: "Deutsch", flag: "🇩🇪" },
 }
 
 const LANGUAGE_OPTIONS = ACTIVE_LOCALES.map(code => ({
@@ -46,13 +47,11 @@ export default function LanguageSwitcher({
   const currentLocale = (params?.locale as string) || DEFAULT_LOCALE
   const safeLocale = getSafeLocale(currentLocale)
 
-  const languageOptions = LANGUAGE_OPTIONS
-
   // Memoize the current language option to prevent unnecessary re-renders
   const currentLangOption = useMemo(
     () =>
-      languageOptions.find(lang => lang.code === safeLocale) ||
-      languageOptions[0],
+      LANGUAGE_OPTIONS.find(lang => lang.code === safeLocale) ||
+      LANGUAGE_OPTIONS[0],
     [safeLocale],
   )
 
@@ -107,9 +106,9 @@ export default function LanguageSwitcher({
   // Preload other language messages for better performance
   useEffect(() => {
     const preloadOtherLanguages = async () => {
-      const otherLanguages = languageOptions
-        .filter(lang => lang.code !== safeLocale)
-        .map(lang => preloadLanguageMessages(lang.code as any))
+      const otherLanguages = LANGUAGE_OPTIONS.filter(
+        lang => lang.code !== safeLocale,
+      ).map(lang => preloadLanguageMessages(lang.code as any))
 
       try {
         await Promise.allSettled(otherLanguages)
@@ -222,7 +221,7 @@ export default function LanguageSwitcher({
       {/* Dropdown Menu */}
       {isOpen && (
         <div className="absolute top-full right-0 mt-2 w-48 bg-card rounded-lg shadow-xl border border-line py-2 z-50">
-          {languageOptions.map(lng => {
+          {LANGUAGE_OPTIONS.map(lng => {
             const isActive = safeLocale === lng.code
             const isChangingToThis = isLoading && !isActive
             return (

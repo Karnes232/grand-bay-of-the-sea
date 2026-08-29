@@ -39,7 +39,8 @@ export default defineType({
     defineField({
       name: "heroTrustLine",
       title: "Hero Trust Line",
-      description: "Small pill above the hero title. Use {price} to insert the 2-tank dive price.",
+      description:
+        "Small pill above the hero title. Use {price} to insert the 2-tank dive price.",
       type: "localizedString",
     }),
     defineField({
@@ -165,6 +166,48 @@ export default defineType({
         defineField({
           name: "es",
           title: "Spanish Schema",
+          type: "text",
+          description:
+            "Paste your schema.org JSON-LD data for Spanish content here",
+          validation: Rule =>
+            Rule.custom(text => {
+              if (!text) return true
+              try {
+                JSON.parse(text)
+                return true
+              } catch (err) {
+                return "Must be valid JSON"
+              }
+            }),
+          initialValue: `{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "",
+    "description": "",
+    "url": "",
+    "logo": "",
+    "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "",
+    "contactType": "customer service",
+    "availableLanguage": [
+      "en",
+      "es"
+      ]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Punta Cana",
+      "addressCountry": "DO"
+    },
+    "sameAs": [
+      ""
+      ]
+    }`,
+        }),
+        defineField({
+          name: "de",
+          title: "German Schema",
           type: "text",
           description:
             "Paste your schema.org JSON-LD data for Spanish content here",

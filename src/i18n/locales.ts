@@ -26,7 +26,7 @@
  */
 
 /** Every locale the codebase supports. */
-export const LOCALES = ["en", "es"] as const
+export const LOCALES = ["en", "es", "de"] as const
 
 export type Locale = (typeof LOCALES)[number]
 
@@ -38,7 +38,11 @@ export const DEFAULT_LOCALE: Locale = "en"
  * built and reviewed before launch, and switched off again without a code
  * change if something is wrong with it.
  */
-export const ACTIVE_LOCALES: readonly Locale[] = LOCALES
+const DE_ENABLED = process.env.NEXT_PUBLIC_LOCALE_DE_ENABLED === "true"
+
+export const ACTIVE_LOCALES: readonly Locale[] = LOCALES.filter(
+  locale => locale !== "de" || DE_ENABLED,
+)
 
 export function isLocale(value: unknown): value is Locale {
   return (
@@ -68,3 +72,15 @@ export const LOCALE_PREFIX_PATTERN = new RegExp(
 export function stripLocalePrefix(pathname: string): string {
   return pathname.replace(LOCALE_PREFIX_PATTERN, "") || "/"
 }
+
+/**
+ * Locales the blog exists in.
+ *
+ * The blog is deliberately English/Spanish only: 148 posts per language is an
+ * unbounded translation commitment, and the German opportunity is on the
+ * service pages, not the blog. Blog routes 404 outside these locales and must
+ * not advertise a German hreflang alternate.
+ */
+export const BLOG_LOCALES: readonly Locale[] = ACTIVE_LOCALES.filter(
+  locale => locale !== "de",
+)

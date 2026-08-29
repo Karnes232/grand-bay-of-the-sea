@@ -13,6 +13,11 @@ export interface PageSeo {
         title: string
         description: string
         keywords: string[]
+      },
+      de: {
+        title: string
+        description: string
+        keywords: string[]
       }
     }
     openGraph: {
@@ -21,6 +26,10 @@ export interface PageSeo {
         description: string
       }
       es: {
+        title: string
+        description: string
+      },
+      de: {
         title: string
         description: string
       }
@@ -48,6 +57,11 @@ export const seoQuery = `*[_type == "pageSeo" && pageName == $pageName][0] {
       title,
       description,
       keywords
+    },
+    de {
+      title,
+      description,
+      keywords
     }
   },
   // Open Graph data
@@ -57,6 +71,10 @@ export const seoQuery = `*[_type == "pageSeo" && pageName == $pageName][0] {
       description
     },
     es {
+      title,
+      description
+    },
+    de {
       title,
       description
     },
@@ -83,7 +101,8 @@ export const structuredDataQuery = `*[_type == "pageSeo" && pageName == $pageNam
     seo {
         structuredData {
             en,
-            es
+            es,
+            de
         }
     }
 }`
@@ -94,6 +113,7 @@ export interface structuredData {
     structuredData: {
       en: string
       es: string
+      de: string
     }
   }
 }

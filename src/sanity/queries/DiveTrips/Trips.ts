@@ -10,10 +10,12 @@ export interface TripCards {
   cardTitle: {
     en: string
     es: string
+    de: string
   }
   cardDescription: {
     en: string
     es: string
+    de: string
   }
   cardImage: {
     asset: {
@@ -34,10 +36,12 @@ export interface TripCards {
   duration?: {
     en: string
     es: string
+    de: string
   }
   extras?: {
     en: string
     es: string
+    de: string
   }[]
 }
 
@@ -48,11 +52,13 @@ export const tripsQuery = `*[_type == "trips"] {
   privateOnly,
   cardTitle {
     en,
-    es
+    es,
+    de
   },
   cardDescription {
     en,
-    es
+    es,
+    de
   },
   cardImage {
     asset -> {
@@ -72,11 +78,13 @@ export const tripsQuery = `*[_type == "trips"] {
   },
   duration {
     en,
-    es
+    es,
+    de
   },
   extras[] {
     en,
-    es
+    es,
+    de
   }
 }`
 
@@ -102,6 +110,7 @@ export interface Trip {
   title?: {
     en: string
     es: string
+    de: string
   }
   slug: {
     current: string
@@ -110,18 +119,22 @@ export interface Trip {
   paragraph1: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph2: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph3: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph4?: {
     en: any[]
     es: any[]
+    de: any[]
   }
   photoList: {
     asset: {
@@ -141,16 +154,19 @@ export interface Trip {
   cardDescription?: {
     en: string
     es: string
+    de: string
   }
   price: number
   spectatorSnorkel: number
   duration: {
     en: string
     es: string
+    de: string
   }
   extras: {
     en: string
     es: string
+    de: string
   }[]
   tripDaySteps?: {
     stepTitle?: { en: string; es: string }
@@ -159,6 +175,7 @@ export interface Trip {
   tripDayNote?: {
     en: string
     es: string
+    de: string
   }
   depositPrice: number
   faqs?: {
@@ -166,10 +183,12 @@ export interface Trip {
     question: {
       en: string
       es: string
+      de: string
     }
     answer: {
       en: any[]
       es: any[]
+      de: any[]
     }
   }[]
 }
@@ -178,25 +197,30 @@ export const individualTripQuery = `*[_type == "trips" && slug.current == $slug]
   page,
   title {
     en,
-    es
+    es,
+    de
   },
   slug,
   videoId,
   paragraph1 {
     en,
-    es
+    es,
+    de
   },
   paragraph2 {
     en,
-    es
+    es,
+    de
   },
   paragraph3 {
     en,
-    es
+    es,
+    de
   },
   paragraph4 {
     en,
-    es
+    es,
+    de
   },
   photoList[] {
     asset -> {
@@ -215,39 +239,46 @@ export const individualTripQuery = `*[_type == "trips" && slug.current == $slug]
   },
   cardDescription {
     en,
-    es
+    es,
+    de
   },
   price,
   spectatorSnorkel,
   duration,
   extras[] {
     en,
-    es
+    es,
+    de
   },
   tripDaySteps[] {
     stepTitle {
       en,
-      es
+      es,
+      de
     },
     stepBody {
       en,
-      es
+      es,
+      de
     }
   },
   tripDayNote {
     en,
-    es
+    es,
+    de
   },
   depositPrice,
   faqs[] {
     _key,
     question {
       en,
-      es
+      es,
+      de
     },
     answer {
       en,
-      es
+      es,
+      de
     }
   }
 }`
@@ -262,6 +293,7 @@ export interface TripStructuredData {
     structuredData: {
       en: string
       es: string
+      de: string
     }
   }
 }
@@ -270,7 +302,8 @@ export const tripStructuredDataQuery = `*[_type == "trips" && slug.current == $s
   seo {
     structuredData {
       en,
-      es
+      es,
+      de
     }
   }
 }`
@@ -296,6 +329,11 @@ export interface TripSeo {
         title: string
         description: string
         keywords: string[]
+      },
+      de: {
+        title: string
+        description: string
+        keywords: string[]
       }
     }
     openGraph: {
@@ -304,6 +342,10 @@ export interface TripSeo {
         description: string
       }
       es: {
+        title: string
+        description: string
+      },
+      de: {
         title: string
         description: string
       }
@@ -331,6 +373,11 @@ export const tripSeoQuery = `*[_type == "trips" && slug.current == $slug][0] {
       title,
       description,
       keywords
+    },
+    de {
+      title,
+      description,
+      keywords
     }
   },
   // Open Graph data
@@ -340,6 +387,10 @@ export const tripSeoQuery = `*[_type == "trips" && slug.current == $slug][0] {
       description
     },
     es {
+      title,
+      description
+    },
+    de {
       title,
       description
     },

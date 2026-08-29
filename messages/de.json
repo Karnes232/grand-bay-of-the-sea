@@ -1,0 +1,343 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "scubaClasses": "Scuba Classes",
+    "divePackages": "Dive Packages",
+    "localDives": "Local Dives",
+    "sharkDive": "Shark Dive",
+    "diveTrips": "Dive Trips",
+    "deepSeaFishing": "Deep Sea Fishing",
+    "photoGallery": "Photo Gallery",
+    "aboutUs": "About Us",
+    "speciesGuide": "Species Guide",
+    "contactUs": "Contact Us",
+    "scubaDivingPuntaCana": "Scuba Diving Punta Cana",
+    "sharkDivingPuntaCana": "Shark Diving Punta Cana",
+    "liveAboards": "Live Aboards",
+    "cancellationPolicy": "Cancellation Policy",
+    "privacyPolicy": "Privacy Policy",
+    "siteMap": "Site Map",
+    "blog": "Blog",
+    "bookCta": "Book a dive"
+  },
+  "PhotoGallery": {
+    "all": "All",
+    "marineLife": "Marine Life",
+    "sharks": "Sharks",
+    "wrecks": "Wrecks",
+    "divers": "Divers"
+  },
+  "ContactForm": {
+    "heading": "Send us a message",
+    "subheading": "No payment now — we'll confirm your spot and send a deposit link.",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "hotel": "Hotel",
+    "yourMessage": "Your message",
+    "leaveAComment": "Leave a comment...",
+    "submit": "Submit",
+    "submitting": "Submitting..."
+  },
+  "FloatingContact": {
+    "openMenu": "Open contact options",
+    "closeMenu": "Close contact options",
+    "contactForm": "Contact Form",
+    "whatsapp": "WhatsApp",
+    "closeForm": "Close contact form"
+  },
+  "ThankYou": {
+    "thankYou": "Thank you",
+    "ourTeamWillReachOut": "our team will reach out to you shortly!",
+    "pleaseFeelFreeTo": "Please feel free to",
+    "contactUs": "contact us",
+    "withAnyQuestionsOrConcerns": "with any questions or concerns.",
+    "paymentReceivedPending": "Your payment was received. We are finalizing your booking and will confirm by WhatsApp or email shortly."
+  },
+  "CustomPagePayPal": {
+    "depositAmount": "Deposit Amount",
+    "byProceedingWithPayment": "By proceeding with payment, you acknowledge that you have read and agree to our",
+    "termsAndConditions": "Terms and Conditions"
+  },
+  "FishCard": {
+    "readLess": "Read less",
+    "readMore": "Read more"
+  },
+  "FishingOverview": {
+    "fishingOverview": "Fishing Overview",
+    "sharedFishingCharter": "Shared Fishing Charter",
+    "perPerson": "per person",
+    "spectator": "Spectator",
+    "privateFishingCharter": "Private Fishing Charter",
+    "duration": "Duration",
+    "price": "Price",
+    "contactUs": "Contact Us",
+    "reserveSharedCharterNow": "Reserve Shared Charter Now",
+    "onlyADeposit": "Only a",
+    "deposit": "deposit"
+  },
+  "PaymentPopupFishing": {
+    "bookNow": "Book Now",
+    "contactInfo": "Contact Info",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "whatsappPhone": "WhatsApp / Phone Number",
+    "hotel": "Hotel",
+    "numberOfFishermen": "Number of Fishermen",
+    "numberOfSpectators": "Number of Spectators",
+    "excursion": "Excursion"
+  },
+  "PayPalButtonWrapperBooking": {
+    "pleaseCompleteAllRequiredFieldsBeforeProceedingWithPayment": "Please complete all required fields before proceeding with payment.",
+    "byProceedingWithPayment": "By proceeding with payment, you acknowledge that you have read and agree to our",
+    "termsAndConditions": "Terms and Conditions",
+    "processing": "Processing your booking…"
+  },
+  "DatePickerComponent": {
+    "preferredDate": "Preferred Date",
+    "closedOnSundays": "Closed on Sundays. Please select another date.",
+    "availableDaysFor": "Available days for"
+  },
+  "TripOverview": {
+    "tripOverview": "Trip Overview",
+    "price": "Price",
+    "perPerson": "per person",
+    "2tankDive": "2 tank dive",
+    "companion": "companion",
+    "duration": "Duration",
+    "reserveNow": "Reserve Now",
+    "onlyADeposit": "Only a",
+    "deposit": "deposit",
+    "contactUs": "Contact Us"
+  },
+  "PaymentPopupTrip": {
+    "bookNow": "Book Now",
+    "contactInfo": "Contact Info",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "whatsappPhone": "WhatsApp / Phone Number",
+    "hotel": "Hotel",
+    "numberOfDivers": "Number of Divers",
+    "numberOfSnorkelers": "Number of Snorkelers",
+    "excursion": "Excursion"
+  },
+  "LocalDivesOverview": {
+    "2tankDive": "2 Tank Dive",
+    "perPerson": "per person",
+    "duration": "Duration",
+    "4tankPackage": "4 Tank Package",
+    "sharkDive": "Shark Dive",
+    "otherPackagesAvailableUponRequest": "Other packages available upon request",
+    "reserveNow": "Reserve Now",
+    "onlyADeposit": "Only a",
+    "deposit": "deposit",
+    "bookNowViaPad": "Book now Via Padi",
+    "contactUs": "Contact Us",
+    "packagesEyebrow": "Dive packages",
+    "bestValue": "Best value for multi-day",
+    "advancedDivers": "Advanced divers",
+    "otherPackages": "Other packages",
+    "reserveSubtitle": "Secure your spot with only a ${price} deposit — pay the balance on the day of your dive."
+  },
+  "PaymentPopupLocalDives": {
+    "bookNow": "Book Now",
+    "contactInfo": "Contact Info",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "whatsappPhone": "WhatsApp / Phone Number",
+    "hotel": "Hotel",
+    "numberOfGuests": "Number of Guests"
+  },
+  "CertificationLevel": {
+    "certificationLevel": "Certification Level",
+    "notCertified": "Not Certified"
+  },
+  "TourSelect": {
+    "twoTankDive": "Two Tank Dive",
+    "fourTankPackage": "Four Tank Package",
+    "excursion": "Excursion"
+  },
+  "DiveSiteCard": {
+    "showLess": "Show Less",
+    "readMore": "Read More",
+    "meters": "meters",
+    "feet": "feet",
+    "exploreSharkDive": "Explore the shark dive",
+    "levelBeginner": "Beginner",
+    "levelIntermediate": "Intermediate",
+    "levelAdvanced": "Advanced",
+    "levelAllLevels": "All levels",
+    "locCatalina": "Catalina",
+    "locBayahibe": "Bayahibe",
+    "locLocal": "Local"
+  },
+  "Footer": {
+    "builtBy": "Built by",
+    "developedBy": "Web Development in the Dominican Republic",
+    "columnDive": "Dive",
+    "columnExplore": "Explore",
+    "columnConfidence": "Book with confidence",
+    "padiVerified": "Verified PADI Dive Center"
+  },
+  "TrustLine": {
+    "line": "★ {rating} · {count} Google reviews · Verified PADI Dive Center #27147"
+  },
+  "Cards": {
+    "from": "from"
+  },
+  "ContactInfo": {
+    "title": "Contact & Location",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "hoursLabel": "Opening Hours",
+    "hoursValue": "Monday – Sunday, 8:30 AM – 5:00 PM",
+    "country": "Dominican Republic",
+    "mapLink": "View on Google Maps"
+  },
+  "SelectionComponent": {
+    "learnToDiveWithExperts": "Learn to Dive with Experts",
+    "discoverTheUnderwaterWorld": "Discover the underwater world with our internationally certified instructors. From beginners to advanced divers, we offer courses for all levels.",
+    "experienceOurBestDiveSites": "Experience Our Best Dive Sites",
+    "saveWithOurValuePackedDivePackages": "Save with our value-packed dive packages designed for certified divers. Multi-day adventures to Punta Cana's premier dive locations.",
+    "exploreTheStunningIslandsOfTheDominicanRepublic": "Explore the stunning islands of the Dominican Republic with our full-day excursions. Perfect for everyone.",
+    "caribbeanDayAdventures": "Caribbean Day Adventures"
+  },
+  "CourseOverview": {
+    "courseOverview": "Course Overview",
+    "courseLevel": "Course Level",
+    "price": "Price",
+    "perPerson": "per person",
+    "duration": "Duration",
+    "includes": "Includes",
+    "contactUs": "Contact Us",
+    "reserveNow": "Reserve Now",
+    "only50Deposit": "Only a 50% deposit",
+    "transport": "Transport",
+    "dives": "Dives",
+    "maxDepth": "Max depth"
+  },
+  "PaymentPopupCourses": {
+    "bookNow": "Book Now",
+    "contactInfo": "Contact Info",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "whatsappPhone": "WhatsApp / Phone Number",
+    "hotel": "Hotel",
+    "numberOfGuests": "Number of Guests",
+    "excursion": "Excursion"
+  },
+  "CourseCards": {
+    "discoverScubaDiving": "For those who have never tried scuba diving before!",
+    "scubaDiver": "Dive under the direct supervision of a PADI professional to a maximum depth of 12 meters / 40 feet",
+    "openWaterDiver": "Dive anywhere in the world with a certified buddy!",
+    "advancedOpenWaterDiver": "Take it to the next level!",
+    "sharkConservationDiver": "Experience thrilling shark dives while learning safety, behavior, and conservation skills.",
+    "enrichedAirNitrox": "Extend dive time and reduce surface intervals with enriched air diving",
+    "wreckDiver": "Explore sunken ships and underwater history with the wreck diver course.",
+    "deepDiver": "Explore deeper dive sites safely with the PADI Deep Diver course",
+    "peakPerformanceBuoyancy": "Master buoyancy control for smoother, more efficient and enjoyable dives."
+  },
+  "Blog": {
+    "readMore": "Read More",
+    "browseArticles": "Browse articles",
+    "youMayAlsoLike": "You may also like",
+    "by": "By",
+    "author": "Grand Bay Dive Team",
+    "published": "Published",
+    "updated": "Updated",
+    "searchPlaceholder": "Search Blog Posts...",
+    "noBlogPostsFound": "No blog posts found",
+    "blogPostsFound": "blog post found",
+    "blogPostsFoundPlural": "blog posts found",
+    "noMatch": "No blog posts match your search.",
+    "showing": "Showing",
+    "of": "of",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "goToPage": "Go to page",
+    "share": "Share",
+    "morePhotos": "More photos",
+    "backToCategory": "← Back to all {category} posts"
+  },
+  "Home": {
+    "hero": {
+      "book": "Book your dive",
+      "exploreCourses": "Explore dive courses"
+    },
+    "cards": {
+      "cta": "Explore"
+    },
+    "courses": {
+      "heading": "PADI courses & guided experiences"
+    },
+    "faq": {
+      "heading": "Frequently asked questions"
+    },
+    "booking": {
+      "requestTitle": "Request a booking",
+      "fullName": "Full name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "date": "Date",
+      "experience": "Experience",
+      "divers": "Divers",
+      "submit": "Request my dive",
+      "submitting": "Sending…",
+      "disclaimer": "No payment now. We'll confirm availability and send a deposit link.",
+      "successTitle": "Request received!",
+      "successBody": "Thanks {name} — we'll confirm your dive by email and text shortly. See you underwater.",
+      "expFirst": "First-time / Discover",
+      "expCert": "Getting certified",
+      "expCertified": "Certified diver"
+    }
+  },
+  "Courses": {
+    "viewCourse": "View course",
+    "faqHeading": "Frequently asked questions",
+    "detail": {
+      "galleryHeading": "A glimpse of what you'll see",
+      "ctaHeading": "Ready to get started?",
+      "ctaBody": "Reserve your spot with a 50% deposit. We'll confirm your dates and send everything you need to prepare.",
+      "ctaLabel": "Reserve now",
+      "depositNote": "Reserve with only a 50% deposit",
+      "equipmentProvided": "All equipment provided",
+      "transportIncluded": "Hotel transport included",
+      "smallGroups": "Small groups, personal attention",
+      "viewGallery": "View full gallery"
+    }
+  },
+  "Trips": {
+    "tripEyebrow": "Full-day excursion",
+    "viewTrip": "View trip details",
+    "perDiver": "/ diver",
+    "enquire": "Enquire",
+    "privateOnly": "Private excursions only",
+    "excursionEyebrow": "The excursion",
+    "factDuration": "Duration",
+    "factDives": "Dives",
+    "factDivesValue": "2 guided",
+    "tripDayHeading": "Your day on the water",
+    "ctaHeading": "Ready to dive in?",
+    "ctaBody": "Reserve your spot with just a deposit — we'll confirm your date and handle the rest.",
+    "ctaLabel": "Reserve now"
+  },
+  "Liveaboard": {
+    "expeditionsEyebrow": "Expeditions",
+    "expeditionsHeading": "Featured liveaboard routes",
+    "silverbankTitle": "Silverbank Expedition",
+    "whaleTitle": "Whale Watching Adventure",
+    "viewExpedition": "View expedition",
+    "galleryHeading": "Life aboard",
+    "viewGallery": "View full gallery",
+    "faqHeading": "Frequently asked questions"
+  },
+  "DiveSite": {
+    "diveSites": "Dive Sites",
+    "aboutEyebrow": "About the site",
+    "maxDepth": "Max depth",
+    "level": "Level",
+    "location": "Location",
+    "nearbyHeading": "Nearby dive sites",
+    "viewAll": "View all dive sites"
+  }
+}

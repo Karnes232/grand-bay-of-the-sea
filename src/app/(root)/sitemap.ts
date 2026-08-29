@@ -3,6 +3,7 @@ import { getBlogPosts } from "@/sanity/queries/Blog/BlogPosts"
 import { getCourseSlugs } from "@/sanity/queries/Courses/IndividualCourses"
 import { getTripSlugs } from "@/sanity/queries/DiveTrips/Trips"
 import type { MetadataRoute } from "next"
+import { ACTIVE_LOCALES } from "@/i18n/locales"
 
 const blogCategoriesSanity = await getBlogCategory()
 const blogPostsSanity = await getBlogPosts()
@@ -59,7 +60,9 @@ const blogCategoriesSpanish = blogCategoriesSanity.map(page => {
 const courseEntries = courseSlugsSanity.flatMap(course =>
   ["", "/es"].map(prefix => ({
     url: `https://www.grandbay-puntacana.com${prefix}/courses/${course.slug}`,
-    lastModified: course._updatedAt ? new Date(course._updatedAt) : SITE_LASTMOD,
+    lastModified: course._updatedAt
+      ? new Date(course._updatedAt)
+      : SITE_LASTMOD,
     changeFrequency: "weekly" as const,
     priority: 0.7,
   })),
@@ -75,7 +78,7 @@ const tripEntries = tripSlugsSanity.flatMap(trip =>
 )
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const entries: MetadataRoute.Sitemap = [
     {
       url: "https://www.grandbay-puntacana.com",
       lastModified: SITE_LASTMOD,
@@ -287,4 +290,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogPostsEnglish,
     ...blogPostsSpanish,
   ]
+
+  // German mirrors the *service* site only — the blog is en/es (see
+  // BLOG_LOCALES). Derived from the English entries rather than hand-written:
+  // this file has already lost 4 courses to a hardcoded list drifting out of
+  // sync, and German would have tripled that surface.
+  const BASE = "https://www.grandbay-puntacana.com"
+  const germanEntries: MetadataRoute.Sitemap = ACTIVE_LOCALES.includes("de")
+    ? entries
+        .filter(entry => {
+          const path = entry.url.slice(BASE.length)
+          const isSpanish = path === "/es" || path.startsWith("/es/")
+          const isBlog = path === "/blog" || path.startsWith("/blog/")
+          return !isSpanish && !isBlog
+        })
+        .map(entry => ({
+          ...entry,
+          url: `${BASE}/de${entry.url.slice(BASE.length)}`,
+        }))
+    : []
+
+  return [...entries, ...germanEntries]
 }

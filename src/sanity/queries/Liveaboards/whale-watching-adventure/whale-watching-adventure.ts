@@ -12,6 +12,11 @@ export interface WhaleWatchingAdventureSEO {
         title: string
         description: string
         keywords: string[]
+      },
+      de: {
+        title: string
+        description: string
+        keywords: string[]
       }
     }
     openGraph: {
@@ -20,6 +25,10 @@ export interface WhaleWatchingAdventureSEO {
         description: string
       }
       es: {
+        title: string
+        description: string
+      },
+      de: {
         title: string
         description: string
       }
@@ -47,6 +56,11 @@ export const whaleWatchingAdventureSEOQuery = `*[_type == "whale-watching-advent
       title,
       description,
       keywords
+    },
+    de {
+      title,
+      description,
+      keywords
     }
   },
   // Open Graph data
@@ -56,6 +70,10 @@ export const whaleWatchingAdventureSEOQuery = `*[_type == "whale-watching-advent
       description
     },
     es {
+      title,
+      description
+    },
+    de {
       title,
       description
     },
@@ -84,6 +102,7 @@ export interface WhaleWatchingAdventureStructuredData {
     structuredData: {
       en: string
       es: string
+      de: string
     }
   }
 }
@@ -92,7 +111,8 @@ export const whaleWatchingAdventureStructuredDataQuery = `*[_type == "whale-watc
     seo {
         structuredData {
             en,
-            es
+            es,
+            de
         }
     }
 }`
@@ -110,18 +130,22 @@ export interface WhaleWatchingAdventure {
   paragraph1: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph2: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph3: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph4: {
     en: any[]
     es: any[]
+    de: any[]
   }
   photoList: {
     asset: {
@@ -146,19 +170,23 @@ export const whaleWatchingAdventureQuery = `*[_type == "whale-watching-adventure
     "titleEs": pt::text(paragraph1.es[0]),
     paragraph1 {
         en,
-        es
+        es,
+        de
     },
     paragraph2 {
         en,
-        es
+        es,
+        de
     },
     paragraph3 {
         en,
-        es
+        es,
+        de
     },
     paragraph4 {
         en,
-        es
+        es,
+        de
     },
     photoList[] {
         asset -> {

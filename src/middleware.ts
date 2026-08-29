@@ -39,6 +39,8 @@ export default function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     "/((?!api|trpc|_next|tui|studio|_vercel|.*\\..*).*)",
-    "/(en|es)/:path*",
+    // Keep in sync with LOCALES in src/i18n/locales.ts by hand — Next.js
+    // statically analyses this value at build time, so it cannot be derived.
+    "/(en|es|de)/:path*",
   ],
 }

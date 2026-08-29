@@ -100,6 +100,44 @@ export default defineType({
             }),
           ],
         }),
+        defineField({
+          name: "de",
+          title: "Deutsch",
+          type: "object",
+          fields: [
+            defineField({
+              name: "title",
+              title: "Meta Title",
+              type: "string",
+              description:
+                "Título para la pestaña del navegador y resultados de búsqueda (50-60 caracteres recomendados)",
+              validation: Rule =>
+                Rule.max(60).warning(
+                  "Los títulos meta más largos de 60 caracteres pueden aparecer truncados",
+                ),
+            }),
+            defineField({
+              name: "description",
+              title: "Meta Description",
+              type: "text",
+              rows: 3,
+              description:
+                "Descripción para resultados de búsqueda (150-160 caracteres recomendados)",
+              validation: Rule =>
+                Rule.max(160).warning(
+                  "Las descripciones meta más largas de 160 caracteres pueden aparecer truncadas",
+                ),
+            }),
+            defineField({
+              name: "keywords",
+              title: "Keywords",
+              type: "array",
+              of: [{ type: "string" }],
+              description:
+                "Palabras clave relevantes para este contenido (opcional)",
+            }),
+          ],
+        }),
       ],
     }),
     defineField({
@@ -133,6 +171,28 @@ export default defineType({
         defineField({
           name: "es",
           title: "Spanish",
+          type: "object",
+          fields: [
+            defineField({
+              name: "title",
+              title: "OG Title",
+              type: "string",
+              description:
+                "Título para compartir en redes sociales (opcional, usará el Meta Title si no se proporciona)",
+            }),
+            defineField({
+              name: "description",
+              title: "OG Description",
+              type: "text",
+              rows: 3,
+              description:
+                "Descripción para compartir en redes sociales (opcional, usará la Meta Description si no se proporciona)",
+            }),
+          ],
+        }),
+        defineField({
+          name: "de",
+          title: "Deutsch",
           type: "object",
           fields: [
             defineField({
@@ -216,6 +276,48 @@ export default defineType({
         defineField({
           name: "es",
           title: "Spanish Schema",
+          type: "text",
+          description:
+            "Paste your schema.org JSON-LD data for Spanish content here",
+          validation: Rule =>
+            Rule.custom(text => {
+              if (!text) return true
+              try {
+                JSON.parse(text)
+                return true
+              } catch (err) {
+                return "Must be valid JSON"
+              }
+            }),
+          initialValue: `{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "description": "",
+  "url": "",
+  "logo": "",
+  "contactPoint": {
+  "@type": "ContactPoint",
+  "telephone": "",
+  "contactType": "customer service",
+  "availableLanguage": [
+    "en",
+    "es"
+    ]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Punta Cana",
+    "addressCountry": "DO"
+  },
+  "sameAs": [
+    ""
+    ]
+  }`,
+        }),
+        defineField({
+          name: "de",
+          title: "German Schema",
           type: "text",
           description:
             "Paste your schema.org JSON-LD data for Spanish content here",

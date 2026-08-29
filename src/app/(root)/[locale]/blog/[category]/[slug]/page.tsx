@@ -24,7 +24,7 @@ import {
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { syncSchemaDates } from "@/utils/syncSchemaDates"
 import JsonLd from "@/components/StructuredData/JsonLd"
-import type { Locale } from "@/i18n/locales"
+import { BLOG_LOCALES, type Locale } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -47,6 +47,10 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { category, slug, locale } = await params
   setRequestLocale(locale)
+  // The blog is en/es only — see BLOG_LOCALES. Guard here as well as in the
+  // page body: generateMetadata runs first and would crash indexing
+  // `seo.meta[locale]` for a locale the blog has no content in.
+  if (!(BLOG_LOCALES as readonly string[]).includes(locale)) notFound()
   const pageSeo = await getIndividualBlogPostSEO(slug)
   if (!pageSeo) {
     // No document at all — the post doesn't exist. A real 404, not a data
@@ -63,7 +67,11 @@ export async function generateMetadata(
     )
   }
 
-  const alternates = getHreflangAlternates(`blog/${category}/${slug}`, locale)
+  const alternates = getHreflangAlternates(
+    `blog/${category}/${slug}`,
+    locale,
+    BLOG_LOCALES,
+  )
   const publishedTime = pageSeo.publishDate
     ? new Date(pageSeo.publishDate).toISOString()
     : undefined
@@ -133,6 +141,10 @@ export default async function Page({
   const { category, slug, locale } = await params
 
   setRequestLocale(locale)
+  // The blog is en/es only — see BLOG_LOCALES. Guard here as well as in the
+  // page body: generateMetadata runs first and would crash indexing
+  // `seo.meta[locale]` for a locale the blog has no content in.
+  if (!(BLOG_LOCALES as readonly string[]).includes(locale)) notFound()
   const [individualBlogPost, related, blogCategory, layout, t, tNav] =
     await Promise.all([
       getIndividualBlogPost(slug),
