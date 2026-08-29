@@ -44,7 +44,9 @@ GEO-REPORT*.pdf
 GEO-REPORT*.html
 *-audit/
 
-# Translation exchange files (regenerate with `npm run i18n:export`).
-# Round-trip working files for the translator — large, dated, and derived
-# from Sanity, so there's nothing to gain from versioning them.
-/translations/
+# Translation exchange files. The exported XLIFF/CSV are derived from Sanity
+# and regenerable (`npm run i18n:export`), so they stay out. The batch files
+# under translations/batches/ are the opposite: hand-authored German that
+# cannot be regenerated, so they ARE versioned.
+/translations/*
+!/translations/batches/
