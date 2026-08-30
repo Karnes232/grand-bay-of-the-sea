@@ -4,6 +4,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
+import { diveSiteJsonLd } from "@/utils/schema"
 import { getDiveSite, getDiveSites } from "@/sanity/queries/Sites/DiveSites"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import CoursesHero from "@/components/courses/CoursesHero"
@@ -133,6 +134,27 @@ export default async function Page({
               { name: "Dive Sites", path: "/sites" },
               { name: diveSite.name, path: `/sites/${site}` },
             ],
+            locale,
+          ),
+        }}
+      />
+      {/* These pages previously emitted only a BreadcrumbList, despite ranking
+          for site-name queries. Depth and certification level are what a diver
+          is searching for, so they belong in the markup, not just the prose. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: diveSiteJsonLd(
+            {
+              name: diveSite.name,
+              path: `/sites/${site}`,
+              description: diveSite.cardDescription?.[locale],
+              image: diveSite.image?.asset?.url,
+              meters: diveSite.meters,
+              feet: diveSite.feet,
+              level: diveSite.level,
+              location: diveSite.location,
+            },
             locale,
           ),
         }}

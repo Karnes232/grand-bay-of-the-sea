@@ -2,6 +2,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
+import { serviceJsonLd } from "@/utils/schema"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getFishing } from "@/sanity/queries/Fishing/fishing"
 
@@ -87,6 +88,20 @@ export default async function Page({
               { name: "Home", path: "" },
               { name: "Fishing Punta Cana", path: "/fishing-punta-cana" },
             ],
+            locale,
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serviceJsonLd(
+            {
+              name: "Deep Sea Fishing in Punta Cana",
+              path: "/fishing-punta-cana",
+              description: fishing?.heroSubtitle?.[locale],
+              price: fishing?.price,
+            },
             locale,
           ),
         }}

@@ -7,6 +7,8 @@ import { Link } from "@/i18n/navigation"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
+import { itemListJsonLd } from "@/utils/schema"
+import { getFishes } from "@/sanity/queries/Page-Species/Fishes"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getSpeciesPageContent } from "@/sanity/queries/Page-Species/SpeciesPageContent"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
@@ -63,9 +65,10 @@ export default async function Page({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  const [structuredData, speciesPageContent] = await Promise.all([
+  const [structuredData, speciesPageContent, fishes] = await Promise.all([
     getStructuredData("Species"),
     getSpeciesPageContent(),
+    getFishes(),
   ])
 
   const sp = speciesPageContent[0]
@@ -84,6 +87,22 @@ export default async function Page({
               { name: "Species", path: "/species" },
             ],
             locale,
+          ),
+        }}
+      />
+      {/* The species this guide documents. /species is the most-clicked page on
+          the site from US search and shipped no page-level schema at all. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: itemListJsonLd(
+            fishes.map((fish: any) => ({
+              name: fish.name?.[locale] ?? "",
+              path: "/species",
+              image: fish.image?.asset?.url,
+            })),
+            locale,
+            { listName: sp?.title?.[locale] },
           ),
         }}
       />

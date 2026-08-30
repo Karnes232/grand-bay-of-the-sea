@@ -2,6 +2,7 @@ import dynamicImport from "next/dynamic"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
+import { itemListJsonLd } from "@/utils/schema"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getDiveTripsPage } from "@/sanity/queries/DiveTrips/DiveTripsPage"
 import { getTripCards } from "@/sanity/queries/DiveTrips/Trips"
@@ -123,6 +124,28 @@ export default async function Page({
               { name: "Dive Trips", path: "/trips" },
             ],
             locale,
+          ),
+        }}
+      />
+      {/* The trips this page lists, with the prices its cards display. Derived
+          from the same tripCards data rather than hand-authored in Sanity, which
+          is how the Saona offer drifted out of step with the page. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: itemListJsonLd(
+            tripCards.map(trip => ({
+              name: trip.cardTitle?.[locale] ?? trip.slug?.current ?? "",
+              path: `/trips/${trip.slug?.current ?? ""}`,
+              description: trip.cardDescription?.[locale],
+              image: trip.cardImage?.asset?.url,
+              price: trip.price,
+            })),
+            locale,
+            {
+              itemType: "TouristTrip",
+              listName: diveTripsPage?.heroTitle?.[locale],
+            },
           ),
         }}
       />

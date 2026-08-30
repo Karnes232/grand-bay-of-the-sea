@@ -2,12 +2,44 @@ import { PortableText } from "@portabletext/react"
 
 import Image from "next/image"
 import { urlFor } from "@/sanity/lib/image"
+import { DEFAULT_LOCALE, stripLocalePrefix, toLocale } from "@/i18n/locales"
+
+const SITE = "https://www.grandbay-puntacana.com"
+
+/**
+ * Point an in-body link at the reader's own locale.
+ *
+ * Blog links are authored in Sanity as absolute URLs. The Spanish bodies were
+ * written with `/es/...`, but the German ones were not, so every internal link on
+ * a German post sent the reader to the English page — 66 links across the
+ * translated posts. Rewriting at render rather than in the stored data means new
+ * translations are covered automatically, and it also normalises the handful of
+ * non-www and trailing-slash hrefs that would otherwise cost a redirect hop.
+ *
+ * External links are returned untouched.
+ */
+function localizeHref(href: string, locale: string): string {
+  if (typeof href !== "string") return href
+  const internal = /^https?:\/\/(www\.)?grandbay-puntacana\.com(\/|$)/i.test(href)
+  if (!internal && !href.startsWith("/")) return href
+
+  let path: string
+  try {
+    path = internal ? new URL(href).pathname + new URL(href).search : href
+  } catch {
+    return href
+  }
+  const resolved = toLocale(locale)
+  const bare = stripLocalePrefix(path.replace(/\/+$/, "")) || "/"
+  const prefix = resolved === DEFAULT_LOCALE ? "" : `/${resolved}`
+  return `${SITE}${prefix}${bare === "/" ? "" : bare}`
+}
 
 const bodyText = "text-[17px] leading-[1.8] text-muted"
 
 const listClasses = `mb-[22px] ml-[22px] flex flex-col gap-[9px] ${bodyText}`
 
-const components = {
+const makeComponents = (locale: string) => ({
   types: {
     image: ({ value }: any) => {
       const imageUrl = urlFor(value)
@@ -40,7 +72,7 @@ const components = {
   marks: {
     link: ({ children, value }: any) => (
       <a
-        href={value.href}
+        href={localizeHref(value.href, locale)}
         rel="noopener noreferrer"
         className="font-semibold text-moss transition-colors [border-bottom:1.5px_solid_rgba(86,122,47,0.3)] hover:[border-bottom-color:rgb(86,122,47)]"
       >
@@ -116,7 +148,7 @@ const components = {
       </li>
     ),
   },
-}
+})
 
 const normalizeHeadingText = (s: string) =>
   s.normalize("NFKC").replace(/\s+/g, " ").trim().toLowerCase()
@@ -158,9 +190,9 @@ const SanityBlogBody = ({
   return (
     <article
       className="max-w-[70ch] [&>p:first-of-type]:text-[1.28rem] [&>p:first-of-type]:leading-[1.6] [&>p:first-of-type]:text-fg"
-      lang={locale === "es" ? "es" : "en"}
+      lang={toLocale(locale)}
     >
-      <PortableText value={blockContent} components={components} />
+      <PortableText value={blockContent} components={makeComponents(locale)} />
     </article>
   )
 }
