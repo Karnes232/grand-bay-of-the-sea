@@ -103,18 +103,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1,
     },
-    // {
-    //   url: "https://www.grandbay-puntacana.com/scuba-diving-punta-cana",
-    //   lastModified: SITE_LASTMOD,
-    //   changeFrequency: "daily",
-    //   priority: 1,
-    // },
-    // {
-    //   url: "https://www.grandbay-puntacana.com/es/scuba-diving-punta-cana",
-    //   lastModified: SITE_LASTMOD,
-    //   changeFrequency: "daily",
-    //   priority: 1,
-    // },
     {
       url: "https://www.grandbay-puntacana.com/fishing-punta-cana",
       lastModified: SITE_LASTMOD,

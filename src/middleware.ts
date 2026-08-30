@@ -49,6 +49,13 @@ const intlMiddleware = createMiddleware(routing)
 const LEGACY_PATHS: Readonly<Record<string, string>> = {
   "/blog/local-businesses/dr-web-studio-punta-cana-web-design":
     "/blog/local-businesses/dr-web-studio-punta-cana-website-design",
+  // The homepage owns "scuba diving punta cana" — it carries that title, that
+  // H1 and effectively all inbound authority. This page was a second attempt at
+  // the same term: noindexed since 5 July, absent from the sitemap, and already
+  // declaring the homepage as its canonical and as all three hreflang
+  // alternates. Its unique copy now lives on the homepage, so redirect rather
+  // than keep a page that says three different ways that it is a duplicate.
+  "/scuba-diving-punta-cana": "/",
 }
 
 export default function middleware(req: NextRequest) {

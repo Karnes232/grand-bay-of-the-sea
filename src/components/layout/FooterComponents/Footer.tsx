@@ -108,9 +108,6 @@ const Footer = async () => {
               {tf("columnExplore")}
             </h4>
             <div className="flex flex-col gap-[11px]">
-              <Link href="/scuba-diving-punta-cana" className={linkClass}>
-                {t("scubaDivingPuntaCana")}
-              </Link>
               <Link href="/fishing-punta-cana" className={linkClass}>
                 {t("deepSeaFishing")}
               </Link>
