@@ -96,6 +96,18 @@ export default async function Page({
     redirect("/blog")
   }
 
+  // A German category hub only exists when it holds a translated post — the
+  // rest redirect to English. Listing all five on the German index would send
+  // readers through a redirect into another language, so the grid shows only
+  // the categories that really are German. Same rule as the sitemap.
+  const germanCategorySlugs = new Set(
+    allPosts.filter(p => p.hasDe).map(p => p.blogCategory.slug.current),
+  )
+  const categories =
+    locale === "de"
+      ? blogCategories.filter(c => germanCategorySlugs.has(c.slug.current))
+      : blogCategories
+
   const heroImg = layout.heroImage
   const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg.asset.url
 
@@ -137,7 +149,7 @@ export default async function Page({
       {/* Category grid */}
       <section className="mx-auto max-w-[1280px] px-6 pb-6 pt-10">
         <div className="grid grid-cols-1 gap-[22px] sm:grid-cols-2 lg:grid-cols-3">
-          {blogCategories.map((category, index) => (
+          {categories.map((category, index) => (
             <BlogCategory
               key={index}
               category={category}
