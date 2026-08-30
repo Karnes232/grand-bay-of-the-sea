@@ -47,19 +47,23 @@ function hasCanonical(html) {
 }
 
 /**
- * True when Next prerendered this route as a 404.
+ * True when Next prerendered this route as something other than a 200.
  *
- * A route that calls notFound() still emits an .html file, but it is the
- * not-found page — legitimately without a canonical or description. Next
- * records the real status in a sibling .meta sidecar, so use that rather than
- * pattern-matching the body. Without this, every locale-excluded route (the
- * German blog, for one) reads as "shipped broken metadata".
+ * A route that calls notFound() or redirect() still emits an .html file, but it
+ * is the not-found page or an empty redirect shell — legitimately without a
+ * canonical or description. Next records the real status in a sibling .meta
+ * sidecar, so use that rather than pattern-matching the body.
+ *
+ * Covers 404 and 3xx alike: untranslated German blog posts redirect to their
+ * English equivalent, and without this every one of them would read as
+ * "shipped broken metadata" and fail the build.
  */
-function isNotFound(htmlPath) {
+function isNonOkPage(htmlPath) {
   const metaPath = htmlPath.replace(/\.html$/, ".meta")
   if (!existsSync(metaPath)) return false
   try {
-    return JSON.parse(readFileSync(metaPath, "utf8")).status === 404
+    const status = JSON.parse(readFileSync(metaPath, "utf8")).status
+    return typeof status === "number" && status !== 200
   } catch {
     return false
   }
@@ -117,7 +121,7 @@ function runStatic() {
 
   const failed = []
   for (const file of htmlFiles) {
-    if (isNotFound(file)) {
+    if (isNonOkPage(file)) {
       skipped++
       continue
     }
@@ -234,7 +238,7 @@ function report(failed, total, skipped = 0) {
   }
   console.log(
     `[verify-metadata] OK — ${total} page(s) verified: description + canonical present on all.` +
-      (skipped ? ` (${skipped} intentional 404(s) skipped.)` : ""),
+      (skipped ? ` (${skipped} intentional 404/redirect(s) skipped.)` : ""),
   )
 }
 

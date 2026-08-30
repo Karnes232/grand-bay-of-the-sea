@@ -10,9 +10,11 @@ import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getBlogPageLayout } from "@/sanity/queries/Blog/BlogPageLayout"
 import { getBlogCategory } from "@/sanity/queries/Blog/BlogCategory"
+import { getBlogPosts } from "@/sanity/queries/Blog/BlogPosts"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
-import { BLOG_LOCALES, type Locale } from "@/i18n/locales"
-import { notFound } from "next/navigation"
+import { type Locale } from "@/i18n/locales"
+import { localesForPostList } from "@/utils/blogLocales"
+import { notFound, redirect } from "next/navigation"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -26,10 +28,12 @@ export async function generateMetadata({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  // The blog is en/es only — see BLOG_LOCALES. Guard here as well as in the
-  // page body: generateMetadata runs first and would crash indexing
-  // `seo.meta[locale]` for a locale the blog has no content in.
-  if (!(BLOG_LOCALES as readonly string[]).includes(locale)) notFound()
+  // German is per-post. With nothing translated there is no German index, so
+  // redirect. Must run here as well as in the page body: generateMetadata
+  // executes first and would otherwise crash indexing `seo.meta[locale]`.
+  if (locale === "de" && !(await getBlogPosts()).some(p => p.hasDe)) {
+    redirect("/blog")
+  }
   const pageSeo = await getPageSeo("Blog")
 
   if (!pageSeo) {
@@ -41,7 +45,13 @@ export async function generateMetadata({
     )
   }
 
-  const alternates = getHreflangAlternates("blog", locale, BLOG_LOCALES)
+  // Advertise a German alternate only once at least one post is translated.
+  const posts = await getBlogPosts()
+  const alternates = getHreflangAlternates(
+    "blog",
+    locale,
+    localesForPostList(posts),
+  )
 
   return {
     title: pageSeo.seo.meta[locale].title,
@@ -69,16 +79,22 @@ export default async function Page({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  // The blog is en/es only — see BLOG_LOCALES. Guard here as well as in the
-  // page body: generateMetadata runs first and would crash indexing
-  // `seo.meta[locale]` for a locale the blog has no content in.
-  if (!(BLOG_LOCALES as readonly string[]).includes(locale)) notFound()
-  const [structuredData, layout, blogCategories, tBlog] = await Promise.all([
-    getStructuredData("Blog"),
-    getBlogPageLayout(),
-    getBlogCategory(),
-    getTranslations("Blog"),
-  ])
+  const [structuredData, layout, blogCategories, allPosts, tBlog] =
+    await Promise.all([
+      getStructuredData("Blog"),
+      getBlogPageLayout(),
+      getBlogCategory(),
+      getBlogPosts(),
+      getTranslations("Blog"),
+    ])
+
+  // German is per-post: with nothing translated yet there is no German blog to
+  // show, so send the reader to the English index instead of an empty page.
+  // This is also what makes the footer's "Blog" link work on German pages —
+  // next-intl prefixes it to /de/blog, which used to 404.
+  if (locale === "de" && !allPosts.some(p => p.hasDe)) {
+    redirect("/blog")
+  }
 
   const heroImg = layout.heroImage
   const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg.asset.url

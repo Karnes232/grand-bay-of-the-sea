@@ -34,9 +34,15 @@ export interface BlogPostsCards {
   blogCategory: {
     slug: string
   }
+  /** True when this post has both a German title and a German body. */
+  hasDe?: boolean
 }
 
 export const blogPostsCardsQuery = `*[_type == "blogPost" && blogCategory->slug.current == $slug] | order(publishDate desc) {
+  // A post counts as available in German only when BOTH its title and body
+  // are translated. A German title over an English body is worse than no
+  // German page at all — it promises a translation that isn't there.
+  "hasDe": defined(title.de) && count(blogBody.de) > 0,
   title {
     en,
     es,
@@ -122,9 +128,15 @@ export interface BlogPost {
       de: string
     }
   }
+  /** True when this post has both a German title and a German body. */
+  hasDe?: boolean
 }
 
 export const individualBlogPostQuery = `*[_type == "blogPost" && slug.current == $slug][0] {
+  // A post counts as available in German only when BOTH its title and body
+  // are translated. A German title over an English body is worse than no
+  // German page at all — it promises a translation that isn't there.
+  "hasDe": defined(title.de) && count(blogBody.de) > 0,
   title {
     en,
     es,
@@ -190,7 +202,7 @@ export interface IndividualBlogPostSEO {
         title: string
         description: string
         keywords: string[]
-      },
+      }
       de: {
         title: string
         description: string
@@ -205,7 +217,7 @@ export interface IndividualBlogPostSEO {
       es: {
         title: string
         description: string
-      },
+      }
       de: {
         title: string
         description: string
@@ -220,9 +232,15 @@ export interface IndividualBlogPostSEO {
     noIndex: boolean
     noFollow: boolean
   }
+  /** True when this post has both a German title and a German body. */
+  hasDe?: boolean
 }
 
 export const individualBlogPostSEOQuery = `*[_type == "blogPost" && slug.current == $slug][0] {
+  // A post counts as available in German only when BOTH its title and body
+  // are translated. A German title over an English body is worse than no
+  // German page at all — it promises a translation that isn't there.
+  "hasDe": defined(title.de) && count(blogBody.de) > 0,
   publishDate,
   _updatedAt,
   seo {
@@ -286,9 +304,15 @@ export interface BlogPosts {
     }
   }
   _updatedAt?: string
+  /** True when this post has both a German title and a German body. */
+  hasDe?: boolean
 }
 
 export const blogPostsQuery = `*[_type == "blogPost"] {
+  // A post counts as available in German only when BOTH its title and body
+  // are translated. A German title over an English body is worse than no
+  // German page at all — it promises a translation that isn't there.
+  "hasDe": defined(title.de) && count(blogBody.de) > 0,
   slug {
     current
   },

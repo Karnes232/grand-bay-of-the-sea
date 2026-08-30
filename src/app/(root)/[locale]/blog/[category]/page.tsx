@@ -4,7 +4,7 @@ import CoursesHero from "@/components/courses/CoursesHero"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import { Link } from "@/i18n/navigation"
 import { Metadata, ResolvingMetadata } from "next"
-import { notFound } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 import { setRequestLocale, getTranslations } from "next-intl/server"
 import { getHreflangAlternates } from "@/utils/hreflang"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
@@ -16,7 +16,8 @@ import {
 import { getBlogPostsCards } from "@/sanity/queries/Blog/BlogPosts"
 import { getBlogPageLayout } from "@/sanity/queries/Blog/BlogPageLayout"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
-import { BLOG_LOCALES, type Locale } from "@/i18n/locales"
+import { type Locale } from "@/i18n/locales"
+import { localesForPostList } from "@/utils/blogLocales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -34,10 +35,16 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { category, locale } = await params
   setRequestLocale(locale)
-  // The blog is en/es only — see BLOG_LOCALES. Guard here as well as in the
-  // page body: generateMetadata runs first and would crash indexing
-  // `seo.meta[locale]` for a locale the blog has no content in.
-  if (!(BLOG_LOCALES as readonly string[]).includes(locale)) notFound()
+  // German is per-post. With no translated post in this category there is no
+  // German hub, so redirect. Must run here as well as in the page body:
+  // generateMetadata executes first and would otherwise crash indexing
+  // `seo.meta[locale]`.
+  if (
+    locale === "de" &&
+    !(await getBlogPostsCards(category)).some(c => c.hasDe)
+  ) {
+    redirect(`/blog/${category}`)
+  }
   const pageSeo = await getIndividualBlogCategorySEO(category)
 
   if (!pageSeo) {
@@ -46,10 +53,11 @@ export async function generateMetadata(
     notFound()
   }
 
+  // Advertise a German alternate only when this category has a translated post.
   const alternates = getHreflangAlternates(
     `blog/${category}`,
     locale,
-    BLOG_LOCALES,
+    localesForPostList(await getBlogPostsCards(category)),
   )
 
   return {
@@ -79,11 +87,7 @@ export default async function Page({
   const { category, locale } = await params
 
   setRequestLocale(locale)
-  // The blog is en/es only — see BLOG_LOCALES. Guard here as well as in the
-  // page body: generateMetadata runs first and would crash indexing
-  // `seo.meta[locale]` for a locale the blog has no content in.
-  if (!(BLOG_LOCALES as readonly string[]).includes(locale)) notFound()
-  const [blogCategory, blogPostsCards, layout, tNav] = await Promise.all([
+  const [blogCategory, allCards, layout, tNav] = await Promise.all([
     getIndividualBlogCategory(category),
     getBlogPostsCards(category),
     getBlogPageLayout(),
@@ -92,6 +96,15 @@ export default async function Page({
 
   // Unknown category → real 404 instead of crashing on missing fields below.
   if (!blogCategory) notFound()
+
+  // German is per-post. A German category hub lists only the posts that are
+  // actually translated; with none, there is no German page to show, so send
+  // the reader to the English hub rather than an empty listing.
+  const blogPostsCards =
+    locale === "de" ? allCards.filter(c => c.hasDe) : allCards
+  if (locale === "de" && blogPostsCards.length === 0) {
+    redirect(`/blog/${category}`)
+  }
 
   const heroImg = blogCategory.heroImage
   const heroSrc =
