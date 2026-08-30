@@ -74,7 +74,7 @@ export default async function Page({
 
   const proseParas = [fishing.paragraph2, fishing.paragraph3].filter(
     Boolean,
-  ) as { en: any[]; es: any[] }[]
+  ) as { en: any[]; es: any[]; de: any[] }[]
 
   return (
     <main id="main">

@@ -1,6 +1,6 @@
 import { client } from "@/sanity/lib/client"
 
-type Loc = { en: string; es: string }
+type Loc = { en: string; es: string; de: string }
 
 export interface BlogPageLayout {
   title: Loc
@@ -27,13 +27,15 @@ export interface BlogPageLayout {
   paragraph: {
     en: any[]
     es: any[]
+    de: any[]
   }
 }
 
 export const blogPageLayoutQuery = `*[_type == "blogPageLayout"][0] {
     title {
         en,
-        es
+        es,
+        de
     },
     heroEyebrow { en, es },
     ctaHeading { en, es },
@@ -57,7 +59,8 @@ export const blogPageLayoutQuery = `*[_type == "blogPageLayout"][0] {
     },
     paragraph {
         en,
-        es
+        es,
+        de
     }
 }`
 

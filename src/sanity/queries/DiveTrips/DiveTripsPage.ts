@@ -5,39 +5,45 @@ export interface DiveTripsPage {
   heroTitle?: {
     en: string
     es: string
+    de: string
   }
   heroSubtitle?: {
     en: string
     es: string
+    de: string
   }
   heroCta?: {
     label?: {
       en: string
       es: string
+      de: string
     }
     link?: string
   }
   paragraph1: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph2?: {
     en: any[]
     es: any[]
+    de: any[]
   }
   tripDaySteps?: {
-    stepTitle?: { en: string; es: string }
-    stepBody?: { en: string; es: string }
+    stepTitle?: { en: string; es: string; de: string }
+    stepBody?: { en: string; es: string; de: string }
   }[]
   tripDayNote?: {
     en: string
     es: string
+    de: string
   }
-  tripDayHeading?: { en: string; es: string }
-  tripDayIntro?: { en: string; es: string }
-  ctaHeading?: { en: string; es: string }
-  ctaBody?: { en: string; es: string }
-  ctaLabel?: { en: string; es: string }
+  tripDayHeading?: { en: string; es: string; de: string }
+  tripDayIntro?: { en: string; es: string; de: string }
+  ctaHeading?: { en: string; es: string; de: string }
+  ctaBody?: { en: string; es: string; de: string }
+  ctaLabel?: { en: string; es: string; de: string }
   heroImage: {
     asset: {
       url: string
@@ -60,40 +66,48 @@ export const diveTripsPageQuery = `*[_type == "diveTripsPage"][0] {
   page,
   heroTitle {
     en,
-    es
+    es,
+    de
   },
   heroSubtitle {
     en,
-    es
+    es,
+    de
   },
   heroCta {
     label {
       en,
-      es
+      es,
+      de
     },
     link
   },
   paragraph1 {
     en,
-    es
+    es,
+    de
   },
   paragraph2 {
     en,
-    es
+    es,
+    de
   },
   tripDaySteps[] {
     stepTitle {
       en,
-      es
+      es,
+      de
     },
     stepBody {
       en,
-      es
+      es,
+      de
     }
   },
   tripDayNote {
     en,
-    es
+    es,
+    de
   },
   tripDayHeading { en, es },
   tripDayIntro { en, es },

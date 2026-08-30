@@ -7,15 +7,18 @@ export interface Faqs {
     question: {
       en: string
       es: string
+      de: string
     }
     answer: {
       en: any[]
       es: any[]
+      de: any[]
     }
   }[]
   structuredData: {
     en: string
     es: string
+    de: string
   }
 }
 
@@ -25,16 +28,19 @@ export const faqsQuery = `*[_type == "faqs" && page == $page][0] {
     _key,
     question {
       en,
-      es
+      es,
+      de
     },
     answer {
       en,
-      es
+      es,
+      de
     }
   },
   structuredData {
     en,
-    es
+    es,
+    de
   }
 }`
 

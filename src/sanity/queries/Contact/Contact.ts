@@ -17,13 +17,13 @@ export interface Contact {
     hotspot?: { x: number; y: number } | null
     alt: string
   }
-  heroEyebrow?: { en: string; es: string }
-  heroTitle?: { en: string; es: string }
-  heroSubtitle?: { en: string; es: string }
-  visitHeading?: { en: string; es: string }
-  hoursEyebrow?: { en: string; es: string }
-  hoursValue?: { en: string; es: string }
-  hoursDesc?: { en: string; es: string }
+  heroEyebrow?: { en: string; es: string; de: string }
+  heroTitle?: { en: string; es: string; de: string }
+  heroSubtitle?: { en: string; es: string; de: string }
+  visitHeading?: { en: string; es: string; de: string }
+  hoursEyebrow?: { en: string; es: string; de: string }
+  hoursValue?: { en: string; es: string; de: string }
+  hoursDesc?: { en: string; es: string; de: string }
 }
 
 export const contactQuery = `*[_type == "contact"][0] {

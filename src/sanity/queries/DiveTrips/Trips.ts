@@ -169,8 +169,8 @@ export interface Trip {
     de: string
   }[]
   tripDaySteps?: {
-    stepTitle?: { en: string; es: string }
-    stepBody?: { en: string; es: string }
+    stepTitle?: { en: string; es: string; de: string }
+    stepBody?: { en: string; es: string; de: string }
   }[]
   tripDayNote?: {
     en: string
@@ -329,7 +329,7 @@ export interface TripSeo {
         title: string
         description: string
         keywords: string[]
-      },
+      }
       de: {
         title: string
         description: string
@@ -344,7 +344,7 @@ export interface TripSeo {
       es: {
         title: string
         description: string
-      },
+      }
       de: {
         title: string
         description: string

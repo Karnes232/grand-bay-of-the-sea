@@ -1,6 +1,6 @@
 import { client } from "@/sanity/lib/client"
 
-type Loc = { en: string; es: string }
+type Loc = { en: string; es: string; de: string }
 
 interface CroppableImg {
   asset: {
@@ -24,6 +24,7 @@ export interface Liveaboards {
   paragraph1: {
     en: any[]
     es: any[]
+    de: any[]
   }
   titleEn?: string
   titleEs?: string
@@ -36,18 +37,20 @@ export interface Liveaboards {
   faqs?: {
     _key: string
     question: Loc
-    answer: { en: any[]; es: any[] }
+    answer: { en: any[]; es: any[]; de: any[] }
   }[]
   heroImage: CroppableImg
   silverBankExpeditionImage: CroppableImg
   silverBankExpeditionParagraph: {
     en: any[]
     es: any[]
+    de: any[]
   }
   whaleWatchingAdventureImage: CroppableImg
   whaleWatchingAdventureParagraph: {
     en: any[]
     es: any[]
+    de: any[]
   }
   photoList: CroppableImg[]
 }
@@ -56,7 +59,8 @@ export const liveaboardsQuery = `*[_type == "liveaboards"][0] {
   page,
   paragraph1 {
     en,
-    es
+    es,
+    de
   },
   "titleEn": pt::text(paragraph1.en[0]),
   "titleEs": pt::text(paragraph1.es[0]),
@@ -108,7 +112,8 @@ export const liveaboardsQuery = `*[_type == "liveaboards"][0] {
   },
   silverBankExpeditionParagraph {
     en,
-    es
+    es,
+    de
   },
   whaleWatchingAdventureImage {
     asset -> {
@@ -128,7 +133,8 @@ export const liveaboardsQuery = `*[_type == "liveaboards"][0] {
   },
   whaleWatchingAdventureParagraph {
     en,
-    es
+    es,
+    de
   },
   photoList[] {
     asset -> {

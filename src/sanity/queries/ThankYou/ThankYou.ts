@@ -17,9 +17,9 @@ export interface ThankYou {
     hotspot?: { x: number; y: number } | null
     alt: string
   }
-  heroEyebrow?: { en: string; es: string }
-  heroTitle?: { en: string; es: string }
-  heroSubtitle?: { en: string; es: string }
+  heroEyebrow?: { en: string; es: string; de: string }
+  heroTitle?: { en: string; es: string; de: string }
+  heroSubtitle?: { en: string; es: string; de: string }
 }
 
 export const thankYouQuery = `*[_type == "thankYou"][0] {

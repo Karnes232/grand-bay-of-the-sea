@@ -5,15 +5,18 @@ export interface CoursesMainPage {
   heroTitle?: {
     en: string
     es: string
+    de: string
   }
   heroSubtitle?: {
     en: string
     es: string
+    de: string
   }
   heroCta?: {
     label?: {
       en: string
       es: string
+      de: string
     }
     link?: string
   }
@@ -47,24 +50,27 @@ export interface CoursesMainPage {
   paragraph1: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph2: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph3: {
     en: any[]
     es: any[]
+    de: any[]
   }
-  introHeading?: { en: string; es: string }
-  beginnerEyebrow?: { en: string; es: string }
-  beginnerHeading?: { en: string; es: string }
-  advancedHeading?: { en: string; es: string }
-  specialtyEyebrow?: { en: string; es: string }
+  introHeading?: { en: string; es: string; de: string }
+  beginnerEyebrow?: { en: string; es: string; de: string }
+  beginnerHeading?: { en: string; es: string; de: string }
+  advancedHeading?: { en: string; es: string; de: string }
+  specialtyEyebrow?: { en: string; es: string; de: string }
   courseCta?: {
-    heading?: { en: string; es: string }
-    body?: { en: string; es: string }
-    ctaLabel?: { en: string; es: string }
+    heading?: { en: string; es: string; de: string }
+    body?: { en: string; es: string; de: string }
+    ctaLabel?: { en: string; es: string; de: string }
     ctaLink?: string
   }
 }
@@ -73,16 +79,19 @@ export const coursesMainPageQuery = `*[_type == "coursesMainPage"][0] {
   title,
   heroTitle {
     en,
-    es
+    es,
+    de
   },
   heroSubtitle {
     en,
-    es
+    es,
+    de
   },
   heroCta {
     label {
       en,
-      es
+      es,
+      de
     },
     link
   },
@@ -104,48 +113,59 @@ export const coursesMainPageQuery = `*[_type == "coursesMainPage"][0] {
   },
   paragraph1 {
     en,
-    es
+    es,
+    de
   },
   paragraph2 {
     en,
-    es
+    es,
+    de
   },
   paragraph3 {
     en,
-    es
+    es,
+    de
   },
   introHeading {
     en,
-    es
+    es,
+    de
   },
   beginnerEyebrow {
     en,
-    es
+    es,
+    de
   },
   beginnerHeading {
     en,
-    es
+    es,
+    de
   },
   advancedHeading {
     en,
-    es
+    es,
+    de
   },
   specialtyEyebrow {
     en,
-    es
+    es,
+    de
   },
   courseCta {
     heading {
       en,
-      es
+      es,
+      de
     },
     body {
       en,
-      es
+      es,
+      de
     },
     ctaLabel {
       en,
-      es
+      es,
+      de
     },
     ctaLink
   }

@@ -89,3 +89,9 @@
 [build.environment]
   NODE_VERSION = "20"
   NEXT_SHARP_PATH = "./node_modules/sharp"
+  # German locale launch gate. NEXT_PUBLIC_* is inlined at build time, so this
+  # has to be set for the build, not the runtime. Set here rather than in the
+  # Netlify UI so the switch is version-controlled and revertable in one commit.
+  # Removing this line takes /de dark again on the next deploy; the German
+  # content stays in Sanity either way.
+  NEXT_PUBLIC_LOCALE_DE_ENABLED = "true"

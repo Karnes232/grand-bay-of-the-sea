@@ -85,6 +85,7 @@ export default async function Page({
   const intro = {
     en: liveaboards.paragraph1.en.slice(1),
     es: liveaboards.paragraph1.es.slice(1),
+    de: liveaboards.paragraph1.de?.slice(1) ?? [],
   }
 
   const expeditions = [
@@ -246,7 +247,7 @@ export default async function Page({
       {/* FAQ */}
       <FaqAccordion
         faqs={liveaboards.faqs ?? []}
-        structuredData={{ en: "", es: "" }}
+        structuredData={{ en: "", es: "", de: "" }}
         locale={locale}
         heading={t("faqHeading")}
       />

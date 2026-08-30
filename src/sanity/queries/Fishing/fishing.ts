@@ -1,6 +1,6 @@
 import { client } from "@/sanity/lib/client"
 
-type LocalizedString = { en: string; es: string }
+type LocalizedString = { en: string; es: string; de: string }
 
 export interface Fishing {
   page: string
@@ -16,14 +16,17 @@ export interface Fishing {
   paragraph1: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph2: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph3: {
     en: any[]
     es: any[]
+    de: any[]
   }
   photoList: {
     asset: {
@@ -60,15 +63,18 @@ export const fishingQuery = `*[_type == "fishing"][0] {
   ctaLabel { en, es },
   paragraph1 {
     en,
-    es
+    es,
+    de
   },
   paragraph2 {
     en,
-    es
+    es,
+    de
   },
   paragraph3 {
     en,
-    es
+    es,
+    de
   },
   photoList[] {
     asset -> {

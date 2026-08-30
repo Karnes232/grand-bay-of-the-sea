@@ -101,7 +101,7 @@ export default async function Page({
   // Detail paragraphs → numbered steps.
   const steps = [c.paragraph3, c.paragraph4, c.paragraph5, c.paragraph6].filter(
     Boolean,
-  ) as { en: any[]; es: any[] }[]
+  ) as { en: any[]; es: any[]; de: any[] }[]
 
   return (
     <main id="main">
@@ -231,7 +231,7 @@ export default async function Page({
       {c.faqs?.length ? (
         <FaqAccordion
           faqs={c.faqs}
-          structuredData={c.structuredData ?? { en: "", es: "" }}
+          structuredData={c.structuredData ?? { en: "", es: "", de: "" }}
           locale={locale}
           heading={tCourses("faqHeading")}
         />

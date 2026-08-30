@@ -4,7 +4,7 @@ import type { Locale } from "@/i18n/locales"
 interface CourseCard {
   course: string
   slug: { current: string }
-  cardDescription: { en: string; es: string }
+  cardDescription: { en: string; es: string; de: string }
   cardHashTags?: string[]
   courseLevel?: string
   padiPrice?: number

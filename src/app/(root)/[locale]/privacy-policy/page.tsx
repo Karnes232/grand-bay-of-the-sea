@@ -83,7 +83,11 @@ export default async function Page({
     ? (content[locale][0]?.children?.[0]?.text as string | undefined)
     : undefined
   const bodyContent = firstIsH1
-    ? { en: content.en.slice(1), es: content.es.slice(1) }
+    ? {
+        en: content.en.slice(1),
+        es: content.es.slice(1),
+        de: content.de?.slice(1) ?? [],
+      }
     : content
 
   return (

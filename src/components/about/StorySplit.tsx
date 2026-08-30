@@ -5,7 +5,7 @@ import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import type { AboutImage } from "@/sanity/queries/AboutUs/AboutUs"
 import type { Locale } from "@/i18n/locales"
 
-type L = { en: string; es: string }
+type L = { en: string; es: string; de: string }
 
 /**
  * "Our story" split: eyebrow + heading + prose on the left, tall 4:5 image on
@@ -20,7 +20,7 @@ const StorySplit = ({
 }: {
   eyebrow?: L
   heading?: L
-  body?: { en: any[]; es: any[] }
+  body?: { en: any[]; es: any[]; de: any[] }
   image?: AboutImage
   locale: Locale
 }) => {

@@ -63,59 +63,67 @@ export interface HomePage {
   heroTitle?: {
     en: string
     es: string
+    de: string
   }
   heroSubtitle?: {
     en: string
     es: string
+    de: string
   }
   heroCta?: {
     label?: {
       en: string
       es: string
+      de: string
     }
     link?: string
   }
   paragraph1: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph2: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph3: {
     en: any[]
     es: any[]
+    de: any[]
   }
   stats?: {
-    value?: { en: string; es: string }
-    label?: { en: string; es: string }
+    value?: { en: string; es: string; de: string }
+    label?: { en: string; es: string; de: string }
   }[]
   whyUniqueHeading?: {
     en: string
     es: string
+    de: string
   }
   sharkBanner?: {
-    eyebrow?: { en: string; es: string }
-    heading?: { en: string; es: string }
-    body?: { en: string; es: string }
-    ctaLabel?: { en: string; es: string }
+    eyebrow?: { en: string; es: string; de: string }
+    heading?: { en: string; es: string; de: string }
+    body?: { en: string; es: string; de: string }
+    ctaLabel?: { en: string; es: string; de: string }
     ctaLink?: string
   }
   courseHighlights?: {
-    badge?: { en: string; es: string }
-    title?: { en: string; es: string }
-    blurb?: { en: string; es: string }
+    badge?: { en: string; es: string; de: string }
+    title?: { en: string; es: string; de: string }
+    blurb?: { en: string; es: string; de: string }
     href?: string
   }[]
   bookingSection?: {
-    eyebrow?: { en: string; es: string }
-    heading?: { en: string; es: string }
-    body?: { en: string; es: string }
+    eyebrow?: { en: string; es: string; de: string }
+    heading?: { en: string; es: string; de: string }
+    body?: { en: string; es: string; de: string }
   }
   bookingBenefits?: {
     en: string
     es: string
+    de: string
   }[]
 }
 
@@ -168,96 +176,116 @@ export const homePageQuery = `*[_type == "homePage"][0] {
   },
   heroTitle {
     en,
-    es
+    es,
+    de
   },
   heroSubtitle {
     en,
-    es
+    es,
+    de
   },
   heroCta {
     label {
       en,
-      es
+      es,
+      de
     },
     link
   },
   paragraph1 {
     en,
-    es
+    es,
+    de
   },
   paragraph2 {
     en,
-    es
+    es,
+    de
   },
   paragraph3 {
     en,
-    es
+    es,
+    de
   },
   stats[] {
     value {
       en,
-      es
+      es,
+      de
     },
     label {
       en,
-      es
+      es,
+      de
     }
   },
   whyUniqueHeading {
     en,
-    es
+    es,
+    de
   },
   sharkBanner {
     eyebrow {
       en,
-      es
+      es,
+      de
     },
     heading {
       en,
-      es
+      es,
+      de
     },
     body {
       en,
-      es
+      es,
+      de
     },
     ctaLabel {
       en,
-      es
+      es,
+      de
     },
     ctaLink
   },
   courseHighlights[] {
     badge {
       en,
-      es
+      es,
+      de
     },
     title {
       en,
-      es
+      es,
+      de
     },
     blurb {
       en,
-      es
+      es,
+      de
     },
     href
   },
   bookingSection {
     eyebrow {
       en,
-      es
+      es,
+      de
     },
     heading {
       en,
-      es
+      es,
+      de
     },
     body {
       en,
-      es
+      es,
+      de
     }
   },
   bookingBenefits[] {
     en,
-    es
+    es,
+    de
   }
 }`
 

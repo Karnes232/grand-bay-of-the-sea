@@ -249,7 +249,7 @@ export default async function Home({
       {s.faqs?.length ? (
         <FaqAccordion
           faqs={s.faqs}
-          structuredData={{ en: "", es: "" }}
+          structuredData={{ en: "", es: "", de: "" }}
           locale={locale}
           heading={tCourses("faqHeading")}
         />

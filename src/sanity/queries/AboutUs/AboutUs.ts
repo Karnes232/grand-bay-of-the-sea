@@ -1,6 +1,6 @@
 import { client } from "@/sanity/lib/client"
 
-type L = { en: string; es: string }
+type L = { en: string; es: string; de: string }
 
 export interface AboutImage {
   asset: {
@@ -40,7 +40,7 @@ export interface AboutUs {
   stats?: { value?: L; label?: L }[]
   storyEyebrow?: L
   storyHeading?: L
-  storyBody?: { en: any[]; es: any[] }
+  storyBody?: { en: any[]; es: any[]; de: any[] }
   storyImage?: AboutImage
   teamEyebrow?: L
   teamHeading?: L

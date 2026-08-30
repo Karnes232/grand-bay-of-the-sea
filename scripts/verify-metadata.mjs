@@ -46,6 +46,25 @@ function hasCanonical(html) {
   return /<link\s[^>]*rel=["']canonical["']/i.test(html)
 }
 
+/**
+ * True when Next prerendered this route as a 404.
+ *
+ * A route that calls notFound() still emits an .html file, but it is the
+ * not-found page — legitimately without a canonical or description. Next
+ * records the real status in a sibling .meta sidecar, so use that rather than
+ * pattern-matching the body. Without this, every locale-excluded route (the
+ * German blog, for one) reads as "shipped broken metadata".
+ */
+function isNotFound(htmlPath) {
+  const metaPath = htmlPath.replace(/\.html$/, ".meta")
+  if (!existsSync(metaPath)) return false
+  try {
+    return JSON.parse(readFileSync(metaPath, "utf8")).status === 404
+  } catch {
+    return false
+  }
+}
+
 /** Returns a list of failure reasons for one HTML document (empty = pass). */
 function checkHtml(html) {
   const failures = []
@@ -62,7 +81,9 @@ function collectHtmlFiles(dir) {
   const out = []
   for (const entry of readdirSync(dir)) {
     const full = join(dir, entry)
-    if (SKIP_SEGMENTS.some(seg => entry === seg || entry.startsWith(`${seg}.`))) {
+    if (
+      SKIP_SEGMENTS.some(seg => entry === seg || entry.startsWith(`${seg}.`))
+    ) {
       continue
     }
     const stats = statSync(full)
@@ -85,6 +106,7 @@ function runStatic() {
   }
 
   const htmlFiles = collectHtmlFiles(appDir)
+  let skipped = 0
   if (htmlFiles.length === 0) {
     console.error(
       "[verify-metadata] No prerendered HTML found under .next/server/app — " +
@@ -95,6 +117,10 @@ function runStatic() {
 
   const failed = []
   for (const file of htmlFiles) {
+    if (isNotFound(file)) {
+      skipped++
+      continue
+    }
     const failures = checkHtml(readFileSync(file, "utf8"))
     if (failures.length) {
       const route = file.slice(appDir.length).replace(/\.html$/, "") || "/"
@@ -102,7 +128,7 @@ function runStatic() {
     }
   }
 
-  report(failed, htmlFiles.length)
+  report(failed, htmlFiles.length - skipped, skipped)
 }
 
 // ---------------------------------------------------------------------------
@@ -158,9 +184,7 @@ async function runLive(base) {
   // The sitemap lists production URLs — keep only the pathname and check the
   // given host instead.
   const urls = [
-    ...new Set(
-      locs.map(loc => new URL(new URL(loc).pathname, base).href),
-    ),
+    ...new Set(locs.map(loc => new URL(new URL(loc).pathname, base).href)),
   ]
 
   if (urls.length === 0) {
@@ -193,7 +217,7 @@ async function runLive(base) {
 // Reporting
 // ---------------------------------------------------------------------------
 
-function report(failed, total) {
+function report(failed, total, skipped = 0) {
   if (failed.length) {
     console.error(
       `\n[verify-metadata] ${failed.length} of ${total} page(s) shipped broken metadata:\n`,
@@ -209,7 +233,8 @@ function report(failed, total) {
     process.exit(1)
   }
   console.log(
-    `[verify-metadata] OK — ${total} page(s) verified: description + canonical present on all.`,
+    `[verify-metadata] OK — ${total} page(s) verified: description + canonical present on all.` +
+      (skipped ? ` (${skipped} intentional 404(s) skipped.)` : ""),
   )
 }
 

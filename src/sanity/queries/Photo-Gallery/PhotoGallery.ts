@@ -4,9 +4,10 @@ export interface PhotoGallery {
   title: {
     en: string
     es: string
+    de: string
   }
-  heroEyebrow?: { en: string; es: string }
-  heroSubtitle?: { en: string; es: string }
+  heroEyebrow?: { en: string; es: string; de: string }
+  heroSubtitle?: { en: string; es: string; de: string }
   mainImage: {
     asset: {
       url: string
@@ -45,7 +46,8 @@ export interface PhotoGallery {
 export const photoGalleryQuery = `*[_type == "photoGallery"][0] {
   title {
     en,
-    es
+    es,
+    de
   },
   heroEyebrow { en, es },
   heroSubtitle { en, es },

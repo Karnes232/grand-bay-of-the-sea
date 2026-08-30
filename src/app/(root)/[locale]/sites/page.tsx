@@ -166,7 +166,9 @@ export default async function Page({
       {sitesLayout.faqs?.length ? (
         <FaqAccordion
           faqs={sitesLayout.faqs}
-          structuredData={sitesLayout.structuredData ?? { en: "", es: "" }}
+          structuredData={
+            sitesLayout.structuredData ?? { en: "", es: "", de: "" }
+          }
           locale={locale}
           heading={tCourses("faqHeading")}
         />

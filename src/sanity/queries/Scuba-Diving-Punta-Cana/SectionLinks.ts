@@ -4,11 +4,13 @@ export interface SectionLinks {
   title: {
     en: string
     es: string
+    de: string
   }
   url: string
   description: {
     en: string
     es: string
+    de: string
   }
   image: {
     asset: {
@@ -40,12 +42,14 @@ export interface SectionLinks {
 export const sectionLinksQuery = `*[_type == "sectionLinks"] {
   title {
     en,
-    es
+    es,
+    de
   },
   url,
   description {
     en,
-    es
+    es,
+    de
   },
   image {
     asset -> {

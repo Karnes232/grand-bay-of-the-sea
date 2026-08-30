@@ -7,7 +7,7 @@ const DivingOrganizations = dynamicImport(
   () => import("@/components/DivingOrganizations/DivingOrganizations"),
 )
 
-type L = { en: string; es: string }
+type L = { en: string; es: string; de: string }
 
 interface CourseHighlight {
   badge?: L
@@ -28,7 +28,7 @@ const CourseHighlights = ({
 }: {
   heading: string
   courses?: CourseHighlight[]
-  paragraph3: { en: any[]; es: any[] }
+  paragraph3: { en: any[]; es: any[]; de: any[] }
   locale: Locale
 }) => {
   return (

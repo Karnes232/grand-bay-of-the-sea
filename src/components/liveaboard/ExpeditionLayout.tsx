@@ -9,7 +9,7 @@ import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getLiveaboards } from "@/sanity/queries/Liveaboards/Liveaboards"
 import type { Locale } from "@/i18n/locales"
 
-type Loc = { en: any[]; es: any[] }
+type Loc = { en: any[]; es: any[]; de: any[] }
 
 interface ExpeditionData {
   titleEn?: string
@@ -68,6 +68,7 @@ const ExpeditionLayout = async ({
   const intro = {
     en: data.paragraph1.en.slice(1),
     es: data.paragraph1.es.slice(1),
+    de: data.paragraph1.de?.slice(1) ?? [],
   }
 
   return (

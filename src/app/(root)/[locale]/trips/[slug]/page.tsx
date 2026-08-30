@@ -91,7 +91,7 @@ export default async function Page({
   // Extended prose paragraphs (2–4), rendered in a single long-form column.
   const proseParas = [trip.paragraph2, trip.paragraph3, trip.paragraph4].filter(
     Boolean,
-  ) as { en: any[]; es: any[] }[]
+  ) as { en: any[]; es: any[]; de: any[] }[]
 
   return (
     <main id="main">
@@ -236,7 +236,7 @@ export default async function Page({
       {trip.faqs?.length ? (
         <FaqAccordion
           faqs={trip.faqs}
-          structuredData={{ en: "", es: "" }}
+          structuredData={{ en: "", es: "", de: "" }}
           locale={locale}
           heading={tCourses("faqHeading")}
         />

@@ -17,12 +17,13 @@ export interface CustomPayment {
     hotspot?: { x: number; y: number } | null
     alt: string
   }
-  heroEyebrow?: { en: string; es: string }
-  heroTitle?: { en: string; es: string }
-  heroSubtitle?: { en: string; es: string }
+  heroEyebrow?: { en: string; es: string; de: string }
+  heroTitle?: { en: string; es: string; de: string }
+  heroSubtitle?: { en: string; es: string; de: string }
   paragraph1: {
     en: any[]
     es: any[]
+    de: any[]
   }
 }
 
@@ -48,7 +49,8 @@ export const customPaymentQuery = `*[_type == "customPayment"][0] {
   heroSubtitle { en, es },
   paragraph1 {
     en,
-    es
+    es,
+    de
   }
 }`
 

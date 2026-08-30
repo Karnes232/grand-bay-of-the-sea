@@ -6,10 +6,12 @@ export interface DiveSites {
   description: {
     en: any[]
     es: any[]
+    de: any[]
   }
   cardDescription?: {
     en: string
     es: string
+    de: string
   }
   level?: string
   location?: string
@@ -56,11 +58,13 @@ const diveSiteCardProjection = `
   "slug": slug.current,
   description {
     en,
-    es
+    es,
+    de
   },
   cardDescription {
     en,
-    es
+    es,
+    de
   },
   level,
   location,
@@ -79,8 +83,8 @@ export const getDiveSites = async (): Promise<DiveSites[]> => {
 export interface IndividualDiveSite {
   name: string
   slug: string
-  description: { en: string; es: string }
-  cardDescription?: { en: string; es: string }
+  description: { en: string; es: string; de: string }
+  cardDescription?: { en: string; es: string; de: string }
   level?: string
   location?: string
   image: DiveSites["image"]

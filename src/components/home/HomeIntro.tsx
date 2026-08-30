@@ -9,7 +9,7 @@ const HomeIntro = ({
   content,
   locale,
 }: {
-  content: { en: any[]; es: any[] }
+  content: { en: any[]; es: any[]; de: any[] }
   locale: Locale
 }) => {
   return (

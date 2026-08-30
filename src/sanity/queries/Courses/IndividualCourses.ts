@@ -112,7 +112,7 @@ export interface IndividualCourseSEO {
         title: string
         description: string
         keywords: string[]
-      },
+      }
       de: {
         title: string
         description: string
@@ -127,7 +127,7 @@ export interface IndividualCourseSEO {
       es: {
         title: string
         description: string
-      },
+      }
       de: {
         title: string
         description: string
@@ -302,8 +302,8 @@ export interface IndividualCourse {
   }
   faqs?: {
     _key: string
-    question: { en: string; es: string }
-    answer: { en: any[]; es: any[] }
+    question: { en: string; es: string; de: string }
+    answer: { en: any[]; es: any[]; de: any[] }
   }[]
   structuredData?: {
     en: string

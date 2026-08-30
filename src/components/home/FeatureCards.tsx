@@ -4,8 +4,8 @@ import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import type { Locale } from "@/i18n/locales"
 
 interface SectionLink {
-  title: { en: string; es: string }
-  description: { en: string; es: string }
+  title: { en: string; es: string; de: string }
+  description: { en: string; es: string; de: string }
   url: string
   image: {
     asset: { url: string }

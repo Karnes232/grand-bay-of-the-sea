@@ -20,9 +20,10 @@ export interface CancellationPolicy {
   content: {
     en: any[]
     es: any[]
+    de: any[]
   }
-  eyebrow?: { en: string; es: string }
-  contactPrompt?: { en: string; es: string }
+  eyebrow?: { en: string; es: string; de: string }
+  contactPrompt?: { en: string; es: string; de: string }
 }
 
 export const cancellationPolicyQuery = `*[_type == "cancellationPolicy"][0] {
@@ -44,7 +45,8 @@ export const cancellationPolicyQuery = `*[_type == "cancellationPolicy"][0] {
   },
   content {
     en,
-    es
+    es,
+    de
   },
   eyebrow { en, es },
   contactPrompt { en, es }

@@ -2,7 +2,7 @@ import Image from "next/image"
 import { Link } from "@/i18n/navigation"
 import type { Locale } from "@/i18n/locales"
 
-type L = { en: string; es: string }
+type L = { en: string; es: string; de: string }
 
 /**
  * Full-bleed shark-dive banner. Background reuses the Sanity

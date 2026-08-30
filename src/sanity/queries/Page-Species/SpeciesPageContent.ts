@@ -1,6 +1,6 @@
 import { client } from "@/sanity/lib/client"
 
-type Loc = { en: string; es: string }
+type Loc = { en: string; es: string; de: string }
 
 export interface SpeciesPageContent {
   title: Loc
@@ -12,6 +12,7 @@ export interface SpeciesPageContent {
   content: {
     en: any[]
     es: any[]
+    de: any[]
   }
   heroImage: {
     asset: {
@@ -34,7 +35,8 @@ export interface SpeciesPageContent {
 export const speciesPageContentQuery = `*[_type == "speciesPageContent"] {
     title {
         en,
-        es
+        es,
+        de
     },
     heroEyebrow { en, es },
     heroSubtitle { en, es },
@@ -43,7 +45,8 @@ export const speciesPageContentQuery = `*[_type == "speciesPageContent"] {
     ctaLabel { en, es },
     content {
         en,
-        es
+        es,
+        de
     },
     heroImage {
         asset -> {

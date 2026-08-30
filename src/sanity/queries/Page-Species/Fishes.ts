@@ -4,10 +4,12 @@ export interface Fishes {
   name: {
     en: string
     es: string
+    de: string
   }
   description: {
     en: string
     es: string
+    de: string
   }
   image: {
     asset: {
@@ -33,11 +35,13 @@ export interface Fishes {
 export const fishesQuery = `*[_type == "fishes"] {
   name {
     en,
-    es
+    es,
+    de
   },
   description {
     en,
-    es
+    es,
+    de
   },
   image {
     asset -> {

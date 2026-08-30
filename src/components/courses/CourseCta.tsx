@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation"
 import type { Locale } from "@/i18n/locales"
 
-type L = { en: string; es: string }
+type L = { en: string; es: string; de: string }
 
 /**
  * Dark "Not sure which course?" CTA band. Copy from the new Sanity `courseCta`

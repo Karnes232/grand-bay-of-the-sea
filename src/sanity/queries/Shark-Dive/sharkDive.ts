@@ -1,6 +1,6 @@
 import { client } from "@/sanity/lib/client"
 
-type Loc = { en: string; es: string }
+type Loc = { en: string; es: string; de: string }
 
 export interface SharkDive {
   page: string
@@ -22,18 +22,22 @@ export interface SharkDive {
   paragraph1: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph2: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph3: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph4: {
     en: any[]
     es: any[]
+    de: any[]
   }
   photoList: {
     asset: {
@@ -55,28 +59,34 @@ export interface SharkDive {
   duration: {
     en: string
     es: string
+    de: string
   }
   level?: {
     en: string
     es: string
+    de: string
   }
   maxDepth?: {
     en: string
     es: string
+    de: string
   }
   extras: {
     en: string
     es: string
+    de: string
   }[]
   faqs: {
     _key: string
     question: {
       en: string
       es: string
+      de: string
     }
     answer: {
       en: any[]
       es: any[]
+      de: any[]
     }
   }[]
 }
@@ -100,19 +110,23 @@ export const sharkDiveQuery = `*[_type == "sharkDive"][0] {
   factLevel { en, es },
   paragraph1 {
     en,
-    es
+    es,
+    de
   },
   paragraph2 {
     en,
-    es
+    es,
+    de
   },
   paragraph3 {
     en,
-    es
+    es,
+    de
   },
   paragraph4 {
     en,
-    es
+    es,
+    de
   },
   photoList[] {
     asset -> {
@@ -133,29 +147,35 @@ export const sharkDiveQuery = `*[_type == "sharkDive"][0] {
   depositPrice,
   duration {
     en,
-    es
+    es,
+    de
   },
   level {
     en,
-    es
+    es,
+    de
   },
   maxDepth {
     en,
-    es
+    es,
+    de
   },
   extras[] {
     en,
-    es
+    es,
+    de
   },
   faqs[] {
     _key,
     question {
       en,
-      es
+      es,
+      de
     },
     answer {
       en,
-      es
+      es,
+      de
     }
   }
 }`

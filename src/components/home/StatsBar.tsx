@@ -1,8 +1,8 @@
 import type { Locale } from "@/i18n/locales"
 
 interface Stat {
-  value?: { en: string; es: string }
-  label?: { en: string; es: string }
+  value?: { en: string; es: string; de: string }
+  label?: { en: string; es: string; de: string }
 }
 
 const StatsBar = ({ stats, locale }: { stats?: Stat[]; locale: Locale }) => {

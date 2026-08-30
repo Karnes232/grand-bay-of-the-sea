@@ -50,24 +50,29 @@ export interface ScubaDivingPuntaCana {
   paragraph1: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph2: {
     en: any[]
     es: any[]
+    de: any[]
   }
   paragraph3: {
     en: any[]
     es: any[]
+    de: any[]
   }
   faqs: {
     _key: string
     question: {
       en: string
       es: string
+      de: string
     }
     answer: {
       en: any[]
       es: any[]
+      de: any[]
     }
   }[]
 }
@@ -121,25 +126,30 @@ export const scubaDivingPuntaCanaQuery = `*[_type == "scubaDivingPuntaCana"][0] 
   },
   paragraph1 {
     en,
-    es
+    es,
+    de
   },
   paragraph2 {
     en,
-    es
+    es,
+    de
   },
   paragraph3 {
     en,
-    es
+    es,
+    de
   },
   faqs[] {
     _key,
     question {
       en,
-      es
+      es,
+      de
     },
     answer {
       en,
-      es
+      es,
+      de
     }
   }
 }`

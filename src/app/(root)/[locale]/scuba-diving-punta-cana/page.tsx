@@ -96,7 +96,13 @@ export default async function Page({
     ? (p1[locale][0]?.children?.[0]?.text as string | undefined)
     : undefined
   const introContent = firstIsH1
-    ? { en: p1.en.slice(1), es: p1.es.slice(1) }
+    ? {
+        en: p1.en.slice(1),
+        es: p1.es.slice(1),
+        // German may legitimately be absent on a doc that has not been
+        // translated yet; an empty array renders nothing rather than throwing.
+        de: p1.de?.slice(1) ?? [],
+      }
     : p1
 
   const trustLine = tTrust("line", {
@@ -148,7 +154,7 @@ export default async function Page({
         {scuba.faqs?.length ? (
           <FaqAccordion
             faqs={scuba.faqs}
-            structuredData={{ en: "", es: "" }}
+            structuredData={{ en: "", es: "", de: "" }}
             locale={locale}
             heading={tCourses("faqHeading")}
           />

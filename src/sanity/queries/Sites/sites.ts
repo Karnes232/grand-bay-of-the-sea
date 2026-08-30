@@ -4,18 +4,21 @@ export interface Sites {
   heroTitle?: {
     en: string
     es: string
+    de: string
   }
   heroSubtitle?: {
     en: string
     es: string
+    de: string
   }
-  heroTrustLine?: { en: string; es: string }
-  gridHeading?: { en: string; es: string }
-  gridIntro?: { en: string; es: string }
+  heroTrustLine?: { en: string; es: string; de: string }
+  gridHeading?: { en: string; es: string; de: string }
+  gridIntro?: { en: string; es: string; de: string }
   heroCta?: {
     label?: {
       en: string
       es: string
+      de: string
     }
     link?: string
   }
@@ -38,10 +41,12 @@ export interface Sites {
   paragraph1: {
     en: any[]
     es: any[]
+    de: any[]
   }
   packageTitle: {
     en: string
     es: string
+    de: string
   }
   twoTankDive: number
   fourTankPackage: number
@@ -49,26 +54,30 @@ export interface Sites {
   duration: {
     en: string
     es: string
+    de: string
   }
   faqs?: {
     _key: string
-    question: { en: string; es: string }
-    answer: { en: any[]; es: any[] }
+    question: { en: string; es: string; de: string }
+    answer: { en: any[]; es: any[]; de: any[] }
   }[]
   structuredData?: {
     en: string
     es: string
+    de: string
   }
 }
 
 export const sitesQuery = `*[_type == "sites"][0] {
   heroTitle {
     en,
-    es
+    es,
+    de
   },
   heroSubtitle {
     en,
-    es
+    es,
+    de
   },
   heroTrustLine { en, es },
   gridHeading { en, es },
@@ -76,7 +85,8 @@ export const sitesQuery = `*[_type == "sites"][0] {
   heroCta {
     label {
       en,
-      es
+      es,
+      de
     },
     link
   },
@@ -98,33 +108,39 @@ export const sitesQuery = `*[_type == "sites"][0] {
   },
   paragraph1 {
     en,
-    es
+    es,
+    de
   },
   packageTitle {
     en,
-    es
+    es,
+    de
   },
   twoTankDive,
   fourTankPackage,
   depositPrice,
   duration {
     en,
-    es
+    es,
+    de
   },
   faqs[] {
     _key,
     question {
       en,
-      es
+      es,
+      de
     },
     answer {
       en,
-      es
+      es,
+      de
     }
   },
   structuredData {
     en,
-    es
+    es,
+    de
   }
 }`
 

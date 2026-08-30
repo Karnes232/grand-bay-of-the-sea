@@ -34,6 +34,6 @@ export function humanizeSlug(slug: string): string {
   return slug
     .split("-")
     .filter(Boolean)
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ")
 }
