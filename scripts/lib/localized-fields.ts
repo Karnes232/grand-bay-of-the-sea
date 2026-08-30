@@ -50,6 +50,39 @@ export const EXCLUDED_TYPES = new Set([
 ])
 
 /**
+ * Blog posts opted in to translation, by slug.
+ *
+ * The blog is per-post (see src/utils/blogLocales.ts): 151 posts / ~190k words
+ * is out of proportion to the German market, so only posts with real German
+ * search demand are translated. Everything else redirects to English.
+ *
+ * Adding a slug here and re-running the export/import pipeline is all it takes
+ * to bring another post into German.
+ */
+export const TRANSLATED_BLOG_SLUGS = new Set<string>([
+  // Tier 1 — trip planning, brings the German audience
+  "sargassum-seaweed-punta-cana",
+  "dominican-republic-e-ticket-guide",
+  "is-punta-cana-safe-for-tourists",
+  "best-time-to-visit-punta-cana",
+  "how-many-days-do-you-need-in-punta-cana",
+  "punta-cana-vs-cancun",
+  // Tier 2 — diving intent, feeds the service pages
+  "is-punta-cana-good-for-scuba-diving",
+  "how-much-does-scuba-diving-cost-punta-cana",
+  "best-time-scuba-dive-punta-cana-month-by-month",
+  "best-dive-sites-punta-cana-reef-wreck",
+])
+
+/** True when a document should be skipped entirely by the translation export. */
+export function isExcludedDoc(doc: any): boolean {
+  if (doc?._type === "blogPost") {
+    return !TRANSLATED_BLOG_SLUGS.has(doc?.slug?.current)
+  }
+  return EXCLUDED_TYPES.has(doc?._type)
+}
+
+/**
  * Fields excluded from translation by design.
  *
  * `slug` only: German URLs keep the English slugs, so translating them would
@@ -351,9 +384,25 @@ export function collectSegments(
           // JSON pointer, rather than one segment holding the whole blob.
           // Import rebuilds the blob from the English structure, so nothing
           // here can change the shape of the markup.
+          // Completeness is per pointer: a blob that already has German for
+          // most of its strings should only re-export the ones still missing,
+          // otherwise every export re-emits work that is already published.
+          let germanStrings = new Map<string, string>()
+          if (
+            !includeTranslated &&
+            typeof node.de === "string" &&
+            node.de.trim()
+          ) {
+            try {
+              germanStrings = new Map(collectJsonLdStrings(JSON.parse(node.de)))
+            } catch {
+              // Unparseable German blob: treat the whole thing as missing.
+            }
+          }
           for (const [pointer, value] of collectJsonLdStrings(
             JSON.parse(node.en),
           )) {
+            if (germanStrings.get(pointer)?.trim()) continue
             segments.push({
               id: `${doc._id}::${path}::${pointer}`,
               docId: doc._id,

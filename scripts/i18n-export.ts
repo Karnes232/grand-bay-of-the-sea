@@ -20,7 +20,7 @@ import { createClient } from "next-sanity"
 import { mkdirSync, writeFileSync } from "node:fs"
 import {
   collectSegments,
-  EXCLUDED_TYPES,
+  isExcludedDoc,
   type Segment,
 } from "./lib/localized-fields"
 
@@ -141,7 +141,7 @@ async function main() {
   )
 
   const segments = docs
-    .filter(d => !EXCLUDED_TYPES.has(d._type))
+    .filter(d => !isExcludedDoc(d))
     .flatMap(d => collectSegments(d, { includeTranslated }))
 
   if (segments.length === 0) {
