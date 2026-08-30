@@ -13,6 +13,17 @@ const SITE_URL = "https://www.grandbay-puntacana.com"
 const lat = BUSINESS.latitude
 const lng = BUSINESS.longitude
 
+/**
+ * The business entity's own description, per locale. Keyed rather than a
+ * ternary chain so adding a language is one entry — the previous en/es ternary
+ * silently served English to German visitors.
+ */
+const BUSINESS_DESCRIPTION: Record<string, string> = {
+  en: "PADI dive center in Punta Cana, Dominican Republic offering Discover Scuba Diving for beginners, PADI certification courses, and guided reef, wreck, and shark diving experiences.",
+  es: "Centro de buceo PADI en Punta Cana, República Dominicana, que ofrece Discover Scuba Diving para principiantes, cursos de certificación PADI y buceo guiado en arrecifes, pecios y con tiburones.",
+  de: "PADI Tauchbasis in Punta Cana, Dominikanische Republik, mit Discover Scuba Diving für Anfänger, PADI Brevetierungskursen sowie geführten Riff-, Wrack- und Haitauchgängen.",
+}
+
 export function generateStructuredData(locale: string = "en") {
   const geo =
     lat && lng && !Number.isNaN(Number(lat)) && !Number.isNaN(Number(lng))
@@ -29,10 +40,7 @@ export function generateStructuredData(locale: string = "en") {
     "@id": `${SITE_URL}/#business`,
     name: BUSINESS.name,
     alternateName: BUSINESS.alternateName,
-    description:
-      locale === "es"
-        ? "Centro de buceo PADI en Punta Cana, República Dominicana, que ofrece Discover Scuba Diving para principiantes, cursos de certificación PADI y buceo guiado en arrecifes, pecios y con tiburones."
-        : "PADI dive center in Punta Cana, Dominican Republic offering Discover Scuba Diving for beginners, PADI certification courses, and guided reef, wreck, and shark diving experiences.",
+    description: BUSINESS_DESCRIPTION[locale] ?? BUSINESS_DESCRIPTION.en,
     url: `${SITE_URL}/`,
     inLanguage: locale,
     logo: "https://cdn.sanity.io/images/33b6wn5r/production/d716adb82827e51188be53d82df1bab3b0eae4a2-493x427.png",

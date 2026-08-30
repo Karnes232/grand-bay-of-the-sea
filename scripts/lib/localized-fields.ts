@@ -50,14 +50,133 @@ export const EXCLUDED_TYPES = new Set([
 ])
 
 /**
- * Fields excluded from translation by design:
- *  - slug     German URLs keep the English slugs; translating them would buy
- *             nothing and cost a redirect map.
- *  - structuredData  JSON-LD blobs. Their human-readable values matter but a
- *             translator editing raw JSON is a corruption risk; handle these
- *             separately if they ever need localizing.
+ * Fields excluded from translation by design.
+ *
+ * `slug` only: German URLs keep the English slugs, so translating them would
+ * buy nothing and cost a redirect map.
+ *
+ * `structuredData` used to be excluded here too, on the grounds that a human
+ * translator editing a raw JSON blob in a CAT tool could corrupt it. That risk
+ * is real for a hand-editing workflow but does not apply to this one: the blob
+ * is parsed, individual string values are replaced at their JSON pointers, and
+ * it is re-serialized — the structure is never authored by hand. Excluding it
+ * cost German pages their FAQ, Course, Offer and breadcrumb markup.
  */
-const EXCLUDED_PATH_SEGMENTS = new Set(["slug", "structuredData"])
+const EXCLUDED_PATH_SEGMENTS = new Set(["slug"])
+
+/**
+ * JSON-LD keys whose values are human-readable prose and should be translated.
+ * Everything else in a blob is structural or factual and is copied verbatim.
+ */
+const JSONLD_TRANSLATABLE_KEYS = new Set([
+  "name",
+  "description",
+  "headline",
+  "text",
+  "coursePrerequisites",
+  "teaches",
+  "articleSection",
+  "alternativeHeadline",
+  "alternateName",
+])
+
+/**
+ * JSON-LD keys that are locale-dependent but must NOT be translated — they are
+ * rewritten mechanically on import instead.
+ *
+ *  - `url`         should point at the localized page (/de/courses/...).
+ *  - `inLanguage`  should carry the target locale, not "en".
+ *
+ * Deliberately absent: `@id`. Those are canonical entity identifiers
+ * (#business, #website) and must stay byte-identical across locales, or the
+ * business entity fragments into one-per-language.
+ */
+export const JSONLD_LOCALE_REWRITE_KEYS = new Set(["url", "inLanguage"])
+
+const SITE_ORIGIN = "https://www.grandbay-puntacana.com"
+
+/** Walk a parsed JSON-LD value, yielding [jsonPointer, string] for translatables. */
+export function collectJsonLdStrings(
+  node: any,
+  pointer = "",
+  out: [string, string][] = [],
+): [string, string][] {
+  if (node === null || typeof node !== "object") return out
+  if (Array.isArray(node)) {
+    node.forEach((child, i) =>
+      collectJsonLdStrings(child, `${pointer}/${i}`, out),
+    )
+    return out
+  }
+  for (const [key, value] of Object.entries(node)) {
+    const childPointer = `${pointer}/${key}`
+    if (
+      typeof value === "string" &&
+      JSONLD_TRANSLATABLE_KEYS.has(key) &&
+      value.trim()
+    ) {
+      out.push([childPointer, value])
+    } else {
+      collectJsonLdStrings(value, childPointer, out)
+    }
+  }
+  return out
+}
+
+/** Set a value at a JSON pointer inside a parsed structure. */
+function setAtPointer(root: any, pointer: string, value: any): void {
+  const parts = pointer.split("/").filter(Boolean)
+  let node = root
+  for (let i = 0; i < parts.length - 1; i++) node = node?.[parts[i]]
+  if (node) node[parts[parts.length - 1]] = value
+}
+
+/**
+ * Build the localized JSON-LD blob from the English one.
+ *
+ * The English structure is the template: every key, array length and untouched
+ * value is preserved exactly. Only translated strings are substituted, plus the
+ * two mechanical locale rewrites (`url` -> localized path, `inLanguage` ->
+ * locale). Returns a JSON string, or null if the English blob does not parse.
+ */
+export function localizeJsonLd(
+  englishBlob: string,
+  translations: Map<string, string>,
+  locale: string,
+): string | null {
+  let parsed: any
+  try {
+    parsed = JSON.parse(englishBlob)
+  } catch {
+    return null
+  }
+
+  for (const [pointer, value] of translations)
+    setAtPointer(parsed, pointer, value)
+
+  const rewrite = (node: any): void => {
+    if (node === null || typeof node !== "object") return
+    if (Array.isArray(node)) return node.forEach(rewrite)
+    for (const [key, value] of Object.entries(node)) {
+      if (key === "inLanguage" && typeof value === "string") {
+        node[key] = locale
+      } else if (
+        key === "url" &&
+        typeof value === "string" &&
+        value.startsWith(SITE_ORIGIN)
+      ) {
+        // Point at the localized page. `@id` is intentionally not rewritten.
+        const rest = value.slice(SITE_ORIGIN.length)
+        node[key] = `${SITE_ORIGIN}/${locale}${rest}`
+      } else {
+        rewrite(value)
+      }
+    }
+  }
+  rewrite(parsed)
+
+  return JSON.stringify(parsed, null, 2)
+}
 
 export function isLocalizedObject(node: any): boolean {
   return (
@@ -199,8 +318,12 @@ export function collectSegments(
     if (node === null || typeof node !== "object") return
 
     if (isLocalizedObject(node) && !pathIsExcluded(path)) {
+      // For JSON-LD, completeness is per-pointer and handled below; treat the
+      // wrapper as needed whenever English exists so the walk reaches it.
+      const isJsonLd =
+        typeof node.en === "string" && path.endsWith("structuredData")
       const needed =
-        !isEmpty(node.en) && (includeTranslated || isEmpty(node.de))
+        !isEmpty(node.en) && (includeTranslated || isEmpty(node.de) || isJsonLd)
       if (needed) {
         if (Array.isArray(node.en)) {
           // localizedBlock: one segment per Portable Text block
@@ -218,6 +341,28 @@ export function collectSegments(
               blockKey: block._key,
               style: block.style ?? "normal",
               source,
+            })
+          }
+        } else if (
+          typeof node.en === "string" &&
+          path.endsWith("structuredData")
+        ) {
+          // JSON-LD: emit one segment per translatable string, addressed by
+          // JSON pointer, rather than one segment holding the whole blob.
+          // Import rebuilds the blob from the English structure, so nothing
+          // here can change the shape of the markup.
+          for (const [pointer, value] of collectJsonLdStrings(
+            JSON.parse(node.en),
+          )) {
+            segments.push({
+              id: `${doc._id}::${path}::${pointer}`,
+              docId: doc._id,
+              docType: doc._type,
+              docLabel: label,
+              path,
+              kind: value.includes("\n") ? "text" : "string",
+              leafKey: pointer,
+              source: value,
             })
           }
         } else if (typeof node.en === "string") {

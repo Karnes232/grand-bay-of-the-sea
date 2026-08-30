@@ -17,9 +17,10 @@
  */
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs"
 
-const SOURCE_CSV = "translations/de-2026-08-29.csv"
+const SOURCE_CSV =
+  process.argv.find(a => a.endsWith(".csv")) ?? "translations/de-2026-08-29.csv"
 const BATCH_DIR = "translations/batches"
-const OUT_CSV = "translations/de-filled.csv"
+const OUT_CSV = SOURCE_CSV.replace(/\.csv$/, "-filled.csv")
 
 const LIMITS = { title: 60, description: 160 }
 
@@ -79,7 +80,9 @@ for (const f of batchFiles) {
 if (todoIdx !== -1) {
   const n = Number(args[todoIdx + 1]) || 40
   const todo = rows.filter(r => !translations.get(r[col.id])?.trim())
-  console.log(`${todo.length} segment(s) remaining. Next ${Math.min(n, todo.length)}:\n`)
+  console.log(
+    `${todo.length} segment(s) remaining. Next ${Math.min(n, todo.length)}:\n`,
+  )
   console.log(
     JSON.stringify(
       Object.fromEntries(
@@ -121,7 +124,11 @@ for (const r of rows) {
   // words before calling it a miss.
   const realWords = (en.match(/[A-Za-zÄÖÜäöüß]{4,}/g) ?? []).length
   if (de.trim() === en.trim() && realWords >= 3) {
-    problems.untranslated.push({ id, doc: r[col.document], en: en.slice(0, 60) })
+    problems.untranslated.push({
+      id,
+      doc: r[col.document],
+      en: en.slice(0, 60),
+    })
   }
   // Only seo.meta carries length validation in the Sanity schema
   // (Rule.max 60 / 160). openGraph has none, and social platforms allow
@@ -154,14 +161,20 @@ const report = (label, list, fmt) => {
   console.log()
 }
 
-report("INLINE TAG MISMATCH (formatting would be lost)", problems.tags, p =>
-  `${p.id}\n     en:${p.en || "(none)"}  de:${p.de || "(none)"}`,
+report(
+  "INLINE TAG MISMATCH (formatting would be lost)",
+  problems.tags,
+  p => `${p.id}\n     en:${p.en || "(none)"}  de:${p.de || "(none)"}`,
 )
-report("OVER LENGTH LIMIT (Google will truncate)", problems.length, p =>
-  `${p.leaf} ${p.len}/${p.limit}  ${p.doc}\n     ${p.de}`,
+report(
+  "OVER LENGTH LIMIT (Google will truncate)",
+  problems.length,
+  p => `${p.leaf} ${p.len}/${p.limit}  ${p.doc}\n     ${p.de}`,
 )
-report("IDENTICAL TO ENGLISH (untranslated?)", problems.untranslated, p =>
-  `${p.doc} — ${p.en}`,
+report(
+  "IDENTICAL TO ENGLISH (untranslated?)",
+  problems.untranslated,
+  p => `${p.doc} — ${p.en}`,
 )
 if (problems.missing.length && problems.missing.length !== rows.length) {
   report("NOT YET TRANSLATED", problems.missing, p => `${p.doc} — ${p.field}`)

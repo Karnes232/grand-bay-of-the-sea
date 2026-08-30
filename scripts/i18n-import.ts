@@ -13,7 +13,7 @@
  */
 import { createClient } from "next-sanity"
 import { readFileSync } from "node:fs"
-import { getAtPath, textToBlock } from "./lib/localized-fields"
+import { getAtPath, textToBlock, localizeJsonLd } from "./lib/localized-fields"
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "33b6wn5r",
@@ -200,6 +200,44 @@ async function main() {
         if (missing) {
           incomplete++
           continue // leave the field untouched rather than write a half array
+        }
+        localized.de = rebuilt
+      } else if (
+        typeof localized.en === "string" &&
+        path.endsWith("structuredData")
+      ) {
+        // JSON-LD: rebuild the blob from the English structure, substituting
+        // translated strings at their JSON pointers. Structure, @id, prices and
+        // dates are preserved by construction; `url` and `inLanguage` are
+        // rewritten for the locale.
+        const pointers = new Map([...values].filter(([k]) => k.startsWith("/")))
+        if (pointers.size === 0) continue
+        const rebuilt = localizeJsonLd(localized.en, pointers, "de")
+        if (rebuilt === null) {
+          console.warn(
+            `  ! ${docId} ${path}: English JSON-LD does not parse — skipped`,
+          )
+          continue
+        }
+        // Defensive: the rebuild must still be valid JSON with the same shape.
+        const shape = (v: any): any =>
+          Array.isArray(v)
+            ? v.map(shape)
+            : v && typeof v === "object"
+              ? Object.fromEntries(
+                  Object.keys(v)
+                    .sort()
+                    .map(k => [k, shape(v[k])]),
+                )
+              : typeof v
+        if (
+          JSON.stringify(shape(JSON.parse(rebuilt))) !==
+          JSON.stringify(shape(JSON.parse(localized.en)))
+        ) {
+          console.warn(
+            `  ! ${docId} ${path}: rebuilt JSON-LD shape differs — skipped`,
+          )
+          continue
         }
         localized.de = rebuilt
       } else if (
