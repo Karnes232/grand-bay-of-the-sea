@@ -27,10 +27,16 @@ export const BUSINESS = {
   mapUrl: "https://maps.app.goo.gl/tAB86MjFxiF7Hefj7",
   /**
    * Google Business Profile rating (single verifiable source; the site embeds
-   * the Google reviews widget). Snapshot as of 2026-07-11 — refresh
+   * the Google reviews widget). Snapshot as of 2026-08-30 — refresh
    * periodically against the live GBP listing.
+   *
+   * This figure is asserted publicly in three places: the sitewide
+   * `AggregateRating` JSON-LD, the hero trust pill / footer via the
+   * `TrustLine` message, and the SERP titles of the course and trip pages.
+   * Letting it drift makes a claim the listing no longer supports, so update
+   * it here — everything else derives from this one value.
    */
-  rating: { value: 4.8, count: 151, source: "Google" },
+  rating: { value: 4.8, count: 159, source: "Google" },
   latitude: process.env.NEXT_PUBLIC_BUSINESS_LATITUDE || "18.64857",
   longitude: process.env.NEXT_PUBLIC_BUSINESS_LONGITUDE || "-68.358637",
   /** PADI dive-center registration — surfaced in the hero badge, stats bar, and trust badges. */
