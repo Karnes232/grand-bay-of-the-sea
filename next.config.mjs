@@ -3,24 +3,10 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
-  async redirects() {
-    // Old near-duplicate DR Web Studio post; the newer 2026 article is canonical.
-    return [
-      {
-        source: "/blog/local-businesses/dr-web-studio-punta-cana-web-design",
-        destination:
-          "/blog/local-businesses/dr-web-studio-punta-cana-website-design",
-        permanent: true,
-      },
-      {
-        source:
-          "/es/blog/local-businesses/dr-web-studio-punta-cana-web-design",
-        destination:
-          "/es/blog/local-businesses/dr-web-studio-punta-cana-website-design",
-        permanent: true,
-      },
-    ]
-  },
+  // No `redirects()` here on purpose. next-intl's middleware runs ahead of this
+  // config (it ships as a Netlify edge function), so a redirect declared here
+  // never fires for the unprefixed default-locale path — it gets rewritten to
+  // /en/… and served first. Retired URLs are redirected in `src/middleware.ts`.
   async headers() {
     // Netlify sets URL to the site's primary URL at build time, so the
     // *.netlify.app dev site gets a blanket noindex while the production
