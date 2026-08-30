@@ -76,6 +76,12 @@ export const TRANSLATED_BLOG_SLUGS = new Set<string>([
   "how-much-does-scuba-diving-cost-punta-cana",
   "best-time-scuba-dive-punta-cana-month-by-month",
   "best-dive-sites-punta-cana-reef-wreck",
+  // Tier 3 — practical pre-trip admin. Dutch equivalents already rank for the
+  // vaccination and tourist-card queries, so DACH demand is likely.
+  "vaccinations-dominican-republic",
+  "tourist-card-dominican-republic",
+  "usd-vs-pesos-punta-cana",
+  "first-time-travel-guide-punta-cana",
 ])
 
 /**
