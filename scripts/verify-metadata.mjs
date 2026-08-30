@@ -77,6 +77,36 @@ function checkHtml(html) {
   return failures
 }
 
+/**
+ * Google truncates the SERP snippet at roughly these lengths, so anything past
+ * them is written but never read — the reason to click gets cut mid-sentence.
+ *
+ * These are WARNINGS, not build failures. A large backlog of over-length
+ * snippets predates this check (the German locale is the only one that was
+ * authored under the limit, because scripts/i18n-fill.mjs enforces it), and
+ * failing the build on them would block every deploy. Tighten to a failure once
+ * the backlog is cleared.
+ */
+const TITLE_MAX = 60
+const DESCRIPTION_MAX = 160
+
+function snippetWarnings(html) {
+  const warnings = []
+  const title = /<title[^>]*>([^<]*)<\/title>/i.exec(html)?.[1]?.trim()
+  if (title && title.length > TITLE_MAX) {
+    warnings.push(`title ${title.length}>${TITLE_MAX}`)
+  }
+  const nameFirst =
+    /<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i.exec(html)
+  const contentFirst =
+    /<meta\s+content=["']([^"']+)["']\s+name=["']description["']/i.exec(html)
+  const description = (nameFirst ?? contentFirst)?.[1]?.trim()
+  if (description && description.length > DESCRIPTION_MAX) {
+    warnings.push(`description ${description.length}>${DESCRIPTION_MAX}`)
+  }
+  return warnings
+}
+
 // ---------------------------------------------------------------------------
 // Static mode: scan .next/server/app
 // ---------------------------------------------------------------------------
@@ -120,19 +150,21 @@ function runStatic() {
   }
 
   const failed = []
+  const warned = []
   for (const file of htmlFiles) {
     if (isNonOkPage(file)) {
       skipped++
       continue
     }
-    const failures = checkHtml(readFileSync(file, "utf8"))
-    if (failures.length) {
-      const route = file.slice(appDir.length).replace(/\.html$/, "") || "/"
-      failed.push({ route, failures })
-    }
+    const html = readFileSync(file, "utf8")
+    const route = file.slice(appDir.length).replace(/\.html$/, "") || "/"
+    const failures = checkHtml(html)
+    if (failures.length) failed.push({ route, failures })
+    const warnings = snippetWarnings(html)
+    if (warnings.length) warned.push({ route, warnings })
   }
 
-  report(failed, htmlFiles.length - skipped, skipped)
+  report(failed, htmlFiles.length - skipped, skipped, warned)
 }
 
 // ---------------------------------------------------------------------------
@@ -198,6 +230,7 @@ async function runLive(base) {
 
   const failed = []
   const queue = [...urls]
+  const warned = []
   const CONCURRENCY = 5
 
   async function worker() {
@@ -205,8 +238,11 @@ async function runLive(base) {
       const url = queue.shift()
       const route = new URL(url).pathname
       try {
-        const failures = checkHtml(await fetchText(url))
+        const html = await fetchText(url)
+        const failures = checkHtml(html)
         if (failures.length) failed.push({ route, failures })
+        const warnings = snippetWarnings(html)
+        if (warnings.length) warned.push({ route, warnings })
       } catch (error) {
         failed.push({ route, failures: [`fetch failed: ${error.message}`] })
       }
@@ -214,14 +250,14 @@ async function runLive(base) {
   }
 
   await Promise.all(Array.from({ length: CONCURRENCY }, worker))
-  report(failed, urls.length)
+  report(failed, urls.length, 0, warned)
 }
 
 // ---------------------------------------------------------------------------
 // Reporting
 // ---------------------------------------------------------------------------
 
-function report(failed, total, skipped = 0) {
+function report(failed, total, skipped = 0, warned = []) {
   if (failed.length) {
     console.error(
       `\n[verify-metadata] ${failed.length} of ${total} page(s) shipped broken metadata:\n`,
@@ -240,6 +276,22 @@ function report(failed, total, skipped = 0) {
     `[verify-metadata] OK — ${total} page(s) verified: description + canonical present on all.` +
       (skipped ? ` (${skipped} intentional 404/redirect(s) skipped.)` : ""),
   )
+
+  if (warned.length) {
+    console.log(
+      `\n[verify-metadata] ${warned.length} page(s) will be truncated in search ` +
+        `results (title >${TITLE_MAX} or description >${DESCRIPTION_MAX} chars). ` +
+        `Not failing the build — this is a pre-existing backlog.`,
+    )
+    for (const { route, warnings } of warned
+      .sort((a, b) => a.route.localeCompare(b.route))
+      .slice(0, 15)) {
+      console.log(`  · ${route} — ${warnings.join(", ")}`)
+    }
+    if (warned.length > 15) {
+      console.log(`  … and ${warned.length - 15} more`)
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
