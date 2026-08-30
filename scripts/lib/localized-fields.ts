@@ -38,13 +38,17 @@ export interface Segment {
 }
 
 /**
- * The blog is deliberately en/es only (see BLOG_LOCALES in
- * src/i18n/locales.ts), so its documents are never exported for translation.
+ * Types never exported for translation.
+ *
+ * `blogPost` and `blogCategory` are gated per-document instead (see
+ * `isExcludedDoc`): the blog is German per-post, so only the shortlisted posts
+ * and the category hubs that hold one are translated.
+ *
+ * `blogPageLayout` is NOT excluded: it is the single shared document behind the
+ * blog index hero and the CTA band on every category hub, so a German hub
+ * renders blank headings without it.
  */
 export const EXCLUDED_TYPES = new Set([
-  "blogPost",
-  "blogCategory",
-  "blogPageLayout",
   "sanity.fileAsset",
   "sanity.imageAsset",
 ])
@@ -74,10 +78,23 @@ export const TRANSLATED_BLOG_SLUGS = new Set<string>([
   "best-dive-sites-punta-cana-reef-wreck",
 ])
 
+/**
+ * Blog categories that hold at least one translated post, and therefore render
+ * a real German hub at /de/blog/<category> rather than redirecting.
+ *
+ * Must contain the category of every slug in TRANSLATED_BLOG_SLUGS. A German
+ * hub without a German category document renders an empty hero and crashes
+ * `generateMetadata` on `seo.meta.de` — which is exactly how this was found.
+ */
+export const TRANSLATED_BLOG_CATEGORIES = new Set<string>(["travel-tips"])
+
 /** True when a document should be skipped entirely by the translation export. */
 export function isExcludedDoc(doc: any): boolean {
   if (doc?._type === "blogPost") {
     return !TRANSLATED_BLOG_SLUGS.has(doc?.slug?.current)
+  }
+  if (doc?._type === "blogCategory") {
+    return !TRANSLATED_BLOG_CATEGORIES.has(doc?.slug?.current)
   }
   return EXCLUDED_TYPES.has(doc?._type)
 }

@@ -291,10 +291,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogPostsSpanish,
   ]
 
-  // German mirrors the *service* site only — the blog is en/es (see
-  // BLOG_LOCALES). Derived from the English entries rather than hand-written:
-  // this file has already lost 4 courses to a hardcoded list drifting out of
-  // sync, and German would have tripled that surface.
+  // German mirrors the *service* site wholesale, but the blog is German
+  // per-post, so /blog is excluded here and its translated subset is added
+  // back by `germanBlogEntries` below. Derived from the English entries rather
+  // than hand-written: this file has already lost 4 courses to a hardcoded
+  // list drifting out of sync, and German would have tripled that surface.
   const BASE = "https://www.grandbay-puntacana.com"
   const germanEntries: MetadataRoute.Sitemap = ACTIVE_LOCALES.includes("de")
     ? entries
@@ -310,5 +311,44 @@ export default function sitemap(): MetadataRoute.Sitemap {
         }))
     : []
 
-  return [...entries, ...germanEntries]
+  // Only posts carrying `hasDe` exist at a /de/ URL; the rest redirect to
+  // English, and listing a redirect in a sitemap is a wasted crawl. A German
+  // category hub is emitted only when that category holds at least one German
+  // post, since the German listing renders just the German posts and an empty
+  // one would be a soft 404.
+  const germanBlogPosts = blogPostsSanity.filter(post => post.hasDe)
+  const germanBlogCategories = new Set(
+    germanBlogPosts.map(post => post.blogCategory.slug.current),
+  )
+  const germanBlogEntries: MetadataRoute.Sitemap =
+    ACTIVE_LOCALES.includes("de") && germanBlogPosts.length > 0
+      ? [
+          {
+            url: `${BASE}/de/blog`,
+            lastModified: SITE_LASTMOD,
+            changeFrequency: "weekly" as const,
+            priority: 0.5,
+          },
+          ...blogCategoriesSanity
+            .filter(page => germanBlogCategories.has(page.slug.current))
+            .map(page => ({
+              url: `${BASE}/de/blog/${page.slug.current}`,
+              lastModified: page._updatedAt
+                ? new Date(page._updatedAt)
+                : SITE_LASTMOD,
+              changeFrequency: "monthly" as const,
+              priority: 1,
+            })),
+          ...germanBlogPosts.map(post => ({
+            url: `${BASE}/de/blog/${post.blogCategory.slug.current}/${post.slug.current}`,
+            lastModified: post._updatedAt
+              ? new Date(post._updatedAt)
+              : SITE_LASTMOD,
+            changeFrequency: "monthly" as const,
+            priority: 1,
+          })),
+        ]
+      : []
+
+  return [...entries, ...germanEntries, ...germanBlogEntries]
 }
