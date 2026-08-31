@@ -1,5 +1,5 @@
 /**
- * German content completeness gate.
+ * Translation completeness gate, for one target locale.
  *
  * Run this BEFORE setting NEXT_PUBLIC_LOCALE_DE_ENABLED=true.
  *
@@ -15,32 +15,50 @@
  * completeness has to be checked against the data instead. The rule enforced
  * here is simple and strict:
  *
- *   wherever English content exists, German must exist too.
+ *   wherever English content exists, the target locale must exist too.
  *
  * Anything missing is reported with its document id and field path, so it can
  * be handed straight back to the translator.
  *
  * Run: node scripts/verify-de-content.mjs            (published content — what is live)
- *      node scripts/verify-de-content.mjs --drafts   (drafts overlaid — what publishing would give you)
+ *      npm run verify:locale -- --locale de --drafts   (drafts overlaid — what publishing would give you)
  *      node scripts/verify-de-content.mjs --json
  *
- * Use --drafts after `npm run i18n:import --write` to confirm a delivery is
+ * Use --drafts after `npm run i18n:import -- --write` to confirm a delivery is
  * complete BEFORE publishing, and the plain form before flipping the launch
  * gate to confirm what is actually live.
  */
 import { createClient } from "next-sanity"
+import { isExcludedDoc } from "./lib/localized-fields.ts"
+import { nameFor, parseLocaleArg } from "./lib/translation-locales.mjs"
+
+const locale = parseLocaleArg(process.argv.slice(2))
 
 /**
- * Excluded from the translation export, so not counted as gaps here either —
- * keep in sync with EXCLUDED_PATH_SEGMENTS in scripts/lib/localized-fields.ts.
- *
- *  - slug            German URLs keep the English slugs deliberately.
- *  - structuredData  JSON-LD blobs. A translator editing raw JSON is a
- *                    corruption risk, and a missing German blob degrades
- *                    gracefully (no JSON-LD on the German page) rather than
- *                    breaking it. Worth revisiting as its own task.
+ * Excluded entirely — translated URLs keep the English slugs deliberately.
  */
-const EXCLUDED_PATHS = new Set(["slug", "structuredData"])
+const EXCLUDED_PATHS = new Set(["slug"])
+
+/**
+ * Reported, but not blocking.
+ *
+ * `structuredData` used to be excluded outright, in a copy of the rules that
+ * drifted from the export pipeline's. Restoring it surfaced 16 documents whose
+ * English JSON-LD has no translation — but spot-checking /contact and /species
+ * shows the English blob is not rendered on those routes either, so this is a
+ * stale-data question rather than a deficit in the translated pages. Blocking a
+ * launch on fields nothing renders would be the wrong call; hiding them again
+ * is how the drift happened. So: counted, listed, and not fatal.
+ */
+const ADVISORY_PATHS = new Set(["structuredData"])
+
+const isAdvisory = path =>
+  ADVISORY_PATHS.has(
+    path
+      .split(".")
+      .pop()
+      ?.replace(/\[\d+\]$/, ""),
+  )
 
 const useDrafts = process.argv.includes("--drafts")
 
@@ -54,19 +72,6 @@ const client = createClient({
   // default filters them out even with a token.
   perspective: "raw",
 })
-
-/**
- * The blog is deliberately en/es only — see BLOG_LOCALES in
- * src/i18n/locales.ts. Its documents are excluded rather than reported as
- * thousands of false gaps.
- */
-const EXCLUDED_TYPES = new Set([
-  "blogPost",
-  "blogCategory",
-  "blogPageLayout",
-  "sanity.fileAsset",
-  "sanity.imageAsset",
-])
 
 const asJson = process.argv.includes("--json")
 
@@ -102,13 +107,16 @@ const gaps = []
 function walk(node, path, doc) {
   if (node === null || typeof node !== "object") return
 
-  const leaf = path.split(".").pop()?.replace(/\[\d+\]$/, "")
+  const leaf = path
+    .split(".")
+    .pop()
+    ?.replace(/\[\d+\]$/, "")
   if (leaf && EXCLUDED_PATHS.has(leaf)) return
 
   if (isLocalizedObject(node)) {
-    // Only require German where English actually has content — an empty
+    // Only require a translation where English actually has content — an empty
     // English field is a content gap of its own, not a translation gap.
-    if (!isEmpty(node.en) && isEmpty(node.de)) {
+    if (!isEmpty(node.en) && isEmpty(node[locale])) {
       gaps.push({
         id: doc._id,
         type: doc._type,
@@ -139,29 +147,33 @@ const drafts = new Map(
   all.filter(d => d._id.startsWith("drafts.")).map(d => [d._id.slice(7), d]),
 )
 const checked = published
-  .filter(d => !EXCLUDED_TYPES.has(d._type))
+  .filter(d => !isExcludedDoc(d, locale))
   .map(d => (useDrafts && drafts.has(d._id) ? drafts.get(d._id) : d))
 for (const doc of checked) walk(doc, "", doc)
 
+const blocking = gaps.filter(g => !isAdvisory(g.path))
+const advisory = gaps.filter(g => isAdvisory(g.path))
+
 if (asJson) {
-  console.log(JSON.stringify(gaps, null, 2))
+  console.log(JSON.stringify({ blocking, advisory }, null, 2))
 } else {
   const byDoc = new Map()
-  for (const g of gaps) {
+  for (const g of blocking) {
     if (!byDoc.has(g.id)) byDoc.set(g.id, { ...g, fields: [] })
     byDoc.get(g.id).fields.push(g.path)
   }
 
-  if (gaps.length === 0) {
+  if (blocking.length === 0) {
     console.log(
-      `[verify-de-content] OK — ${checked.length} documents checked` +
-        `${useDrafts ? " (drafts overlaid)" : " (published)"}, ` +
-        `every field with English content has German.`,
+      `[verify-locale-content] ${locale}: OK — ${checked.length} documents ` +
+        `checked${useDrafts ? " (drafts overlaid)" : " (published)"}, ` +
+        `every field with English content has ${nameFor(locale)}.`,
     )
   } else {
     console.log(
-      `[verify-de-content] ${gaps.length} missing German field(s) across ` +
-        `${byDoc.size} document(s) (of ${checked.length} checked` +
+      `[verify-locale-content] ${locale}: ${gaps.length} missing ` +
+        `${nameFor(locale)} field(s) across ${byDoc.size} document(s) ` +
+        `(of ${checked.length} checked` +
         `${useDrafts ? ", drafts overlaid" : ", published"}):\n`,
     )
     for (const d of byDoc.values()) {
@@ -174,10 +186,23 @@ if (asJson) {
       console.log()
     }
     console.log(
-      "German must stay switched off (NEXT_PUBLIC_LOCALE_DE_ENABLED) until " +
-        "this is empty: missing fields render blank or crash the route.",
+      `${nameFor(locale)} must stay switched off ` +
+        `(NEXT_PUBLIC_LOCALE_${locale.toUpperCase()}_ENABLED) until this is ` +
+        `empty: missing fields render blank or crash the route.`,
     )
   }
 }
 
-process.exit(gaps.length === 0 ? 0 : 1)
+if (advisory.length > 0 && !asJson) {
+  console.log(
+    `\n[verify-locale-content] ${advisory.length} document(s) also lack ` +
+      `${nameFor(locale)} structuredData (JSON-LD). Not blocking — see ` +
+      `ADVISORY_PATHS in this script:`,
+  )
+  for (const g of advisory.slice(0, 20)) {
+    console.log(`  · ${g.type} — ${g.title} (${g.path})`)
+  }
+  if (advisory.length > 20) console.log(`  … and ${advisory.length - 20} more`)
+}
+
+process.exit(blocking.length === 0 ? 0 : 1)

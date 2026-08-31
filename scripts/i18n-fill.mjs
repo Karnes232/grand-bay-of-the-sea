@@ -2,23 +2,35 @@
  * Merge translation batches into a filled CSV, and validate it.
  *
  * Translations are authored as JSON batches under `translations/batches/`,
- * each a flat `{ "<segment id>": "<german>" }` map. Batching keeps the job
+ * each a flat `{ "<segment id>": "<translation>" }` map. Batching keeps the job
  * resumable and reviewable; this script stitches them back onto the exported
  * CSV that `i18n-import` consumes.
  *
  * Validation is the point. Machine translation fails in quiet ways — a dropped
  * inline tag loses formatting, an over-long meta description gets truncated by
  * Google mid-sentence, and a segment left identical to its source ships English
- * to German readers. All of those are caught here rather than in production.
+ * to readers of the target language. All of those are caught here rather than
+ * in production.
  *
- * Run: node scripts/i18n-fill.mjs                      (merge + validate + report)
- *      node scripts/i18n-fill.mjs --strict             (exit non-zero if anything is wrong)
- *      node scripts/i18n-fill.mjs --todo [N]           (print the next N untranslated segments)
+ * Run: node scripts/i18n-fill.mjs --locale de <exported.csv>
+ *      node scripts/i18n-fill.mjs --locale de <csv> --strict   (exit non-zero if anything is wrong)
+ *      node scripts/i18n-fill.mjs --locale de <csv> --todo [N] (print the next N untranslated segments)
  */
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs"
+import {
+  columnFor,
+  nameFor,
+  parseLocaleArg,
+} from "./lib/translation-locales.mjs"
 
-const SOURCE_CSV =
-  process.argv.find(a => a.endsWith(".csv")) ?? "translations/de-2026-08-29.csv"
+const locale = parseLocaleArg(process.argv.slice(2))
+const SOURCE_CSV = process.argv.find(a => a.endsWith(".csv"))
+if (!SOURCE_CSV) {
+  console.error(
+    "[i18n-fill] Pass the exported CSV, e.g. translations/de-2026-08-29.csv",
+  )
+  process.exit(1)
+}
 const BATCH_DIR = "translations/batches"
 const OUT_CSV = SOURCE_CSV.replace(/\.csv$/, "-filled.csv")
 
@@ -164,7 +176,7 @@ const report = (label, list, fmt) => {
 report(
   "INLINE TAG MISMATCH (formatting would be lost)",
   problems.tags,
-  p => `${p.id}\n     en:${p.en || "(none)"}  de:${p.de || "(none)"}`,
+  p => `${p.id}\n     en:${p.en || "(none)"}  ${locale}:${p.de || "(none)"}`,
 )
 report(
   "OVER LENGTH LIMIT (Google will truncate)",
@@ -185,7 +197,7 @@ const cell = v => `"${(v ?? "").replace(/"/g, '""')}"`
 const out = [header.join(",")]
 for (const r of rows) {
   const copy = [...r]
-  copy[col.german] = translations.get(r[col.id]) ?? ""
+  copy[col[columnFor(locale)]] = translations.get(r[col.id]) ?? ""
   out.push(copy.map(cell).join(","))
 }
 writeFileSync(OUT_CSV, out.join("\n") + "\n")

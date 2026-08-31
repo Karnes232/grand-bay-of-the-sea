@@ -1,22 +1,23 @@
 /**
- * Pre-fill German JSON-LD strings from German already published in Sanity.
+ * Pre-fill JSON-LD strings from translations already published in Sanity.
  *
  * Structured data is supposed to mirror the visible page. Most strings in a
  * JSON-LD blob are duplicates of copy that already exists elsewhere on the same
  * document — a meta description, an FAQ question, a course name. Re-translating
- * them independently would produce German that says the same thing differently
+ * them independently would produce copy that says the same thing differently
  * from the rendered page, which Google treats as a quality signal against you.
  *
- * So: for each document, build an English -> German lookup from every localized
+ * So: for each document, build an English -> target lookup from every localized
  * field it already has, then resolve JSON-LD strings by exact English match.
  * Whatever does not match is left for normal translation.
  *
  * Writes translations/batches/40-jsonld-prefill.json.
  *
- * Run: node --env-file=.env.local scripts/i18n-prefill-jsonld.mjs
+ * Run: node --env-file=.env.local scripts/i18n-prefill-jsonld.mjs --locale de <exported.csv>
  */
 import { readFileSync, writeFileSync } from "node:fs"
 import { createClient } from "next-sanity"
+import { nameFor, parseLocaleArg } from "./lib/translation-locales.mjs"
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "33b6wn5r",
@@ -25,27 +26,43 @@ const client = createClient({
   useCdn: false,
 })
 
-const SOURCE_CSV = process.argv[2]
+const locale = parseLocaleArg(process.argv.slice(2))
+const SOURCE_CSV = process.argv.find(a => a.endsWith(".csv"))
 if (!SOURCE_CSV) {
-  console.error("Usage: node scripts/i18n-prefill-jsonld.mjs <exported.csv>")
+  console.error(
+    "Usage: node scripts/i18n-prefill-jsonld.mjs --locale <code> <exported.csv>",
+  )
   process.exit(1)
 }
 
 function parseCsv(text) {
   const rows = []
-  let row = [], cell = "", inQuotes = false
+  let row = [],
+    cell = "",
+    inQuotes = false
   for (let i = 0; i < text.length; i++) {
     const c = text[i]
     if (inQuotes) {
-      if (c === '"' && text[i + 1] === '"') { cell += '"'; i++ }
-      else if (c === '"') inQuotes = false
+      if (c === '"' && text[i + 1] === '"') {
+        cell += '"'
+        i++
+      } else if (c === '"') inQuotes = false
       else cell += c
     } else if (c === '"') inQuotes = true
-    else if (c === ",") { row.push(cell); cell = "" }
-    else if (c === "\n") { row.push(cell); rows.push(row); row = []; cell = "" }
-    else if (c !== "\r") cell += c
+    else if (c === ",") {
+      row.push(cell)
+      cell = ""
+    } else if (c === "\n") {
+      row.push(cell)
+      rows.push(row)
+      row = []
+      cell = ""
+    } else if (c !== "\r") cell += c
   }
-  if (cell || row.length) { row.push(cell); rows.push(row) }
+  if (cell || row.length) {
+    row.push(cell)
+    rows.push(row)
+  }
   return rows
 }
 
@@ -59,23 +76,29 @@ function blocksToText(blocks) {
     .trim()
 }
 
-/** Collect every English -> German pair a document already carries. */
+/** Collect every English -> target-locale pair a document already carries. */
 function buildLookup(doc) {
   const map = new Map()
   const add = (en, de) => {
-    if (typeof en === "string" && typeof de === "string" && en.trim() && de.trim()) {
+    if (
+      typeof en === "string" &&
+      typeof de === "string" &&
+      en.trim() &&
+      de.trim()
+    ) {
       map.set(en.trim(), de.trim())
     }
   }
   const walk = node => {
     if (!node || typeof node !== "object") return
     if (Array.isArray(node)) return node.forEach(walk)
-    if ("en" in node && "de" in node) {
-      add(node.en, node.de)
-      add(blocksToText(node.en), blocksToText(node.de))
+    if ("en" in node && locale in node) {
+      add(node.en, node[locale])
+      add(blocksToText(node.en), blocksToText(node[locale]))
       // Object-valued wrappers (seo.meta = { en: { title, ... }, de: {...} })
       if (node.en && typeof node.en === "object" && !Array.isArray(node.en)) {
-        for (const key of Object.keys(node.en)) add(node.en[key], node.de?.[key])
+        for (const key of Object.keys(node.en))
+          add(node.en[key], node[locale]?.[key])
       }
     }
     for (const [k, v] of Object.entries(node)) {
@@ -95,7 +118,9 @@ const rows = raw.filter(r => r[col.id])
 // document. A dive-site description that appears in the Sites page's JSON-LD is
 // the same sentence already translated on the diveSite document itself —
 // reusing it is both less work and more consistent than translating it twice.
-const all = await client.fetch(`*[!(_id in path("drafts.**")) && !(_type match "sanity.*")]`)
+const all = await client.fetch(
+  `*[!(_id in path("drafts.**")) && !(_type match "sanity.*")]`,
+)
 const lookups = new Map(all.map(d => [d._id, buildLookup(d)]))
 
 const globalLookup = new Map()
@@ -113,9 +138,10 @@ for (const r of rows) {
   const id = r[col.id]
   const docId = id.split("::")[0]
   const english = r[col.english].trim()
-  const german = lookups.get(docId)?.get(english) ?? globalLookup.get(english)
-  if (german) {
-    out[id] = german
+  const translated =
+    lookups.get(docId)?.get(english) ?? globalLookup.get(english)
+  if (translated) {
+    out[id] = translated
     filled++
   } else {
     const doc = r[col.document]
@@ -130,8 +156,9 @@ writeFileSync(
 
 const missing = rows.length - filled
 console.log(
-  `[prefill] ${filled}/${rows.length} JSON-LD strings resolved from German ` +
-    `already published (${((filled / rows.length) * 100).toFixed(1)}%)`,
+  `[prefill] ${filled}/${rows.length} JSON-LD strings resolved from ` +
+    `${nameFor(locale)} already published ` +
+    `(${((filled / rows.length) * 100).toFixed(1)}%)`,
 )
 console.log(`  global lookup entries: ${globalLookup.size}`)
 console.log(`  ${missing} still need translating\n`)

@@ -1,5 +1,5 @@
 /**
- * Import returned German translations into Sanity.
+ * Import returned translations into Sanity, for one target locale.
  *
  * Writes to DRAFTS ONLY — nothing is published. The owner reviews each document
  * in Studio and publishes when happy. Re-runnable and idempotent, so the
@@ -8,12 +8,17 @@
  * Accepts either the .xlf the translator's CAT tool produces or the .csv
  * companion (detected by extension).
  *
- * Run: npx tsx --env-file=.env.local scripts/i18n-import.ts translations/de-2026-08-29.xlf
- *      npx tsx --env-file=.env.local scripts/i18n-import.ts <file> --write
+ * Run: npm run i18n:import -- --locale de translations/de-2026-08-29.xlf
+ *      npm run i18n:import -- --locale de <file> --write
  */
 import { createClient } from "next-sanity"
 import { readFileSync } from "node:fs"
 import { getAtPath, textToBlock, localizeJsonLd } from "./lib/localized-fields"
+import {
+  columnFor,
+  nameFor,
+  parseLocaleArg,
+} from "./lib/translation-locales.mjs"
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "33b6wn5r",
@@ -31,12 +36,16 @@ const client = createClient({
 })
 
 const args = process.argv.slice(2)
+const locale = parseLocaleArg(args)
 const write = args.includes("--write")
-const file = args.find(a => !a.startsWith("--"))
+// `--locale de` puts a bare "de" in argv; the file is the other bare argument.
+const file = args.find(
+  (a, i) => !a.startsWith("--") && args[i - 1] !== "--locale",
+)
 
 if (!file) {
   console.error(
-    "Usage: npx tsx --env-file=.env.local scripts/i18n-import.ts <file.xlf|file.csv> [--write]",
+    "Usage: npm run i18n:import -- --locale <code> <file.xlf|file.csv> [--write]",
   )
   process.exit(1)
 }
@@ -101,11 +110,11 @@ function parseCsv(text: string): Map<string, string> {
 
   const header = rows.shift() ?? []
   const idCol = header.indexOf("id")
-  const deCol = header.indexOf("german")
+  const targetCol = header.indexOf(columnFor(locale))
   for (const r of rows) {
     const id = r[idCol]
-    const de = r[deCol]
-    if (id && de?.trim()) out.set(id, de.trim())
+    const value = r[targetCol]
+    if (id && value?.trim()) out.set(id, value.trim())
   }
   return out
 }
@@ -117,7 +126,7 @@ async function main() {
   if (translations.size === 0) {
     console.error(
       `[i18n-import] No filled-in translations found in ${file}. ` +
-        "Every <target> (or `german` column) is empty.",
+        `Every <target> (or \`${columnFor(locale)}\` column) is empty.`,
     )
     process.exit(1)
   }
@@ -135,7 +144,7 @@ async function main() {
 
   // Fetch published documents AND any existing drafts.
   //
-  // This matters: German is written onto the draft, and the patch sets whole
+  // This matters: the translation is written onto the draft, and the patch sets whole
   // top-level fields. If the owner already has a draft with unpublished edits,
   // building those fields from the *published* document would silently discard
   // that work. The draft, when it exists, is the correct base.
@@ -201,7 +210,7 @@ async function main() {
           incomplete++
           continue // leave the field untouched rather than write a half array
         }
-        localized.de = rebuilt
+        localized[locale] = rebuilt
       } else if (
         typeof localized.en === "string" &&
         path.endsWith("structuredData")
@@ -212,7 +221,7 @@ async function main() {
         // rewritten for the locale.
         const pointers = new Map([...values].filter(([k]) => k.startsWith("/")))
         if (pointers.size === 0) continue
-        const rebuilt = localizeJsonLd(localized.en, pointers, "de")
+        const rebuilt = localizeJsonLd(localized.en, pointers, locale)
         if (rebuilt === null) {
           console.warn(
             `  ! ${docId} ${path}: English JSON-LD does not parse — skipped`,
@@ -239,23 +248,23 @@ async function main() {
           )
           continue
         }
-        localized.de = rebuilt
+        localized[locale] = rebuilt
       } else if (
         localized.en !== null &&
         typeof localized.en === "object" &&
         !Array.isArray(localized.en)
       ) {
         // Object-valued wrapper: seo.meta = { en: { title, description,
-        // keywords }, … }. Build `de` leaf by leaf, starting from whatever
-        // German already exists so a partial delivery doesn't drop leaves.
+        // keywords }, … }. Build the target leaf by leaf, starting from
+        // whatever already exists so a partial delivery doesn't drop leaves.
         // The sibling `openGraph.image` lives outside `en` and is untouched.
-        const de: Record<string, any> = { ...(localized.de ?? {}) }
+        const target: Record<string, any> = { ...(localized[locale] ?? {}) }
         let wrote = false
         for (const [leafKey, source] of Object.entries<any>(localized.en)) {
           const translated = values.get(leafKey)
           if (translated === undefined) continue
           // Keywords round-trip as a comma-joined string.
-          de[leafKey] = Array.isArray(source)
+          target[leafKey] = Array.isArray(source)
             ? unescapeXml(translated)
                 .split(",")
                 .map(k => k.trim())
@@ -264,11 +273,11 @@ async function main() {
           wrote = true
         }
         if (!wrote) continue
-        localized.de = de
+        localized[locale] = target
       } else {
         const value = values.get("")
         if (value === undefined) continue
-        localized.de = unescapeXml(value)
+        localized[locale] = unescapeXml(value)
       }
 
       changedTopLevel.add(path.split(".")[0].replace(/\[\d+\]$/, ""))
@@ -308,7 +317,7 @@ async function main() {
   }
   if (ontoExistingDrafts > 0) {
     console.log(
-      `  ${ontoExistingDrafts} document(s) already had a draft — German is ` +
+      `  ${ontoExistingDrafts} document(s) already had a draft — ${nameFor(locale)} is ` +
         `merged into it, pending edits preserved (marked * below).`,
     )
   }

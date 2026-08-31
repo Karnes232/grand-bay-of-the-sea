@@ -1,20 +1,21 @@
 /**
- * Export English service-site copy for translation into German.
+ * Export English service-site copy for translation into another language.
  *
  * Produces two files side by side:
- *   translations/de-<date>.xlf   XLIFF 1.2 — what Trados / memoQ / Phrase expect
- *   translations/de-<date>.csv   the same segments as a spreadsheet, for review
+ *   translations/<locale>-<date>.xlf  XLIFF 1.2 — what Trados / memoQ / Phrase expect
+ *   translations/<locale>-<date>.csv  the same segments as a spreadsheet, for review
  *
  * Segment ids are stable (`docId::fieldPath` or `docId::fieldPath::blockKey`),
  * so a partial delivery can be imported and the remainder re-exported without
  * anything shifting underneath the translator.
  *
- * The blog is excluded by design — it is en/es only (see BLOG_LOCALES).
- * Slugs and structuredData JSON are excluded too; see scripts/lib/localized-fields.ts.
+ * Most of the blog is excluded by design: it is translated per-post, so only
+ * the shortlist for this locale is exported (TRANSLATED_BLOG_SLUGS). Slugs are
+ * excluded too; see scripts/lib/localized-fields.ts.
  *
- * Run: npx tsx --env-file=.env.local scripts/i18n-export.ts
- *      npx tsx --env-file=.env.local scripts/i18n-export.ts --all      (re-export already-translated segments too)
- *      npx tsx --env-file=.env.local scripts/i18n-export.ts --doc <id> (single document, for round-trip testing)
+ * Run: npm run i18n:export -- --locale de
+ *      npm run i18n:export -- --locale de --all       (re-export already-translated segments too)
+ *      npm run i18n:export -- --locale de --doc <id>  (single document, for round-trip testing)
  */
 import { createClient } from "next-sanity"
 import { mkdirSync, writeFileSync } from "node:fs"
@@ -23,6 +24,12 @@ import {
   isExcludedDoc,
   type Segment,
 } from "./lib/localized-fields"
+import {
+  columnFor,
+  nameFor,
+  parseLocaleArg,
+  TRANSLATION_LOCALES,
+} from "./lib/translation-locales.mjs"
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "33b6wn5r",
@@ -32,6 +39,7 @@ const client = createClient({
 })
 
 const args = process.argv.slice(2)
+const locale = parseLocaleArg(args)
 const includeTranslated = args.includes("--all")
 const docFilter = args.includes("--doc")
   ? args[args.indexOf("--doc") + 1]
@@ -88,7 +96,7 @@ function toXliff(segments: Segment[], date: string): string {
             s.path,
           )}">
         <source xml:lang="en">${xmlSource(s)}</source>
-        <target xml:lang="de" state="new"></target>
+        <target xml:lang="${locale}" state="new"></target>
         <note>${xmlText(
           `${s.docType} · ${s.docLabel} · ${s.path}${
             s.kind === "block" ? ` · ${s.style}` : ""
@@ -98,7 +106,7 @@ function toXliff(segments: Segment[], date: string): string {
         )
         .join("\n")
 
-      return `  <file original="${xmlAttr(docId)}" source-language="en" target-language="de" datatype="plaintext" date="${date}">
+      return `  <file original="${xmlAttr(docId)}" source-language="en" target-language="${locale}" datatype="plaintext" date="${date}">
     <header>
       <note>${xmlText(`${segs[0].docType}: ${segs[0].docLabel}`)}</note>
     </header>
@@ -124,9 +132,10 @@ function toCsv(segments: Segment[]): string {
       .join(","),
   )
   return (
-    ["id,doc_type,document,field,kind,style,english,german", ...rows].join(
-      "\n",
-    ) + "\n"
+    [
+      `id,doc_type,document,field,kind,style,english,${columnFor(locale)}`,
+      ...rows,
+    ].join("\n") + "\n"
   )
 }
 
@@ -141,20 +150,20 @@ async function main() {
   )
 
   const segments = docs
-    .filter(d => !isExcludedDoc(d))
-    .flatMap(d => collectSegments(d, { includeTranslated }))
+    .filter(d => !isExcludedDoc(d, locale))
+    .flatMap(d => collectSegments(d, { locale, includeTranslated }))
 
   if (segments.length === 0) {
     console.log(
-      "[i18n-export] Nothing to export — every field with English content " +
-        "already has German. (Use --all to re-export translated segments.)",
+      `[i18n-export] Nothing to export — every field with English content ` +
+        `already has ${nameFor(locale)}. (Use --all to re-export translated segments.)`,
     )
     process.exit(0)
   }
 
   const date = new Date().toISOString().slice(0, 10)
   mkdirSync("translations", { recursive: true })
-  const base = `translations/de-${date}${docFilter ? `-${docFilter.slice(0, 8)}` : ""}`
+  const base = `translations/${locale}-${date}${docFilter ? `-${docFilter.slice(0, 8)}` : ""}`
 
   writeFileSync(`${base}.xlf`, toXliff(segments, date))
   writeFileSync(`${base}.csv`, toCsv(segments))
@@ -185,9 +194,9 @@ async function main() {
   console.log(`  ${base}.xlf`)
   console.log(`  ${base}.csv`)
   console.log(
-    "\nTranslator brief: German dive terminology, not transliteration — " +
-      "tauchen / Tauchkurs / Tauchbasis and PADI's official German course names. " +
-      'Inline <g id="N"> tags mark bold/linked runs and must be preserved.',
+    `\nTranslator brief (${nameFor(locale)}): ` +
+      TRANSLATION_LOCALES[locale].brief +
+      ' Inline <g id="N"> tags mark bold/linked runs and must be preserved.',
   )
 }
 

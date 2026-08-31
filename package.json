@@ -18,10 +18,13 @@
     "verify:meta:live": "node scripts/verify-metadata.mjs --url https://www.grandbay-puntacana.com",
     "verify:messages": "node scripts/verify-messages.mjs",
     "seed:blog": "tsx --env-file=.env.local scripts/1.ts",
-    "verify:de": "node --env-file=.env.local scripts/verify-de-content.mjs",
     "i18n:export": "tsx --env-file=.env.local scripts/i18n-export.ts",
     "i18n:import": "tsx --env-file=.env.local scripts/i18n-import.ts",
-    "verify:de:drafts": "node --env-file=.env.local scripts/verify-de-content.mjs --drafts"
+    "verify:locale": "node --env-file=.env.local scripts/verify-locale-content.mjs",
+    "verify:de": "npm run verify:locale -- --locale de",
+    "verify:de:drafts": "npm run verify:locale -- --locale de --drafts",
+    "verify:fr": "npm run verify:locale -- --locale fr",
+    "verify:fr:drafts": "npm run verify:locale -- --locale fr --drafts"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",

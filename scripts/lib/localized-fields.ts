@@ -48,10 +48,7 @@ export interface Segment {
  * blog index hero and the CTA band on every category hub, so a German hub
  * renders blank headings without it.
  */
-export const EXCLUDED_TYPES = new Set([
-  "sanity.fileAsset",
-  "sanity.imageAsset",
-])
+export const EXCLUDED_TYPES = new Set(["sanity.fileAsset", "sanity.imageAsset"])
 
 /**
  * Blog posts opted in to translation, by slug.
@@ -63,26 +60,31 @@ export const EXCLUDED_TYPES = new Set([
  * Adding a slug here and re-running the export/import pipeline is all it takes
  * to bring another post into German.
  */
-export const TRANSLATED_BLOG_SLUGS = new Set<string>([
-  // Tier 1 — trip planning, brings the German audience
-  "sargassum-seaweed-punta-cana",
-  "dominican-republic-e-ticket-guide",
-  "is-punta-cana-safe-for-tourists",
-  "best-time-to-visit-punta-cana",
-  "how-many-days-do-you-need-in-punta-cana",
-  "punta-cana-vs-cancun",
-  // Tier 2 — diving intent, feeds the service pages
-  "is-punta-cana-good-for-scuba-diving",
-  "how-much-does-scuba-diving-cost-punta-cana",
-  "best-time-scuba-dive-punta-cana-month-by-month",
-  "best-dive-sites-punta-cana-reef-wreck",
-  // Tier 3 — practical pre-trip admin. Dutch equivalents already rank for the
-  // vaccination and tourist-card queries, so DACH demand is likely.
-  "vaccinations-dominican-republic",
-  "tourist-card-dominican-republic",
-  "usd-vs-pesos-punta-cana",
-  "first-time-travel-guide-punta-cana",
-])
+export const TRANSLATED_BLOG_SLUGS: Record<string, Set<string>> = {
+  de: new Set<string>([
+    // Tier 1 — trip planning, brings the German audience
+    "sargassum-seaweed-punta-cana",
+    "dominican-republic-e-ticket-guide",
+    "is-punta-cana-safe-for-tourists",
+    "best-time-to-visit-punta-cana",
+    "how-many-days-do-you-need-in-punta-cana",
+    "punta-cana-vs-cancun",
+    // Tier 2 — diving intent, feeds the service pages
+    "is-punta-cana-good-for-scuba-diving",
+    "how-much-does-scuba-diving-cost-punta-cana",
+    "best-time-scuba-dive-punta-cana-month-by-month",
+    "best-dive-sites-punta-cana-reef-wreck",
+    // Tier 3 — practical pre-trip admin. Dutch equivalents already rank for the
+    // vaccination and tourist-card queries, so DACH demand is likely.
+    "vaccinations-dominican-republic",
+    "tourist-card-dominican-republic",
+    "usd-vs-pesos-punta-cana",
+    "first-time-travel-guide-punta-cana",
+  ]),
+  // French: the blog is deferred — service site first. An empty set means
+  // every post is excluded from the French export, which is the intent.
+  fr: new Set<string>(),
+}
 
 /**
  * Blog categories that hold at least one translated post, and therefore render
@@ -92,15 +94,25 @@ export const TRANSLATED_BLOG_SLUGS = new Set<string>([
  * hub without a German category document renders an empty hero and crashes
  * `generateMetadata` on `seo.meta.de` — which is exactly how this was found.
  */
-export const TRANSLATED_BLOG_CATEGORIES = new Set<string>(["travel-tips"])
+export const TRANSLATED_BLOG_CATEGORIES: Record<string, Set<string>> = {
+  de: new Set<string>(["travel-tips"]),
+  fr: new Set<string>(),
+}
 
-/** True when a document should be skipped entirely by the translation export. */
-export function isExcludedDoc(doc: any): boolean {
+/**
+ * True when a document should be skipped entirely by the translation export.
+ *
+ * Takes the target locale because the blog shortlist is per-language: German
+ * translates 14 posts, French none yet.
+ */
+export function isExcludedDoc(doc: any, locale: string): boolean {
   if (doc?._type === "blogPost") {
-    return !TRANSLATED_BLOG_SLUGS.has(doc?.slug?.current)
+    return !(TRANSLATED_BLOG_SLUGS[locale] ?? new Set()).has(doc?.slug?.current)
   }
   if (doc?._type === "blogCategory") {
-    return !TRANSLATED_BLOG_CATEGORIES.has(doc?.slug?.current)
+    return !(TRANSLATED_BLOG_CATEGORIES[locale] ?? new Set()).has(
+      doc?.slug?.current,
+    )
   }
   return EXCLUDED_TYPES.has(doc?._type)
 }
@@ -359,13 +371,16 @@ export function textToBlock(englishBlock: any, translated: string): any {
 
 /**
  * Collect every translatable segment in a document: each localized field that
- * has English content. Fields that already have German are included only when
- * `includeTranslated` is set, so a re-export after a partial delivery contains
- * just the outstanding work.
+ * has English content. Fields already translated into `locale` are included
+ * only when `includeTranslated` is set, so a re-export after a partial
+ * delivery contains just the outstanding work.
  */
 export function collectSegments(
   doc: any,
-  { includeTranslated = false }: { includeTranslated?: boolean } = {},
+  {
+    locale,
+    includeTranslated = false,
+  }: { locale: string; includeTranslated?: boolean },
 ): Segment[] {
   const segments: Segment[] = []
   const label = docLabel(doc)
@@ -379,7 +394,8 @@ export function collectSegments(
       const isJsonLd =
         typeof node.en === "string" && path.endsWith("structuredData")
       const needed =
-        !isEmpty(node.en) && (includeTranslated || isEmpty(node.de) || isJsonLd)
+        !isEmpty(node.en) &&
+        (includeTranslated || isEmpty(node[locale]) || isJsonLd)
       if (needed) {
         if (Array.isArray(node.en)) {
           // localizedBlock: one segment per Portable Text block
@@ -410,22 +426,24 @@ export function collectSegments(
           // Completeness is per pointer: a blob that already has German for
           // most of its strings should only re-export the ones still missing,
           // otherwise every export re-emits work that is already published.
-          let germanStrings = new Map<string, string>()
+          let translatedStrings = new Map<string, string>()
           if (
             !includeTranslated &&
-            typeof node.de === "string" &&
-            node.de.trim()
+            typeof node[locale] === "string" &&
+            node[locale].trim()
           ) {
             try {
-              germanStrings = new Map(collectJsonLdStrings(JSON.parse(node.de)))
+              translatedStrings = new Map(
+                collectJsonLdStrings(JSON.parse(node[locale])),
+              )
             } catch {
-              // Unparseable German blob: treat the whole thing as missing.
+              // Unparseable blob: treat the whole thing as missing.
             }
           }
           for (const [pointer, value] of collectJsonLdStrings(
             JSON.parse(node.en),
           )) {
-            if (germanStrings.get(pointer)?.trim()) continue
+            if (translatedStrings.get(pointer)?.trim()) continue
             segments.push({
               id: `${doc._id}::${path}::${pointer}`,
               docId: doc._id,
