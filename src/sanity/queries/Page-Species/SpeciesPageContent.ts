@@ -30,21 +30,13 @@ export interface SpeciesPageContent {
 }
 
 export const speciesPageContentQuery = `*[_type == "speciesPageContent"] {
-    title {
-        en,
-        es,
-        de
-    },
-    heroEyebrow { en, es },
-    heroSubtitle { en, es },
-    ctaHeading { en, es },
-    ctaBody { en, es },
-    ctaLabel { en, es },
-    content {
-        en,
-        es,
-        de
-    },
+    title,
+    heroEyebrow,
+    heroSubtitle,
+    ctaHeading,
+    ctaBody,
+    ctaLabel,
+    content,
     heroImage {
         asset -> {
             url,

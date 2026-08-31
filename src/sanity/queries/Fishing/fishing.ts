@@ -41,30 +41,18 @@ export interface Fishing {
 
 export const fishingQuery = `*[_type == "fishing"][0] {
   page,
-  heroEyebrow { en, es },
-  heroTitle { en, es },
-  heroSubtitle { en, es },
-  bookEyebrow { en, es },
-  factDuration { en, es },
-  galleryHeading { en, es },
-  ctaHeading { en, es },
-  ctaBody { en, es },
-  ctaLabel { en, es },
-  paragraph1 {
-    en,
-    es,
-    de
-  },
-  paragraph2 {
-    en,
-    es,
-    de
-  },
-  paragraph3 {
-    en,
-    es,
-    de
-  },
+  heroEyebrow,
+  heroTitle,
+  heroSubtitle,
+  bookEyebrow,
+  factDuration,
+  galleryHeading,
+  ctaHeading,
+  ctaBody,
+  ctaLabel,
+  paragraph1,
+  paragraph2,
+  paragraph3,
   photoList[] {
     asset -> {
       url,

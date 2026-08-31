@@ -35,16 +35,8 @@ export const tripsQuery = `*[_type == "trips"] {
   slug,
   price,
   privateOnly,
-  cardTitle {
-    en,
-    es,
-    de
-  },
-  cardDescription {
-    en,
-    es,
-    de
-  },
+  cardTitle,
+  cardDescription,
   cardImage {
     asset -> {
       url,
@@ -61,16 +53,8 @@ export const tripsQuery = `*[_type == "trips"] {
     hotspot,
     alt
   },
-  duration {
-    en,
-    es,
-    de
-  },
-  extras[] {
-    en,
-    es,
-    de
-  }
+  duration,
+  extras[]
 }`
 
 export const getTripCards = async (): Promise<TripCards[]> => {
@@ -136,33 +120,13 @@ export interface Trip {
 
 export const individualTripQuery = `*[_type == "trips" && slug.current == $slug][0] {
   page,
-  title {
-    en,
-    es,
-    de
-  },
+  title,
   slug,
   videoId,
-  paragraph1 {
-    en,
-    es,
-    de
-  },
-  paragraph2 {
-    en,
-    es,
-    de
-  },
-  paragraph3 {
-    en,
-    es,
-    de
-  },
-  paragraph4 {
-    en,
-    es,
-    de
-  },
+  paragraph1,
+  paragraph2,
+  paragraph3,
+  paragraph4,
   photoList[] {
     asset -> {
       url,
@@ -178,49 +142,21 @@ export const individualTripQuery = `*[_type == "trips" && slug.current == $slug]
     hotspot,
     alt
   },
-  cardDescription {
-    en,
-    es,
-    de
-  },
+  cardDescription,
   price,
   spectatorSnorkel,
   duration,
-  extras[] {
-    en,
-    es,
-    de
-  },
+  extras[],
   tripDaySteps[] {
-    stepTitle {
-      en,
-      es,
-      de
-    },
-    stepBody {
-      en,
-      es,
-      de
-    }
+    stepTitle,
+    stepBody
   },
-  tripDayNote {
-    en,
-    es,
-    de
-  },
+  tripDayNote,
   depositPrice,
   faqs[] {
     _key,
-    question {
-      en,
-      es,
-      de
-    },
-    answer {
-      en,
-      es,
-      de
-    }
+    question,
+    answer
   }
 }`
 
@@ -237,11 +173,7 @@ export interface TripStructuredData {
 
 export const tripStructuredDataQuery = `*[_type == "trips" && slug.current == $slug][0] {
   seo {
-    structuredData {
-      en,
-      es,
-      de
-    }
+    structuredData
   }
 }`
 
@@ -300,37 +232,10 @@ export interface TripSeo {
 
 export const tripSeoQuery = `*[_type == "trips" && slug.current == $slug][0] {
   seo {
-        meta {
-    en {
-      title,
-      description,
-      keywords
-    },
-    es {
-      title,
-      description,
-      keywords
-    },
-    de {
-      title,
-      description,
-      keywords
-    }
-  },
+        meta,
   // Open Graph data
   openGraph {
-    en {
-      title,
-      description
-    },
-    es {
-      title,
-      description
-    },
-    de {
-      title,
-      description
-    },
+    ...,
     "image": {
       "url": image.asset->url,
       "alt": image.alt,

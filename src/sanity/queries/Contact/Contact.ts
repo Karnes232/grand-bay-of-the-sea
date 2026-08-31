@@ -44,13 +44,13 @@ export const contactQuery = `*[_type == "contact"][0] {
     hotspot,
     alt
   },
-  heroEyebrow { en, es },
-  heroTitle { en, es },
-  heroSubtitle { en, es },
-  visitHeading { en, es },
-  hoursEyebrow { en, es },
-  hoursValue { en, es },
-  hoursDesc { en, es }
+  heroEyebrow,
+  heroTitle,
+  heroSubtitle,
+  visitHeading,
+  hoursEyebrow,
+  hoursValue,
+  hoursDesc
 }`
 
 export const getContact = async (): Promise<Contact> => {

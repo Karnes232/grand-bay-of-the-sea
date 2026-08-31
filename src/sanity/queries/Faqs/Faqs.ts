@@ -15,22 +15,10 @@ export const faqsQuery = `*[_type == "faqs" && page == $page][0] {
   page,
   faqs[] {
     _key,
-    question {
-      en,
-      es,
-      de
-    },
-    answer {
-      en,
-      es,
-      de
-    }
+    question,
+    answer
   },
-  structuredData {
-    en,
-    es,
-    de
-  }
+  structuredData
 }`
 
 export const getFaqs = async (page: string): Promise<Faqs> => {

@@ -42,11 +42,7 @@ export const individualCoursesCardsQuery = `*[_type == "individualCourse" && cou
       alt
     }
   },
-  cardDescription {
-    en,
-    es,
-    de
-  },
+  cardDescription,
   cardHashTags,
   courseLevel,
   padiPrice,
@@ -79,11 +75,7 @@ export interface IndividualStucturedData {
 
 export const individualCourseStructuredDataQuery = `*[_type == "individualCourse" && slug.current == $slug][0] {
   seo {
-    structuredData {
-      en,
-      es,
-      de
-    }
+    structuredData
   }
 }`
 
@@ -139,37 +131,10 @@ export interface IndividualCourseSEO {
 
 export const individualCourseSEOQuery = `*[_type == "individualCourse" && slug.current == $slug][0] {
  seo {
-        meta {
-    en {
-      title,
-      description,
-      keywords
-    },
-    es {
-      title,
-      description,
-      keywords
-    },
-    de {
-      title,
-      description,
-      keywords
-    }
-  },
+        meta,
   // Open Graph data
   openGraph {
-    en {
-      title,
-      description
-    },
-    es {
-      title,
-      description
-    },
-    de {
-      title,
-      description
-    },
+    ...,
     "image": {
       "url": image.asset->url,
       "alt": image.alt,
@@ -251,45 +216,17 @@ export interface IndividualCourse {
 
 export const individualCourseQuery = `*[_type == "individualCourse" && slug.current == $slug][0] {
   course,
-  title {
-    en,
-    es,
-    de
-  },
+  title,
   slug {
     current
   },
   videoId,
-  paragraph1 {
-    en,
-    es,
-    de
-  },
-  paragraph2 {
-    en,
-    es,
-    de
-  },
-  paragraph3 {
-    en,
-    es,
-    de
-  },
-  paragraph4 {
-    en,
-    es,
-    de
-  },
-  paragraph5 {
-    en,
-    es,
-    de
-  },
-  paragraph6 {
-    en,
-    es,
-    de
-  },
+  paragraph1,
+  paragraph2,
+  paragraph3,
+  paragraph4,
+  paragraph5,
+  paragraph6,
   photoList[] {
     asset -> {
       url,
@@ -321,56 +258,20 @@ export const individualCourseQuery = `*[_type == "individualCourse" && slug.curr
     hotspot,
     alt
   },
-  cardDescription {
-    en,
-    es,
-    de
-  },
+  cardDescription,
   cardHashTags,
-  level {
-    en,
-    es,
-    de
-  },
+  level,
   padiPrice,
-  duration {
-    en,
-    es,
-    de
-  },
-  dives {
-    en,
-    es,
-    de
-  },
-  maxDepth {
-    en,
-    es,
-    de
-  },
-  extraInfo {
-    en,
-    es,
-    de
-  },
+  duration,
+  dives,
+  maxDepth,
+  extraInfo,
   faqs[] {
     _key,
-    question {
-      en,
-      es,
-      de
-    },
-    answer {
-      en,
-      es,
-      de
-    }
+    question,
+    answer
   },
-  structuredData {
-    en,
-    es,
-    de
-  }
+  structuredData
 }`
 
 export const getIndividualCourse = async (

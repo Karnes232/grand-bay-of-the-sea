@@ -46,26 +46,22 @@ export interface Liveaboards {
 
 export const liveaboardsQuery = `*[_type == "liveaboards"][0] {
   page,
-  paragraph1 {
-    en,
-    es,
-    de
-  },
+  paragraph1,
   "titleEn": pt::text(paragraph1.en[0]),
   "titleEs": pt::text(paragraph1.es[0]),
-  heroEyebrow { en, es },
-  heroSubtitle { en, es },
+  heroEyebrow,
+  heroSubtitle,
   stats[] {
-    value { en, es },
-    label { en, es }
+    value,
+    label
   },
-  ctaHeading { en, es },
-  ctaBody { en, es },
-  ctaLabel { en, es },
+  ctaHeading,
+  ctaBody,
+  ctaLabel,
   faqs[] {
     _key,
-    question { en, es },
-    answer { en, es }
+    question,
+    answer
   },
   heroImage {
     asset -> {
@@ -99,11 +95,7 @@ export const liveaboardsQuery = `*[_type == "liveaboards"][0] {
     hotspot,
     alt
   },
-  silverBankExpeditionParagraph {
-    en,
-    es,
-    de
-  },
+  silverBankExpeditionParagraph,
   whaleWatchingAdventureImage {
     asset -> {
       url,
@@ -120,11 +112,7 @@ export const liveaboardsQuery = `*[_type == "liveaboards"][0] {
     hotspot,
     alt
   },
-  whaleWatchingAdventureParagraph {
-    en,
-    es,
-    de
-  },
+  whaleWatchingAdventureParagraph,
   photoList[] {
     asset -> {
       url,

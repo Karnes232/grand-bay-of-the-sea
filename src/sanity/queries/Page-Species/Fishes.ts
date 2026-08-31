@@ -26,16 +26,8 @@ export interface Fishes {
 }
 
 export const fishesQuery = `*[_type == "fishes"] {
-  name {
-    en,
-    es,
-    de
-  },
-  description {
-    en,
-    es,
-    de
-  },
+  name,
+  description,
   image {
     asset -> {
       url,

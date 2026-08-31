@@ -42,25 +42,13 @@ export interface Sites {
 }
 
 export const sitesQuery = `*[_type == "sites"][0] {
-  heroTitle {
-    en,
-    es,
-    de
-  },
-  heroSubtitle {
-    en,
-    es,
-    de
-  },
-  heroTrustLine { en, es },
-  gridHeading { en, es },
-  gridIntro { en, es },
+  heroTitle,
+  heroSubtitle,
+  heroTrustLine,
+  gridHeading,
+  gridIntro,
   heroCta {
-    label {
-      en,
-      es,
-      de
-    },
+    label,
     link
   },
   heroImage {
@@ -79,42 +67,18 @@ export const sitesQuery = `*[_type == "sites"][0] {
     hotspot,
     alt
   },
-  paragraph1 {
-    en,
-    es,
-    de
-  },
-  packageTitle {
-    en,
-    es,
-    de
-  },
+  paragraph1,
+  packageTitle,
   twoTankDive,
   fourTankPackage,
   depositPrice,
-  duration {
-    en,
-    es,
-    de
-  },
+  duration,
   faqs[] {
     _key,
-    question {
-      en,
-      es,
-      de
-    },
-    answer {
-      en,
-      es,
-      de
-    }
+    question,
+    answer
   },
-  structuredData {
-    en,
-    es,
-    de
-  }
+  structuredData
 }`
 
 export const getSites = async (): Promise<Sites> => {

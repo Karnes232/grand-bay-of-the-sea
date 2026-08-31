@@ -54,22 +54,10 @@ export interface CoursesMainPage {
 
 export const coursesMainPageQuery = `*[_type == "coursesMainPage"][0] {
   title,
-  heroTitle {
-    en,
-    es,
-    de
-  },
-  heroSubtitle {
-    en,
-    es,
-    de
-  },
+  heroTitle,
+  heroSubtitle,
   heroCta {
-    label {
-      en,
-      es,
-      de
-    },
+    label,
     link
   },
   heroImage {
@@ -88,62 +76,18 @@ export const coursesMainPageQuery = `*[_type == "coursesMainPage"][0] {
     hotspot,
     alt
   },
-  paragraph1 {
-    en,
-    es,
-    de
-  },
-  paragraph2 {
-    en,
-    es,
-    de
-  },
-  paragraph3 {
-    en,
-    es,
-    de
-  },
-  introHeading {
-    en,
-    es,
-    de
-  },
-  beginnerEyebrow {
-    en,
-    es,
-    de
-  },
-  beginnerHeading {
-    en,
-    es,
-    de
-  },
-  advancedHeading {
-    en,
-    es,
-    de
-  },
-  specialtyEyebrow {
-    en,
-    es,
-    de
-  },
+  paragraph1,
+  paragraph2,
+  paragraph3,
+  introHeading,
+  beginnerEyebrow,
+  beginnerHeading,
+  advancedHeading,
+  specialtyEyebrow,
   courseCta {
-    heading {
-      en,
-      es,
-      de
-    },
-    body {
-      en,
-      es,
-      de
-    },
-    ctaLabel {
-      en,
-      es,
-      de
-    },
+    heading,
+    body,
+    ctaLabel,
     ctaLink
   }
 }`

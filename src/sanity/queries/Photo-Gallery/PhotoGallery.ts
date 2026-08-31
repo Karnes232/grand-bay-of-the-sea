@@ -41,13 +41,9 @@ export interface PhotoGallery {
 }
 
 export const photoGalleryQuery = `*[_type == "photoGallery"][0] {
-  title {
-    en,
-    es,
-    de
-  },
-  heroEyebrow { en, es },
-  heroSubtitle { en, es },
+  title,
+  heroEyebrow,
+  heroSubtitle,
   mainImage {
     asset -> {
       url,

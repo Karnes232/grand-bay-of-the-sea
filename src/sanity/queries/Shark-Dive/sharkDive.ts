@@ -54,41 +54,25 @@ export interface SharkDive {
 
 export const sharkDiveQuery = `*[_type == "sharkDive"][0] {
   page,
-  title { en, es },
-  heroSubtitle { en, es },
-  experienceEyebrow { en, es },
-  galleryHeading { en, es },
-  featuredIn { en, es },
-  notReadyEyebrow { en, es },
-  exploreAdvanced { en, es },
-  ctaHeading { en, es },
-  ctaBody { en, es },
-  ctaLabel { en, es },
-  factFormat { en, es },
-  factFormatValue { en, es },
-  factDuration { en, es },
-  factMaxDepth { en, es },
-  factLevel { en, es },
-  paragraph1 {
-    en,
-    es,
-    de
-  },
-  paragraph2 {
-    en,
-    es,
-    de
-  },
-  paragraph3 {
-    en,
-    es,
-    de
-  },
-  paragraph4 {
-    en,
-    es,
-    de
-  },
+  title,
+  heroSubtitle,
+  experienceEyebrow,
+  galleryHeading,
+  featuredIn,
+  notReadyEyebrow,
+  exploreAdvanced,
+  ctaHeading,
+  ctaBody,
+  ctaLabel,
+  factFormat,
+  factFormatValue,
+  factDuration,
+  factMaxDepth,
+  factLevel,
+  paragraph1,
+  paragraph2,
+  paragraph3,
+  paragraph4,
   photoList[] {
     asset -> {
       url,
@@ -106,38 +90,14 @@ export const sharkDiveQuery = `*[_type == "sharkDive"][0] {
   },
   price,
   depositPrice,
-  duration {
-    en,
-    es,
-    de
-  },
-  level {
-    en,
-    es,
-    de
-  },
-  maxDepth {
-    en,
-    es,
-    de
-  },
-  extras[] {
-    en,
-    es,
-    de
-  },
+  duration,
+  level,
+  maxDepth,
+  extras[],
   faqs[] {
     _key,
-    question {
-      en,
-      es,
-      de
-    },
-    answer {
-      en,
-      es,
-      de
-    }
+    question,
+    answer
   }
 }`
 

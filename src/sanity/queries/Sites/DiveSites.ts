@@ -49,16 +49,8 @@ const diveSiteImageProjection = `image {
 const diveSiteCardProjection = `
   name,
   "slug": slug.current,
-  description {
-    en,
-    es,
-    de
-  },
-  cardDescription {
-    en,
-    es,
-    de
-  },
+  description,
+  cardDescription,
   level,
   location,
   ${diveSiteImageProjection},

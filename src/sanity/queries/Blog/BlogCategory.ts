@@ -28,11 +28,7 @@ export interface BlogCategory {
 }
 
 export const blogCategoryQuery = `*[_type == "blogCategory"] {
-    blogCategory {
-        en,
-        es,
-        de
-    },
+    blogCategory,
     slug {
         current
     },
@@ -83,11 +79,7 @@ export interface individualBlogCategory {
 }
 
 export const individualBlogCategoryQuery = `*[_type == "blogCategory" && slug.current == $slug][0] {
-    blogCategory {
-        en,
-        es,
-        de
-    },
+    blogCategory,
     slug,
     heroImage {
         asset -> {
@@ -105,17 +97,9 @@ export const individualBlogCategoryQuery = `*[_type == "blogCategory" && slug.cu
         hotspot,
         alt
     },
-    description {
-        en,
-        es,
-        de
-    },
+    description,
     seo {
-        structuredData {
-            en,
-            es,
-            de
-        }
+        structuredData
     }
 }`
 
@@ -171,37 +155,10 @@ export interface individualBlogCategorySEO {
 
 export const individualBlogCategorySEOQuery = `*[_type == "blogCategory" && slug.current == $slug][0] {
 seo {
-        meta {
-    en {
-      title,
-      description,
-      keywords
-    },
-    es {
-      title,
-      description,
-      keywords
-    },
-    de {
-      title,
-      description,
-      keywords
-    }
-  },
+        meta,
   // Open Graph data
   openGraph {
-    en {
-      title,
-      description
-    },
-    es {
-      title,
-      description
-    },
-    de {
-      title,
-      description
-    },
+    ...,
     "image": {
       "url": image.asset->url,
       "alt": image.alt,

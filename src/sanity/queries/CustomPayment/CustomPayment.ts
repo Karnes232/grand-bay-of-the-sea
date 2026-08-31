@@ -41,14 +41,10 @@ export const customPaymentQuery = `*[_type == "customPayment"][0] {
     hotspot,
     alt
   },
-  heroEyebrow { en, es },
-  heroTitle { en, es },
-  heroSubtitle { en, es },
-  paragraph1 {
-    en,
-    es,
-    de
-  }
+  heroEyebrow,
+  heroTitle,
+  heroSubtitle,
+  paragraph1
 }`
 
 export const getCustomPayment = async (): Promise<CustomPayment> => {

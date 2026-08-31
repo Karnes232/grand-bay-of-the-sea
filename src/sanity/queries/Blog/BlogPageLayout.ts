@@ -29,15 +29,11 @@ export interface BlogPageLayout {
 }
 
 export const blogPageLayoutQuery = `*[_type == "blogPageLayout"][0] {
-    title {
-        en,
-        es,
-        de
-    },
-    heroEyebrow { en, es },
-    ctaHeading { en, es },
-    ctaBody { en, es },
-    ctaLabel { en, es },
+    title,
+    heroEyebrow,
+    ctaHeading,
+    ctaBody,
+    ctaLabel,
     heroImage {
         asset -> {
             url,
@@ -54,11 +50,7 @@ export const blogPageLayoutQuery = `*[_type == "blogPageLayout"][0] {
         hotspot,
         alt
     },
-    paragraph {
-        en,
-        es,
-        de
-    }
+    paragraph
 }`
 
 export async function getBlogPageLayout(): Promise<BlogPageLayout> {

@@ -36,17 +36,9 @@ export const blogPostsCardsQuery = `*[_type == "blogPost" && blogCategory->slug.
   // are translated. A German title over an English body is worse than no
   // German page at all — it promises a translation that isn't there.
   "hasDe": defined(title.de) && count(blogBody.de) > 0,
-  title {
-    en,
-    es,
-    de
-  },
+  title,
   slug,
-  description {
-    en,
-    es,
-    de
-  },
+  description,
   publishDate,
   backgroundImages[0] {
     asset -> {
@@ -114,16 +106,8 @@ export const individualBlogPostQuery = `*[_type == "blogPost" && slug.current ==
   // are translated. A German title over an English body is worse than no
   // German page at all — it promises a translation that isn't there.
   "hasDe": defined(title.de) && count(blogBody.de) > 0,
-  title {
-    en,
-    es,
-    de
-  },
-  description {
-    en,
-    es,
-    de
-  },
+  title,
+  description,
   publishDate,
   _updatedAt,
   backgroundImages[] {
@@ -145,17 +129,9 @@ export const individualBlogPostQuery = `*[_type == "blogPost" && slug.current ==
   blogCategory -> {
     slug
   },
-  blogBody {
-    en,
-    es,
-    de
-  },
+  blogBody,
   seo {
-    structuredData {
-      en,
-      es,
-      de
-    }
+    structuredData
   }
 }`
 
@@ -221,37 +197,10 @@ export const individualBlogPostSEOQuery = `*[_type == "blogPost" && slug.current
   publishDate,
   _updatedAt,
   seo {
-        meta {
-    en {
-      title,
-      description,
-      keywords
-    },
-    es {
-      title,
-      description,
-      keywords
-    },
-    de {
-      title,
-      description,
-      keywords
-    }
-  },
+        meta,
   // Open Graph data
   openGraph {
-    en {
-      title,
-      description
-    },
-    es {
-      title,
-      description
-    },
-    de {
-      title,
-      description
-    },
+    ...,
     "image": {
       "url": image.asset->url,
       "alt": image.alt,

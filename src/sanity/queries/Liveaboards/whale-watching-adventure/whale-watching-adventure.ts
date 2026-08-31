@@ -47,37 +47,10 @@ export interface WhaleWatchingAdventureSEO {
 
 export const whaleWatchingAdventureSEOQuery = `*[_type == "whale-watching-adventure"][0] {
     seo {
-        meta {
-    en {
-      title,
-      description,
-      keywords
-    },
-    es {
-      title,
-      description,
-      keywords
-    },
-    de {
-      title,
-      description,
-      keywords
-    }
-  },
+        meta,
   // Open Graph data
   openGraph {
-    en {
-      title,
-      description
-    },
-    es {
-      title,
-      description
-    },
-    de {
-      title,
-      description
-    },
+    ...,
     "image": {
       "url": image.asset->url,
       "alt": image.alt,
@@ -106,11 +79,7 @@ export interface WhaleWatchingAdventureStructuredData {
 
 export const whaleWatchingAdventureStructuredDataQuery = `*[_type == "whale-watching-adventure"][0] {
     seo {
-        structuredData {
-            en,
-            es,
-            de
-        }
+        structuredData
     }
 }`
 
@@ -149,26 +118,10 @@ export interface WhaleWatchingAdventure {
 export const whaleWatchingAdventureQuery = `*[_type == "whale-watching-adventure"][0] {
     "titleEn": pt::text(paragraph1.en[0]),
     "titleEs": pt::text(paragraph1.es[0]),
-    paragraph1 {
-        en,
-        es,
-        de
-    },
-    paragraph2 {
-        en,
-        es,
-        de
-    },
-    paragraph3 {
-        en,
-        es,
-        de
-    },
-    paragraph4 {
-        en,
-        es,
-        de
-    },
+    paragraph1,
+    paragraph2,
+    paragraph3,
+    paragraph4,
     photoList[] {
         asset -> {
             url,

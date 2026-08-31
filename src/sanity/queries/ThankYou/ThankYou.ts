@@ -40,9 +40,9 @@ export const thankYouQuery = `*[_type == "thankYou"][0] {
     hotspot,
     alt
   },
-  heroEyebrow { en, es },
-  heroTitle { en, es },
-  heroSubtitle { en, es }
+  heroEyebrow,
+  heroTitle,
+  heroSubtitle
 }`
 
 export const getThankYou = async (): Promise<ThankYou> => {

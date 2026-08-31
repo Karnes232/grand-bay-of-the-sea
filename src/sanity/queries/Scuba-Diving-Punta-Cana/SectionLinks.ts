@@ -33,17 +33,9 @@ export interface SectionLinks {
 }
 
 export const sectionLinksQuery = `*[_type == "sectionLinks"] {
-  title {
-    en,
-    es,
-    de
-  },
+  title,
   url,
-  description {
-    en,
-    es,
-    de
-  },
+  description,
   image {
     asset -> {
       url,

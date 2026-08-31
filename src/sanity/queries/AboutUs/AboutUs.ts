@@ -76,38 +76,38 @@ const imageProjection = `{
 
 export const aboutUsQuery = `*[_type == "aboutUs"][0] {
   heroImage ${imageProjection},
-  heroEyebrow { en, es },
-  heroTitle { en, es },
-  heroSubtitle { en, es },
+  heroEyebrow,
+  heroTitle,
+  heroSubtitle,
   stats[] {
-    value { en, es },
-    label { en, es }
+    value,
+    label
   },
-  storyEyebrow { en, es },
-  storyHeading { en, es },
-  storyBody { en, es },
+  storyEyebrow,
+  storyHeading,
+  storyBody,
   storyImage ${imageProjection},
-  teamEyebrow { en, es },
-  teamHeading { en, es },
-  teamIntro { en, es },
+  teamEyebrow,
+  teamHeading,
+  teamIntro,
   teamMembers[] {
     photo ${imageProjection},
     name,
-    role { en, es },
-    bio { en, es }
+    role,
+    bio
   },
-  valuesEyebrow { en, es },
-  valuesHeading { en, es },
+  valuesEyebrow,
+  valuesHeading,
   values[] {
     icon,
-    title { en, es },
-    body { en, es }
+    title,
+    body
   },
   ctaImage ${imageProjection},
-  ctaHeading { en, es },
-  ctaBody { en, es },
-  ctaLabel { en, es },
-  cta2Label { en, es }
+  ctaHeading,
+  ctaBody,
+  ctaLabel,
+  cta2Label
 }`
 
 export const getAboutUs = async (): Promise<AboutUs> => {

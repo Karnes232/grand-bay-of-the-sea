@@ -41,56 +41,24 @@ export interface DiveTripsPage {
 
 export const diveTripsPageQuery = `*[_type == "diveTripsPage"][0] {
   page,
-  heroTitle {
-    en,
-    es,
-    de
-  },
-  heroSubtitle {
-    en,
-    es,
-    de
-  },
+  heroTitle,
+  heroSubtitle,
   heroCta {
-    label {
-      en,
-      es,
-      de
-    },
+    label,
     link
   },
-  paragraph1 {
-    en,
-    es,
-    de
-  },
-  paragraph2 {
-    en,
-    es,
-    de
-  },
+  paragraph1,
+  paragraph2,
   tripDaySteps[] {
-    stepTitle {
-      en,
-      es,
-      de
-    },
-    stepBody {
-      en,
-      es,
-      de
-    }
+    stepTitle,
+    stepBody
   },
-  tripDayNote {
-    en,
-    es,
-    de
-  },
-  tripDayHeading { en, es },
-  tripDayIntro { en, es },
-  ctaHeading { en, es },
-  ctaBody { en, es },
-  ctaLabel { en, es },
+  tripDayNote,
+  tripDayHeading,
+  tripDayIntro,
+  ctaHeading,
+  ctaBody,
+  ctaLabel,
   heroImage {
     asset -> {
       url,

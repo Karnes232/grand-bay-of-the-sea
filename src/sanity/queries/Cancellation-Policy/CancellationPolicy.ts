@@ -40,13 +40,9 @@ export const cancellationPolicyQuery = `*[_type == "cancellationPolicy"][0] {
     hotspot,
     alt
   },
-  content {
-    en,
-    es,
-    de
-  },
-  eyebrow { en, es },
-  contactPrompt { en, es }
+  content,
+  eyebrow,
+  contactPrompt
 }`
 
 export const getCancellationPolicy = async (): Promise<CancellationPolicy> => {

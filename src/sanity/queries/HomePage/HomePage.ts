@@ -143,119 +143,39 @@ export const homePageQuery = `*[_type == "homePage"][0] {
     hotspot,
     alt
   },
-  heroTitle {
-    en,
-    es,
-    de
-  },
-  heroSubtitle {
-    en,
-    es,
-    de
-  },
+  heroTitle,
+  heroSubtitle,
   heroCta {
-    label {
-      en,
-      es,
-      de
-    },
+    label,
     link
   },
-  paragraph1 {
-    en,
-    es,
-    de
-  },
-  paragraph2 {
-    en,
-    es,
-    de
-  },
-  paragraph3 {
-    en,
-    es,
-    de
-  },
+  paragraph1,
+  paragraph2,
+  paragraph3,
   stats[] {
-    value {
-      en,
-      es,
-      de
-    },
-    label {
-      en,
-      es,
-      de
-    }
+    value,
+    label
   },
-  whyUniqueHeading {
-    en,
-    es,
-    de
-  },
+  whyUniqueHeading,
   sharkBanner {
-    eyebrow {
-      en,
-      es,
-      de
-    },
-    heading {
-      en,
-      es,
-      de
-    },
-    body {
-      en,
-      es,
-      de
-    },
-    ctaLabel {
-      en,
-      es,
-      de
-    },
+    eyebrow,
+    heading,
+    body,
+    ctaLabel,
     ctaLink
   },
   courseHighlights[] {
-    badge {
-      en,
-      es,
-      de
-    },
-    title {
-      en,
-      es,
-      de
-    },
-    blurb {
-      en,
-      es,
-      de
-    },
+    badge,
+    title,
+    blurb,
     href
   },
   bookingSection {
-    eyebrow {
-      en,
-      es,
-      de
-    },
-    heading {
-      en,
-      es,
-      de
-    },
-    body {
-      en,
-      es,
-      de
-    }
+    eyebrow,
+    heading,
+    body
   },
-  bookingBenefits[] {
-    en,
-    es,
-    de
-  }
+  bookingBenefits[]
 }`
 
 export const getHomePage = async (): Promise<HomePage> => {

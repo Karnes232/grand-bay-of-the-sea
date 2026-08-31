@@ -48,37 +48,10 @@ export interface PageSeo {
 export const seoQuery = `*[_type == "pageSeo" && pageName == $pageName][0] {
     pageName,
     seo {
-        meta {
-    en {
-      title,
-      description,
-      keywords
-    },
-    es {
-      title,
-      description,
-      keywords
-    },
-    de {
-      title,
-      description,
-      keywords
-    }
-  },
+        meta,
   // Open Graph data
   openGraph {
-    en {
-      title,
-      description
-    },
-    es {
-      title,
-      description
-    },
-    de {
-      title,
-      description
-    },
+    ...,
     "image": {
       "url": image.asset->url,
       "alt": image.alt,
@@ -100,11 +73,7 @@ export async function getPageSeo(pageName: string): Promise<PageSeo> {
 export const structuredDataQuery = `*[_type == "pageSeo" && pageName == $pageName][0] {
     pageName,
     seo {
-        structuredData {
-            en,
-            es,
-            de
-        }
+        structuredData
     }
 }`
 
