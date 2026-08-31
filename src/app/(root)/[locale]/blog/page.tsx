@@ -111,6 +111,8 @@ export default async function Page({
   const heroImg = layout.heroImage
   const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg.asset.url
 
+  const tBc = await getTranslations("Breadcrumb")
+
   return (
     <main id="main">
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
@@ -119,8 +121,8 @@ export default async function Page({
         dangerouslySetInnerHTML={{
           __html: breadcrumbJsonLd(
             [
-              { name: "Home", path: "" },
-              { name: "Blog", path: "/blog" },
+              { name: tBc("home"), path: "" },
+              { name: tBc("blog"), path: "/blog" },
             ],
             locale,
           ),

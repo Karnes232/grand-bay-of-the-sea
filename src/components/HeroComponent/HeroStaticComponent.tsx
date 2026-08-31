@@ -15,7 +15,7 @@ const HeroStaticComponent = ({
   title?: string
   subtitle?: string
   cta?: { label: string; href: string }
-  /** e.g. "★ 4.8 · 151 Google reviews · Verified PADI Dive Center #27147" */
+  /** e.g. "★ 4.8 · 159 Google reviews · Verified PADI Dive Center #27147" */
   trustLine?: string
   /** Sanity `metadata.lqip` base64 blur placeholder. Optional. */
   blurDataURL?: string

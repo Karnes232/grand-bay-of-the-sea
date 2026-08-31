@@ -1,5 +1,5 @@
 import JsonLd from "@/components/StructuredData/JsonLd"
-import { setRequestLocale } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 import CoursesHero from "@/components/courses/CoursesHero"
 import StatsBar from "@/components/home/StatsBar"
 import SharkBanner from "@/components/home/SharkBanner"
@@ -77,6 +77,8 @@ export default async function Page({
   const ctaImg = about.ctaImage
   const ctaSrc = sanityCropUrl(ctaImg, 2400, 1200) || ctaImg?.asset?.url || ""
 
+  const tBc = await getTranslations("Breadcrumb")
+
   return (
     <main id="main">
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
@@ -85,8 +87,8 @@ export default async function Page({
         dangerouslySetInnerHTML={{
           __html: breadcrumbJsonLd(
             [
-              { name: "Home", path: "" },
-              { name: "About Us", path: "/about-us" },
+              { name: tBc("home"), path: "" },
+              { name: tBc("aboutUs"), path: "/about-us" },
             ],
             locale,
           ),

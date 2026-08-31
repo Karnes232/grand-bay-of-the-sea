@@ -17,6 +17,7 @@ const HamburgerMenu = () => {
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false)
   const t = useTranslations("Navbar")
 
+  const tA11y = useTranslations("A11y")
   const links = [
     { href: "/", label: t("home") },
     { href: "/courses", label: t("scubaClasses") },
@@ -39,7 +40,7 @@ const HamburgerMenu = () => {
             <span className="rounded-md shadow-sm">
               <MenuButton
                 className="grid h-[42px] w-[42px] place-items-center rounded-[11px] border border-white/[0.16] bg-white/10 text-white transition-colors hover:bg-white/[0.16] focus:outline-none"
-                aria-label="Open navigation menu"
+                aria-label={tA11y("openNavigationMenu")}
                 aria-haspopup="menu"
               >
                 <Bars3Icon className="h-5 w-5 text-white" aria-hidden="true" />

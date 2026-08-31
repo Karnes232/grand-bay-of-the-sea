@@ -91,6 +91,8 @@ export default async function Page({
         }
       : undefined
 
+  const tBc = await getTranslations("Breadcrumb")
+
   return (
     <main id="main">
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
@@ -99,8 +101,8 @@ export default async function Page({
         dangerouslySetInnerHTML={{
           __html: breadcrumbJsonLd(
             [
-              { name: "Home", path: "" },
-              { name: "Dive Sites", path: "/sites" },
+              { name: tBc("home"), path: "" },
+              { name: tBc("sites"), path: "/sites" },
             ],
             locale,
           ),

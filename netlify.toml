@@ -1,5 +1,8 @@
 [build]
-  command = "npm run build && node scripts/verify-metadata.mjs"
+  # verify-messages runs first and is cheap: a missing key or dropped ICU
+  # placeholder in messages/*.json is a runtime MISSING_MESSAGE crash, so it is
+  # better caught in two seconds than after a full build.
+  command = "node scripts/verify-messages.mjs && npm run build && node scripts/verify-metadata.mjs"
   publish = ".next"
 
 # Canonical host: single-hop 301s from http/apex straight to https://www

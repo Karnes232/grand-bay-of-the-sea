@@ -16,6 +16,7 @@
     "lint": "next lint",
     "verify:meta": "node scripts/verify-metadata.mjs",
     "verify:meta:live": "node scripts/verify-metadata.mjs --url https://www.grandbay-puntacana.com",
+    "verify:messages": "node scripts/verify-messages.mjs",
     "seed:blog": "tsx --env-file=.env.local scripts/1.ts",
     "verify:de": "node --env-file=.env.local scripts/verify-de-content.mjs",
     "i18n:export": "tsx --env-file=.env.local scripts/i18n-export.ts",

@@ -29,6 +29,7 @@ interface DiveInfo {
 
 const PaymentPopupLocalDives = ({ tour }: { tour: DiveInfo }) => {
   const t = useTranslations("PaymentPopupLocalDives")
+  const tA11y = useTranslations("A11y")
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const [formData, setFormData] = useState({
@@ -151,7 +152,7 @@ const PaymentPopupLocalDives = ({ tour }: { tour: DiveInfo }) => {
               <div className="fixed top-5 right-5">
                 <button
                   type="button"
-                  aria-label="Close booking dialog"
+                  aria-label={tA11y("closeBookingDialog")}
                   className="p-2 text-2xl text-gray-500"
                   onClick={() => setIsOpen(false)}
                 >

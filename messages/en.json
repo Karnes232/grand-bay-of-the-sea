@@ -176,7 +176,8 @@
     "columnDive": "Dive",
     "columnExplore": "Explore",
     "columnConfidence": "Book with confidence",
-    "padiVerified": "Verified PADI Dive Center"
+    "padiVerified": "Verified PADI Dive Center",
+    "padiVerifiedStore": "Verified PADI Dive Center — Store #{number}"
   },
   "TrustLine": {
     "line": "★ {rating} · {count} Google reviews · Verified PADI Dive Center #27147"
@@ -338,6 +339,27 @@
     "level": "Level",
     "location": "Location",
     "nearbyHeading": "Nearby dive sites",
-    "viewAll": "View all dive sites"
+    "viewAll": "View all dive sites",
+    "titleSuffix": "Dive Site in Punta Cana"
+  },
+  "Breadcrumb": {
+    "home": "Home",
+    "courses": "PADI Courses",
+    "trips": "Dive Trips",
+    "sites": "Dive Sites",
+    "blog": "Blog",
+    "species": "Species",
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "fishing": "Fishing Punta Cana",
+    "liveaboard": "Liveaboard",
+    "privacyPolicy": "Privacy Policy",
+    "cancellationPolicy": "Cancellation Policy"
+  },
+  "A11y": {
+    "changeLanguage": "Change language",
+    "closeBookingDialog": "Close booking dialog",
+    "openNavigationMenu": "Open navigation menu",
+    "googleReviews": "Google reviews"
   }
 }

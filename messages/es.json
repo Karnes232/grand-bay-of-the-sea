@@ -176,7 +176,8 @@
     "columnDive": "Bucea",
     "columnExplore": "Explora",
     "columnConfidence": "Reserva con confianza",
-    "padiVerified": "Centro de Buceo PADI Verificado"
+    "padiVerified": "Centro de Buceo PADI Verificado",
+    "padiVerifiedStore": "Centro de Buceo PADI Verificado — Tienda #{number}"
   },
   "TrustLine": {
     "line": "★ {rating} · {count} reseñas en Google · Centro de Buceo PADI Verificado #27147"
@@ -338,6 +339,27 @@
     "level": "Nivel",
     "location": "Ubicación",
     "nearbyHeading": "Sitios de buceo cercanos",
-    "viewAll": "Ver todos los sitios de buceo"
+    "viewAll": "Ver todos los sitios de buceo",
+    "titleSuffix": "Sitio de Buceo en Punta Cana"
+  },
+  "Breadcrumb": {
+    "home": "Inicio",
+    "courses": "Cursos PADI",
+    "trips": "Viajes de Buceo",
+    "sites": "Sitios de Buceo",
+    "blog": "Blog",
+    "species": "Especies",
+    "aboutUs": "Sobre Nosotros",
+    "contact": "Contacto",
+    "fishing": "Pesca en Punta Cana",
+    "liveaboard": "Cruceros de Buceo",
+    "privacyPolicy": "Política de Privacidad",
+    "cancellationPolicy": "Política de Cancelación"
+  },
+  "A11y": {
+    "changeLanguage": "Cambiar idioma",
+    "closeBookingDialog": "Cerrar el formulario de reserva",
+    "openNavigationMenu": "Abrir el menú de navegación",
+    "googleReviews": "Reseñas de Google"
   }
 }

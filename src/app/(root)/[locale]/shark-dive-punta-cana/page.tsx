@@ -88,6 +88,8 @@ export default async function Home({
     : ""
   const splitPos = hotspotPosition(splitImg)
 
+  const tBc = await getTranslations("Breadcrumb")
+
   return (
     <main id="main">
       <JsonLd raw={structuredData?.seo?.structuredData[locale]} />
@@ -96,7 +98,7 @@ export default async function Home({
         dangerouslySetInnerHTML={{
           __html: breadcrumbJsonLd(
             [
-              { name: "Home", path: "" },
+              { name: tBc("home"), path: "" },
               {
                 name: "Shark Diving Punta Cana",
                 path: "/shark-dive-punta-cana",

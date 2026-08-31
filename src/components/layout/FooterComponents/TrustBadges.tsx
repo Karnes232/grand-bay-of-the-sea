@@ -2,8 +2,12 @@ import Image from "next/image"
 import React from "react"
 import LazyIframeWhenVisible from "@/components/performance/LazyIframeWhenVisible"
 import { BUSINESS } from "@/lib/business"
+import { getTranslations } from "next-intl/server"
 
-const TrustBadges = () => {
+const TrustBadges = async () => {
+  const tA11y = await getTranslations("A11y")
+  const tFooter = await getTranslations("Footer")
+
   return (
     <div className="border-b border-gray-500">
       <div className="mx-8 flex flex-col justify-between py-4 md:mx-auto md:max-w-2xl md:items-center">
@@ -26,7 +30,7 @@ const TrustBadges = () => {
           target="_blank"
           className="mt-4 text-sm text-gray-300 hover:text-white underline underline-offset-2"
         >
-          Verified PADI Dive Center — Store #{BUSINESS.padiNumber}
+          {tFooter("padiVerifiedStore", { number: BUSINESS.padiNumber })}
         </a>
       </div>
       <LazyIframeWhenVisible
@@ -34,7 +38,7 @@ const TrustBadges = () => {
         className="h-[420px] w-full border-0"
         width="100%"
         height={420}
-        title="Google reviews"
+        title={tA11y("googleReviews")}
         rootMargin="200px"
       />
     </div>

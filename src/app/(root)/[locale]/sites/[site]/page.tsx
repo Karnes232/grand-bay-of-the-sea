@@ -46,16 +46,19 @@ export async function generateMetadata(
   if (!diveSite) notFound()
 
   const alternates = getHreflangAlternates(`sites/${site}`, locale)
+  // The suffix is real page copy, not a slug — it has to follow the locale.
+  const tSite = await getTranslations("DiveSite")
+  const title = `${diveSite.name} · ${tSite("titleSuffix")}`
   const description =
     diveSite.cardDescription?.[locale] ||
     diveSite.description?.[locale]?.slice(0, 155) ||
     ""
 
   return {
-    title: `${diveSite.name} · Dive Site in Punta Cana`,
+    title,
     description,
     openGraph: {
-      title: `${diveSite.name} · Dive Site in Punta Cana`,
+      title,
       description,
       images: diveSite.image.asset.url,
       type: "article",
@@ -123,6 +126,8 @@ export default async function Page({
     s => s?.slug && s.slug !== site,
   )
 
+  const tBc = await getTranslations("Breadcrumb")
+
   return (
     <main id="main">
       <script
@@ -130,8 +135,8 @@ export default async function Page({
         dangerouslySetInnerHTML={{
           __html: breadcrumbJsonLd(
             [
-              { name: "Home", path: "" },
-              { name: "Dive Sites", path: "/sites" },
+              { name: tBc("home"), path: "" },
+              { name: tBc("sites"), path: "/sites" },
               { name: diveSite.name, path: `/sites/${site}` },
             ],
             locale,

@@ -173,6 +173,8 @@ export default async function Page({
     locale === "es" ? "/es" : ""
   }/blog/${category}/${slug}`
 
+  const tBc = await getTranslations("Breadcrumb")
+
   return (
     <main id="main">
       <JsonLd
@@ -187,8 +189,8 @@ export default async function Page({
         dangerouslySetInnerHTML={{
           __html: breadcrumbJsonLd(
             [
-              { name: "Home", path: "" },
-              { name: "Blog", path: "/blog" },
+              { name: tBc("home"), path: "" },
+              { name: tBc("blog"), path: "/blog" },
               { name: categoryName, path: `/blog/${category}` },
               { name: title, path: `/blog/${category}/${slug}` },
             ],

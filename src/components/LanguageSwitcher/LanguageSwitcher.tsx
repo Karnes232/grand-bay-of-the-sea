@@ -9,6 +9,7 @@ import {
 } from "@/i18n/locales"
 import { useState, useRef, useEffect, useMemo, useCallback } from "react"
 import { useParams } from "next/navigation"
+import { useTranslations } from "next-intl"
 import { Globe, ChevronDown, Loader2 } from "lucide-react"
 import { getSafeLocale, preloadLanguageMessages } from "@/utils/languageUtils"
 
@@ -38,6 +39,7 @@ export default function LanguageSwitcher({
 }: LanguageSwitcherProps) {
   const router = useRouter()
   const pathname = usePathname()
+  const tA11y = useTranslations("A11y")
   const [isOpen, setIsOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -154,7 +156,7 @@ export default function LanguageSwitcher({
         <button
           onClick={() => handleToggle(!isOpen)}
           disabled={isLoading}
-          aria-label="Change language"
+          aria-label={tA11y("changeLanguage")}
           aria-haspopup="menu"
           aria-expanded={isOpen}
           className={`flex items-center space-x-2 text-${color} transition-all duration-200 px-3 py-2 rounded-lg border border-transparent ${
@@ -191,7 +193,7 @@ export default function LanguageSwitcher({
         <button
           onClick={() => handleToggle(!isOpen)}
           disabled={isLoading}
-          aria-label="Change language"
+          aria-label={tA11y("changeLanguage")}
           aria-haspopup="menu"
           aria-expanded={isOpen}
           className={`flex items-center space-x-1 text-${color} transition-all duration-200 p-2 rounded-lg ${
