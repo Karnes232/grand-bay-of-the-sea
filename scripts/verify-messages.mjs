@@ -49,6 +49,15 @@ const ALLOW_IDENTICAL = new Set([
   "Blog.author",
   "Breadcrumb.blog",
   "Liveaboard.silverbankTitle",
+  // French/English cognates — spelled identically and correct as they are.
+  // Spanish and German both differ here, so nothing is masked for them.
+  "PaymentPopupFishing.excursion",
+  "PaymentPopupTrip.excursion",
+  "PaymentPopupCourses.excursion",
+  "TourSelect.excursion",
+  "CourseOverview.transport",
+  "Home.booking.date",
+  "Breadcrumb.contact",
 ])
 
 function flatten(node, prefix = "", out = {}) {

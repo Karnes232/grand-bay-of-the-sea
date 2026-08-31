@@ -1,0 +1,370 @@
+{
+  "Navbar": {
+    "home": "Accueil",
+    "scubaClasses": "Cours de plongée",
+    "divePackages": "Forfaits plongée",
+    "localDives": "Plongées locales",
+    "sharkDive": "Plongée avec les requins",
+    "diveTrips": "Sorties plongée",
+    "deepSeaFishing": "Pêche au gros",
+    "photoGallery": "Galerie photo",
+    "aboutUs": "À propos",
+    "speciesGuide": "Guide des espèces",
+    "contactUs": "Nous contacter",
+    "scubaDivingPuntaCana": "Plongée sous-marine à Punta Cana",
+    "sharkDivingPuntaCana": "Plongée avec les requins à Punta Cana",
+    "liveAboards": "Croisières plongée",
+    "cancellationPolicy": "Conditions d'annulation",
+    "privacyPolicy": "Politique de confidentialité",
+    "siteMap": "Plan du site",
+    "blog": "Blog",
+    "bookCta": "Réserver une plongée"
+  },
+  "PhotoGallery": {
+    "all": "Tout",
+    "marineLife": "Vie marine",
+    "sharks": "Requins",
+    "wrecks": "Épaves",
+    "divers": "Plongeurs"
+  },
+  "ContactForm": {
+    "heading": "Écrivez-nous",
+    "subheading": "Aucun paiement maintenant — nous confirmons votre place et vous envoyons un lien d'acompte.",
+    "fullName": "Nom complet",
+    "emailAddress": "Adresse e-mail",
+    "hotel": "Hôtel",
+    "yourMessage": "Votre message",
+    "leaveAComment": "Laissez-nous un message...",
+    "submit": "Envoyer",
+    "submitting": "Envoi en cours..."
+  },
+  "FloatingContact": {
+    "openMenu": "Ouvrir les options de contact",
+    "closeMenu": "Fermer les options de contact",
+    "contactForm": "Formulaire de contact",
+    "whatsapp": "WhatsApp",
+    "closeForm": "Fermer le formulaire de contact"
+  },
+  "ThankYou": {
+    "thankYou": "Merci",
+    "ourTeamWillReachOut": "notre équipe vous contactera très prochainement !",
+    "pleaseFeelFreeTo": "N'hésitez pas à",
+    "contactUs": "nous contacter",
+    "withAnyQuestionsOrConcerns": "pour toute question.",
+    "paymentReceivedPending": "Votre paiement a bien été reçu. Nous finalisons votre réservation et vous confirmerons par WhatsApp ou par e-mail très prochainement."
+  },
+  "CustomPagePayPal": {
+    "depositAmount": "Montant de l'acompte",
+    "byProceedingWithPayment": "En procédant au paiement, vous reconnaissez avoir lu et accepté nos",
+    "termsAndConditions": "Conditions générales"
+  },
+  "FishCard": {
+    "readLess": "Réduire",
+    "readMore": "Lire la suite"
+  },
+  "FishingOverview": {
+    "fishingOverview": "La sortie pêche en bref",
+    "sharedFishingCharter": "Sortie pêche partagée",
+    "perPerson": "par personne",
+    "spectator": "Accompagnant",
+    "privateFishingCharter": "Sortie pêche privée",
+    "duration": "Durée",
+    "price": "Prix",
+    "contactUs": "Nous contacter",
+    "reserveSharedCharterNow": "Réserver la sortie partagée",
+    "onlyADeposit": "Seulement un acompte de",
+    "deposit": "d'acompte"
+  },
+  "PaymentPopupFishing": {
+    "bookNow": "Réserver",
+    "contactInfo": "Coordonnées",
+    "fullName": "Nom complet",
+    "emailAddress": "Adresse e-mail",
+    "whatsappPhone": "WhatsApp / Téléphone",
+    "hotel": "Hôtel",
+    "numberOfFishermen": "Nombre de pêcheurs",
+    "numberOfSpectators": "Nombre d'accompagnants",
+    "excursion": "Excursion"
+  },
+  "PayPalButtonWrapperBooking": {
+    "pleaseCompleteAllRequiredFieldsBeforeProceedingWithPayment": "Veuillez remplir tous les champs obligatoires avant de procéder au paiement.",
+    "byProceedingWithPayment": "En procédant au paiement, vous reconnaissez avoir lu et accepté nos",
+    "termsAndConditions": "Conditions générales",
+    "processing": "Traitement de votre réservation…"
+  },
+  "DatePickerComponent": {
+    "preferredDate": "Date souhaitée",
+    "closedOnSundays": "Fermé le dimanche. Merci de choisir une autre date.",
+    "availableDaysFor": "Jours disponibles pour"
+  },
+  "TripOverview": {
+    "tripOverview": "La sortie en bref",
+    "price": "Prix",
+    "perPerson": "par personne",
+    "2tankDive": "sortie 2 plongées",
+    "companion": "accompagnant",
+    "duration": "Durée",
+    "reserveNow": "Réserver maintenant",
+    "onlyADeposit": "Seulement un acompte de",
+    "deposit": "d'acompte",
+    "contactUs": "Nous contacter"
+  },
+  "PaymentPopupTrip": {
+    "bookNow": "Réserver",
+    "contactInfo": "Coordonnées",
+    "fullName": "Nom complet",
+    "emailAddress": "Adresse e-mail",
+    "whatsappPhone": "WhatsApp / Téléphone",
+    "hotel": "Hôtel",
+    "numberOfDivers": "Nombre de plongeurs",
+    "numberOfSnorkelers": "Nombre de personnes en snorkeling",
+    "excursion": "Excursion"
+  },
+  "LocalDivesOverview": {
+    "2tankDive": "Sortie 2 plongées",
+    "perPerson": "par personne",
+    "duration": "Durée",
+    "4tankPackage": "Forfait 4 plongées",
+    "sharkDive": "Plongée avec les requins",
+    "otherPackagesAvailableUponRequest": "Autres forfaits disponibles sur demande",
+    "reserveNow": "Réserver maintenant",
+    "onlyADeposit": "Seulement un acompte de",
+    "deposit": "d'acompte",
+    "bookNowViaPad": "Réserver via PADI",
+    "contactUs": "Nous contacter",
+    "packagesEyebrow": "Forfaits plongée",
+    "bestValue": "Le meilleur rapport qualité-prix sur plusieurs jours",
+    "advancedDivers": "Plongeurs confirmés",
+    "otherPackages": "Autres forfaits",
+    "reserveSubtitle": "Réservez votre place avec un acompte de seulement ${price} — le solde se règle le jour de votre plongée."
+  },
+  "PaymentPopupLocalDives": {
+    "bookNow": "Réserver",
+    "contactInfo": "Coordonnées",
+    "fullName": "Nom complet",
+    "emailAddress": "Adresse e-mail",
+    "whatsappPhone": "WhatsApp / Téléphone",
+    "hotel": "Hôtel",
+    "numberOfGuests": "Nombre de participants"
+  },
+  "CertificationLevel": {
+    "certificationLevel": "Niveau de certification",
+    "notCertified": "Non certifié"
+  },
+  "TourSelect": {
+    "twoTankDive": "Sortie 2 plongées",
+    "fourTankPackage": "Forfait 4 plongées",
+    "excursion": "Excursion"
+  },
+  "DiveSiteCard": {
+    "showLess": "Réduire",
+    "readMore": "Lire la suite",
+    "meters": "mètres",
+    "feet": "pieds",
+    "exploreSharkDive": "Découvrir la plongée avec les requins",
+    "levelBeginner": "Débutant",
+    "levelIntermediate": "Intermédiaire",
+    "levelAdvanced": "Confirmé",
+    "levelAllLevels": "Tous niveaux",
+    "locCatalina": "Catalina",
+    "locBayahibe": "Bayahibe",
+    "locLocal": "Local"
+  },
+  "Footer": {
+    "builtBy": "Réalisé par",
+    "developedBy": "Création de sites web en République dominicaine",
+    "columnDive": "Plonger",
+    "columnExplore": "Explorer",
+    "columnConfidence": "Réservez en toute confiance",
+    "padiVerified": "Centre de plongée PADI vérifié",
+    "padiVerifiedStore": "Centre de plongée PADI vérifié — N° {number}",
+    "attribution": "Mention de réalisation du site web"
+  },
+  "TrustLine": {
+    "line": "★ {rating} · {count} avis Google · Centre de plongée PADI vérifié #27147"
+  },
+  "Cards": {
+    "from": "à partir de"
+  },
+  "ContactInfo": {
+    "title": "Contact et accès",
+    "addressLabel": "Adresse",
+    "phoneLabel": "Téléphone",
+    "emailLabel": "E-mail",
+    "hoursLabel": "Horaires d'ouverture",
+    "hoursValue": "Du lundi au dimanche, de 8h30 à 17h00",
+    "country": "République dominicaine",
+    "mapLink": "Voir sur Google Maps"
+  },
+  "SelectionComponent": {
+    "learnToDiveWithExperts": "Apprenez à plonger avec des professionnels",
+    "discoverTheUnderwaterWorld": "Découvrez le monde sous-marin avec nos instructeurs certifiés au niveau international. Du débutant au plongeur confirmé, nous proposons des cours pour tous les niveaux.",
+    "experienceOurBestDiveSites": "Découvrez nos plus beaux sites de plongée",
+    "saveWithOurValuePackedDivePackages": "Économisez avec nos forfaits plongée conçus pour les plongeurs certifiés. Des aventures sur plusieurs jours vers les meilleurs sites de Punta Cana.",
+    "exploreTheStunningIslandsOfTheDominicanRepublic": "Explorez les îles magnifiques de la République dominicaine lors de nos excursions à la journée. Parfait pour tous.",
+    "caribbeanDayAdventures": "Excursions à la journée dans les Caraïbes"
+  },
+  "CourseOverview": {
+    "courseOverview": "Le cours en bref",
+    "courseLevel": "Niveau du cours",
+    "price": "Prix",
+    "perPerson": "par personne",
+    "duration": "Durée",
+    "includes": "Comprend",
+    "contactUs": "Nous contacter",
+    "reserveNow": "Réserver maintenant",
+    "only50Deposit": "Seulement 50 % d'acompte",
+    "transport": "Transport",
+    "dives": "Plongées",
+    "maxDepth": "Profondeur max."
+  },
+  "PaymentPopupCourses": {
+    "bookNow": "Réserver",
+    "contactInfo": "Coordonnées",
+    "fullName": "Nom complet",
+    "emailAddress": "Adresse e-mail",
+    "whatsappPhone": "WhatsApp / Téléphone",
+    "hotel": "Hôtel",
+    "numberOfGuests": "Nombre de participants",
+    "excursion": "Excursion"
+  },
+  "CourseCards": {
+    "discoverScubaDiving": "Pour celles et ceux qui n'ont jamais plongé !",
+    "scubaDiver": "Plongez sous la supervision directe d'un professionnel PADI jusqu'à une profondeur maximale de 12 mètres / 40 pieds",
+    "openWaterDiver": "Plongez partout dans le monde avec un binôme certifié !",
+    "advancedOpenWaterDiver": "Passez au niveau supérieur !",
+    "sharkConservationDiver": "Vivez des plongées passionnantes avec les requins tout en apprenant la sécurité, leur comportement et la conservation.",
+    "enrichedAirNitrox": "Allongez vos temps de plongée et réduisez vos intervalles de surface grâce au Nitrox",
+    "wreckDiver": "Explorez les navires coulés et l'histoire sous-marine avec le cours Wreck Diver.",
+    "deepDiver": "Explorez les sites profonds en toute sécurité avec le cours PADI Deep Diver",
+    "peakPerformanceBuoyancy": "Maîtrisez votre flottabilité pour des plongées plus fluides, plus efficaces et plus agréables."
+  },
+  "Blog": {
+    "readMore": "Lire la suite",
+    "browseArticles": "Parcourir les articles",
+    "youMayAlsoLike": "Vous aimerez aussi",
+    "by": "Par",
+    "author": "Grand Bay Dive Team",
+    "published": "Publié le",
+    "updated": "Mis à jour le",
+    "searchPlaceholder": "Rechercher un article...",
+    "noBlogPostsFound": "Aucun article trouvé",
+    "blogPostsFound": "article trouvé",
+    "blogPostsFoundPlural": "articles trouvés",
+    "noMatch": "Aucun article ne correspond à votre recherche.",
+    "showing": "Affichage de",
+    "of": "sur",
+    "previousPage": "Page précédente",
+    "nextPage": "Page suivante",
+    "goToPage": "Aller à la page",
+    "share": "Partager",
+    "morePhotos": "Plus de photos",
+    "backToCategory": "← Retour à tous les articles {category}"
+  },
+  "Home": {
+    "hero": {
+      "book": "Réservez votre plongée",
+      "exploreCourses": "Découvrir les cours de plongée"
+    },
+    "cards": {
+      "cta": "Explorer"
+    },
+    "courses": {
+      "heading": "Cours PADI et sorties encadrées"
+    },
+    "faq": {
+      "heading": "Questions fréquentes"
+    },
+    "booking": {
+      "requestTitle": "Demander une réservation",
+      "fullName": "Nom complet",
+      "namePlaceholder": "Votre nom",
+      "email": "E-mail",
+      "date": "Date",
+      "experience": "Expérience",
+      "divers": "Plongeurs",
+      "submit": "Demander ma plongée",
+      "submitting": "Envoi…",
+      "disclaimer": "Aucun paiement maintenant. Nous confirmons les disponibilités et vous envoyons un lien d'acompte.",
+      "successTitle": "Demande bien reçue !",
+      "successBody": "Merci {name} — nous vous confirmons votre plongée par e-mail et par SMS très prochainement. À bientôt sous l'eau.",
+      "expFirst": "Première fois / Baptême",
+      "expCert": "Je passe une certification",
+      "expCertified": "Plongeur certifié"
+    }
+  },
+  "Courses": {
+    "viewCourse": "Voir le cours",
+    "faqHeading": "Questions fréquentes",
+    "detail": {
+      "galleryHeading": "Un aperçu de ce qui vous attend",
+      "ctaHeading": "Prêt à vous lancer ?",
+      "ctaBody": "Réservez votre place avec 50 % d'acompte. Nous confirmons vos dates et vous envoyons tout ce qu'il faut pour vous préparer.",
+      "ctaLabel": "Réserver maintenant",
+      "depositNote": "Réservez avec seulement 50 % d'acompte",
+      "equipmentProvided": "Tout l'équipement fourni",
+      "transportIncluded": "Transport depuis l'hôtel inclus",
+      "smallGroups": "Petits groupes, suivi personnalisé",
+      "viewGallery": "Voir toute la galerie"
+    }
+  },
+  "Trips": {
+    "tripEyebrow": "Excursion à la journée",
+    "viewTrip": "Voir le détail de la sortie",
+    "perDiver": "/ plongeur",
+    "enquire": "Demander un devis",
+    "privateOnly": "Excursions privées uniquement",
+    "excursionEyebrow": "L'excursion",
+    "factDuration": "Durée",
+    "factDives": "Plongées",
+    "factDivesValue": "2 encadrées",
+    "tripDayHeading": "Votre journée en mer",
+    "ctaHeading": "Prêt à plonger ?",
+    "ctaBody": "Réservez votre place avec un simple acompte — nous confirmons votre date et nous occupons du reste.",
+    "ctaLabel": "Réserver maintenant"
+  },
+  "Liveaboard": {
+    "expeditionsEyebrow": "Expéditions",
+    "expeditionsHeading": "Nos croisières plongée",
+    "silverbankTitle": "Expédition Silverbank",
+    "whaleTitle": "Sortie observation des baleines",
+    "viewExpedition": "Voir l'expédition",
+    "galleryHeading": "La vie à bord",
+    "viewGallery": "Voir toute la galerie",
+    "faqHeading": "Questions fréquentes"
+  },
+  "DiveSite": {
+    "diveSites": "Sites de plongée",
+    "aboutEyebrow": "À propos du site",
+    "maxDepth": "Profondeur max.",
+    "level": "Niveau",
+    "location": "Lieu",
+    "nearbyHeading": "Sites de plongée à proximité",
+    "viewAll": "Voir tous les sites de plongée",
+    "titleSuffix": "site de plongée à Punta Cana"
+  },
+  "Breadcrumb": {
+    "home": "Accueil",
+    "courses": "Cours PADI",
+    "trips": "Sorties plongée",
+    "sites": "Sites de plongée",
+    "blog": "Blog",
+    "species": "Espèces",
+    "aboutUs": "À propos",
+    "contact": "Contact",
+    "fishing": "Pêche à Punta Cana",
+    "liveaboard": "Croisière plongée",
+    "privacyPolicy": "Politique de confidentialité",
+    "cancellationPolicy": "Conditions d'annulation"
+  },
+  "A11y": {
+    "changeLanguage": "Changer de langue",
+    "closeBookingDialog": "Fermer la fenêtre de réservation",
+    "openNavigationMenu": "Ouvrir le menu de navigation",
+    "googleReviews": "Avis Google"
+  },
+  "Fishes": {
+    "searchPlaceholder": "Rechercher un poisson...",
+    "noResults": "Aucun poisson trouvé avec ce nom."
+  }
+}
