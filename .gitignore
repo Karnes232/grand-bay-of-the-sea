@@ -37,12 +37,23 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# GEO audit deliverables (kept local, not part of the app)
+# Local deliverables — audits, reports, crawler output. Generated for the owner,
+# large, dated, and regenerated often; none of it is part of the app.
+#
+# No PDF at the repo root belongs to the app, so ignore the lot rather than
+# naming each report family as they appear. Anchored to the root: PDFs under
+# public/ or src/ are still tracked.
+/*.pdf
+*-AUDIT-SUMMARY*.md
 GEO-AUDIT-REPORT*.md
 GEO-PROGRESS-REPORT*.md
-GEO-REPORT*.pdf
 GEO-REPORT*.html
+
+# Crawler output. Both rules are needed: `*-audit/` catches
+# www.grandbay-puntacana.com-audit/, `*-audit-*/` the dated
+# www.grandbay-puntacana.com-audit-2026-07-25/.
 *-audit/
+*-audit-*/
 
 # Translation exchange files. The exported XLIFF/CSV are derived from Sanity
 # and regenerable (`npm run i18n:export`), so they stay out. The batch files
