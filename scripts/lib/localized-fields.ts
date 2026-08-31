@@ -483,7 +483,8 @@ export function collectSegments(
                 ? value.join(", ") // e.g. seo.meta.keywords
                 : null
           if (source === null || !source.trim()) continue
-          if (!includeTranslated && !isEmpty(node.de?.[leafKey])) continue
+          if (!includeTranslated && !isEmpty(node[locale]?.[leafKey]))
+            continue
           segments.push({
             id: `${doc._id}::${path}::${leafKey}`,
             docId: doc._id,
