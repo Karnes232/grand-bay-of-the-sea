@@ -341,8 +341,9 @@ async function main() {
   await tx.commit()
   console.log(
     `\nWrote ${touched.length} draft(s). Nothing is published — review in ` +
-      `Studio at /studio, then publish. Re-run \`npm run verify:de\` before ` +
-      `enabling NEXT_PUBLIC_LOCALE_DE_ENABLED.`,
+      `Studio at /studio, then publish. Re-run ` +
+      `\`npm run verify:locale -- --locale ${locale}\` before enabling ` +
+      `NEXT_PUBLIC_LOCALE_${locale.toUpperCase()}_ENABLED.`,
   )
 }
 
