@@ -72,8 +72,10 @@
   # Removing this line takes /de dark again on the next deploy; the German
   # content stays in Sanity either way.
   NEXT_PUBLIC_LOCALE_DE_ENABLED = "true"
-  # French is built but not launched: the plumbing and Sanity fields exist,
-  # the translation does not. Leave this "false" until messages/fr.json and the
-  # Sanity French fields are filled in — ACTIVE_LOCALES drops /fr entirely while
-  # it is off, so nothing French is routed, sitemapped or advertised.
-  NEXT_PUBLIC_LOCALE_FR_ENABLED = "false"
+  # French launched 2026-08-31: all 1,768 service-site segments translated and
+  # published to Sanity, and all 286 UI strings in messages/fr.json. The blog is
+  # English/Spanish plus per-post German only — French posts would be a further
+  # 832 segments, so /fr/blog redirects to /blog for now (PER_POST_BLOG).
+  # Setting this to "false" takes /fr dark again on the next deploy; the French
+  # content stays in Sanity either way.
+  NEXT_PUBLIC_LOCALE_FR_ENABLED = "true"

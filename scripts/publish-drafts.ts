@@ -1,9 +1,8 @@
 /**
- * Publish the German translation drafts.
+ * Publish translation drafts for one locale.
  *
- * Written for the German launch, but deliberately general: it publishes drafts
- * whose ONLY difference from the published document is added content under a
- * `.de` field, and refuses to publish anything else.
+ * It publishes drafts whose ONLY difference from the published document is
+ * added content under the target locale's field, and refuses anything else.
  *
  * That guard is the whole point. Publishing replaces the published document
  * with the draft wholesale, so a draft carrying an unrelated edit — someone
@@ -171,7 +170,8 @@ async function main() {
     `\nPublished ${done} document(s). Drafts remaining in dataset: ${remaining}.`,
   )
   console.log(
-    `Run \`npm run verify:de\` — it should now report 0 missing German fields.`,
+    `Run \`npm run verify:locale -- --locale ${locale}\` — it should now ` +
+      `report 0 missing fields.`,
   )
 }
 
