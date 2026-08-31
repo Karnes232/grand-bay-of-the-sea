@@ -52,6 +52,15 @@ export function generateStructuredData(locale: string = "en") {
     priceRange: "$$",
     currenciesAccepted: "USD",
     paymentAccepted: "Cash, Credit Card",
+    // Languages the BUSINESS speaks — deliberately NOT derived from the locale
+    // registry, which describes what the *website* is published in. The two are
+    // different facts: About Us says a team member is "Fluent in Spanish,
+    // English, and French", so French belongs here even though there is no
+    // French site; and publishing German pages does not by itself mean anyone
+    // at the dive centre speaks German. Add "de" only once that is confirmed —
+    // this is a claim search engines may surface, not a routing detail.
+    // (Sanity's own page-level JSON-LD blobs still say ["en", "es"] and so
+    // disagree with this; worth reconciling.)
     knowsLanguage: ["en", "es", "fr"],
     address: {
       "@type": "PostalAddress",
@@ -89,6 +98,8 @@ export function generateStructuredData(locale: string = "en") {
         "@type": "ContactPoint",
         telephone: BUSINESS.phoneSchema,
         contactType: "customer service",
+        // Same distinction as knowsLanguage above: staff languages, not
+        // site locales.
         availableLanguage: ["en", "es", "fr"],
       },
     ],
