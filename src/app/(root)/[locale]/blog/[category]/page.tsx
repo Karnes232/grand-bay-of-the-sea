@@ -16,8 +16,12 @@ import {
 import { getBlogPostsCards } from "@/sanity/queries/Blog/BlogPosts"
 import { getBlogPageLayout } from "@/sanity/queries/Blog/BlogPageLayout"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
-import { type Locale } from "@/i18n/locales"
-import { localesForPostList } from "@/utils/blogLocales"
+import { BLOG_LOCALES, type Locale } from "@/i18n/locales"
+import {
+  listHasLocale,
+  localesForPostList,
+  postHasLocale,
+} from "@/utils/blogLocales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -35,14 +39,11 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { category, locale } = await params
   setRequestLocale(locale)
-  // German is per-post. With no translated post in this category there is no
-  // German hub, so redirect. Must run here as well as in the page body:
+  // With no post in this category translated into a per-post locale there is
+  // no hub for it, so redirect. Must run here as well as in the page body:
   // generateMetadata executes first and would otherwise crash indexing
   // `seo.meta[locale]`.
-  if (
-    locale === "de" &&
-    !(await getBlogPostsCards(category)).some(c => c.hasDe)
-  ) {
+  if (!listHasLocale(await getBlogPostsCards(category), locale)) {
     redirect(`/blog/${category}`)
   }
   const pageSeo = await getIndividualBlogCategorySEO(category)
@@ -97,12 +98,13 @@ export default async function Page({
   // Unknown category → real 404 instead of crashing on missing fields below.
   if (!blogCategory) notFound()
 
-  // German is per-post. A German category hub lists only the posts that are
-  // actually translated; with none, there is no German page to show, so send
-  // the reader to the English hub rather than an empty listing.
-  const blogPostsCards =
-    locale === "de" ? allCards.filter(c => c.hasDe) : allCards
-  if (locale === "de" && blogPostsCards.length === 0) {
+  // A per-post locale's category hub lists only the posts actually translated
+  // into it; with none, there is no page to show, so send the reader to the
+  // English hub rather than an empty listing.
+  const blogPostsCards = BLOG_LOCALES.includes(locale)
+    ? allCards
+    : allCards.filter(card => postHasLocale(card, locale))
+  if (blogPostsCards.length === 0) {
     redirect(`/blog/${category}`)
   }
 

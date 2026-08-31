@@ -95,14 +95,31 @@ export function stripLocalePrefix(pathname: string): string {
 }
 
 /**
- * Locales the blog exists in.
+ * How the blog is translated, per locale.
  *
- * These are the locales in which *every* post exists. Translating 150 posts per
- * language is an unbounded commitment, so additional locales are handled
- * per-post instead: see `src/utils/blogLocales.ts`, where a post carrying a
- * translation gets a real URL and an hreflang alternate, and everything else
- * redirects to English.
+ * The service site is translated wholesale into every locale. The blog cannot
+ * be: it is 151 posts and ~190k words, so a full translation is out of
+ * proportion to what a fourth or fifth language is worth. So each locale is one
+ * of two kinds, and this is the only place that says which:
+ *
+ *  - **Wholesale** (`BLOG_LOCALES`) — every post exists. English and Spanish.
+ *  - **Per-post** (`PER_POST_BLOG_LOCALES`) — a post that carries a translation
+ *    gets a real URL, an hreflang alternate and a sitemap entry; everything
+ *    else redirects to English. German, and French when it lands.
+ *
+ * Which kind a locale is is an editorial decision — whether the whole blog is
+ * worth translating — so it cannot be derived from anything. Adding a locale to
+ * `PER_POST_BLOG` below is the whole change; `src/utils/blogLocales.ts` and the
+ * GROQ availability projection both build themselves from these two lists.
  */
+const PER_POST_BLOG: readonly string[] = ["de"]
+
+/** Locales in which *every* blog post exists. */
 export const BLOG_LOCALES: readonly Locale[] = ACTIVE_LOCALES.filter(
-  locale => locale !== "de",
+  locale => !PER_POST_BLOG.includes(locale),
+)
+
+/** Locales in which the blog is translated a post at a time. */
+export const PER_POST_BLOG_LOCALES: readonly Locale[] = ACTIVE_LOCALES.filter(
+  locale => PER_POST_BLOG.includes(locale),
 )

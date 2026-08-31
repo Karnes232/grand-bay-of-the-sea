@@ -12,8 +12,12 @@ import { getBlogPageLayout } from "@/sanity/queries/Blog/BlogPageLayout"
 import { getBlogCategory } from "@/sanity/queries/Blog/BlogCategory"
 import { getBlogPosts } from "@/sanity/queries/Blog/BlogPosts"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
-import { type Locale } from "@/i18n/locales"
-import { localesForPostList } from "@/utils/blogLocales"
+import { BLOG_LOCALES, type Locale } from "@/i18n/locales"
+import {
+  listHasLocale,
+  localesForPostList,
+  postHasLocale,
+} from "@/utils/blogLocales"
 import { notFound, redirect } from "next/navigation"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
@@ -28,10 +32,10 @@ export async function generateMetadata({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  // German is per-post. With nothing translated there is no German index, so
-  // redirect. Must run here as well as in the page body: generateMetadata
+  // Per-post locales have no index until something is translated into them,
+  // so redirect. Must run here as well as in the page body: generateMetadata
   // executes first and would otherwise crash indexing `seo.meta[locale]`.
-  if (locale === "de" && !(await getBlogPosts()).some(p => p.hasDe)) {
+  if (!listHasLocale(await getBlogPosts(), locale)) {
     redirect("/blog")
   }
   const pageSeo = await getPageSeo("Blog")
@@ -88,25 +92,26 @@ export default async function Page({
       getTranslations("Blog"),
     ])
 
-  // German is per-post: with nothing translated yet there is no German blog to
-  // show, so send the reader to the English index instead of an empty page.
-  // This is also what makes the footer's "Blog" link work on German pages —
-  // next-intl prefixes it to /de/blog, which used to 404.
-  if (locale === "de" && !allPosts.some(p => p.hasDe)) {
+  // A per-post locale with nothing translated yet has no blog to show, so send
+  // the reader to the English index instead of an empty page. This is also what
+  // makes the footer's "Blog" link work on those pages — next-intl prefixes it
+  // to /de/blog, which used to 404.
+  if (!listHasLocale(allPosts, locale)) {
     redirect("/blog")
   }
 
-  // A German category hub only exists when it holds a translated post — the
-  // rest redirect to English. Listing all five on the German index would send
-  // readers through a redirect into another language, so the grid shows only
-  // the categories that really are German. Same rule as the sitemap.
-  const germanCategorySlugs = new Set(
-    allPosts.filter(p => p.hasDe).map(p => p.blogCategory.slug.current),
+  // In a per-post locale a category hub only exists when it holds a translated
+  // post — the rest redirect to English. Listing all five would send readers
+  // through a redirect into another language, so the grid shows only the
+  // categories that really exist in this one. Same rule as the sitemap.
+  const translatedCategorySlugs = new Set(
+    allPosts
+      .filter(post => postHasLocale(post, locale))
+      .map(post => post.blogCategory.slug.current),
   )
-  const categories =
-    locale === "de"
-      ? blogCategories.filter(c => germanCategorySlugs.has(c.slug.current))
-      : blogCategories
+  const categories = BLOG_LOCALES.includes(locale)
+    ? blogCategories
+    : blogCategories.filter(c => translatedCategorySlugs.has(c.slug.current))
 
   const heroImg = layout.heroImage
   const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg.asset.url

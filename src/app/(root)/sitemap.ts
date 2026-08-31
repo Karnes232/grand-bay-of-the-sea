@@ -1,3 +1,4 @@
+import { postHasLocale } from "@/utils/blogLocales"
 import { getBlogCategory } from "@/sanity/queries/Blog/BlogCategory"
 import { getBlogPosts } from "@/sanity/queries/Blog/BlogPosts"
 import { getCourseSlugs } from "@/sanity/queries/Courses/IndividualCourses"
@@ -299,12 +300,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         }))
     : []
 
-  // Only posts carrying `hasDe` exist at a /de/ URL; the rest redirect to
+  // Only posts translated into German exist at a /de/ URL; the rest redirect to
   // English, and listing a redirect in a sitemap is a wasted crawl. A German
   // category hub is emitted only when that category holds at least one German
   // post, since the German listing renders just the German posts and an empty
   // one would be a soft 404.
-  const germanBlogPosts = blogPostsSanity.filter(post => post.hasDe)
+  const germanBlogPosts = blogPostsSanity.filter(post =>
+    postHasLocale(post, "de"),
+  )
   const germanBlogCategories = new Set(
     germanBlogPosts.map(post => post.blogCategory.slug.current),
   )
