@@ -31,7 +31,16 @@ if (!SOURCE_CSV) {
   )
   process.exit(1)
 }
-const BATCH_DIR = "translations/batches"
+/**
+ * Batches are per-locale, and MUST be.
+ *
+ * Segment ids are `docId::fieldPath[::blockKey]` — they identify a field, not
+ * a language, so the German and French exports share 84% of their ids. A single
+ * shared batch directory would have merged German text into the French column
+ * for 1,353 of 1,608 segments, and the import would have published it as
+ * French.
+ */
+const BATCH_DIR = `translations/batches-${locale}`
 const OUT_CSV = SOURCE_CSV.replace(/\.csv$/, "-filled.csv")
 
 const LIMITS = { title: 60, description: 160 }
