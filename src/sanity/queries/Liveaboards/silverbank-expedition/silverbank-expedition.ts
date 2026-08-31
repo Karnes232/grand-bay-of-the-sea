@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface SilverbankSEO {
   seo: {
@@ -99,11 +100,7 @@ export async function getSilverbankExpeditionSEO(): Promise<SilverbankSEO> {
 
 export interface SilverbankExpeditionStructuredData {
   seo: {
-    structuredData: {
-      en: string
-      es: string
-      de: string
-    }
+    structuredData: Localized<string>
   }
 }
 
@@ -127,26 +124,10 @@ export async function getSilverbankExpeditionStructuredData(): Promise<Silverban
 export interface SilverbankExpedition {
   titleEn?: string
   titleEs?: string
-  paragraph1: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph2: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph3: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph4: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  paragraph1: Localized<any[]>
+  paragraph2: Localized<any[]>
+  paragraph3: Localized<any[]>
+  paragraph4: Localized<any[]>
   photoList: {
     asset: {
       url: string

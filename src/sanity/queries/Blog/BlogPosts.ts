@@ -1,19 +1,12 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface BlogPostsCards {
-  title: {
-    en: string
-    es: string
-    de: string
-  }
+  title: Localized<string>
   slug: {
     current: string
   }
-  description: {
-    en: string
-    es: string
-    de: string
-  }
+  description: Localized<string>
   publishDate: string
   backgroundImages: {
     asset: {
@@ -83,16 +76,8 @@ export async function getBlogPostsCards(
 }
 
 export interface BlogPost {
-  title: {
-    en: string
-    es: string
-    de: string
-  }
-  description: {
-    en: string
-    es: string
-    de: string
-  }
+  title: Localized<string>
+  description: Localized<string>
   publishDate: string
   _updatedAt?: string
   backgroundImages: {
@@ -116,17 +101,9 @@ export interface BlogPost {
       current: string
     }
   }
-  blogBody: {
-    en: string
-    es: string
-    de: string
-  }
+  blogBody: Localized<string>
   seo: {
-    structuredData: {
-      en: string
-      es: string
-      de: string
-    }
+    structuredData: Localized<string>
   }
   /** True when this post has both a German title and a German body. */
   hasDe?: boolean

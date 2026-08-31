@@ -1,23 +1,12 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface CoursesMainPage {
   title: string
-  heroTitle?: {
-    en: string
-    es: string
-    de: string
-  }
-  heroSubtitle?: {
-    en: string
-    es: string
-    de: string
-  }
+  heroTitle?: Localized<string>
+  heroSubtitle?: Localized<string>
   heroCta?: {
-    label?: {
-      en: string
-      es: string
-      de: string
-    }
+    label?: Localized<string>
     link?: string
   }
   heroImage: {
@@ -47,30 +36,18 @@ export interface CoursesMainPage {
     } | null
     alt?: string
   }
-  paragraph1: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph2: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph3: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  introHeading?: { en: string; es: string; de: string }
-  beginnerEyebrow?: { en: string; es: string; de: string }
-  beginnerHeading?: { en: string; es: string; de: string }
-  advancedHeading?: { en: string; es: string; de: string }
-  specialtyEyebrow?: { en: string; es: string; de: string }
+  paragraph1: Localized<any[]>
+  paragraph2: Localized<any[]>
+  paragraph3: Localized<any[]>
+  introHeading?: Localized<string>
+  beginnerEyebrow?: Localized<string>
+  beginnerHeading?: Localized<string>
+  advancedHeading?: Localized<string>
+  specialtyEyebrow?: Localized<string>
   courseCta?: {
-    heading?: { en: string; es: string; de: string }
-    body?: { en: string; es: string; de: string }
-    ctaLabel?: { en: string; es: string; de: string }
+    heading?: Localized<string>
+    body?: Localized<string>
+    ctaLabel?: Localized<string>
     ctaLink?: string
   }
 }

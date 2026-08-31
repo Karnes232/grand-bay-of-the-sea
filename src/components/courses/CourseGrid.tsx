@@ -1,10 +1,10 @@
 import { Link } from "@/i18n/navigation"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
 interface CourseCard {
   course: string
   slug: { current: string }
-  cardDescription: { en: string; es: string; de: string }
+  cardDescription: Localized<string>
   cardHashTags?: string[]
   courseLevel?: string
   padiPrice?: number

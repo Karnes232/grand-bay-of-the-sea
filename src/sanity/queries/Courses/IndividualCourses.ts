@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface IndividualCourseCard {
   course: string
@@ -17,11 +18,7 @@ export interface IndividualCourseCard {
       alt: string
     }
   }
-  cardDescription: {
-    en: string
-    es: string
-    de: string
-  }
+  cardDescription: Localized<string>
   padiPrice?: number
   cardHashTags: string[]
   courseLevel: string
@@ -76,11 +73,7 @@ export const getIndividualCoursesCards = async (
 
 export interface IndividualStucturedData {
   seo: {
-    structuredData: {
-      en: string
-      es: string
-      de: string
-    }
+    structuredData: Localized<string>
   }
 }
 
@@ -198,45 +191,17 @@ export const getIndividualCourseSEO = async (
 
 export interface IndividualCourse {
   course: string
-  title?: {
-    en: string
-    es: string
-    de: string
-  }
+  title?: Localized<string>
   slug: {
     current: string
   }
   videoId: string
-  paragraph1: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph2: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph3?: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph4?: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph5?: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph6?: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  paragraph1: Localized<any[]>
+  paragraph2: Localized<any[]>
+  paragraph3?: Localized<any[]>
+  paragraph4?: Localized<any[]>
+  paragraph5?: Localized<any[]>
+  paragraph6?: Localized<any[]>
   photoList: {
     asset: {
       url: string
@@ -268,48 +233,20 @@ export interface IndividualCourse {
     hotspot?: { x: number; y: number } | null
     alt?: string
   }
-  cardDescription?: {
-    en: string
-    es: string
-    de: string
-  }
+  cardDescription?: Localized<string>
   cardHashTags?: string[]
-  level: {
-    en: string
-    es: string
-    de: string
-  }
+  level: Localized<string>
   padiPrice: number
-  duration: {
-    en: string
-    es: string
-    de: string
-  }
-  dives?: {
-    en: string
-    es: string
-    de: string
-  }
-  maxDepth?: {
-    en: string
-    es: string
-    de: string
-  }
-  extraInfo?: {
-    en: string
-    es: string
-    de: string
-  }
+  duration: Localized<string>
+  dives?: Localized<string>
+  maxDepth?: Localized<string>
+  extraInfo?: Localized<string>
   faqs?: {
     _key: string
-    question: { en: string; es: string; de: string }
-    answer: { en: any[]; es: any[]; de: any[] }
+    question: Localized<string>
+    answer: Localized<any[]>
   }[]
-  structuredData?: {
-    en: string
-    es: string
-    de: string
-  }
+  structuredData?: Localized<string>
 }
 
 export const individualCourseQuery = `*[_type == "individualCourse" && slug.current == $slug][0] {

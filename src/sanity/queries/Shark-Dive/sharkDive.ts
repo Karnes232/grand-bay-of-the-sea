@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
-type Loc = { en: string; es: string; de: string }
+type Loc = Localized<string>
 
 export interface SharkDive {
   page: string
@@ -19,26 +20,10 @@ export interface SharkDive {
   factDuration?: Loc
   factMaxDepth?: Loc
   factLevel?: Loc
-  paragraph1: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph2: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph3: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph4: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  paragraph1: Localized<any[]>
+  paragraph2: Localized<any[]>
+  paragraph3: Localized<any[]>
+  paragraph4: Localized<any[]>
   photoList: {
     asset: {
       url: string
@@ -56,38 +41,14 @@ export interface SharkDive {
   }[]
   price: number
   depositPrice: number
-  duration: {
-    en: string
-    es: string
-    de: string
-  }
-  level?: {
-    en: string
-    es: string
-    de: string
-  }
-  maxDepth?: {
-    en: string
-    es: string
-    de: string
-  }
-  extras: {
-    en: string
-    es: string
-    de: string
-  }[]
+  duration: Localized<string>
+  level?: Localized<string>
+  maxDepth?: Localized<string>
+  extras: Localized<string>[]
   faqs: {
     _key: string
-    question: {
-      en: string
-      es: string
-      de: string
-    }
-    answer: {
-      en: any[]
-      es: any[]
-      de: any[]
-    }
+    question: Localized<string>
+    answer: Localized<any[]>
   }[]
 }
 

@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
-type L = { en: string; es: string; de: string }
+type L = Localized<string>
 
 /**
  * Dark "Not sure which course?" CTA band. Copy from the new Sanity `courseCta`

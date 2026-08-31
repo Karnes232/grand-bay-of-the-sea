@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 interface Crop {
   top: number
@@ -60,71 +61,39 @@ export interface HomePage {
     hotspot?: Hotspot | null
     alt: string
   }
-  heroTitle?: {
-    en: string
-    es: string
-    de: string
-  }
-  heroSubtitle?: {
-    en: string
-    es: string
-    de: string
-  }
+  heroTitle?: Localized<string>
+  heroSubtitle?: Localized<string>
   heroCta?: {
-    label?: {
-      en: string
-      es: string
-      de: string
-    }
+    label?: Localized<string>
     link?: string
   }
-  paragraph1: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph2: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph3: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  paragraph1: Localized<any[]>
+  paragraph2: Localized<any[]>
+  paragraph3: Localized<any[]>
   stats?: {
-    value?: { en: string; es: string; de: string }
-    label?: { en: string; es: string; de: string }
+    value?: Localized<string>
+    label?: Localized<string>
   }[]
-  whyUniqueHeading?: {
-    en: string
-    es: string
-    de: string
-  }
+  whyUniqueHeading?: Localized<string>
   sharkBanner?: {
-    eyebrow?: { en: string; es: string; de: string }
-    heading?: { en: string; es: string; de: string }
-    body?: { en: string; es: string; de: string }
-    ctaLabel?: { en: string; es: string; de: string }
+    eyebrow?: Localized<string>
+    heading?: Localized<string>
+    body?: Localized<string>
+    ctaLabel?: Localized<string>
     ctaLink?: string
   }
   courseHighlights?: {
-    badge?: { en: string; es: string; de: string }
-    title?: { en: string; es: string; de: string }
-    blurb?: { en: string; es: string; de: string }
+    badge?: Localized<string>
+    title?: Localized<string>
+    blurb?: Localized<string>
     href?: string
   }[]
   bookingSection?: {
-    eyebrow?: { en: string; es: string; de: string }
-    heading?: { en: string; es: string; de: string }
-    body?: { en: string; es: string; de: string }
+    eyebrow?: Localized<string>
+    heading?: Localized<string>
+    body?: Localized<string>
   }
-  bookingBenefits?: {
-    en: string
-    es: string
-    de: string
-  }[]
+  bookingBenefits?: Localized<string>[]
 }
 
 export const homePageQuery = `*[_type == "homePage"][0] {

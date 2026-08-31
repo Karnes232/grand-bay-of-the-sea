@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface ThankYou {
   heroImage: {
@@ -17,9 +18,9 @@ export interface ThankYou {
     hotspot?: { x: number; y: number } | null
     alt: string
   }
-  heroEyebrow?: { en: string; es: string; de: string }
-  heroTitle?: { en: string; es: string; de: string }
-  heroSubtitle?: { en: string; es: string; de: string }
+  heroEyebrow?: Localized<string>
+  heroTitle?: Localized<string>
+  heroSubtitle?: Localized<string>
 }
 
 export const thankYouQuery = `*[_type == "thankYou"][0] {

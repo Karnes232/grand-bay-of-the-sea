@@ -1,17 +1,10 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface SectionLinks {
-  title: {
-    en: string
-    es: string
-    de: string
-  }
+  title: Localized<string>
   url: string
-  description: {
-    en: string
-    es: string
-    de: string
-  }
+  description: Localized<string>
   image: {
     asset: {
       url: string

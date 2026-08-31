@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface CustomPayment {
   heroImage: {
@@ -17,14 +18,10 @@ export interface CustomPayment {
     hotspot?: { x: number; y: number } | null
     alt: string
   }
-  heroEyebrow?: { en: string; es: string; de: string }
-  heroTitle?: { en: string; es: string; de: string }
-  heroSubtitle?: { en: string; es: string; de: string }
-  paragraph1: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  heroEyebrow?: Localized<string>
+  heroTitle?: Localized<string>
+  heroSubtitle?: Localized<string>
+  paragraph1: Localized<any[]>
 }
 
 export const customPaymentQuery = `*[_type == "customPayment"][0] {

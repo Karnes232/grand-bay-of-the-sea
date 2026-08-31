@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
-type L = { en: string; es: string; de: string }
+type L = Localized<string>
 
 export interface AboutImage {
   asset: {
@@ -40,7 +41,7 @@ export interface AboutUs {
   stats?: { value?: L; label?: L }[]
   storyEyebrow?: L
   storyHeading?: L
-  storyBody?: { en: any[]; es: any[]; de: any[] }
+  storyBody?: Localized<any[]>
   storyImage?: AboutImage
   teamEyebrow?: L
   teamHeading?: L

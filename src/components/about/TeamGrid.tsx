@@ -3,9 +3,9 @@ import Image from "next/image"
 import DiverSilhouette from "./DiverSilhouette"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import type { TeamMember } from "@/sanity/queries/AboutUs/AboutUs"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
-type L = { en: string; es: string; de: string }
+type L = Localized<string>
 
 /** "Meet your dive crew" cards. The whole section hides when there are no members. */
 const TeamGrid = ({

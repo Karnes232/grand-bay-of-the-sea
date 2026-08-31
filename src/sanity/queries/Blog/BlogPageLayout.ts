@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
-type Loc = { en: string; es: string; de: string }
+type Loc = Localized<string>
 
 export interface BlogPageLayout {
   title: Loc
@@ -24,11 +25,7 @@ export interface BlogPageLayout {
     hotspot?: { x: number; y: number } | null
     alt: string
   }
-  paragraph: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  paragraph: Localized<any[]>
 }
 
 export const blogPageLayoutQuery = `*[_type == "blogPageLayout"][0] {

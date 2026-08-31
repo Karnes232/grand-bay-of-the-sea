@@ -21,7 +21,7 @@ import CourseDetailHero from "@/components/courses/CourseDetailHero"
 import CourseGallery from "@/components/courses/CourseGallery"
 import CourseStats from "@/components/courses/CourseStats"
 import { Link } from "@/i18n/navigation"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -101,7 +101,7 @@ export default async function Page({
   // Detail paragraphs → numbered steps.
   const steps = [c.paragraph3, c.paragraph4, c.paragraph5, c.paragraph6].filter(
     Boolean,
-  ) as { en: any[]; es: any[]; de: any[] }[]
+  ) as Localized<any[]>[]
 
   const tBc = await getTranslations("Breadcrumb")
 

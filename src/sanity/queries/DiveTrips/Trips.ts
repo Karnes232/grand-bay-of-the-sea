@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface TripCards {
   page: string
@@ -7,16 +8,8 @@ export interface TripCards {
   }
   price?: number
   privateOnly?: boolean
-  cardTitle: {
-    en: string
-    es: string
-    de: string
-  }
-  cardDescription: {
-    en: string
-    es: string
-    de: string
-  }
+  cardTitle: Localized<string>
+  cardDescription: Localized<string>
   cardImage: {
     asset: {
       url: string
@@ -33,16 +26,8 @@ export interface TripCards {
     hotspot?: { x: number; y: number } | null
     alt: string
   }
-  duration?: {
-    en: string
-    es: string
-    de: string
-  }
-  extras?: {
-    en: string
-    es: string
-    de: string
-  }[]
+  duration?: Localized<string>
+  extras?: Localized<string>[]
 }
 
 export const tripsQuery = `*[_type == "trips"] {
@@ -107,35 +92,15 @@ export const getTripSlugs = async (): Promise<
 
 export interface Trip {
   page: string
-  title?: {
-    en: string
-    es: string
-    de: string
-  }
+  title?: Localized<string>
   slug: {
     current: string
   }
   videoId: string
-  paragraph1: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph2: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph3: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph4?: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  paragraph1: Localized<any[]>
+  paragraph2: Localized<any[]>
+  paragraph3: Localized<any[]>
+  paragraph4?: Localized<any[]>
   photoList: {
     asset: {
       url: string
@@ -151,45 +116,21 @@ export interface Trip {
     hotspot?: { x: number; y: number } | null
     alt: string
   }[]
-  cardDescription?: {
-    en: string
-    es: string
-    de: string
-  }
+  cardDescription?: Localized<string>
   price: number
   spectatorSnorkel: number
-  duration: {
-    en: string
-    es: string
-    de: string
-  }
-  extras: {
-    en: string
-    es: string
-    de: string
-  }[]
+  duration: Localized<string>
+  extras: Localized<string>[]
   tripDaySteps?: {
-    stepTitle?: { en: string; es: string; de: string }
-    stepBody?: { en: string; es: string; de: string }
+    stepTitle?: Localized<string>
+    stepBody?: Localized<string>
   }[]
-  tripDayNote?: {
-    en: string
-    es: string
-    de: string
-  }
+  tripDayNote?: Localized<string>
   depositPrice: number
   faqs?: {
     _key: string
-    question: {
-      en: string
-      es: string
-      de: string
-    }
-    answer: {
-      en: any[]
-      es: any[]
-      de: any[]
-    }
+    question: Localized<string>
+    answer: Localized<any[]>
   }[]
 }
 
@@ -290,11 +231,7 @@ export const getIndividualTrip = async (slug: string): Promise<Trip> => {
 
 export interface TripStructuredData {
   seo: {
-    structuredData: {
-      en: string
-      es: string
-      de: string
-    }
+    structuredData: Localized<string>
   }
 }
 

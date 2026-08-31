@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface PageSeo {
   pageName: string
@@ -110,11 +111,7 @@ export const structuredDataQuery = `*[_type == "pageSeo" && pageName == $pageNam
 export interface structuredData {
   pageName: string
   seo: {
-    structuredData: {
-      en: string
-      es: string
-      de: string
-    }
+    structuredData: Localized<string>
   }
 }
 

@@ -1,49 +1,26 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface DiveTripsPage {
   page: string
-  heroTitle?: {
-    en: string
-    es: string
-    de: string
-  }
-  heroSubtitle?: {
-    en: string
-    es: string
-    de: string
-  }
+  heroTitle?: Localized<string>
+  heroSubtitle?: Localized<string>
   heroCta?: {
-    label?: {
-      en: string
-      es: string
-      de: string
-    }
+    label?: Localized<string>
     link?: string
   }
-  paragraph1: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph2?: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  paragraph1: Localized<any[]>
+  paragraph2?: Localized<any[]>
   tripDaySteps?: {
-    stepTitle?: { en: string; es: string; de: string }
-    stepBody?: { en: string; es: string; de: string }
+    stepTitle?: Localized<string>
+    stepBody?: Localized<string>
   }[]
-  tripDayNote?: {
-    en: string
-    es: string
-    de: string
-  }
-  tripDayHeading?: { en: string; es: string; de: string }
-  tripDayIntro?: { en: string; es: string; de: string }
-  ctaHeading?: { en: string; es: string; de: string }
-  ctaBody?: { en: string; es: string; de: string }
-  ctaLabel?: { en: string; es: string; de: string }
+  tripDayNote?: Localized<string>
+  tripDayHeading?: Localized<string>
+  tripDayIntro?: Localized<string>
+  ctaHeading?: Localized<string>
+  ctaBody?: Localized<string>
+  ctaLabel?: Localized<string>
   heroImage: {
     asset: {
       url: string

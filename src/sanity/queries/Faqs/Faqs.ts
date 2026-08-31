@@ -1,25 +1,14 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface Faqs {
   page: string
   faqs: {
     _key: string
-    question: {
-      en: string
-      es: string
-      de: string
-    }
-    answer: {
-      en: any[]
-      es: any[]
-      de: any[]
-    }
+    question: Localized<string>
+    answer: Localized<any[]>
   }[]
-  structuredData: {
-    en: string
-    es: string
-    de: string
-  }
+  structuredData: Localized<string>
 }
 
 export const faqsQuery = `*[_type == "faqs" && page == $page][0] {

@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
-type Loc = { en: string; es: string; de: string }
+type Loc = Localized<string>
 
 export interface SpeciesPageContent {
   title: Loc
@@ -9,11 +10,7 @@ export interface SpeciesPageContent {
   ctaHeading?: Loc
   ctaBody?: Loc
   ctaLabel?: Loc
-  content: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  content: Localized<any[]>
   heroImage: {
     asset: {
       url: string

@@ -18,7 +18,7 @@ import CourseDetailHero from "@/components/courses/CourseDetailHero"
 import CourseGallery from "@/components/courses/CourseGallery"
 import CourseStats from "@/components/courses/CourseStats"
 import SanityTripOverview from "@/components/TourOverviews/SanityTripOverview"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
 // ISR 7 days — not force-static, so language switching works on Netlify.
 export const revalidate = 604800
@@ -91,7 +91,7 @@ export default async function Page({
   // Extended prose paragraphs (2–4), rendered in a single long-form column.
   const proseParas = [trip.paragraph2, trip.paragraph3, trip.paragraph4].filter(
     Boolean,
-  ) as { en: any[]; es: any[]; de: any[] }[]
+  ) as Localized<any[]>[]
 
   const tBc = await getTranslations("Breadcrumb")
 

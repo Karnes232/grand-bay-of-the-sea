@@ -9,11 +9,14 @@
  *
  * Two lists, deliberately:
  *
- * - `LOCALES` — every locale the *code* supports. Widening this is what makes
- *   TypeScript flag the places that need per-locale content (page code indexes
- *   Sanity directly, e.g. `pageSeo.seo.meta[locale].title`, so a locale with no
- *   corresponding Sanity field is a runtime crash, not a blank). Let the
- *   compiler drive that work rather than hunting for it.
+ * - `LOCALES` — every locale the *code* supports. Widening it widens every
+ *   `Localized<T>` at once. Be clear about what that does and does not buy:
+ *   because `tsconfig.json` sets `strict: false`, the compiler catches object
+ *   *literals* that are missing the new locale, but NOT reads of data that
+ *   lacks it — `field?.[locale]` renders blank and `seo.meta[locale].title`
+ *   crashes the route, both silently. `scripts/verify-<locale>-content.mjs` is
+ *   the check that actually covers reads; it exists precisely because the
+ *   compiler cannot.
  *
  * - `ACTIVE_LOCALES` — the locales actually exposed to users and crawlers:
  *   routing, hreflang, the sitemap, and the language switcher. A locale can sit
@@ -29,6 +32,24 @@
 export const LOCALES = ["en", "es", "de"] as const
 
 export type Locale = (typeof LOCALES)[number]
+
+/**
+ * A value that exists in every locale — the shape Sanity's localized fields
+ * return, and the shape page code indexes with `field[locale]`.
+ *
+ * Use this rather than writing `{ en: T; es: T; de: T }` inline. Two reasons:
+ *
+ *  - Adding a locale to `LOCALES` widens every one of these at once. The inline
+ *    form had to be edited in ~200 places when German was added, and
+ *    `tsconfig.json` sets `strict: false`, so the compiler flagged exactly one
+ *    of them — which is how 18 query files were missed and `/de/species`
+ *    shipped broken.
+ *  - `Record<Locale, T>` is exhaustive, so an object *literal* missing a locale
+ *    is a compile error even under `strict: false`. Reads still widen silently
+ *    (nothing can fix that short of `strict`), but every place that constructs
+ *    a localized value is now checked.
+ */
+export type Localized<T> = Record<Locale, T>
 
 /** Used when no locale matches, and the locale with no URL prefix. */
 export const DEFAULT_LOCALE: Locale = "en"
@@ -76,10 +97,11 @@ export function stripLocalePrefix(pathname: string): string {
 /**
  * Locales the blog exists in.
  *
- * The blog is deliberately English/Spanish only: 148 posts per language is an
- * unbounded translation commitment, and the German opportunity is on the
- * service pages, not the blog. Blog routes 404 outside these locales and must
- * not advertise a German hreflang alternate.
+ * These are the locales in which *every* post exists. Translating 150 posts per
+ * language is an unbounded commitment, so additional locales are handled
+ * per-post instead: see `src/utils/blogLocales.ts`, where a post carrying a
+ * translation gets a real URL and an hreflang alternate, and everything else
+ * redirects to English.
  */
 export const BLOG_LOCALES: readonly Locale[] = ACTIVE_LOCALES.filter(
   locale => locale !== "de",

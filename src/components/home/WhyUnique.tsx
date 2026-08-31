@@ -1,6 +1,6 @@
 import dynamicImport from "next/dynamic"
 import BlockContent from "@/components/BlockContent/BlockContent"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
 const CloudinaryBackgroundVideo = dynamicImport(
   () =>
@@ -17,7 +17,7 @@ const WhyUnique = ({
   locale,
 }: {
   heading?: string
-  content: { en: any[]; es: any[]; de: any[] }
+  content: Localized<any[]>
   locale: Locale
 }) => {
   return (

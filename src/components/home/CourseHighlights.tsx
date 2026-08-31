@@ -1,13 +1,13 @@
 import dynamicImport from "next/dynamic"
 import { Link } from "@/i18n/navigation"
 import BlockContent from "@/components/BlockContent/BlockContent"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
 const DivingOrganizations = dynamicImport(
   () => import("@/components/DivingOrganizations/DivingOrganizations"),
 )
 
-type L = { en: string; es: string; de: string }
+type L = Localized<string>
 
 interface CourseHighlight {
   badge?: L
@@ -28,7 +28,7 @@ const CourseHighlights = ({
 }: {
   heading: string
   courses?: CourseHighlight[]
-  paragraph3: { en: any[]; es: any[]; de: any[] }
+  paragraph3: Localized<any[]>
   locale: Locale
 }) => {
   return (

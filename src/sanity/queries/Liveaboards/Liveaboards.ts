@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
-type Loc = { en: string; es: string; de: string }
+type Loc = Localized<string>
 
 interface CroppableImg {
   asset: {
@@ -21,11 +22,7 @@ interface CroppableImg {
 
 export interface Liveaboards {
   page: string
-  paragraph1: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  paragraph1: Localized<any[]>
   titleEn?: string
   titleEs?: string
   heroEyebrow?: Loc
@@ -37,21 +34,13 @@ export interface Liveaboards {
   faqs?: {
     _key: string
     question: Loc
-    answer: { en: any[]; es: any[]; de: any[] }
+    answer: Localized<any[]>
   }[]
   heroImage: CroppableImg
   silverBankExpeditionImage: CroppableImg
-  silverBankExpeditionParagraph: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  silverBankExpeditionParagraph: Localized<any[]>
   whaleWatchingAdventureImage: CroppableImg
-  whaleWatchingAdventureParagraph: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  whaleWatchingAdventureParagraph: Localized<any[]>
   photoList: CroppableImg[]
 }
 

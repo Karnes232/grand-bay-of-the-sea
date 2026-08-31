@@ -7,9 +7,9 @@ import BlockContent from "@/components/BlockContent/BlockContent"
 import CloudinaryBackgroundVideo from "@/components/BackgroundVideoComponent/CloudinaryBackgroundVideo"
 import { breadcrumbJsonLd } from "@/utils/breadcrumb"
 import { getLiveaboards } from "@/sanity/queries/Liveaboards/Liveaboards"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
-type Loc = { en: any[]; es: any[]; de: any[] }
+type Loc = Localized<any[]>
 
 interface ExpeditionData {
   titleEn?: string

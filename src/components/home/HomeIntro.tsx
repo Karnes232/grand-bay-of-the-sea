@@ -1,5 +1,5 @@
 import BlockContent from "@/components/BlockContent/BlockContent"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
 /**
  * Intro lead prose — renders the existing Sanity `paragraph1` in the new
@@ -9,7 +9,7 @@ const HomeIntro = ({
   content,
   locale,
 }: {
-  content: { en: any[]; es: any[]; de: any[] }
+  content: Localized<any[]>
   locale: Locale
 }) => {
   return (

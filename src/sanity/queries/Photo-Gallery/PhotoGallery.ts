@@ -1,13 +1,10 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface PhotoGallery {
-  title: {
-    en: string
-    es: string
-    de: string
-  }
-  heroEyebrow?: { en: string; es: string; de: string }
-  heroSubtitle?: { en: string; es: string; de: string }
+  title: Localized<string>
+  heroEyebrow?: Localized<string>
+  heroSubtitle?: Localized<string>
   mainImage: {
     asset: {
       url: string

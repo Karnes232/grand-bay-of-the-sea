@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface ScubaDivingPuntaCana {
   heroImage: {
@@ -47,33 +48,13 @@ export interface ScubaDivingPuntaCana {
     hotspot?: { x: number; y: number } | null
     alt: string
   }
-  paragraph1: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph2: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph3: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  paragraph1: Localized<any[]>
+  paragraph2: Localized<any[]>
+  paragraph3: Localized<any[]>
   faqs: {
     _key: string
-    question: {
-      en: string
-      es: string
-      de: string
-    }
-    answer: {
-      en: any[]
-      es: any[]
-      de: any[]
-    }
+    question: Localized<string>
+    answer: Localized<any[]>
   }[]
 }
 

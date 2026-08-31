@@ -3,9 +3,9 @@ import Image from "next/image"
 import BlockContent from "@/components/BlockContent/BlockContent"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
 import type { AboutImage } from "@/sanity/queries/AboutUs/AboutUs"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
-type L = { en: string; es: string; de: string }
+type L = Localized<string>
 
 /**
  * "Our story" split: eyebrow + heading + prose on the left, tall 4:5 image on
@@ -20,7 +20,7 @@ const StorySplit = ({
 }: {
   eyebrow?: L
   heading?: L
-  body?: { en: any[]; es: any[]; de: any[] }
+  body?: Localized<any[]>
   image?: AboutImage
   locale: Locale
 }) => {

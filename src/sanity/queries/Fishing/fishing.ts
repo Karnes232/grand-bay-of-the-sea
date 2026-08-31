@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
-type LocalizedString = { en: string; es: string; de: string }
+type LocalizedString = Localized<string>
 
 export interface Fishing {
   page: string
@@ -13,21 +14,9 @@ export interface Fishing {
   ctaHeading?: LocalizedString
   ctaBody?: LocalizedString
   ctaLabel?: LocalizedString
-  paragraph1: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph2: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  paragraph3: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
+  paragraph1: Localized<any[]>
+  paragraph2: Localized<any[]>
+  paragraph3: Localized<any[]>
   photoList: {
     asset: {
       url: string

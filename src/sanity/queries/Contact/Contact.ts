@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface Contact {
   heroImage: {
@@ -17,13 +18,13 @@ export interface Contact {
     hotspot?: { x: number; y: number } | null
     alt: string
   }
-  heroEyebrow?: { en: string; es: string; de: string }
-  heroTitle?: { en: string; es: string; de: string }
-  heroSubtitle?: { en: string; es: string; de: string }
-  visitHeading?: { en: string; es: string; de: string }
-  hoursEyebrow?: { en: string; es: string; de: string }
-  hoursValue?: { en: string; es: string; de: string }
-  hoursDesc?: { en: string; es: string; de: string }
+  heroEyebrow?: Localized<string>
+  heroTitle?: Localized<string>
+  heroSubtitle?: Localized<string>
+  visitHeading?: Localized<string>
+  hoursEyebrow?: Localized<string>
+  hoursValue?: Localized<string>
+  hoursDesc?: Localized<string>
 }
 
 export const contactQuery = `*[_type == "contact"][0] {

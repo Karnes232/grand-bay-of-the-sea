@@ -6,13 +6,15 @@ import Image from "next/image"
 import TextComponentParagraph from "./TextComponentParagraph"
 import TextComponentHeading from "./TextComponentHeading"
 import TextComponentList from "./TextComponentList"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
-interface LocaleBlockContent {
-  _type?: string
-  en: any[]
-  es: any[]
-}
+/**
+ * Portable Text in every locale. This was `{ en; es }` and never learned about
+ * German, so it accepted objects missing the locale it would be indexed with —
+ * which renders blank rather than failing. Deriving it from `Localized` means
+ * the contract widens with the locale list.
+ */
+type LocaleBlockContent = Localized<any[]> & { _type?: string }
 
 interface Props {
   content: LocaleBlockContent

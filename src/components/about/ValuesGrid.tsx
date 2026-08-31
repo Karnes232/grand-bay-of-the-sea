@@ -1,9 +1,9 @@
 import { Globe, Shield, Users, Wrench } from "lucide-react"
 
 import type { AboutValue } from "@/sanity/queries/AboutUs/AboutUs"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
-type L = { en: string; es: string; de: string }
+type L = Localized<string>
 
 const ICONS = {
   shield: Shield,

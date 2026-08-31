@@ -1,16 +1,9 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface Fishes {
-  name: {
-    en: string
-    es: string
-    de: string
-  }
-  description: {
-    en: string
-    es: string
-    de: string
-  }
+  name: Localized<string>
+  description: Localized<string>
   image: {
     asset: {
       url: string

@@ -1,7 +1,7 @@
 import BookingLeadForm from "./BookingLeadForm"
-import type { Locale } from "@/i18n/locales"
+import type { Locale, Localized } from "@/i18n/locales"
 
-type L = { en: string; es: string; de: string }
+type L = Localized<string>
 
 /**
  * Dark "Book direct" section: new Sanity copy + benefits on the left, the

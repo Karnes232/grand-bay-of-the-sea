@@ -1,25 +1,14 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface Sites {
-  heroTitle?: {
-    en: string
-    es: string
-    de: string
-  }
-  heroSubtitle?: {
-    en: string
-    es: string
-    de: string
-  }
-  heroTrustLine?: { en: string; es: string; de: string }
-  gridHeading?: { en: string; es: string; de: string }
-  gridIntro?: { en: string; es: string; de: string }
+  heroTitle?: Localized<string>
+  heroSubtitle?: Localized<string>
+  heroTrustLine?: Localized<string>
+  gridHeading?: Localized<string>
+  gridIntro?: Localized<string>
   heroCta?: {
-    label?: {
-      en: string
-      es: string
-      de: string
-    }
+    label?: Localized<string>
     link?: string
   }
   heroImage: {
@@ -38,34 +27,18 @@ export interface Sites {
     hotspot?: { x: number; y: number } | null
     alt: string
   }
-  paragraph1: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  packageTitle: {
-    en: string
-    es: string
-    de: string
-  }
+  paragraph1: Localized<any[]>
+  packageTitle: Localized<string>
   twoTankDive: number
   fourTankPackage: number
   depositPrice: number
-  duration: {
-    en: string
-    es: string
-    de: string
-  }
+  duration: Localized<string>
   faqs?: {
     _key: string
-    question: { en: string; es: string; de: string }
-    answer: { en: any[]; es: any[]; de: any[] }
+    question: Localized<string>
+    answer: Localized<any[]>
   }[]
-  structuredData?: {
-    en: string
-    es: string
-    de: string
-  }
+  structuredData?: Localized<string>
 }
 
 export const sitesQuery = `*[_type == "sites"][0] {

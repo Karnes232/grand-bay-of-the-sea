@@ -1,11 +1,8 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface BlogCategory {
-  blogCategory: {
-    en: string
-    es: string
-    de: string
-  }
+  blogCategory: Localized<string>
   slug: {
     current: string
   }
@@ -65,11 +62,7 @@ export async function getBlogCategory(): Promise<BlogCategory[]> {
 }
 
 export interface individualBlogCategory {
-  blogCategory: {
-    en: string
-    es: string
-    de: string
-  }
+  blogCategory: Localized<string>
   slug: string
   heroImage: {
     asset: {
@@ -83,17 +76,9 @@ export interface individualBlogCategory {
     hotspot?: { x: number; y: number } | null
     alt: string
   }
-  description: {
-    en: string
-    es: string
-    de: string
-  }
+  description: Localized<string>
   seo: {
-    structuredData: {
-      en: string
-      es: string
-      de: string
-    }
+    structuredData: Localized<string>
   }
 }
 

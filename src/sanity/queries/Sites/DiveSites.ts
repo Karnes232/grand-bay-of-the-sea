@@ -1,18 +1,11 @@
 import { client } from "@/sanity/lib/client"
+import { type Localized } from "@/i18n/locales"
 
 export interface DiveSites {
   name: string
   slug?: string
-  description: {
-    en: any[]
-    es: any[]
-    de: any[]
-  }
-  cardDescription?: {
-    en: string
-    es: string
-    de: string
-  }
+  description: Localized<any[]>
+  cardDescription?: Localized<string>
   level?: string
   location?: string
   image: {
@@ -83,8 +76,8 @@ export const getDiveSites = async (): Promise<DiveSites[]> => {
 export interface IndividualDiveSite {
   name: string
   slug: string
-  description: { en: string; es: string; de: string }
-  cardDescription?: { en: string; es: string; de: string }
+  description: Localized<string>
+  cardDescription?: Localized<string>
   level?: string
   location?: string
   image: DiveSites["image"]
