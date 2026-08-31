@@ -25,7 +25,6 @@
 
 import { readFileSync, readdirSync } from "node:fs"
 import { join } from "node:path"
-import { ACTIVE_LOCALES } from "../src/i18n/locales.ts"
 
 const DIR = join(process.cwd(), "messages")
 const BASE = "en"
@@ -90,11 +89,26 @@ const catalogues = Object.fromEntries(
  * because next-intl imports `messages/<locale>.json` at request time. Catch it
  * here — the gate and the catalogue are set in different places (netlify.toml
  * and this directory), so they can be flipped out of step.
+ *
+ * The active list is derived from the NEXT_PUBLIC_LOCALE_<XX>_ENABLED gates
+ * rather than imported from src/i18n/locales.ts, deliberately. This script is
+ * the FIRST thing the Netlify build runs and netlify.toml pins NODE_VERSION=20,
+ * which cannot import TypeScript — an earlier version of this file did import
+ * the registry and failed every deploy for eleven commits before anyone noticed,
+ * because a failed build just keeps serving the previous one. Ungated locales
+ * (en, es) always have a catalogue by definition; only gated ones can drift.
  */
-for (const locale of ACTIVE_LOCALES) {
+const gatedOn = Object.entries(process.env)
+  .filter(
+    ([key, value]) =>
+      /^NEXT_PUBLIC_LOCALE_[A-Z]{2}_ENABLED$/.test(key) && value === "true",
+  )
+  .map(([key]) => key.slice(19, -8).toLowerCase())
+
+for (const locale of gatedOn) {
   if (!(locale in catalogues)) {
     console.error(
-      `[verify-messages] ${locale} is active (ACTIVE_LOCALES) but ` +
+      `[verify-messages] ${locale} is gated on but ` +
         `messages/${locale}.json does not exist. Every /${locale} page would ` +
         `fail at runtime. Add the catalogue or switch the locale's gate off.`,
     )
