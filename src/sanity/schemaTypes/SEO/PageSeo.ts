@@ -30,6 +30,7 @@ export default defineType({
           { title: "Cancellation Policy", value: "Cancellation Policy" },
           { title: "Liveaboard", value: "Liveaboard" },
           { title: "Shark Dive Punta Cana", value: "Shark Dive Punta Cana" },
+          { title: "Privacy Policy", value: "Privacy Policy" },
         ],
       },
       validation: Rule => Rule.required(),
