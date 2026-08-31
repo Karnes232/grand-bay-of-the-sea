@@ -19,6 +19,7 @@ const LOCALE_DISPLAY: Record<Locale, { display: string; flag: string }> = {
   en: { display: "English", flag: "🇺🇸" },
   es: { display: "Español", flag: "🇩🇴" },
   de: { display: "Deutsch", flag: "🇩🇪" },
+  fr: { display: "Français", flag: "🇫🇷" },
 }
 
 const LANGUAGE_OPTIONS = ACTIVE_LOCALES.map(code => ({

@@ -3,22 +3,6 @@
 
 //export default createMiddleware(routing)
 
-//export const config = {
-// Match all pathnames except for
-// - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
-// - … the ones containing a dot (e.g. `favicon.ico`)
-// - … the ones starting with `/tui` (admin interface)
-// matcher: [
-// Match all pathnames except for
-// - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
-// - … the ones containing a dot (e.g. `favicon.ico`)
-// - … the ones starting with `/tui` (admin interface)
-//  "/((?!api|trpc|_next|tui|studio|_vercel|.*\\..*).*)",
-// Also match pathnames that start with a locale
-// "/(en|es)/:path*",
-// ],
-//}
-
 import createMiddleware from "next-intl/middleware"
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
@@ -88,6 +72,6 @@ export const config = {
     "/((?!api|trpc|_next|tui|studio|_vercel|.*\\..*).*)",
     // Keep in sync with LOCALES in src/i18n/locales.ts by hand — Next.js
     // statically analyses this value at build time, so it cannot be derived.
-    "/(en|es|de)/:path*",
+    "/(en|es|de|fr)/:path*",
   ],
 }

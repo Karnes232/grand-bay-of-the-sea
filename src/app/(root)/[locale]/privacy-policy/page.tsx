@@ -1,3 +1,4 @@
+import { mapLocalized } from "@/i18n/locales"
 import { Link } from "@/i18n/navigation"
 import { setRequestLocale, getTranslations } from "next-intl/server"
 
@@ -83,11 +84,7 @@ export default async function Page({
     ? (content[locale][0]?.children?.[0]?.text as string | undefined)
     : undefined
   const bodyContent = firstIsH1
-    ? {
-        en: content.en.slice(1),
-        es: content.es.slice(1),
-        de: content.de?.slice(1) ?? [],
-      }
+    ? mapLocalized(content, blocks => blocks?.slice(1) ?? [])
     : content
 
   const tBc = await getTranslations("Breadcrumb")

@@ -1,3 +1,4 @@
+import { emptyLocalized } from "@/i18n/locales"
 import Image from "next/image"
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
@@ -233,7 +234,7 @@ export default async function Page({
       {c.faqs?.length ? (
         <FaqAccordion
           faqs={c.faqs}
-          structuredData={c.structuredData ?? { en: "", es: "", de: "" }}
+          structuredData={c.structuredData ?? emptyLocalized("")}
           locale={locale}
           heading={tCourses("faqHeading")}
         />

@@ -1,3 +1,4 @@
+import { emptyLocalized } from "@/i18n/locales"
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 import { setRequestLocale, getTranslations } from "next-intl/server"
@@ -238,7 +239,7 @@ export default async function Page({
       {trip.faqs?.length ? (
         <FaqAccordion
           faqs={trip.faqs}
-          structuredData={{ en: "", es: "", de: "" }}
+          structuredData={emptyLocalized("")}
           locale={locale}
           heading={tCourses("faqHeading")}
         />

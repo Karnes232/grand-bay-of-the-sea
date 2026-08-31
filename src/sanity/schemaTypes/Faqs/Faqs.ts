@@ -121,7 +121,49 @@ export default defineType({
           title: "German Schema",
           type: "text",
           description:
-            "Paste your schema.org JSON-LD data for Spanish content here",
+            "Paste your schema.org JSON-LD data for German content here",
+          validation: Rule =>
+            Rule.custom(text => {
+              if (!text) return true
+              try {
+                JSON.parse(text)
+                return true
+              } catch (err) {
+                return "Must be valid JSON"
+              }
+            }),
+          initialValue: `{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "",
+    "description": "",
+    "url": "",
+    "logo": "",
+    "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "",
+    "contactType": "customer service",
+    "availableLanguage": [
+      "en",
+      "es"
+      ]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Punta Cana",
+      "addressCountry": "DO"
+    },
+    "sameAs": [
+      ""
+      ]
+    }`,
+        }),
+        defineField({
+          name: "fr",
+          title: "French Schema",
+          type: "text",
+          description:
+            "Paste your schema.org JSON-LD data for French content here",
           validation: Rule =>
             Rule.custom(text => {
               if (!text) return true

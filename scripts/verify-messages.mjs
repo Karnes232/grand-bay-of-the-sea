@@ -25,6 +25,7 @@
 
 import { readFileSync, readdirSync } from "node:fs"
 import { join } from "node:path"
+import { ACTIVE_LOCALES } from "../src/i18n/locales.ts"
 
 const DIR = join(process.cwd(), "messages")
 const BASE = "en"
@@ -61,19 +62,42 @@ function flatten(node, prefix = "", out = {}) {
   return out
 }
 
-const placeholders = value => [...value.matchAll(/\{(\w+)\}/g)].map(m => m[1]).sort()
+const placeholders = value =>
+  [...value.matchAll(/\{(\w+)\}/g)].map(m => m[1]).sort()
 
 const locales = readdirSync(DIR)
   .filter(f => f.endsWith(".json"))
   .map(f => f.replace(/\.json$/, ""))
 
 const catalogues = Object.fromEntries(
-  locales.map(loc => [loc, flatten(JSON.parse(readFileSync(join(DIR, `${loc}.json`), "utf8")))]),
+  locales.map(loc => [
+    loc,
+    flatten(JSON.parse(readFileSync(join(DIR, `${loc}.json`), "utf8"))),
+  ]),
 )
+
+/**
+ * A locale that is routed but has no catalogue crashes every page it serves,
+ * because next-intl imports `messages/<locale>.json` at request time. Catch it
+ * here — the gate and the catalogue are set in different places (netlify.toml
+ * and this directory), so they can be flipped out of step.
+ */
+for (const locale of ACTIVE_LOCALES) {
+  if (!(locale in catalogues)) {
+    console.error(
+      `[verify-messages] ${locale} is active (ACTIVE_LOCALES) but ` +
+        `messages/${locale}.json does not exist. Every /${locale} page would ` +
+        `fail at runtime. Add the catalogue or switch the locale's gate off.`,
+    )
+    process.exit(1)
+  }
+}
 
 const base = catalogues[BASE]
 if (!base) {
-  console.error(`[verify-messages] No ${BASE}.json — nothing to compare against.`)
+  console.error(
+    `[verify-messages] No ${BASE}.json — nothing to compare against.`,
+  )
   process.exit(1)
 }
 
@@ -88,7 +112,8 @@ for (const loc of locales) {
     if (!(key in cat)) failures.push(`${loc}: missing key ${key}`)
   }
   for (const key of Object.keys(cat)) {
-    if (!(key in base)) failures.push(`${loc}: unknown key ${key} (not in ${BASE}.json)`)
+    if (!(key in base))
+      failures.push(`${loc}: unknown key ${key} (not in ${BASE}.json)`)
   }
 
   for (const [key, value] of Object.entries(base)) {
@@ -101,7 +126,9 @@ for (const loc of locales) {
       )
     }
     if (cat[key] === value && !ALLOW_IDENTICAL.has(key)) {
-      warnings.push(`${loc}: ${key} is identical to ${BASE} — "${value.slice(0, 60)}"`)
+      warnings.push(
+        `${loc}: ${key} is identical to ${BASE} — "${value.slice(0, 60)}"`,
+      )
     }
   }
 }

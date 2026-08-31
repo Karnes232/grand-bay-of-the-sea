@@ -1,3 +1,4 @@
+import { emptyLocalized } from "@/i18n/locales"
 import JsonLd from "@/components/StructuredData/JsonLd"
 import CoursesHero from "@/components/courses/CoursesHero"
 import CourseGallery from "@/components/courses/CourseGallery"
@@ -252,7 +253,7 @@ export default async function Page({
       {/* FAQ */}
       <FaqAccordion
         faqs={liveaboards.faqs ?? []}
-        structuredData={{ en: "", es: "", de: "" }}
+        structuredData={emptyLocalized("")}
         locale={locale}
         heading={t("faqHeading")}
       />

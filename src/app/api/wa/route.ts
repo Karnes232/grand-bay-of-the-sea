@@ -17,9 +17,15 @@ const MESSAGES: Localized<string> = {
   en: "Hi! I'd like more information about diving.",
   es: "¡Hola! Me gustaría más información sobre el buceo.",
   de: "Hallo! Ich hätte gerne mehr Informationen zum Tauchen.",
+  fr: "Bonjour ! Je souhaiterais plus d'informations sur la plongée.",
 }
 
-const FROM_LABEL: Localized<string> = { en: "from", es: "de", de: "von" }
+const FROM_LABEL: Localized<string> = {
+  en: "from",
+  es: "de",
+  de: "von",
+  fr: "de",
+}
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)

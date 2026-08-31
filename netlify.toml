@@ -72,3 +72,8 @@
   # Removing this line takes /de dark again on the next deploy; the German
   # content stays in Sanity either way.
   NEXT_PUBLIC_LOCALE_DE_ENABLED = "true"
+  # French is built but not launched: the plumbing and Sanity fields exist,
+  # the translation does not. Leave this "false" until messages/fr.json and the
+  # Sanity French fields are filled in — ACTIVE_LOCALES drops /fr entirely while
+  # it is off, so nothing French is routed, sitemapped or advertised.
+  NEXT_PUBLIC_LOCALE_FR_ENABLED = "false"

@@ -1,3 +1,4 @@
+import { emptyLocalized } from "@/i18n/locales"
 import dynamicImport from "next/dynamic"
 
 import { getHreflangAlternates } from "@/utils/hreflang"
@@ -168,9 +169,7 @@ export default async function Page({
       {sitesLayout.faqs?.length ? (
         <FaqAccordion
           faqs={sitesLayout.faqs}
-          structuredData={
-            sitesLayout.structuredData ?? { en: "", es: "", de: "" }
-          }
+          structuredData={sitesLayout.structuredData ?? emptyLocalized("")}
           locale={locale}
           heading={tCourses("faqHeading")}
         />

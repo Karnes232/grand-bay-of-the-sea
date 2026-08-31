@@ -29,7 +29,7 @@
  */
 
 /** Every locale the codebase supports. */
-export const LOCALES = ["en", "es", "de"] as const
+export const LOCALES = ["en", "es", "de", "fr"] as const
 
 export type Locale = (typeof LOCALES)[number]
 
@@ -51,6 +51,37 @@ export type Locale = (typeof LOCALES)[number]
  */
 export type Localized<T> = Record<Locale, T>
 
+/**
+ * The same value in every locale.
+ *
+ * For the `?? { en: "", es: "", de: "" }` fallbacks that used to be written by
+ * hand: those are object literals, so `Record<Locale, T>` turns each one into a
+ * compile error when a locale is added, and there were seven of them.
+ */
+export function emptyLocalized<T>(value: T): Localized<T> {
+  return Object.fromEntries(
+    LOCALES.map(locale => [locale, value]),
+  ) as Localized<T>
+}
+
+/**
+ * Apply a transform to every locale's value.
+ *
+ * For the "same edit in each language" literals — dropping a leading H1 that
+ * has been lifted into the hero, say. Written out per locale, those grow a line
+ * per language and quietly diverge: the German arm was `de: content.de?.slice(1)
+ * ?? []` while English was `content.en.slice(1)`, so a missing German body threw
+ * where a missing English one would have.
+ */
+export function mapLocalized<T, U>(
+  source: Partial<Record<Locale, T>> | undefined,
+  transform: (value: T | undefined, locale: Locale) => U,
+): Localized<U> {
+  return Object.fromEntries(
+    LOCALES.map(locale => [locale, transform(source?.[locale], locale)]),
+  ) as Localized<U>
+}
+
 /** Used when no locale matches, and the locale with no URL prefix. */
 export const DEFAULT_LOCALE: Locale = "en"
 
@@ -71,6 +102,9 @@ export const LOCALE_TAG: Localized<string> = {
   en: "en-US",
   es: "es-ES",
   de: "de-DE",
+  // Generic French, serving France, Québec, Belgium and Switzerland from one
+  // translation — hence "fr-FR" for formatting rather than a regional split.
+  fr: "fr-FR",
 }
 
 /**
@@ -78,10 +112,21 @@ export const LOCALE_TAG: Localized<string> = {
  * built and reviewed before launch, and switched off again without a code
  * change if something is wrong with it.
  */
-const DE_ENABLED = process.env.NEXT_PUBLIC_LOCALE_DE_ENABLED === "true"
+/**
+ * Launch gate per locale. A locale with no entry here is always active.
+ *
+ * Each `process.env.NEXT_PUBLIC_*` must be written out in full: Next inlines
+ * these by literal name at build time, so a computed lookup like
+ * ``process.env[`NEXT_PUBLIC_LOCALE_${code}_ENABLED`]`` reads as undefined in
+ * the bundle and would silently switch every gated locale off.
+ */
+const LOCALE_GATES: Partial<Record<Locale, boolean>> = {
+  de: process.env.NEXT_PUBLIC_LOCALE_DE_ENABLED === "true",
+  fr: process.env.NEXT_PUBLIC_LOCALE_FR_ENABLED === "true",
+}
 
 export const ACTIVE_LOCALES: readonly Locale[] = LOCALES.filter(
-  locale => locale !== "de" || DE_ENABLED,
+  locale => LOCALE_GATES[locale] ?? true,
 )
 
 export function isLocale(value: unknown): value is Locale {
@@ -131,7 +176,7 @@ export function stripLocalePrefix(pathname: string): string {
  * `PER_POST_BLOG` below is the whole change; `src/utils/blogLocales.ts` and the
  * GROQ availability projection both build themselves from these two lists.
  */
-const PER_POST_BLOG: readonly string[] = ["de"]
+const PER_POST_BLOG: readonly string[] = ["de", "fr"]
 
 /** Locales in which *every* blog post exists. */
 export const BLOG_LOCALES: readonly Locale[] = ACTIVE_LOCALES.filter(
