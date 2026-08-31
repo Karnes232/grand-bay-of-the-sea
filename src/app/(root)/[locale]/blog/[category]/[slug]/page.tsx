@@ -4,6 +4,7 @@ import Recommendations from "@/components/BlogComponents/Recommendations"
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound, redirect } from "next/navigation"
 import { getHreflangAlternates } from "@/utils/hreflang"
+import { localeUrl } from "@/utils/schema"
 import { setRequestLocale, getTranslations } from "next-intl/server"
 import {
   getBlogPosts,
@@ -169,9 +170,7 @@ export default async function Page({
   const images = individualBlogPost.backgroundImages ?? []
   const hero = images[0]
   const galleryImages = images.slice(1)
-  const shareUrl = `https://www.grandbay-puntacana.com${
-    locale === "es" ? "/es" : ""
-  }/blog/${category}/${slug}`
+  const shareUrl = localeUrl(`/blog/${category}/${slug}`, locale)
 
   const tBc = await getTranslations("Breadcrumb")
 

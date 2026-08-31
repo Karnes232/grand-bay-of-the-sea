@@ -12,8 +12,7 @@ import type { Locale, Localized } from "@/i18n/locales"
 type Loc = Localized<any[]>
 
 interface ExpeditionData {
-  titleEn?: string
-  titleEs?: string
+  introTitle?: Localized<string>
   paragraph1: Loc
   paragraph2: Loc
   paragraph3: Loc
@@ -61,8 +60,7 @@ const ExpeditionLayout = async ({
     getLiveaboards(),
   ])
 
-  const title =
-    (locale === "es" ? data.titleEs : data.titleEn) ?? expeditionName
+  const title = data.introTitle?.[locale] ?? expeditionName
 
   // Drop the leading heading (lifted into the hero) from the first prose block.
   const intro = {

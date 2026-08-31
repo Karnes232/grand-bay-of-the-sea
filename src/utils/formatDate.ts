@@ -1,3 +1,5 @@
+import { LOCALE_TAG, toLocale } from "@/i18n/locales"
+
 /**
  * Format a date-only ("YYYY-MM-DD") or ISO value into a localized long date.
  * publishDate is parsed as UTC midnight; formatting in UTC keeps it from
@@ -10,7 +12,7 @@ export function formatDate(
   if (!value) return null
   const date = new Date(value)
   if (Number.isNaN(date.getTime())) return null
-  return new Intl.DateTimeFormat(locale === "es" ? "es-ES" : "en-US", {
+  return new Intl.DateTimeFormat(LOCALE_TAG[toLocale(locale)], {
     year: "numeric",
     month: "long",
     day: "numeric",

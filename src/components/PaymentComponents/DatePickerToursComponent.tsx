@@ -1,3 +1,4 @@
+import { LOCALE_TAG, toLocale } from "@/i18n/locales"
 import { useTranslations } from "next-intl"
 import { useParams } from "next/navigation"
 import React, { useState } from "react"
@@ -15,42 +16,40 @@ const TOUR_AVAILABLE_DAYS = {
   "Shark Dive Punta Cana": [0, 1, 2, 3, 4, 5, 6], // Monday (1), Tuesday (2), Wednesday (3), Thursday (4), Friday (5), Saturday (6)
 }
 
-// Map of day numbers to day names in English
-const DAY_NAMES_EN = {
-  0: "Sunday",
-  1: "Monday",
-  2: "Tuesday",
-  3: "Wednesday",
-  4: "Thursday",
-  5: "Friday",
-  6: "Saturday",
-}
-
-// Map of day numbers to day names in Spanish
-const DAY_NAMES_ES = {
-  0: "Domingo",
-  1: "Lunes",
-  2: "Martes",
-  3: "Miércoles",
-  4: "Jueves",
-  5: "Viernes",
-  6: "Sábado",
+/**
+ * Weekday names in the reader's language, indexed by JS day number (0 = Sunday).
+ *
+ * Derived from `Intl` rather than hand-written: this file carried English and
+ * Spanish tables and picked between them with `locale === "es"`, so German tour
+ * pages listed their available days in English.
+ *
+ * The first letter is upper-cased because Spanish and German `Intl` return
+ * "domingo" where the old table said "Domingo", and these render as standalone
+ * labels rather than mid-sentence. 2023-01-01 was a Sunday, so adding the day
+ * number lands on the right weekday.
+ */
+const dayNames = (locale: string): string[] => {
+  const format = new Intl.DateTimeFormat(LOCALE_TAG[toLocale(locale)], {
+    weekday: "long",
+    timeZone: "UTC",
+  })
+  return Array.from({ length: 7 }, (_, day) => {
+    const name = format.format(new Date(Date.UTC(2023, 0, 1 + day)))
+    return name.charAt(0).toUpperCase() + name.slice(1)
+  })
 }
 
 const DatePickerToursComponent = ({ setFormData, formData, tour }) => {
   const t = useTranslations("DatePickerComponent")
   const params = useParams()
-  const locale = (params?.locale as string) || "en"
+  const locale = toLocale(params?.locale as string)
   const [value, setValue] = useState({
     startDate: null,
     endDate: null,
   })
   const [selectedDate, setSelectedDate] = useState(null)
 
-  // Get the appropriate day names based on locale
-  const getDayNames = () => {
-    return locale === "es" ? DAY_NAMES_ES : DAY_NAMES_EN
-  }
+  const getDayNames = () => dayNames(locale)
 
   // Get available days for the specific tour
   const getAvailableDays = () => {
@@ -66,12 +65,9 @@ const DatePickerToursComponent = ({ setFormData, formData, tour }) => {
 
       // Check if the selected date is available for the tour
       if (TOUR_AVAILABLE_DAYS[tour]?.includes(dayOfWeek)) {
-        const weekday = new Intl.DateTimeFormat(
-          locale === "es" ? "es-ES" : "en-US",
-          {
-            dateStyle: "full",
-          },
-        ).format(dateObj)
+        const weekday = new Intl.DateTimeFormat(LOCALE_TAG[locale], {
+          dateStyle: "full",
+        }).format(dateObj)
 
         setValue(newValue)
         setSelectedDate(weekday)

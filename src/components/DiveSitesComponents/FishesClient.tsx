@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useMemo } from "react"
+import { useTranslations } from "next-intl"
 import FishCard2 from "./FishCard2"
 import { Fishes as FishesType } from "@/sanity/queries/Page-Species/Fishes"
 import type { Locale } from "@/i18n/locales"
@@ -12,6 +13,9 @@ const FishesClient = ({
   fishesData: FishesType[]
   locale: string
 }) => {
+  // These two strings were hardcoded English/Spanish literals, so the German
+  // species page shipped an English search box.
+  const t = useTranslations("Fishes")
   const [searchQuery, setSearchQuery] = useState("")
 
   const filteredFishes = useMemo(() => {
@@ -51,7 +55,7 @@ const FishesClient = ({
             type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            placeholder={locale === "es" ? "Buscar peces..." : "Search fish..."}
+            placeholder={t("searchPlaceholder")}
             className="block w-full rounded-full border-[1.5px] border-line-strong bg-card py-3.5 pl-11 pr-4 text-[15px] text-fg outline-none transition-colors placeholder:text-faint focus:border-accent"
           />
         </div>
@@ -66,11 +70,7 @@ const FishesClient = ({
         </div>
       ) : (
         <div className="w-full py-12 text-center">
-          <p className="text-lg text-muted">
-            {locale === "es"
-              ? "No se encontraron peces con ese nombre."
-              : "No fish found with that name."}
-          </p>
+          <p className="text-lg text-muted">{t("noResults")}</p>
         </div>
       )}
     </section>

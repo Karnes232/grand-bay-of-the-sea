@@ -79,7 +79,7 @@ export default async function Page({
 
   const heroImg = liveaboards.heroImage
   const heroSrc = sanityCropUrl(heroImg, 2000, 1200) || heroImg.asset.url
-  const heroTitle = locale === "es" ? liveaboards.titleEs : liveaboards.titleEn
+  const heroTitle = liveaboards.introTitle?.[locale]
 
   // Drop the leading h1 (lifted into the hero) from the intro prose.
   const intro = {
@@ -114,7 +114,10 @@ export default async function Page({
           __html: breadcrumbJsonLd(
             [
               { name: tBc("home"), path: "" },
-              { name: tBc("liveaboard"), path: "/liveaboard-dominican-republic" },
+              {
+                name: tBc("liveaboard"),
+                path: "/liveaboard-dominican-republic",
+              },
             ],
             locale,
           ),

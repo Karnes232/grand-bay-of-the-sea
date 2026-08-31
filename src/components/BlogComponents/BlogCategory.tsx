@@ -14,7 +14,7 @@ const BlogCategory = ({
   browseLabel: string
 }) => {
   const name = category.blogCategory[locale]
-  const desc = locale === "es" ? category.descEs : category.descEn
+  const desc = category.desc?.[locale]
   const src =
     sanityCropUrl(category.cardImage, 800, 500) || category.cardImage.asset.url
   const position = hotspotPosition(category.cardImage)

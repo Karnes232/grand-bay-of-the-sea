@@ -1,3 +1,4 @@
+import { perLocale } from "@/sanity/queries/projections"
 import { client } from "@/sanity/lib/client"
 import { type Localized } from "@/i18n/locales"
 
@@ -6,8 +7,7 @@ export interface BlogCategory {
   slug: {
     current: string
   }
-  descEn?: string
-  descEs?: string
+  desc?: Localized<string>
   cardImage: {
     asset: {
       url: string
@@ -32,8 +32,7 @@ export const blogCategoryQuery = `*[_type == "blogCategory"] {
     slug {
         current
     },
-    "descEn": pt::text(description.en),
-    "descEs": pt::text(description.es),
+    ${perLocale("desc", l => `pt::text(description.${l})`)},
     _updatedAt,
     cardImage {
         asset -> {
@@ -121,7 +120,7 @@ export interface individualBlogCategorySEO {
         title: string
         description: string
         keywords: string[]
-      },
+      }
       de: {
         title: string
         description: string
@@ -136,7 +135,7 @@ export interface individualBlogCategorySEO {
       es: {
         title: string
         description: string
-      },
+      }
       de: {
         title: string
         description: string

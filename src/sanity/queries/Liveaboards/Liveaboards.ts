@@ -1,3 +1,4 @@
+import { perLocale } from "@/sanity/queries/projections"
 import { client } from "@/sanity/lib/client"
 import { type Localized } from "@/i18n/locales"
 
@@ -23,8 +24,7 @@ interface CroppableImg {
 export interface Liveaboards {
   page: string
   paragraph1: Localized<any[]>
-  titleEn?: string
-  titleEs?: string
+  introTitle?: Localized<string>
   heroEyebrow?: Loc
   heroSubtitle?: Loc
   stats?: { value?: Loc; label?: Loc }[]
@@ -47,8 +47,7 @@ export interface Liveaboards {
 export const liveaboardsQuery = `*[_type == "liveaboards"][0] {
   page,
   paragraph1,
-  "titleEn": pt::text(paragraph1.en[0]),
-  "titleEs": pt::text(paragraph1.es[0]),
+  ${perLocale("introTitle", l => `pt::text(paragraph1.${l}[0])`)},
   heroEyebrow,
   heroSubtitle,
   stats[] {

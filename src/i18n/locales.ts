@@ -55,6 +55,25 @@ export type Localized<T> = Record<Locale, T>
 export const DEFAULT_LOCALE: Locale = "en"
 
 /**
+ * BCP-47 tag per locale, for anything that needs a real language tag rather
+ * than our short code: `Intl` formatters and schema.org `inLanguage`.
+ *
+ * Typed `Localized<string>`, so adding a locale to `LOCALES` makes this a
+ * compile error until the tag is filled in — one of the few locale-dependent
+ * values the compiler can enforce under `strict: false`, because it is an
+ * object literal rather than a read.
+ *
+ * Before this existed the site tested `locale === "es" ? "es-ES" : "en-US"` in
+ * `formatDate` and in the tour date picker, so German dates rendered in US
+ * format ("August 31, 2026" rather than "31. August 2026").
+ */
+export const LOCALE_TAG: Localized<string> = {
+  en: "en-US",
+  es: "es-ES",
+  de: "de-DE",
+}
+
+/**
  * Locales exposed publicly. Kept separate from `LOCALES` so a language can be
  * built and reviewed before launch, and switched off again without a code
  * change if something is wrong with it.

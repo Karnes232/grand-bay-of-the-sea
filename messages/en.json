@@ -177,7 +177,8 @@
     "columnExplore": "Explore",
     "columnConfidence": "Book with confidence",
     "padiVerified": "Verified PADI Dive Center",
-    "padiVerifiedStore": "Verified PADI Dive Center — Store #{number}"
+    "padiVerifiedStore": "Verified PADI Dive Center — Store #{number}",
+    "attribution": "Website build attribution"
   },
   "TrustLine": {
     "line": "★ {rating} · {count} Google reviews · Verified PADI Dive Center #27147"
@@ -361,5 +362,9 @@
     "closeBookingDialog": "Close booking dialog",
     "openNavigationMenu": "Open navigation menu",
     "googleReviews": "Google reviews"
+  },
+  "Fishes": {
+    "searchPlaceholder": "Search fish...",
+    "noResults": "No fish found with that name."
   }
 }

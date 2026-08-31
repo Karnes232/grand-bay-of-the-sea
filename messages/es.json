@@ -177,7 +177,8 @@
     "columnExplore": "Explora",
     "columnConfidence": "Reserva con confianza",
     "padiVerified": "Centro de Buceo PADI Verificado",
-    "padiVerifiedStore": "Centro de Buceo PADI Verificado — Tienda #{number}"
+    "padiVerifiedStore": "Centro de Buceo PADI Verificado — Tienda #{number}",
+    "attribution": "Atribución del desarrollo del sitio web"
   },
   "TrustLine": {
     "line": "★ {rating} · {count} reseñas en Google · Centro de Buceo PADI Verificado #27147"
@@ -361,5 +362,9 @@
     "closeBookingDialog": "Cerrar el formulario de reserva",
     "openNavigationMenu": "Abrir el menú de navegación",
     "googleReviews": "Reseñas de Google"
+  },
+  "Fishes": {
+    "searchPlaceholder": "Buscar peces...",
+    "noResults": "No se encontraron peces con ese nombre."
   }
 }

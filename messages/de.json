@@ -177,7 +177,8 @@
     "columnExplore": "Entdecken",
     "columnConfidence": "Sicher buchen",
     "padiVerified": "Verifiziertes PADI Tauchcenter",
-    "padiVerifiedStore": "Verifiziertes PADI Tauchcenter — Store #{number}"
+    "padiVerifiedStore": "Verifiziertes PADI Tauchcenter — Store #{number}",
+    "attribution": "Zuschreibung der Website-Erstellung"
   },
   "TrustLine": {
     "line": "★ {rating} · {count} Google-Bewertungen · Verifiziertes PADI Tauchcenter #27147"
@@ -361,5 +362,9 @@
     "closeBookingDialog": "Buchungsdialog schließen",
     "openNavigationMenu": "Navigationsmenü öffnen",
     "googleReviews": "Google-Bewertungen"
+  },
+  "Fishes": {
+    "searchPlaceholder": "Fische suchen …",
+    "noResults": "Keine Fische mit diesem Namen gefunden."
   }
 }

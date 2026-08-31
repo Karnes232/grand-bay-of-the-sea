@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { supabaseServer } from "@/lib/supabaseServer"
 import { BUSINESS } from "@/lib/business"
+import { toLocale, type Localized } from "@/i18n/locales"
 
 // Link-preview fetchers and crawlers hit this URL too (WhatsApp itself
 // previews it when the link is shared) — redirect them, but don't log.
@@ -9,17 +10,21 @@ import { BUSINESS } from "@/lib/business"
 const BOT_UA =
   /bot|crawler|spider|preview|facebookexternalhit|whatsapp|googleother|headless|python|curl|wget|scrapy|okhttp|go-http|axios|node-fetch|java\//i
 
-const MESSAGES = {
+// The message WhatsApp opens pre-filled. Typed `Localized<string>` rather than
+// `as const`, so adding a locale is a compile error here instead of silently
+// greeting a German reader in English.
+const MESSAGES: Localized<string> = {
   en: "Hi! I'd like more information about diving.",
   es: "¡Hola! Me gustaría más información sobre el buceo.",
-} as const
+  de: "Hallo! Ich hätte gerne mehr Informationen zum Tauchen.",
+}
 
-const FROM_LABEL = { en: "from", es: "de" } as const
+const FROM_LABEL: Localized<string> = { en: "from", es: "de", de: "von" }
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const source = searchParams.get("src") || "unknown"
-  const locale = searchParams.get("locale") === "es" ? "es" : "en"
+  const locale = toLocale(searchParams.get("locale"))
   const clicked = searchParams.get("c") === "1"
   const userAgent = request.headers.get("user-agent") || ""
 

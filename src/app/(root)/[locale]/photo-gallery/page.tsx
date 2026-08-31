@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server"
 import PhotoGallery from "@/components/PhotoGalleryComponents/PhotoGallery"
 import CoursesHero from "@/components/courses/CoursesHero"
 import { getHreflangAlternates } from "@/utils/hreflang"
+import { localeUrl } from "@/utils/schema"
 import { getPageSeo, getStructuredData } from "@/sanity/queries/SEO/seo"
 import { getPhotoGallery } from "@/sanity/queries/Photo-Gallery/PhotoGallery"
 import { sanityCropUrl, hotspotPosition } from "@/sanity/lib/image"
@@ -92,7 +93,7 @@ export default async function Page({
             "@context": "https://schema.org",
             "@type": "ImageGallery",
             name: photoGallery.title[locale],
-            url: `https://www.grandbay-puntacana.com${locale === "es" ? "/es" : ""}/photo-gallery`,
+            url: localeUrl("/photo-gallery", locale),
             inLanguage: locale,
             publisher: {
               "@id": "https://www.grandbay-puntacana.com/#business",

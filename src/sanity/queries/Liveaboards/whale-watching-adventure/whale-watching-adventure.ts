@@ -1,3 +1,4 @@
+import { perLocale } from "@/sanity/queries/projections"
 import { client } from "@/sanity/lib/client"
 import { type Localized } from "@/i18n/locales"
 
@@ -13,7 +14,7 @@ export interface WhaleWatchingAdventureSEO {
         title: string
         description: string
         keywords: string[]
-      },
+      }
       de: {
         title: string
         description: string
@@ -28,7 +29,7 @@ export interface WhaleWatchingAdventureSEO {
       es: {
         title: string
         description: string
-      },
+      }
       de: {
         title: string
         description: string
@@ -91,8 +92,7 @@ export async function getWhaleWatchingAdventureStructuredData(): Promise<WhaleWa
 }
 
 export interface WhaleWatchingAdventure {
-  titleEn?: string
-  titleEs?: string
+  introTitle?: Localized<string>
   paragraph1: Localized<any[]>
   paragraph2: Localized<any[]>
   paragraph3: Localized<any[]>
@@ -116,8 +116,7 @@ export interface WhaleWatchingAdventure {
 }
 
 export const whaleWatchingAdventureQuery = `*[_type == "whale-watching-adventure"][0] {
-    "titleEn": pt::text(paragraph1.en[0]),
-    "titleEs": pt::text(paragraph1.es[0]),
+    ${perLocale("introTitle", l => `pt::text(paragraph1.${l}[0])`)},
     paragraph1,
     paragraph2,
     paragraph3,
