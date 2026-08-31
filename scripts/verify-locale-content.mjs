@@ -43,12 +43,16 @@ const EXCLUDED_PATHS = new Set(["slug"])
  * Reported, but not blocking.
  *
  * `structuredData` used to be excluded outright, in a copy of the rules that
- * drifted from the export pipeline's. Restoring it surfaced 16 documents whose
- * English JSON-LD has no translation — but spot-checking /contact and /species
- * shows the English blob is not rendered on those routes either, so this is a
- * stale-data question rather than a deficit in the translated pages. Blocking a
- * launch on fields nothing renders would be the wrong call; hiding them again
- * is how the drift happened. So: counted, listed, and not fatal.
+ * drifted from the export pipeline's. Restoring it surfaced documents whose
+ * English JSON-LD has no translation — but on inspection those blobs are the
+ * unfilled Sanity schema template: every string is "", down to `"name": ""`
+ * and `"availableLanguage": ["en","es"]`. They have nothing to translate, they
+ * are empty in English too, and JsonLd.tsx skips them at render time precisely
+ * because a nameless entity trips Search Console. So they are a content gap in
+ * Sanity, not a translation gap, and must not block a locale launch.
+ *
+ * Counted and listed rather than hidden, because hiding them is how the drift
+ * started.
  */
 const ADVISORY_PATHS = new Set(["structuredData"])
 
