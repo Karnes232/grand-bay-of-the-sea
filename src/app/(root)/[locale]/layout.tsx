@@ -74,6 +74,11 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "QNQfgD0iQIbuHkuZ5fb8hKEYbV6iCN_TvIyRdnAu7yg",
+    other: {
+      // Trustpilot Business domain ownership check (one-time; safe to keep)
+      "trustpilot-one-time-domain-verification-id":
+        "c71e39e9-7b5b-405c-b220-05a34bae87ed",
+    },
   },
   icons: {
     icon: [
