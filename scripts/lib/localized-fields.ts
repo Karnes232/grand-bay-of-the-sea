@@ -54,56 +54,64 @@ export const EXCLUDED_TYPES = new Set(["sanity.fileAsset", "sanity.imageAsset"])
  * Blog posts opted in to translation, by slug.
  *
  * The blog is per-post (see src/utils/blogLocales.ts): 151 posts / ~190k words
- * is out of proportion to the German market, so only posts with real German
- * search demand are translated. Everything else redirects to English.
+ * is out of proportion to any single non-English market, so only posts with
+ * real search demand are translated. Everything else redirects to English.
  *
  * Adding a slug here and re-running the export/import pipeline is all it takes
- * to bring another post into German.
+ * to bring another post into a locale.
  */
+
+/**
+ * The shortlist shared by every per-post locale. German and French translate
+ * the same posts — declared once so the two lists cannot drift.
+ */
+const BLOG_SHORTLIST: readonly string[] = [
+  // Tier 1 — trip planning, brings the audience
+  "sargassum-seaweed-punta-cana",
+  "dominican-republic-e-ticket-guide",
+  "is-punta-cana-safe-for-tourists",
+  "best-time-to-visit-punta-cana",
+  "how-many-days-do-you-need-in-punta-cana",
+  "punta-cana-vs-cancun",
+  // Tier 2 — diving intent, feeds the service pages
+  "is-punta-cana-good-for-scuba-diving",
+  "how-much-does-scuba-diving-cost-punta-cana",
+  "best-time-scuba-dive-punta-cana-month-by-month",
+  "best-dive-sites-punta-cana-reef-wreck",
+  // Tier 3 — practical pre-trip admin. Dutch equivalents already rank for the
+  // vaccination and tourist-card queries, so DACH demand is likely.
+  "vaccinations-dominican-republic",
+  "tourist-card-dominican-republic",
+  "usd-vs-pesos-punta-cana",
+  "first-time-travel-guide-punta-cana",
+]
+
 export const TRANSLATED_BLOG_SLUGS: Record<string, Set<string>> = {
-  de: new Set<string>([
-    // Tier 1 — trip planning, brings the German audience
-    "sargassum-seaweed-punta-cana",
-    "dominican-republic-e-ticket-guide",
-    "is-punta-cana-safe-for-tourists",
-    "best-time-to-visit-punta-cana",
-    "how-many-days-do-you-need-in-punta-cana",
-    "punta-cana-vs-cancun",
-    // Tier 2 — diving intent, feeds the service pages
-    "is-punta-cana-good-for-scuba-diving",
-    "how-much-does-scuba-diving-cost-punta-cana",
-    "best-time-scuba-dive-punta-cana-month-by-month",
-    "best-dive-sites-punta-cana-reef-wreck",
-    // Tier 3 — practical pre-trip admin. Dutch equivalents already rank for the
-    // vaccination and tourist-card queries, so DACH demand is likely.
-    "vaccinations-dominican-republic",
-    "tourist-card-dominican-republic",
-    "usd-vs-pesos-punta-cana",
-    "first-time-travel-guide-punta-cana",
-  ]),
-  // French: the blog is deferred — service site first. An empty set means
-  // every post is excluded from the French export, which is the intent.
-  fr: new Set<string>(),
+  de: new Set<string>(BLOG_SHORTLIST),
+  fr: new Set<string>(BLOG_SHORTLIST),
 }
 
 /**
  * Blog categories that hold at least one translated post, and therefore render
- * a real German hub at /de/blog/<category> rather than redirecting.
+ * a real hub at /<locale>/blog/<category> rather than redirecting.
  *
- * Must contain the category of every slug in TRANSLATED_BLOG_SLUGS. A German
- * hub without a German category document renders an empty hero and crashes
- * `generateMetadata` on `seo.meta.de` — which is exactly how this was found.
+ * Must contain the category of every slug in TRANSLATED_BLOG_SLUGS. A hub
+ * without a translated category document renders an empty hero and crashes
+ * `generateMetadata` on `seo.meta.<locale>` — which is exactly how this was
+ * found for German.
  */
+const BLOG_SHORTLIST_CATEGORIES: readonly string[] = ["travel-tips"]
+
 export const TRANSLATED_BLOG_CATEGORIES: Record<string, Set<string>> = {
-  de: new Set<string>(["travel-tips"]),
-  fr: new Set<string>(),
+  de: new Set<string>(BLOG_SHORTLIST_CATEGORIES),
+  fr: new Set<string>(BLOG_SHORTLIST_CATEGORIES),
 }
 
 /**
  * True when a document should be skipped entirely by the translation export.
  *
- * Takes the target locale because the blog shortlist is per-language: German
- * translates 14 posts, French none yet.
+ * Takes the target locale because the blog shortlist is keyed per language,
+ * even though German and French currently share one list.
  */
 export function isExcludedDoc(doc: any, locale: string): boolean {
   if (doc?._type === "blogPost") {
