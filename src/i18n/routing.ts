@@ -26,4 +26,12 @@ export const routing = defineRouting({
   // Bonus: `/` no longer varies on a request header, so it stays fully
   // CDN-cacheable — same reasoning as `localeCookie: false` above.
   localeDetection: false,
+
+  // Don't set the `Link: <…>; rel="alternate"; hreflang=…` response header.
+  // Every page already declares its own hreflang in metadata, and only the
+  // page knows which locales really exist: the blog is per-post for de/fr,
+  // so the header promised /de/… and /fr/… for untranslated posts (which 307
+  // to English) and stamped a full set of alternates onto every 404. Ahrefs
+  // (2026-09-22) reported 210 hreflang links to 404 pages from that alone.
+  alternateLinks: false,
 })

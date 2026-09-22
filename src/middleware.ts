@@ -40,6 +40,26 @@ const LEGACY_PATHS: Readonly<Record<string, string>> = {
   // alternates. Its unique copy now lives on the homepage, so redirect rather
   // than keep a page that says three different ways that it is a duplicate.
   "/scuba-diving-punta-cana": "/",
+  // Blog posts whose slugs were lengthened; ~20 other posts still linked the
+  // short form (Ahrefs 2026-09-22, 57 internal 404 links). The bodies are
+  // fixed in Sanity (scripts/fix-blog-broken-links.ts) — these 301s cover
+  // whatever crawlers and external sites still remember. Keep the table in
+  // step with REWRITES in that script.
+  "/blog/conservation-ocean-awareness/sustainable-diving":
+    "/blog/conservation-ocean-awareness/sustainable-diving-punta-cana",
+  "/blog/travel-tips/getting-around-punta-cana":
+    "/blog/travel-tips/getting-around-punta-cana-transportation",
+  "/blog/marine-life/what-are-corals":
+    "/blog/marine-life/what-are-corals-plants-or-animals",
+  "/blog/diving-tips/whats-included":
+    "/blog/diving-tips/whats-included-punta-cana-dive-package",
+  "/blog/travel-tips/non-dive-days-punta-cana":
+    "/blog/travel-tips/non-dive-days-punta-cana-mixed-itinerary",
+  "/blog/diving-tips/ear-equalization-problems":
+    "/blog/diving-tips/ear-equalization-problems-scuba-diving",
+  // Never linked internally; Ahrefs still requests the old spelling.
+  "/blog/marine-life/blue-head-wrasse-punta-cana":
+    "/blog/marine-life/blue-headed-wrasse-punta-cana",
 }
 
 export default function middleware(req: NextRequest) {
