@@ -13,6 +13,9 @@
  * Run: npx tsx --env-file=.env.local scripts/publish-drafts.ts            (dry run)
  *      npx tsx --env-file=.env.local scripts/publish-drafts.ts --write
  *      npx tsx --env-file=.env.local scripts/publish-drafts.ts --locale fr (guard a different locale)
+ *      npx tsx --env-file=.env.local scripts/publish-drafts.ts --locale de,fr
+ *        (two locales imported into the same drafts — the guard allows paths
+ *        under either, and still refuses anything else)
  */
 import { createClient } from "next-sanity"
 
@@ -29,9 +32,14 @@ const client = createClient({
 
 const args = process.argv.slice(2)
 const write = args.includes("--write")
-const locale = args.includes("--locale")
-  ? args[args.indexOf("--locale") + 1]
-  : "de"
+const locales = (
+  args.includes("--locale") ? args[args.indexOf("--locale") + 1] : "de"
+)
+  .split(",")
+  .map(l => l.trim())
+  .filter(Boolean)
+/** For messages: ".de" or ".de/.fr". */
+const locale = locales.join("/.")
 
 /** Batch size for mutations — 98 large documents in one transaction is too big. */
 const BATCH = 10
@@ -62,9 +70,9 @@ function diffPaths(a: any, b: any, path = "", out: string[] = []): string[] {
   return out
 }
 
-/** True for a path that sits at or under the target locale's field. */
+/** True for a path that sits at or under one of the target locales' fields. */
 function isLocalePath(path: string): boolean {
-  return new RegExp(`(^|\\.)${locale}(\\.|\\[|$)`).test(path)
+  return locales.some(l => new RegExp(`(^|\\.)${l}(\\.|\\[|$)`).test(path))
 }
 
 async function main() {
@@ -170,7 +178,7 @@ async function main() {
     `\nPublished ${done} document(s). Drafts remaining in dataset: ${remaining}.`,
   )
   console.log(
-    `Run \`npm run verify:locale -- --locale ${locale}\` — it should now ` +
+    `Run \`npm run verify:locale -- --locale ${locales[0]}\` — it should now ` +
       `report 0 missing fields.`,
   )
 }

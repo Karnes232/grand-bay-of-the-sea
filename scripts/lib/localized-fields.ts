@@ -84,6 +84,20 @@ const BLOG_SHORTLIST: readonly string[] = [
   "tourist-card-dominican-republic",
   "usd-vs-pesos-punta-cana",
   "first-time-travel-guide-punta-cana",
+  // Batch 2 (2026-09-22), chosen from Search Console by country plus the
+  // internal links the batch-1 posts already make.
+  // Beginner diving intent — feeds Discover Scuba / Open Water bookings.
+  "how-deep-can-beginner-scuba-dive",
+  "do-you-need-to-swim-to-scuba-dive",
+  "discover-scuba-diving-vs-open-water-course",
+  "whats-included-punta-cana-dive-package",
+  "how-to-choose-dive-shop-punta-cana",
+  // Trip practicalities with measured DACH / francophone impressions.
+  "do-you-need-cash-in-punta-cana",
+  "cell-service-sim-esim-punta-cana",
+  "getting-around-punta-cana-transportation",
+  "complete-guide-cabeza-de-toro",
+  "reef-safe-sunscreen-dominican-republic",
 ]
 
 export const TRANSLATED_BLOG_SLUGS: Record<string, Set<string>> = {
@@ -100,7 +114,11 @@ export const TRANSLATED_BLOG_SLUGS: Record<string, Set<string>> = {
  * `generateMetadata` on `seo.meta.<locale>` — which is exactly how this was
  * found for German.
  */
-const BLOG_SHORTLIST_CATEGORIES: readonly string[] = ["travel-tips"]
+const BLOG_SHORTLIST_CATEGORIES: readonly string[] = [
+  "travel-tips",
+  "diving-tips",
+  "conservation-ocean-awareness",
+]
 
 export const TRANSLATED_BLOG_CATEGORIES: Record<string, Set<string>> = {
   de: new Set<string>(BLOG_SHORTLIST_CATEGORIES),
