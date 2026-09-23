@@ -98,6 +98,19 @@ const BLOG_SHORTLIST: readonly string[] = [
   "getting-around-punta-cana-transportation",
   "complete-guide-cabeza-de-toro",
   "reef-safe-sunscreen-dominican-republic",
+  // Batch 3 (2026-09-23), same method.
+  // Product and course intent.
+  "catalina-island-diving-guide",
+  "catalina-island-vs-bayahibe-which-dive-trip",
+  "can-you-scuba-dive-without-certification-punta-cana",
+  "how-to-get-padi-certified-punta-cana",
+  "nitrox-enriched-air-explained",
+  "scuba-diving-medical-conditions-punta-cana",
+  // Practicalities with measured DACH / francophone impressions.
+  "jumbo-punta-cana-guide",
+  "hospitals-medical-clinics-punta-cana",
+  "what-to-pack-diving-trip-punta-cana",
+  "how-many-days-dive-punta-cana-itinerary",
 ]
 
 export const TRANSLATED_BLOG_SLUGS: Record<string, Set<string>> = {
@@ -118,6 +131,7 @@ const BLOG_SHORTLIST_CATEGORIES: readonly string[] = [
   "travel-tips",
   "diving-tips",
   "conservation-ocean-awareness",
+  "local-businesses",
 ]
 
 export const TRANSLATED_BLOG_CATEGORIES: Record<string, Set<string>> = {
